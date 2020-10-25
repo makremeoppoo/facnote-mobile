@@ -47,7 +47,7 @@ const Login = createStackNavigator();
 const LoginStack = () => {
   return (
     <Login.Navigator
-      initialRouteName="Welcome"
+      initialRouteName="LogIn"
       headerMode="float"
       screenOptions={() => ({})}>
       <Login.Screen name="LogIn" component={LogInScreen} />
@@ -121,54 +121,30 @@ const TabNavigator = () => {
         }}
       />
       <BottomTabNavigator.Screen
-        name="Expenses"
+        name="Factures"
         component={ExpensesScreen}
         options={{
           tabBarIcon: () => (
             <Image
-              source={require('../../assets/icons/expenses.png')}
+              source={require('../../assets/icons/news.png')}
               style={{width: 20, height: 20}}
             />
           ),
         }}
       />
       <BottomTabNavigator.Screen
-        name="Portfolio"
-        component={PortfolioScreen}
+        name="Profile"
+        component={ProfileScreen}
         options={{
           tabBarIcon: () => (
             <Image
-              source={require('../../assets/icons/portfolio.png')}
+              source={require('../../assets/icons/account.png')}
               style={{width: 20, height: 20}}
             />
           ),
         }}
       />
-      <BottomTabNavigator.Screen
-        name="BankAccounts"
-        component={BankAccountsScreen}
-        options={{
-          title: 'Accounts',
-          tabBarIcon: () => (
-            <Image
-              source={require('../../assets/icons/bankAccounts.png')}
-              style={{width: 20, height: 20}}
-            />
-          ),
-        }}
-      />
-      <BottomTabNavigator.Screen
-        name="More"
-        component={MoreScreen}
-        options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('../../assets/icons/more.png')}
-              style={{width: 20, height: 20}}
-            />
-          ),
-        }}
-      />
+     
     </BottomTabNavigator.Navigator>
   );
 };
@@ -566,7 +542,7 @@ const RootNavigator = () => {
 const AppContainer = () => {
   return (
     <NavigationContainer>
-      {Platform.OS === 'ios' ? <RootNavigator /> : <RootNavigator />}
+      {<RootNavigator />}
     </NavigationContainer>
   );
 };
