@@ -21,6 +21,7 @@
     "react-native": "0.63.1",
     "react-native-app-intro-slider": "^3.0.0",
     "react-native-chart-kit": "^3.2.1",
+    "react-native-document-picker": "^4.0.0",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.6.1",
     "react-native-reanimated": "^1.9.0",

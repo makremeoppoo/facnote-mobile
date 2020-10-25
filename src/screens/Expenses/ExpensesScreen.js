@@ -1,78 +1,180 @@
-/* eslint-disable comma-dangle */
+/*This is an example of File Picker in React Native*/
 import React from 'react';
-import { View, TouchableHighlight, Image, Text, ScrollView, Dimensions } from 'react-native';
-import styles from './styles';
-import { PieChart } from 'react-native-chart-kit';
-import { FlatList } from 'react-native-gesture-handler';
-import { spendingArray, expensesData, chartConfig, payments } from '../../data/dataArrays';
-const { width, height } = Dimensions.get('window');
-const SCREEN_WIDTH = width < height ? width : height;
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+} from 'react-native';
+import DocumentPicker from 'react-native-document-picker';
 
 export default class ExpensesScreen extends React.Component {
   constructor(props) {
     super(props);
+    //Initialization of the state to store the selected file related attribute
+    this.state = {
+      singleFile: '',
+      multipleFile: [],
+    };
+  }
+  async selectOneFile() {
+    //Opening Document Picker for selection of one file
+    try {
+      const res = await DocumentPicker.pick({
+        type: [DocumentPicker.types.allFiles],
+        //There can me more options as well
+        // DocumentPicker.types.allFiles
+        // DocumentPicker.types.images
+        // DocumentPicker.types.plainText
+        // DocumentPicker.types.audio
+        // DocumentPicker.types.pdf
+      });
+      //Printing the log realted to the file
+      console.log('res : ' + JSON.stringify(res));
+      console.log('URI : ' + res.uri);
+      console.log('Type : ' + res.type);
+      console.log('File Name : ' + res.name);
+      console.log('File Size : ' + res.size);
+      //Setting the state to show single file attributes
+      this.setState({ singleFile: res });
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from single doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
   }
 
-  renderItem = ({ item }) => (
-    <TouchableHighlight
-      style={styles.itemContainer}
-      onPress={() =>
-        this.props.navigation.navigate('Transactions', {
-          item: item,
-          payments: payments,
-          backScreen: 'Expenses'
-        })
+  async selectMultipleFile() {
+    //Opening Document Picker for selection of multiple file
+    try {
+      const results = await DocumentPicker.pickMultiple({
+        type: [DocumentPicker.types.images],
+        //There can me more options as well find above
+      });
+      for (const res of results) {
+        //Printing the log realted to the file
+        console.log('res : ' + JSON.stringify(res));
+        console.log('URI : ' + res.uri);
+        console.log('Type : ' + res.type);
+        console.log('File Name : ' + res.name);
+        console.log('File Size : ' + res.size);
       }
-    >
-      <View style={styles.mainContainer}>
-        <View style={styles.rowContainer}>
-          <Image style={styles.itemIcon} source={{ uri: item.icon }} />
-          <View style={styles.itemTxtContainer}>
-            <Text style={styles.itemTitle}>{item.title}</Text>
-            <Text style={styles.itemText}>{item.money}</Text>
-          </View>
-        </View>
-        <Image style={styles.rightArrow} source={require('../../../assets/icons/rightArrow.png')} />
-      </View>
-    </TouchableHighlight>
-  );
-
-  onPressViewCategories = () => {
-    this.props.navigation.navigate('AllSpendingCategories', {spendingArray});
-  };
+      //Setting the state to show multiple file attributes
+      this.setState({ multipleFile: results });
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        alert('Canceled from multiple doc picker');
+      } else {
+        //For Unknown Error
+        alert('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
+  }
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.chartContainer}>
-          <PieChart
-            data={expensesData}
-            width={SCREEN_WIDTH}
-            height={220}
-            chartConfig={chartConfig}
-            accessor="money"
-            backgroundColor="transparent"
+      <View style={styles.containerStyle}>
+        {/*To show single file attribute*/}
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={styles.buttonStyle}
+          onPress={this.selectOneFile.bind(this)}>
+          {/*Single file selection button*/}
+          <Text style={{ marginRight: 10, fontSize: 19 }}>
+            Click here to pick one file
+          </Text>
+          <Image
+            source={{
+              uri: 'https://img.icons8.com/offices/40/000000/attach.png',
+            }}
+            style={styles.imageIconStyle}
           />
-        </View>
-        <View style={styles.facilitieContainer}>
-          <Text style={styles.title}>Top Spending Categories</Text>
-          <FlatList
-            vertical
-            showsVerticalScrollIndicator={false}
-            data={spendingArray.slice(0, 4)}
-            renderItem={this.renderItem}
-            extraData={this.state}
-            keyExtractor={item => `${item.id}`}
+        </TouchableOpacity>
+        {/*Showing the data of selected Single file*/}
+        <Text style={styles.textStyle}>
+          File Name:{' '}
+          {this.state.singleFile.name ? this.state.singleFile.name : ''}
+          {'\n'}
+          Type: {this.state.singleFile.type ? this.state.singleFile.type : ''}
+          {'\n'}
+          File Size:{' '}
+          {this.state.singleFile.size ? this.state.singleFile.size : ''}
+          {'\n'}
+          URI: {this.state.singleFile.uri ? this.state.singleFile.uri : ''}
+          {'\n'}
+        </Text>
+        <View style={{ backgroundColor: 'grey', height: 2, margin: 10 }} />
+        {/*To multiple single file attribute*/}
+        <TouchableOpacity
+          activeOpacity={0.5}
+          style={styles.buttonStyle}
+          onPress={this.selectMultipleFile.bind(this)}>
+          {/*Multiple files selection button*/}
+          <Text style={{ marginRight: 10, fontSize: 19 }}>
+            Click here to pick multiple files
+          </Text>
+          <Image
+            source={{
+              uri: 'https://img.icons8.com/offices/40/000000/attach.png',
+            }}
+            style={styles.imageIconStyle}
           />
-          <TouchableHighlight
-            style={styles.itemContainer}
-            onPress={() => this.onPressViewCategories()}
-            underlayColor="rgba(73,182,77,1,0.9)"
-          >
-            <Text style={styles.viewTxt}>View all categories</Text>
-          </TouchableHighlight>
-        </View>
-      </ScrollView>
+        </TouchableOpacity>
+        <ScrollView>
+          {/*Showing the data of selected Multiple files*/}
+          {this.state.multipleFile.map((item, key) => (
+            <View key={key}>
+              <Text style={styles.textStyle}>
+                File Name: {item.name ? item.name : ''}
+                {'\n'}
+                Type: {item.type ? item.type : ''}
+                {'\n'}
+                File Size: {item.size ? item.size : ''}
+                {'\n'}
+                URI: {item.uri ? item.uri : ''}
+                {'\n'}
+              </Text>
+            </View>
+          ))}
+        </ScrollView>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  containerStyle: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 16,
+  },
+  textStyle: {
+    backgroundColor: '#fff',
+    fontSize: 15,
+    marginTop: 16,
+    color: 'black',
+  },
+  buttonStyle: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#DDDDDD',
+    padding: 5,
+  },
+  imageIconStyle: {
+    height: 20,
+    width: 20,
+    resizeMode: 'stretch',
+  },
+});
