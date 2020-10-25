@@ -7,26 +7,40 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Keyboard,
-  ScrollView
+  ScrollView,
 } from 'react-native';
 import styles from './styles';
+import { connect } from 'react-redux';
 
-export default class LogInScreen extends React.Component {
+import * as api from '../../services/auth';
+import { login } from '../../redux';
+
+class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
     };
   }
 
-  onPressLogButton = () => {
-    this.props.navigation.navigate('Home');
-  };
+  onPressLogButton = async () => {
+    const {name, password} = this.state;
+    try {
+      let response = await api.login({name, password});
 
-  onPressFacebookButton = () => {
-    this.props.navigation.navigate('');
+      //check if username is null
+      let username = response.user.username !== null;
+      console.log(response);
+
+      this.props.login({user: {name, password}});
+
+    } catch (error) {
+      this.props.login({user: {name, password}});
+
+      console.log(error.message);
+    }
   };
 
   render() {
@@ -39,7 +53,7 @@ export default class LogInScreen extends React.Component {
               <TextInput
                 style={styles.input}
                 placeholder="Email or phone number"
-                onChangeText={text => this.setState({ email: text })}
+                onChangeText={(text) => this.setState({email: text})}
                 value={this.state.email}
               />
             </View>
@@ -47,23 +61,15 @@ export default class LogInScreen extends React.Component {
               <TextInput
                 style={styles.input}
                 placeholder="Password"
-                onChangeText={text => this.setState({ password: text })}
+                onChangeText={(text) => this.setState({password: text})}
                 value={this.state.password}
               />
             </View>
             <View style={styles.logContainer}>
               <TouchableHighlight
                 style={styles.loginContainer}
-                onPress={() => this.onPressLogButton()}
-              >
+                onPress={() => this.onPressLogButton()}>
                 <Text style={styles.logTxt}>Log in</Text>
-              </TouchableHighlight>
-              <Text style={styles.orTxt}>OR</Text>
-              <TouchableHighlight
-                style={styles.facebookContainer}
-                onPress={() => this.onPressFacebookButton()}
-              >
-                <Text style={styles.facebookTxt}>Facebook Login</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -72,3 +78,4 @@ export default class LogInScreen extends React.Component {
     );
   }
 }
+export default connect(null, { login })(LoginScreen);

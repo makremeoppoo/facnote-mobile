@@ -35,10 +35,31 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import BackButton from '../components/BackButton/BackButton';
 import {SearchBar} from 'react-native-elements';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
+
+// login stack
+const Login = createStackNavigator();
+const LoginStack = () => {
+  return (
+    <Login.Navigator
+      initialRouteName="Welcome"
+      headerMode="float"
+      screenOptions={() => ({})}>
+      <Login.Screen name="LogIn" component={LogInScreen} />
+      <Login.Screen name="SignUp" component={SignUpScreen} />
+      <Login.Screen
+        options={{headerShown: false}}
+        name="Welcome"
+        component={WelcomeScreen}
+      />
+    </Login.Navigator>
+  );
+};
 
 const LandingNavigator = () => {
   return (
@@ -360,7 +381,7 @@ const MainNavigator = () => {
               <Text style={{color: 'white', marginLeft: 10}}>Cancel</Text>
             </TouchableHighlight>
           ),
-          headerRight: ()=> <View />,
+          headerRight: () => <View />,
           title: route.params?.type + ' ' + route.params?.title,
         })}
         name="BuySell"
@@ -392,7 +413,7 @@ const MainNavigator = () => {
               clearIcon
               //lightTheme
               round
-              onChangeText={text => this.handleSearch(text)}
+              onChangeText={(text) => this.handleSearch(text)}
               //onClear={() => params.handleSearch('')}
               placeholder="Search"
               value={this.getValue}
@@ -478,7 +499,7 @@ const MainNavigator = () => {
             />
           ),
           title: 'Your WatchList',
-          headerRight:()=> <View />,
+          headerRight: () => <View />,
         })}
         name="AssetsWatchListScreen"
         component={AssetsWatchListScreen}
@@ -517,10 +538,34 @@ const DrawerStack = () => {
   );
 };
 
+// Manifest of possible screens
+const Root = createStackNavigator();
+const RootNavigator = () => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  return (
+    <Root.Navigator
+      screenOptions={{
+        headerShown: false,
+        headerTintColor: 'black',
+      }}
+      initialRouteName="DrawerStack">
+      {isLoggedIn ? (
+        <Root.Screen
+          name="DrawerStack"
+          component={Platform.OS === 'ios' ? Navigator : DrawerStack}
+        />
+      ) : (
+        <Root.Screen name="LoginStack" component={LoginStack} />
+      )}
+    </Root.Navigator>
+  );
+};
+
 const AppContainer = () => {
   return (
     <NavigationContainer>
-      {Platform.OS === 'ios' ? <Navigator /> : <DrawerStack />}
+      {Platform.OS === 'ios' ? <RootNavigator /> : <RootNavigator />}
     </NavigationContainer>
   );
 };

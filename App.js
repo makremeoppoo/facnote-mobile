@@ -1,26 +1,25 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './src/redux/store';
+import { createStore, applyMiddleware } from 'redux';
+
+import AppReducer from './src/redux';
 import AppContainer from './src/navigation/AppNavigation';
 import { enableScreens } from 'react-native-screens';
+import thunk from 'redux-thunk';
+const store = createStore(AppReducer, applyMiddleware(thunk));
 
 console.disableYellowBox = true;
 
-const App = () => {
-  enableScreens()
-  return (
-    <Provider store={store}>
-      <AppContainer />
-    </Provider>
-  );
-};
+export default class App extends React.Component {
+  render() {
+    enableScreens();
+    return (
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    );
+  }
+}
 
-export default App;
+//AppRegistry.registerComponent('App', () => App);
+

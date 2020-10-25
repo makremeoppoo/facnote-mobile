@@ -1,13 +1,16 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
 import { View, TouchableHighlight, Text, Image, ScrollView, Platform } from 'react-native';
-import BackButton from '../../components/BackButton/BackButton';
-import MenuImage from '../../components/MenuImage/MenuImage';
-import styles from './styles';
+import { connect } from 'react-redux';
 
-export default class NotificationsScreen extends React.Component {
+import styles from './styles';
+import { logout } from '../../redux';
+
+ class NotificationsScreen extends React.Component {
   constructor(props) {
     super(props);
+
+  
   }
 
   render() {
@@ -72,7 +75,7 @@ export default class NotificationsScreen extends React.Component {
         </View>
         <TouchableHighlight
           style={styles.btnContainer}
-          onPress={() => this.props.navigation.navigate('')}
+          onPress={() => this.props.logout()}
           underlayColor="rgba(73,182,77,1,0.9)"
         >
           <Text style={styles.btnTxt}>Logout</Text>
@@ -81,3 +84,5 @@ export default class NotificationsScreen extends React.Component {
     );
   }
 }
+export default connect(null, { logout })(NotificationsScreen);
+
