@@ -35,8 +35,7 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 import BackButton from '../components/BackButton/BackButton';
 import {SearchBar} from 'react-native-elements';
-import { useSelector, useDispatch } from 'react-redux';
-
+import {useSelector, useDispatch} from 'react-redux';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -50,7 +49,11 @@ const LoginStack = () => {
       initialRouteName="LogIn"
       headerMode="float"
       screenOptions={() => ({})}>
-      <Login.Screen name="LogIn" component={LogInScreen} />
+      <Login.Screen
+        options={{headerShown: false}}
+        name="LogIn"
+        component={LogInScreen}
+      />
       <Login.Screen name="SignUp" component={SignUpScreen} />
       <Login.Screen
         options={{headerShown: false}}
@@ -144,7 +147,6 @@ const TabNavigator = () => {
           ),
         }}
       />
-     
     </BottomTabNavigator.Navigator>
   );
 };
@@ -540,11 +542,7 @@ const RootNavigator = () => {
 };
 
 const AppContainer = () => {
-  return (
-    <NavigationContainer>
-      {<RootNavigator />}
-    </NavigationContainer>
-  );
+  return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
 };
 
 export default AppContainer;
