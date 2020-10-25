@@ -250,7 +250,8 @@ const MainNavigator = () => {
         options={{
           headerShown: false,
         }}
-        component={Platform.OS === 'ios' ? TabNavigator : mainScreensNavigator}
+        component={TabNavigator}
+        //component={Platform.OS === 'ios' ? TabNavigator : mainScreensNavigator}
       />
       <Stack.Screen
         options={({navigation}) => ({
