@@ -8,12 +8,13 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
+  Image,
 } from 'react-native';
 import styles from './styles';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import * as api from '../../services/auth';
-import { login } from '../../redux';
+import {login} from '../../redux';
 
 class LoginScreen extends React.Component {
   constructor(props) {
@@ -35,7 +36,6 @@ class LoginScreen extends React.Component {
       console.log(response);
 
       this.props.login({user: {name, password}});
-
     } catch (error) {
       this.props.login({user: {name, password}});
 
@@ -48,11 +48,21 @@ class LoginScreen extends React.Component {
       <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
         <ScrollView style={styles.container}>
           <View>
-            <Text style={styles.title}>Sign in</Text>
+            <Image
+              source={require('../../../assets/images/logo_facnote.png')}
+              style={{
+                alignSelf: 'center',
+                width: 200,
+                height: 200,
+                marginLeft: 10,
+                marginRight: 5,
+              }}
+            />
+            <Text style={styles.title}>Connecter-Vous</Text>
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.input}
-                placeholder="Email or phone number"
+                placeholder="Email"
                 onChangeText={(text) => this.setState({email: text})}
                 value={this.state.email}
               />
@@ -60,7 +70,7 @@ class LoginScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.input}
-                placeholder="Password"
+                placeholder="Mot de passe"
                 onChangeText={(text) => this.setState({password: text})}
                 value={this.state.password}
               />
@@ -69,7 +79,7 @@ class LoginScreen extends React.Component {
               <TouchableHighlight
                 style={styles.loginContainer}
                 onPress={() => this.onPressLogButton()}>
-                <Text style={styles.logTxt}>Log in</Text>
+                <Text style={styles.logTxt}>Connexion</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -78,4 +88,4 @@ class LoginScreen extends React.Component {
     );
   }
 }
-export default connect(null, { login })(LoginScreen);
+export default connect(null, {login})(LoginScreen);

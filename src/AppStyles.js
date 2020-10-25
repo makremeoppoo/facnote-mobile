@@ -11,11 +11,11 @@ export const landing = StyleSheet.create({
     padding: 50
   },
   title: {
-    color: '#2d65c9',
+    color: 'black',
     fontSize: 28,
     fontWeight: 'bold',
-    textAlign: 'left',
-    margin: 30
+    textAlign: 'center',
+    margin: 10
   },
   input: {
     color: 'black',
@@ -34,7 +34,7 @@ export const landing = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     padding: 12,
-    backgroundColor: '#2c65c9',
+    backgroundColor: '#ec1c27',
     borderColor: '#2c65c9',
     borderRadius: 60,
     alignSelf: 'center',
