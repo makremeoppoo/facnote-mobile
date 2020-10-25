@@ -4,53 +4,19 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   TouchableOpacity,
-  ScrollView,
-  Image,
+  Button,
+  TouchableHighlight,
 } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
-
+import Icon from 'react-native-vector-icons/Ionicons';
 export default class ExpensesScreen extends React.Component {
   constructor(props) {
     super(props);
     //Initialization of the state to store the selected file related attribute
     this.state = {
-      singleFile: '',
       multipleFile: [],
     };
-  }
-  async selectOneFile() {
-    //Opening Document Picker for selection of one file
-    try {
-      const res = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
-        //There can me more options as well
-        // DocumentPicker.types.allFiles
-        // DocumentPicker.types.images
-        // DocumentPicker.types.plainText
-        // DocumentPicker.types.audio
-        // DocumentPicker.types.pdf
-      });
-      //Printing the log realted to the file
-      console.log('res : ' + JSON.stringify(res));
-      console.log('URI : ' + res.uri);
-      console.log('Type : ' + res.type);
-      console.log('File Name : ' + res.name);
-      console.log('File Size : ' + res.size);
-      //Setting the state to show single file attributes
-      this.setState({ singleFile: res });
-    } catch (err) {
-      //Handling any exception (If any)
-      if (DocumentPicker.isCancel(err)) {
-        //If user canceled the document selection
-        alert('Canceled from single doc picker');
-      } else {
-        //For Unknown Error
-        alert('Unknown Error: ' + JSON.stringify(err));
-        throw err;
-      }
-    }
   }
 
   async selectMultipleFile() {
@@ -68,8 +34,9 @@ export default class ExpensesScreen extends React.Component {
         console.log('File Name : ' + res.name);
         console.log('File Size : ' + res.size);
       }
+      console.log(results);
       //Setting the state to show multiple file attributes
-      this.setState({ multipleFile: results });
+      this.setState({multipleFile: results});
     } catch (err) {
       //Handling any exception (If any)
       if (DocumentPicker.isCancel(err)) {
@@ -86,78 +53,79 @@ export default class ExpensesScreen extends React.Component {
   render() {
     return (
       <View style={styles.containerStyle}>
-        {/*To show single file attribute*/}
-        <TouchableOpacity
-          activeOpacity={0.5}
-          style={styles.buttonStyle}
-          onPress={this.selectOneFile.bind(this)}>
-          {/*Single file selection button*/}
-          <Text style={{ marginRight: 10, fontSize: 19 }}>
-            Click here to pick one file
-          </Text>
-          <Image
-            source={{
-              uri: 'https://img.icons8.com/offices/40/000000/attach.png',
-            }}
-            style={styles.imageIconStyle}
-          />
-        </TouchableOpacity>
-        {/*Showing the data of selected Single file*/}
-        <Text style={styles.textStyle}>
-          File Name:{' '}
-          {this.state.singleFile.name ? this.state.singleFile.name : ''}
-          {'\n'}
-          Type: {this.state.singleFile.type ? this.state.singleFile.type : ''}
-          {'\n'}
-          File Size:{' '}
-          {this.state.singleFile.size ? this.state.singleFile.size : ''}
-          {'\n'}
-          URI: {this.state.singleFile.uri ? this.state.singleFile.uri : ''}
-          {'\n'}
+        <Text
+          style={{
+            color: '#54aed6',
+            fontSize: 35,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            marginTop: 60,
+            marginBottom: 60,
+          }}>
+          Facnote
         </Text>
-        <View style={{ backgroundColor: 'grey', height: 2, margin: 10 }} />
-        {/*To multiple single file attribute*/}
         <TouchableOpacity
           activeOpacity={0.5}
           style={styles.buttonStyle}
           onPress={this.selectMultipleFile.bind(this)}>
           {/*Multiple files selection button*/}
-          <Text style={{ marginRight: 10, fontSize: 19 }}>
-            Click here to pick multiple files
+          <Text
+            style={{
+              color: '#54aed6',
+              fontSize: 35,
+              fontWeight: 'bold',
+              textAlign: 'center',
+              marginTop: 60,
+              marginBottom: 60,
+            }}>
+            Appuyer ici pour sélectionner les factures d' achat a envoyer
           </Text>
-          <Image
-            source={{
-              uri: 'https://img.icons8.com/offices/40/000000/attach.png',
-            }}
-            style={styles.imageIconStyle}
-          />
         </TouchableOpacity>
-        <ScrollView>
-          {/*Showing the data of selected Multiple files*/}
-          {this.state.multipleFile.map((item, key) => (
-            <View key={key}>
-              <Text style={styles.textStyle}>
-                File Name: {item.name ? item.name : ''}
-                {'\n'}
-                Type: {item.type ? item.type : ''}
-                {'\n'}
-                File Size: {item.size ? item.size : ''}
-                {'\n'}
-                URI: {item.uri ? item.uri : ''}
-                {'\n'}
-              </Text>
-            </View>
-          ))}
-        </ScrollView>
+        <TouchableHighlight
+          style={styles.btnClickContain}
+          underlayColor="#54d66a">
+          <View style={styles.btnContainer}>
+            <Icon name={'ios-send-sharp'} size={32} style={{color: 'white'}} />
+            <Text style={styles.btnText}>envoyer</Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  btnClickContain: {
+    flex: 1,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    backgroundColor: '#54d66a',
+    color: 'white',
+    borderRadius: 5,
+    padding: 15,
+    marginTop: 80,
+    marginBottom: 80
+  },
+  btnContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    alignSelf: 'center',
+    borderRadius: 10,
+  },
+  btnIcon: {
+    height: 25,
+    width: 25,
+  },
+  btnText: {
+    fontSize: 18,
+    color: '#FAFAFA',
+    marginLeft: 10,
+    marginTop: 2,
+  },
   containerStyle: {
     flex: 1,
-    backgroundColor: '#fff',
     padding: 16,
   },
   textStyle: {
@@ -169,12 +137,9 @@ const styles = StyleSheet.create({
   buttonStyle: {
     alignItems: 'center',
     flexDirection: 'row',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: '#fff',
+    borderColor: 'black',
+    borderWidth: 1,
     padding: 5,
-  },
-  imageIconStyle: {
-    height: 20,
-    width: 20,
-    resizeMode: 'stretch',
   },
 });

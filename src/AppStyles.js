@@ -36,7 +36,7 @@ export const landing = StyleSheet.create({
     padding: 12,
     backgroundColor: '#ec1c27',
     borderColor: '#2c65c9',
-    borderRadius: 60,
+    borderRadius: 10,
     alignSelf: 'center',
     marginTop: 20,
     marginBottom: 20

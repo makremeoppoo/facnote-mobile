@@ -110,7 +110,14 @@ const LandingNavigator = () => {
 //ios
 const TabNavigator = () => {
   return (
-    <BottomTabNavigator.Navigator initialRouteName="Home">
+    <BottomTabNavigator.Navigator
+      tabBarOptions={{
+        labelStyle: {textTransform: 'none', fontSize: 15},
+        style: {
+          height: 60,
+        },
+      }}
+      initialRouteName="Home">
       <BottomTabNavigator.Screen
         name="Home"
         component={HomeScreen}
@@ -118,7 +125,7 @@ const TabNavigator = () => {
           tabBarIcon: ({tintColor}) => (
             <Image
               source={require('../../assets/icons/home.png')}
-              style={{width: 20, height: 20}}
+              style={{width: 30, height: 30}}
             />
           ),
         }}
@@ -130,7 +137,7 @@ const TabNavigator = () => {
           tabBarIcon: () => (
             <Image
               source={require('../../assets/icons/news.png')}
-              style={{width: 20, height: 20}}
+              style={{width: 30, height: 30}}
             />
           ),
         }}
@@ -142,7 +149,7 @@ const TabNavigator = () => {
           tabBarIcon: () => (
             <Image
               source={require('../../assets/icons/account.png')}
-              style={{width: 20, height: 20}}
+              style={{width: 30, height: 30}}
             />
           ),
         }}
