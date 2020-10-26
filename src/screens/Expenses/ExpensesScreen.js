@@ -5,21 +5,33 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Button,
+  Modal,
   TouchableHighlight,
 } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Button } from 'react-native-elements';
+
 export default class ExpensesScreen extends React.Component {
   constructor(props) {
     super(props);
     //Initialization of the state to store the selected file related attribute
     this.state = {
       multipleFile: [],
+      showModal: false,
+      typeFacture: null,
     };
   }
 
-  async selectMultipleFile() {
+  setTypeFacture = (typeFacture) => {
+    this.setState({typeFacture});
+    this.setModalVisible();
+  };
+
+  setModalVisible = () => {
+    this.setState({showModal: !this.state.showModal});
+  };
+  selectMultipleFile = async () => {
     //Opening Document Picker for selection of multiple file
     try {
       const results = await DocumentPicker.pickMultiple({
@@ -48,7 +60,7 @@ export default class ExpensesScreen extends React.Component {
         throw err;
       }
     }
-  }
+  };
 
   render() {
     return (
@@ -67,7 +79,7 @@ export default class ExpensesScreen extends React.Component {
         <TouchableOpacity
           activeOpacity={0.5}
           style={styles.buttonStyle}
-          onPress={this.selectMultipleFile.bind(this)}>
+          onPress={() => this.setModalVisible()}>
           {/*Multiple files selection button*/}
           <Text
             style={{
@@ -81,6 +93,7 @@ export default class ExpensesScreen extends React.Component {
             Appuyer ici pour sélectionner les factures d' achat a envoyer
           </Text>
         </TouchableOpacity>
+
         <TouchableHighlight
           style={styles.btnClickContain}
           underlayColor="#54d66a">
@@ -89,6 +102,28 @@ export default class ExpensesScreen extends React.Component {
             <Text style={styles.btnText}>envoyer</Text>
           </View>
         </TouchableHighlight>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.showModal}
+          onRequestClose={() => {}}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <Button
+                onPress={() => this.setTypeFacture(1)}
+                title="Avance de frais"
+                type="clear">
+                
+              </Button>
+              <Button
+                onPress={() => this.setTypeFacture(2)}
+                title="Achat"
+                type="clear">
+                
+              </Button>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -104,7 +139,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     padding: 15,
     marginTop: 80,
-    marginBottom: 80
+    marginBottom: 80,
   },
   btnContainer: {
     flex: 1,
@@ -128,12 +163,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
-  textStyle: {
-    backgroundColor: '#fff',
-    fontSize: 15,
-    marginTop: 16,
-    color: 'black',
-  },
+
   buttonStyle: {
     alignItems: 'center',
     flexDirection: 'row',
@@ -141,5 +171,37 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     padding: 5,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  openButton: {
+    backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
 });
