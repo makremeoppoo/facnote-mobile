@@ -143,7 +143,7 @@ const TabNavigator = () => {
         }}
       />
       <BottomTabNavigator.Screen
-        name="Profile"
+        name="Cabinet"
         component={ProfileScreen}
         options={{
           tabBarIcon: () => (

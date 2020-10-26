@@ -1,30 +1,59 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
-import { View, TouchableHighlight, Text, Image, ScrollView, Platform } from 'react-native';
-import { connect } from 'react-redux';
+import {
+  View,
+  TouchableHighlight,
+  Text,
+  Image,
+  ScrollView,
+  Linking,
+} from 'react-native';
+import {connect} from 'react-redux';
 
 import styles from './styles';
-import { logout } from '../../redux';
+import {logout} from '../../redux';
 
- class NotificationsScreen extends React.Component {
+class NotificationsScreen extends React.Component {
   constructor(props) {
     super(props);
-
-  
   }
+
+  callNumber = (phone) => {
+    let phoneNumber = phone;
+    if (Platform.OS !== 'android') {
+      phoneNumber = `telprompt:${phone}`;
+    } else {
+      phoneNumber = `tel:${phone}`;
+    }
+    Linking.canOpenURL(phoneNumber)
+      .then((supported) => {
+        if (!supported) {
+          alert('Phone number is not available');
+        } else {
+          return Linking.openURL(phoneNumber);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  sendMail = (email) => {
+    Linking.openURL(`mailto:${email}?subject=Cabinet`);
+  };
 
   render() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.infoContainer}>
-          <Image style={styles.userImg} source={require('../../../assets/images/userImg.jpg')} />
-          <Text style={styles.userName}>Adrian Smith</Text>
+          <Image
+            style={styles.userImg}
+            source={require('../../../assets/images/logo.jpg')}
+          />
+          <Text style={styles.userName}>Cabinet</Text>
         </View>
         <View>
           <TouchableHighlight
             onPress={() => this.props.navigation.navigate('AccountDetails')}
-            underlayColor="rgba(73,182,77,1,0.9)"
-          >
+            underlayColor="rgba(73,182,77,1,0.9)">
             <View style={styles.itemContainer}>
               <View style={styles.rowContainer}>
                 <Image
@@ -40,16 +69,15 @@ import { logout } from '../../redux';
             </View>
           </TouchableHighlight>
           <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('Settings')}
-            underlayColor="rgba(73,182,77,1,0.9)"
-          >
+             onPress={() => { this.callNumber("+49 89 382 79189") }}
+            underlayColor="rgba(73,182,77,1,0.9)">
             <View style={styles.itemContainer}>
               <View style={styles.rowContainer}>
                 <Image
                   style={styles.itemIcon}
-                  source={require('../../../assets/icons/settings.png')}
+                  source={require('../../../assets/icons/call.png')}
                 />
-                <Text style={styles.itemTitle}>Settings</Text>
+                <Text style={styles.itemTitle}>Contacter nous</Text>
               </View>
               <Image
                 style={styles.rightArrow}
@@ -58,13 +86,16 @@ import { logout } from '../../redux';
             </View>
           </TouchableHighlight>
           <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('')}
-            underlayColor="rgba(73,182,77,1,0.9)"
-          >
+             onPress={() => { this.sendMail("starnext-appteam@list.bmw.com") }}
+            underlayColor="rgba(73,182,77,1,0.9)">
             <View style={styles.itemContainer}>
               <View style={styles.rowContainer}>
-                <Image style={styles.itemIcon} source={require('../../../assets/icons/call.png')} />
-                <Text style={styles.itemTitle}>Contact Us</Text>
+
+                <Image
+                  style={styles.itemIcon}
+                  source={require('../../../assets/icons/call.png')}
+                />
+                <Text style={styles.itemTitle}>Envoyer Email</Text>
               </View>
               <Image
                 style={styles.rightArrow}
@@ -76,13 +107,11 @@ import { logout } from '../../redux';
         <TouchableHighlight
           style={styles.btnContainer}
           onPress={() => this.props.logout()}
-          underlayColor="rgba(73,182,77,1,0.9)"
-        >
+          underlayColor="rgba(73,182,77,1,0.9)">
           <Text style={styles.btnTxt}>Logout</Text>
         </TouchableHighlight>
       </ScrollView>
     );
   }
 }
-export default connect(null, { logout })(NotificationsScreen);
-
+export default connect(null, {logout})(NotificationsScreen);
