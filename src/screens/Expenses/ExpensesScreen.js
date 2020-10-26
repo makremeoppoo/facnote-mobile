@@ -1,5 +1,5 @@
 /*This is an example of File Picker in React Native*/
-import React from 'react';
+import React, {createRef} from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,8 +10,15 @@ import {
 } from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Button } from 'react-native-elements';
-
+import {Button} from 'react-native-elements';
+import ActionSheet from 'react-native-actionsheet';
+var optionArray = [
+  'Option 1',
+  'Option 2',
+  'Option 3',
+  'Option 4',
+  'Cancel',
+];
 export default class ExpensesScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -21,11 +28,17 @@ export default class ExpensesScreen extends React.Component {
       showModal: false,
       typeFacture: null,
     };
+
+
+    this.actionSheet = createRef();
+  
   }
 
   setTypeFacture = (typeFacture) => {
     this.setState({typeFacture});
     this.setModalVisible();
+    this.actionSheet.current.show();
+
   };
 
   setModalVisible = () => {
@@ -102,6 +115,23 @@ export default class ExpensesScreen extends React.Component {
             <Text style={styles.btnText}>envoyer</Text>
           </View>
         </TouchableHighlight>
+        <ActionSheet
+          ref={this.actionSheet}
+          // Title of the Bottom Sheet
+          title={'Which one do you like ?'}
+          // Options Array to show in bottom sheet
+          options={optionArray}
+          // Define cancel button index in the option array
+          // This will take the cancel option in bottom
+          // and will highlight it
+          cancelButtonIndex={4}
+          // Highlight any specific option
+          destructiveButtonIndex={1}
+          onPress={(index) => {
+            // Clicking on the option will give you alert
+            alert(optionArray[index]);
+          }}
+        />
         <Modal
           animationType="slide"
           transparent={true}
@@ -112,15 +142,11 @@ export default class ExpensesScreen extends React.Component {
               <Button
                 onPress={() => this.setTypeFacture(1)}
                 title="Avance de frais"
-                type="clear">
-                
-              </Button>
+                type="clear"></Button>
               <Button
                 onPress={() => this.setTypeFacture(2)}
                 title="Achat"
-                type="clear">
-                
-              </Button>
+                type="clear"></Button>
             </View>
           </View>
         </Modal>
