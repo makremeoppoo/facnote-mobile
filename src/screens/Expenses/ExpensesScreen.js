@@ -13,10 +13,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {Button} from 'react-native-elements';
 import ActionSheet from 'react-native-actionsheet';
 var optionArray = [
-  'Option 1',
-  'Option 2',
-  'Option 3',
-  'Option 4',
+  'Camera',
+  'Galerie',
+
   'Cancel',
 ];
 export default class ExpensesScreen extends React.Component {
@@ -129,7 +128,9 @@ export default class ExpensesScreen extends React.Component {
           destructiveButtonIndex={1}
           onPress={(index) => {
             // Clicking on the option will give you alert
-            alert(optionArray[index]);
+
+            if(optionArray[index]=="Galerie")
+            this.selectMultipleFile()
           }}
         />
         <Modal
