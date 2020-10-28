@@ -7,73 +7,166 @@ import {
   TouchableOpacity,
   Modal,
   TouchableHighlight,
+  Image,
 } from 'react-native';
-import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Button} from 'react-native-elements';
 import ActionSheet from 'react-native-actionsheet';
-var optionArray = [
-  'Camera',
-  'Galerie',
+import ImagePicker from 'react-native-image-picker';
 
+var optionArray = [
+  'chooseImage',
+  'launchCamera',
+  'launchImageLibrary',
   'Cancel',
 ];
+
 export default class ExpensesScreen extends React.Component {
   constructor(props) {
     super(props);
-    //Initialization of the state to store the selected file related attribute
     this.state = {
-      multipleFile: [],
-      showModal: false,
-      typeFacture: null,
+      filepath: {
+        data: '',
+        uri: '',
+      },
+      fileData: '',
+      fileUri: '',
+      showModal:false
     };
-
-
     this.actionSheet = createRef();
-  
   }
 
   setTypeFacture = (typeFacture) => {
     this.setState({typeFacture});
     this.setModalVisible();
     this.actionSheet.current.show();
-
   };
 
   setModalVisible = () => {
     this.setState({showModal: !this.state.showModal});
   };
-  selectMultipleFile = async () => {
-    //Opening Document Picker for selection of multiple file
-    try {
-      const results = await DocumentPicker.pickMultiple({
-        type: [DocumentPicker.types.images],
-        //There can me more options as well find above
-      });
-      for (const res of results) {
-        //Printing the log realted to the file
-        console.log('res : ' + JSON.stringify(res));
-        console.log('URI : ' + res.uri);
-        console.log('Type : ' + res.type);
-        console.log('File Name : ' + res.name);
-        console.log('File Size : ' + res.size);
-      }
-      console.log(results);
-      //Setting the state to show multiple file attributes
-      this.setState({multipleFile: results});
-    } catch (err) {
-      //Handling any exception (If any)
-      if (DocumentPicker.isCancel(err)) {
-        //If user canceled the document selection
-        alert('Canceled from multiple doc picker');
+  chooseImage = () => {
+    let options = {
+      title: 'Select Image',
+      customButtons: [
+        {name: 'customOptionKey', title: 'Choose Photo from Custom Option'},
+      ],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+        alert(response.customButton);
       } else {
-        //For Unknown Error
-        alert('Unknown Error: ' + JSON.stringify(err));
-        throw err;
+        const source = {uri: response.uri};
+
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+        // alert(JSON.stringify(response));s
+        console.log('response', JSON.stringify(response));
+        this.setState({
+          filePath: response,
+          fileData: response.data,
+          fileUri: response.uri,
+        });
       }
-    }
+    });
   };
 
+  launchCamera = () => {
+    let options = {
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.launchCamera(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+        alert(response.customButton);
+      } else {
+        const source = {uri: response.uri};
+        console.log('response', JSON.stringify(response));
+        this.setState({
+          filePath: response,
+          fileData: response.data,
+          fileUri: response.uri,
+        });
+      }
+    });
+  };
+
+  launchImageLibrary = () => {
+    let options = {
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+    ImagePicker.launchImageLibrary(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+        alert(response.customButton);
+      } else {
+        const source = {uri: response.uri};
+        console.log('response', JSON.stringify(response));
+        this.setState({
+          filePath: response,
+          fileData: response.data,
+          fileUri: response.uri,
+        });
+      }
+    });
+  };
+
+  renderFileData() {
+    if (this.state.fileData) {
+      return (
+        <Image
+          source={{uri: 'data:image/jpeg;base64,' + this.state.fileData}}
+          style={styles.images}
+        />
+      );
+    } else {
+      return (
+        <Image source={require('../../../assets/icons/backArrow.png')} style={styles.images} />
+      );
+    }
+  }
+
+  renderFileUri() {
+    if (this.state.fileUri) {
+      return <Image source={{uri: this.state.fileUri}} style={styles.images} />;
+    } else {
+      return (
+        <Image
+          source={require('../../../assets/icons/backArrow.png')}
+          style={styles.images}
+        />
+      );
+    }
+  }
   render() {
     return (
       <View style={styles.containerStyle}>
@@ -105,7 +198,7 @@ export default class ExpensesScreen extends React.Component {
             Appuyer ici pour sélectionner les factures d' achat a envoyer
           </Text>
         </TouchableOpacity>
-
+       
         <TouchableHighlight
           style={styles.btnClickContain}
           underlayColor="#54d66a">
@@ -129,8 +222,10 @@ export default class ExpensesScreen extends React.Component {
           onPress={(index) => {
             // Clicking on the option will give you alert
 
-            if(optionArray[index]=="Galerie")
-            this.selectMultipleFile()
+            if (optionArray[index] == 'launchImageLibrary')
+              this.launchImageLibrary();
+            if (optionArray[index] == 'chooseImage') this.chooseImage();
+            if (optionArray[index] == 'launchCamera') this.launchCamera();
           }}
         />
         <Modal
@@ -167,6 +262,13 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: 80,
     marginBottom: 80,
+  },
+  ImageSections: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+    justifyContent: 'center',
   },
   btnContainer: {
     flex: 1,
