@@ -8,11 +8,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  loginContainer: landing.container,
 
   titleContainer: {
     justifyContent: 'center',
-    height: height / 4,
+    height: height / 4-20,
   },
   title: {
     textAlign: 'center',
@@ -38,6 +37,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 60,
     alignSelf: 'center',
+    color:"rgba(112,112,112,1)"
+
   },
   signTxt: {
     fontSize: 20,
@@ -45,12 +46,12 @@ const styles = StyleSheet.create({
   },
   image: {
     width: SCREEN_WIDTH,
-    height: height - height / 2,
+    height:  height / 2-10,
     alignSelf: 'center',
   },
   topImageStyle: {
     width: SCREEN_WIDTH,
-    height: height - height / 2,
+    height: height / 2,
     position: 'absolute',
   },
 });

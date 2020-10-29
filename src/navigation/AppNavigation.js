@@ -89,8 +89,8 @@ const LandingNavigator = () => {
         component={WelcomeScreen}
       />
       <Stack.Screen
-        options={{
-          headerTransparent: true,
+         options={{
+          headerShown: false,
         }}
         name="LogIn"
         component={LogInScreen}

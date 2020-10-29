@@ -8,7 +8,7 @@ export const landing = StyleSheet.create({
     flex: 1,
     //justifyContent: 'center',
     //alignItems: 'center',
-    padding: 50
+    //padding: 50
   },
   title: {
     color: 'black',

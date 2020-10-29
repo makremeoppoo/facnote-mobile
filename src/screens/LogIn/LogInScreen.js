@@ -5,13 +5,15 @@ import {
   TouchableHighlight,
   Text,
   TextInput,
-  TouchableWithoutFeedback,
-  Keyboard,
   ScrollView,
   Image,
+  ImageBackground,
 } from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
+import image1 from '../../../assets/images/logo.png';
+
+import image2 from '../../../assets/images/BackgroundLogin.png';
 
 import * as api from '../../services/auth';
 import {login} from '../../redux';
@@ -45,46 +47,53 @@ class LoginScreen extends React.Component {
 
   render() {
     return (
-      <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-        <ScrollView style={styles.container}>
-          <View>
+      <ScrollView style={styles.container}>
+        <View style={styles.mainContainer}>
+          <ImageBackground
+            source={image2}
+            style={styles.topImageStyle}></ImageBackground>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>COMPTA SMART</Text>
             <Image
-              source={require('../../../assets/images/logo_facnote.png')}
-              style={{
-                alignSelf: 'center',
-                width: 200,
-                height: 200,
-                marginLeft: 10,
-                marginRight: 5,
-              }}
+              style={styles.logo}
+              source={require('../../../assets/images/logo.png')}
             />
-            <Text style={styles.title}>Connecter-Vous</Text>
+          </View>
+          <View style={styles.inputBlock}>
+            <Text style={styles.label}>Identifiant</Text>
+
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.input}
-                placeholder="Email"
                 onChangeText={(text) => this.setState({email: text})}
                 value={this.state.email}
               />
             </View>
+          </View>
+          <View style={styles.inputBlock}>
+            <Text style={styles.label}>Mot de passe</Text>
+
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.input}
-                placeholder="Mot de passe"
                 onChangeText={(text) => this.setState({password: text})}
                 value={this.state.password}
               />
             </View>
-            <View style={styles.logContainer}>
-              <TouchableHighlight
-                style={styles.loginContainer}
-                onPress={() => this.onPressLogButton()}>
-                <Text style={styles.logTxt}>Connexion</Text>
-              </TouchableHighlight>
-            </View>
           </View>
-        </ScrollView>
-      </TouchableWithoutFeedback>
+          <View style={styles.logContainer}>
+            <TouchableHighlight
+              style={styles.signupContainer}
+              onPress={() => this.onPressLogButton()}>
+              <Text style={styles.signTxt}>Connexion</Text>
+            </TouchableHighlight>
+          </View>
+          <View
+            style={{marginTop: 20, alignSelf: 'center', justifyContent: 'center'}}>
+            <Text style={{color: 'rgba(112,112,112,1)'}}>mentions légales - CGU</Text>
+          </View>
+        </View>
+      </ScrollView>
     );
   }
 }
