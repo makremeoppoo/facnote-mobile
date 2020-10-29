@@ -1,7 +1,10 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
-import { View, Image, TouchableHighlight, Text, ScrollView } from 'react-native';
+import { View, Image, TouchableHighlight, Text, ScrollView,  ImageBackground,
+} from 'react-native';
 import styles from './styles';
+import image1 from "../../../assets/images/imgpsh_fullsize_anim.png"
+import image2 from "../../../assets/images/backgroundLogin.png"
 
 export default class WelcomeScreen extends React.Component {
   constructor(props) {
@@ -12,33 +15,32 @@ export default class WelcomeScreen extends React.Component {
     this.props.navigation.navigate('LogIn');
   };
 
-  onPressSignButton = () => {
-    this.props.navigation.navigate('SignUp');
-  };
+
 
   render() {
     return (
       <ScrollView style={styles.container}>
+         <ImageBackground
+              source={image2}
+              style={styles.topImageStyle}
+            ></ImageBackground>
         <View style={styles.mainContainer}>
-          <Image style={styles.logo} source={require('../../../assets/icons/pngLogo.png')} />
+       
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Welcome to Finance</Text>
-            <Text style={styles.description}>Manage all your finance accounts in one place.</Text>
+            <Text style={styles.title}>Compta Smart</Text>
+            <Text style={styles.description}></Text>
           </View>
           <View style={styles.logContainer}>
-            <TouchableHighlight
-              style={styles.loginContainer}
-              onPress={() => this.onPressLogButton()}
-            >
-              <Text style={styles.logTxt}>Log in</Text>
-            </TouchableHighlight>
+           
             <TouchableHighlight
               style={styles.signupContainer}
-              onPress={() => this.onPressSignButton()}
+              onPress={() => this.onPressLogButton()}
             >
-              <Text style={styles.signTxt}>Sign up</Text>
+              <Text style={styles.signTxt}>Vous identfier</Text>
             </TouchableHighlight>
           </View>
+          <Image style={styles.image} source={image1} />
+
         </View>
       </ScrollView>
     );

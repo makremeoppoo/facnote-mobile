@@ -542,7 +542,7 @@ const RootNavigator = () => {
           component={Platform.OS === 'ios' ? Navigator : DrawerStack}
         />
       ) : (
-        <Root.Screen name="LoginStack" component={LoginStack} />
+        <Root.Screen name="LoginStack" component={LandingNavigator} />
       )}
     </Root.Navigator>
   );
