@@ -139,7 +139,7 @@ export default class ExpensesScreen extends React.Component {
     });
   };
 
-  renderFileData() {
+ /* renderFileData() {
     if (this.state.fileData) {
       return (
         <Image
@@ -150,12 +150,10 @@ export default class ExpensesScreen extends React.Component {
     } else {
       return (
         <Image
-          source={require('../../../assets/icons/backArrow.png')}
-          style={styles.images}
-        />
+          source={require('../../../assets/icons/backArrow.png')}        />
       );
     }
-  }
+  }*/
 
   renderFileUri() {
     if (this.state.fileUri) {
@@ -164,11 +162,11 @@ export default class ExpensesScreen extends React.Component {
       return (
         <Image
           source={require('../../../assets/icons/backArrow.png')}
-          style={styles.images}
         />
       );
     }
   }
+
   render() {
     return (
       <View style={styles.containerStyle}>
@@ -202,7 +200,6 @@ export default class ExpensesScreen extends React.Component {
         </TouchableOpacity>
 
         {this.renderFileUri()}
-        {this.renderFileData()}
         <ActionSheet
           ref={this.actionSheet}
           // Title of the Bottom Sheet
