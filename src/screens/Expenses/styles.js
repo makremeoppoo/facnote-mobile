@@ -5,48 +5,100 @@ const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
 
 const styles = StyleSheet.create({
-  container: {
+  btnClickContain: {
     flex: 1,
-    backgroundColor: '#f4f6f9',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    backgroundColor: '#54d66a',
+    color: 'white',
+    borderRadius: 5,
+    padding: 15,
+    marginTop: 80,
+    marginBottom: 80,
   },
-  chartContainer: {
+  ImageSections: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+    justifyContent: 'center',
+  },
+  btnContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'stretch',
+    alignSelf: 'center',
     borderRadius: 10,
+  },
+  btnIcon: {
+    height: 25,
+    width: 25,
+  },
+  btnText: {
+    fontSize: 18,
+    color: '#FAFAFA',
+    marginLeft: 10,
+    marginTop: 2,
+  },
+  containerStyle: {
+    flex: 1,
+    padding: 16,
+  },
+  ImageSections: {
+    display: 'flex',
+    flexDirection: 'row',
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+    justifyContent: 'center',
+  },
+  images: {
+    width: 150,
+    height: 150,
+    borderColor: 'black',
+    borderWidth: 1,
+    marginHorizontal: 3,
+  },
+  buttonStyle: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    backgroundColor: '#fff',
+    borderColor: 'black',
+    borderWidth: 1,
+    padding: 5,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
     backgroundColor: 'white',
-    width: SCREEN_WIDTH - 20,
-    //marginTop: 80,
-    marginTop: 15,
-    marginBottom: 20,
-    alignSelf: 'center'
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
-  facilitieContainer: {
-    borderRadius: 10,
-    backgroundColor: 'white',
-    width: '100%',
-    marginTop: 20,
-    marginBottom: 20,
-    alignSelf: 'center'
+  openButton: {
+    backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#070f12',
-    margin: 20
+
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center',
   },
-  itemContainer: expenses.itemContainer,
-  mainContainer: expenses.mainContainer,
-  rowContainer: expenses.rowContainer,
-  itemIcon: expenses.itemIcon,
-  itemTxtContainer: expenses.itemTxtContainer,
-  itemTitle: expenses.itemTitle,
-  itemText: expenses.itemText,
-  itemMoney: expenses.itemMoney,
-  rightArrow: expenses.rightArrow,
-  viewTxt: {
-    color: '#7f7d80',
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginLeft: 20
-  }
 });
 
 export default styles;

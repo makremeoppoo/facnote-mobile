@@ -6,11 +6,10 @@ import {
   View,
   TouchableOpacity,
   Modal,
-  TouchableHighlight,
-  Image,
+
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import {Button} from 'react-native-elements';
+import styles from "./styles"
+import {Button,Image} from 'react-native-elements';
 import ActionSheet from 'react-native-actionsheet';
 import ImagePicker from 'react-native-image-picker';
 
@@ -31,7 +30,7 @@ export default class ExpensesScreen extends React.Component {
       },
       fileData: '',
       fileUri: '',
-      showModal:false
+      showModal: false,
     };
     this.actionSheet = createRef();
   }
@@ -150,7 +149,10 @@ export default class ExpensesScreen extends React.Component {
       );
     } else {
       return (
-        <Image source={require('../../../assets/icons/backArrow.png')} style={styles.images} />
+        <Image
+          source={require('../../../assets/icons/backArrow.png')}
+          style={styles.images}
+        />
       );
     }
   }
@@ -198,15 +200,9 @@ export default class ExpensesScreen extends React.Component {
             Appuyer ici pour sélectionner les factures d' achat a envoyer
           </Text>
         </TouchableOpacity>
-       
-        <TouchableHighlight
-          style={styles.btnClickContain}
-          underlayColor="#54d66a">
-          <View style={styles.btnContainer}>
-            <Icon name={'ios-send-sharp'} size={32} style={{color: 'white'}} />
-            <Text style={styles.btnText}>envoyer</Text>
-          </View>
-        </TouchableHighlight>
+
+        {this.renderFileUri()}
+        {this.renderFileData()}
         <ActionSheet
           ref={this.actionSheet}
           // Title of the Bottom Sheet
@@ -251,86 +247,3 @@ export default class ExpensesScreen extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  btnClickContain: {
-    flex: 1,
-    justifyContent: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#54d66a',
-    color: 'white',
-    borderRadius: 5,
-    padding: 15,
-    marginTop: 80,
-    marginBottom: 80,
-  },
-  ImageSections: {
-    display: 'flex',
-    flexDirection: 'row',
-    paddingHorizontal: 8,
-    paddingVertical: 8,
-    justifyContent: 'center',
-  },
-  btnContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'stretch',
-    alignSelf: 'center',
-    borderRadius: 10,
-  },
-  btnIcon: {
-    height: 25,
-    width: 25,
-  },
-  btnText: {
-    fontSize: 18,
-    color: '#FAFAFA',
-    marginLeft: 10,
-    marginTop: 2,
-  },
-  containerStyle: {
-    flex: 1,
-    padding: 16,
-  },
-
-  buttonStyle: {
-    alignItems: 'center',
-    flexDirection: 'row',
-    backgroundColor: '#fff',
-    borderColor: 'black',
-    borderWidth: 1,
-    padding: 5,
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'white',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
-  },
-});
