@@ -13,7 +13,7 @@ import styles from './styles';
 import {connect} from 'react-redux';
 import image1 from '../../../assets/images/logo.png';
 
-import image2 from '../../../assets/images/BackgroundLogin.png';
+import image2 from '../../../assets/images/backgroundLogin.png';
 
 import * as api from '../../services/auth';
 import {login} from '../../redux';
