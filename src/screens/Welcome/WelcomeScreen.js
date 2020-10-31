@@ -9,8 +9,8 @@ import {
   ImageBackground,
 } from 'react-native';
 import styles from './styles';
-import image1 from '../../../assets/images/imgpsh_fullsize_anim.png';
-import image2 from '../../../assets/images/backgroundWelcome.png';
+import ButtomImage from '../../../assets/images/imgpsh_fullsize_anim.png';
+import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png';
 
 export default class WelcomeScreen extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class WelcomeScreen extends React.Component {
     return (
       <ScrollView style={styles.container}>
         <ImageBackground
-          source={image2}
+          source={backgroundWelcomeImage}
           style={styles.topImageStyle}></ImageBackground>
         <View style={styles.mainContainer}>
           <View style={styles.titleContainer}>
@@ -40,7 +40,7 @@ export default class WelcomeScreen extends React.Component {
             </TouchableHighlight>
           </View>
           <View style={styles.imageContainer}>
-            <Image style={styles.image} source={image1} />
+            <Image style={styles.image} source={ButtomImage} />
           </View>
           <View
             style={{

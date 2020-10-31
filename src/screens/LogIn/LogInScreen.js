@@ -11,9 +11,8 @@ import {
 } from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
-import image1 from '../../../assets/images/logo.png';
 
-import image2 from '../../../assets/images/BackgroundLogin.png';
+import BackgroundLoginImage from '../../../assets/images/BackgroundLogin.png';
 
 import * as api from '../../services/auth';
 import {login} from '../../redux';
@@ -50,7 +49,7 @@ class LoginScreen extends React.Component {
       <ScrollView style={styles.container}>
         <View style={styles.mainContainer}>
           <ImageBackground
-            source={image2}
+            source={BackgroundLoginImage}
             style={styles.topImageStyle}></ImageBackground>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>COMPTA SMART</Text>
