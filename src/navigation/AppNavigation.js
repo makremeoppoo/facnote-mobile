@@ -9,7 +9,7 @@ import LogInScreen from '../screens/LogIn/LogInScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import PortfolioScreen from '../screens/Portfolio/PortfolioScreen';
-import ExpensesScreen from '../screens/Expenses/ExpensesScreen';
+import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
