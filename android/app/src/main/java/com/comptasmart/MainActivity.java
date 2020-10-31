@@ -1,4 +1,4 @@
-package com.financeapp;
+package com.comptasmart;
 
 
 import com.facebook.react.ReactActivity;
