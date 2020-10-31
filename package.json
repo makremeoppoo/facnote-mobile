@@ -7,7 +7,7 @@
     "test": "jest",
     "android": " cd android && ./gradlew clean && cd .. && react-native run-android",
     "debug-build": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/ && cd android && rm -rf ./android/app/src/main/res/drawable-mdpi/ && rm -rf ./android/app/src/main/res/raw/ && ./gradlew assembleDebug && cd ..",
-    "release-build": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/build/intermediates/res/merged/release/ && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw/* && cd android && ./gradlew assembleRelease && cd ..",   
+    "release-build": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/build/intermediates/res/merged/release/ && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw/* && cd android && ./gradlew assembleRelease && cd ..",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -27,7 +27,7 @@
     "react-native-document-picker": "^4.0.0",
     "react-native-elements": "^1.1.0",
     "react-native-gesture-handler": "^1.6.1",
-    "react-native-image-picker": "^0.27.0",
+    "react-native-image-picker": "^2.3.4",
     "react-native-reanimated": "^1.9.0",
     "react-native-responsive-linechart": "^2.1.0",
     "react-native-safe-area-context": "^3.1.1",

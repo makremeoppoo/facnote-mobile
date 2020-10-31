@@ -46,7 +46,7 @@ class NotificationsScreen extends React.Component {
         <View style={styles.infoContainer}>
           <Image
             style={styles.userImg}
-            source={require('../../../assets/images/logo.jpg')}
+            source={require('../../../assets/images/logo.png')}
           />
           <Text style={styles.userName}>Cabinet</Text>
         </View>
