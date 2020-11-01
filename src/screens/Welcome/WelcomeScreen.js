@@ -23,7 +23,8 @@ export default class WelcomeScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}> 
+      <ScrollView >
         <ImageBackground
           source={backgroundWelcomeImage}
           style={styles.topImageStyle}></ImageBackground>
@@ -42,18 +43,20 @@ export default class WelcomeScreen extends React.Component {
           <View style={styles.imageContainer}>
             <Image style={styles.image} source={ButtomImage} />
           </View>
-          <View
-            style={{
-              bottom: 0,
-              alignSelf: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text style={{color: 'rgba(112,112,112,1)'}}>
-              mentions légales - CGU
-            </Text>
-          </View>
+          
         </View>
       </ScrollView>
+      <View
+      style={{
+        bottom: 0,
+        alignSelf: 'center',
+        justifyContent: 'center',
+      }}>
+      <Text style={styles.buttomText}>
+        mentions légales - CGU
+      </Text>
+    </View>
+    </View>
     );
   }
 }

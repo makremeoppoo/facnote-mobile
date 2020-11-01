@@ -8,11 +8,12 @@ import {
   ScrollView,
   Image,
   ImageBackground,
+  Keyboard,
 } from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
-
-import BackgroundLoginImage from '../../../assets/images/BackgroundLogin.png';
+import LogoImage from '../../../assets/images/logo.png'
+import BackgroundLoginImage from '../../../assets/images/backgroundWelcome.png';
 
 import * as api from '../../services/auth';
 import {login} from '../../redux';
@@ -24,8 +25,32 @@ class LoginScreen extends React.Component {
     this.state = {
       email: '',
       password: '',
+      showButtom: true,
     };
   }
+  componentWillMount() {
+    this.keyboardDidShowListener = Keyboard.addListener(
+      'keyboardDidShow',
+      this._keshowButtomyboardDidShow,
+    );
+    this.keyboardDidHideListener = Keyboard.addListener(
+      'keyboardDidHide',
+      this._keyboardDidHide,
+    );
+  }
+
+  componentWillUnmount() {
+    this.keyboardDidShowListener.remove();
+    this.keyboardDidHideListener.remove();
+  }
+
+  _keshowButtomyboardDidShow = () => {
+    this.setState({showButtom: !this.state.showButtom});
+  };
+
+  _keyboardDidHide = () => {
+    this.setState({showButtom: !this.state.showButtom});
+  };
 
   onPressLogButton = async () => {
     const {name, password} = this.state;
@@ -46,8 +71,8 @@ class LoginScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.mainContainer}>
+      <View style={styles.mainContainer}>
+        <ScrollView >
           <ImageBackground
             source={BackgroundLoginImage}
             style={styles.topImageStyle}></ImageBackground>
@@ -55,44 +80,48 @@ class LoginScreen extends React.Component {
             <Text style={styles.title}>COMPTA SMART</Text>
             <Image
               style={styles.logo}
-              source={require('../../../assets/images/logo.png')}
+              source={LogoImage}
             />
           </View>
-          <View style={styles.inputBlock}>
-            <Text style={styles.label}>Identifiant</Text>
+          <View style={styles.formContainer}>
+            <View style={styles.inputBlock}>
+              <Text style={styles.label}>Identifiant</Text>
 
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                onChangeText={(text) => this.setState({email: text})}
-                value={this.state.email}
-              />
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.input}
+                  onChangeText={(text) => this.setState({email: text})}
+                  value={this.state.email}
+                />
+              </View>
+            </View>
+            <View style={styles.inputBlock}>
+              <Text style={styles.label}>Mot de passe</Text>
+
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.input}
+                  onChangeText={(text) => this.setState({password: text})}
+                  value={this.state.password}
+                />
+              </View>
+            </View>
+            <View style={styles.buttonContainer}>
+              <TouchableHighlight
+                style={styles.buttonStyle}
+                onPress={() => this.onPressLogButton()}>
+                <Text style={styles.signTxt}>Connexion</Text>
+              </TouchableHighlight>
             </View>
           </View>
-          <View style={styles.inputBlock}>
-            <Text style={styles.label}>Mot de passe</Text>
-
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.input}
-                onChangeText={(text) => this.setState({password: text})}
-                value={this.state.password}
-              />
-            </View>
-          </View>
-          <View style={styles.logContainer}>
-            <TouchableHighlight
-              style={styles.signupContainer}
-              onPress={() => this.onPressLogButton()}>
-              <Text style={styles.signTxt}>Connexion</Text>
-            </TouchableHighlight>
-          </View>
-          <View
-            style={{marginTop: 20, alignSelf: 'center', justifyContent: 'center'}}>
-            <Text style={{color: 'rgba(112,112,112,1)'}}>mentions légales - CGU</Text>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+        {this.state.showButtom && ( <View style={styles.buttomText}>
+            <Text style={{color: 'rgba(112,112,112,1)'}}>
+              mentions légales - CGU
+            </Text>
+          
+        </View>)}
+      </View>
     );
   }
 }
