@@ -60,7 +60,12 @@ class NotificationsScreen extends React.Component {
             style={styles.cabinetImg}
             source={require('../../../assets/images/logo.png')}
           />
-          <Text style={styles.userName}>Cabinet</Text>
+          <Text style={styles.CabinerName}>Adress</Text>
+          <Text style={styles.CabinerInfo}>CP Rue Ville</Text>
+          <Text style={styles.CabinerInfo}>Telephone 22 654 658</Text>
+
+          <Text style={styles.CabinerInfo}>Fax 25 963 8896</Text>
+
         </View>
         <TouchableHighlight
           style={styles.btnContainer}

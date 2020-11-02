@@ -21,12 +21,18 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 100,
     alignSelf: 'center',
-    marginBottom: 20
+    marginBottom: 10
   },
-  userName: {
+  CabinerName: {
     textAlign: 'center',
     fontSize: 20,
-    color: 'black'
+    color: 'rgb(112 ,112, 112)'
+  },
+  CabinerInfo:{
+    fontSize: 15,
+    color: 'rgb(112 ,112, 112)',
+    textAlign: 'center',
+
   },
  
   btnContainer: {
@@ -40,7 +46,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     position:'relative',
     marginTop:ScaleHelpers.CalcHeight(3),
-    marginBottom: ScaleHelpers.CalcHeight(3),
+    marginBottom: ScaleHelpers.CalcHeight(1),
     width: ScaleHelpers.CalcWidth(70),
     borderRadius: 10,
     backgroundColor: 'rgb( 255,255,255)',
