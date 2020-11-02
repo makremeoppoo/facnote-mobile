@@ -57,7 +57,7 @@ class NotificationsScreen extends React.Component {
         </TouchableHighlight>
         <View style={styles.infoContainer}>
           <Image
-            style={styles.userImg}
+            style={styles.cabinetImg}
             source={require('../../../assets/images/logo.png')}
           />
           <Text style={styles.userName}>Cabinet</Text>

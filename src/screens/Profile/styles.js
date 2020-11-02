@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     //marginTop: 80
     marginTop: 30
   },
-  userImg: {
+  cabinetImg: {
     width: 100,
     height: 100,
     borderRadius: 100,
@@ -39,9 +39,9 @@ const styles = StyleSheet.create({
     // its for android 
     elevation: 5,
     position:'relative',
-    marginTop: 20,
-    marginBottom: 20,
-    width: SCREEN_WIDTH - 40,
+    marginTop:ScaleHelpers.CalcHeight(3),
+    marginBottom: ScaleHelpers.CalcHeight(3),
+    width: ScaleHelpers.CalcWidth(70),
     borderRadius: 10,
     backgroundColor: 'rgb( 255,255,255)',
     borderColor: 'rgba(214, 214, 214, 0.4)',
