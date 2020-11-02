@@ -42,7 +42,8 @@ class NotificationsScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView >
+        <View style={styles.container}>
         <TouchableHighlight
           style={styles.btnContainer}
           onPress={() => this.sendMail('test@test.com')}
@@ -73,7 +74,9 @@ class NotificationsScreen extends React.Component {
           underlayColor="rgba(73,182,77,1,0.9)">
           <Text style={styles.btnTxt}>Logout</Text>
         </TouchableHighlight>
+        </View>
       </ScrollView>
+      
     );
   }
 }
