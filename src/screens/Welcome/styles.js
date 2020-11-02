@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
 
   logContainer: {
-    height: ScaleHelpers.CalcHeight(25),
+    height: ScaleHelpers.CalcHeight(20),
     alignSelf: 'center',
     justifyContent: 'center',
   },
@@ -38,8 +38,8 @@ const styles = StyleSheet.create({
     color: 'grey',
   },
   image: {
-    width: ScaleHelpers.CalcWidth(50),
-    height: ScaleHelpers.CalcHeight(50),
+    width: ScaleHelpers.CalcWidth(60),
+    height: ScaleHelpers.CalcHeight(60),
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',

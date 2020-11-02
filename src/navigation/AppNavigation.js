@@ -14,6 +14,7 @@ import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
 import MenuImage from '../components/MenuImage/MenuImage';
+import TabBarItem from '../components/TabBarItem/TabBarItem';
 
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -22,12 +23,13 @@ import {NavigationContainer} from '@react-navigation/native';
 import BackButton from '../components/BackButton/BackButton';
 import {SearchBar} from 'react-native-elements';
 import {useSelector, useDispatch} from 'react-redux';
+import HomeImg from '../../assets/icons/home.png';
+import FactureImg from '../../assets/icons/news.png';
+import CabinetImg from '../../assets/icons/account.png';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
-
-
 
 const LandingNavigator = () => {
   return (
@@ -54,7 +56,7 @@ const LandingNavigator = () => {
         component={WelcomeScreen}
       />
       <Stack.Screen
-         options={{
+        options={{
           headerShown: false,
         }}
         name="LogIn"
@@ -79,19 +81,17 @@ const TabNavigator = () => {
       tabBarOptions={{
         labelStyle: {textTransform: 'none', fontSize: 15},
         style: {
-          height: 60,
+          height: 70,
         },
+        showLabel: false,
       }}
       initialRouteName="Home">
       <BottomTabNavigator.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({tintColor}) => (
-            <Image
-              source={require('../../assets/icons/home.png')}
-              style={{width: 30, height: 30}}
-            />
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem focused={focused} label={'Home'} src={HomeImg} />
           ),
         }}
       />
@@ -99,11 +99,8 @@ const TabNavigator = () => {
         name="Factures"
         component={ExpensesScreen}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('../../assets/icons/news.png')}
-              style={{width: 30, height: 30}}
-            />
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem focused={focused} label={'Facture'} src={FactureImg} />
           ),
         }}
       />
@@ -111,11 +108,8 @@ const TabNavigator = () => {
         name="Cabinet"
         component={ProfileScreen}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('../../assets/icons/account.png')}
-              style={{width: 30, height: 30}}
-            />
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem focused={focused} label={'Cabinet'} src={CabinetImg} />
           ),
         }}
       />
@@ -163,7 +157,6 @@ const mainScreensNavigator = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
       <Stack.Screen name="Portfolio" component={PortfolioScreen} />
       <Stack.Screen name="Expenses" component={ExpensesScreen} />
-    
     </Stack.Navigator>
   );
 };
@@ -196,8 +189,6 @@ const MainNavigator = () => {
         component={TabNavigator}
         //component={Platform.OS === 'ios' ? TabNavigator : mainScreensNavigator}
       />
-     
-   
     </Stack.Navigator>
   );
 };

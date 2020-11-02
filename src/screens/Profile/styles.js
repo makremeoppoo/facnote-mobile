@@ -1,5 +1,6 @@
 /* eslint-disable comma-dangle */
 import { StyleSheet, Dimensions } from 'react-native';
+import ScaleHelpers from '../../components/scaleHelpers';
 
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -7,7 +8,8 @@ const SCREEN_WIDTH = width < height ? width : height;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    paddingTop:ScaleHelpers.CalcHeight(25)
   },
   infoContainer: {
     marginBottom: 40,
@@ -26,43 +28,22 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'black'
   },
-  itemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-    paddingTop: 13,
-    paddingBottom: 13,
-    width: '100%',
-    //borderBottomColor: 'silver',
-    borderBottomColor: 'rgba(214, 214, 214, 0.4)',
-    borderBottomWidth: 1,
-  },
-  rowContainer: {
-    flexDirection: 'row',
-    alignSelf: 'center'
-  },
-  itemIcon: {
-    width: 25,
-    height: 25,
-    marginRight: 10,
-    alignSelf: 'center'
-  },
-  itemTitle: {
-    fontSize: 17,
-    color: '#070f12',
-    alignSelf: 'center'
-  },
-  rightArrow: {
-    width: 15,
-    height: 15,
-    alignSelf: 'center'
-  },
+ 
   btnContainer: {
-    marginTop: 50,
-    marginBottom: 50,
+    
+    //Its for IOS
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+
+    // its for android 
+    elevation: 5,
+    position:'relative',
+    marginTop: 20,
+    marginBottom: 20,
     width: SCREEN_WIDTH - 40,
-    borderRadius: 5,
-    backgroundColor: 'white',
+    borderRadius: 10,
+    backgroundColor: 'rgb( 255,255,255)',
     borderColor: 'rgba(214, 214, 214, 0.4)',
     borderWidth: 1,
     alignSelf: 'center',

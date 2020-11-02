@@ -43,66 +43,24 @@ class NotificationsScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
+        <TouchableHighlight
+          style={styles.btnContainer}
+          onPress={() => this.sendMail('test@test.com')}
+          underlayColor="rgba(73,182,77,1,0.9)">
+          <Text style={styles.btnTxt}>Envoyer email</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.btnContainer}
+          onPress={() => this.callNumber('00000')}
+          underlayColor="rgba(73,182,77,1,0.9)">
+          <Text style={styles.btnTxt}>Appeler</Text>
+        </TouchableHighlight>
         <View style={styles.infoContainer}>
           <Image
             style={styles.userImg}
             source={require('../../../assets/images/logo.png')}
           />
           <Text style={styles.userName}>Cabinet</Text>
-        </View>
-        <View>
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('AccountDetails')}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <View style={styles.itemContainer}>
-              <View style={styles.rowContainer}>
-                <Image
-                  style={styles.itemIcon}
-                  source={require('../../../assets/icons/account.png')}
-                />
-                <Text style={styles.itemTitle}>Account Details</Text>
-              </View>
-              <Image
-                style={styles.rightArrow}
-                source={require('../../../assets/icons/rightArrow.png')}
-              />
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-             onPress={() => { this.callNumber("+49 89 382 79189") }}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <View style={styles.itemContainer}>
-              <View style={styles.rowContainer}>
-                <Image
-                  style={styles.itemIcon}
-                  source={require('../../../assets/icons/call.png')}
-                />
-                <Text style={styles.itemTitle}>Contacter nous</Text>
-              </View>
-              <Image
-                style={styles.rightArrow}
-                source={require('../../../assets/icons/rightArrow.png')}
-              />
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-             onPress={() => { this.sendMail("starnext-appteam@list.bmw.com") }}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <View style={styles.itemContainer}>
-              <View style={styles.rowContainer}>
-
-                <Image
-                  style={styles.itemIcon}
-                  source={require('../../../assets/icons/call.png')}
-                />
-                <Text style={styles.itemTitle}>Envoyer Email</Text>
-              </View>
-              <Image
-                style={styles.rightArrow}
-                source={require('../../../assets/icons/rightArrow.png')}
-              />
-            </View>
-          </TouchableHighlight>
         </View>
         <TouchableHighlight
           style={styles.btnContainer}

@@ -9,7 +9,7 @@ import {
   ImageBackground,
 } from 'react-native';
 import styles from './styles';
-import ButtomImage from '../../../assets/images/imgpsh_fullsize_anim.png';
+import ButtomImage from '../../../assets/images/identificationButtomImage.png';
 import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png';
 
 export default class WelcomeScreen extends React.Component {
@@ -28,7 +28,7 @@ export default class WelcomeScreen extends React.Component {
         <ImageBackground
           source={backgroundWelcomeImage}
           style={styles.topImageStyle}></ImageBackground>
-        <View style={styles.mainContainer}>
+        <View >
           <View style={styles.titleContainer}>
             <Text style={styles.title}>COMPTA SMART</Text>
             <Text style={styles.description}></Text>
@@ -40,7 +40,7 @@ export default class WelcomeScreen extends React.Component {
               <Text style={styles.signTxt}>Vous identfier</Text>
             </TouchableHighlight>
           </View>
-          <View style={styles.imageContainer}>
+          <View >
             <Image style={styles.image} source={ButtomImage} />
           </View>
           
