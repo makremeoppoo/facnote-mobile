@@ -62,8 +62,7 @@ const styles = StyleSheet.create({
     // its for android
     elevation: 5,
     position: 'relative',
-    marginTop: ScaleHelpers.CalcHeight(2),
-    marginBottom: ScaleHelpers.CalcHeight(2),
+    marginTop: ScaleHelpers.CalcHeight(4),
     width: ScaleHelpers.CalcWidth(70),
     borderRadius: 10,
     backgroundColor: 'rgb( 255,255,255)',

@@ -84,7 +84,7 @@ class NotificationsScreen extends React.Component {
             style={styles.btnContainer}
             onPress={() => this.props.logout()}
             underlayColor="rgba(73,182,77,1,0.9)">
-            <Text style={styles.btnTxt}>Logout</Text>
+            <Text style={styles.btnTxt}>Deconnecter</Text>
           </TouchableHighlight>
         </View>
       </ScrollView>
