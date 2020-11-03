@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   },
   signTxt: {
     fontFamily: 'Nunito-Regular',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: 'grey',
   },
 

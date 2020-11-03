@@ -152,8 +152,7 @@ export default class ExpensesScreen extends React.Component {
     if (this.state.fileUri) {
       return <Image source={{uri: this.state.fileUri}} />;
     } else {
-      return <Image source={require('../../../assets/icons/backArrow.png')} />;
-    }
+      return null}
   }
 
   render() {
@@ -190,7 +189,6 @@ export default class ExpensesScreen extends React.Component {
             underlayColor="rgba(73,182,77,1,0.9)">
             <Image style={styles.Img} source={AvanceDeFrais} />
           </TouchableHighlight>
-          {this.renderFileUri()}
           <ActionSheet
             ref={this.actionSheet}
             // Title of the Bottom Sheet
