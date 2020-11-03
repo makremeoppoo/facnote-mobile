@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     color: 'white',
+    fontFamily: 'Nunito-ExtraBold',
     fontSize: ScaleHelpers.CalcHeight(4),
   },
 
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
     color: 'rgba(112,112,112,1)',
   },
   signTxt: {
+    fontFamily: 'Nunito-Regular',
     fontSize: ScaleHelpers.CalcHeight(2),
     color: 'grey',
   },
@@ -53,10 +55,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   buttomText: {
+    fontFamily: 'Nunito-Bold',
     color: 'rgba(112,112,112,1)',
     alignSelf: 'center',
     position: 'absolute',
     bottom: 0,
+    fontSize: 12,
+
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },

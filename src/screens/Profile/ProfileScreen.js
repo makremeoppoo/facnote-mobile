@@ -59,22 +59,23 @@ class NotificationsScreen extends React.Component {
           </View>
           <TouchableHighlight
             style={styles.btnContainer}
-            onPress={() => this.sendMail('test@test.com')}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <Text style={styles.btnTxt}>Envoyer email</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.btnContainer}
             onPress={() => this.callNumber('00000')}
             underlayColor="rgba(73,182,77,1,0.9)">
             <Text style={styles.btnTxt}>Appeler</Text>
           </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.btnContainer}
+            onPress={() => this.sendMail('test@test.com')}
+            underlayColor="rgba(73,182,77,1,0.9)">
+            <Text style={styles.btnTxt}>Envoyer un email</Text>
+          </TouchableHighlight>
+
           <View style={styles.infoContainer}>
             <Image
               style={styles.cabinetImg}
               source={require('../../../assets/images/logo.png')}
             />
-            <Text style={styles.CabinerName}>Adress</Text>
+            <Text style={styles.CabinerName}>Nom du cabinet</Text>
             <Text style={styles.CabinerInfo}>CP Rue Ville</Text>
             <Text style={styles.CabinerInfo}>Telephone 22 654 658</Text>
 

@@ -17,43 +17,40 @@ const styles = StyleSheet.create({
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    height: ScaleHelpers.CalcHeight(35),
+    height: ScaleHelpers.CalcHeight(50),
   },
   formContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(60),
+    height: ScaleHelpers.CalcHeight(40),
   },
 
   title: {
+    fontFamily: 'Nunito-ExtraBold',
     textAlign: 'center',
     color: 'white',
     fontSize: 25,
     lineHeight: 33,
   },
+  inputBlock: {
+    height: ScaleHelpers.CalcHeight(10),
+  },
+  logo: {
+    width: 200,
+    height: 200,
+  },
+
   label: {
-    marginLeft: ScaleHelpers.CalcWidth(25),
+    fontFamily: 'Nunito-Regular',
+    marginBottom: ScaleHelpers.CalcHeight(1),
+    marginLeft: ScaleHelpers.CalcWidth(28),
     color: 'white',
     fontSize: 12,
   },
- 
+
   buttonContainer: {
     height: ScaleHelpers.CalcHeight(10),
     alignSelf: 'center',
     justifyContent: 'center',
-  },
-
-  buttonStyle: {
-    width: ScaleHelpers.CalcWidth(50),
-    alignItems: 'center',
-    padding: ScaleHelpers.CalcWidth(1),
-    backgroundColor: 'white',
-    borderRadius: 60,
-    alignSelf: 'center',
-    color: 'rgba(112,112,112,1)',
-  },
-  signTxt: {
-    fontSize: 20,
-    color: 'grey',
   },
 
   inputContainer: {
@@ -64,12 +61,30 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignSelf: 'center',
   },
+  buttonStyle: {
+    width: ScaleHelpers.CalcWidth(50),
+    alignItems: 'center',
+    padding: ScaleHelpers.CalcWidth(1),
+    backgroundColor: 'white',
+    borderRadius: 60,
+    alignSelf: 'center',
+    color: 'rgba(112,112,112,1)',
+    fontFamily: 'Nunito-Regular',
+  },
+  signTxt: {
+    fontFamily: 'Nunito-Regular',
+    fontSize: 15,
+    color: 'grey',
+  },
 
   buttomText: {
+    fontFamily: 'Nunito-Bold',
     color: 'rgba(112,112,112,1)',
     alignSelf: 'center',
     position: 'absolute',
     bottom: 0,
+    fontSize: 12,
+
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },

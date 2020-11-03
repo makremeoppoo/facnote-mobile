@@ -115,8 +115,8 @@ class LoginScreen extends React.Component {
             </View>
           </View>
         </ScrollView>
-        {this.state.showButtom && ( <View style={styles.buttomText}>
-            <Text style={{color: 'rgba(112,112,112,1)'}}>
+        {this.state.showButtom && ( <View >
+            <Text style={styles.buttomText}>
               mentions légales - CGU
             </Text>
           

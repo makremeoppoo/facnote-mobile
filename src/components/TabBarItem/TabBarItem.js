@@ -12,12 +12,14 @@ class TabBarItem extends React.Component {
           height: 70,
           padding: 10,
           borderRadius: 40,
+          
           backgroundColor: focused ? 'rgb(92,117,254)' : 'transparent',
           alignItems: 'center',
         }}>
         <Image source={src} style={{width: ScaleHelper.CalcWidth(10), height: ScaleHelper.CalcHeight(5)}} />
         <Text
           style={{
+            fontFamily: 'Nunito-Light',
             color: focused ? 'white' : 'rgb(112, 112, 112)',
             fontSize: ScaleHelper.CalcWidth(2.5),
           }}>

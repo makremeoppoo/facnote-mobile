@@ -11,7 +11,6 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
 
- 
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(100),
     height: ScaleHelpers.CalcHeight(25),
@@ -28,27 +27,30 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(27),
   },
   title: {
+    fontFamily: 'Nunito-ExtraBold',
     textAlign: 'center',
     color: 'rgb(112,112,112)',
     fontSize: ScaleHelpers.CalcHeight(4),
   },
   cabinetImg: {
-    width: 100,
-    height: 100,
+    fontFamily: 'Nunito-Bold',
     borderRadius: 100,
     alignSelf: 'center',
     marginBottom: 10,
   },
+  infoContainer: {
+    marginBottom: ScaleHelpers.CalcWidth(3),
+    marginTop: ScaleHelpers.CalcWidth(3),
+  },
   CabinerName: {
     textAlign: 'center',
-    fontSize: 20,
+    fontSize: 15,
     color: 'rgb(112 ,112, 112)',
   },
-  infoContainer: {
-    marginBottom: ScaleHelpers.CalcWidth(5),
-    marginTop: ScaleHelpers.CalcWidth(5),
-  },
+
   CabinerInfo: {
+    fontFamily: 'Nunito-Light',
+
     fontSize: 15,
     color: 'rgb(112 ,112, 112)',
     textAlign: 'center',
@@ -73,9 +75,9 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   btnTxt: {
-    fontSize: 16,
+    fontFamily: 'Nunito-Light',
+    fontSize: 15,
     color: '#070f12',
-    fontWeight: '400',
     textAlign: 'center',
   },
 });

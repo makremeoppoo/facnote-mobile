@@ -91,7 +91,7 @@ const TabNavigator = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem focused={focused} label={'Home'} src={HomeImg} />
+            <TabBarItem focused={focused} label={'Accueil'} src={HomeImg} />
           ),
         }}
       />
