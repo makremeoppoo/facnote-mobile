@@ -24,8 +24,8 @@ import BackButton from '../components/BackButton/BackButton';
 import {SearchBar} from 'react-native-elements';
 import {useSelector, useDispatch} from 'react-redux';
 import HomeImg from '../../assets/icons/home.png';
-import FactureImg from '../../assets/icons/news.png';
-import CabinetImg from '../../assets/icons/account.png';
+import FactureImg from '../../assets/icons/Camera.png';
+import CabinetImg from '../../assets/icons/Cabinet.png';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -100,7 +100,7 @@ const TabNavigator = () => {
         component={ExpensesScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem focused={focused} label={'Facture'} src={FactureImg} />
+            <TabBarItem focused={focused} label={'Déposer facture'} src={FactureImg} />
           ),
         }}
       />
