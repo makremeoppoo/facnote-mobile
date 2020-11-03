@@ -64,7 +64,9 @@ const styles = StyleSheet.create({
     // its for android
     elevation: 5,
     position: 'relative',
-    marginTop: ScaleHelpers.CalcHeight(4),
+    marginTop: ScaleHelpers.CalcHeight(3),
+    marginBottom: ScaleHelpers.CalcHeight(1),
+
     width: ScaleHelpers.CalcWidth(70),
     borderRadius: 10,
     backgroundColor: 'rgb( 255,255,255)',
@@ -77,7 +79,7 @@ const styles = StyleSheet.create({
   btnTxt: {
     fontFamily: 'Nunito-Light',
     fontSize: 15,
-    color: '#070f12',
+    color: 'rgb(112 ,112, 112)',
     textAlign: 'center',
   },
 });

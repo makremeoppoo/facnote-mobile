@@ -1,17 +1,14 @@
 /*This is an example of File Picker in React Native*/
 import React, {createRef} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Modal,
-
-} from 'react-native';
-import styles from "./styles"
-import {Button,Image} from 'react-native-elements';
+import {ScrollView, Text, View, TouchableHighlight,ImageBackground,Image} from 'react-native';
 import ActionSheet from 'react-native-actionsheet';
 import ImagePicker from 'react-native-image-picker';
+import Achat from '../../../assets/images/Achats.png';
+import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
+import Document from '../../../assets/images/Document.png';
+import Indemnite from '../../../assets/images/Indemnite.png';
+import Background from '../../../assets/images/backgroung_depose_facture.png';
+import styles from "./styles"
 
 var optionArray = [
   'chooseImage',
@@ -37,13 +34,9 @@ export default class ExpensesScreen extends React.Component {
 
   setTypeFacture = (typeFacture) => {
     this.setState({typeFacture});
-    this.setModalVisible();
     this.actionSheet.current.show();
   };
 
-  setModalVisible = () => {
-    this.setState({showModal: !this.state.showModal});
-  };
   chooseImage = () => {
     let options = {
       title: 'Select Image',
@@ -139,7 +132,7 @@ export default class ExpensesScreen extends React.Component {
     });
   };
 
- /* renderFileData() {
+  /* renderFileData() {
     if (this.state.fileData) {
       return (
         <Image
@@ -157,90 +150,70 @@ export default class ExpensesScreen extends React.Component {
 
   renderFileUri() {
     if (this.state.fileUri) {
-      return <Image source={{uri: this.state.fileUri}} style={styles.images} />;
+      return <Image source={{uri: this.state.fileUri}} />;
     } else {
-      return (
-        <Image
-          source={require('../../../assets/icons/backArrow.png')}
-        />
-      );
+      return <Image source={require('../../../assets/icons/backArrow.png')} />;
     }
   }
 
   render() {
     return (
-      <View style={styles.containerStyle}>
-        <Text
-          style={{
-            color: '#54aed6',
-            fontSize: 35,
-            fontWeight: 'bold',
-            textAlign: 'center',
-            marginTop: 60,
-            marginBottom: 60,
-          }}>
-          Facnote
-        </Text>
-        <TouchableOpacity
-          activeOpacity={0.5}
-          style={styles.buttonStyle}
-          onPress={() => this.setModalVisible()}>
-          {/*Multiple files selection button*/}
-          <Text
-            style={{
-              color: '#54aed6',
-              fontSize: 35,
-              fontWeight: 'bold',
-              textAlign: 'center',
-              marginTop: 60,
-              marginBottom: 60,
-            }}>
-            Appuyer ici pour sélectionner les factures d' achat a envoyer
-          </Text>
-        </TouchableOpacity>
-
-        {this.renderFileUri()}
-        <ActionSheet
-          ref={this.actionSheet}
-          // Title of the Bottom Sheet
-          title={'Which one do you like ?'}
-          // Options Array to show in bottom sheet
-          options={optionArray}
-          // Define cancel button index in the option array
-          // This will take the cancel option in bottom
-          // and will highlight it
-          cancelButtonIndex={4}
-          // Highlight any specific option
-          destructiveButtonIndex={1}
-          onPress={(index) => {
-            // Clicking on the option will give you alert
-
-            if (optionArray[index] == 'launchImageLibrary')
-              this.launchImageLibrary();
-            if (optionArray[index] == 'chooseImage') this.chooseImage();
-            if (optionArray[index] == 'launchCamera') this.launchCamera();
-          }}
-        />
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={this.state.showModal}
-          onRequestClose={() => {}}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <Button
-                onPress={() => this.setTypeFacture(1)}
-                title="Avance de frais"
-                type="clear"></Button>
-              <Button
-                onPress={() => this.setTypeFacture(2)}
-                title="Achat"
-                type="clear"></Button>
-            </View>
+      <ScrollView>
+        <View style={styles.containerStyle}>
+          <ImageBackground
+            source={Background}
+            style={styles.backgroundStyle}></ImageBackground>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Nom de la Société</Text>
           </View>
-        </Modal>
-      </View>
+          <TouchableHighlight
+            style={styles.btnContainer}
+            onPress={() => this.setTypeFacture(1)}
+            underlayColor="rgba(73,182,77,1,0.9)">
+            <Image style={styles.Img} source={Achat} />
+          </TouchableHighlight>
+          <View
+            style={styles.btnContainer}
+            onPress={() => this.setTypeFacture(1)}
+            underlayColor="rgba(73,182,77,1,0.9)">
+            <Image style={styles.Img} source={Indemnite} />
+          </View>
+          <TouchableHighlight
+            style={styles.btnContainer}
+            onPress={() => this.setTypeFacture(1)}
+            underlayColor="rgba(73,182,77,1,0.9)">
+            <Image style={styles.Img} source={Document} />
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.btnContainer}
+            onPress={() => this.setTypeFacture(1)}
+            underlayColor="rgba(73,182,77,1,0.9)">
+            <Image style={styles.Img} source={AvanceDeFrais} />
+          </TouchableHighlight>
+          {this.renderFileUri()}
+          <ActionSheet
+            ref={this.actionSheet}
+            // Title of the Bottom Sheet
+            title={'Which one do you like ?'}
+            // Options Array to show in bottom sheet
+            options={optionArray}
+            // Define cancel button index in the option array
+            // This will take the cancel option in bottom
+            // and will highlight it
+            cancelButtonIndex={4}
+            // Highlight any specific option
+            destructiveButtonIndex={1}
+            onPress={(index) => {
+              // Clicking on the option will give you alert
+
+              if (optionArray[index] == 'launchImageLibrary')
+                this.launchImageLibrary();
+              if (optionArray[index] == 'chooseImage') this.chooseImage();
+              if (optionArray[index] == 'launchCamera') this.launchCamera();
+            }}
+          />
+        </View>
+      </ScrollView>
     );
   }
 }
-
