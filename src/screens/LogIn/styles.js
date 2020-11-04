@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
 
   buttomText: {
-    fontFamily: 'Nunito-Bold',
+    fontFamily: 'Nunito-SemiBold',
     color: 'rgba(112,112,112,1)',
     alignSelf: 'center',
     position: 'absolute',

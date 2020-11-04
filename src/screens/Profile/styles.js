@@ -27,10 +27,10 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(27),
   },
   title: {
-    fontFamily: 'Nunito-ExtraBold',
+    fontFamily: 'SegoeUI',
     textAlign: 'center',
     color: 'rgb(112,112,112)',
-    fontSize: ScaleHelpers.CalcHeight(4),
+    fontSize: ScaleHelpers.CalcHeight(5),
   },
   cabinetImg: {
     fontFamily: 'Nunito-Bold',
@@ -43,14 +43,15 @@ const styles = StyleSheet.create({
     marginTop: ScaleHelpers.CalcWidth(3),
   },
   CabinerName: {
+    fontFamily: 'Nunito-Bold',
+
     textAlign: 'center',
     fontSize: 15,
     color: 'rgb(112 ,112, 112)',
   },
 
   CabinerInfo: {
-    fontFamily: 'Nunito-Light',
-
+    fontFamily: 'Nunito-Regular',
     fontSize: 15,
     color: 'rgb(112 ,112, 112)',
     textAlign: 'center',
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   btnTxt: {
-    fontFamily: 'Nunito-Light',
+    fontFamily: 'Nunito-Regular',
     fontSize: 15,
     color: 'rgb(112 ,112, 112)',
     textAlign: 'center',

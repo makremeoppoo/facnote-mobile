@@ -19,19 +19,24 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(27),
   },
   title: {
-    fontFamily: 'Nunito-ExtraBold',
+    fontFamily: 'Nunito-Bold',
     textAlign: 'center',
     color: 'rgb(112,112,112)',
-    fontSize: ScaleHelpers.CalcHeight(4),
+    fontSize: ScaleHelpers.CalcHeight(5),
   },
   btnContainer: {
+    flex: 1,
+    overflow: 'hidden',
+    borderColor: '#2c65c9',
+    borderRadius: 20,
+    position: 'relative',
     marginTop: ScaleHelpers.CalcHeight(3),
     alignSelf: 'center',
     justifyContent: 'center',
   },
   Img: {
     width: ScaleHelpers.CalcWidth(80),
-    height: ScaleHelpers.CalcHeight(20),
+    height: ScaleHelpers.CalcHeight(15),
   },
 });
 
