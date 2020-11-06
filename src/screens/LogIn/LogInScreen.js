@@ -13,7 +13,7 @@ import {
 import styles from './styles';
 import {connect} from 'react-redux';
 import LogoImage from '../../../assets/images/logo.png'
-import BackgroundLoginImage from '../../../assets/images/backgroundWelcome.png';
+import BackgroundLoginImage from '../../../assets/images/background_connexion.png';
 
 import * as api from '../../services/auth';
 import {login} from '../../redux';
@@ -73,9 +73,9 @@ class LoginScreen extends React.Component {
     return (
       <View style={styles.mainContainer}>
         <ScrollView >
-          <ImageBackground
+          <Image
             source={BackgroundLoginImage}
-            style={styles.topImageStyle}></ImageBackground>
+            style={styles.topImageStyle}></Image>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>COMPTA SMART</Text>
             <Image

@@ -1,6 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
+import {textColor,buttonColor} from '../../AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -8,20 +9,25 @@ const SCREEN_WIDTH = width < height ? width : height;
 const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
+    height: ScaleHelpers.CalcHeight(110),
+
   },
   backgroundStyle: {
     width: ScaleHelpers.CalcWidth(100),
     height: "100%",
     position: 'absolute',
+    
   },
   titleContainer: {
-    justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(27),
+    height: ScaleHelpers.CalcHeight(20),
+    textAlign: 'center',
+    justifyContent:"center"
+
   },
   title: {
     fontFamily: 'Nunito-Bold',
     textAlign: 'center',
-    color: 'rgb(112,112,112)',
+    color: textColor,
     fontSize: ScaleHelpers.CalcHeight(5),
   },
   btnContainer: {
@@ -30,7 +36,6 @@ const styles = StyleSheet.create({
     borderColor: '#2c65c9',
     borderRadius: 20,
     position: 'relative',
-    marginTop: ScaleHelpers.CalcHeight(3),
     alignSelf: 'center',
     justifyContent: 'center',
   },

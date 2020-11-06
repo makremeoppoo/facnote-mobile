@@ -1,9 +1,8 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
+import {textColor,buttonColor} from '../../AppStyles';
 
-const {width, height} = Dimensions.get('window');
-const SCREEN_WIDTH = width < height ? width : height;
 
 const styles = StyleSheet.create({
   container: {
@@ -29,7 +28,7 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: 'SegoeUI',
     textAlign: 'center',
-    color: 'rgb(112,112,112)',
+    color: textColor,
     fontSize: ScaleHelpers.CalcHeight(5),
   },
   cabinetImg: {
@@ -47,13 +46,13 @@ const styles = StyleSheet.create({
 
     textAlign: 'center',
     fontSize: 15,
-    color: 'rgb(112 ,112, 112)',
+    color: textColor,
   },
 
   CabinerInfo: {
     fontFamily: 'Nunito-Regular',
     fontSize: 15,
-    color: 'rgb(112 ,112, 112)',
+    color: textColor,
     textAlign: 'center',
   },
 
@@ -70,7 +69,7 @@ const styles = StyleSheet.create({
 
     width: ScaleHelpers.CalcWidth(70),
     borderRadius: 10,
-    backgroundColor: 'rgb( 255,255,255)',
+    backgroundColor: buttonColor,
     borderColor: 'rgba(214, 214, 214, 0.4)',
     borderWidth: 1,
     alignSelf: 'center',
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
   btnTxt: {
     fontFamily: 'Nunito-Regular',
     fontSize: 15,
-    color: 'rgb(112 ,112, 112)',
+    color: textColor,
     textAlign: 'center',
   },
 });

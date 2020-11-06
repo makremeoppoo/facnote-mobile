@@ -1,17 +1,20 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
+import {textColor,buttonColor} from '../../AppStyles';
+
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: ScaleHelpers.CalcHeight(100),
   },
 
   titleContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(20),
+    height: ScaleHelpers.CalcHeight(10),
   },
   title: {
     textAlign: 'center',
@@ -20,48 +23,43 @@ const styles = StyleSheet.create({
     fontSize: ScaleHelpers.CalcHeight(4),
   },
 
-  logContainer: {
-    height: ScaleHelpers.CalcHeight(20),
+  buttonView: {
+    height: ScaleHelpers.CalcHeight(30),
     alignSelf: 'center',
     justifyContent: 'center',
   },
-  signupContainer: {
-    width: ScaleHelpers.CalcWidth(45),
+  buttonContainer: {
+    width: ScaleHelpers.CalcWidth(30),
     alignItems: 'center',
     padding: 5,
-    backgroundColor: 'white',
+    backgroundColor: buttonColor,
     borderRadius: 60,
     alignSelf: 'center',
-    color: 'rgba(112,112,112,1)',
   },
-  signTxt: {
+  buttonTxt: {
     fontFamily: 'Nunito-Regular',
     fontSize: ScaleHelpers.CalcHeight(2),
-    color: 'grey',
+    color: textColor,
   },
-  image: {
-    width: ScaleHelpers.CalcWidth(60),
-    height: ScaleHelpers.CalcHeight(60),
+
+
+  topImageStyle: {
+    width: ScaleHelpers.CalcWidth(100),
+    height: ScaleHelpers.CalcHeight(100),
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
     resizeMode: 'stretch',
-  },
-
-  topImageStyle: {
-    width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(50),
-    position: 'absolute',
+    position:"absolute"
   },
   buttomText: {
     fontFamily: 'Nunito-SemiBold',
-    color: 'rgba(112,112,112,1)',
+    color: textColor,
     alignSelf: 'center',
     position: 'absolute',
     bottom: 0,
     fontSize: ScaleHelpers.CalcWidth(4),
-
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },

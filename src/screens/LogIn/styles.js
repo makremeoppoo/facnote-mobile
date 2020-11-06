@@ -3,6 +3,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
+import {textColor,buttonColor} from '../../AppStyles';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -10,8 +11,13 @@ const styles = StyleSheet.create({
   },
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(92),
-    position: 'absolute',
+    height: ScaleHelpers.CalcHeight(90),
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    resizeMode: 'stretch',
+    position:"absolute"
   },
 
   titleContainer: {
@@ -62,13 +68,13 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   buttonStyle: {
-    width: ScaleHelpers.CalcWidth(50),
+    width: ScaleHelpers.CalcWidth(40),
     alignItems: 'center',
     padding: ScaleHelpers.CalcWidth(1),
-    backgroundColor: 'white',
+    backgroundColor: buttonColor,
     borderRadius: 60,
     alignSelf: 'center',
-    color: 'rgba(112,112,112,1)',
+    color: textColor,
     fontFamily: 'Nunito-Regular',
   },
   signTxt: {
@@ -79,12 +85,11 @@ const styles = StyleSheet.create({
 
   buttomText: {
     fontFamily: 'Nunito-SemiBold',
-    color: 'rgba(112,112,112,1)',
+    color: textColor,
     alignSelf: 'center',
     position: 'absolute',
     bottom: 0,
     fontSize: 12,
-
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
