@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   infoContainer: {
-    height: ScaleHelpers.CalcHeight(75),
+    height: ScaleHelpers.CalcHeight(85),
     margin: ScaleHelpers.CalcWidth(3),
     //Its for IOS
     shadowColor: '#000',
@@ -56,14 +56,14 @@ const styles = StyleSheet.create({
     elevation: 5,
 
     paddingLeft: 10,
-    height: ScaleHelpers.CalcHeight(5),
+    height: ScaleHelpers.CalcHeight(8),
     width: ScaleHelpers.CalcWidth(80),
     backgroundColor: 'white',
-    borderRadius: 20,
+    borderRadius: 10,
     alignSelf: 'center',
   },
   inputBlock: {
-    height: ScaleHelpers.CalcHeight(10),
+    height: ScaleHelpers.CalcHeight(13),
   },
   ButtonsContain: {
     flex: 1,
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     elevation: 5,
     position: 'relative',
     width: ScaleHelpers.CalcWidth(40),
-    borderRadius: 10,
+    borderRadius: 5,
     backgroundColor: buttonColor,
     borderColor: 'rgba(214, 214, 214, 0.4)',
     borderWidth: 1,
