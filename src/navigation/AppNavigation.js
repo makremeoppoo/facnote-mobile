@@ -10,6 +10,7 @@ import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import PortfolioScreen from '../screens/Portfolio/PortfolioScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
+import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
@@ -100,7 +101,11 @@ const TabNavigator = () => {
         component={ExpensesScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem focused={focused} label={'Déposer facture'} src={FactureImg} />
+            <TabBarItem
+              focused={focused}
+              label={'Déposer facture'}
+              src={FactureImg}
+            />
           ),
         }}
       />
@@ -188,6 +193,13 @@ const MainNavigator = () => {
         }}
         component={TabNavigator}
         //component={Platform.OS === 'ios' ? TabNavigator : mainScreensNavigator}
+      />
+      <Stack.Screen
+         options={{
+          headerShown: false,
+        }}
+        name="Indemnites"
+        component={IndemnitesScreen}
       />
     </Stack.Navigator>
   );

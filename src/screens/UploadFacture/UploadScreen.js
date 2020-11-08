@@ -171,12 +171,12 @@ export default class ExpensesScreen extends React.Component {
             underlayColor="rgba(73,182,77,1,0.9)">
             <Image style={styles.Img} source={Achat} />
           </TouchableHighlight>
-          <View
+          <TouchableHighlight
             style={styles.btnContainer}
-            onPress={() => this.setTypeFacture(1)}
+            onPress={()=> this.props.navigation.navigate('Indemnites')}
             underlayColor="rgba(73,182,77,1,0.9)">
             <Image style={styles.Img} source={Indemnite} />
-          </View>
+          </TouchableHighlight>
           <TouchableHighlight
             style={styles.btnContainer}
             onPress={() => this.setTypeFacture(1)}

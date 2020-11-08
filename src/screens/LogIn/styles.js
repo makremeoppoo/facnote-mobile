@@ -37,9 +37,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     lineHeight: 33,
   },
-  inputBlock: {
-    height: ScaleHelpers.CalcHeight(10),
-  },
+  
   logo: {
     width: 200,
     height: 200,
@@ -66,6 +64,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     alignSelf: 'center',
+  },
+  inputBlock: {
+    height: ScaleHelpers.CalcHeight(10),
   },
   buttonStyle: {
     width: ScaleHelpers.CalcWidth(40),
