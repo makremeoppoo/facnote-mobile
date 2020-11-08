@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     marginBottom: ScaleHelpers.CalcHeight(1),
     marginLeft: ScaleHelpers.CalcWidth(28),
     color: 'white',
-    fontSize: 12,
+    fontSize: 15,
   },
 
   buttonContainer: {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 
   inputContainer: {
     paddingLeft: 10,
-    height: ScaleHelpers.CalcHeight(5),
+    height: ScaleHelpers.CalcHeight(6),
     width: ScaleHelpers.CalcWidth(50),
     backgroundColor: 'white',
     borderRadius: 20,

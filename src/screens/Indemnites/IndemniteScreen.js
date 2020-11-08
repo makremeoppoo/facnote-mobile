@@ -7,15 +7,13 @@ import {
   ScrollView,
   Linking,
   TextInput,
+  Image,
 } from 'react-native';
-import {connect} from 'react-redux';
+import Rectangle from '../../../assets/images/Rectangle.png';
 
 import styles from './styles';
-import {logout} from '../../redux';
-import CabinetBackground from '../../../assets/images/CabinetBackground1.png';
-import CabinetBackgroundTransparent from '../../../assets/images/CabinetBackgroundTransparent.png';
 
-class NotificationsScreen extends React.Component {
+class IndemnitesScreen extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -55,67 +53,54 @@ class NotificationsScreen extends React.Component {
               <Text style={styles.label}>Date</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                />
+                <TextInput style={styles.input} />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Puissance Administrative</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                />
+                <TextInput style={styles.input} />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Distance parcourue(KM)</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                />
+                <TextInput style={styles.input} />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Lieu de départ</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                />
+                <TextInput style={styles.input} />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Lieu d'arrivée</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                />
+                <TextInput style={styles.input} />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Client ou motif</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput
-                  style={styles.input}
-                />
+                <TextInput style={styles.input} />
               </View>
             </View>
           </View>
           <View style={styles.ButtonsContain}>
-            <TouchableHighlight
-              style={styles.btnContainer}
-              underlayColor="rgba(73,182,77,1,0.9)">
+            <TouchableHighlight style={styles.btnContainer}>
               <Text style={styles.btnTxt}>Annuler</Text>
             </TouchableHighlight>
-            <TouchableHighlight
-              style={styles.btnContainer}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={styles.btnTxt}>Valider</Text>
+            <TouchableHighlight style={styles.btnSubmitContainer}>
+              <>
+                <Image style={styles.rectangle} source={Rectangle} />
+                <Text style={styles.submitTxt}>Valider</Text>
+              </>
             </TouchableHighlight>
           </View>
         </View>
@@ -123,4 +108,4 @@ class NotificationsScreen extends React.Component {
     );
   }
 }
-export default connect(null, {logout})(NotificationsScreen);
+export default IndemnitesScreen;
