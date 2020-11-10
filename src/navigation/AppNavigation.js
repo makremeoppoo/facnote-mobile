@@ -21,12 +21,14 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import BackButton from '../components/BackButton/BackButton';
-import {SearchBar} from 'react-native-elements';
-import {useSelector, useDispatch} from 'react-redux';
+
+import {useSelector} from 'react-redux';
 import HomeImg from '../../assets/icons/home.png';
-import FactureImg from '../../assets/icons/Camera.png';
+import FactureImgActive from '../../assets/icons/Camera.png';
+import FactureImg from '../../assets/icons/photo-white.png';
+
 import CabinetImg from '../../assets/icons/Cabinet.png';
+import CabinetImgActive from '../../assets/icons/cabinetActive.png';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -86,7 +88,7 @@ const TabNavigator = () => {
         },
         showLabel: false,
       }}
-      initialRouteName="Home">
+      initialRouteName="Factures">
       <BottomTabNavigator.Screen
         name="Home"
         component={HomeScreen}
@@ -104,7 +106,7 @@ const TabNavigator = () => {
             <TabBarItem
               focused={focused}
               label={'Déposer facture'}
-              src={FactureImg}
+              src={focused ? FactureImgActive : FactureImg}
             />
           ),
         }}
@@ -114,7 +116,9 @@ const TabNavigator = () => {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem focused={focused} label={'Cabinet'} src={CabinetImg} />
+            <TabBarItem focused={focused} label={'Cabinet'} 
+            src={focused ? CabinetImgActive : CabinetImg}
+            />
           ),
         }}
       />
@@ -195,7 +199,7 @@ const MainNavigator = () => {
         //component={Platform.OS === 'ios' ? TabNavigator : mainScreensNavigator}
       />
       <Stack.Screen
-         options={{
+        options={{
           headerShown: false,
         }}
         name="Indemnites"
