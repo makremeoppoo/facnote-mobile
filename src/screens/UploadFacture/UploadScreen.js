@@ -1,21 +1,27 @@
 /*This is an example of File Picker in React Native*/
 import React, {createRef} from 'react';
-import {ScrollView, Text, View, TouchableHighlight,ImageBackground,Image} from 'react-native';
-import ActionSheet from 'react-native-actionsheet';
+import {
+  ScrollView,
+  Text,
+  View,
+  TouchableHighlight,
+  ImageBackground,
+  Image,
+  Modal,
+} from 'react-native';
 import ImagePicker from 'react-native-image-picker';
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnite from '../../../assets/images/Indemnite.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
-import styles from "./styles"
+import Rectangle from '../../../assets/images/Rectangle.png';
+import Close from '../../../assets/icons/close.png';
+import iconePrendrePhoto from '../../../assets/icons/icone_prendre_photo.png';
+import iconeGestionnairePhoto from '../../../assets/icons/icone_gestionnaire_photo.png';
 
-var optionArray = [
-  'chooseImage',
-  'launchCamera',
-  'launchImageLibrary',
-  'Cancel',
-];
+import styles from './styles';
+
 
 export default class ExpensesScreen extends React.Component {
   constructor(props) {
@@ -34,7 +40,8 @@ export default class ExpensesScreen extends React.Component {
 
   setTypeFacture = (typeFacture) => {
     this.setState({typeFacture});
-    this.actionSheet.current.show();
+    this.setState({showModal: !this.state.showModal});
+    //this.actionSheet.current.show();
   };
 
   chooseImage = () => {
@@ -152,7 +159,8 @@ export default class ExpensesScreen extends React.Component {
     if (this.state.fileUri) {
       return <Image source={{uri: this.state.fileUri}} />;
     } else {
-      return null}
+      return null;
+    }
   }
 
   render() {
@@ -173,7 +181,7 @@ export default class ExpensesScreen extends React.Component {
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.btnContainer}
-            onPress={()=> this.props.navigation.navigate('Indemnites')}
+            onPress={() => this.props.navigation.navigate('Indemnites')}
             underlayColor="rgba(73,182,77,1,0.9)">
             <Image style={styles.Img} source={Indemnite} />
           </TouchableHighlight>
@@ -189,27 +197,45 @@ export default class ExpensesScreen extends React.Component {
             underlayColor="rgba(73,182,77,1,0.9)">
             <Image style={styles.Img} source={AvanceDeFrais} />
           </TouchableHighlight>
-          <ActionSheet
-            ref={this.actionSheet}
-            // Title of the Bottom Sheet
-            title={'Which one do you like ?'}
-            // Options Array to show in bottom sheet
-            options={optionArray}
-            // Define cancel button index in the option array
-            // This will take the cancel option in bottom
-            // and will highlight it
-            cancelButtonIndex={4}
-            // Highlight any specific option
-            destructiveButtonIndex={1}
-            onPress={(index) => {
-              // Clicking on the option will give you alert
-
-              if (optionArray[index] == 'launchImageLibrary')
-                this.launchImageLibrary();
-              if (optionArray[index] == 'chooseImage') this.chooseImage();
-              if (optionArray[index] == 'launchCamera') this.launchCamera();
-            }}
-          />
+        
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.showModal}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <ImageBackground
+                  source={Rectangle}
+                  style={styles.backgroundStyle}></ImageBackground>
+                <TouchableHighlight
+                  style={styles.modalCloseView}
+                  onPress={() =>
+                    this.setState({showModal: !this.state.showModal})
+                  }
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.closeImg} source={Close} />
+                </TouchableHighlight>
+                <View  style={styles.buttomIcon}>
+                  <TouchableHighlight
+                    onPress={() => this.chooseImage()}
+                    underlayColor="rgba(73,182,77,1,0.9)">
+                    <Image
+                      style={styles.iconGestion}
+                      source={iconeGestionnairePhoto}
+                    />
+                  </TouchableHighlight>
+                  <TouchableHighlight
+                    onPress={() => this.launchCamera()}
+                    underlayColor="rgba(73,182,77,1,0.9)">
+                    <Image
+                      style={styles.iconGestion}
+                      source={iconePrendrePhoto}
+                    />
+                  </TouchableHighlight>
+                </View>
+              </View>
+            </View>
+          </Modal>
         </View>
       </ScrollView>
     );

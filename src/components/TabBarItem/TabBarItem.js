@@ -8,7 +8,7 @@ class TabBarItem extends React.Component {
     return (
       <View
         style={{
-          width: 100,
+          width: ScaleHelper.CalcWidth(30),
           height: 70,
           padding: 10,
           borderRadius: 40,
@@ -35,7 +35,7 @@ class TabBarItem extends React.Component {
                 : focused
                 ? 'rgb(92,117,254)'
                 : 'rgb(112, 112, 112)',
-            fontSize: ScaleHelper.CalcWidth(2.5),
+            fontSize: ScaleHelper.CalcWidth(3),
           }}>
           {label}
         </Text>
