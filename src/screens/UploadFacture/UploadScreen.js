@@ -206,7 +206,7 @@ export default class ExpensesScreen extends React.Component {
               <View style={styles.modalView}>
                 <ImageBackground
                   source={Rectangle}
-                  style={styles.backgroundStyle}></ImageBackground>
+                  style={styles.backgroundModalStyle}></ImageBackground>
                 <TouchableHighlight
                   style={styles.modalCloseView}
                   onPress={() =>

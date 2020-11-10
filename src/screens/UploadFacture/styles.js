@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
   titleContainer: {
     height: ScaleHelpers.CalcHeight(20),
     textAlign: 'center',
+    marginBottom: ScaleHelpers.CalcHeight(5),
+
     justifyContent: 'center',
   },
   title: {
@@ -39,6 +41,12 @@ const styles = StyleSheet.create({
   Img: {
     width: ScaleHelpers.CalcWidth(80),
     height: ScaleHelpers.CalcHeight(15),
+  },
+
+  backgroundModalStyle: {
+    width: ScaleHelpers.CalcWidth(105),
+    height: '100%',
+    position: 'absolute',
   },
   centeredView: {
     flex: 1,
@@ -80,7 +88,7 @@ const styles = StyleSheet.create({
   },
 
   iconGestion: {
-    margin:ScaleHelpers.CalcWidth(4),
+    margin: ScaleHelpers.CalcWidth(4),
     width: ScaleHelpers.CalcWidth(15),
     height: ScaleHelpers.CalcWidth(15),
   },
