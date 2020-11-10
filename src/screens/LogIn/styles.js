@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   formContainer: {
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(40),
+    paddingBottom:ScaleHelpers.CalcHeight(18),
   },
 
   title: {
@@ -46,13 +47,17 @@ const styles = StyleSheet.create({
   label: {
     fontFamily: 'Nunito-Regular',
     marginBottom: ScaleHelpers.CalcHeight(1),
-    marginLeft: ScaleHelpers.CalcWidth(28),
+    marginTop: ScaleHelpers.CalcHeight(1),
+
+    marginLeft: ScaleHelpers.CalcWidth(20),
     color: 'white',
     fontSize: 15,
   },
 
   buttonContainer: {
     height: ScaleHelpers.CalcHeight(10),
+    marginTop: ScaleHelpers.CalcHeight(1),
+
     alignSelf: 'center',
     justifyContent: 'center',
   },
@@ -60,7 +65,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     paddingLeft: 10,
     height: ScaleHelpers.CalcHeight(6),
-    width: ScaleHelpers.CalcWidth(50),
+    width: ScaleHelpers.CalcWidth(60),
     backgroundColor: 'white',
     borderRadius: 20,
     alignSelf: 'center',
