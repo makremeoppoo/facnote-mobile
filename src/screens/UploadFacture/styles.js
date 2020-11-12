@@ -42,7 +42,22 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(80),
     height: ScaleHelpers.CalcHeight(15),
   },
+  photoContainer: {
+    alignSelf: 'center',
+    position: 'absolute',
+    fontSize: 12,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: ScaleHelpers.CalcWidth(100),
+    height: ScaleHelpers.CalcHeight(40),
+  },
+  ImgPlus: {
+    borderRadius: ScaleHelpers.CalcWidth(3),
 
+    width: ScaleHelpers.CalcWidth(20),
+    height: ScaleHelpers.CalcWidth(20),
+  },
   backgroundModalStyle: {
     width: ScaleHelpers.CalcWidth(105),
     height: '100%',

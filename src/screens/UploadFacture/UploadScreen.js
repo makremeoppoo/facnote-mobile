@@ -14,6 +14,8 @@ import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnite from '../../../assets/images/Indemnite.png';
+import AddPhoto from '../../../assets/images/addPhoto.png';
+
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
@@ -21,7 +23,6 @@ import iconePrendrePhoto from '../../../assets/icons/icone_prendre_photo.png';
 import iconeGestionnairePhoto from '../../../assets/icons/icone_gestionnaire_photo.png';
 
 import styles from './styles';
-
 
 export default class ExpensesScreen extends React.Component {
   constructor(props) {
@@ -157,7 +158,14 @@ export default class ExpensesScreen extends React.Component {
 
   renderFileUri() {
     if (this.state.fileUri) {
-      return <Image source={{uri: this.state.fileUri}} />;
+      return (
+        <View
+          style={styles.photoContainer}>
+         
+            <Image style={styles.ImgPlus} source={{uri: this.state.fileUri}} />
+            <Image style={styles.ImgPlus} source={AddPhoto} />
+        </View>
+      );
     } else {
       return null;
     }
@@ -197,7 +205,7 @@ export default class ExpensesScreen extends React.Component {
             underlayColor="rgba(73,182,77,1,0.9)">
             <Image style={styles.Img} source={AvanceDeFrais} />
           </TouchableHighlight>
-        
+
           <Modal
             animationType="slide"
             transparent={true}
@@ -207,6 +215,7 @@ export default class ExpensesScreen extends React.Component {
                 <ImageBackground
                   source={Rectangle}
                   style={styles.backgroundModalStyle}></ImageBackground>
+                {this.renderFileUri()}
                 <TouchableHighlight
                   style={styles.modalCloseView}
                   onPress={() =>
@@ -215,7 +224,7 @@ export default class ExpensesScreen extends React.Component {
                   underlayColor="rgba(73,182,77,1,0.9)">
                   <Image style={styles.closeImg} source={Close} />
                 </TouchableHighlight>
-                <View  style={styles.buttomIcon}>
+                <View style={styles.buttomIcon}>
                   <TouchableHighlight
                     onPress={() => this.chooseImage()}
                     underlayColor="rgba(73,182,77,1,0.9)">
