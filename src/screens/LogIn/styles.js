@@ -24,6 +24,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     height: ScaleHelpers.CalcHeight(50),
+    width: ScaleHelpers.CalcWidth(100),
+  },
+  logo: {
+    width: ScaleHelpers.CalcWidth(70),
+    height: ScaleHelpers.CalcWidth(30),
   },
   formContainer: {
     justifyContent: 'center',
@@ -37,11 +42,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 25,
     lineHeight: 33,
-  },
-  
-  logo: {
-    width: 200,
-    height: 200,
   },
 
   label: {

@@ -9,6 +9,8 @@ import {
   ImageBackground,
 } from 'react-native';
 import styles from './styles';
+import LogoImage from '../../../assets/images/logo.png'
+
 import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png';
 
 export default class WelcomeScreen extends React.Component {
@@ -32,8 +34,10 @@ export default class WelcomeScreen extends React.Component {
             style={styles.topImageStyle}></ImageBackground>
           <View>
             <View style={styles.titleContainer}>
-              <Text style={styles.title}>COMPTA SMART</Text>
-              <Text style={styles.description}></Text>
+            <Image
+              style={styles.logo}
+              source={LogoImage}
+            />
             </View>
             <View style={styles.buttonView}>
               <TouchableHighlight

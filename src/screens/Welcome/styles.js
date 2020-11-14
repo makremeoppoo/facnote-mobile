@@ -10,11 +10,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: ScaleHelpers.CalcHeight(100),
+    alignItems:"center"
   },
 
   titleContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(10),
+    alignItems: 'center',
+    height: ScaleHelpers.CalcHeight(20),
+    width: ScaleHelpers.CalcWidth(100),
+  },
+  logo: {
+    width: ScaleHelpers.CalcWidth(54),
+    height: ScaleHelpers.CalcWidth(23),
   },
   title: {
     textAlign: 'center',
@@ -24,7 +31,7 @@ const styles = StyleSheet.create({
   },
 
   buttonView: {
-    height: ScaleHelpers.CalcHeight(30),
+    height: ScaleHelpers.CalcHeight(20),
     alignSelf: 'center',
     justifyContent: 'center',
   },

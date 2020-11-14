@@ -1,18 +1,24 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
+import ScaleHelpers from '../../components/scaleHelpers';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-
+padding:0,
+margin:0,
     justifyContent: 'center',
     alignItems: 'center',
   },
   logo: {
-    width: 200,
-    height: 200,
+    width: ScaleHelpers.CalcWidth(70),
+    height: ScaleHelpers.CalcWidth(30),
     margin: 50,
+  },
+  backgroundStyle: {
+    width: "120%",
+    height: '100%',
+    position: 'absolute',
   },
 });
 

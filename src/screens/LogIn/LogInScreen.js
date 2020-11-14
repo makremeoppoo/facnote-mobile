@@ -63,7 +63,7 @@ class LoginScreen extends React.Component {
 
       this.props.login({user: {name, password}});
     } catch (error) {
-      this.props.login({user: {name, password}});
+     // this.props.login({user: {name, password}});
 
       console.log(error.message);
     }
@@ -77,7 +77,6 @@ class LoginScreen extends React.Component {
             source={BackgroundLoginImage}
             style={styles.topImageStyle}></Image>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>COMPTA SMART</Text>
             <Image
               style={styles.logo}
               source={LogoImage}
