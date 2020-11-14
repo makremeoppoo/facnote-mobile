@@ -11,6 +11,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.7.0",
     "@react-navigation/compat": "^5.2.0",
@@ -30,6 +31,7 @@
     "react-native-image-picker": "^2.3.4",
     "react-native-reanimated": "^1.9.0",
     "react-native-responsive-linechart": "^2.1.0",
+    "react-native-responsive-screen": "^1.4.1",
     "react-native-safe-area-context": "^3.1.1",
     "react-native-screens": "^2.9.0",
     "react-native-svg": "^9.7.1",

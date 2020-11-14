@@ -15,9 +15,9 @@ export const logout = () => ({
 function auth(state = initialAuthState, action) {
   switch (action.type) {
     case Login:
-      return { ...state, isLoggedIn: true, user: action.data.user };
+      return { ...state, isLoggedIn: true, user: action.data.user, cabinet: action.data.cabinet };
     case Logout:
-      return { ...state, isLoggedIn: false, user: {} };
+      return { ...state, isLoggedIn: false, user: {}, cabinet: {} };
     default:
       return state;
   }

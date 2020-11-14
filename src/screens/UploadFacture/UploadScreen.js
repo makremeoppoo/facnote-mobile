@@ -9,6 +9,8 @@ import {
   Image,
   Modal,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+
 import ImagePicker from 'react-native-image-picker';
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
@@ -140,21 +142,6 @@ export default class ExpensesScreen extends React.Component {
     });
   };
 
-  /* renderFileData() {
-    if (this.state.fileData) {
-      return (
-        <Image
-          source={{uri: 'data:image/jpeg;base64,' + this.state.fileData}}
-          style={styles.images}
-        />
-      );
-    } else {
-      return (
-        <Image
-          source={require('../../../assets/icons/backArrow.png')}        />
-      );
-    }
-  }*/
 
   renderFileUri() {
     if (this.state.fileUri) {

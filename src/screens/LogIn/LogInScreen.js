@@ -7,24 +7,25 @@ import {
   TextInput,
   ScrollView,
   Image,
-  ImageBackground,
   Keyboard,
 } from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
-import LogoImage from '../../../assets/images/logo.png'
+import LogoImage from '../../../assets/images/logo.png';
 import BackgroundLoginImage from '../../../assets/images/background_connexion.png';
 
 import * as api from '../../services/auth';
 import {login} from '../../redux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: '',
+      name: '',
       password: '',
+      error: '',
       showButtom: true,
     };
   }
@@ -55,16 +56,16 @@ class LoginScreen extends React.Component {
   onPressLogButton = async () => {
     const {name, password} = this.state;
     try {
-      let response = await api.login({name, password});
-
       //check if username is null
-      let username = response.user.username !== null;
-      console.log(response);
+      // let username = response.user.username !== null;
+      let user = await api.login({username: name, password: password});
 
-      this.props.login({user: {name, password}});
+      await AsyncStorage.setItem('accessToken', user[1]);
+
+      let cabinet = await api.getCabinet();
+      this.props.login({user: user[0], cabinet: cabinet});
     } catch (error) {
-     // this.props.login({user: {name, password}});
-
+      this.setState({error: 'Identifiant ou le mot de passe est incorrect !'});
       console.log(error.message);
     }
   };
@@ -72,15 +73,13 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-        <ScrollView >
+        <ScrollView>
           <Image
             source={BackgroundLoginImage}
             style={styles.topImageStyle}></Image>
           <View style={styles.titleContainer}>
-            <Image
-              style={styles.logo}
-              source={LogoImage}
-            />
+            <Image style={styles.logo} source={LogoImage} />
+            <Text style={styles.error}>{this.state.error}</Text>
           </View>
           <View style={styles.formContainer}>
             <View style={styles.inputBlock}>
@@ -89,8 +88,8 @@ class LoginScreen extends React.Component {
               <View style={styles.inputContainer}>
                 <TextInput
                   style={styles.input}
-                  onChangeText={(text) => this.setState({email: text})}
-                  value={this.state.email}
+                  onChangeText={(text) => this.setState({name: text})}
+                  value={this.state.name}
                 />
               </View>
             </View>
@@ -100,6 +99,7 @@ class LoginScreen extends React.Component {
               <View style={styles.inputContainer}>
                 <TextInput
                   style={styles.input}
+                  secureTextEntry={true}
                   onChangeText={(text) => this.setState({password: text})}
                   value={this.state.password}
                 />
@@ -114,12 +114,11 @@ class LoginScreen extends React.Component {
             </View>
           </View>
         </ScrollView>
-        {this.state.showButtom && ( <View >
-            <Text style={styles.buttomText}>
-              mentions légales - CGU
-            </Text>
-          
-        </View>)}
+        {this.state.showButtom && (
+          <View>
+            <Text style={styles.buttomText}>mentions légales - CGU</Text>
+          </View>
+        )}
       </View>
     );
   }

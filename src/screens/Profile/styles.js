@@ -1,8 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor,buttonColor} from '../../AppStyles';
-
+import {textColor, buttonColor} from '../../AppStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,7 +22,7 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(27),
+    height: ScaleHelpers.CalcHeight(25),
   },
   title: {
     fontFamily: 'SegoeUI',
@@ -31,16 +30,24 @@ const styles = StyleSheet.create({
     color: textColor,
     fontSize: ScaleHelpers.CalcHeight(5),
   },
-  cabinetImg: {
-    fontFamily: 'Nunito-Bold',
-    borderRadius: 100,
-    alignSelf: 'center',
-    marginBottom: 10,
-  },
   infoContainer: {
-    marginBottom: ScaleHelpers.CalcWidth(3),
-    marginTop: ScaleHelpers.CalcWidth(3),
+    height: ScaleHelpers.CalcHeight(30),
+    width: ScaleHelpers.CalcWidth(100),
   },
+  cabinetImgContainer:{
+    marginBottom: ScaleHelpers.CalcWidth(7),
+    marginTop: ScaleHelpers.CalcWidth(7),
+
+    alignItems:"center"
+
+  },
+
+  cabinetImg: {
+    width: 200,
+    height: 100,
+    alignSelf: 'center',
+  },
+ 
   CabinerName: {
     fontFamily: 'Nunito-Bold',
 
@@ -57,6 +64,9 @@ const styles = StyleSheet.create({
   },
 
   btnContainer: {
+    height: ScaleHelpers.CalcHeight(30),
+  },
+  btn: {
     //Its for IOS
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
@@ -64,7 +74,7 @@ const styles = StyleSheet.create({
     // its for android
     elevation: 5,
     position: 'relative',
-    marginTop: ScaleHelpers.CalcHeight(3),
+    marginTop: ScaleHelpers.CalcHeight(5),
     marginBottom: ScaleHelpers.CalcHeight(1),
 
     width: ScaleHelpers.CalcWidth(70),

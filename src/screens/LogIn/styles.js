@@ -3,7 +3,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
-import {textColor,buttonColor} from '../../AppStyles';
+import {textColor, buttonColor} from '../../AppStyles';
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     resizeMode: 'stretch',
-    position:"absolute"
+    position: 'absolute',
   },
 
   titleContainer: {
@@ -26,6 +26,15 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(50),
     width: ScaleHelpers.CalcWidth(100),
   },
+  error: {
+    fontFamily: 'Nunito-ExtraBold',
+    textAlign: 'center',
+    color: 'red',
+    marginTop: ScaleHelpers.CalcHeight(3),
+    maxHeight: ScaleHelpers.CalcHeight(10),
+    fontWeight: 'bold',
+    fontSize: 15,
+  },
   logo: {
     width: ScaleHelpers.CalcWidth(70),
     height: ScaleHelpers.CalcWidth(30),
@@ -33,7 +42,7 @@ const styles = StyleSheet.create({
   formContainer: {
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(40),
-    paddingBottom:ScaleHelpers.CalcHeight(18),
+    paddingBottom: ScaleHelpers.CalcHeight(18),
   },
 
   title: {
