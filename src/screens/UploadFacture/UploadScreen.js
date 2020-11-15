@@ -12,6 +12,7 @@ import {
 
 import ImagePicker from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
@@ -108,28 +109,41 @@ export default class ExpensesScreen extends React.Component {
 
   renderFileUri() {
     return (
-      <View style={styles.photoContainer}>
-        <View>
+      <ScrollView>
+        <View style={styles.photoContainer}>
           {this.state.fileUri != '' && (
-            <Image style={styles.ImgPlus} source={{uri: this.state.fileUri}} />
+            <View style={styles.viewImg}>
+              <Image
+                style={styles.ImgPlus}
+                source={{uri: this.state.fileUri}}
+              />
+            </View>
           )}
-          {/*Showing the data of selected Multiple files*/}
+        
           {this.state.multiFiles.map((item, key) => (
-            <View key={key}>
-              <Text style={styles.textStyle}>
-                File Name: {item.name ? item.name : ''}
-                {'\n'}
-                Type: {item.type ? item.type : ''}
-                {'\n'}
-                File Size: {item.size ? item.size : ''}
-                {'\n'}
-                URI: {item.uri ? item.uri : ''}
-                {'\n'}
-              </Text>
+            <View key={key} style={styles.viewImg}>
+              {item.type == 'image/jpeg' ? (
+                <Image style={styles.ImgPlus} source={{uri: item.uri}} />
+              ) : (
+                <Icon
+                  style={{
+                    height: '90%',
+                    width: '90%',
+                    backgroundColor: 'white',
+                    textAlign: 'center',
+                    paddingTop: '30%',
+                    margin:"3%",
+                    borderRadius: 10,
+                  }}
+                  name={'ios-document-attach-sharp'}
+                  size={32}
+                  color={'rgb(92,117,254)'}
+                />
+              )}
             </View>
           ))}
         </View>
-      </View>
+      </ScrollView>
     );
   }
 

@@ -43,21 +43,28 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(15),
   },
   photoContainer: {
-    alignSelf: 'center',
-    position: 'absolute',
-    fontSize: 12,
+    flex: 1,
     flexDirection: 'row',
+    paddingTop: ScaleHelpers.CalcHeight(20),
+    justifyContent: 'flex-start',
+    width: ScaleHelpers.CalcWidth(80),
+    height: ScaleHelpers.CalcHeight(100),
+    flexWrap: 'wrap',
+  },
+  viewImg: {
+    width: ScaleHelpers.CalcWidth(25),
+    height: ScaleHelpers.CalcWidth(25),
     justifyContent: 'center',
     alignItems: 'center',
-    margin:ScaleHelpers.CalcHeight(5),
-    width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(40),
+    textAlign:'center'
   },
-  ImgPlus: {
-    borderRadius: ScaleHelpers.CalcWidth(3),
 
+  ImgPlus: {
+    margin: ScaleHelpers.CalcWidth(3),
+    borderRadius: ScaleHelpers.CalcWidth(3),
     width: ScaleHelpers.CalcWidth(20),
     height: ScaleHelpers.CalcWidth(20),
+    backgroundColor: 'white',
   },
   backgroundModalStyle: {
     width: ScaleHelpers.CalcWidth(105),
