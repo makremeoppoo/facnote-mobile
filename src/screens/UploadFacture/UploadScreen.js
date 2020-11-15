@@ -9,14 +9,14 @@ import {
   Image,
   Modal,
 } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
 
 import ImagePicker from 'react-native-image-picker';
+import DocumentPicker from 'react-native-document-picker';
+
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnite from '../../../assets/images/Indemnite.png';
-import AddPhoto from '../../../assets/images/addPhoto.png';
 
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import Rectangle from '../../../assets/images/Rectangle.png';
@@ -36,6 +36,7 @@ export default class ExpensesScreen extends React.Component {
       },
       fileData: '',
       fileUri: '',
+      multiFiles: [],
       showModal: false,
     };
     this.actionSheet = createRef();
@@ -47,41 +48,33 @@ export default class ExpensesScreen extends React.Component {
     //this.actionSheet.current.show();
   };
 
-  chooseImage = () => {
-    let options = {
-      title: 'Select Image',
-      customButtons: [
-        {name: 'customOptionKey', title: 'Choose Photo from Custom Option'},
-      ],
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-    ImagePicker.showImagePicker(options, (response) => {
-      console.log('Response = ', response);
-
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-        alert(response.customButton);
-      } else {
-        const source = {uri: response.uri};
-
-        // You can also display the image using data:
-        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
-        // alert(JSON.stringify(response));s
-        console.log('response', JSON.stringify(response));
-        this.setState({
-          filePath: response,
-          fileData: response.data,
-          fileUri: response.uri,
-        });
+  chooseImage = async () => {
+    try {
+      const results = await DocumentPicker.pickMultiple({
+        type: [DocumentPicker.types.images],
+        //There can me more options as well find above
+      });
+      for (const res of results) {
+        //Printing the log realted to the file
+        console.log('res : ' + JSON.stringify(res));
+        console.log('URI : ' + res.uri);
+        console.log('Type : ' + res.type);
+        console.log('File Name : ' + res.name);
+        console.log('File Size : ' + res.size);
       }
-    });
+      //Setting the state to show multiple file attributes
+      this.setState({multiFiles: results});
+    } catch (err) {
+      //Handling any exception (If any)
+      if (DocumentPicker.isCancel(err)) {
+        //If user canceled the document selection
+        console.log('Canceled from multiple doc picker');
+      } else {
+        //For Unknown Error
+        console.log('Unknown Error: ' + JSON.stringify(err));
+        throw err;
+      }
+    }
   };
 
   launchCamera = () => {
@@ -113,49 +106,31 @@ export default class ExpensesScreen extends React.Component {
     });
   };
 
-  launchImageLibrary = () => {
-    let options = {
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-    ImagePicker.launchImageLibrary(options, (response) => {
-      console.log('Response = ', response);
-
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-        alert(response.customButton);
-      } else {
-        const source = {uri: response.uri};
-        console.log('response', JSON.stringify(response));
-        this.setState({
-          filePath: response,
-          fileData: response.data,
-          fileUri: response.uri,
-        });
-      }
-    });
-  };
-
-
   renderFileUri() {
-    if (this.state.fileUri) {
-      return (
-        <View
-          style={styles.photoContainer}>
-         
+    return (
+      <View style={styles.photoContainer}>
+        <View>
+          {this.state.fileUri != '' && (
             <Image style={styles.ImgPlus} source={{uri: this.state.fileUri}} />
-            <Image style={styles.ImgPlus} source={AddPhoto} />
+          )}
+          {/*Showing the data of selected Multiple files*/}
+          {this.state.multiFiles.map((item, key) => (
+            <View key={key}>
+              <Text style={styles.textStyle}>
+                File Name: {item.name ? item.name : ''}
+                {'\n'}
+                Type: {item.type ? item.type : ''}
+                {'\n'}
+                File Size: {item.size ? item.size : ''}
+                {'\n'}
+                URI: {item.uri ? item.uri : ''}
+                {'\n'}
+              </Text>
+            </View>
+          ))}
         </View>
-      );
-    } else {
-      return null;
-    }
+      </View>
+    );
   }
 
   render() {
@@ -176,10 +151,11 @@ export default class ExpensesScreen extends React.Component {
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.btnContainer}
-            onPress={() => this.props.navigation.navigate('Indemnites')}
+            onPress={() => this.setTypeFacture(1)}
             underlayColor="rgba(73,182,77,1,0.9)">
-            <Image style={styles.Img} source={Indemnite} />
+            <Image style={styles.Img} source={AvanceDeFrais} />
           </TouchableHighlight>
+
           <TouchableHighlight
             style={styles.btnContainer}
             onPress={() => this.setTypeFacture(1)}
@@ -188,9 +164,9 @@ export default class ExpensesScreen extends React.Component {
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.btnContainer}
-            onPress={() => this.setTypeFacture(1)}
+            onPress={() => this.props.navigation.navigate('Indemnites')}
             underlayColor="rgba(73,182,77,1,0.9)">
-            <Image style={styles.Img} source={AvanceDeFrais} />
+            <Image style={styles.Img} source={Indemnite} />
           </TouchableHighlight>
 
           <Modal

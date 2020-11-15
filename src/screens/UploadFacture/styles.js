@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    margin:ScaleHelpers.CalcHeight(5),
     width: ScaleHelpers.CalcWidth(100),
     height: ScaleHelpers.CalcHeight(40),
   },
@@ -106,6 +107,14 @@ const styles = StyleSheet.create({
     margin: ScaleHelpers.CalcWidth(4),
     width: ScaleHelpers.CalcWidth(15),
     height: ScaleHelpers.CalcWidth(15),
+  },
+  textStyle: {
+    width: ScaleHelpers.CalcWidth(100),
+    height: ScaleHelpers.CalcHeight(15),
+    fontFamily: 'Nunito-ExtraBold',
+    textAlign: 'center',
+    color: 'white',
+    fontSize: 13,
   },
 });
 
