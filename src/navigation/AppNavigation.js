@@ -1,14 +1,13 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {Image, View, Platform, Text, TouchableHighlight} from 'react-native';
+import {View, Platform} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
 import LogInScreen from '../screens/LogIn/LogInScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
-import PortfolioScreen from '../screens/Portfolio/PortfolioScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
 
@@ -164,7 +163,6 @@ const mainScreensNavigator = () => {
         };
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Portfolio" component={PortfolioScreen} />
       <Stack.Screen name="Expenses" component={ExpensesScreen} />
     </Stack.Navigator>
   );
