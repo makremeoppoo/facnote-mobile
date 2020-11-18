@@ -23,6 +23,8 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {useSelector} from 'react-redux';
 import HomeImg from '../../assets/icons/home.png';
+import HomeBleu from '../../assets/icons/HomeBleu.png';
+
 import FactureImgActive from '../../assets/icons/Camera.png';
 import FactureImg from '../../assets/icons/photo-white.png';
 
@@ -93,7 +95,11 @@ const TabNavigator = () => {
         component={HomeScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem focused={focused} label={'Accueil'} src={HomeImg} />
+            <TabBarItem
+              focused={focused}
+              label={'Accueil'}
+              src={focused ? HomeBleu : HomeImg}
+            />
           ),
         }}
       />
@@ -115,8 +121,10 @@ const TabNavigator = () => {
         component={ProfileScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem focused={focused} label={'Cabinet'} 
-            src={focused ? CabinetImgActive : CabinetImg}
+            <TabBarItem
+              focused={focused}
+              label={'Cabinet'}
+              src={focused ? CabinetImgActive : CabinetImg}
             />
           ),
         }}

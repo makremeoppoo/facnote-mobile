@@ -28,14 +28,14 @@ class TabBarItem extends React.Component {
         />
         <Text
           style={{
-            fontFamily: 'Nunito-Light',
+            fontFamily: 'Nunito-SemiBold',
             color:
               focused && label == 'Déposer facture'
                 ? 'white'
                 : focused
                 ? 'rgb(92,117,254)'
                 : 'rgb(112, 112, 112)',
-            fontSize: ScaleHelper.CalcWidth(3),
+            fontSize: ScaleHelper.CalcWidth(2.8),
           }}>
           {label}
         </Text>

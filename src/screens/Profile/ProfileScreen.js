@@ -4,7 +4,6 @@ import {
   View,
   TouchableHighlight,
   Text,
-  Image,
   ScrollView,
   Linking,
   ImageBackground,
