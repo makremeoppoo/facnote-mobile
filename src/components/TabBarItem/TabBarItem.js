@@ -13,10 +13,7 @@ class TabBarItem extends React.Component {
           padding: 10,
           borderRadius: 40,
 
-          backgroundColor:
-            focused && label == 'Déposer facture'
-              ? 'rgb(92,117,254)'
-              : 'transparent',
+          backgroundColor: 'transparent',
           alignItems: 'center',
         }}>
         <Image
@@ -29,12 +26,7 @@ class TabBarItem extends React.Component {
         <Text
           style={{
             fontFamily: 'Nunito-SemiBold',
-            color:
-              focused && label == 'Déposer facture'
-                ? 'white'
-                : focused
-                ? 'rgb(92,117,254)'
-                : 'rgb(112, 112, 112)',
+            color: focused ? 'rgb(92,117,254)' : 'rgb(112, 112, 112)',
             fontSize: ScaleHelper.CalcWidth(2.8),
           }}>
           {label}

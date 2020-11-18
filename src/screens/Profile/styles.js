@@ -1,5 +1,5 @@
 /* eslint-disable comma-dangle */
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
 import {textColor, buttonColor} from '../../AppStyles';
 

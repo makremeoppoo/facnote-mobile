@@ -10,6 +10,7 @@ import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
+import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
@@ -31,6 +32,11 @@ import FactureImg from '../../assets/icons/photo-white.png';
 import CabinetImg from '../../assets/icons/Cabinet.png';
 import CabinetImgActive from '../../assets/icons/cabinetActive.png';
 
+import IndicateurImg from '../../assets/icons/Indicateur.png';
+import IndicateurImgActive from '../../assets/icons/Indicateur.png';
+
+import PlusImg from '../../assets/icons/Plus_white.png';
+import PlusImgActive from '../../assets/icons/plusBlue.png';
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -104,6 +110,19 @@ const TabNavigator = () => {
         }}
       />
       <BottomTabNavigator.Screen
+        name="Indicateur"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem
+              focused={focused}
+              label={'Indicateur'}
+              src={focused ? IndicateurImg : IndicateurImg}
+            />
+          ),
+        }}
+      />
+      <BottomTabNavigator.Screen
         name="Factures"
         component={ExpensesScreen}
         options={{
@@ -125,6 +144,19 @@ const TabNavigator = () => {
               focused={focused}
               label={'Cabinet'}
               src={focused ? CabinetImgActive : CabinetImg}
+            />
+          ),
+        }}
+      />
+      <BottomTabNavigator.Screen
+        name="Plus"
+        component={MoreScreen}
+        options={{
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem
+              focused={focused}
+              label={'Plus'}
+              src={focused ? PlusImgActive : PlusImg}
             />
           ),
         }}
