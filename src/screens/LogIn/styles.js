@@ -73,14 +73,14 @@ const styles = StyleSheet.create({
 
   inputContainer: {
     paddingLeft: 10,
-    height: ScaleHelpers.CalcHeight(6),
+    height: ScaleHelpers.CalcHeight(7),
     width: ScaleHelpers.CalcWidth(60),
     backgroundColor: 'white',
     borderRadius: 20,
     alignSelf: 'center',
   },
   inputBlock: {
-    height: ScaleHelpers.CalcHeight(10),
+    height: ScaleHelpers.CalcHeight(12),
   },
   buttonStyle: {
     width: ScaleHelpers.CalcWidth(40),

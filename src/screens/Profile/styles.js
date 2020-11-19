@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(25),
+    height: ScaleHelpers.CalcHeight(30),
   },
   title: {
     fontFamily: 'SegoeUI',
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     fontSize: ScaleHelpers.CalcHeight(5),
   },
   infoContainer: {
-    height: ScaleHelpers.CalcHeight(30),
+    height: ScaleHelpers.CalcHeight(25),
     width: ScaleHelpers.CalcWidth(100),
   },
   cabinetImgContainer:{
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     // its for android
     elevation: 5,
     position: 'relative',
-    marginTop: ScaleHelpers.CalcHeight(5),
-    marginBottom: ScaleHelpers.CalcHeight(1),
+    marginTop: ScaleHelpers.CalcHeight(2),
+    marginBottom: ScaleHelpers.CalcHeight(2),
 
     width: ScaleHelpers.CalcWidth(70),
     borderRadius: 10,

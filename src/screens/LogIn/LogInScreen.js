@@ -55,11 +55,12 @@ class LoginScreen extends React.Component {
 
   onPressLogButton = async () => {
     const {name, password} = this.state;
+    this.props.login({user: null, cabinet: null});
+    return;
     try {
       //check if username is null
       // let username = response.user.username !== null;
       let user = await api.login({username: name, password: password});
-
       await AsyncStorage.setItem('accessToken', user[1]);
 
       let cabinet = await api.getCabinet();

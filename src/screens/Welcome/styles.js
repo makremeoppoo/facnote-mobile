@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 
   buttonView: {
-    height: ScaleHelpers.CalcHeight(20),
+    height: ScaleHelpers.CalcHeight(15),
     alignSelf: 'center',
     justifyContent: 'center',
   },

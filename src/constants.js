@@ -5,7 +5,7 @@ export const API_URL = 'http://odyssee.facnote.com';
 
 //API End Points
 export const REGISTER = `/auth/register`;
-export const LOGIN = `/api/auth`;
+export const LOGIN = `/api/login`;
 export const GETCABINET = `/api/v1/society`;
 
 export const UPDATE_PROFILE = `/user`;
