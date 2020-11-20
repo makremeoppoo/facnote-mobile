@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
      shadowOpacity: 0.2,
      // its for android
      elevation: 5,
-     width: ScaleHelpers.CalcWidth(70),
+     width: ScaleHelpers.CalcWidth(80),
      height: ScaleHelpers.CalcHeight(15),
      marginBottom: ScaleHelpers.CalcHeight(1),
 
@@ -58,7 +58,13 @@ const styles = StyleSheet.create({
      padding: 10,
   },
  
- 
+  cabinetrowContainer: {
+    flexDirection: 'column',
+    alignSelf: 'center',
+    width : ScaleHelpers.CalcWidth(50),
+
+  },
+
   itemContainer: {
     flexDirection: 'row',
     padding: ScaleHelpers.CalcHeight(1),
@@ -86,6 +92,8 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'column',
     alignSelf: 'center',
+    width : ScaleHelpers.CalcWidth(70),
+
   },
 
   itemTitle: {

@@ -40,7 +40,7 @@ export default class MoreScreen extends React.Component {
                 style={styles.leftArrow}
                 source={require('../../../assets/icons/profiel.png')}
               />
-              <View style={styles.rowContainer}>
+              <View style={styles.cabinetrowContainer}>
                 <Text style={styles.itemTitle}>Nom de la SOCIETE</Text>
                 <Text style={styles.itemTitle2}>Voire SOCIETE</Text>
               </View>
