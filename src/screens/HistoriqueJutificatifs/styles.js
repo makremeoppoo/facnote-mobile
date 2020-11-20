@@ -9,35 +9,43 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: ScaleHelpers.CalcHeight(100),
-    alignItems:"center"
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
-  topImageStyle: {
-    width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(100)-70,
+  itemContainer: {
+    flexDirection: 'row',
+    padding: ScaleHelpers.CalcHeight(1),
+    //Its for IOS
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    // its for android
+    elevation: 5,
+    position: 'relative',
+    marginTop: ScaleHelpers.CalcHeight(2),
+    marginBottom: ScaleHelpers.CalcHeight(2),
+
+    width: ScaleHelpers.CalcWidth(30),
+    height: ScaleHelpers.CalcHeight(5),
+
+    borderRadius: 10,
+    backgroundColor: buttonColor,
+    borderColor: 'rgba(214, 214, 214, 0.4)',
+    borderWidth: 1,
     alignSelf: 'center',
     justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    resizeMode: 'stretch',
-    position:"absolute"
+    padding: 10,
   },
-  textContainer: {
-    height: ScaleHelpers.CalcHeight(100),
-    paddingTop:ScaleHelpers.CalcHeight(10),
-    width: ScaleHelpers.CalcWidth(90),
-    justifyContent: 'center',
+  rowContainer: {
+    flexDirection: 'column',
+    alignSelf: 'center',
   },
-  textBold: {
-    textAlign: "left",
-    fontFamily: 'Nunito-Bold',
+  itemTitle: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    fontFamily:"SegoeUI-Light",
     color: textColor,
-    fontSize: ScaleHelpers.CalcHeight(4),
-  },
-  text: {
-    textAlign: "left",
-    fontFamily: 'Nunito-SemiBold',
-    color: textColor,
-    fontSize: ScaleHelpers.CalcHeight(2),
+    
+
   },
 });
 

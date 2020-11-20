@@ -1,11 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {View, Text, ImageBackground} from 'react-native';
+import {View, Text, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
 
 import styles from './styles';
-import Background from '../../../assets/images/background-accueil-provisoir-2.png';
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -16,9 +15,7 @@ class HomeScreen extends React.Component {
   componentDidMount() {
     this.initData();
   }
-  initData = async () => {
-
-  };
+  initData = async () => {};
 
   renderData = ({item}) => <Text style={{marginBottom: 2}}>{item}</Text>;
 
@@ -26,14 +23,17 @@ class HomeScreen extends React.Component {
     const {user} = this.props;
     return (
       <View style={styles.container}>
-        <ImageBackground
-          source={Background}
-          style={styles.topImageStyle}></ImageBackground>
-        <View style={styles.textContainer}>
-          <Text style={styles.textBold}>Nom de la Société</Text>
-          <Text style={styles.text}>
-          </Text>
-        </View>
+        <TouchableHighlight
+          onPress={() =>
+            this.props.navigation.navigate('HistoriqueJutificatifs')
+          }
+          underlayColor="rgba(73,182,77,1,0.9)">
+          <View style={styles.itemContainer}>
+            <View style={styles.rowContainer}>
+              <Text style={styles.itemTitle}>Filter</Text>
+            </View>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
