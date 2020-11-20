@@ -33,7 +33,7 @@ export default class MoreScreen extends React.Component {
             <Text style={styles.headerText}>Voir mon profile</Text>
           </View>
           <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('News')}
+            onPress={() => this.props.navigation.navigate('Cabinet')}
             underlayColor="rgba(73,182,77,1,0.9)">
             <View style={styles.cabinetCard}>
               <Image
@@ -49,7 +49,7 @@ export default class MoreScreen extends React.Component {
 
           <View style={styles.content}>
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('News')}
+              onPress={() => this.props.navigation.navigate('HistoriqueJutificatifs')}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
@@ -61,7 +61,7 @@ export default class MoreScreen extends React.Component {
               </View>
             </TouchableHighlight>
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('Notifications')}
+              onPress={() => this.props.navigation.navigate('HistoriqueJutificatifs')}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>

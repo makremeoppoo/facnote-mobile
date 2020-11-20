@@ -10,11 +10,15 @@ import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
+import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
+
 import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
 import MenuImage from '../components/MenuImage/MenuImage';
+import BackButton from '../components/BackButton/BackButton';
+
 import TabBarItem from '../components/TabBarItem/TabBarItem';
 
 import {createStackNavigator} from '@react-navigation/stack';
@@ -211,22 +215,24 @@ const mainScreensNavigator = () => {
 const MainNavigator = () => {
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerTitleStyle: {
-          fontSize: 17,
-          fontWeight: 'bold',
-          textAlign: 'center',
-          alignSelf: 'center',
-          color: 'white',
-          flex: 1,
-        },
-        headerStyle: {
-          backgroundColor: '#4a7bd0',
-          elevation: 0,
-          shadowColor: 'transparent',
-          borderBottomWidth: 0,
-        },
-        headerRight: () => <View />,
+      screenOptions={({navigation}) => {
+        return {
+          headerStyle: {
+            backgroundColor:
+              'linear-gradient(0.25turn,rgb(78,199,245), rgb(92,117,254))',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontFamily: 'SegoeUI',
+          },
+          headerLeft: () => (
+            <BackButton
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+          ),
+        };
       }}>
       <Stack.Screen
         name="Nav"
@@ -242,6 +248,21 @@ const MainNavigator = () => {
         }}
         name="Indemnites"
         component={IndemnitesScreen}
+      />
+      <Stack.Screen
+        options={{
+          title: 'Historique des justifcatifs',
+          headerStyle: {
+            backgroundColor:
+              'linear-gradient(0.25turn,rgb(78,199,245), rgb(92,117,254))',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontFamily: 'SegoeUI',
+          },
+        }}
+        name="HistoriqueJutificatifs"
+        component={HistoriqueJutificatifsScreen}
       />
     </Stack.Navigator>
   );
