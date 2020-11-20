@@ -37,7 +37,7 @@ import CabinetImg from '../../assets/icons/Cabinet.png';
 import CabinetImgActive from '../../assets/icons/cabinetActive.png';
 
 import IndicateurImg from '../../assets/icons/Indicateur.png';
-import IndicateurImgActive from '../../assets/icons/Indicateur.png';
+import IndicateurImgActive from '../../assets/icons/IndicateurBleu.png';
 
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
@@ -121,7 +121,7 @@ const TabNavigator = () => {
             <TabBarItem
               focused={focused}
               label={'Indicateur'}
-              src={focused ? IndicateurImg : IndicateurImg}
+              src={focused ? IndicateurImgActive : IndicateurImg}
             />
           ),
         }}
@@ -254,7 +254,7 @@ const MainNavigator = () => {
           title: 'Historique des justifcatifs',
           headerStyle: {
             backgroundColor:
-              'linear-gradient(0.25turn,rgb(78,199,245), rgb(92,117,254))',
+              '#5792fb',
           },
           headerTintColor: '#fff',
           headerTitleStyle: {

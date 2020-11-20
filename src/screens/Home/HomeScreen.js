@@ -19,7 +19,6 @@ class HomeScreen extends React.Component {
   initData = async () => {
     console.log('user', this.props.user);
 
-    await this.setState({user: this.props.user.user});
   };
 
   renderData = ({item}) => <Text style={{marginBottom: 2}}>{item}</Text>;
@@ -34,7 +33,6 @@ class HomeScreen extends React.Component {
         <View style={styles.textContainer}>
           <Text style={styles.textBold}>Nom de la Société</Text>
           <Text style={styles.text}>
-            Hello {this.props.user && user.user.prenom} 👋
           </Text>
         </View>
       </View>
