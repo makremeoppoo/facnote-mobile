@@ -1146,6 +1146,6 @@ __d(function(g,r,i,a,m,e,d){var n=r(d[0]),o=r(d[1]);Object.defineProperty(e,"__e
 __d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/assets/icons",width:32,height:32,scales:[1],hash:"76dddc00d5e1b31ca1b6af91342d2ff1",name:"binocular",type:"png"})},1140,[185]);
 __d(function(g,r,i,a,m,e,d){m.exports=r(d[0]).registerAsset({__packager_asset:!0,httpServerLocation:"/assets/assets/icons",width:256,height:256,scales:[1],hash:"f00664434fd6ea4df4d6a49444ffce42",name:"search",type:"png"})},1141,[185]);
 __d(function(g,r,i,a,m,e,d){'use strict';function t(t){return function(n){var u=n.dispatch,c=n.getState;return function(n){return function(f){return'function'==typeof f?f(u,c,t):n(f)}}}}e.__esModule=!0;var n=t();n.withExtraArgument=t,e.default=n},1142,[]);
-__d(function(n,p,a,e,i,c,d){i.exports={name:"FinanceApp",displayName:"FinanceApp"}},1143,[]);
+__d(function(n,p,a,e,i,c,d){i.exports={name:"ComptaSmart",displayName:"ComptaSmart"}},1143,[]);
 __r(89);
 __r(0);

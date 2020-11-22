@@ -4,7 +4,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '12.0'
 
 target 'ComptaSmart' do
-  # Pods for FinanceApp
+  # Pods for ComptaSmart
   config = use_native_modules!
   use_react_native!(:path => config["reactNativePath"])
 
@@ -24,7 +24,7 @@ target 'ComptaSmart' do
 end
 
 target 'ComptaSmart-tvOS' do
-  # Pods for FinanceApp-tvOS
+  # Pods for ComptaSmart-tvOS
 
   target 'ComptaSmart-tvOSTests' do
     inherit! :search_paths
