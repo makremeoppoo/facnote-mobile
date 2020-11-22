@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {View, Platform} from 'react-native';
+import {View, Platform, Image} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
@@ -17,6 +17,8 @@ import MoreScreen from '../screens/More/MoreScreen';
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
 import MenuImage from '../components/MenuImage/MenuImage';
+import NavigationHeader from '../components/NavigationHeader/NavigationHeader';
+
 import BackButton from '../components/BackButton/BackButton';
 
 import TabBarItem from '../components/TabBarItem/TabBarItem';
@@ -41,6 +43,8 @@ import IndicateurImgActive from '../../assets/icons/IndicateurBleu.png';
 
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
+import BackgroundNavigation from '../../assets/images/CabinetBackground1.png';
+
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
@@ -250,16 +254,17 @@ const MainNavigator = () => {
         component={IndemnitesScreen}
       />
       <Stack.Screen
-        options={{
-          title: 'Historique des justifcatifs',
-          headerStyle: {
-            backgroundColor:
-              '#5792fb',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontFamily: 'SegoeUI',
-          },
+        options={({navigation}) => {
+          return {
+            header: () => (
+              <NavigationHeader
+                onPress={() => {
+                  navigation.goBack();
+                }}
+                title={'Historique des justifcatifs'}
+              />
+            ),
+          };
         }}
         name="HistoriqueJutificatifs"
         component={HistoriqueJutificatifsScreen}
