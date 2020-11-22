@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ComptaSmartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ComptaSmartTests.m */; };
-		076C8FD23FF7CE3545A5EE28 /* libPods-FinanceApp-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA36924706B44C4F74F43A1 /* libPods-FinanceApp-tvOS.a */; };
 		0A2038875F894AAFAA555464 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */; };
 		0B59F8C8B48D4BE19B962978 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C81A41658E7455AA905810D /* FontAwesome5_Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -18,19 +17,18 @@
 		1882B054FB8F4DFD9CB035BD /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D5D9087687493389AEFBDC /* MaterialIcons.ttf */; };
 		1D05820FD0F0459EB348B66D /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABD3DB8EE7154510B7CD2D3C /* Nunito-BoldItalic.ttf */; };
 		2B2803E936474EED9A9AF6D4 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D20E6433C494EE99CBF312D /* Nunito-Regular.ttf */; };
+		2C89B987B3A6E574413F2F98 /* libPods-ComptaSmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ComptaSmartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ComptaSmartTests.m */; };
-		309D9B235A6C94180106CC96 /* libPods-FinanceApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA4106C74696641BC82D5831 /* libPods-FinanceApp-tvOSTests.a */; };
-		4129537CE71E4BAB1BFD6A20 /* libPods-FinanceApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB71DAB3B798C8215AA2D2F /* libPods-FinanceApp.a */; };
+		4158EA8DF2FD0FDC7D94B56D /* libPods-ComptaSmart-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */; };
 		471BE29D0F5B4CE78A287217 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA637AB8C4A47DE8ECEAC96 /* Nunito-Bold.ttf */; };
 		4C7206D38E384C26A72E742C /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 701EFB948ED24506BD9A2A85 /* Nunito-ExtraBold.ttf */; };
 		515D2C4686D44B3D9AA6ACEB /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */; };
 		537E7C1959DD4B7D8D5FDFE7 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C45D2FA7DAF41089493279E /* Nunito-SemiBold.ttf */; };
 		59231C06B4FF414BA945F31A /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFA21DFD88EE445E928E8064 /* Nunito-ExtraLightItalic.ttf */; };
 		5DA08049BE204D3CA34BFBEA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBA8516FE25945E79B4A0D5B /* Octicons.ttf */; };
-		5F38EDAA98D69E25CFFCDAB9 /* libPods-FinanceApp-FinanceAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6217F2579A54671F1F77AD73 /* libPods-FinanceApp-FinanceAppTests.a */; };
 		6872CF6940064F67874DD088 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 488102EDE06D4FF2A02E25B1 /* Nunito-Light.ttf */; };
 		6B5C12C3A75848F09F5769E2 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5F781E78F3D44BC99655CD3 /* EvilIcons.ttf */; };
 		6EE1A2833BF34E0499840B60 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17D727DCF4C643079583F7F8 /* Nunito-Black.ttf */; };
@@ -42,10 +40,12 @@
 		A5BF49D86479411F94216CB0 /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D5FE119340589A3A3867 /* Nunito-Italic.ttf */; };
 		B4220A65C0054DD3801FDBF7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134007E11AF34C6AB246F4D4 /* SimpleLineIcons.ttf */; };
 		B63B29C1E856404CB707C6BD /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EF8D8520834175B1065E15 /* AntDesign.ttf */; };
+		C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */; };
 		C5C8156B7EDC4E4CAC06226D /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A267E8B02D445F4911574CD /* Fontisto.ttf */; };
 		D3C1B4407B49491CA77B82D3 /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */; };
 		DE20BFE099A64F23924627C2 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9E8F1D3E4A8AAAA32324 /* FontAwesome5_Solid.ttf */; };
 		E1C96993776443819576ACF6 /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0424B895BBF4410F8CF2CF7D /* Nunito-ExtraBoldItalic.ttf */; };
+		E2C18FE658C6A93F060C8410 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */; };
 		E66835756CA846BBB5E15E61 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5DE2C49B5E54A689EC1AAAD /* Ionicons.ttf */; };
 		ED81DE9185B740FA90E1A879 /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */; };
 		F37ABB4F17084B6D812609E2 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89F183DB9C9345F8959B5A06 /* Foundation.ttf */; };
@@ -58,14 +58,14 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = FinanceApp;
+			remoteInfo = ComptaSmart;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "FinanceApp-tvOS";
+			remoteInfo = "ComptaSmart-tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -77,59 +77,57 @@
 		01526EB8C01E43F7A39BCBB6 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		0424B895BBF4410F8CF2CF7D /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraBoldItalic.ttf"; path = "../assets/fonts/Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		069FD82E81814CE2920DDBBD /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		08F11907C6927F6325248F46 /* Pods-FinanceApp-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceApp-tvOS/Pods-FinanceApp-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0DDB9E8F1D3E4A8AAAA32324 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		134007E11AF34C6AB246F4D4 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ComptaSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComptaSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = FinanceApp/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = FinanceApp/AppDelegate.m; sourceTree = "<group>"; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ComptaSmart/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ComptaSmart/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FinanceApp/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = FinanceApp/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = FinanceApp/main.m; sourceTree = "<group>"; };
-		13D55803A1D54A23AB6871C0 /* Pods-FinanceApp-FinanceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp-FinanceAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceApp-FinanceAppTests/Pods-FinanceApp-FinanceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ComptaSmart/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ComptaSmart/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ComptaSmart/main.m; sourceTree = "<group>"; };
 		17D3C46B24CA699900A2B510 /* ComptaSmart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-Bridging-Header.h"; sourceTree = "<group>"; };
 		17D727DCF4C643079583F7F8 /* Nunito-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Black.ttf"; path = "../assets/fonts/Nunito-Black.ttf"; sourceTree = "<group>"; };
+		2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-ComptaSmartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* ComptaSmart-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComptaSmart-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* ComptaSmart-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ComptaSmart-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D20E6433C494EE99CBF312D /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart.debug.xcconfig"; sourceTree = "<group>"; };
 		30A2D5FE119340589A3A3867 /* Nunito-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Italic.ttf"; path = "../assets/fonts/Nunito-Italic.ttf"; sourceTree = "<group>"; };
-		30B3E2B1A2127CAF63EA5368 /* Pods-FinanceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAppTests/Pods-FinanceAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-LightItalic.ttf"; path = "../assets/fonts/Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
-		4732F55C634E6AB40831D93B /* Pods-FinanceAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceAppTests/Pods-FinanceAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		488102EDE06D4FF2A02E25B1 /* Nunito-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Light.ttf"; path = "../assets/fonts/Nunito-Light.ttf"; sourceTree = "<group>"; };
 		4C81A41658E7455AA905810D /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
 		5368ACF1A9124A858061977F /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraLight.ttf"; path = "../assets/fonts/Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
 		5911C70BC71249BBA736E53B /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
-		5AB71DAB3B798C8215AA2D2F /* libPods-FinanceApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinanceApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C45D2FA7DAF41089493279E /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBold.ttf"; path = "../assets/fonts/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		5DA637AB8C4A47DE8ECEAC96 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Bold.ttf"; path = "../assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
-		6217F2579A54671F1F77AD73 /* libPods-FinanceApp-FinanceAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinanceApp-FinanceAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBoldItalic.ttf"; path = "../assets/fonts/Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart.release.xcconfig"; sourceTree = "<group>"; };
 		701EFB948ED24506BD9A2A85 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraBold.ttf"; path = "../assets/fonts/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
-		7BDA83F38B8AE595EA84AFF8 /* Pods-FinanceApp-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceApp-tvOSTests/Pods-FinanceApp-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		8792AD9D190E94DF4DAC5F78 /* Pods-FinanceApp-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceApp-tvOS/Pods-FinanceApp-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-ComptaSmartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests.release.xcconfig"; sourceTree = "<group>"; };
 		89F183DB9C9345F8959B5A06 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		91D4AAEE95C04A0EA136FE9D /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
-		956C9C1EDE971B0397ABEB9D /* Pods-FinanceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceApp/Pods-FinanceApp.release.xcconfig"; sourceTree = "<group>"; };
 		9A267E8B02D445F4911574CD /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
-		A2BFCF018EAC19CF403CF3B4 /* Pods-FinanceApp-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceApp-tvOSTests/Pods-FinanceApp-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AB02E98F8B942AA08A3F6EA0 /* Pods-FinanceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceApp/Pods-FinanceApp.debug.xcconfig"; sourceTree = "<group>"; };
 		ABD3DB8EE7154510B7CD2D3C /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BoldItalic.ttf"; path = "../assets/fonts/Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
 		AFA21DFD88EE445E928E8064 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraLightItalic.ttf"; path = "../assets/fonts/Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		BB8807D340B4A5ED6C65576A /* Pods-FinanceApp-FinanceAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinanceApp-FinanceAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinanceApp-FinanceAppTests/Pods-FinanceApp-FinanceAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		BBA8516FE25945E79B4A0D5B /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BlackItalic.ttf"; path = "../assets/fonts/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		CBA36924706B44C4F74F43A1 /* libPods-FinanceApp-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinanceApp-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		D3EF8D8520834175B1065E15 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		D5DE2C49B5E54A689EC1AAAD /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA739BC9BB88491AB27F9E84 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		E2D5D9087687493389AEFBDC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F781E78F3D44BC99655CD3 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
-		FA4106C74696641BC82D5831 /* libPods-FinanceApp-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FinanceApp-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,7 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F38EDAA98D69E25CFFCDAB9 /* libPods-FinanceApp-FinanceAppTests.a in Frameworks */,
+				E2C18FE658C6A93F060C8410 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4129537CE71E4BAB1BFD6A20 /* libPods-FinanceApp.a in Frameworks */,
+				2C89B987B3A6E574413F2F98 /* libPods-ComptaSmart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +151,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				076C8FD23FF7CE3545A5EE28 /* libPods-FinanceApp-tvOS.a in Frameworks */,
+				4158EA8DF2FD0FDC7D94B56D /* libPods-ComptaSmart-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				309D9B235A6C94180106CC96 /* libPods-FinanceApp-tvOSTests.a in Frameworks */,
+				C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,10 +203,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				5AB71DAB3B798C8215AA2D2F /* libPods-FinanceApp.a */,
-				CBA36924706B44C4F74F43A1 /* libPods-FinanceApp-tvOS.a */,
-				FA4106C74696641BC82D5831 /* libPods-FinanceApp-tvOSTests.a */,
-				6217F2579A54671F1F77AD73 /* libPods-FinanceApp-FinanceAppTests.a */,
+				779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */,
+				2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */,
+				3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */,
+				F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -250,16 +248,14 @@
 		8A484349719F985729B5570B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AB02E98F8B942AA08A3F6EA0 /* Pods-FinanceApp.debug.xcconfig */,
-				956C9C1EDE971B0397ABEB9D /* Pods-FinanceApp.release.xcconfig */,
-				08F11907C6927F6325248F46 /* Pods-FinanceApp-tvOS.debug.xcconfig */,
-				8792AD9D190E94DF4DAC5F78 /* Pods-FinanceApp-tvOS.release.xcconfig */,
-				A2BFCF018EAC19CF403CF3B4 /* Pods-FinanceApp-tvOSTests.debug.xcconfig */,
-				7BDA83F38B8AE595EA84AFF8 /* Pods-FinanceApp-tvOSTests.release.xcconfig */,
-				4732F55C634E6AB40831D93B /* Pods-FinanceAppTests.debug.xcconfig */,
-				30B3E2B1A2127CAF63EA5368 /* Pods-FinanceAppTests.release.xcconfig */,
-				13D55803A1D54A23AB6871C0 /* Pods-FinanceApp-FinanceAppTests.debug.xcconfig */,
-				BB8807D340B4A5ED6C65576A /* Pods-FinanceApp-FinanceAppTests.release.xcconfig */,
+				2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */,
+				6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */,
+				D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */,
+				7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */,
+				B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */,
+				C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */,
+				0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */,
+				45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -320,7 +316,7 @@
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
 			name = ComptaSmartTests;
-			productName = FinanceAppTests;
+			productName = ComptaSmartTests;
 			productReference = 00E356EE1AD99517003FC87E /* ComptaSmartTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -341,7 +337,7 @@
 			dependencies = (
 			);
 			name = ComptaSmart;
-			productName = FinanceApp;
+			productName = ComptaSmart;
 			productReference = 13B07F961A680F5B00A75B9A /* ComptaSmart.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -361,7 +357,7 @@
 			dependencies = (
 			);
 			name = "ComptaSmart-tvOS";
-			productName = "FinanceApp-tvOS";
+			productName = "ComptaSmart-tvOS";
 			productReference = 2D02E47B1E0B4A5D006451C7 /* ComptaSmart-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -380,7 +376,7 @@
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
 			name = "ComptaSmart-tvOSTests";
-			productName = "FinanceApp-tvOSTests";
+			productName = "ComptaSmart-tvOSTests";
 			productReference = 2D02E4901E0B4A5D006451C7 /* ComptaSmart-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -390,7 +386,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -413,10 +409,9 @@
 			};
 			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ComptaSmart" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -523,7 +518,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FinanceApp-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -541,7 +536,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FinanceApp-FinanceAppTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-ComptaSmartTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -573,7 +568,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FinanceApp-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -586,7 +581,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FinanceApp-FinanceAppTests/Pods-FinanceApp-FinanceAppTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -627,7 +622,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinanceApp-FinanceAppTests/Pods-FinanceApp-FinanceAppTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F5749ECBFD79EF317895A501 /* [CP] Check Pods Manifest.lock */ = {
@@ -641,7 +636,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FinanceApp-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -684,7 +679,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FinanceApp/Pods-FinanceApp-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -725,7 +720,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FinanceApp/Pods-FinanceApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -787,7 +782,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = FinanceApp;
+			path = ComptaSmart;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -795,15 +790,16 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13D55803A1D54A23AB6871C0 /* Pods-FinanceApp-FinanceAppTests.debug.xcconfig */;
+			baseConfigurationReference = D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = FinanceAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = ComptaSmartTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -818,12 +814,13 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB8807D340B4A5ED6C65576A /* Pods-FinanceApp-FinanceAppTests.release.xcconfig */;
+			baseConfigurationReference = 7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = FinanceAppTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				INFOPLIST_FILE = ComptaSmartTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -838,14 +835,14 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB02E98F8B942AA08A3F6EA0 /* Pods-FinanceApp.debug.xcconfig */;
+			baseConfigurationReference = 2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				INFOPLIST_FILE = FinanceApp/Info.plist;
+				INFOPLIST_FILE = ComptaSmart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME) $(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
 				LIBRARY_SEARCH_PATHS = (
@@ -898,7 +895,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "--PRODUCT-BUNDLE-IDENTIFIER-";
 				PRODUCT_NAME = ComptaSmart;
-				SWIFT_OBJC_BRIDGING_HEADER = "FinanceApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -907,13 +904,13 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 956C9C1EDE971B0397ABEB9D /* Pods-FinanceApp.release.xcconfig */;
+			baseConfigurationReference = 6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				INFOPLIST_FILE = FinanceApp/Info.plist;
+				INFOPLIST_FILE = ComptaSmart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME) $(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
 				LIBRARY_SEARCH_PATHS = (
@@ -959,7 +956,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "--PRODUCT-BUNDLE-IDENTIFIER-";
 				PRODUCT_NAME = ComptaSmart;
-				SWIFT_OBJC_BRIDGING_HEADER = "FinanceApp-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -967,7 +964,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 08F11907C6927F6325248F46 /* Pods-FinanceApp-tvOS.debug.xcconfig */;
+			baseConfigurationReference = B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -978,7 +975,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "FinanceApp-tvOS/Info.plist";
+				INFOPLIST_FILE = "ComptaSmart-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -989,13 +986,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8792AD9D190E94DF4DAC5F78 /* Pods-FinanceApp-tvOS.release.xcconfig */;
+			baseConfigurationReference = C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1006,7 +1003,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "FinanceApp-tvOS/Info.plist";
+				INFOPLIST_FILE = "ComptaSmart-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1017,13 +1014,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2BFCF018EAC19CF403CF3B4 /* Pods-FinanceApp-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1033,24 +1030,24 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "FinanceApp-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "ComptaSmart-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.FinanceApp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.ComptaSmart-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComptaSmart-tvOS.app/ComptaSmart-tvOS";
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7BDA83F38B8AE595EA84AFF8 /* Pods-FinanceApp-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1060,18 +1057,18 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "FinanceApp-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "ComptaSmart-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.FinanceApp-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.ComptaSmart-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComptaSmart-tvOS.app/ComptaSmart-tvOS";
-				TVOS_DEPLOYMENT_TARGET = 10.1;
+				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
 		};
@@ -1098,6 +1095,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1122,7 +1120,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
@@ -1157,6 +1155,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1174,7 +1173,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
