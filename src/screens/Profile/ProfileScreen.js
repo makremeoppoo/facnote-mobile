@@ -12,8 +12,8 @@ import {connect} from 'react-redux';
 
 import styles from './styles';
 import {logout} from '../../redux';
-import CabinetBackground from '../../../assets/images/CabinetBackground1.png';
-import CabinetBackgroundTransparent from '../../../assets/images/CabinetBackgroundTransparent.png';
+import Background from '../../../assets/images/background_accueil_ok.png';
+
 
 class NotificationsScreen extends React.Component {
   constructor(props) {
@@ -54,11 +54,9 @@ class NotificationsScreen extends React.Component {
       <ScrollView>
         <View style={styles.container}>
           <ImageBackground
-            source={CabinetBackground}
+            source={Background}
             style={styles.topImageStyle}></ImageBackground>
-          <ImageBackground
-            source={CabinetBackgroundTransparent}
-            style={styles.topImageTransparentStyle}></ImageBackground>
+        
 
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Nom de la Société</Text>
