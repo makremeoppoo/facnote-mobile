@@ -117,7 +117,7 @@ const TabNavigator = () => {
           ),
         }}
       />
-      <BottomTabNavigator.Screen
+      {/* <BottomTabNavigator.Screen
         name="Indicateur"
         component={HomeScreen}
         options={{
@@ -129,7 +129,7 @@ const TabNavigator = () => {
             />
           ),
         }}
-      />
+      />*/}
       <BottomTabNavigator.Screen
         name="Factures"
         component={ExpensesScreen}
@@ -156,7 +156,7 @@ const TabNavigator = () => {
           ),
         }}
       />
-      <BottomTabNavigator.Screen
+      {/**  <BottomTabNavigator.Screen
         name="Plus"
         component={MoreScreen}
         options={{
@@ -168,7 +168,7 @@ const TabNavigator = () => {
             />
           ),
         }}
-      />
+      /> */}
     </BottomTabNavigator.Navigator>
   );
 };
