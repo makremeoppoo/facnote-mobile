@@ -1,10 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {View, Text, TouchableHighlight, FlatList} from 'react-native';
+import {View, Text, TouchableHighlight, FlatList, Modal,Image} from 'react-native';
 import {connect} from 'react-redux';
 import CardView from '../../components/CardView/CardView';
 import Camera from '../../../assets/icons/Camera.png';
+import Close from '../../../assets/icons/closeGrey.png';
 
 import styles from './styles';
 
@@ -13,6 +14,8 @@ class HomeScreen extends React.Component {
     super(props);
 
     this.state = {
+      showModal: false,
+
       list: [
         {id: 0, text: 'octobre le 10/12/2021', isTitle: true},
 
@@ -30,24 +33,26 @@ class HomeScreen extends React.Component {
           date: 'mm/mm/mm',
           title: 'recu le',
           procent: 30.22,
-          isTitle: false},
-          {id: 0, text: 'octobre le 10/12/2021', isTitle: true},
+          isTitle: false,
+        },
+        {id: 0, text: 'octobre le 10/12/2021', isTitle: true},
 
-          {
-            id: 1,
-            icon: Camera,
-            date: 'mm/mm/mm',
-            title: 'recu le',
-            procent: 10,
-            isTitle: false,
-          },
-          {
-            id: 2,
-            icon: Camera,
-            date: 'mm/mm/mm',
-            title: 'recu le',
-            procent: 30.22,
-            isTitle: false},
+        {
+          id: 1,
+          icon: Camera,
+          date: 'mm/mm/mm',
+          title: 'recu le',
+          procent: 10,
+          isTitle: false,
+        },
+        {
+          id: 2,
+          icon: Camera,
+          date: 'mm/mm/mm',
+          title: 'recu le',
+          procent: 30.22,
+          isTitle: false,
+        },
       ],
       seed: 1,
       page: 1,
@@ -109,9 +114,7 @@ class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <TouchableHighlight
-          onPress={() =>
-            this.props.navigation.navigate('HistoriqueJutificatifs')
-          }
+          onPress={() => this.setState({showModal: !this.state.showModal})}
           underlayColor="rgba(73,182,77,1,0.9)">
           <View style={styles.itemContainer}>
             <View style={styles.rowContainer}>
@@ -129,6 +132,27 @@ class HomeScreen extends React.Component {
           onEndReached={this.handleLoadMore}
           onEndThreshold={0}
         />
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.showModal}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              
+              <TouchableHighlight
+                style={styles.modalCloseView}
+                onPress={() =>
+                  this.setState({showModal: !this.state.showModal})
+                }
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <Image style={styles.closeImg} source={Close} />
+              </TouchableHighlight>
+              <View style={styles.buttomIcon}>
+               
+              </View>
+            </View>
+          </View>
+        </Modal>
       </View>
     );
   }

@@ -44,8 +44,35 @@ const styles = StyleSheet.create({
     fontSize: ScaleHelpers.CalcWidth(4),
     fontFamily:"SegoeUI-Light",
     color: textColor,
-    
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalView: {
+    width: ScaleHelpers.CalcWidth(80),
+    height: ScaleHelpers.CalcHeight(50),
+    backgroundColor: 'white',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    borderRadius: 10,
 
+    elevation: 5,
+  },
+  modalCloseView: {
+    top: ScaleHelpers.CalcHeight(3),
+    right: ScaleHelpers.CalcWidth(33),
+  },
+  closeImg: {
+    width: ScaleHelpers.CalcWidth(5),
+    height: ScaleHelpers.CalcWidth(5),
   },
 });
 
