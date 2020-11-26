@@ -17,8 +17,6 @@ class HomeScreen extends React.Component {
     this.initData();
   }
   initData = async () => {
-    console.log('user', this.props.user);
-
     await this.setState({user: this.props.user.user});
   };
 
