@@ -5,7 +5,7 @@ import {View, Platform} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
-import LogInScreen from '../screens/LogIn/LogInScreen';
+import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
@@ -63,8 +63,8 @@ const LandingNavigator = () => {
         options={{
           headerShown: false,
         }}
-        name="LogIn"
-        component={LogInScreen}
+        name="Login"
+        component={LoginScreen}
       />
       <Stack.Screen
         options={{
