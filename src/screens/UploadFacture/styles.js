@@ -17,9 +17,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   titleContainer: {
-    height: ScaleHelpers.CalcHeight(15),
-    textAlign: 'center',
-    marginBottom: ScaleHelpers.CalcHeight(5),
+    height: ScaleHelpers.CalcHeight(25),
+    width: ScaleHelpers.CalcWidth(100),
+        textAlign: 'center',
 
     justifyContent: 'center',
   },

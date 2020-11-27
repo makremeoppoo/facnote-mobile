@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   textContainer: {
-    height: ScaleHelpers.CalcHeight(25),
+    height: ScaleHelpers.CalcHeight(30),
     width: ScaleHelpers.CalcWidth(100),
     justifyContent: 'center',
     alignItems: 'center',

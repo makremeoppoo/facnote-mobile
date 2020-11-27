@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(25),
+    height: ScaleHelpers.CalcHeight(30),
+    width: ScaleHelpers.CalcWidth(100),
   },
   title: {
     fontFamily: 'SegoeUI',
