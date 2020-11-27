@@ -9,7 +9,6 @@ const SCREEN_WIDTH = width < height ? width : height;
 const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
-    height: ScaleHelpers.CalcHeight(110),
   },
   backgroundStyle: {
     width: ScaleHelpers.CalcWidth(100),
@@ -18,10 +17,14 @@ const styles = StyleSheet.create({
   },
   titleContainer: {
     height: ScaleHelpers.CalcHeight(25),
+    paddingTop: ScaleHelpers.CalcHeight(5),
     width: ScaleHelpers.CalcWidth(100),
-        textAlign: 'center',
 
-    justifyContent: 'center',
+  },
+  buttonContainer:{
+    alignContent:"center",
+    justifyContent:"center",
+    height: ScaleHelpers.CalcHeight(80),
   },
   title: {
     fontFamily: 'Nunito-Bold',

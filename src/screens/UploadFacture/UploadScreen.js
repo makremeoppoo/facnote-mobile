@@ -119,7 +119,7 @@ export default class ExpensesScreen extends React.Component {
               />
             </View>
           )}
-        
+
           {this.state.multiFiles.map((item, key) => (
             <View key={key} style={styles.viewImg}>
               {item.type == 'image/jpeg' ? (
@@ -132,7 +132,7 @@ export default class ExpensesScreen extends React.Component {
                     backgroundColor: 'white',
                     textAlign: 'center',
                     paddingTop: '30%',
-                    margin:"3%",
+                    margin: '3%',
                     borderRadius: 10,
                   }}
                   name={'ios-document-attach-sharp'}
@@ -157,32 +157,33 @@ export default class ExpensesScreen extends React.Component {
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Nom de la Société</Text>
           </View>
-          <TouchableHighlight
-            style={styles.btnContainer}
-            onPress={() => this.setTypeFacture(1)}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <Image style={styles.Img} source={Achat} />
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.btnContainer}
-            onPress={() => this.setTypeFacture(1)}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <Image style={styles.Img} source={AvanceDeFrais} />
-          </TouchableHighlight>
+          <View style={styles.buttonContainer}>
+            <TouchableHighlight
+              style={styles.btnContainer}
+              onPress={() => this.setTypeFacture(1)}
+              underlayColor="rgba(73,182,77,1,0.9)">
+              <Image style={styles.Img} source={Achat} />
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.btnContainer}
+              onPress={() => this.setTypeFacture(1)}
+              underlayColor="rgba(73,182,77,1,0.9)">
+              <Image style={styles.Img} source={AvanceDeFrais} />
+            </TouchableHighlight>
 
-          <TouchableHighlight
-            style={styles.btnContainer}
-            onPress={() => this.setTypeFacture(1)}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <Image style={styles.Img} source={Document} />
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.btnContainer}
-            onPress={() => this.props.navigation.navigate('Indemnites')}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <Image style={styles.Img} source={Indemnite} />
-          </TouchableHighlight>
-
+            <TouchableHighlight
+              style={styles.btnContainer}
+              onPress={() => this.setTypeFacture(1)}
+              underlayColor="rgba(73,182,77,1,0.9)">
+              <Image style={styles.Img} source={Document} />
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={styles.btnContainer}
+              onPress={() => this.props.navigation.navigate('Indemnites')}
+              underlayColor="rgba(73,182,77,1,0.9)">
+              <Image style={styles.Img} source={Indemnite} />
+            </TouchableHighlight>
+          </View>
           <Modal
             animationType="slide"
             transparent={true}

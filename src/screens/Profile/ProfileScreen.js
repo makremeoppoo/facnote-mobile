@@ -14,7 +14,6 @@ import styles from './styles';
 import {logout} from '../../redux';
 import Background from '../../../assets/images/background_accueil_ok.png';
 
-
 class NotificationsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -56,7 +55,6 @@ class NotificationsScreen extends React.Component {
           <ImageBackground
             source={Background}
             style={styles.topImageStyle}></ImageBackground>
-        
 
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Nom de la Société</Text>
@@ -74,25 +72,25 @@ class NotificationsScreen extends React.Component {
               underlayColor="rgba(73,182,77,1,0.9)">
               <Text style={styles.btnTxt}>Envoyer un email</Text>
             </TouchableHighlight>
-          </View>
-          <View style={styles.infoContainer}>
-            <View style={styles.cabinetImgContainer}>
-            <Text style={styles.CabinerName}>Logo</Text>
+            <View style={styles.infoContainer}>
+              <View style={styles.cabinetImgContainer}>
+                <Text style={styles.CabinerName}>Logo</Text>
 
-             {/*<Image source={require('../../../assets/images/logo.png')} />*/} 
+                {/*<Image source={require('../../../assets/images/logo.png')} />*/}
+              </View>
+              <Text style={styles.CabinerName}>Nom du cabinet</Text>
+              <Text style={styles.CabinerInfo}>CP Rue Ville</Text>
+              <Text style={styles.CabinerInfo}>Telephone 22 654 658</Text>
+
+              <Text style={styles.CabinerInfo}>Fax 25 963 8896</Text>
             </View>
-            <Text style={styles.CabinerName}>Nom du cabinet</Text>
-            <Text style={styles.CabinerInfo}>CP Rue Ville</Text>
-            <Text style={styles.CabinerInfo}>Telephone 22 654 658</Text>
-
-            <Text style={styles.CabinerInfo}>Fax 25 963 8896</Text>
+            <TouchableHighlight
+              style={styles.btn}
+              onPress={() => this.props.logout()}
+              underlayColor="rgba(73,182,77,1,0.9)">
+              <Text style={styles.btnTxt}>Deconnecter</Text>
+            </TouchableHighlight>
           </View>
-          <TouchableHighlight
-            style={styles.btn}
-            onPress={() => this.props.logout()}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <Text style={styles.btnTxt}>Deconnecter</Text>
-          </TouchableHighlight>
         </View>
       </ScrollView>
     );

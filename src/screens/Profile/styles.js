@@ -22,19 +22,23 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(30),
+    height: ScaleHelpers.CalcHeight(25),
     width: ScaleHelpers.CalcWidth(100),
   },
+ 
+
   title: {
     fontFamily: 'SegoeUI',
     textAlign: 'center',
     color: textColor,
     fontSize: ScaleHelpers.CalcHeight(5),
   },
-  infoContainer: {
-    height: ScaleHelpers.CalcHeight(30),
-    width: ScaleHelpers.CalcWidth(100),
+  buttonContainer:{
+    alignContent:"center",
+    justifyContent:"center",
+    height: ScaleHelpers.CalcHeight(75)
   },
+
   cabinetImgContainer:{
     marginBottom: ScaleHelpers.CalcWidth(7),
     marginTop: ScaleHelpers.CalcWidth(7),
