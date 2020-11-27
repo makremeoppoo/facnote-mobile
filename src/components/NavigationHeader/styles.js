@@ -18,6 +18,8 @@ const styles = StyleSheet.create({
   headerContain: {
     justifyContent: 'center',
     marginBottom: ScaleHelpers.CalcHeight(2),
+    marginTop:ScaleHelpers.CalcWidth(2),
+
     alignItems: 'center',
     flexDirection: 'row',
   },
