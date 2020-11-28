@@ -24,6 +24,7 @@ import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
 import iconePrendrePhoto from '../../../assets/icons/icone_prendre_photo.png';
 import iconeGestionnairePhoto from '../../../assets/icons/icone_gestionnaire_photo.png';
+import * as api from '../../services/auth';
 
 import styles from './styles';
 
@@ -39,16 +40,30 @@ export default class ExpensesScreen extends React.Component {
       fileUri: '',
       multiFiles: [],
       showModal: false,
+      message: {type: '', text: ''},
     };
     this.actionSheet = createRef();
   }
 
   setTypeFacture = (typeFacture) => {
-    this.setState({typeFacture});
-    this.setState({showModal: !this.state.showModal});
+    this.setState({typeFacture: typeFacture, showModal: !this.state.showModal});
     //this.actionSheet.current.show();
   };
+  sendDocs = () => {
+    const {typeFacture, multiFiles, fileData, fileUri} = this.state;
 
+    try {
+      let copy = [...multiFiles];
+      if (fileUri != '') copy.push(fileData);
+      api.uploadFiles(typeFacture, copy);
+      this.setState({
+        message: {type: 'success', text: 'fichier (s) téléchargé avec succès!'},
+      });
+    } catch (error) {
+      this.setState({message: {type: 'error', text: error.message}});
+      console.log(error.message);
+    }
+  };
   chooseImage = async () => {
     try {
       const results = await DocumentPicker.pickMultiple({
@@ -57,11 +72,6 @@ export default class ExpensesScreen extends React.Component {
       });
       for (const res of results) {
         //Printing the log realted to the file
-        console.log('res : ' + JSON.stringify(res));
-        console.log('URI : ' + res.uri);
-        console.log('Type : ' + res.type);
-        console.log('File Name : ' + res.name);
-        console.log('File Size : ' + res.size);
       }
       //Setting the state to show multiple file attributes
       this.setState({multiFiles: results});
@@ -86,8 +96,6 @@ export default class ExpensesScreen extends React.Component {
       },
     };
     ImagePicker.launchCamera(options, (response) => {
-      console.log('Response = ', response);
-
       if (response.didCancel) {
         console.log('User cancelled image picker');
       } else if (response.error) {
@@ -158,31 +166,30 @@ export default class ExpensesScreen extends React.Component {
             <Text style={styles.title}>Nom de la Société</Text>
           </View>
           <View style={styles.buttonContainer}>
-            <TouchableHighlight
-              style={styles.btnContainer}
-              onPress={() => this.setTypeFacture(1)}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Image style={styles.Img} source={Achat} />
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={styles.btnContainer}
-              onPress={() => this.setTypeFacture(1)}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Image style={styles.Img} source={AvanceDeFrais} />
-            </TouchableHighlight>
-
-            <TouchableHighlight
-              style={styles.btnContainer}
-              onPress={() => this.setTypeFacture(1)}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Image style={styles.Img} source={Document} />
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={styles.btnContainer}
-              onPress={() => this.props.navigation.navigate('Indemnites')}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Image style={styles.Img} source={Indemnite} />
-            </TouchableHighlight>
+            <View style={styles.btnView}>
+              <TouchableHighlight
+                style={styles.btnContainer}
+                onPress={() => this.setTypeFacture(4)}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <Image style={styles.Img} source={Document} />
+              </TouchableHighlight>
+            </View>
+            <View style={styles.btnView}>
+              <TouchableHighlight
+                style={styles.btnContainer}
+                onPress={() => this.setTypeFacture(1)}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <Image style={styles.Img} source={Achat} />
+              </TouchableHighlight>
+            </View>
+            <View style={styles.btnView}>
+              <TouchableHighlight
+                style={styles.btnContainer}
+                onPress={() => this.setTypeFacture(3)}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <Image style={styles.Img} source={AvanceDeFrais} />
+              </TouchableHighlight>
+            </View>
           </View>
           <Modal
             animationType="slide"
@@ -194,15 +201,34 @@ export default class ExpensesScreen extends React.Component {
                   source={Rectangle}
                   style={styles.backgroundModalStyle}></ImageBackground>
                 {this.renderFileUri()}
+
                 <TouchableHighlight
                   style={styles.modalCloseView}
                   onPress={() =>
-                    this.setState({showModal: !this.state.showModal})
+                    this.setState({
+                      showModal: !this.state.showModal,
+                      filepath: {
+                        data: '',
+                        uri: '',
+                      },
+                      fileData: '',
+                      fileUri: '',
+                      multiFiles: [],
+                      message: {type: '', text: ''},
+                    })
                   }
                   underlayColor="rgba(73,182,77,1,0.9)">
                   <Image style={styles.closeImg} source={Close} />
                 </TouchableHighlight>
                 <View style={styles.buttomIcon}>
+                  <Text
+                    style={
+                      this.state.message.type == 'error'
+                        ? styles.error
+                        : styles.success
+                    }>
+                    {this.state.message.text}
+                  </Text>
                   <TouchableHighlight
                     onPress={() => this.chooseImage()}
                     underlayColor="rgba(73,182,77,1,0.9)">
@@ -219,6 +245,19 @@ export default class ExpensesScreen extends React.Component {
                       source={iconePrendrePhoto}
                     />
                   </TouchableHighlight>
+                  {this.state.multiFiles.length > 0 ||
+                    (this.state.fileUri != '' && (
+                      <TouchableHighlight
+                        onPress={() => this.sendDocs()}
+                        underlayColor="rgba(73,182,77,1,0.9)">
+                        <Icon
+                          style={styles.SendIcon}
+                          name={'ios-send-sharp'}
+                          size={32}
+                          color={'rgb(92,117,254)'}
+                        />
+                      </TouchableHighlight>
+                    ))}
                 </View>
               </View>
             </View>

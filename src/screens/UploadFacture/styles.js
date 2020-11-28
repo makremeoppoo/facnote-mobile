@@ -9,9 +9,11 @@ const SCREEN_WIDTH = width < height ? width : height;
 const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
+    backgroundColor:"white"
   },
   backgroundStyle: {
     width: ScaleHelpers.CalcWidth(100),
+    marginTop:ScaleHelpers.CalcHeight(10),
     height: '100%',
     position: 'absolute',
   },
@@ -19,12 +21,10 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(25),
     paddingTop: ScaleHelpers.CalcHeight(5),
     width: ScaleHelpers.CalcWidth(100),
-
   },
-  buttonContainer:{
-    alignContent:"center",
-    justifyContent:"center",
-    height: ScaleHelpers.CalcHeight(80),
+  buttonContainer: {
+  
+    height: ScaleHelpers.CalcHeight(65),
   },
   title: {
     fontFamily: 'Nunito-Bold',
@@ -32,7 +32,14 @@ const styles = StyleSheet.create({
     color: textColor,
     fontSize: ScaleHelpers.CalcHeight(5),
   },
+  btnView:{
+    height: ScaleHelpers.CalcHeight(15),
+    marginTop:ScaleHelpers.CalcHeight(3),
+  },
+
   btnContainer: {
+
+    padding: 0,
     flex: 1,
     overflow: 'hidden',
     borderColor: '#2c65c9',
@@ -42,6 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Img: {
+ 
     width: ScaleHelpers.CalcWidth(80),
     height: ScaleHelpers.CalcHeight(15),
   },
@@ -59,7 +67,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcWidth(25),
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign:'center'
+    textAlign: 'center',
   },
 
   ImgPlus: {
@@ -125,6 +133,37 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 13,
+  },
+  SendIcon: {
+    width: ScaleHelpers.CalcWidth(15),
+    height: ScaleHelpers.CalcWidth(15),
+
+    backgroundColor: 'white',
+    textAlign: 'center',
+    marginTop: ScaleHelpers.CalcHeight(2),
+
+    padding: ScaleHelpers.CalcWidth(4),
+    borderRadius: 30,
+  },
+  error: {
+    fontFamily: 'Nunito-ExtraBold',
+    textAlign: 'center',
+    color: 'red',
+    marginTop: ScaleHelpers.CalcHeight(13),
+    maxHeight: ScaleHelpers.CalcHeight(10),
+    fontWeight: 'bold',
+    fontSize: 15,
+    position: 'absolute',
+  },
+  success: {
+    fontFamily: 'Nunito-ExtraBold',
+    textAlign: 'center',
+    color: 'green',
+    marginTop: ScaleHelpers.CalcHeight(13),
+    maxHeight: ScaleHelpers.CalcHeight(10),
+    fontWeight: 'bold',
+    position: 'absolute',
+    fontSize: 15,
   },
 });
 
