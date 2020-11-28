@@ -19,7 +19,7 @@ export default class WelcomeScreen extends React.Component {
   }
 
   onPressLogButton = () => {
-    this.props.navigation.navigate('LogIn');
+    this.props.navigation.navigate('Login');
   };
 
   render() {

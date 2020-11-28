@@ -54,17 +54,16 @@ class LoginScreen extends React.Component {
   };
 
   onPressLogButton = async () => {
-    const {name, password} = this.state;
-    this.props.login({user: null, cabinet: null});
-    return;
+
     try {
       //check if username is null
       // let username = response.user.username !== null;
       let user = await api.login({username: name, password: password});
-      await AsyncStorage.setItem('accessToken', user[1]);
+      console.log(user);
+      await AsyncStorage.setItem('accessToken', user['token']);
 
       let cabinet = await api.getCabinet();
-      this.props.login({user: user[0], cabinet: cabinet});
+      this.props.login({user: user['user'], cabinet: cabinet});
     } catch (error) {
       this.setState({error: 'Identifiant ou le mot de passe est incorrect !'});
       console.log(error.message);

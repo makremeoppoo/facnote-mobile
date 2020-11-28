@@ -24,7 +24,6 @@ export async function login(data) {
 export async function getCabinet() {
   try {
     let res = await api.get(c.GETCABINET);
-    console.log(res)
     return res.data;
   } catch (e) {
     throw handler(e);
