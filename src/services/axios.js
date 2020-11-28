@@ -6,8 +6,7 @@ const api = axios.create({
   baseURL: c.API_URL,
   timeout: 20000,
   headers: {
-    Accept: 'application/json,application/x-www-form-urlencoded',
-    'Content-Type': 'application/json',
+    Accept: 'application/json',
   },
 });
 

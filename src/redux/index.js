@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 const initialAuthState = { isLoggedIn: false };
 const Login = 'Login';
@@ -17,6 +18,7 @@ function auth(state = initialAuthState, action) {
     case Login:
       return { ...state, isLoggedIn: true, user: action.data.user, cabinet: action.data.cabinet };
     case Logout:
+      AsyncStorage.removeItem('accessToken')
       return { ...state, isLoggedIn: false, user: {}, cabinet: {} };
     default:
       return state;

@@ -30,7 +30,7 @@ export async function getCabinet() {
   }
 }
 
-export async function updateProfile(userId, data) {
+export async function uploadFiles(type, data) {
   try {
     const options = {
       headers: {
@@ -42,8 +42,8 @@ export async function updateProfile(userId, data) {
     const form_data = new FormData();
     for (let key in data) form_data.append(key, data[key]);
 
-    let res = await api.put(
-      `${c.UPDATE_PROFILE}/${userId}`,
+    let res = await api.post(
+      `${c.UPLOAD_FILES}/${type}`,
       form_data,
       options,
     );
