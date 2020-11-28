@@ -245,19 +245,22 @@ export default class ExpensesScreen extends React.Component {
                       source={iconePrendrePhoto}
                     />
                   </TouchableHighlight>
-                  {this.state.multiFiles.length > 0 ||
-                    (this.state.fileUri != '' && (
-                      <TouchableHighlight
-                        onPress={() => this.sendDocs()}
-                        underlayColor="rgba(73,182,77,1,0.9)">
+
+                  {(this.state.multiFiles.length > 0 ||
+                    this.state.fileUri != '') && (
+                    <TouchableHighlight
+                      onPress={() => this.sendDocs()}
+                      underlayColor="rgba(73,182,77,1,0.9)">
+                      <View style={styles.SendIconView}>
                         <Icon
                           style={styles.SendIcon}
                           name={'ios-send-sharp'}
                           size={32}
                           color={'rgb(92,117,254)'}
                         />
-                      </TouchableHighlight>
-                    ))}
+                      </View>
+                    </TouchableHighlight>
+                  )}
                 </View>
               </View>
             </View>

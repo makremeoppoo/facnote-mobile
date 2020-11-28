@@ -134,16 +134,22 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 13,
   },
-  SendIcon: {
-    width: ScaleHelpers.CalcWidth(15),
-    height: ScaleHelpers.CalcWidth(15),
-
+  SendIconView:{
     backgroundColor: 'white',
     textAlign: 'center',
-    marginTop: ScaleHelpers.CalcHeight(2),
+    justifyContent:"center",
+    alignItems:"center",
+    width: ScaleHelpers.CalcWidth(14),
+    height: ScaleHelpers.CalcWidth(14),
+    marginTop: ScaleHelpers.CalcWidth(4),
+    paddingLeft: ScaleHelpers.CalcWidth(4),
 
-    padding: ScaleHelpers.CalcWidth(4),
-    borderRadius: 30,
+    borderRadius: ScaleHelpers.CalcHeight(2),
+  },
+  SendIcon: {
+    width: ScaleHelpers.CalcWidth(13),
+    height: ScaleHelpers.CalcWidth(13),
+ 
   },
   error: {
     fontFamily: 'Nunito-ExtraBold',
