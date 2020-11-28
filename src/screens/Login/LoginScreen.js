@@ -54,7 +54,7 @@ class LoginScreen extends React.Component {
   };
 
   onPressLogButton = async () => {
-
+    const {name, password} = this.state;
     try {
       //check if username is null
       // let username = response.user.username !== null;
