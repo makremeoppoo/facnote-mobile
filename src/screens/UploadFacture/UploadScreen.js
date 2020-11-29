@@ -50,15 +50,15 @@ export default class ExpensesScreen extends React.Component {
 
     try {
       await this.setState({loading: true});
-      console.log("multiFiles",multiFiles)
+      console.log('multiFiles', multiFiles);
 
       var res = await api.uploadFiles(typeFacture, multiFiles);
-       this.setState({
+      this.setState({
         loading: false,
         message: {type: 'success', text: 'fichier (s) téléchargé avec succès!'},
       });
     } catch (error) {
-       this.setState({
+      this.setState({
         loading: false,
 
         message: {type: 'error', text: 'telechargement fichier interrompu'},
@@ -176,14 +176,6 @@ export default class ExpensesScreen extends React.Component {
             <View style={styles.btnView}>
               <TouchableHighlight
                 style={styles.btnContainer}
-                onPress={() => this.setTypeFacture(4)}
-                underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.Img} source={Document} />
-              </TouchableHighlight>
-            </View>
-            <View style={styles.btnView}>
-              <TouchableHighlight
-                style={styles.btnContainer}
                 onPress={() => this.setTypeFacture(1)}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.Img} source={Achat} />
@@ -195,6 +187,14 @@ export default class ExpensesScreen extends React.Component {
                 onPress={() => this.setTypeFacture(3)}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.Img} source={AvanceDeFrais} />
+              </TouchableHighlight>
+            </View>
+            <View style={styles.btnView}>
+              <TouchableHighlight
+                style={styles.btnContainer}
+                onPress={() => this.setTypeFacture(4)}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <Image style={styles.Img} source={Document} />
               </TouchableHighlight>
             </View>
           </View>
