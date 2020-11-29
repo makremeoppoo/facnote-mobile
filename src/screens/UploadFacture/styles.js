@@ -9,11 +9,11 @@ const SCREEN_WIDTH = width < height ? width : height;
 const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
-    backgroundColor:"white"
+    backgroundColor: 'white',
   },
   backgroundStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    marginTop:ScaleHelpers.CalcHeight(10),
+    marginTop: ScaleHelpers.CalcHeight(10),
     height: '100%',
     position: 'absolute',
   },
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(100),
   },
   buttonContainer: {
-  
     height: ScaleHelpers.CalcHeight(65),
   },
   title: {
@@ -32,13 +31,12 @@ const styles = StyleSheet.create({
     color: textColor,
     fontSize: ScaleHelpers.CalcHeight(5),
   },
-  btnView:{
+  btnView: {
     height: ScaleHelpers.CalcHeight(15),
-    marginTop:ScaleHelpers.CalcHeight(3),
+    marginTop: ScaleHelpers.CalcHeight(3),
   },
 
   btnContainer: {
-
     padding: 0,
     flex: 1,
     overflow: 'hidden',
@@ -49,7 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Img: {
- 
     width: ScaleHelpers.CalcWidth(80),
     height: ScaleHelpers.CalcHeight(15),
   },
@@ -134,22 +131,21 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 13,
   },
-  SendIconView:{
-    backgroundColor: 'white',
-    textAlign: 'center',
-    justifyContent:"center",
-    alignItems:"center",
-    width: ScaleHelpers.CalcWidth(14),
-    height: ScaleHelpers.CalcWidth(14),
-    marginTop: ScaleHelpers.CalcWidth(4),
+  SendIconView: {
+    margin: ScaleHelpers.CalcWidth(4),
     paddingLeft: ScaleHelpers.CalcWidth(4),
+    paddingTop: ScaleHelpers.CalcWidth(2),
 
-    borderRadius: ScaleHelpers.CalcHeight(2),
+    backgroundColor: 'white',
+    borderRadius: 15,
+    textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
   },
   SendIcon: {
     width: ScaleHelpers.CalcWidth(13),
     height: ScaleHelpers.CalcWidth(13),
- 
   },
   error: {
     fontFamily: 'Nunito-ExtraBold',

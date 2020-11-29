@@ -33,12 +33,6 @@ export default class ExpensesScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filepath: {
-        data: '',
-        uri: '',
-      },
-      fileData: '',
-      fileUri: '',
       multiFiles: [],
       showModal: false,
       message: {type: '', text: ''},
@@ -52,19 +46,19 @@ export default class ExpensesScreen extends React.Component {
     //this.actionSheet.current.show();
   };
   sendDocs = async () => {
-    const {typeFacture, multiFiles, fileData, fileUri} = this.state;
+    const {typeFacture, multiFiles} = this.state;
 
     try {
-      this.setState({loading: true});
-      let copy = [...multiFiles];
-      if (fileUri != '') copy.push(fileData);
-      var res = await api.uploadFiles(typeFacture, copy);
-      this.setState({
+      await this.setState({loading: true});
+      console.log("multiFiles",multiFiles)
+
+      var res = await api.uploadFiles(typeFacture, multiFiles);
+       this.setState({
         loading: false,
         message: {type: 'success', text: 'fichier (s) téléchargé avec succès!'},
       });
     } catch (error) {
-      this.setState({
+       this.setState({
         loading: false,
 
         message: {type: 'error', text: 'telechargement fichier interrompu'},
@@ -77,11 +71,15 @@ export default class ExpensesScreen extends React.Component {
         type: [DocumentPicker.types.images],
         //There can me more options as well find above
       });
+      let copy = [...this.state.multiFiles];
+
       for (const res of results) {
+        copy.push(res);
         //Printing the log realted to the file
       }
       //Setting the state to show multiple file attributes
-      this.setState({multiFiles: results});
+
+      this.setState({multiFiles: copy});
     } catch (err) {
       //Handling any exception (If any)
       if (DocumentPicker.isCancel(err)) {
@@ -111,13 +109,24 @@ export default class ExpensesScreen extends React.Component {
         console.log('User tapped custom button: ', response.customButton);
         alert(response.customButton);
       } else {
-        const source = {uri: response.uri};
-        console.log('response', JSON.stringify(response));
-        this.setState({
+        let copy = [...this.state.multiFiles];
+        let obj = {
+          name: response.fileName,
+          size: response.fileSize,
+          type: response.type,
+          uri: response.uri,
+        };
+        copy.push(obj);
+
+        this.setState({multiFiles: copy});
+        /**
+         * 
+         * this.setState({
           filePath: response,
           fileData: response.data,
           fileUri: response.uri,
         });
+         */
       }
     });
   };
@@ -126,15 +135,6 @@ export default class ExpensesScreen extends React.Component {
     return (
       <ScrollView>
         <View style={styles.photoContainer}>
-          {this.state.fileUri != '' && (
-            <View style={styles.viewImg}>
-              <Image
-                style={styles.ImgPlus}
-                source={{uri: this.state.fileUri}}
-              />
-            </View>
-          )}
-
           {this.state.multiFiles.map((item, key) => (
             <View key={key} style={styles.viewImg}>
               {item.type == 'image/jpeg' ? (
@@ -220,12 +220,7 @@ export default class ExpensesScreen extends React.Component {
                   onPress={() =>
                     this.setState({
                       showModal: !this.state.showModal,
-                      filepath: {
-                        data: '',
-                        uri: '',
-                      },
-                      fileData: '',
-                      fileUri: '',
+
                       multiFiles: [],
                       message: {type: '', text: ''},
                     })
@@ -250,17 +245,7 @@ export default class ExpensesScreen extends React.Component {
                       source={iconeGestionnairePhoto}
                     />
                   </TouchableHighlight>
-                  <TouchableHighlight
-                    onPress={() => this.launchCamera()}
-                    underlayColor="rgba(73,182,77,1,0.9)">
-                    <Image
-                      style={styles.iconGestion}
-                      source={iconePrendrePhoto}
-                    />
-                  </TouchableHighlight>
-
-                  {(this.state.multiFiles.length > 0 ||
-                    this.state.fileUri != '') && (
+                  {this.state.multiFiles.length > 0 && (
                     <TouchableHighlight
                       onPress={() => this.sendDocs()}
                       underlayColor="rgba(73,182,77,1,0.9)">
@@ -274,6 +259,14 @@ export default class ExpensesScreen extends React.Component {
                       </View>
                     </TouchableHighlight>
                   )}
+                  <TouchableHighlight
+                    onPress={() => this.launchCamera()}
+                    underlayColor="rgba(73,182,77,1,0.9)">
+                    <Image
+                      style={styles.iconGestion}
+                      source={iconePrendrePhoto}
+                    />
+                  </TouchableHighlight>
                 </View>
               </View>
             </View>
