@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Image,
   Modal,
+  ActivityIndicator,
 } from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
@@ -41,6 +42,7 @@ export default class ExpensesScreen extends React.Component {
       multiFiles: [],
       showModal: false,
       message: {type: '', text: ''},
+      loading: false,
     };
     this.actionSheet = createRef();
   }
@@ -53,15 +55,20 @@ export default class ExpensesScreen extends React.Component {
     const {typeFacture, multiFiles, fileData, fileUri} = this.state;
 
     try {
+      this.setState({loading: true});
       let copy = [...multiFiles];
       if (fileUri != '') copy.push(fileData);
-      var res =await api.uploadFiles(typeFacture, copy);
+      var res = await api.uploadFiles(typeFacture, copy);
       this.setState({
+        loading: false,
         message: {type: 'success', text: 'fichier (s) téléchargé avec succès!'},
       });
     } catch (error) {
-      this.setState({message: {type: 'error', text: "telechargement fichier interrompu"}});
-      console.log(error.message);
+      this.setState({
+        loading: false,
+
+        message: {type: 'error', text: 'telechargement fichier interrompu'},
+      });
     }
   };
   chooseImage = async () => {
@@ -201,7 +208,13 @@ export default class ExpensesScreen extends React.Component {
                   source={Rectangle}
                   style={styles.backgroundModalStyle}></ImageBackground>
                 {this.renderFileUri()}
-
+                {this.state.loading && (
+                  <ActivityIndicator
+                    size="large"
+                    color="white"
+                    style={{position: 'absolute', marginTop: '50%'}}
+                  />
+                )}
                 <TouchableHighlight
                   style={styles.modalCloseView}
                   onPress={() =>
