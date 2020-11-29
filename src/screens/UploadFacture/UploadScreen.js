@@ -49,18 +49,18 @@ export default class ExpensesScreen extends React.Component {
     this.setState({typeFacture: typeFacture, showModal: !this.state.showModal});
     //this.actionSheet.current.show();
   };
-  sendDocs = () => {
+  sendDocs = async () => {
     const {typeFacture, multiFiles, fileData, fileUri} = this.state;
 
     try {
       let copy = [...multiFiles];
       if (fileUri != '') copy.push(fileData);
-      api.uploadFiles(typeFacture, copy);
+      var res =await api.uploadFiles(typeFacture, copy);
       this.setState({
         message: {type: 'success', text: 'fichier (s) téléchargé avec succès!'},
       });
     } catch (error) {
-      this.setState({message: {type: 'error', text: error.message}});
+      this.setState({message: {type: 'error', text: "telechargement fichier interrompu"}});
       console.log(error.message);
     }
   };
