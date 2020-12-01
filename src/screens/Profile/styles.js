@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(25),
     width: ScaleHelpers.CalcWidth(100),
   },
- 
 
   title: {
     fontFamily: 'SegoeUI',
@@ -33,26 +32,26 @@ const styles = StyleSheet.create({
     color: textColor,
     fontSize: ScaleHelpers.CalcHeight(5),
   },
-  buttonContainer:{
-    alignContent:"center",
-    justifyContent:"center",
-    height: ScaleHelpers.CalcHeight(75)
+  buttonContainer: {
+    alignContent: 'center',
+    justifyContent: 'center',
+    height: ScaleHelpers.CalcHeight(75),
   },
 
-  cabinetImgContainer:{
+  cabinetImgContainer: {
     marginBottom: ScaleHelpers.CalcWidth(7),
     marginTop: ScaleHelpers.CalcWidth(7),
 
-    alignItems:"center"
-
+    alignItems: 'center',
   },
 
   cabinetImg: {
-    width: 200,
-    height: 100,
+    height:ScaleHelpers.CalcWidth(25),
     alignSelf: 'center',
+    width: ScaleHelpers.CalcWidth(45),
+
   },
- 
+
   CabinerName: {
     fontFamily: 'Nunito-Bold',
 
@@ -81,11 +80,9 @@ const styles = StyleSheet.create({
     position: 'relative',
     marginTop: ScaleHelpers.CalcHeight(2),
     marginBottom: ScaleHelpers.CalcHeight(2),
-
     width: ScaleHelpers.CalcWidth(70),
     borderRadius: 10,
     backgroundColor: buttonColor,
-    borderColor: 'rgba(214, 214, 214, 0.4)',
     borderWidth: 1,
     alignSelf: 'center',
     justifyContent: 'center',

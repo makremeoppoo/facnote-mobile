@@ -7,6 +7,7 @@ import {
   ScrollView,
   Linking,
   ImageBackground,
+  Image,
 } from 'react-native';
 import {connect} from 'react-redux';
 
@@ -21,6 +22,7 @@ class NotificationsScreen extends React.Component {
       cabinet: {},
     };
   }
+
   componentDidMount() {
     console.log('user', this.props.user);
     this.setState({cabinet: this.props.user.cabinet});
@@ -61,22 +63,37 @@ class NotificationsScreen extends React.Component {
           </View>
           <View style={styles.buttonContainer}>
             <TouchableHighlight
-              style={styles.btn}
-              onPress={() => this.callNumber('00000')}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={styles.btnTxt}>Appeler</Text>
+              style={{
+                ...styles.btn,
+                ...{
+                  borderColor: 'rgba(46, 204, 113, 0.5)',
+                  backgroundColor: 'rgba(46, 204, 113, 0.9)',
+                },
+              }}
+              onPress={() => this.callNumber('00000')}>
+              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
+                Appeler
+              </Text>
             </TouchableHighlight>
             <TouchableHighlight
-              style={styles.btn}
-              onPress={() => this.sendMail()}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={styles.btnTxt}>Envoyer un email</Text>
+              style={{
+                ...styles.btn,
+                ...{
+                  borderColor: 'rgba(92,117,254,0.5)',
+                  backgroundColor: 'rgba(92,117,254,0.9)',
+                },
+              }}
+              onPress={() => this.sendMail()}>
+              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
+                Envoyer un email
+              </Text>
             </TouchableHighlight>
             <View style={styles.infoContainer}>
               <View style={styles.cabinetImgContainer}>
-                <Text style={styles.CabinerName}>Logo</Text>
-
-                {/*<Image source={require('../../../assets/images/logo.png')} />*/}
+                <Image
+                  style={styles.cabinetImg}
+                  source={require('../../../assets/images/imgpsh_fullsize_anim.png')}
+                />
               </View>
               <Text style={styles.CabinerName}>Nom du cabinet</Text>
               <Text style={styles.CabinerInfo}>CP Rue Ville</Text>
@@ -85,10 +102,15 @@ class NotificationsScreen extends React.Component {
               <Text style={styles.CabinerInfo}>Fax 25 963 8896</Text>
             </View>
             <TouchableHighlight
-              style={styles.btn}
+              style={{
+                ...styles.btn,
+                ...{borderColor: 'rgba(171, 183, 183, 1)', backgroundColor: 'rgba(171, 183, 183, 1)'},
+              }}
               onPress={() => this.props.logout()}
               underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={styles.btnTxt}>Deconnecter</Text>
+              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
+                Deconnecter
+              </Text>
             </TouchableHighlight>
           </View>
         </View>
