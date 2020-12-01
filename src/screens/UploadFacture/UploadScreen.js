@@ -10,6 +10,7 @@ import {
   Modal,
   ActivityIndicator,
 } from 'react-native';
+import {Icon as IconView} from 'react-native-elements';
 
 import ImagePicker from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
@@ -18,13 +19,11 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
-import Indemnite from '../../../assets/images/Indemnite.png';
 
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
 import iconePrendrePhoto from '../../../assets/icons/icone_prendre_photo.png';
-import iconeGestionnairePhoto from '../../../assets/icons/icone_gestionnaire_photo.png';
 import * as api from '../../services/auth';
 
 import styles from './styles';
@@ -228,6 +227,17 @@ export default class ExpensesScreen extends React.Component {
                   underlayColor="rgba(73,182,77,1,0.9)">
                   <Image style={styles.closeImg} source={Close} />
                 </TouchableHighlight>
+                {this.state.multiFiles.length > 0 && (
+                  <TouchableHighlight
+                    onPress={() => this.sendDocs()}
+                    style={styles.SendView}
+                    underlayColor="rgba(73,182,77,1,0.9)">
+                    <View style={styles.SendIconView}>
+                      <Text style={{...styles.btnTxt}}>envoyer</Text>
+                    </View>
+                  </TouchableHighlight>
+                )}
+
                 <View style={styles.buttomIcon}>
                   <Text
                     style={
@@ -240,25 +250,15 @@ export default class ExpensesScreen extends React.Component {
                   <TouchableHighlight
                     onPress={() => this.chooseImage()}
                     underlayColor="rgba(73,182,77,1,0.9)">
-                    <Image
-                      style={styles.iconGestion}
-                      source={iconeGestionnairePhoto}
+                    <IconView
+                      iconStyle={{color: 'rgba(92,117,254,0.5)'}}
+                      reverse
+                      name="ios-images-outline"
+                      type="ionicon"
+                      color="white"
                     />
                   </TouchableHighlight>
-                  {this.state.multiFiles.length > 0 && (
-                    <TouchableHighlight
-                      onPress={() => this.sendDocs()}
-                      underlayColor="rgba(73,182,77,1,0.9)">
-                      <View style={styles.SendIconView}>
-                        <Icon
-                          style={styles.SendIcon}
-                          name={'ios-send-sharp'}
-                          size={32}
-                          color={'rgb(92,117,254)'}
-                        />
-                      </View>
-                    </TouchableHighlight>
-                  )}
+
                   <TouchableHighlight
                     onPress={() => this.launchCamera()}
                     underlayColor="rgba(73,182,77,1,0.9)">

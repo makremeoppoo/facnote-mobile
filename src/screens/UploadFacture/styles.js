@@ -100,12 +100,40 @@ const styles = StyleSheet.create({
   },
   modalCloseView: {
     position: 'absolute',
-    top: ScaleHelpers.CalcWidth(5),
+    top: ScaleHelpers.CalcWidth(15),
     left: ScaleHelpers.CalcWidth(5),
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
+  },
+  SendView: {
+    position: 'absolute',
+    top: ScaleHelpers.CalcWidth(15),
+    right: ScaleHelpers.CalcWidth(5),
+  },
+  SendIconView: {
+    //Its for IOS
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    height: ScaleHelpers.CalcHeight(6),
+    // its for android
+    elevation: 5,
+    width: ScaleHelpers.CalcWidth(30),
+    borderRadius: 10,
+    backgroundColor: 'white',
+    borderColor: 'white',
+    borderWidth: 1,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  btnTxt: {
+    fontFamily: 'Nunito-ExtraBold',
+    fontSize: 15,
+    color: 'rgb(92,117,254)',
+    textAlign: 'center',
   },
   buttomIcon: {
     alignSelf: 'center',
@@ -123,30 +151,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(15),
     height: ScaleHelpers.CalcWidth(15),
   },
-  textStyle: {
-    width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(15),
-    fontFamily: 'Nunito-ExtraBold',
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 13,
-  },
-  SendIconView: {
-    margin: ScaleHelpers.CalcWidth(4),
-    paddingLeft: ScaleHelpers.CalcWidth(4),
-    paddingTop: ScaleHelpers.CalcWidth(2),
 
-    backgroundColor: 'white',
-    borderRadius: 15,
-    textAlign: 'center',
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'relative',
-  },
-  SendIcon: {
-    width: ScaleHelpers.CalcWidth(13),
-    height: ScaleHelpers.CalcWidth(13),
-  },
   error: {
     fontFamily: 'Nunito-ExtraBold',
     textAlign: 'center',
