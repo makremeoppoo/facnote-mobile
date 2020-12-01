@@ -40,10 +40,30 @@
 		A5BF49D86479411F94216CB0 /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D5FE119340589A3A3867 /* Nunito-Italic.ttf */; };
 		B4220A65C0054DD3801FDBF7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134007E11AF34C6AB246F4D4 /* SimpleLineIcons.ttf */; };
 		B63B29C1E856404CB707C6BD /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EF8D8520834175B1065E15 /* AntDesign.ttf */; };
+		BB6141CA25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
+		BB6141CB25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
+		BB6141CC25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
+		BB6141CD25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
+		BB6141D325761BFC004086FD /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141D225761BFC004086FD /* SegoeUI.ttf */; };
+		BB6141D425761BFC004086FD /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141D225761BFC004086FD /* SegoeUI.ttf */; };
+		BB6141D525761BFC004086FD /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141D225761BFC004086FD /* SegoeUI.ttf */; };
+		BB6141D625761BFC004086FD /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141D225761BFC004086FD /* SegoeUI.ttf */; };
 		BBC31059256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
 		BBC3105A256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
 		BBC3105B256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
 		BBC3105C256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
+		BBC3106A2576189600F45F79 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310602576189600F45F79 /* segoeuii.ttf */; };
+		BBC3106B2576189600F45F79 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310602576189600F45F79 /* segoeuii.ttf */; };
+		BBC3106C2576189600F45F79 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310602576189600F45F79 /* segoeuii.ttf */; };
+		BBC3106D2576189600F45F79 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310602576189600F45F79 /* segoeuii.ttf */; };
+		BBC3106E2576189600F45F79 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310612576189600F45F79 /* segoeuiz.ttf */; };
+		BBC3106F2576189600F45F79 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310612576189600F45F79 /* segoeuiz.ttf */; };
+		BBC310702576189600F45F79 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310612576189600F45F79 /* segoeuiz.ttf */; };
+		BBC310712576189600F45F79 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310612576189600F45F79 /* segoeuiz.ttf */; };
+		BBC3107825761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
+		BBC3107925761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
+		BBC3107A25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
+		BBC3107B25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */; };
 		C5C8156B7EDC4E4CAC06226D /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A267E8B02D445F4911574CD /* Fontisto.ttf */; };
 		D3C1B4407B49491CA77B82D3 /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */; };
@@ -119,11 +139,16 @@
 		ABD3DB8EE7154510B7CD2D3C /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BoldItalic.ttf"; path = "../assets/fonts/Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
 		AFA21DFD88EE445E928E8064 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraLightItalic.ttf"; path = "../assets/fonts/Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BB6141C825761B93004086FD /* SegoeUI-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SegoeUI-Black.ttf"; path = "../assets/fonts/SegoeUI-Black.ttf"; sourceTree = "<group>"; };
+		BB6141D225761BFC004086FD /* SegoeUI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SegoeUI.ttf; path = ../assets/fonts/SegoeUI.ttf; sourceTree = "<group>"; };
 		BBA8516FE25945E79B4A0D5B /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		BBC31055256D2CA900F45F79 /* ComptaSmartTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmartTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC31056256D2CA900F45F79 /* ComptaSmart-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC31057256D2CA900F45F79 /* ComptaSmart-tvOSTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-tvOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC31058256D2CAA00F45F79 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		BBC310602576189600F45F79 /* segoeuii.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = segoeuii.ttf; path = ../assets/fonts/segoeuii.ttf; sourceTree = "<group>"; };
+		BBC310612576189600F45F79 /* segoeuiz.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = segoeuiz.ttf; path = ../assets/fonts/segoeuiz.ttf; sourceTree = "<group>"; };
+		BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SegoeUI-Light.ttf"; path = "../assets/fonts/SegoeUI-Light.ttf"; sourceTree = "<group>"; };
 		C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BlackItalic.ttf"; path = "../assets/fonts/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -304,6 +329,11 @@
 				464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */,
 				2D20E6433C494EE99CBF312D /* Nunito-Regular.ttf */,
 				5C45D2FA7DAF41089493279E /* Nunito-SemiBold.ttf */,
+				BB6141D225761BFC004086FD /* SegoeUI.ttf */,
+				BB6141C825761B93004086FD /* SegoeUI-Black.ttf */,
+				BBC310602576189600F45F79 /* segoeuii.ttf */,
+				BBC310612576189600F45F79 /* segoeuiz.ttf */,
+				BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */,
 				6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */,
 			);
 			name = Resources;
@@ -448,6 +478,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBC3106B2576189600F45F79 /* segoeuii.ttf in Resources */,
+				BB6141CB25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
+				BB6141D425761BFC004086FD /* SegoeUI.ttf in Resources */,
+				BBC3107925761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
+				BBC3106F2576189600F45F79 /* segoeuiz.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,12 +503,17 @@
 				C5C8156B7EDC4E4CAC06226D /* Fontisto.ttf in Resources */,
 				F37ABB4F17084B6D812609E2 /* Foundation.ttf in Resources */,
 				E66835756CA846BBB5E15E61 /* Ionicons.ttf in Resources */,
+				BB6141D325761BFC004086FD /* SegoeUI.ttf in Resources */,
 				8862165C6F2F4D449927E671 /* MaterialCommunityIcons.ttf in Resources */,
+				BBC3106E2576189600F45F79 /* segoeuiz.ttf in Resources */,
 				1882B054FB8F4DFD9CB035BD /* MaterialIcons.ttf in Resources */,
 				5DA08049BE204D3CA34BFBEA /* Octicons.ttf in Resources */,
+				BB6141CA25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
+				BBC3106A2576189600F45F79 /* segoeuii.ttf in Resources */,
 				B4220A65C0054DD3801FDBF7 /* SimpleLineIcons.ttf in Resources */,
 				9A2A59FE40894955949CF3B0 /* Zocial.ttf in Resources */,
 				6EE1A2833BF34E0499840B60 /* Nunito-Black.ttf in Resources */,
+				BBC3107825761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
 				0A2038875F894AAFAA555464 /* Nunito-BlackItalic.ttf in Resources */,
 				471BE29D0F5B4CE78A287217 /* Nunito-Bold.ttf in Resources */,
 				1D05820FD0F0459EB348B66D /* Nunito-BoldItalic.ttf in Resources */,
@@ -494,6 +534,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB6141D525761BFC004086FD /* SegoeUI.ttf in Resources */,
+				BB6141CC25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
+				BBC310702576189600F45F79 /* segoeuiz.ttf in Resources */,
+				BBC3106C2576189600F45F79 /* segoeuii.ttf in Resources */,
+				BBC3107A25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,6 +547,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBC3106D2576189600F45F79 /* segoeuii.ttf in Resources */,
+				BB6141CD25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
+				BB6141D625761BFC004086FD /* SegoeUI.ttf in Resources */,
+				BBC3107B25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
+				BBC310712576189600F45F79 /* segoeuiz.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
