@@ -100,7 +100,10 @@ const styles = StyleSheet.create({
   },
   modalCloseView: {
     position: 'absolute',
-    top: ScaleHelpers.CalcWidth(15),
+    top:
+      Platform.OS === 'ios'
+        ? ScaleHelpers.CalcWidth(14)
+        : ScaleHelpers.CalcWidth(12),
     left: ScaleHelpers.CalcWidth(5),
   },
   closeImg: {
@@ -109,7 +112,10 @@ const styles = StyleSheet.create({
   },
   SendView: {
     position: 'absolute',
-    top: ScaleHelpers.CalcWidth(15),
+    top:
+      Platform.OS === 'ios'
+        ? ScaleHelpers.CalcWidth(12)
+        : ScaleHelpers.CalcWidth(10),
     right: ScaleHelpers.CalcWidth(5),
   },
   SendIconView: {

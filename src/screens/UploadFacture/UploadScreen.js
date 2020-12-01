@@ -251,7 +251,7 @@ export default class ExpensesScreen extends React.Component {
                     onPress={() => this.chooseImage()}
                     underlayColor="rgba(73,182,77,1,0.9)">
                     <IconView
-                      iconStyle={{color: 'rgba(92,117,254,0.5)'}}
+                      iconStyle={{color: 'rgba(92,117,254,0.8)'}}
                       reverse
                       name="ios-images-outline"
                       type="ionicon"
@@ -262,9 +262,12 @@ export default class ExpensesScreen extends React.Component {
                   <TouchableHighlight
                     onPress={() => this.launchCamera()}
                     underlayColor="rgba(73,182,77,1,0.9)">
-                    <Image
-                      style={styles.iconGestion}
-                      source={iconePrendrePhoto}
+                    <IconView
+                      iconStyle={{color: 'rgba(92,117,254,0.8)'}}
+                      reverse
+                      name="ios-camera-sharp"
+                      type="ionicon"
+                      color="white"
                     />
                   </TouchableHighlight>
                 </View>
