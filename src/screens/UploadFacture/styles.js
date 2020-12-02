@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
+import {textColor} from '../../AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -158,26 +158,6 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcWidth(15),
   },
 
-  error: {
-    fontFamily: 'Nunito-ExtraBold',
-    textAlign: 'center',
-    color: 'red',
-    marginTop: ScaleHelpers.CalcHeight(13),
-    maxHeight: ScaleHelpers.CalcHeight(10),
-    fontWeight: 'bold',
-    fontSize: 15,
-    position: 'absolute',
-  },
-  success: {
-    fontFamily: 'Nunito-ExtraBold',
-    textAlign: 'center',
-    color: 'green',
-    marginTop: ScaleHelpers.CalcHeight(13),
-    maxHeight: ScaleHelpers.CalcHeight(10),
-    fontWeight: 'bold',
-    position: 'absolute',
-    fontSize: 15,
-  },
 });
 
 export default styles;

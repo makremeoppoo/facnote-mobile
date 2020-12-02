@@ -15,6 +15,7 @@ import {Icon as IconView} from 'react-native-elements';
 import ImagePicker from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Toast from 'react-native-toast-message';
 
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
@@ -23,7 +24,6 @@ import Document from '../../../assets/images/Document.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
-import iconePrendrePhoto from '../../../assets/icons/icone_prendre_photo.png';
 import * as api from '../../services/auth';
 
 import styles from './styles';
@@ -34,7 +34,6 @@ export default class ExpensesScreen extends React.Component {
     this.state = {
       multiFiles: [],
       showModal: false,
-      message: {type: '', text: ''},
       loading: false,
     };
     this.actionSheet = createRef();
@@ -54,13 +53,26 @@ export default class ExpensesScreen extends React.Component {
       var res = await api.uploadFiles(typeFacture, multiFiles);
       this.setState({
         loading: false,
-        message: {type: 'success', text: 'fichier (s) téléchargé avec succès!'},
+        showModal: false,
+        multiFiles: [],
+
+      });
+      Toast.show({
+        text1: 'Felicitation',
+        text2: 'fichier (s) téléchargé avec succès! 👋',
+        type: 'success',
       });
     } catch (error) {
       this.setState({
         loading: false,
+        showModal: false,
+        multiFiles: [],
 
-        message: {type: 'error', text: 'telechargement fichier interrompu'},
+      });
+      Toast.show({
+        text1: 'Échec',
+        text2: 'telechargement fichier interrompu',
+        type: 'error',
       });
     }
   };
@@ -164,13 +176,17 @@ export default class ExpensesScreen extends React.Component {
   render() {
     return (
       <ScrollView>
+
         <View style={styles.containerStyle}>
+
           <ImageBackground
             source={Background}
             style={styles.backgroundStyle}></ImageBackground>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Nom de la Société</Text>
           </View>
+          <Toast ref={(ref) => Toast.setRef(ref)} />
+
           <View style={styles.buttonContainer}>
             <View style={styles.btnView}>
               <TouchableHighlight
@@ -220,8 +236,6 @@ export default class ExpensesScreen extends React.Component {
                     this.setState({
                       showModal: !this.state.showModal,
 
-                      multiFiles: [],
-                      message: {type: '', text: ''},
                     })
                   }
                   underlayColor="rgba(73,182,77,1,0.9)">
@@ -239,14 +253,6 @@ export default class ExpensesScreen extends React.Component {
                 )}
 
                 <View style={styles.buttomIcon}>
-                  <Text
-                    style={
-                      this.state.message.type == 'error'
-                        ? styles.error
-                        : styles.success
-                    }>
-                    {this.state.message.text}
-                  </Text>
                   <TouchableHighlight
                     onPress={() => this.chooseImage()}
                     underlayColor="rgba(73,182,77,1,0.9)">
