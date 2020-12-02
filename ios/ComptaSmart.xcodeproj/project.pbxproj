@@ -52,14 +52,6 @@
 		BBC3105A256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
 		BBC3105B256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
 		BBC3105C256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
-		BBC3106A2576189600F45F79 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310602576189600F45F79 /* segoeuii.ttf */; };
-		BBC3106B2576189600F45F79 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310602576189600F45F79 /* segoeuii.ttf */; };
-		BBC3106C2576189600F45F79 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310602576189600F45F79 /* segoeuii.ttf */; };
-		BBC3106D2576189600F45F79 /* segoeuii.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310602576189600F45F79 /* segoeuii.ttf */; };
-		BBC3106E2576189600F45F79 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310612576189600F45F79 /* segoeuiz.ttf */; };
-		BBC3106F2576189600F45F79 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310612576189600F45F79 /* segoeuiz.ttf */; };
-		BBC310702576189600F45F79 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310612576189600F45F79 /* segoeuiz.ttf */; };
-		BBC310712576189600F45F79 /* segoeuiz.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC310612576189600F45F79 /* segoeuiz.ttf */; };
 		BBC3107825761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107925761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107A25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
@@ -146,8 +138,6 @@
 		BBC31056256D2CA900F45F79 /* ComptaSmart-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC31057256D2CA900F45F79 /* ComptaSmart-tvOSTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-tvOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC31058256D2CAA00F45F79 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
-		BBC310602576189600F45F79 /* segoeuii.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = segoeuii.ttf; path = ../assets/fonts/segoeuii.ttf; sourceTree = "<group>"; };
-		BBC310612576189600F45F79 /* segoeuiz.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = segoeuiz.ttf; path = ../assets/fonts/segoeuiz.ttf; sourceTree = "<group>"; };
 		BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SegoeUI-Light.ttf"; path = "../assets/fonts/SegoeUI-Light.ttf"; sourceTree = "<group>"; };
 		C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BlackItalic.ttf"; path = "../assets/fonts/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
@@ -331,8 +321,6 @@
 				5C45D2FA7DAF41089493279E /* Nunito-SemiBold.ttf */,
 				BB6141D225761BFC004086FD /* SegoeUI.ttf */,
 				BB6141C825761B93004086FD /* SegoeUI-Black.ttf */,
-				BBC310602576189600F45F79 /* segoeuii.ttf */,
-				BBC310612576189600F45F79 /* segoeuiz.ttf */,
 				BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */,
 				6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */,
 			);
@@ -478,11 +466,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBC3106B2576189600F45F79 /* segoeuii.ttf in Resources */,
 				BB6141CB25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
 				BB6141D425761BFC004086FD /* SegoeUI.ttf in Resources */,
 				BBC3107925761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
-				BBC3106F2576189600F45F79 /* segoeuiz.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,11 +491,9 @@
 				E66835756CA846BBB5E15E61 /* Ionicons.ttf in Resources */,
 				BB6141D325761BFC004086FD /* SegoeUI.ttf in Resources */,
 				8862165C6F2F4D449927E671 /* MaterialCommunityIcons.ttf in Resources */,
-				BBC3106E2576189600F45F79 /* segoeuiz.ttf in Resources */,
 				1882B054FB8F4DFD9CB035BD /* MaterialIcons.ttf in Resources */,
 				5DA08049BE204D3CA34BFBEA /* Octicons.ttf in Resources */,
 				BB6141CA25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
-				BBC3106A2576189600F45F79 /* segoeuii.ttf in Resources */,
 				B4220A65C0054DD3801FDBF7 /* SimpleLineIcons.ttf in Resources */,
 				9A2A59FE40894955949CF3B0 /* Zocial.ttf in Resources */,
 				6EE1A2833BF34E0499840B60 /* Nunito-Black.ttf in Resources */,
@@ -536,8 +520,6 @@
 			files = (
 				BB6141D525761BFC004086FD /* SegoeUI.ttf in Resources */,
 				BB6141CC25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
-				BBC310702576189600F45F79 /* segoeuiz.ttf in Resources */,
-				BBC3106C2576189600F45F79 /* segoeuii.ttf in Resources */,
 				BBC3107A25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
 				2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */,
 			);
@@ -547,11 +529,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBC3106D2576189600F45F79 /* segoeuii.ttf in Resources */,
 				BB6141CD25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
 				BB6141D625761BFC004086FD /* SegoeUI.ttf in Resources */,
 				BBC3107B25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
-				BBC310712576189600F45F79 /* segoeuiz.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
