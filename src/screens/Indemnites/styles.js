@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     elevation: 5,
 
     paddingLeft: 10,
-    height: ScaleHelpers.CalcHeight(8),
+    height: ScaleHelpers.CalcHeight(7),
     width: ScaleHelpers.CalcWidth(80),
     backgroundColor: 'white',
     borderRadius: 10,

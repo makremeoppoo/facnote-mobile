@@ -20,7 +20,7 @@ import Toast from 'react-native-toast-message';
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
-
+import Indemnite from '../../../assets/images/Indemnite.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
@@ -55,7 +55,6 @@ export default class ExpensesScreen extends React.Component {
         loading: false,
         showModal: false,
         multiFiles: [],
-
       });
       Toast.show({
         text1: 'Felicitation',
@@ -67,7 +66,6 @@ export default class ExpensesScreen extends React.Component {
         loading: false,
         showModal: false,
         multiFiles: [],
-
       });
       Toast.show({
         text1: 'Échec',
@@ -176,9 +174,7 @@ export default class ExpensesScreen extends React.Component {
   render() {
     return (
       <ScrollView>
-
         <View style={styles.containerStyle}>
-
           <ImageBackground
             source={Background}
             style={styles.backgroundStyle}></ImageBackground>
@@ -212,7 +208,16 @@ export default class ExpensesScreen extends React.Component {
                 <Image style={styles.Img} source={Document} />
               </TouchableHighlight>
             </View>
+            <View style={styles.btnView}>
+              <TouchableHighlight
+                style={styles.btnContainer}
+                onPress={() => this.props.navigation.navigate('Indemnites')}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <Image style={styles.Img} source={Indemnite} />
+              </TouchableHighlight>
+            </View>
           </View>
+
           <Modal
             animationType="slide"
             transparent={true}
@@ -235,7 +240,6 @@ export default class ExpensesScreen extends React.Component {
                   onPress={() =>
                     this.setState({
                       showModal: !this.state.showModal,
-
                     })
                   }
                   underlayColor="rgba(73,182,77,1,0.9)">

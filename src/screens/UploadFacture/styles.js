@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(100),
   },
   buttonContainer: {
-    height: ScaleHelpers.CalcHeight(65),
+    height: ScaleHelpers.CalcHeight(71),
   },
   title: {
     fontFamily: 'Nunito-Bold',

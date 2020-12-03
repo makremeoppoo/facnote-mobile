@@ -6,6 +6,7 @@ import ScaleHelpers from './components/scaleHelpers';
 
 export const textColor = 'rgba(112,112,112,1)';
 export const buttonColor = 'white';
+export const blueColor = 'rgb(92,117,254)';
 
 export const landing = StyleSheet.create({
   container: {

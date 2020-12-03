@@ -8,9 +8,10 @@ import {
   Linking,
   TextInput,
   Image,
+  Picker
 } from 'react-native';
 import Rectangle from '../../../assets/images/Rectangle.png';
-
+import DatePicker from '../../components/DatePicker/DatePicker';
 import styles from './styles';
 
 class IndemnitesScreen extends React.Component {
@@ -18,6 +19,12 @@ class IndemnitesScreen extends React.Component {
     super(props);
   }
 
+  setDate = (date) => {
+    console.log(date);
+  };
+  setField = (e) => {
+    this.setState({[e.target.name]: e.target.value});
+  };
   callNumber = (phone) => {
     let phoneNumber = phone;
     if (Platform.OS !== 'android') {
@@ -52,43 +59,41 @@ class IndemnitesScreen extends React.Component {
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Date</Text>
 
-              <View style={styles.inputContainer}>
-                <TextInput style={styles.input} />
-              </View>
+              <DatePicker setDate={this.setDate} />
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Puissance Administrative</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput style={styles.input} />
+                <TextInput setDate={this.setField} name="puissance" />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Distance parcourue(KM)</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput style={styles.input} />
+                <TextInput setDate={this.setField} name="distance" />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Lieu de départ</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput style={styles.input} />
+                <TextInput setDate={this.setField} name="lieuDapart" />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Lieu d'arrivée</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput style={styles.input} />
+                <TextInput setDate={this.setField} name="lieuArriver" />
               </View>
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Client ou motif</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput style={styles.input} />
+                <TextInput setDate={this.setField} name="motif" />
               </View>
             </View>
           </View>
