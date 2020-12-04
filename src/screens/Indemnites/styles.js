@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor,label} from '../../AppStyles';
+import {textColor, buttonColor, label} from '../../AppStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   submitTxt: {
     fontFamily: 'Nunito-Regular',
     fontSize: 15,
-    color: "white",
+    color: 'white',
     textAlign: 'center',
   },
   rectangle: {

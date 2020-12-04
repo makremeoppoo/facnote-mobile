@@ -8,13 +8,17 @@ import {
   Linking,
   TextInput,
   Image,
-  Picker
 } from 'react-native';
+import {Picker} from '@react-native-community/picker';
+
 import Rectangle from '../../../assets/images/Rectangle.png';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import styles from './styles';
 
 class IndemnitesScreen extends React.Component {
+  state = {
+    puissance: '',
+  };
   constructor(props) {
     super(props);
   }
@@ -65,7 +69,32 @@ class IndemnitesScreen extends React.Component {
               <Text style={styles.label}>Puissance Administrative</Text>
 
               <View style={styles.inputContainer}>
-                <TextInput setDate={this.setField} name="puissance" />
+                <Picker
+                  placeholder="select Puissance"
+                  selectedValue={this.state.puissance}
+                  onValueChange={(itemValue, itemIndex) =>
+                    this.setState({puissance: itemValue})
+                  }>
+                  <Picker.Item label="Moto P = 50 CC" value="1"></Picker.Item>
+                  <Picker.Item label="Moto P = 3CV" value="2"></Picker.Item>
+                  <Picker.Item label="Moto P = 6CV" value="3"></Picker.Item>
+                  <Picker.Item label="Moto P = 5CV" value="4"></Picker.Item>
+                  <Picker.Item
+                    label="Automobile P = 3CV"
+                    value="5"></Picker.Item>
+                  <Picker.Item
+                    label="Automobile P = 4CV"
+                    value="6"></Picker.Item>
+                  <Picker.Item
+                    label="Automobile P = 5CV"
+                    value="7"></Picker.Item>
+                  <Picker.Item
+                    label="Automobile P = 6CV"
+                    value="8"></Picker.Item>
+                  <Picker.Item
+                    label="Automobile P = 6CV"
+                    value="9"></Picker.Item>
+                </Picker>
               </View>
             </View>
             <View style={styles.inputBlock}>
