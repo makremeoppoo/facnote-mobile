@@ -8,9 +8,11 @@ import {
   ImageBackground,
   Image,
   Modal,
+  Alert,
   ActivityIndicator,
 } from 'react-native';
 import {Icon as IconView} from 'react-native-elements';
+import ImageResizer from 'react-native-image-resizer';
 
 import ImagePicker from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
@@ -35,6 +37,9 @@ export default class ExpensesScreen extends React.Component {
       multiFiles: [],
       showModal: false,
       loading: false,
+      resizeTargetSize: 80,
+      mode: 'contain',
+      onlyScaleDown: false,
     };
     this.actionSheet = createRef();
   }
@@ -51,6 +56,7 @@ export default class ExpensesScreen extends React.Component {
       console.log('multiFiles', multiFiles);
 
       var res = await api.uploadFiles(typeFacture, multiFiles);
+      console.log("111")
       this.setState({
         loading: false,
         showModal: false,
@@ -83,7 +89,25 @@ export default class ExpensesScreen extends React.Component {
       let copy = [...this.state.multiFiles];
 
       for (const res of results) {
-        copy.push(res);
+        ImageResizer.createResizedImage(
+          res.uri,
+          this.state.resizeTargetSize,
+          this.state.resizeTargetSize,
+          'JPEG',
+          100,
+          0,
+          undefined,
+          false,
+          {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
+        )
+          .then((resizedImage) => {
+          
+            copy.push(resizedImage);
+            this.setState({multiFiles: copy});
+          })
+          .catch((err) => {
+            console.log(err);
+          });
         //Printing the log realted to the file
       }
       //Setting the state to show multiple file attributes
@@ -119,34 +143,38 @@ export default class ExpensesScreen extends React.Component {
         alert(response.customButton);
       } else {
         let copy = [...this.state.multiFiles];
-        let obj = {
-          name: response.fileName,
-          size: response.fileSize,
-          type: response.type,
-          uri: response.uri,
-        };
-        copy.push(obj);
 
-        this.setState({multiFiles: copy});
-        /**
-         * 
-         * this.setState({
-          filePath: response,
-          fileData: response.data,
-          fileUri: response.uri,
-        });
-         */
+        ImageResizer.createResizedImage(
+          response.uri,
+          this.state.resizeTargetSize,
+          this.state.resizeTargetSize,
+          'JPEG',
+          100,
+          0,
+          undefined,
+          false,
+          {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
+        )
+          .then((resizedImage) => {
+           
+            copy.push(resizedImage);
+            this.setState({multiFiles: copy});
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     });
   };
 
   renderFileUri() {
+    console.log('this.state.multiFiles', this.state.multiFiles);
     return (
       <ScrollView>
         <View style={styles.photoContainer}>
           {this.state.multiFiles.map((item, key) => (
             <View key={key} style={styles.viewImg}>
-              {item.type == 'image/jpeg' ? (
+              {item.uri ? (
                 <Image style={styles.ImgPlus} source={{uri: item.uri}} />
               ) : (
                 <Icon

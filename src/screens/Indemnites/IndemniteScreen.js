@@ -127,7 +127,9 @@ class IndemnitesScreen extends React.Component {
             </View>
           </View>
           <View style={styles.ButtonsContain}>
-            <TouchableHighlight style={styles.btnContainer}>
+            <TouchableHighlight
+              style={styles.btnContainer}
+              onPress={() => this.props.navigation.navigate('Factures')}>
               <Text style={styles.btnTxt}>Annuler</Text>
             </TouchableHighlight>
             <TouchableHighlight style={styles.btnSubmitContainer}>

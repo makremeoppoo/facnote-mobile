@@ -42,6 +42,7 @@ export async function uploadFiles(type, data) {
 
   try {
     let res = await api.post(`${c.UPLOAD_FILES}/${type}`, form_data, options);
+    console.log(res.data)
     return res.data;
   } catch (e) {
     throw handler(e);
