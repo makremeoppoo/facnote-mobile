@@ -26,7 +26,9 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => Promise.resolve(response),
-  (err) => {},
+  (err) => {
+    console.log(err);
+  },
 );
 
 export default api;

@@ -38,11 +38,13 @@ export async function uploadFiles(type, data) {
   };
 
   const form_data = new FormData();
-  for (let key in data) form_data.append(key, data[key]);
+  
+  for (let key in data) {
+    form_data.append(key, data[key]);
+  }
 
   try {
     let res = await api.post(`${c.UPLOAD_FILES}/${type}`, form_data, options);
-    console.log(res.data)
     return res.data;
   } catch (e) {
     throw handler(e);

@@ -101,8 +101,13 @@ export default class ExpensesScreen extends React.Component {
           {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
         )
           .then((resizedImage) => {
-          
-            copy.push(resizedImage);
+            let obj = {
+              name: res.name,
+              type: res.type,
+              uri: resizedImage.uri,
+            };
+
+            copy.push(obj);
             this.setState({multiFiles: copy});
           })
           .catch((err) => {
@@ -156,8 +161,12 @@ export default class ExpensesScreen extends React.Component {
           {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
         )
           .then((resizedImage) => {
-           
-            copy.push(resizedImage);
+            let obj = {
+              name: response.fileName,
+              type: response.type,
+              uri: resizedImage.uri,
+            };
+            copy.push(obj);
             this.setState({multiFiles: copy});
           })
           .catch((err) => {
