@@ -15,6 +15,8 @@ import LogoImage from '../../../assets/images/logo.png';
 import BackgroundLoginImage from '../../../assets/images/background_connexion.png';
 
 import * as api from '../../services/auth';
+import getCabinet from '../../services/cabinet';
+
 import {login} from '../../redux';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -63,7 +65,7 @@ class LoginScreen extends React.Component {
       console.log(user);
       await AsyncStorage.setItem('accessToken', user['token']);
 
-      let cabinet = await api.getCabinet();
+      let cabinet = await getCabinet();
       console.log(cabinet)
       this.props.login({user: user['user'], cabinet: cabinet});
     } catch (error) {

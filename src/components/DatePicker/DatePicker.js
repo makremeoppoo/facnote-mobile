@@ -19,6 +19,7 @@ class DatePicker extends React.Component {
     show: false,
   };
   onChange = async (event, selectedDate) => {
+    this.props.setDate(moment(selectedDate).format('DD/MM/YYYY'))
     await this.setState({
       dateString: moment(selectedDate).format('DD/MM/YYYY'),
       date: selectedDate,
@@ -37,7 +38,7 @@ class DatePicker extends React.Component {
       <View style={{flex: 1, borderRadius: 100}}>
         <TouchableOpacity
           onPress={this.showOverlay}
-          style={styles.inputContainerStyle}>
+          >
           {this.state.dateString != '' ? (
             <View style={styles.inputContainer}>
               <Text>{this.state.dateString}</Text>

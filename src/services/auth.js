@@ -20,36 +20,6 @@ export async function login(data) {
   }
 }
 
-export async function getCabinet() {
-  try {
-    let res = await api.get(c.GETCABINET);
-    return res.data;
-  } catch (e) {
-    throw handler(e);
-  }
-}
-
-export async function uploadFiles(type, data) {
-  const options = {
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'multipart/form-data',
-    },
-  };
-
-  const form_data = new FormData();
-  
-  for (let key in data) {
-    form_data.append(key, data[key]);
-  }
-
-  try {
-    let res = await api.post(`${c.UPLOAD_FILES}/${type}`, form_data, options);
-    return res.data;
-  } catch (e) {
-    throw handler(e);
-  }
-}
 
 export function handler(err) {
   let error = err;

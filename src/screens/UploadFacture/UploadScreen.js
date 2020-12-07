@@ -27,7 +27,7 @@ import Indemnite from '../../../assets/images/Indemnite.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
-import * as api from '../../services/auth';
+import uploadFiles from '../../services/upload';
 
 import styles from './styles';
 
@@ -55,7 +55,7 @@ import styles from './styles';
     try {
       await this.setState({loading: true});
 
-      var res = await api.uploadFiles(typeFacture, multiFiles);
+      var res = await uploadFiles(typeFacture, multiFiles);
       this.setState({
         loading: false,
         showModal: false,
