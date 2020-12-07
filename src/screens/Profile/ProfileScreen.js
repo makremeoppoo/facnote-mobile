@@ -6,8 +6,7 @@ import {
   Text,
   ScrollView,
   Linking,
-  ImageBackground,
-  Image,
+  ImageBackground
 } from 'react-native';
 import {connect} from 'react-redux';
 
@@ -18,14 +17,6 @@ import Background from '../../../assets/images/background_accueil_ok.png';
 class NotificationsScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cabinet: {},
-    };
-  }
-
-  componentDidMount() {
-    console.log('user', this.props.user);
-    this.setState({cabinet: this.props.user.cabinet});
   }
 
   callNumber = (phone) => {
@@ -46,11 +37,14 @@ class NotificationsScreen extends React.Component {
       .catch((err) => console.log(err));
   };
 
-  sendMail = () => {
-    Linking.openURL(`mailto:${this.state.cabinet.email}?subject=Cabinet`);
+  sendMail = (email) => {
+    Linking.openURL(`mailto:${email}?subject=Cabinet`);
   };
 
   render() {
+    const {cabinet} = this.props.user;
+    
+
     return (
       <ScrollView>
         <View style={styles.container}>
@@ -59,7 +53,7 @@ class NotificationsScreen extends React.Component {
             style={styles.topImageStyle}></ImageBackground>
 
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Nom de la Société</Text>
+            <Text style={styles.title}>{cabinet.cabinet.raison_sociale}</Text>
           </View>
           <View style={styles.buttonContainer}>
             <TouchableHighlight
@@ -70,7 +64,7 @@ class NotificationsScreen extends React.Component {
                   backgroundColor: 'rgba(46, 204, 113, 0.9)',
                 },
               }}
-              onPress={() => this.callNumber('00000')}>
+              onPress={() => this.callNumber(cabinet.fax)}>
               <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
                 Appeler
               </Text>
@@ -83,28 +77,41 @@ class NotificationsScreen extends React.Component {
                   backgroundColor: 'rgba(92,117,254,0.9)',
                 },
               }}
-              onPress={() => this.sendMail()}>
+              onPress={() => this.sendMail(cabinet.email)}>
               <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
                 Envoyer un email
               </Text>
             </TouchableHighlight>
             <View style={styles.infoContainer}>
               <View style={styles.cabinetImgContainer}>
-                <Image
+                <ImageBackground resizeMode={"contain"}
                   style={styles.cabinetImg}
-                  source={require('../../../assets/images/imgpsh_fullsize_anim.png')}
+                  source={
+                    cabinet.logo1 != ''
+                      ? {uri: cabinet.logo1}
+                      : cabinet.logo2 != ''
+                      ? {uri: cabinet.logo2}
+                      : require('../../../assets/images/imgpsh_fullsize_anim.png')
+                  }
                 />
               </View>
-              <Text style={styles.CabinerName}>Nom du cabinet</Text>
-              <Text style={styles.CabinerInfo}>CP Rue Ville</Text>
-              <Text style={styles.CabinerInfo}>Telephone 22 654 658</Text>
-
-              <Text style={styles.CabinerInfo}>Fax 25 963 8896</Text>
+              <Text style={styles.CabinerName}>
+                {cabinet.cabinet.raison_sociale}
+              </Text>
+              <Text style={styles.CabinerInfo}>
+                {cabinet.address.code_postale} {cabinet.address.adresse}{' '}
+              </Text>
+              <Text style={styles.CabinerInfo}>
+                {cabinet.address.ville} {cabinet.address.pays}
+              </Text>
             </View>
             <TouchableHighlight
               style={{
                 ...styles.btn,
-                ...{borderColor: 'rgba(171, 183, 183, 1)', backgroundColor: 'rgba(171, 183, 183, 1)'},
+                ...{
+                  borderColor: 'rgba(171, 183, 183, 1)',
+                  backgroundColor: 'rgba(171, 183, 183, 1)',
+                },
               }}
               onPress={() => this.props.logout()}
               underlayColor="rgba(73,182,77,1,0.9)">

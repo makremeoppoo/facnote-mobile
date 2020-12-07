@@ -13,17 +13,17 @@ const styles = StyleSheet.create({
   },
   backgroundStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    marginTop: ScaleHelpers.CalcHeight(10),
-    height: '100%',
+    height: ScaleHelpers.CalcHeight(110),
     position: 'absolute',
   },
   titleContainer: {
-    height: ScaleHelpers.CalcHeight(25),
-    paddingTop: ScaleHelpers.CalcHeight(5),
+    height: ScaleHelpers.CalcHeight(20),
     width: ScaleHelpers.CalcWidth(100),
+    justifyContent:"center"
   },
   buttonContainer: {
-    height: ScaleHelpers.CalcHeight(71),
+    marginTop:ScaleHelpers.CalcHeight(5),
+    height: ScaleHelpers.CalcHeight(74),
   },
   title: {
     fontFamily: 'Nunito-Bold',

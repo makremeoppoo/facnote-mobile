@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(120),
+    height: ScaleHelpers.CalcHeight(110),
     position: 'absolute',
   },
   topImageTransparentStyle: {
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(25),
+    height: ScaleHelpers.CalcHeight(20),
     width: ScaleHelpers.CalcWidth(100),
   },
 
@@ -47,7 +47,6 @@ const styles = StyleSheet.create({
 
   cabinetImg: {
     height:ScaleHelpers.CalcWidth(25),
-    alignSelf: 'center',
     width: ScaleHelpers.CalcWidth(45),
 
   },

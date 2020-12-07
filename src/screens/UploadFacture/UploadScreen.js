@@ -18,6 +18,7 @@ import ImagePicker from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Toast from 'react-native-toast-message';
+import {connect} from 'react-redux';
 
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
@@ -30,7 +31,7 @@ import * as api from '../../services/auth';
 
 import styles from './styles';
 
-export default class ExpensesScreen extends React.Component {
+ class UploadScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,10 +54,8 @@ export default class ExpensesScreen extends React.Component {
 
     try {
       await this.setState({loading: true});
-      console.log('multiFiles', multiFiles);
 
       var res = await api.uploadFiles(typeFacture, multiFiles);
-      console.log("111")
       this.setState({
         loading: false,
         showModal: false,
@@ -209,6 +208,8 @@ export default class ExpensesScreen extends React.Component {
   }
 
   render() {
+    const {cabinet} = this.props.user;
+
     return (
       <ScrollView>
         <View style={styles.containerStyle}>
@@ -216,7 +217,7 @@ export default class ExpensesScreen extends React.Component {
             source={Background}
             style={styles.backgroundStyle}></ImageBackground>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Nom de la Société</Text>
+            <Text style={styles.title}>{cabinet.cabinet.raison_sociale}</Text>
           </View>
           <Toast ref={(ref) => Toast.setRef(ref)} />
 
@@ -326,3 +327,7 @@ export default class ExpensesScreen extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  user: state.auth,
+});
+export default connect(mapStateToProps)(UploadScreen);
