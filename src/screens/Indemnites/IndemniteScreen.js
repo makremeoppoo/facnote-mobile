@@ -17,11 +17,12 @@ import Rectangle from '../../../assets/images/Rectangle.png';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import styles from './styles';
 import saveIndemnite from '../../services/indemnite';
+import moment from 'moment';
 
 class IndemnitesScreen extends React.Component {
   state = {
     puissance: '',
-    date: '',
+    date: moment(new Date()).format('YYYY-MM-DD'),
     distance: '',
     lieuDapart: '',
     lieuArriver: '',
@@ -33,8 +34,6 @@ class IndemnitesScreen extends React.Component {
   }
 
   setDate = (date) => {
-    console.log(date);
-
     this.setState({date});
   };
   setField = (text, name) => {
@@ -55,8 +54,8 @@ class IndemnitesScreen extends React.Component {
 
     try {
       await this.setState({loading: true});
-
       const data = {
+        base: user.base,
         date,
         userActiveInput: '',
         puissanceAdministrative: puissance,
@@ -89,21 +88,21 @@ class IndemnitesScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView>
-        <View style={styles.container}>
+      <View style={styles.container}>
+        <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
+
+        <ScrollView>
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Indemnités Kilométriques</Text>
-            <Toast
-              ref={(ref) => Toast.setRef(ref)}
-              style={{elevation: 11, position: 'absolute'}}
-            />
           </View>
-
           <View style={styles.infoContainer}>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Date</Text>
 
-              <DatePicker setDate={this.setDate} />
+              <DatePicker
+                date={this.state.date}
+                setCurrentDate={this.setDate}
+              />
             </View>
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Puissance Administrative</Text>
@@ -206,8 +205,8 @@ class IndemnitesScreen extends React.Component {
               </>
             </TouchableHighlight>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }

@@ -1,122 +1,10 @@
-import React from 'react';
-import {
-  Platform,
-  Text,
-  StyleSheet,
-  TextInput,
-  View,
-  TouchableOpacity,
-} from 'react-native';
-import {Overlay} from 'react-native-elements';
+import React, {useState} from 'react';
+import {View, Platform, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import ScaleHelpers from '../scaleHelpers';
 
-class DatePicker extends React.Component {
-  state = {
-    dateString: '',
-    date: this.props.date || new Date(),
-    show: false,
-  };
-  onChange = async (event, selectedDate) => {
-    this.props.setDate(moment(selectedDate).format('DD/MM/YYYY'))
-    await this.setState({
-      dateString: moment(selectedDate).format('DD/MM/YYYY'),
-      date: selectedDate,
-      show: false,
-    });
-  };
-
-  showOverlay = () => {
-    this.setState({show: true});
-  };
-  hideOverlay = () => {
-    this.setState({show: false});
-  };
-  render() {
-    return (
-      <View style={{flex: 1, borderRadius: 100}}>
-        <TouchableOpacity
-          onPress={this.showOverlay}
-          >
-          {this.state.dateString != '' ? (
-            <View style={styles.inputContainer}>
-              <Text>{this.state.dateString}</Text>
-            </View>
-          ) : (
-            <View style={styles.inputContainer}></View>
-          )}
-        </TouchableOpacity>
-        {Platform.OS === 'ios' ? (
-          <Overlay
-            isVisible={this.state.show}
-            onBackdropPress={this.hideOverlay}
-            overlayStyle={styles.overlayStyle}>
-            <View style={styles.headerStyle}>
-              <TouchableOpacity onPress={this.hideOverlay}>
-                <Text style={{paddingHorizontal: 15}}>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={this.hideOverlay}>
-                <Text style={{paddingHorizontal: 15, color: 'green'}}>
-                  Done
-                </Text>
-              </TouchableOpacity>
-            </View>
-            <DateTimePicker
-              value={this.state.date}
-              mode={'date'}
-              is24Hour={true}
-              display="default"
-              onChange={this.onChange}
-              style={{backgroundColor: 'white'}}
-            />
-          </Overlay>
-        ) : (
-          <>
-            {this.state.show && (
-              <DateTimePicker
-                value={this.state.date}
-                mode={'date'}
-                is24Hour={true}
-                display="default"
-                onChange={this.onChange}
-              />
-            )}
-          </>
-        )}
-      </View>
-    );
-  }
-}
 const styles = StyleSheet.create({
-  overlayStyle: {
-    flex: 1,
-    width: '100%',
-    justifyContent: 'flex-end',
-    backgroundColor: '#00000066',
-  },
-  headerStyle: {
-    backgroundColor: 'blue',
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-    borderColor: '#CDCDCD',
-    borderBottomWidth: 1,
-    height: 50,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexDirection: 'row',
-  },
-  inputContainerStyle: {
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: '#CAD3DF',
-    borderRadius: 5,
-    marginVertical: 10,
-    marginHorizontal: 10,
-    paddingRight: 10,
-    height: 50,
-  },
   inputContainer: {
     //Its for IOS
     shadowColor: '#000',
@@ -134,16 +22,42 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignSelf: 'center',
   },
-  placeholderStyle: {
-    fontFamily: 'Gill Sans',
-    fontSize: 16,
-    color: '#CDCDCD',
-    marginHorizontal: 10,
-  },
-  textStyle: {
-    fontFamily: 'Gill Sans',
-    fontSize: 16,
-    marginHorizontal: 10,
-  },
 });
-export default DatePicker;
+
+export default DatePicker = ({setCurrentDate}) => {
+  const [date, setDate] = useState(new Date());
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
+
+  const onChange = async (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+    setCurrentDate(moment(selectedDate).format('YYYY-MM-DD'));
+  };
+
+  const showTimepicker = () => {
+    setShow(true);
+  };
+
+  return (
+    <View>
+      <TouchableOpacity onPress={showTimepicker}>
+        <View style={styles.inputContainer}>
+          <Text>{moment(date).format('DD/MM/YYYY')}</Text>
+        </View>
+      </TouchableOpacity>
+
+      {show && (
+        <DateTimePicker
+          testID="dateTimePicker"
+          value={date}
+          mode={'date'}
+          is24Hour={true}
+          display="default"
+          onChange={onChange}
+        />
+      )}
+    </View>
+  );
+};
