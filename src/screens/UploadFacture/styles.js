@@ -19,10 +19,9 @@ const styles = StyleSheet.create({
   titleContainer: {
     height: ScaleHelpers.CalcHeight(20),
     width: ScaleHelpers.CalcWidth(100),
-    justifyContent:"center"
+    justifyContent: 'center',
   },
   buttonContainer: {
-    marginTop:ScaleHelpers.CalcHeight(5),
     height: ScaleHelpers.CalcHeight(74),
   },
   title: {
@@ -157,7 +156,9 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(15),
     height: ScaleHelpers.CalcWidth(15),
   },
-
+  scrollView: {
+    marginTop: ScaleHelpers.CalcWidth(4),
+  },
 });
 
 export default styles;

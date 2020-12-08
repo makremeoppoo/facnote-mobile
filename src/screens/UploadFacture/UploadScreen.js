@@ -31,7 +31,7 @@ import uploadFiles from '../../services/upload';
 
 import styles from './styles';
 
- class UploadScreen extends React.Component {
+class UploadScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -211,16 +211,16 @@ import styles from './styles';
     const {cabinet} = this.props.user;
 
     return (
-      <ScrollView>
-        <View style={styles.containerStyle}>
-          <ImageBackground
-            source={Background}
-            style={styles.backgroundStyle}></ImageBackground>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>{cabinet.cabinet.raison_sociale}</Text>
-          </View>
-          <Toast ref={(ref) => Toast.setRef(ref)} />
+      <View style={styles.containerStyle}>
+        <ImageBackground
+          source={Background}
+          style={styles.backgroundStyle}></ImageBackground>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{cabinet.cabinet.raison_sociale}</Text>
+        </View>
+        <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
+        <ScrollView style={styles.scrollView}>
           <View style={styles.buttonContainer}>
             <View style={styles.btnView}>
               <TouchableHighlight
@@ -322,8 +322,8 @@ import styles from './styles';
               </View>
             </View>
           </Modal>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }
