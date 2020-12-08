@@ -3,7 +3,7 @@ import api from './axios';
 
 export default async function saveIndemnite(data) {
   try {
-    let res = await api.post(c.SAVE_INDEMNITE, data);
+    let res = await api.put(c.SAVE_INDEMNITE, data);
 
     return res.data;
   } catch (e) {

@@ -18,7 +18,7 @@ export default async function uploadFiles(type, data) {
     }
   
     try {
-      let res = await api.post(`${c.UPLOAD_FILES}/${type}`, form_data, options);
+      let res = await api.put(`${c.UPLOAD_FILES}/${type}`, form_data, options);
       return res.data;
     } catch (e) {
       throw handler(e);

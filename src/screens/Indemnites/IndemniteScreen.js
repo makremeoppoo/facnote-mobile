@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {Picker} from '@react-native-community/picker';
 import Toast from 'react-native-toast-message';
+import {connect} from 'react-redux';
 
 import Rectangle from '../../../assets/images/Rectangle.png';
 import DatePicker from '../../components/DatePicker/DatePicker';
@@ -49,7 +50,7 @@ class IndemnitesScreen extends React.Component {
       lieuDapart,
       motif,
     } = this.state;
-    console.log(this.state);
+    const {user} = this.props.user;
     await this.setState({loading: true});
 
     try {
@@ -63,6 +64,7 @@ class IndemnitesScreen extends React.Component {
         lieuDepart: lieuDapart,
         lieuArrivee: lieuArriver,
         clientOuMotif: motif,
+        user: {id: user.id},
       };
       var res = await saveIndemnite(data);
       this.setState({
@@ -89,17 +91,15 @@ class IndemnitesScreen extends React.Component {
     return (
       <ScrollView>
         <View style={styles.container}>
-        
           <View style={styles.titleContainer}>
             <Text style={styles.title}>Indemnités Kilométriques</Text>
             <Toast
-            ref={(ref) => Toast.setRef(ref)}
-            style={{elevation:11, position: 'absolute'}}
-          />
+              ref={(ref) => Toast.setRef(ref)}
+              style={{elevation: 11, position: 'absolute'}}
+            />
           </View>
-         
+
           <View style={styles.infoContainer}>
-         
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Date</Text>
 
@@ -211,4 +211,7 @@ class IndemnitesScreen extends React.Component {
     );
   }
 }
-export default IndemnitesScreen;
+const mapStateToProps = (state) => ({
+  user: state.auth,
+});
+export default connect(mapStateToProps)(IndemnitesScreen);
