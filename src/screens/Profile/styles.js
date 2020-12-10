@@ -23,6 +23,8 @@ const styles = StyleSheet.create({
   titleContainer: {
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(20),
+    marginBottom: ScaleHelpers.CalcHeight(5),
+
     width: ScaleHelpers.CalcWidth(100),
   },
 
@@ -35,8 +37,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignContent: 'center',
     justifyContent: 'center',
-    paddingTop: ScaleHelpers.CalcHeight(3),
-
     height: ScaleHelpers.CalcHeight(75),
   },
 

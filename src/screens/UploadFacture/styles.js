@@ -157,9 +157,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(15),
     height: ScaleHelpers.CalcWidth(15),
   },
-  scrollView: {
-    marginTop: ScaleHelpers.CalcWidth(4),
-  },
+
 });
 
 export default styles;
