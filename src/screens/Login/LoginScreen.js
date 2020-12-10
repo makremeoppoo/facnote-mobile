@@ -66,7 +66,7 @@ class LoginScreen extends React.Component {
       await AsyncStorage.setItem('accessToken', user['token']);
 
       let cabinet = await getCabinet();
-      console.log(cabinet)
+      console.log(cabinet);
       this.props.login({user: user['user'], cabinet: cabinet});
     } catch (error) {
       this.setState({error: 'Identifiant ou le mot de passe est incorrect !'});
@@ -91,6 +91,7 @@ class LoginScreen extends React.Component {
 
               <View style={styles.inputContainer}>
                 <TextInput
+                  autoCompleteType={'name'}
                   style={styles.input}
                   onChangeText={(text) => this.setState({name: text})}
                   value={this.state.name}
@@ -102,6 +103,7 @@ class LoginScreen extends React.Component {
 
               <View style={styles.inputContainer}>
                 <TextInput
+                  autoCompleteType={'password'}
                   style={styles.input}
                   secureTextEntry={true}
                   onChangeText={(text) => this.setState({password: text})}
