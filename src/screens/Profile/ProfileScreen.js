@@ -6,7 +6,7 @@ import {
   Text,
   ScrollView,
   Linking,
-  ImageBackground
+  ImageBackground,
 } from 'react-native';
 import {connect} from 'react-redux';
 
@@ -43,18 +43,17 @@ class NotificationsScreen extends React.Component {
 
   render() {
     const {cabinet} = this.props.user;
-    
 
     return (
-      <ScrollView>
-        <View style={styles.container}>
-          <ImageBackground
-            source={Background}
-            style={styles.topImageStyle}></ImageBackground>
+      <View style={styles.container}>
+        <ImageBackground
+          source={Background}
+          style={styles.topImageStyle}></ImageBackground>
 
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>{cabinet.cabinet.raison_sociale}</Text>
-          </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{cabinet.cabinet.raison_sociale}</Text>
+        </View>
+        <ScrollView>
           <View style={styles.buttonContainer}>
             <TouchableHighlight
               style={{
@@ -84,7 +83,8 @@ class NotificationsScreen extends React.Component {
             </TouchableHighlight>
             <View style={styles.infoContainer}>
               <View style={styles.cabinetImgContainer}>
-                <ImageBackground resizeMode={"contain"}
+                <ImageBackground
+                  resizeMode={'contain'}
                   style={styles.cabinetImg}
                   source={
                     cabinet.logo1 != ''
@@ -120,8 +120,8 @@ class NotificationsScreen extends React.Component {
               </Text>
             </TouchableHighlight>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }

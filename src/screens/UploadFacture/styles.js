@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     height: ScaleHelpers.CalcHeight(20),
     width: ScaleHelpers.CalcWidth(100),
+    marginBottom: ScaleHelpers.CalcHeight(5),
     justifyContent: 'center',
   },
   buttonContainer: {

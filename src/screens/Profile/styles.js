@@ -35,6 +35,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     alignContent: 'center',
     justifyContent: 'center',
+    paddingTop: ScaleHelpers.CalcHeight(3),
+
     height: ScaleHelpers.CalcHeight(75),
   },
 
@@ -46,9 +48,8 @@ const styles = StyleSheet.create({
   },
 
   cabinetImg: {
-    height:ScaleHelpers.CalcWidth(25),
+    height: ScaleHelpers.CalcWidth(25),
     width: ScaleHelpers.CalcWidth(45),
-
   },
 
   CabinerName: {
