@@ -171,7 +171,7 @@ class AddFactureScreen extends React.Component {
       });
       this.props.closeModal({
         text1: 'Felicitation',
-        text2: 'fichier (s) téléchargé avec succès! 👋',
+        text2: 'Vos factures ont bien été transmises',
         type: 'success',
       });
     } catch (error) {
@@ -204,11 +204,7 @@ class AddFactureScreen extends React.Component {
           )}
           <TouchableHighlight
             style={styles.modalCloseView}
-            onPress={() =>
-              this.setState({
-                showModal: !this.state.showModal,
-              })
-            }
+            onPress={() => this.props.closeModal(null)}
             underlayColor="rgba(73,182,77,1,0.9)">
             <Image style={styles.closeImg} source={Close} />
           </TouchableHighlight>

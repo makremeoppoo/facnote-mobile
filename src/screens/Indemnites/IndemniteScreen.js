@@ -67,7 +67,7 @@ class IndemnitesScreen extends React.Component {
      
       this.props.closeModal({
         text1: 'Felicitation',
-        text2: 'Vos factures ont bien été transmises',
+        text2: 'Données ont enregistré avec succès',
         type: 'success',
       });
     } catch (error) {

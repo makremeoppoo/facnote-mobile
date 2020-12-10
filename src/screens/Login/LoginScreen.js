@@ -8,6 +8,7 @@ import {
   ScrollView,
   Image,
   Keyboard,
+  ActivityIndicator,
 } from 'react-native';
 import styles from './styles';
 import {connect} from 'react-redux';
@@ -29,6 +30,7 @@ class LoginScreen extends React.Component {
       password: '',
       error: '',
       showButtom: true,
+      loading: false,
     };
   }
   componentWillMount() {
@@ -61,15 +63,18 @@ class LoginScreen extends React.Component {
     try {
       //check if username is null
       // let username = response.user.username !== null;
+      this.setState({loading: true});
       let user = await api.login({username: name, password: password});
-      console.log(user);
       await AsyncStorage.setItem('accessToken', user['token']);
 
       let cabinet = await getCabinet();
-      console.log(cabinet);
       this.props.login({user: user['user'], cabinet: cabinet});
+      this.setState({loading: false});
     } catch (error) {
-      this.setState({error: 'Identifiant ou le mot de passe est incorrect !'});
+      this.setState({
+        error: 'Identifiant ou le mot de passe est incorrect !',
+        loading: false,
+      });
       console.log(error.message);
     }
   };
@@ -86,6 +91,11 @@ class LoginScreen extends React.Component {
             <Text style={styles.error}>{this.state.error}</Text>
           </View>
           <View style={styles.formContainer}>
+            {this.state.loading && (
+              <View style={{alignContent: 'center', alignItems: 'center'}}>
+                <ActivityIndicator size="large" color="white" />
+              </View>
+            )}
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Identifiant</Text>
 
