@@ -164,7 +164,7 @@ class AddFactureScreen extends React.Component {
     try {
       await this.setState({loading: true});
 
-      var res = await uploadFiles(typeFacture, multiFiles);
+      var res = await uploadFiles(this.props.typeFacture, multiFiles);
       this.setState({
         loading: false,
         multiFiles: [],

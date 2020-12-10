@@ -97,7 +97,7 @@ class UploadScreen extends React.Component {
             {this.state.typeFacture == 0 ? (
               <IndemniteScreen closeModal={this.closeModal} />
             ) : (
-              <AddFactureScreen closeModal={this.closeModal} />
+              <AddFactureScreen typeFacture={this.state.typeFacture} closeModal={this.closeModal} />
             )}
           </Modal>
         </ScrollView>
