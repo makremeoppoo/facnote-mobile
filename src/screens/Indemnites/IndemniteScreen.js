@@ -10,7 +10,6 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {Picker} from '@react-native-community/picker';
-import Toast from 'react-native-toast-message';
 import {connect} from 'react-redux';
 
 import Rectangle from '../../../assets/images/Rectangle.png';
@@ -50,10 +49,9 @@ class IndemnitesScreen extends React.Component {
       motif,
     } = this.state;
     const {user} = this.props.user;
-    await this.setState({loading: true});
 
     try {
-      await this.setState({loading: true});
+       this.setState({loading: true});
       const data = {
         base: user.base,
         date,
@@ -66,19 +64,17 @@ class IndemnitesScreen extends React.Component {
         user: {id: user.id},
       };
       var res = await saveIndemnite(data);
-      this.setState({
-        loading: false,
-      });
-      Toast.show({
+     
+      this.props.closeModal({
         text1: 'Felicitation',
-        text2: 'Indemnite enregistrer avec succès! 👋',
+        text2: 'Vos factures ont bien été transmises',
         type: 'success',
       });
     } catch (error) {
       this.setState({
         loading: false,
       });
-      Toast.show({
+      this.props.closeModal({
         text1: 'Échec',
         text2: 'enregistrement interrompu',
         type: 'error',
@@ -89,7 +85,6 @@ class IndemnitesScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
         <ScrollView>
           <View style={styles.titleContainer}>
@@ -186,7 +181,7 @@ class IndemnitesScreen extends React.Component {
           <View style={styles.ButtonsContain}>
             <TouchableHighlight
               style={styles.btnContainer}
-              onPress={() => this.props.navigation.navigate('Factures')}>
+              onPress={() => this.props.closeModal(null)}>
               <Text style={styles.btnTxt}>Annuler</Text>
             </TouchableHighlight>
             <TouchableHighlight

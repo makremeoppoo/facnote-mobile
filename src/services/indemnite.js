@@ -4,7 +4,6 @@ import api from './axios';
 export default async function saveIndemnite(data) {
   try {
     let res = await api.put(c.SAVE_INDEMNITE, data);
-    console.log("res", res)
 
     return res.data;
   } catch (e) {
