@@ -171,7 +171,7 @@ class AddFactureScreen extends React.Component {
       });
       this.props.closeModal({
         text1: 'Felicitation',
-        text2: 'fichier (s) téléchargé avec succès! 👋',
+        text2: 'Vos factures ont bien été transmises',
         type: 'success',
       });
     } catch (error) {
