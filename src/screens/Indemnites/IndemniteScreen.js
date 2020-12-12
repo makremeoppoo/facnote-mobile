@@ -130,15 +130,15 @@ class IndemnitesScreen extends React.Component {
                 this.setState({puissance: itemValue})
               }
               listItems={[
-                {label: 'Moto P = 50 CC', value: '1'},
-                {label: 'Moto P = 3CV', value: '2'},
-                {label: 'Moto P = 6CV', value: '3'},
-                {label: 'Moto P = 5CV', value: '4'},
-                {label: 'Automobile P = 3CV', value: '5'},
+                {label: 'Moto P < 50 CC', value: '1'},
+                {label: 'Moto P < 3CV', value: '2'},
+                {label: 'Moto P < 6CV', value: '3'},
+                {label: 'Moto P > 5CV', value: '4'},
+                {label: 'Automobile P <  3CV', value: '5'},
                 {label: 'Automobile P = 4CV', value: '6'},
                 {label: 'Automobile P = 5CV', value: '7'},
                 {label: 'Automobile P = 6CV', value: '8'},
-                {label: 'Automobile P = 7CV', value: '9'},
+                {label: 'Automobile P > 6CV', value: '9'},
               ]}
             />
 
