@@ -3,6 +3,7 @@ import {View, Platform, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment';
 import ScaleHelpers from '../scaleHelpers';
+import {textColor, buttonColor, label} from '../../AppStyles';
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -22,9 +23,25 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignSelf: 'center',
   },
+  error: {
+    position: 'relative',
+    marginTop: ScaleHelpers.CalcHeight(3),
+    marginBottom: ScaleHelpers.CalcHeight(1),
+    color: 'red',
+    fontSize: 12,
+  },
+
+  inputBlock: {
+    height: ScaleHelpers.CalcHeight(13),
+  },
+  label: {
+    fontFamily: 'Nunito-Regular',
+    margin: ScaleHelpers.CalcWidth(2),
+    fontSize: 12,
+  },
 });
 
-export default DatePicker = ({setCurrentDate}) => {
+export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
   const [date, setDate] = useState(new Date());
   const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
@@ -41,12 +58,18 @@ export default DatePicker = ({setCurrentDate}) => {
   };
 
   return (
-    <View>
+    <View style={styles.inputBlock}>
       <TouchableOpacity onPress={showTimepicker}>
+      <Text style={{...styles.label, ...{color: errorLabel ? 'red' : textColor}}}>
+        {label}
+      </Text>
         <View style={styles.inputContainer}>
+       
           <Text>{moment(date).format('DD/MM/YYYY')}</Text>
+          <Text style={styles.error}>{errorLabel}</Text>
         </View>
       </TouchableOpacity>
+     
 
       {show && (
         <DateTimePicker
