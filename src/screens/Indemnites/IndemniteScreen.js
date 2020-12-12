@@ -8,12 +8,12 @@ import {
   Image,
   ActivityIndicator,
 } from 'react-native';
-import {Picker} from '@react-native-community/picker';
 import {connect} from 'react-redux';
 
 import Rectangle from '../../../assets/images/Rectangle.png';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
+import SelectInput from '../../components/SelectInput/SelectInput';
 
 import styles from './styles';
 import saveIndemnite from '../../services/indemnite';
@@ -54,7 +54,7 @@ class IndemnitesScreen extends React.Component {
       lieuDapart,
       motif,
     } = this.state;
-    console.log(this.state)
+    console.log(this.state);
     const {user} = this.props.user;
     await this.setState({
       distanceError: distance == '',
@@ -63,7 +63,12 @@ class IndemnitesScreen extends React.Component {
       motifError: motif == '',
     });
 
-    if (this.state.distanceError || this.state.lieuArriverError || this.state.lieuDapartError || this.state.motifError)
+    if (
+      this.state.distanceError ||
+      this.state.lieuArriverError ||
+      this.state.lieuDapartError ||
+      this.state.motifError
+    )
       return;
     try {
       this.setState({loading: true});
@@ -78,7 +83,7 @@ class IndemnitesScreen extends React.Component {
         clientOuMotif: motif,
         user: {id: user.id},
       };
-      
+
       var res = await saveIndemnite(data);
 
       this.props.closeModal({
@@ -118,40 +123,24 @@ class IndemnitesScreen extends React.Component {
               label={'Date'}
             />
 
-            <View style={styles.inputBlock}>
-              <Text style={styles.label}>Puissance Administrative</Text>
-
-              <View style={styles.inputContainer}>
-                <Picker
-                  placeholder="select Puissance"
-                  selectedValue={this.state.puissance}
-                  onValueChange={(itemValue, itemIndex) =>
-                    this.setState({puissance: itemValue})
-                  }>
-                  <Picker.Item label="" value=""></Picker.Item>
-
-                  <Picker.Item label="Moto P = 50 CC" value="1"></Picker.Item>
-                  <Picker.Item label="Moto P = 3CV" value="2"></Picker.Item>
-                  <Picker.Item label="Moto P = 6CV" value="3"></Picker.Item>
-                  <Picker.Item label="Moto P = 5CV" value="4"></Picker.Item>
-                  <Picker.Item
-                    label="Automobile P = 3CV"
-                    value="5"></Picker.Item>
-                  <Picker.Item
-                    label="Automobile P = 4CV"
-                    value="6"></Picker.Item>
-                  <Picker.Item
-                    label="Automobile P = 5CV"
-                    value="7"></Picker.Item>
-                  <Picker.Item
-                    label="Automobile P = 6CV"
-                    value="8"></Picker.Item>
-                  <Picker.Item
-                    label="Automobile P = 6CV"
-                    value="9"></Picker.Item>
-                </Picker>
-              </View>
-            </View>
+            <SelectInput
+              label={'Puissance Administrative'}
+              selectedValue={this.state.puissance}
+              onValueChange={(itemValue, itemIndex) =>
+                this.setState({puissance: itemValue})
+              }
+              listItems={[
+                {label: 'Moto P = 50 CC', value: '1'},
+                {label: 'Moto P = 3CV', value: '2'},
+                {label: 'Moto P = 6CV', value: '3'},
+                {label: 'Moto P = 5CV', value: '4'},
+                {label: 'Automobile P = 3CV', value: '5'},
+                {label: 'Automobile P = 4CV', value: '6'},
+                {label: 'Automobile P = 5CV', value: '7'},
+                {label: 'Automobile P = 6CV', value: '8'},
+                {label: 'Automobile P = 7CV', value: '9'},
+              ]}
+            />
 
             <TextInput
               label={'Distance parcourue(KM)'}
