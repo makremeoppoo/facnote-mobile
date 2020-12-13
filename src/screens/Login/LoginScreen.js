@@ -10,6 +10,8 @@ import {
   Keyboard,
   ActivityIndicator,
 } from 'react-native';
+import {CheckBox} from 'react-native-elements';
+
 import styles from './styles';
 import {connect} from 'react-redux';
 import LogoImage from '../../../assets/images/logo.png';
@@ -31,7 +33,19 @@ class LoginScreen extends React.Component {
       error: '',
       showButtom: true,
       loading: false,
+      rememberMe: false,
     };
+  }
+  async componentDidMount() {
+    const name = await AsyncStorage.getItem('name');
+    const password = await AsyncStorage.getItem('password');
+    const rememberMe = await AsyncStorage.getItem('rememberMe');
+
+    this.setState({
+      name: name || '',
+      password: password || '',
+      rememberMe: rememberMe ? true : false,
+    });
   }
   componentWillMount() {
     this.keyboardDidShowListener = Keyboard.addListener(
@@ -58,7 +72,7 @@ class LoginScreen extends React.Component {
   };
 
   onPressLogButton = async () => {
-    const {name, password} = this.state;
+    const {name, password, rememberMe} = this.state;
 
     try {
       //check if username is null
@@ -70,6 +84,15 @@ class LoginScreen extends React.Component {
       let cabinet = await getCabinet();
       this.props.login({user: user['user'], cabinet: cabinet});
       this.setState({loading: false});
+      if (rememberMe) {
+        AsyncStorage.setItem('password', password);
+        AsyncStorage.setItem('name', name);
+        AsyncStorage.setItem('rememberMe', 'true');
+      } else {
+        AsyncStorage.removeItem('name');
+        AsyncStorage.removeItem('password');
+        AsyncStorage.removeItem('rememberMe');
+      }
     } catch (error) {
       this.setState({
         error: 'Identifiant ou le mot de passe est incorrect !',
@@ -82,20 +105,23 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.mainContainer}>
+       
         <ScrollView>
           <Image
             source={BackgroundLoginImage}
             style={styles.topImageStyle}></Image>
+               {this.state.loading && (
+              <View style={styles.loader}>
+          
+                <ActivityIndicator size="large" color="white" />
+              </View>
+            )}
           <View style={styles.titleContainer}>
             <Image style={styles.logo} source={LogoImage} />
             <Text style={styles.error}>{this.state.error}</Text>
           </View>
           <View style={styles.formContainer}>
-            {this.state.loading && (
-              <View style={{alignContent: 'center', alignItems: 'center'}}>
-                <ActivityIndicator size="large" color="white" />
-              </View>
-            )}
+          
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Identifiant</Text>
 
@@ -121,6 +147,19 @@ class LoginScreen extends React.Component {
                 />
               </View>
             </View>
+            <CheckBox
+              containerStyle={styles.checkboxContainer}
+              textStyle={styles.checkboxLabel}
+              checkedColor={'white'}
+              uncheckedColor={'white'}
+              title="Enregistrer mes identifiants"
+              style={styles.checkbox}
+              checked={this.state.rememberMe}
+              onPress={(value) =>
+                this.setState({rememberMe: !this.state.rememberMe})
+              }
+            />
+
             <View style={styles.buttonContainer}>
               <TouchableHighlight
                 style={styles.buttonStyle}
