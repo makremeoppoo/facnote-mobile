@@ -108,6 +108,32 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
+
+  checkboxContainer: {
+    flexDirection: 'row',
+    backgroundColor: 'rgba(242, 242, 242,0)',
+    borderColor: 'rgba(242, 242, 242,0)',
+    marginLeft: ScaleHelpers.CalcWidth(20),
+  },
+  checkbox: {
+    marginBottom: ScaleHelpers.CalcHeight(1),
+    marginTop: ScaleHelpers.CalcHeight(0.5),
+    color: 'white',
+  },
+  checkboxLabel: {
+    fontFamily: 'Nunito-Regular',
+    marginBottom: ScaleHelpers.CalcHeight(1),
+    marginTop: ScaleHelpers.CalcHeight(1),
+    color: 'white',
+    fontSize: 15,
+  },
+  loader: {
+  
+    justifyContent:'center',
+    position: 'absolute',
+    height: ScaleHelpers.CalcHeight(80),
+    width: ScaleHelpers.CalcWidth(100),
+  },
 });
 
 export default styles;
