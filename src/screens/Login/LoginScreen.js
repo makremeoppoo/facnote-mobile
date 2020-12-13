@@ -11,6 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
+import moment from 'moment';
 
 import styles from './styles';
 import {connect} from 'react-redux';
@@ -80,6 +81,7 @@ class LoginScreen extends React.Component {
       this.setState({loading: true});
       let user = await api.login({username: name, password: password});
       await AsyncStorage.setItem('accessToken', user['token']);
+      await AsyncStorage.setItem('loginDate', moment().unix().toString());
 
       let cabinet = await getCabinet();
       this.props.login({user: user['user'], cabinet: cabinet});
@@ -105,23 +107,20 @@ class LoginScreen extends React.Component {
   render() {
     return (
       <View style={styles.mainContainer}>
-       
         <ScrollView>
           <Image
             source={BackgroundLoginImage}
             style={styles.topImageStyle}></Image>
-               {this.state.loading && (
-              <View style={styles.loader}>
-          
-                <ActivityIndicator size="large" color="white" />
-              </View>
-            )}
+          {this.state.loading && (
+            <View style={styles.loader}>
+              <ActivityIndicator size="large" color="white" />
+            </View>
+          )}
           <View style={styles.titleContainer}>
             <Image style={styles.logo} source={LogoImage} />
             <Text style={styles.error}>{this.state.error}</Text>
           </View>
           <View style={styles.formContainer}>
-          
             <View style={styles.inputBlock}>
               <Text style={styles.label}>Identifiant</Text>
 

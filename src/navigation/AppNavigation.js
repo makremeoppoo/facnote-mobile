@@ -2,10 +2,10 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
 import {connect} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
+import moment from 'moment';
 
 import {logout} from '../redux';
-import api from '../services/axios';
-
 import {View, Platform, Image} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
@@ -333,11 +333,14 @@ const RootNavigator = () => {
 };
 
 class AppContainer extends React.Component {
+  async componentDidMount() {}
   componentDidMount() {
-    var dayInMilliseconds = 1000 * 60 * 60 * 24;
+    var dayInMilliseconds = 1000;
 
-    var intervalId = setInterval(() => {
-      this.props.logout();
+    var intervalId = setInterval(async () => {
+      const loginDate = await AsyncStorage.getItem('loginDate');
+      const dateDiff = moment().diff(moment.unix(loginDate), 'minutes');
+      if (dateDiff == 1400) this.props.logout();
     }, dayInMilliseconds);
     // store intervalId in the state so it can be accessed later:
     this.setState({intervalId: intervalId});
