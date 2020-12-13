@@ -1,6 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
+import {connect} from 'react-redux';
+
+import {logout} from '../redux';
+import api from '../services/axios';
+
 import {View, Platform, Image} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
@@ -11,7 +16,6 @@ import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
-
 import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
@@ -44,6 +48,7 @@ import IndicateurImgActive from '../../assets/icons/IndicateurBleu.png';
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
 import BackgroundNavigation from '../../assets/images/CabinetBackground1.png';
+import getCabinet from '../services/cabinet';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -327,8 +332,24 @@ const RootNavigator = () => {
   );
 };
 
-const AppContainer = () => {
-  return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
-};
+class AppContainer extends React.Component {
+  async componentDidMount() {
+    api.interceptors.response.use(
+      (response) => response,
+      (error) => {
+        const {status, data} = error.response;
+        if (data.message === 'Invalid Token') {
+          console.log("invalideToken logout")
+          this.props.logout();
+        }
+        return Promise.reject(error);
+      },
+    );
+  }
+  render() {
+    return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
+  }
+}
 
-export default AppContainer;
+const mapStateToProps = (state) => ({});
+export default connect(mapStateToProps, {logout})(AppContainer);
