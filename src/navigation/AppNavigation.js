@@ -2,10 +2,10 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
 import {connect} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
+import moment from 'moment';
 
 import {logout} from '../redux';
-import api from '../services/axios';
-
 import {View, Platform, Image} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
@@ -16,7 +16,6 @@ import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
-import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
@@ -31,6 +30,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 import {useSelector} from 'react-redux';
 import HomeImg from '../../assets/icons/home.png';
@@ -333,19 +333,24 @@ const RootNavigator = () => {
 };
 
 class AppContainer extends React.Component {
-  async componentDidMount() {
-    api.interceptors.response.use(
-      (response) => response,
-      (error) => {
-        const {status, data} = error.response;
-        if (data.message === 'Invalid Token') {
-          console.log("invalideToken logout")
-          this.props.logout();
-        }
-        return Promise.reject(error);
-      },
-    );
+  async componentDidMount() {}
+  componentDidMount() {
+    var dayInMilliseconds = 1000;
+
+    var intervalId = setInterval(async () => {
+      const loginDate = await AsyncStorage.getItem('loginDate');
+      const dateDiff = moment().diff(moment.unix(loginDate), 'minutes');
+      if (dateDiff == 1400) this.props.logout();
+    }, dayInMilliseconds);
+    // store intervalId in the state so it can be accessed later:
+    this.setState({intervalId: intervalId});
   }
+
+  componentWillUnmount() {
+    // use intervalId from the state to clear the interval
+    clearInterval(this.state.intervalId);
+  }
+
   render() {
     return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
   }

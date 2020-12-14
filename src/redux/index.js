@@ -24,6 +24,8 @@ function auth(state = initialAuthState, action) {
       };
     case Logout:
       AsyncStorage.removeItem('accessToken');
+      AsyncStorage.removeItem('loginDate');
+
       return {
         ...state,
         isLoggedIn: false,
