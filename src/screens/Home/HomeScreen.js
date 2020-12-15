@@ -18,15 +18,14 @@ class HomeScreen extends React.Component {
   renderData = ({item}) => <Text style={{marginBottom: 2}}>{item}</Text>;
 
   render() {
-    const {cabinet} = this.props.user;
-
+    const {society} = this.props.user;
     return (
       <View style={styles.container}>
         <ImageBackground
           source={Background}
           style={styles.topImageStyle}></ImageBackground>
         <View style={styles.textContainer}>
-          <Text style={styles.textBold}>{cabinet.cabinet.raison_sociale}</Text>
+          <Text style={styles.textBold}>{society.cabinet.raison_sociale}</Text>
           <Text style={styles.text}>
           </Text>
         </View>

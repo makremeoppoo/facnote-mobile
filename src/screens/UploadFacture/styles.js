@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
     textAlign: 'center',
     color: textColor,
-    fontSize: ScaleHelpers.CalcHeight(5),
+    fontSize: ScaleHelpers.CalcWidth(6),
   },
   btnView: {
     height: ScaleHelpers.CalcHeight(15),

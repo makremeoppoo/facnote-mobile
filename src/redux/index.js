@@ -21,6 +21,8 @@ function auth(state = initialAuthState, action) {
         isLoggedIn: true,
         user: action.data.user,
         cabinet: action.data.cabinet,
+        society: action.data.society,
+
       };
     case Logout:
       AsyncStorage.removeItem('accessToken');

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
     fontFamily: 'Nunito-Bold',
     color: textColor,
-    fontSize: ScaleHelpers.CalcHeight(4),
+    fontSize: ScaleHelpers.CalcWidth(5),
   },
   text: {
     textAlign: "left",

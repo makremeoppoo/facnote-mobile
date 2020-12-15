@@ -42,7 +42,7 @@ class NotificationsScreen extends React.Component {
   };
 
   render() {
-    const {cabinet} = this.props.user;
+    const {cabinet,society} = this.props.user;
 
     return (
       <View style={styles.container}>
@@ -51,7 +51,7 @@ class NotificationsScreen extends React.Component {
           style={styles.topImageStyle}></ImageBackground>
 
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{cabinet.cabinet.raison_sociale}</Text>
+          <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>
         </View>
         <ScrollView>
           <View style={styles.buttonContainer}>

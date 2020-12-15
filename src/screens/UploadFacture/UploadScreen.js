@@ -42,7 +42,7 @@ class UploadScreen extends React.Component {
   };
 
   render() {
-    const {cabinet} = this.props.user;
+    const {society} = this.props.user;
 
     return (
       <View style={styles.containerStyle}>
@@ -50,7 +50,7 @@ class UploadScreen extends React.Component {
           source={Background}
           style={styles.backgroundStyle}></ImageBackground>
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{cabinet.cabinet.raison_sociale}</Text>
+          <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>
         </View>
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 

@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     fontFamily: 'SegoeUI',
     textAlign: 'center',
     color: textColor,
-    fontSize: ScaleHelpers.CalcHeight(5),
+    fontSize: ScaleHelpers.CalcWidth(6),
   },
   buttonContainer: {
     alignContent: 'center',
@@ -56,13 +56,13 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
 
     textAlign: 'center',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
   },
 
   CabinerInfo: {
     fontFamily: 'Nunito-Regular',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
     textAlign: 'center',
   },
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
   },
   btnTxt: {
     fontFamily: 'Nunito-Regular',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
     textAlign: 'center',
   },

@@ -9,7 +9,7 @@ import {
   Image,
   Keyboard,
   ActivityIndicator,
-  Linking
+  Linking,
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
 import moment from 'moment';
@@ -21,6 +21,7 @@ import BackgroundLoginImage from '../../../assets/images/background_connexion.pn
 
 import * as api from '../../services/auth';
 import getCabinet from '../../services/cabinet';
+import getSociety from '../../services/societe';
 
 import {login} from '../../redux';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -83,9 +84,14 @@ class LoginScreen extends React.Component {
       let user = await api.login({username: name, password: password});
       await AsyncStorage.setItem('accessToken', user['token']);
       await AsyncStorage.setItem('loginDate', moment().unix().toString());
-
-      let cabinet = await getCabinet();
-      this.props.login({user: user['user'], cabinet: cabinet});
+     
+    //  let cabinet = await getCabinet();
+      let society = await getSociety();
+      this.props.login({
+        user: user['user'],
+        cabinet: society,
+        society: society,
+      });
       this.setState({loading: false});
       if (rememberMe) {
         AsyncStorage.setItem('password', password);
@@ -98,7 +104,7 @@ class LoginScreen extends React.Component {
       }
     } catch (error) {
       this.setState({
-        error: 'Identifiant ou le mot de passe est incorrect !',
+        error: 'identifiant ou mot de passe incorrect !',
         loading: false,
       });
       console.log(error.message);
@@ -171,7 +177,11 @@ class LoginScreen extends React.Component {
         </ScrollView>
         {this.state.showButtom && (
           <View>
-            <Text  onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')} style={styles.buttomText}>mentions légales - CGU</Text>
+            <Text
+              onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')}
+              style={styles.buttomText}>
+              mentions légales - CGU
+            </Text>
           </View>
         )}
       </View>

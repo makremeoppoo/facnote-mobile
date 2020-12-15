@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     marginTop: ScaleHelpers.CalcHeight(3),
     maxHeight: ScaleHelpers.CalcHeight(10),
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
   },
   logo: {
     width: ScaleHelpers.CalcWidth(70),
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
 
     marginLeft: ScaleHelpers.CalcWidth(20),
     color: 'white',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
   },
 
   buttonContainer: {
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     marginBottom: ScaleHelpers.CalcHeight(1),
     marginTop: ScaleHelpers.CalcHeight(1),
     color: 'white',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
   },
   loader: {
   
