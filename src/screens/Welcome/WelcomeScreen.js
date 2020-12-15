@@ -7,6 +7,7 @@ import {
   Text,
   ScrollView,
   ImageBackground,
+  Linking
 } from 'react-native';
 import styles from './styles';
 import LogoImage from '../../../assets/images/logo.png'
@@ -56,7 +57,7 @@ export default class WelcomeScreen extends React.Component {
               alignSelf: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={styles.buttomText}>mentions légales - CGU</Text>
+            <Text onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')} style={styles.buttomText}>mentions légales - CGU</Text>
           </View>
         </View>
     );

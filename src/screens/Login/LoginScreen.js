@@ -9,6 +9,7 @@ import {
   Image,
   Keyboard,
   ActivityIndicator,
+  Linking
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
 import moment from 'moment';
@@ -170,7 +171,7 @@ class LoginScreen extends React.Component {
         </ScrollView>
         {this.state.showButtom && (
           <View>
-            <Text style={styles.buttomText}>mentions légales - CGU</Text>
+            <Text  onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')} style={styles.buttomText}>mentions légales - CGU</Text>
           </View>
         )}
       </View>
