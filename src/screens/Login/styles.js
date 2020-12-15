@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     position: 'absolute',
     bottom: 0,
-    fontSize: 12,
+    fontSize: ScaleHelpers.CalcWidth(4),
     flexDirection: 'row',
     justifyContent: 'flex-end',
   },
