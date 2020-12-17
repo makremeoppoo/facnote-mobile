@@ -84,7 +84,7 @@ class LoginScreen extends React.Component {
       let user = await api.login({username: name, password: password});
       await AsyncStorage.setItem('accessToken', user['token']);
       await AsyncStorage.setItem('loginDate', moment().unix().toString());
-     
+
       let cabinet = await getCabinet();
       let society = await getSociety();
       this.props.login({
@@ -176,11 +176,25 @@ class LoginScreen extends React.Component {
           </View>
         </ScrollView>
         {this.state.showButtom && (
-          <View>
+          <View style={styles.buttomView}>
             <Text
-              onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')}
-              style={styles.buttomText}>
-              mentions légales - CGU
+              style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
+              onPress={() =>
+                Linking.openURL('https://facnote.com/fr/mentions.html')
+              }>
+              mentions légales
+            </Text>
+            <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+              {' '}
+              -{' '}
+            </Text>
+            <Text
+              onPress={() =>
+                Linking.openURL('https://facnote.com/fr/cgu.html')
+              }
+              style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+              {' '}
+              CGU
             </Text>
           </View>
         )}

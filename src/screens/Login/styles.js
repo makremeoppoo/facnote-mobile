@@ -98,15 +98,17 @@ const styles = StyleSheet.create({
     color: 'grey',
   },
 
-  buttomText: {
-    fontFamily: 'Nunito-SemiBold',
-    color: textColor,
+  buttomView: {
+    bottom: 0,
+
     alignSelf: 'center',
     position: 'absolute',
-    bottom: 0,
-    fontSize: ScaleHelpers.CalcWidth(4),
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent:"center"
+  },
+  buttomText: {
+    fontFamily: 'Nunito-SemiBold',
+    fontSize: ScaleHelpers.CalcWidth(4),
   },
 
   checkboxContainer: {
@@ -128,8 +130,7 @@ const styles = StyleSheet.create({
     fontSize: ScaleHelpers.CalcWidth(4),
   },
   loader: {
-  
-    justifyContent:'center',
+    justifyContent: 'center',
     position: 'absolute',
     height: ScaleHelpers.CalcHeight(80),
     width: ScaleHelpers.CalcWidth(100),

@@ -26,7 +26,9 @@ class AddFactureScreen extends React.Component {
     this.state = {
       multiFiles: [],
       loading: false,
-      resizeTargetSize: 80,
+      resizeTargetWidthSize: 590,
+      resizeTargetHightSize: 600,
+
       mode: 'contain',
       onlyScaleDown: false,
     };
@@ -42,10 +44,10 @@ class AddFactureScreen extends React.Component {
       for (const res of results) {
         ImageResizer.createResizedImage(
           res.uri,
-          this.state.resizeTargetSize,
-          this.state.resizeTargetSize,
+          this.state.resizeTargetWidthSize,
+          this.state.resizeTargetHightSize,
           'JPEG',
-          100,
+          50,
           0,
           undefined,
           false,
@@ -102,10 +104,10 @@ class AddFactureScreen extends React.Component {
 
         ImageResizer.createResizedImage(
           response.uri,
-          this.state.resizeTargetSize,
-          this.state.resizeTargetSize,
+          this.state.resizeTargetWidthSize,
+          this.state.resizeTargetHightSize,
           'JPEG',
-          100,
+          50,
           0,
           undefined,
           false,
