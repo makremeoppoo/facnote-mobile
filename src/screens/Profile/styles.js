@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(120),
+    height: ScaleHelpers.CalcHeight(110),
     position: 'absolute',
   },
   topImageTransparentStyle: {
@@ -22,43 +22,47 @@ const styles = StyleSheet.create({
 
   titleContainer: {
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(25),
+    height: ScaleHelpers.CalcHeight(20),
+    marginBottom: ScaleHelpers.CalcHeight(5),
+
+    width: ScaleHelpers.CalcWidth(100),
   },
+
   title: {
     fontFamily: 'SegoeUI',
     textAlign: 'center',
     color: textColor,
-    fontSize: ScaleHelpers.CalcHeight(5),
+    fontSize: ScaleHelpers.CalcWidth(6),
   },
-  infoContainer: {
-    height: ScaleHelpers.CalcHeight(30),
-    width: ScaleHelpers.CalcWidth(100),
+  buttonContainer: {
+    alignContent: 'center',
+    justifyContent: 'center',
+    height: ScaleHelpers.CalcHeight(75),
   },
-  cabinetImgContainer:{
+
+  cabinetImgContainer: {
     marginBottom: ScaleHelpers.CalcWidth(7),
     marginTop: ScaleHelpers.CalcWidth(7),
 
-    alignItems:"center"
-
+    alignItems: 'center',
   },
 
   cabinetImg: {
-    width: 200,
-    height: 100,
-    alignSelf: 'center',
+    height: ScaleHelpers.CalcWidth(25),
+    width: ScaleHelpers.CalcWidth(45),
   },
- 
+
   CabinerName: {
     fontFamily: 'Nunito-Bold',
 
     textAlign: 'center',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
   },
 
   CabinerInfo: {
     fontFamily: 'Nunito-Regular',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
     textAlign: 'center',
   },
@@ -76,11 +80,9 @@ const styles = StyleSheet.create({
     position: 'relative',
     marginTop: ScaleHelpers.CalcHeight(2),
     marginBottom: ScaleHelpers.CalcHeight(2),
-
     width: ScaleHelpers.CalcWidth(70),
     borderRadius: 10,
     backgroundColor: buttonColor,
-    borderColor: 'rgba(214, 214, 214, 0.4)',
     borderWidth: 1,
     alignSelf: 'center',
     justifyContent: 'center',
@@ -88,7 +90,7 @@ const styles = StyleSheet.create({
   },
   btnTxt: {
     fontFamily: 'Nunito-Regular',
-    fontSize: 15,
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
     textAlign: 'center',
   },

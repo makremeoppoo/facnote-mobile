@@ -14,17 +14,9 @@ import styles from './styles';
 import {logout} from '../../redux';
 import Background from '../../../assets/images/background_accueil_ok.png';
 
-
 class NotificationsScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      cabinet: {},
-    };
-  }
-  componentDidMount() {
-    console.log('user', this.props.user);
-    this.setState({cabinet: this.props.user.cabinet});
   }
 
   callNumber = (phone) => {
@@ -45,56 +37,91 @@ class NotificationsScreen extends React.Component {
       .catch((err) => console.log(err));
   };
 
-  sendMail = () => {
-    Linking.openURL(`mailto:${this.state.cabinet.email}?subject=Cabinet`);
+  sendMail = (email) => {
+    Linking.openURL(`mailto:${email}?subject=Cabinet`);
   };
 
   render() {
-    return (
-      <ScrollView>
-        <View style={styles.container}>
-          <ImageBackground
-            source={Background}
-            style={styles.topImageStyle}></ImageBackground>
-        
+    const {cabinet,society} = this.props.user;
 
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Nom de la Société</Text>
-          </View>
+    return (
+      <View style={styles.container}>
+        <ImageBackground
+          source={Background}
+          style={styles.topImageStyle}></ImageBackground>
+
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>
+        </View>
+        <ScrollView>
           <View style={styles.buttonContainer}>
             <TouchableHighlight
-              style={styles.btn}
-              onPress={() => this.callNumber('00000')}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={styles.btnTxt}>Appeler</Text>
+              style={{
+                ...styles.btn,
+                ...{
+                  borderColor: 'rgba(46, 204, 113, 0.5)',
+                  backgroundColor: 'rgba(46, 204, 113, 0.9)',
+                },
+              }}
+              onPress={() => this.callNumber(cabinet.fax)}>
+              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
+                Appeler
+              </Text>
             </TouchableHighlight>
             <TouchableHighlight
-              style={styles.btn}
-              onPress={() => this.sendMail()}
+              style={{
+                ...styles.btn,
+                ...{
+                  borderColor: 'rgba(92,117,254,0.5)',
+                  backgroundColor: 'rgba(92,117,254,0.9)',
+                },
+              }}
+              onPress={() => this.sendMail(cabinet.email)}>
+              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
+                Envoyer un email
+              </Text>
+            </TouchableHighlight>
+            <View style={styles.infoContainer}>
+              <View style={styles.cabinetImgContainer}>
+                <ImageBackground
+                  resizeMode={'contain'}
+                  style={styles.cabinetImg}
+                  source={
+                    cabinet.logo1 != ''
+                      ? {uri: cabinet.logo1}
+                      : cabinet.logo2 != ''
+                      ? {uri: cabinet.logo2}
+                      : require('../../../assets/images/imgpsh_fullsize_anim.png')
+                  }
+                />
+              </View>
+              <Text style={styles.CabinerName}>
+                {cabinet.cabinet.raison_sociale}
+              </Text>
+              <Text style={styles.CabinerInfo}>
+                {cabinet.address.code_postale} {cabinet.address.adresse}{' '}
+              </Text>
+              <Text style={styles.CabinerInfo}>
+                {cabinet.address.ville} {cabinet.address.pays}
+              </Text>
+            </View>
+            <TouchableHighlight
+              style={{
+                ...styles.btn,
+                ...{
+                  borderColor: 'rgba(171, 183, 183, 1)',
+                  backgroundColor: 'rgba(171, 183, 183, 1)',
+                },
+              }}
+              onPress={() => this.props.logout()}
               underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={styles.btnTxt}>Envoyer un email</Text>
+              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
+                Deconnecter
+              </Text>
             </TouchableHighlight>
           </View>
-          <View style={styles.infoContainer}>
-            <View style={styles.cabinetImgContainer}>
-            <Text style={styles.CabinerName}>Logo</Text>
-
-             {/*<Image source={require('../../../assets/images/logo.png')} />*/} 
-            </View>
-            <Text style={styles.CabinerName}>Nom du cabinet</Text>
-            <Text style={styles.CabinerInfo}>CP Rue Ville</Text>
-            <Text style={styles.CabinerInfo}>Telephone 22 654 658</Text>
-
-            <Text style={styles.CabinerInfo}>Fax 25 963 8896</Text>
-          </View>
-          <TouchableHighlight
-            style={styles.btn}
-            onPress={() => this.props.logout()}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <Text style={styles.btnTxt}>Deconnecter</Text>
-          </TouchableHighlight>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }

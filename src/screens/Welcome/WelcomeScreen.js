@@ -7,6 +7,7 @@ import {
   Text,
   ScrollView,
   ImageBackground,
+  Linking
 } from 'react-native';
 import styles from './styles';
 import LogoImage from '../../../assets/images/logo.png'
@@ -19,7 +20,7 @@ export default class WelcomeScreen extends React.Component {
   }
 
   onPressLogButton = () => {
-    this.props.navigation.navigate('LogIn');
+    this.props.navigation.navigate('Login');
   };
 
   render() {
@@ -50,14 +51,28 @@ export default class WelcomeScreen extends React.Component {
           </View>
           </ScrollView>
 
-          <View
-            style={{
-              bottom: 0,
-              alignSelf: 'center',
-              justifyContent: 'center',
-            }}>
-            <Text style={styles.buttomText}>mentions légales - CGU</Text>
+          <View style={styles.buttomView}>
+            <Text
+              style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
+              onPress={() =>
+                Linking.openURL('https://facnote.com/fr/mentions.html')
+              }>
+              mentions légales
+            </Text>
+            <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+              {' '}
+              -{' '}
+            </Text>
+            <Text
+              onPress={() =>
+                Linking.openURL('https://facnote.com/fr/cgu.html')
+              }
+              style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+              {' '}
+              CGU
+            </Text>
           </View>
+        
         </View>
     );
   }

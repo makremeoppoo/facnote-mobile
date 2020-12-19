@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
+import {textColor} from '../../AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -9,27 +9,35 @@ const SCREEN_WIDTH = width < height ? width : height;
 const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
-    height: ScaleHelpers.CalcHeight(110),
+    backgroundColor: 'white',
   },
   backgroundStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    height: '100%',
+    height: ScaleHelpers.CalcHeight(110),
     position: 'absolute',
   },
   titleContainer: {
-    height: ScaleHelpers.CalcHeight(15),
-    textAlign: 'center',
-    marginBottom: ScaleHelpers.CalcHeight(5),
-
+    height: ScaleHelpers.CalcHeight(20),
+    width: ScaleHelpers.CalcWidth(100),
+    marginBottom: ScaleHelpers.CalcHeight(6),
     justifyContent: 'center',
+  },
+  buttonContainer: {
+    height: ScaleHelpers.CalcHeight(74),
   },
   title: {
     fontFamily: 'Nunito-Bold',
     textAlign: 'center',
     color: textColor,
-    fontSize: ScaleHelpers.CalcHeight(5),
+    fontSize: ScaleHelpers.CalcWidth(6),
   },
+  btnView: {
+    height: ScaleHelpers.CalcHeight(15),
+    marginTop: ScaleHelpers.CalcHeight(3),
+  },
+
   btnContainer: {
+    padding: 0,
     flex: 1,
     overflow: 'hidden',
     borderColor: '#2c65c9',
@@ -56,7 +64,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcWidth(25),
     justifyContent: 'center',
     alignItems: 'center',
-    textAlign:'center'
+    textAlign: 'center',
   },
 
   ImgPlus: {
@@ -92,12 +100,46 @@ const styles = StyleSheet.create({
   },
   modalCloseView: {
     position: 'absolute',
-    top: ScaleHelpers.CalcWidth(5),
+    top:
+      Platform.OS === 'ios'
+        ? ScaleHelpers.CalcWidth(14)
+        : ScaleHelpers.CalcWidth(12),
     left: ScaleHelpers.CalcWidth(5),
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
+  },
+  SendView: {
+    position: 'absolute',
+    top:
+      Platform.OS === 'ios'
+        ? ScaleHelpers.CalcWidth(12)
+        : ScaleHelpers.CalcWidth(10),
+    right: ScaleHelpers.CalcWidth(5),
+  },
+  SendIconView: {
+    //Its for IOS
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    height: ScaleHelpers.CalcHeight(6),
+    // its for android
+    elevation: 5,
+    width: ScaleHelpers.CalcWidth(30),
+    borderRadius: 10,
+    backgroundColor: 'white',
+    borderColor: 'white',
+    borderWidth: 1,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  btnTxt: {
+    fontFamily: 'Nunito-ExtraBold',
+    fontSize: 15,
+    color: 'rgb(92,117,254)',
+    textAlign: 'center',
   },
   buttomIcon: {
     alignSelf: 'center',
@@ -115,14 +157,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(15),
     height: ScaleHelpers.CalcWidth(15),
   },
-  textStyle: {
-    width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(15),
-    fontFamily: 'Nunito-ExtraBold',
-    textAlign: 'center',
-    color: 'white',
-    fontSize: 13,
-  },
+
 });
 
 export default styles;

@@ -6,15 +6,14 @@ const api = axios.create({
   baseURL: c.API_URL,
   timeout: 20000,
   headers: {
-    Accept: 'application/json,application/x-www-form-urlencoded',
-    'Content-Type': 'application/json',
+    Accept: 'application/json',
   },
 });
 
 api.interceptors.request.use(
   async (config) => {
     const accessToken = await AsyncStorage.getItem('accessToken');
-    console.log('accessToken', accessToken);
+
     if (accessToken) {
       config.headers.authorization = `Bearer ${accessToken}`;
     } else {
@@ -25,9 +24,6 @@ api.interceptors.request.use(
   (error) => Promise.reject(error),
 );
 
-api.interceptors.response.use(
-  (response) => Promise.resolve(response),
-  (err) => {},
-);
+
 
 export default api;
