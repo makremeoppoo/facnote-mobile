@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily:"SegoeUI-Light",
+    fontFamily: 'SegoeUI-Light',
     color: textColor,
   },
   centeredView: {

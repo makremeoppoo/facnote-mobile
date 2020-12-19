@@ -1,18 +1,21 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
+import {connect} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
+import moment from 'moment';
+
+import {logout} from '../redux';
 import {View, Platform, Image} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
-import LogInScreen from '../screens/LogIn/LogInScreen';
+import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
-
-import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
@@ -27,6 +30,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 import {useSelector} from 'react-redux';
 import HomeImg from '../../assets/icons/home.png';
@@ -44,6 +48,7 @@ import IndicateurImgActive from '../../assets/icons/IndicateurBleu.png';
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
 import BackgroundNavigation from '../../assets/images/CabinetBackground1.png';
+import getCabinet from '../services/cabinet';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -77,8 +82,8 @@ const LandingNavigator = () => {
         options={{
           headerShown: false,
         }}
-        name="LogIn"
-        component={LogInScreen}
+        name="Login"
+        component={LoginScreen}
       />
       <Stack.Screen
         options={{
@@ -117,7 +122,7 @@ const TabNavigator = () => {
           ),
         }}
       />
-      <BottomTabNavigator.Screen
+      {/* <BottomTabNavigator.Screen
         name="Indicateur"
         component={HomeScreen}
         options={{
@@ -129,7 +134,7 @@ const TabNavigator = () => {
             />
           ),
         }}
-      />
+      />*/}
       <BottomTabNavigator.Screen
         name="Factures"
         component={ExpensesScreen}
@@ -156,7 +161,7 @@ const TabNavigator = () => {
           ),
         }}
       />
-      <BottomTabNavigator.Screen
+      {/**  <BottomTabNavigator.Screen
         name="Plus"
         component={MoreScreen}
         options={{
@@ -168,7 +173,7 @@ const TabNavigator = () => {
             />
           ),
         }}
-      />
+      /> */}
     </BottomTabNavigator.Navigator>
   );
 };
@@ -327,8 +332,29 @@ const RootNavigator = () => {
   );
 };
 
-const AppContainer = () => {
-  return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
-};
+class AppContainer extends React.Component {
+  async componentDidMount() {}
+  componentDidMount() {
+    var dayInMilliseconds = 1000;
 
-export default AppContainer;
+    var intervalId = setInterval(async () => {
+      const loginDate = await AsyncStorage.getItem('loginDate');
+      const dateDiff = moment().diff(moment.unix(loginDate), 'minutes');
+      if (dateDiff == 1400) this.props.logout();
+    }, dayInMilliseconds);
+    // store intervalId in the state so it can be accessed later:
+    this.setState({intervalId: intervalId});
+  }
+
+  componentWillUnmount() {
+    // use intervalId from the state to clear the interval
+    clearInterval(this.state.intervalId);
+  }
+
+  render() {
+    return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
+  }
+}
+
+const mapStateToProps = (state) => ({});
+export default connect(mapStateToProps, {logout})(AppContainer);
