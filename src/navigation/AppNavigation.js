@@ -15,6 +15,9 @@ import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
+import MoreScreen from '../screens/More/MoreScreen';
+
+
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
@@ -122,7 +125,7 @@ const TabNavigator = () => {
           ),
         }}
       />
-      {/* <BottomTabNavigator.Screen
+      <BottomTabNavigator.Screen
         name="Indicateur"
         component={HomeScreen}
         options={{
@@ -134,7 +137,7 @@ const TabNavigator = () => {
             />
           ),
         }}
-      />*/}
+      />
       <BottomTabNavigator.Screen
         name="Factures"
         component={ExpensesScreen}
@@ -161,7 +164,7 @@ const TabNavigator = () => {
           ),
         }}
       />
-      {/**  <BottomTabNavigator.Screen
+      <BottomTabNavigator.Screen
         name="Plus"
         component={MoreScreen}
         options={{
@@ -173,7 +176,7 @@ const TabNavigator = () => {
             />
           ),
         }}
-      /> */}
+      /> 
     </BottomTabNavigator.Navigator>
   );
 };

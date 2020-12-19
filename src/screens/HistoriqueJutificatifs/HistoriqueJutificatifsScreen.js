@@ -147,7 +147,7 @@ class HomeScreen extends React.Component {
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
-              <View style={styles.buttomIcon}>
+              <View>
                
               </View>
             </View>

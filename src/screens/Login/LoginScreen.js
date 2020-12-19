@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   View,
-  TouchableHighlight,
+  TouchableHighlight, 
   Text,
   TextInput,
   ScrollView,
