@@ -92,10 +92,8 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcWidth(20),
     backgroundColor: 'white',
     textAlign: 'center',
-    paddingTop: '30%',
+    paddingTop:  ScaleHelpers.CalcHeight(3),
     marginTop: ScaleHelpers.CalcWidth(3),
-    marginLeft: ScaleHelpers.CalcWidth(7),
-
     borderRadius: ScaleHelpers.CalcWidth(3),
   },
   backgroundModalStyle: {
