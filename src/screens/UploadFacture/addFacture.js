@@ -128,31 +128,47 @@ class AddFactureScreen extends React.Component {
       }
     });
   };
+  removeFile = async (index) => {
+    this.setState({loading: true});
+    const multiFiles = this.state.multiFiles.filter(
+      (item, key) => key != index,
+    );
+    await this.setState({multiFiles});
+    this.setState({loading: false});
+  };
 
   renderFileUri() {
     console.log('this.state.multiFiles', this.state.multiFiles);
     return (
       <ScrollView>
-        <View style={styles.photoContainer}>
+        <View style={styles.photosContainer}>
           {this.state.multiFiles.map((item, key) => (
-            <View key={key} style={styles.viewImg}>
-              {item.uri ? (
-                <Image style={styles.ImgPlus} source={{uri: item.uri}} />
-              ) : (
+            <View>
+              <TouchableHighlight
+                style={styles.removeFile}
+                onPress={() => this.removeFile(key)}>
                 <Icon
-                  style={{
-                    height: '90%',
-                    width: '90%',
-                    backgroundColor: 'white',
-                    textAlign: 'center',
-                    paddingTop: '30%',
-                    margin: '3%',
-                    borderRadius: 10,
-                  }}
-                  name={'ios-document-attach-sharp'}
-                  size={32}
-                  color={'rgb(92,117,254)'}
+                  iconStyle={styles.iconRemoveFile}
+                  reverse
+                  type="ionicon"
+                  color="white"
+                  name={'ios-close-circle-sharp'}
+                  size={25}
                 />
+              </TouchableHighlight>
+              {item.uri ? (
+                <View key={key} style={styles.viewImg}>
+                  <Image style={styles.imgFacture} source={{uri: item.uri}} />
+                </View>
+              ) : (
+                <View key={key} style={styles.viewImg}>
+                  <Icon
+                    style={styles.iconFile}
+                    name={'ios-document-attach-sharp'}
+                    size={32}
+                    color={'rgb(92,117,254)'}
+                  />
+                </View>
               )}
             </View>
           ))}
