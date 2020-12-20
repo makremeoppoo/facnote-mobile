@@ -19,7 +19,7 @@ import styles from './styles';
 import saveIndemnite from '../../services/indemnite';
 import moment from 'moment';
 
-class IndemnitesScreen extends React.Component {
+class IndemnitiesScreen extends React.Component {
   state = {
     puissance: '1',
     puissanceError: false,
@@ -201,4 +201,4 @@ class IndemnitesScreen extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps)(IndemnitesScreen);
+export default connect(mapStateToProps)(IndemnitiesScreen);
