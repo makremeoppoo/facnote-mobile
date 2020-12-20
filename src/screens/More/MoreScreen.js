@@ -13,13 +13,16 @@ import styles from './styles';
 import CabinetBackground from '../../../assets/images/Rectangle.png';
 import rightArrow from '../../../assets/icons/rightArrow.png';
 import Polygone from '../../../assets/icons/Polygone.png';
+import {connect} from 'react-redux';
 
-export default class MoreScreen extends React.Component {
+ class MoreScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const {cabinet,society} = this.props.user;
+
     return (
       <ScrollView style={styles.container}>
         <View>
@@ -41,7 +44,7 @@ export default class MoreScreen extends React.Component {
                 source={require('../../../assets/icons/profiel.png')}
               />
               <View style={styles.cabinetrowContainer}>
-                <Text style={styles.itemTitle}>Nom de la SOCIETE</Text>
+                <Text style={styles.itemTitle}>{society.cabinet.raison_sociale}</Text>
                 <Text style={styles.itemTitle2}>Voire SOCIETE</Text>
               </View>
             </View>
@@ -118,3 +121,8 @@ export default class MoreScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  user: state.auth,
+});
+export default connect(mapStateToProps)(MoreScreen);
