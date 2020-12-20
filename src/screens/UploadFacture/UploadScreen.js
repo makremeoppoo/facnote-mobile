@@ -19,7 +19,7 @@ import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnite from '../../../assets/images/Indemnite.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
-import AddFactureScreen from './addFacture';
+import AddFactureScreen from './AddFacture';
 import IndemniteScreen from '../Indemnites/IndemniteScreen';
 
 import styles from './styles';

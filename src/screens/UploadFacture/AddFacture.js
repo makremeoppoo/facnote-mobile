@@ -20,7 +20,8 @@ import Close from '../../../assets/icons/close.png';
 import uploadFiles from '../../services/upload';
 
 import styles from './styles';
-class AddFactureScreen extends React.Component {
+
+class LoginactureScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -252,4 +253,4 @@ class AddFactureScreen extends React.Component {
   }
 }
 
-export default AddFactureScreen;
+export default LoginactureScreen;
