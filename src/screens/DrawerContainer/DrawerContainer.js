@@ -4,6 +4,7 @@ import {View} from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import MenuButton from '../../components/MenuButton/MenuButton';
+
 export default function DrawerContainer({navigation}) {
   return (
     <View style={styles.content}>

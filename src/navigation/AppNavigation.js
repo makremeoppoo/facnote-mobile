@@ -30,7 +30,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import Toast from 'react-native-toast-message';
 
 import {useSelector} from 'react-redux';
 import HomeImg from '../../assets/icons/home.png';
