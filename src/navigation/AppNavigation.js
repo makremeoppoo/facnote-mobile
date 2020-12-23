@@ -14,7 +14,7 @@ import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
-import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
+import IndemnitesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
