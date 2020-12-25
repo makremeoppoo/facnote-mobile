@@ -14,7 +14,7 @@ import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
-import IndemnitesScreen from '../screens/Indemnities/IndemnitiesScreen';
+import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
@@ -255,7 +255,7 @@ const MainNavigator = () => {
           headerShown: false,
         }}
         name="Indemnites"
-        component={IndemnitesScreen}
+        component={IndemnitiesScreen}
       />
       <Stack.Screen
         options={({navigation}) => {
