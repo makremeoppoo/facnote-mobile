@@ -15,6 +15,8 @@ import ImageResizer from 'react-native-image-resizer';
 import ImagePicker from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
 import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
 import uploadFiles from '../../services/upload';
@@ -37,7 +39,13 @@ class LoginactureScreen extends React.Component {
   chooseImage = async () => {
     try {
       const results = await DocumentPicker.pickMultiple({
-        type: [DocumentPicker.types.allFiles],
+        type: [
+          DocumentPicker.types.images,
+          DocumentPicker.types.pdf,
+          DocumentPicker.types.docx,
+          DocumentPicker.types.plainText,
+          DocumentPicker.types.doc,
+        ],
         //There can me more options as well find above
       });
       let copy = [...this.state.multiFiles];
@@ -153,36 +161,158 @@ class LoginactureScreen extends React.Component {
     return (
       <ScrollView>
         <View style={styles.photosContainer}>
-          {this.state.multiFiles.map((item, key) => (
-            <View>
-              <TouchableHighlight
-                style={styles.removeFile}
-                onPress={() => this.removeFile(key)}>
-                <Icon
-                  iconStyle={styles.iconRemoveFile}
-                  reverse
-                  type="ionicon"
-                  color="white"
-                  name={'ios-close-circle-sharp'}
-                  size={25}
-                />
-              </TouchableHighlight>
-              {item.uri ? (
-                <View key={key} style={styles.viewImg}>
-                  <Image style={styles.imgFacture} source={{uri: item.uri}} />
-                </View>
-              ) : (
-                <View key={key} style={styles.viewImg}>
-                  <Icon
-                    style={styles.iconFile}
-                    name={'ios-document-attach-sharp'}
-                    size={32}
-                    color={'rgb(92,117,254)'}
-                  />
-                </View>
-              )}
-            </View>
-          ))}
+          {this.state.multiFiles.map((item, key) => {
+            var ext = item.name.match(/\.([^\.]+)$/)[1];
+            switch (ext) {
+              case 'jpg':
+                return (
+                  <View>
+                    <TouchableHighlight
+                      onPress={() => this.removeFile(key)}
+                      style={styles.removeFile}>
+                      <Icon
+                        iconStyle={styles.iconRemoveFile}
+                        reverse
+                        type="ionicon"
+                        color="white"
+                        name={'ios-close-circle-sharp'}
+                        size={25}
+                      />
+                    </TouchableHighlight>
+                    <View key={key} style={styles.viewImg}>
+                      <Image
+                        style={styles.imgFacture}
+                        source={{uri: item.uri}}
+                      />
+                    </View>
+                  </View>
+                );
+              case 'png':
+                return (
+                  <View>
+                    <TouchableHighlight
+                      onPress={() => this.removeFile(key)}
+                      style={styles.removeFile}>
+                      <Icon
+                        iconStyle={styles.iconRemoveFile}
+                        reverse
+                        type="ionicon"
+                        color="white"
+                        name={'ios-close-circle-sharp'}
+                        size={25}
+                      />
+                    </TouchableHighlight>
+                    <View key={key} style={styles.viewImg}>
+                      <Image
+                        style={styles.imgFacture}
+                        source={{uri: item.uri}}
+                      />
+                    </View>
+                  </View>
+                );
+              case 'docx':
+                return (
+                  <View>
+                    <TouchableHighlight
+                      onPress={() => this.removeFile(key)}
+                      style={styles.removeFile}>
+                      <Icon
+                        iconStyle={styles.iconRemoveFile}
+                        reverse
+                        type="ionicon"
+                        color="white"
+                        name={'ios-close-circle-sharp'}
+                        size={25}
+                      />
+                    </TouchableHighlight>
+                    <View style={styles.viewImg}>
+                      <FontAwesome
+                        style={styles.iconFile}
+                        name={'file-word-o'}
+                        size={32}
+                        color={'rgb(92,117,254)'}
+                      />
+                    </View>
+                  </View>
+                );
+              case 'doc':
+                return (
+                  <View>
+                    <TouchableHighlight
+                      onPress={() => this.removeFile(key)}
+                      style={styles.removeFile}>
+                      <Icon
+                        iconStyle={styles.iconRemoveFile}
+                        reverse
+                        type="ionicon"
+                        color="white"
+                        name={'ios-close-circle-sharp'}
+                        size={25}
+                      />
+                    </TouchableHighlight>
+                    <View style={styles.viewImg}>
+                      <FontAwesome
+                        style={styles.iconFile}
+                        name={'file-word-o'}
+                        size={32}
+                        color={'rgb(92,117,254)'}
+                      />
+                    </View>
+                  </View>
+                );
+
+              case 'pdf':
+                return (
+                  <View>
+                    <TouchableHighlight
+                      onPress={() => this.removeFile(key)}
+                      style={styles.removeFile}>
+                      <Icon
+                        iconStyle={styles.iconRemoveFile}
+                        reverse
+                        type="ionicon"
+                        color="white"
+                        name={'ios-close-circle-sharp'}
+                        size={25}
+                      />
+                    </TouchableHighlight>
+                    <View style={styles.viewImg}>
+                      <FontAwesome
+                        style={styles.iconFile}
+                        name={'file-pdf-o'}
+                        size={32}
+                        color={'rgb(92,117,254)'}
+                      />
+                    </View>
+                  </View>
+                );
+              default:
+                return (
+                  <View>
+                    <TouchableHighlight
+                      onPress={() => this.removeFile(key)}
+                      style={styles.removeFile}>
+                      <Icon
+                        iconStyle={styles.iconRemoveFile}
+                        reverse
+                        type="ionicon"
+                        color="white"
+                        name={'ios-close-circle-sharp'}
+                        size={25}
+                      />
+                    </TouchableHighlight>
+                    <View key={key} style={styles.viewImg}>
+                      <Icon
+                        style={styles.iconFile}
+                        name={'ios-document-attach-sharp'}
+                        size={32}
+                        color={'rgb(92,117,254)'}
+                      />
+                    </View>
+                  </View>
+                );
+            }
+          })}
         </View>
       </ScrollView>
     );
