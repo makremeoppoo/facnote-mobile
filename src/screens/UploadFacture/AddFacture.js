@@ -37,7 +37,7 @@ class LoginactureScreen extends React.Component {
   chooseImage = async () => {
     try {
       const results = await DocumentPicker.pickMultiple({
-        type: [DocumentPicker.types.images],
+        type: [DocumentPicker.types.allFiles],
         //There can me more options as well find above
       });
       let copy = [...this.state.multiFiles];
