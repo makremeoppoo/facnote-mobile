@@ -1,7 +1,7 @@
 
 
 //API URL
-export const API_URL = 'https://odyssee.facnote.com';
+export const API_URL = 'http://odyssee.facnote.com';
 
 //API End Points
 export const REGISTER = `/auth/register`;

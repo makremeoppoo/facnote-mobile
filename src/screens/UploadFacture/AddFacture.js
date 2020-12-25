@@ -41,32 +41,42 @@ class LoginactureScreen extends React.Component {
         //There can me more options as well find above
       });
       let copy = [...this.state.multiFiles];
-
       for (const res of results) {
-        ImageResizer.createResizedImage(
-          res.uri,
-          this.state.resizeTargetWidthSize,
-          this.state.resizeTargetHightSize,
-          'JPEG',
-          100,
-          0,
-          undefined,
-          false,
-          {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
-        )
-          .then((resizedImage) => {
-            let obj = {
-              name: res.name,
-              type: res.type,
-              uri: resizedImage.uri,
-            };
+        if (res.type == 'image/jpeg') {
+          ImageResizer.createResizedImage(
+            res.uri,
+            this.state.resizeTargetWidthSize,
+            this.state.resizeTargetHightSize,
+            'JPEG',
+            100,
+            0,
+            undefined,
+            false,
+            {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
+          )
+            .then((resizedImage) => {
+              let obj = {
+                name: res.name,
+                type: res.type,
+                uri: resizedImage.uri,
+              };
 
-            copy.push(obj);
-            this.setState({multiFiles: copy});
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+              copy.push(obj);
+              this.setState({multiFiles: copy});
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        } else {
+          let obj = {
+            name: res.name,
+            type: res.type,
+            uri: res.uri,
+          };
+
+          copy.push(obj);
+          this.setState({multiFiles: copy});
+        }
         //Printing the log realted to the file
       }
       //Setting the state to show multiple file attributes
