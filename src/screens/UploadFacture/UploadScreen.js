@@ -46,9 +46,9 @@ class UploadScreen extends React.Component {
 
     return (
       <View style={styles.containerStyle}>
-        <ImageBackground
+        <Image
           source={Background}
-          style={styles.backgroundStyle}></ImageBackground>
+          style={styles.backgroundStyle}></Image>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>
         </View>

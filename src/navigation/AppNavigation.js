@@ -49,6 +49,8 @@ import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
 import BackgroundNavigation from '../../assets/images/CabinetBackground1.png';
 import getCabinet from '../services/cabinet';
+import ScaleHelpers from '../components/scaleHelpers';
+
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -102,9 +104,9 @@ const TabNavigator = () => {
   return (
     <BottomTabNavigator.Navigator
       tabBarOptions={{
-        labelStyle: {textTransform: 'none', fontSize: 15},
+        labelStyle: {textTransform: 'none', fontSize: ScaleHelpers.CalcWidth(15)},
         style: {
-          height: 70,
+          height: ScaleHelpers.CalcHeight(12),
         },
         showLabel: false,
       }}

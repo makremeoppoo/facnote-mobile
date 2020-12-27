@@ -13,7 +13,9 @@ const styles = StyleSheet.create({
   },
   backgroundStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(110),
+    height: ScaleHelpers.CalcHeight(100),
+    resizeMode: 'stretch',
+
     position: 'absolute',
   },
   titleContainer: {
