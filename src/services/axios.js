@@ -8,14 +8,18 @@ const api = axios.create({
   headers: {
     Accept: 'application/json',
   },
+
+  withCredentials: true,
 });
 
 api.interceptors.request.use(
   async (config) => {
     const accessToken = await AsyncStorage.getItem('accessToken');
+    const data = await AsyncStorage.getItem('coockie');
 
     if (accessToken) {
       config.headers.authorization = `Bearer ${accessToken}`;
+      config.headers.Cookie = JSON.parse(data).headers['set-cookie'];
     } else {
       config.headers.authorization = 'Basic';
     }
@@ -23,7 +27,5 @@ api.interceptors.request.use(
   },
   (error) => Promise.reject(error),
 );
-
-
 
 export default api;
