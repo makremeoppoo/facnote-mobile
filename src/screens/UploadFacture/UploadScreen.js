@@ -19,8 +19,8 @@ import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnite from '../../../assets/images/Indemnite.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
-import AddFactureScreen from './addFacture';
-import IndemniteScreen from '../Indemnites/IndemniteScreen';
+import AddFactureScreen from './AddFacture';
+import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
 
 import styles from './styles';
 
@@ -95,7 +95,7 @@ class UploadScreen extends React.Component {
             transparent={true}
             visible={this.state.showModal}>
             {this.state.typeFacture == 0 ? (
-              <IndemniteScreen closeModal={this.closeModal} />
+              <IndemnitiesScreen closeModal={this.closeModal} />
             ) : (
               <AddFactureScreen typeFacture={this.state.typeFacture} closeModal={this.closeModal} />
             )}

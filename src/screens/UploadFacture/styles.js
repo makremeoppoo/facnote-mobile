@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(80),
     height: ScaleHelpers.CalcHeight(15),
   },
-  photoContainer: {
+  photosContainer: {
     flex: 1,
     flexDirection: 'row',
     paddingTop: ScaleHelpers.CalcHeight(20),
@@ -59,20 +59,42 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(100),
     flexWrap: 'wrap',
   },
+  removeFile: {
+    position: 'absolute',
+    elevation: 5,
+    width: ScaleHelpers.CalcWidth(7),
+    height: ScaleHelpers.CalcWidth(7),
+  },
+  iconRemoveFile:{
+    width: ScaleHelpers.CalcWidth(7),
+    height: ScaleHelpers.CalcWidth(7),
+  },
+
   viewImg: {
-    width: ScaleHelpers.CalcWidth(25),
-    height: ScaleHelpers.CalcWidth(25),
+    width: ScaleHelpers.CalcWidth(21),
+    height: ScaleHelpers.CalcWidth(21),
+    marginLeft: ScaleHelpers.CalcWidth(5),
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
   },
 
-  ImgPlus: {
-    margin: ScaleHelpers.CalcWidth(3),
+  imgFacture: {
+    marginTop: ScaleHelpers.CalcWidth(3),
+
     borderRadius: ScaleHelpers.CalcWidth(3),
     width: ScaleHelpers.CalcWidth(20),
     height: ScaleHelpers.CalcWidth(20),
     backgroundColor: 'white',
+  },
+  iconFile: {
+    width: ScaleHelpers.CalcWidth(20),
+    height: ScaleHelpers.CalcWidth(20),
+    backgroundColor: 'white',
+    textAlign: 'center',
+    paddingTop:  ScaleHelpers.CalcHeight(3),
+    marginTop: ScaleHelpers.CalcWidth(3),
+    borderRadius: ScaleHelpers.CalcWidth(3),
   },
   backgroundModalStyle: {
     width: ScaleHelpers.CalcWidth(105),
@@ -110,6 +132,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
   },
+
   SendView: {
     position: 'absolute',
     top:
@@ -157,7 +180,6 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(15),
     height: ScaleHelpers.CalcWidth(15),
   },
-
 });
 
 export default styles;

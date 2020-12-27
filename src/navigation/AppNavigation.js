@@ -14,11 +14,9 @@ import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
-import IndemnitesScreen from '../screens/Indemnites/IndemniteScreen';
-import MoreScreen from '../screens/More/MoreScreen';
-
-
+import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
+import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
@@ -33,7 +31,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import Toast from 'react-native-toast-message';
 
 import {useSelector} from 'react-redux';
 import HomeImg from '../../assets/icons/home.png';
@@ -259,7 +256,7 @@ const MainNavigator = () => {
           headerShown: false,
         }}
         name="Indemnites"
-        component={IndemnitesScreen}
+        component={IndemnitiesScreen}
       />
       <Stack.Screen
         options={({navigation}) => {
