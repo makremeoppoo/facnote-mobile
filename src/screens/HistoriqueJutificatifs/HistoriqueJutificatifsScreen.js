@@ -3,6 +3,8 @@
 import React from 'react';
 import {View, Text, TouchableHighlight, FlatList, Modal,Image} from 'react-native';
 import {connect} from 'react-redux';
+import getHistory from '../../services/history';
+
 import CardView from '../../components/CardView/CardView';
 import Camera from '../../../assets/icons/Camera.png';
 import Close from '../../../assets/icons/closeGrey.png';
@@ -61,9 +63,11 @@ class HomeScreen extends React.Component {
     };
   }
 
-  loadData = () => {
+  loadData = async () => {
     const {users, seed, page} = this.state;
     this.setState({isLoading: true});
+    let history = await getHistory();
+    console.log("history",history)
 
     /**   fetch(`https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`)
       .then((res) => res.json())
