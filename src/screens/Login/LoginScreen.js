@@ -83,7 +83,6 @@ class LoginScreen extends React.Component {
       this.setState({loading: true});
       let user = await api.login({username: name, password: password});
       await AsyncStorage.setItem('accessToken', user['token']);
-      await AsyncStorage.setItem('loginDate', moment().unix().toString());
 
       let cabinet = await getCabinet();
       let society = await getSociety();

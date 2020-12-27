@@ -4,6 +4,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
+import jwtDecode from 'jwt-decode';
 
 import {logout} from '../redux';
 import {View, Platform, Image} from 'react-native';
@@ -332,14 +333,16 @@ const RootNavigator = () => {
 };
 
 class AppContainer extends React.Component {
-  async componentDidMount() {}
-  componentDidMount() {
+  async componentDidMount() {
+    const accessToken = await AsyncStorage.getItem('accessToken');
+
+    const decodeToken = jwtDecode(accessToken);
+    console.log('dataUser', decodeToken.exp);
     var dayInMilliseconds = 1000;
 
-    var intervalId = setInterval(async () => {
-      const loginDate = await AsyncStorage.getItem('loginDate');
-      const dateDiff = moment().diff(moment.unix(loginDate), 'minutes');
-      if (dateDiff == 1400) this.props.logout();
+    var intervalId = setInterval(() => {
+      if (decodeToken.exp < moment().unix()) this.props.logout();
+      return;
     }, dayInMilliseconds);
     // store intervalId in the state so it can be accessed later:
     this.setState({intervalId: intervalId});
