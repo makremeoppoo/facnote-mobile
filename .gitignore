@@ -59,4 +59,5 @@ buck-out/
 /ios/Pods/
 
 # android
+!android/app/facnote_mobile.keystore
 android/app/src/main/res
