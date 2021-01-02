@@ -9,11 +9,6 @@ class TabBarItem extends React.Component {
       <View
         style={{
           width: ScaleHelper.CalcWidth(30),
-          height: 70,
-          padding: 10,
-          borderRadius: 40,
-
-          backgroundColor: 'transparent',
           alignItems: 'center',
         }}>
         <Image

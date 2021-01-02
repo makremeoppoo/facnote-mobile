@@ -11,12 +11,8 @@ const styles = StyleSheet.create({
 
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(110),
-    position: 'absolute',
-  },
-  topImageTransparentStyle: {
-    width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(27),
+    height: ScaleHelpers.CalcHeight(100),
+    resizeMode: 'stretch',
     position: 'absolute',
   },
 

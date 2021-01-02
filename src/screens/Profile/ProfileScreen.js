@@ -7,6 +7,7 @@ import {
   ScrollView,
   Linking,
   ImageBackground,
+  Image
 } from 'react-native';
 import {connect} from 'react-redux';
 
@@ -46,9 +47,9 @@ class NotificationsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <ImageBackground
+        <Image
           source={Background}
-          style={styles.topImageStyle}></ImageBackground>
+          style={styles.topImageStyle}></Image>
 
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>

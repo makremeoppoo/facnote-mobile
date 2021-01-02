@@ -30,9 +30,9 @@ export default class WelcomeScreen extends React.Component {
         <ScrollView >
         <View style={styles.container}>
 
-          <ImageBackground
+          <Image
             source={backgroundWelcomeImage}
-            style={styles.topImageStyle}></ImageBackground>
+            style={styles.topImageStyle}></Image>
           <View>
             <View style={styles.titleContainer}>
             <Image
