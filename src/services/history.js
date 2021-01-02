@@ -5,11 +5,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 export default async function getHistory() {
   try {
     const data = await AsyncStorage.getItem('coockie');
+
     let res = await api.get(c.GETHISTORY, {
       withCredentials: true,
-      headers: {
-        Cookie: JSON.parse(data).headers['set-cookie'],
-      },
     });
     return res.data;
   } catch (e) {
