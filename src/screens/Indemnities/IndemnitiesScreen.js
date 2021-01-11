@@ -143,6 +143,7 @@ class IndemnitiesScreen extends React.Component {
             />
 
             <TextInput
+              style={styles.input}
               label={'Distance parcourue(KM)'}
               onChangeText={(text, name) => this.setField(text, 'distance')}
               name="distance"
@@ -152,6 +153,7 @@ class IndemnitiesScreen extends React.Component {
             />
 
             <TextInput
+              style={styles.input}
               label={'Lieu de départ'}
               onChangeText={(text, name) => this.setField(text, 'lieuDapart')}
               name="lieuDapart"
@@ -159,12 +161,14 @@ class IndemnitiesScreen extends React.Component {
             />
 
             <TextInput
+              style={styles.input}
               label={"Lieu d'arrivée"}
               onChangeText={(text, name) => this.setField(text, 'lieuArriver')}
               name="lieuArriver"
               errorLabel={lieuArriverError && 'Champ obligatoire'}
             />
             <TextInput
+              style={styles.input}
               label={'Client ou motif'}
               onChangeText={(text, name) => this.setField(text, 'motif')}
               name="motif"

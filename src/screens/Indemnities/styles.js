@@ -39,7 +39,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignSelf: 'center',
   },
-
+  input: {
+    height: '100%',
+    width: '100%',
+  },
   ButtonsContain: {
     flex: 1,
     flexDirection: 'row',

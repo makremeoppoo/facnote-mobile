@@ -1,5 +1,5 @@
 /* eslint-disable comma-dangle */
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, Platform} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -78,9 +78,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 20,
     alignSelf: 'center',
+    alignItems:"center",
+    alignContent:"center"
   },
   inputBlock: {
     height: ScaleHelpers.CalcHeight(12),
+  },
+  input: {
+    height: "100%",
+    width: "100%",
   },
   buttonStyle: {
     width: ScaleHelpers.CalcWidth(40),
@@ -99,12 +105,12 @@ const styles = StyleSheet.create({
   },
 
   buttomView: {
-    bottom: 0,
+    bottom: Platform.OS !== 'ios' ? 0 : 15,
 
     alignSelf: 'center',
     position: 'absolute',
     flexDirection: 'row',
-    justifyContent:"center"
+    justifyContent: 'center',
   },
   buttomText: {
     fontFamily: 'Nunito-SemiBold',
