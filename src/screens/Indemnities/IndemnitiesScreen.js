@@ -121,6 +121,7 @@ class IndemnitiesScreen extends React.Component {
               date={this.state.date}
               setCurrentDate={this.setDate}
               label={'Date'}
+              style={styles.input}
             />
 
             <SelectInput
