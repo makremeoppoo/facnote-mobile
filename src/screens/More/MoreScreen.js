@@ -15,44 +15,45 @@ import rightArrow from '../../../assets/icons/rightArrow.png';
 import Polygone from '../../../assets/icons/Polygone.png';
 import {connect} from 'react-redux';
 
- class MoreScreen extends React.Component {
+class MoreScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
   render() {
-    const {cabinet,society} = this.props.user;
+    const {cabinet, society} = this.props.user;
 
     return (
-      <ScrollView style={styles.container}>
-        <View>
-          <Image
-            source={CabinetBackground}
-            style={styles.topImageStyle}></Image>
-          <View style={styles.header}>
-            <Image style={styles.polygonImg} source={Polygone} />
-            <Text style={styles.headerBigText}>Prénom Nom</Text>
+      <View>
+        <Image source={CabinetBackground} style={styles.topImageStyle}></Image>
+        <View style={styles.header}>
+          <Image style={styles.polygonImg} source={Polygone} />
+          <Text style={styles.headerBigText}>Prénom Nom</Text>
 
-            <Text style={styles.headerText}>Voir mon profile</Text>
-          </View>
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('Cabinet')}
-            underlayColor="rgba(73,182,77,1,0.9)">
-            <View style={styles.cabinetCard}>
-              <Image
-                style={styles.leftArrow}
-                source={require('../../../assets/icons/profiel.png')}
-              />
-              <View style={styles.cabinetrowContainer}>
-                <Text style={styles.itemTitle}>{society.cabinet.raison_sociale}</Text>
-                <Text style={styles.itemTitle2}>Voire SOCIETE</Text>
-              </View>
+          <Text style={styles.headerText}>Voir mon profile</Text>
+        </View>
+        <TouchableHighlight
+          onPress={() => this.props.navigation.navigate('Cabinet')}
+          underlayColor="rgba(73,182,77,1,0.9)">
+          <View style={styles.cabinetCard}>
+            <Image
+              style={styles.leftArrow}
+              source={require('../../../assets/icons/profiel.png')}
+            />
+            <View style={styles.cabinetrowContainer}>
+              <Text style={styles.itemTitle}>
+                {society.cabinet.raison_sociale}
+              </Text>
+              <Text style={styles.itemTitle2}>Voire SOCIETE</Text>
             </View>
-          </TouchableHighlight>
-
+          </View>
+        </TouchableHighlight>
+        <ScrollView >
           <View style={styles.content}>
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('HistoriqueJutificatifs')}
+              onPress={() =>
+                this.props.navigation.navigate('HistoriqueJutificatifs')
+              }
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
@@ -64,7 +65,9 @@ import {connect} from 'react-redux';
               </View>
             </TouchableHighlight>
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('HistoriqueJutificatifs')}
+              onPress={() =>
+                this.props.navigation.navigate('HistoriqueJutificatifs')
+              }
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
@@ -116,8 +119,8 @@ import {connect} from 'react-redux';
               </View>
             </TouchableHighlight>
           </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </View>
     );
   }
 }
