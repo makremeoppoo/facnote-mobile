@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Picker} from '@react-native-community/picker';
+import React, {Component} from 'react';
+import {StyleSheet, Text, Platform, View} from 'react-native';
+import {Picker, PickerIOS} from '@react-native-community/picker';
 
 import ScaleHelpers from '../scaleHelpers';
 import {textColor, buttonColor, label} from '../../AppStyles';
@@ -30,11 +30,21 @@ export default class FormInput extends Component {
         </Text>
 
         <View style={styles.inputContainer}>
-          <Picker {...this.props}>
-            {this.props.listItems.map((e) => (
-              <Picker.Item label={e.label} value={e.value}></Picker.Item>
-            ))}
-          </Picker>
+          {Platform.OS === 'ios' ? (
+            <PickerIOS {...this.props}>
+              {this.props.listItems.map((e) => (
+                <PickerIOS.Item
+                  label={e.label}
+                  value={e.value}></PickerIOS.Item>
+              ))}
+            </PickerIOS>
+          ) : (
+            <Picker {...this.props}>
+              {this.props.listItems.map((e) => (
+                <Picker.Item label={e.label} value={e.value}></Picker.Item>
+              ))}
+            </Picker>
+          )}
 
           {this.renderError()}
         </View>
