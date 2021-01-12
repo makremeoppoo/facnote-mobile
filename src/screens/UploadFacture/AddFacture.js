@@ -157,7 +157,6 @@ class LoginactureScreen extends React.Component {
   };
 
   renderFileUri() {
-    console.log('this.state.multiFiles', this.state.multiFiles);
     return (
       <ScrollView>
         <View style={styles.photosContainer}>
