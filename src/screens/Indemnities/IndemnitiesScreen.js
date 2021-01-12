@@ -88,7 +88,7 @@ class IndemnitiesScreen extends React.Component {
 
       this.props.closeModal({
         text1: 'Felicitation',
-        text2: 'Données ont enregistré avec succès',
+        text2: 'Les données ont été enregistrées avec succès',
         type: 'success',
       });
     } catch (error) {
