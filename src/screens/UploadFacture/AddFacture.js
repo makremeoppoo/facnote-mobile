@@ -166,7 +166,7 @@ class LoginactureScreen extends React.Component {
             switch (ext) {
               case 'jpg':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -189,7 +189,7 @@ class LoginactureScreen extends React.Component {
                 );
               case 'png':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -212,7 +212,7 @@ class LoginactureScreen extends React.Component {
                 );
               case 'docx':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -237,7 +237,7 @@ class LoginactureScreen extends React.Component {
                 );
               case 'doc':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -263,7 +263,7 @@ class LoginactureScreen extends React.Component {
 
               case 'pdf':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -288,7 +288,7 @@ class LoginactureScreen extends React.Component {
                 );
               default:
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
