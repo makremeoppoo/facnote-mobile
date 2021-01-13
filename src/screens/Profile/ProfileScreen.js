@@ -7,13 +7,14 @@ import {
   ScrollView,
   Linking,
   ImageBackground,
-  Image
+  Image,
 } from 'react-native';
 import {connect} from 'react-redux';
 
 import styles from './styles';
 import {logout} from '../../redux';
 import Background from '../../../assets/images/background_accueil_ok.png';
+import {text} from '../../constants';
 
 class NotificationsScreen extends React.Component {
   constructor(props) {
@@ -43,13 +44,11 @@ class NotificationsScreen extends React.Component {
   };
 
   render() {
-    const {cabinet,society} = this.props.user;
+    const {cabinet, society} = this.props.user;
 
     return (
       <View style={styles.container}>
-        <Image
-          source={Background}
-          style={styles.topImageStyle}></Image>
+        <Image source={Background} style={styles.topImageStyle}></Image>
 
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>
@@ -66,7 +65,7 @@ class NotificationsScreen extends React.Component {
               }}
               onPress={() => this.callNumber(cabinet.fax)}>
               <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
-                Appeler
+                {text.Appeler}
               </Text>
             </TouchableHighlight>
             <TouchableHighlight
@@ -79,7 +78,7 @@ class NotificationsScreen extends React.Component {
               }}
               onPress={() => this.sendMail(cabinet.email)}>
               <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
-                Envoyer un email
+                {text.EnvoyerEmail}
               </Text>
             </TouchableHighlight>
             <View style={styles.infoContainer}>
@@ -117,7 +116,7 @@ class NotificationsScreen extends React.Component {
               onPress={() => this.props.logout()}
               underlayColor="rgba(73,182,77,1,0.9)">
               <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
-                Deconnecter
+                {text.Deconnecter}
               </Text>
             </TouchableHighlight>
           </View>

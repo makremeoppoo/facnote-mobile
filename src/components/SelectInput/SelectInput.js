@@ -33,12 +33,12 @@ export default class FormInput extends Component {
           <ModalSelector
             cancelText={'Fermer'}
             data={this.props.listItems}
-            supportedOrientations={['landscape']}
-            accessible={true}
             {...this.props}>
             <TextInput
               style={{
                 color: 'grey',
+                width: '100%',
+                height: '100%',
               }}
               editable={false}
               placeholder=""

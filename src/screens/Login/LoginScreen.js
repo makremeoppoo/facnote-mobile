@@ -12,7 +12,6 @@ import {
   Linking,
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
-import moment from 'moment';
 
 import styles from './styles';
 import {connect} from 'react-redux';
@@ -25,6 +24,7 @@ import getSociety from '../../services/societe';
 
 import {login} from '../../redux';
 import AsyncStorage from '@react-native-community/async-storage';
+import {text} from '../../constants';
 
 class LoginScreen extends React.Component {
   constructor(props) {
@@ -103,7 +103,7 @@ class LoginScreen extends React.Component {
       }
     } catch (error) {
       this.setState({
-        error: 'identifiant ou mot de passe incorrect !',
+        error: text.ErrorLogin,
         loading: false,
       });
       console.log(error.message);
@@ -128,7 +128,7 @@ class LoginScreen extends React.Component {
           </View>
           <View style={styles.formContainer}>
             <View style={styles.inputBlock}>
-              <Text style={styles.label}>Identifiant</Text>
+              <Text style={styles.label}>{text.Identifiant}</Text>
 
               <View style={styles.inputContainer}>
                 <TextInput
@@ -140,7 +140,7 @@ class LoginScreen extends React.Component {
               </View>
             </View>
             <View style={styles.inputBlock}>
-              <Text style={styles.label}>Mot de passe</Text>
+              <Text style={styles.label}>{text.motDePasse}</Text>
 
               <View style={styles.inputContainer}>
                 <TextInput
@@ -157,7 +157,7 @@ class LoginScreen extends React.Component {
               textStyle={styles.checkboxLabel}
               checkedColor={'white'}
               uncheckedColor={'white'}
-              title="Enregistrer mes identifiants"
+              title={text.EnregistrerIdentifiant}
               style={styles.checkbox}
               checked={this.state.rememberMe}
               onPress={(value) =>
@@ -169,7 +169,7 @@ class LoginScreen extends React.Component {
               <TouchableHighlight
                 style={styles.buttonStyle}
                 onPress={() => this.onPressLogButton()}>
-                <Text style={styles.signTxt}>Connexion</Text>
+                <Text style={styles.signTxt}>{text.Connexion}</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -181,19 +181,17 @@ class LoginScreen extends React.Component {
               onPress={() =>
                 Linking.openURL('https://facnote.com/fr/mentions.html')
               }>
-              mentions légales
+              {text.mentionsLegales}
             </Text>
             <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
               {' '}
               -{' '}
             </Text>
             <Text
-              onPress={() =>
-                Linking.openURL('https://facnote.com/fr/cgu.html')
-              }
+              onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')}
               style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
               {' '}
-              CGU
+              {text.CGU}
             </Text>
           </View>
         )}

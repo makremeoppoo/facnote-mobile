@@ -77,7 +77,7 @@ export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
           onCancel={showTimepicker}
           display={Platform.OS == 'ios' ? 'spinner' : 'default'}
           locale="fr_FR"
-          
+          headerTextIOS={""}
           cancelTextIOS={'Fermer'}
           confirmTextIOS={'Confirmer'}
         />

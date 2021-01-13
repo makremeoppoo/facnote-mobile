@@ -22,6 +22,7 @@ import Close from '../../../assets/icons/close.png';
 import uploadFiles from '../../services/upload';
 
 import styles from './styles';
+import {text} from '../../constants';
 
 class LoginactureScreen extends React.Component {
   constructor(props) {
@@ -328,8 +329,8 @@ class LoginactureScreen extends React.Component {
         multiFiles: [],
       });
       this.props.closeModal({
-        text1: 'Felicitation',
-        text2: 'Vos factures ont bien été transmises',
+        text1: text.Felicitation,
+        text2: text.FactureSucces,
         type: 'success',
       });
     } catch (error) {
@@ -338,8 +339,8 @@ class LoginactureScreen extends React.Component {
         multiFiles: [],
       });
       this.props.closeModal({
-        text1: 'Échec',
-        text2: 'telechargement fichier interrompu',
+        text1: text.Echec,
+        text2: text.telechargementError,
         type: 'error',
       });
     }
@@ -372,7 +373,7 @@ class LoginactureScreen extends React.Component {
               style={styles.SendView}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.SendIconView}>
-                <Text style={{...styles.btnTxt}}>envoyer</Text>
+                <Text style={{...styles.btnTxt}}>{text.Envoyer}</Text>
               </View>
             </TouchableHighlight>
           )}

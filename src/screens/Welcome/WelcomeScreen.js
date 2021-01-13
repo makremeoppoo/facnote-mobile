@@ -7,10 +7,11 @@ import {
   Text,
   ScrollView,
   ImageBackground,
-  Linking
+  Linking,
 } from 'react-native';
 import styles from './styles';
-import LogoImage from '../../../assets/images/logo.png'
+import LogoImage from '../../../assets/images/logo.png';
+import {text} from '../../constants';
 
 import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png';
 
@@ -25,55 +26,47 @@ export default class WelcomeScreen extends React.Component {
 
   render() {
     return (
-      <View >
-
-        <ScrollView >
-        <View style={styles.container}>
-
-          <Image
-            source={backgroundWelcomeImage}
-            style={styles.topImageStyle}></Image>
-          <View>
-            <View style={styles.titleContainer}>
+      <View>
+        <ScrollView>
+          <View style={styles.container}>
             <Image
-              style={styles.logo}
-              source={LogoImage}
-            />
-            </View>
-            <View style={styles.buttonView}>
-              <TouchableHighlight
-                style={styles.buttonContainer}
-                onPress={() => this.onPressLogButton()}>
-                <Text style={styles.buttonTxt}>vous identifier</Text>
-              </TouchableHighlight>
+              source={backgroundWelcomeImage}
+              style={styles.topImageStyle}></Image>
+            <View>
+              <View style={styles.titleContainer}>
+                <Image style={styles.logo} source={LogoImage} />
+              </View>
+              <View style={styles.buttonView}>
+                <TouchableHighlight
+                  style={styles.buttonContainer}
+                  onPress={() => this.onPressLogButton()}>
+                  <Text style={styles.buttonTxt}> {text.identifier}</Text>
+                </TouchableHighlight>
+              </View>
             </View>
           </View>
-          </View>
-          </ScrollView>
+        </ScrollView>
 
-          <View style={styles.buttomView}>
-            <Text
-              style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
-              onPress={() =>
-                Linking.openURL('https://facnote.com/fr/mentions.html')
-              }>
-              mentions légales
-            </Text>
-            <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
-              {' '}
-              -{' '}
-            </Text>
-            <Text
-              onPress={() =>
-                Linking.openURL('https://facnote.com/fr/cgu.html')
-              }
-              style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
-              {' '}
-              CGU
-            </Text>
-          </View>
-        
+        <View style={styles.buttomView}>
+          <Text
+            style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
+            onPress={() =>
+              Linking.openURL('https://facnote.com/fr/mentions.html')
+            }>
+            {text.mentionsLegales}
+          </Text>
+          <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+            {' '}
+            -{' '}
+          </Text>
+          <Text
+            onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')}
+            style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+            {' '}
+            {text.CGU}
+          </Text>
         </View>
+      </View>
     );
   }
 }

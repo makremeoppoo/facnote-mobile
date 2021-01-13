@@ -18,6 +18,7 @@ import SelectInput from '../../components/SelectInput/SelectInput';
 import styles from './styles';
 import saveIndemnite from '../../services/indemnite';
 import moment from 'moment';
+import {text} from '../../constants';
 
 class IndemnitiesScreen extends React.Component {
   state = {
@@ -88,8 +89,8 @@ class IndemnitiesScreen extends React.Component {
       var res = await saveIndemnite(data);
 
       this.props.closeModal({
-        text1: 'Felicitation',
-        text2: 'Les données ont été enregistrées avec succès',
+        text1: text.Felicitation,
+        text2: text.indemniteSuccess,
         type: 'success',
       });
     } catch (error) {
@@ -97,8 +98,8 @@ class IndemnitiesScreen extends React.Component {
         loading: false,
       });
       this.props.closeModal({
-        text1: 'Échec',
-        text2: 'enregistrement interrompu',
+        text1: text.Echec,
+        text2: text.telechargementError,
         type: 'error',
       });
     }
@@ -110,82 +111,82 @@ class IndemnitiesScreen extends React.Component {
       motifError,
       lieuDapartError,
       lieuArriverError,
-      puissanceError
+      puissanceError,
     } = this.state;
+    let index = 0;
     return (
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>Indemnités Kilométriques</Text>
+            <Text style={styles.title}>{text.IndemnitesTitle}</Text>
           </View>
           <View style={styles.infoContainer}>
             <DatePicker
               date={this.state.date}
               setCurrentDate={this.setDate}
-              label={'Date'}
+              label={text.Date}
               style={styles.input}
             />
 
             <SelectInput
-              label={'Puissance Administrative'}
+              label={text.PuissanceAdministrative}
               selectedValue={this.state.puissance.label}
               onChange={(option) => {
-                console.log(option)
+                console.log(option);
                 this.setState({puissance: option});
               }}
-              errorLabel={puissanceError && 'Champ obligatoire'}
-
+              errorLabel={puissanceError && text.Champobligatoire}
               listItems={[
-                {label: 'Moto P < 50 CC', value: '1'},
-                {label: 'Moto P < 3CV', value: '2'},
-                {label: 'Moto P < 6CV', value: '3'},
-                {label: 'Moto P > 5CV', value: '4'},
-                {label: 'Automobile P <  3CV', value: '5'},
-                {label: 'Automobile P = 4CV', value: '6'},
-                {label: 'Automobile P = 5CV', value: '7'},
-                {label: 'Automobile P = 6CV', value: '8'},
-                {label: 'Automobile P > 6CV', value: '9'},
+                {key: index++, label: 'Moto P < 50 CC', value: '1'},
+                {key: index++, label: 'Moto P < 3CV', value: '2'},
+                {key: index++, label: 'Moto P < 6CV', value: '3'},
+                {key: index++, label: 'Moto P > 5CV', value: '4'},
+                {key: index++, label: 'Automobile P <  3CV', value: '5'},
+                {key: index++, label: 'Automobile P = 4CV', value: '6'},
+                {key: index++, label: 'Automobile P = 5CV', value: '7'},
+                {key: index++, label: 'Automobile P = 6CV', value: '8'},
+                {key: index++, label: 'Automobile P > 6CV', value: '9'},
               ]}
             />
 
             <TextInput
               style={styles.input}
-              label={'Distance parcourue(KM)'}
+              label={text.DistanceParcourue}
               onChangeText={(text, name) => this.setField(text, 'distance')}
               name="distance"
               type="number"
               keyboardType="numeric"
-              errorLabel={distanceError && 'Champ obligatoire'}
+              errorLabel={distanceError && text.Champobligatoire}
             />
 
             <TextInput
               style={styles.input}
-              label={'Lieu de départ'}
+              label={text.LieuDepart}
               onChangeText={(text, name) => this.setField(text, 'lieuDapart')}
               name="lieuDapart"
-              errorLabel={lieuDapartError && 'Champ obligatoire'}
+              errorLabel={lieuDapartError && text.Champobligatoire}
             />
 
             <TextInput
               style={styles.input}
-              label={"Lieu d'arrivée"}
+              label={text.LieuArrive}
               onChangeText={(text, name) => this.setField(text, 'lieuArriver')}
               name="lieuArriver"
-              errorLabel={lieuArriverError && 'Champ obligatoire'}
+              errorLabel={lieuArriverError && text.Champobligatoire}
             />
             <TextInput
               style={styles.input}
-              label={'Client ou motif'}
+              label={text.ClientMotif}
               onChangeText={(text, name) => this.setField(text, 'motif')}
               name="motif"
-              errorLabel={motifError && 'Champ obligatoire'}
+              errorLabel={motifError && text.Champobligatoire}
             />
           </View>
           <View style={styles.ButtonsContain}>
             <TouchableHighlight
               style={styles.btnContainer}
               onPress={() => this.props.closeModal(null)}>
-              <Text style={styles.btnTxt}>Annuler</Text>
+              <Text style={styles.btnTxt}>{text.Annuler}</Text>
             </TouchableHighlight>
             <TouchableHighlight
               style={styles.btnSubmitContainer}
@@ -197,7 +198,7 @@ class IndemnitiesScreen extends React.Component {
                   {this.state.loading ? (
                     <ActivityIndicator size="small" color="white" />
                   ) : (
-                    'Valider'
+                    text.Valider
                   )}
                 </Text>
               </>
