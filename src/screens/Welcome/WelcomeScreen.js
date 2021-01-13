@@ -40,7 +40,7 @@ export default class WelcomeScreen extends React.Component {
                 <TouchableHighlight
                   style={styles.buttonContainer}
                   onPress={() => this.onPressLogButton()}>
-                  <Text style={styles.buttonTxt}> {text.identifier}</Text>
+                  <Text style={styles.buttonTxt}>{text.identifier}</Text>
                 </TouchableHighlight>
               </View>
             </View>
