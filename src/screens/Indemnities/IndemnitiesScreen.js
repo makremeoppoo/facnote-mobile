@@ -21,7 +21,7 @@ import moment from 'moment';
 
 class IndemnitiesScreen extends React.Component {
   state = {
-    puissance: '1',
+    puissance: '',
     puissanceError: false,
     date: moment(new Date()).format('YYYY-MM-DD'),
     distance: '',
@@ -61,6 +61,7 @@ class IndemnitiesScreen extends React.Component {
       lieuArriverError: lieuArriver == '',
       lieuDapartError: lieuDapart == '',
       motifError: motif == '',
+      puissanceError: puissance == '',
     });
 
     if (
@@ -109,6 +110,7 @@ class IndemnitiesScreen extends React.Component {
       motifError,
       lieuDapartError,
       lieuArriverError,
+      puissanceError
     } = this.state;
     return (
       <View style={styles.container}>
@@ -131,6 +133,8 @@ class IndemnitiesScreen extends React.Component {
                 console.log(option)
                 this.setState({puissance: option});
               }}
+              errorLabel={puissanceError && 'Champ obligatoire'}
+
               listItems={[
                 {label: 'Moto P < 50 CC', value: '1'},
                 {label: 'Moto P < 3CV', value: '2'},
