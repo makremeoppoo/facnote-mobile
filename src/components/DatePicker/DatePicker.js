@@ -79,6 +79,7 @@ export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
           is24Hour={true}
           display="default"
           onChange={onChange}
+          
         />
       )}
     </View>

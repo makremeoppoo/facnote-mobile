@@ -76,7 +76,7 @@ class IndemnitiesScreen extends React.Component {
         base: user.base,
         date,
         userActiveInput: '',
-        puissanceAdministrative: puissance,
+        puissanceAdministrative: puissance.value,
         distanceParcourue: distance,
         lieuDepart: lieuDapart,
         lieuArrivee: lieuArriver,
@@ -126,10 +126,11 @@ class IndemnitiesScreen extends React.Component {
 
             <SelectInput
               label={'Puissance Administrative'}
-              selectedValue={this.state.puissance}
-              onValueChange={(itemValue, itemIndex) =>
-                this.setState({puissance: itemValue})
-              }
+              selectedValue={this.state.puissance.label}
+              onChange={(option) => {
+                console.log(option)
+                this.setState({puissance: option});
+              }}
               listItems={[
                 {label: 'Moto P < 50 CC', value: '1'},
                 {label: 'Moto P < 3CV', value: '2'},

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, Platform, View} from 'react-native';
-import {Picker, PickerIOS} from '@react-native-community/picker';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import ModalSelector from 'react-native-modal-selector';
 
 import ScaleHelpers from '../scaleHelpers';
 import {textColor, buttonColor, label} from '../../AppStyles';
@@ -21,7 +21,7 @@ export default class FormInput extends Component {
     return null;
   }
   render() {
-    const {label, errorLabel} = this.props;
+    const {label, errorLabel, selectedValue} = this.props;
     return (
       <View style={styles.inputBlock}>
         <Text
@@ -30,21 +30,21 @@ export default class FormInput extends Component {
         </Text>
 
         <View style={styles.inputContainer}>
-          {Platform.OS === 'ios' ? (
-            <PickerIOS {...this.props}>
-              {this.props.listItems.map((e) => (
-                <PickerIOS.Item
-                  label={e.label}
-                  value={e.value}></PickerIOS.Item>
-              ))}
-            </PickerIOS>
-          ) : (
-            <Picker {...this.props}>
-              {this.props.listItems.map((e) => (
-                <Picker.Item label={e.label} value={e.value}></Picker.Item>
-              ))}
-            </Picker>
-          )}
+          <ModalSelector
+            cancelText={'Fermer'}
+            data={this.props.listItems}
+            supportedOrientations={['landscape']}
+            accessible={true}
+            {...this.props}>
+            <TextInput
+              style={{
+                color: 'grey',
+              }}
+              editable={false}
+              placeholder=""
+              value={selectedValue}
+            />
+          </ModalSelector>
 
           {this.renderError()}
         </View>
