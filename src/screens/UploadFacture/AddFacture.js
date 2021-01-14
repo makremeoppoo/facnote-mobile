@@ -39,6 +39,7 @@ class LoginactureScreen extends React.Component {
   chooseImage = async () => {
     try {
       const results = await DocumentPicker.pickMultiple({
+        mode: 'open',
         type: [
           DocumentPicker.types.images,
           DocumentPicker.types.pdf,
@@ -51,30 +52,34 @@ class LoginactureScreen extends React.Component {
       let copy = [...this.state.multiFiles];
       for (const res of results) {
         if (res.type == 'image/jpeg') {
-          ImageResizer.createResizedImage(
-            res.uri,
-            this.state.resizeTargetWidthSize,
-            this.state.resizeTargetHightSize,
-            'JPEG',
-            100,
-            0,
-            undefined,
-            false,
-            {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
-          )
-            .then(async (resizedImage) => {
-              let obj = {
-                name: res.name,
-                type: res.type,
-                uri: resizedImage.uri,
-              };
-              
-              await copy.push(obj);
-              await  this.setState({multiFiles: copy});
-            })
-            .catch((err) => {
+          try {
+            ImageResizer.createResizedImage(
+              res.uri,
+              this.state.resizeTargetWidthSize,
+              this.state.resizeTargetHightSize,
+              'JPEG',
+              100,
+              0,
+              undefined,
+              false,
+              {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
+            )
+              .then(async (resizedImage) => {
+                let obj = {
+                  name: res.name,
+                  type: res.type,
+                  uri: resizedImage.uri,
+                };
+                
+                await copy.push(obj);
+                await  this.setState({multiFiles: copy});
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+            } catch (err) {
               console.log(err);
-            });
+            }  
         } else {
           let obj = {
             name: res.name,
@@ -120,30 +125,34 @@ class LoginactureScreen extends React.Component {
         alert(response.customButton);
       } else {
         let copy = [...this.state.multiFiles];
+        try {
+          ImageResizer.createResizedImage(
+            response.uri,
+            this.state.resizeTargetWidthSize,
+            this.state.resizeTargetHightSize,
+            'JPEG',
+            100,
+            0,
+            undefined,
+            false,
+            {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
+          )
+            .then(async (resizedImage) => {
+              let obj = {
+                name: response.fileName,
+                type: response.type,
+                uri: resizedImage.uri,
+              };
 
-        ImageResizer.createResizedImage(
-          response.uri,
-          this.state.resizeTargetWidthSize,
-          this.state.resizeTargetHightSize,
-          'JPEG',
-          100,
-          0,
-          undefined,
-          false,
-          {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
-        )
-          .then(async (resizedImage) => {
-            let obj = {
-              name: response.fileName,
-              type: response.type,
-              uri: resizedImage.uri,
-            };
-            await copy.push(obj);
-            await this.setState({multiFiles: copy});
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+              await copy.push(obj);
+              await this.setState({multiFiles: copy});
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+        } catch (err) {
+          console.log(err);
+        }  
       }
     });
   };
