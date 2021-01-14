@@ -22,7 +22,6 @@ import Close from '../../../assets/icons/close.png';
 import uploadFiles from '../../services/upload';
 
 import styles from './styles';
-import {text} from '../../constants';
 
 class LoginactureScreen extends React.Component {
   constructor(props) {
@@ -63,15 +62,15 @@ class LoginactureScreen extends React.Component {
             false,
             {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
           )
-            .then((resizedImage) => {
+            .then(async (resizedImage) => {
               let obj = {
                 name: res.name,
                 type: res.type,
                 uri: resizedImage.uri,
               };
-
-              copy.push(obj);
-              this.setState({multiFiles: copy});
+              
+              await copy.push(obj);
+              await  this.setState({multiFiles: copy});
             })
             .catch((err) => {
               console.log(err);
@@ -133,14 +132,14 @@ class LoginactureScreen extends React.Component {
           false,
           {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
         )
-          .then((resizedImage) => {
+          .then(async (resizedImage) => {
             let obj = {
               name: response.fileName,
               type: response.type,
               uri: resizedImage.uri,
             };
-            copy.push(obj);
-            this.setState({multiFiles: copy});
+            await copy.push(obj);
+            await this.setState({multiFiles: copy});
           })
           .catch((err) => {
             console.log(err);
@@ -329,8 +328,8 @@ class LoginactureScreen extends React.Component {
         multiFiles: [],
       });
       this.props.closeModal({
-        text1: text.Felicitation,
-        text2: text.FactureSucces,
+        text1: 'Felicitation',
+        text2: 'Vos factures ont bien été transmises',
         type: 'success',
       });
     } catch (error) {
@@ -339,8 +338,8 @@ class LoginactureScreen extends React.Component {
         multiFiles: [],
       });
       this.props.closeModal({
-        text1: text.Echec,
-        text2: text.telechargementError,
+        text1: 'Échec',
+        text2: 'telechargement fichier interrompu',
         type: 'error',
       });
     }
@@ -373,7 +372,7 @@ class LoginactureScreen extends React.Component {
               style={styles.SendView}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.SendIconView}>
-                <Text style={{...styles.btnTxt}}>{text.Envoyer}</Text>
+                <Text style={{...styles.btnTxt}}>envoyer</Text>
               </View>
             </TouchableHighlight>
           )}
