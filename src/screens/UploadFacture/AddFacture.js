@@ -8,6 +8,7 @@ import {
   ImageBackground,
   Image,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import {Icon as IconView} from 'react-native-elements';
 import ImageResizer from 'react-native-image-resizer';
@@ -34,7 +35,7 @@ class LoginactureScreen extends React.Component {
       onlyScaleDown: false,
     };
   }
-  
+
   chooseFile = async () => {
     try {
       const results = await DocumentPicker.pickMultiple({
@@ -48,7 +49,7 @@ class LoginactureScreen extends React.Component {
         ],
         //There can me more options as well find above
       });
-     
+
       let copy = [...this.state.multiFiles];
       for (const res of results) {
         let ext = res.name.match(/\.([^\.]+)$/)[1].toLowerCase();
@@ -72,16 +73,16 @@ class LoginactureScreen extends React.Component {
                   extension: ext,
                   uri: resizedImage.uri,
                 };
-                
+
                 copy.push(obj);
                 this.setState({multiFiles: copy});
               })
               .catch((err) => {
                 console.log(err);
               });
-            } catch (err) {
-              console.log(err);
-            }  
+          } catch (err) {
+            console.log(err);
+          }
         } else {
           let obj = {
             name: res.name,
@@ -110,18 +111,18 @@ class LoginactureScreen extends React.Component {
       }
     }
   };
-  
+
   chooseImage = async () => {
-    try { 
+    try {
       const results = await ImagePickerCrop.openPicker({
-        multiple: true
-      })
- 
+        multiple: true,
+      });
+
       let copy = [...this.state.multiFiles];
-      
+
       for (const res of results) {
         let ext = res.filename.match(/\.([^\.]+)$/)[1].toLowerCase();
-             
+
         if (res.mime == 'image/jpeg') {
           try {
             ImageResizer.createResizedImage(
@@ -142,16 +143,16 @@ class LoginactureScreen extends React.Component {
                   extension: ext,
                   uri: resizedImage.uri,
                 };
-                
+
                 copy.push(obj);
                 this.setState({multiFiles: copy});
               })
               .catch((err) => {
                 console.log(err);
               });
-            } catch (err) {
-              console.log(err);
-            }  
+          } catch (err) {
+            console.log(err);
+          }
         } else {
           let obj = {
             name: res.filename,
@@ -174,16 +175,16 @@ class LoginactureScreen extends React.Component {
   };
 
   launchCamera = async () => {
-    try { 
+    try {
       const res = await ImagePickerCrop.openCamera({
         width: 500,
-        height: 600
+        height: 600,
       });
- 
+
       let copy = [...this.state.multiFiles];
       let filename = res.path.split(/.*[\/|\\]/)[1];
       let ext = filename.match(/\.([^\.]+)$/)[1].toLowerCase();
-   
+
       if (res.mime == 'image/jpeg') {
         ImageResizer.createResizedImage(
           res.path,
@@ -196,20 +197,20 @@ class LoginactureScreen extends React.Component {
           false,
           {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
         )
-        .then(async (resizedImage) => {
-          let obj = {
-            name: filename,
-            type: res.mime,
-            extension: ext,
-            uri: resizedImage.uri,
-          };
-          
-          copy.push(obj);
-          this.setState({multiFiles: copy});
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+          .then(async (resizedImage) => {
+            let obj = {
+              name: filename,
+              type: res.mime,
+              extension: ext,
+              uri: resizedImage.uri,
+            };
+
+            copy.push(obj);
+            this.setState({multiFiles: copy});
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       } else {
         let obj = {
           name: filename,
@@ -225,7 +226,7 @@ class LoginactureScreen extends React.Component {
       alert(JSON.stringify(err));
     }
   };
- 
+
   removeFile = async (index) => {
     this.setState({loading: true});
     const multiFiles = this.state.multiFiles.filter(
@@ -467,18 +468,20 @@ class LoginactureScreen extends React.Component {
                 color="white"
               />
             </TouchableHighlight>
-            
-            <TouchableHighlight
-              onPress={() => this.chooseImage()}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <IconView
-                iconStyle={{color: 'rgba(92,117,254,0.8)'}}
-                reverse
-                name="ios-images-outline"
-                type="ionicon"
-                color="white"
-              />
-            </TouchableHighlight>
+
+            {Platform.OS == 'ios' && (
+              <TouchableHighlight
+                onPress={() => this.chooseImage()}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <IconView
+                  iconStyle={{color: 'rgba(92,117,254,0.8)'}}
+                  reverse
+                  name="ios-images-outline"
+                  type="ionicon"
+                  color="white"
+                />
+              </TouchableHighlight>
+            )}
 
             <TouchableHighlight
               onPress={() => this.launchCamera()}
