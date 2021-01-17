@@ -175,7 +175,7 @@ class LoginactureScreen extends React.Component {
 
   launchCamera = async () => {
     try { 
-      const res = await  ImagePickerCrop.openCamera({
+      const res = await ImagePickerCrop.openCamera({
         width: 500,
         height: 600
       });
