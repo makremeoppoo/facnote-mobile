@@ -7,6 +7,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+    marginTop: ScaleHelpers.CalcHeight(5)
   },
 
   titleContainer: {
@@ -39,7 +40,10 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignSelf: 'center',
   },
-
+  input: {
+    height: '100%',
+    width: '100%',
+  },
   ButtonsContain: {
     flex: 1,
     flexDirection: 'row',

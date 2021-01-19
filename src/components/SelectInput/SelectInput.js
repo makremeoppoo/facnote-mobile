@@ -1,6 +1,6 @@
-import React, {Component, Fragment} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Picker} from '@react-native-community/picker';
+import React, {Component} from 'react';
+import {StyleSheet, Text, TextInput, View} from 'react-native';
+import ModalSelector from 'react-native-modal-selector';
 
 import ScaleHelpers from '../scaleHelpers';
 import {textColor, buttonColor, label} from '../../AppStyles';
@@ -21,7 +21,7 @@ export default class FormInput extends Component {
     return null;
   }
   render() {
-    const {label, errorLabel} = this.props;
+    const {label, errorLabel, selectedValue} = this.props;
     return (
       <View style={styles.inputBlock}>
         <Text
@@ -30,11 +30,21 @@ export default class FormInput extends Component {
         </Text>
 
         <View style={styles.inputContainer}>
-          <Picker {...this.props}>
-            {this.props.listItems.map((e) => (
-              <Picker.Item label={e.label} value={e.value}></Picker.Item>
-            ))}
-          </Picker>
+          <ModalSelector
+            cancelText={'Fermer'}
+            data={this.props.listItems}
+            {...this.props}>
+            <TextInput
+              style={{
+                color: 'grey',
+                width: '100%',
+                height: '100%',
+              }}
+              editable={false}
+              placeholder=""
+              value={selectedValue}
+            />
+          </ModalSelector>
 
           {this.renderError()}
         </View>

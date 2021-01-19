@@ -8,15 +8,14 @@ import {
   ImageBackground,
   Image,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
 import {Icon as IconView} from 'react-native-elements';
 import ImageResizer from 'react-native-image-resizer';
-
-import ImagePicker from 'react-native-image-picker';
 import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
+import ImagePickerCrop from 'react-native-image-crop-picker';
 import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
 import uploadFiles from '../../services/upload';
@@ -36,9 +35,11 @@ class LoginactureScreen extends React.Component {
       onlyScaleDown: false,
     };
   }
-  chooseImage = async () => {
+
+  chooseFile = async () => {
     try {
       const results = await DocumentPicker.pickMultiple({
+        mode: 'open',
         type: [
           DocumentPicker.types.images,
           DocumentPicker.types.pdf,
@@ -48,37 +49,45 @@ class LoginactureScreen extends React.Component {
         ],
         //There can me more options as well find above
       });
+
       let copy = [...this.state.multiFiles];
       for (const res of results) {
+        let ext = res.name.match(/\.([^\.]+)$/)[1].toLowerCase();
         if (res.type == 'image/jpeg') {
-          ImageResizer.createResizedImage(
-            res.uri,
-            this.state.resizeTargetWidthSize,
-            this.state.resizeTargetHightSize,
-            'JPEG',
-            100,
-            0,
-            undefined,
-            false,
-            {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
-          )
-            .then((resizedImage) => {
-              let obj = {
-                name: res.name,
-                type: res.type,
-                uri: resizedImage.uri,
-              };
+          try {
+            ImageResizer.createResizedImage(
+              res.uri,
+              this.state.resizeTargetWidthSize,
+              this.state.resizeTargetHightSize,
+              'JPEG',
+              100,
+              0,
+              undefined,
+              false,
+              {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
+            )
+              .then(async (resizedImage) => {
+                let obj = {
+                  name: res.name,
+                  type: res.type,
+                  extension: ext,
+                  uri: resizedImage.uri,
+                };
 
-              copy.push(obj);
-              this.setState({multiFiles: copy});
-            })
-            .catch((err) => {
-              console.log(err);
-            });
+                copy.push(obj);
+                this.setState({multiFiles: copy});
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } catch (err) {
+            console.log(err);
+          }
         } else {
           let obj = {
             name: res.name,
             type: res.type,
+            extension: ext,
             uri: res.uri,
           };
 
@@ -103,70 +112,139 @@ class LoginactureScreen extends React.Component {
     }
   };
 
-  launchCamera = () => {
-    let options = {
-      storageOptions: {
-        skipBackup: true,
-        path: 'images',
-      },
-    };
-    ImagePicker.launchCamera(options, (response) => {
-      if (response.didCancel) {
-        console.log('User cancelled image picker');
-      } else if (response.error) {
-        console.log('ImagePicker Error: ', response.error);
-      } else if (response.customButton) {
-        console.log('User tapped custom button: ', response.customButton);
-        alert(response.customButton);
-      } else {
-        let copy = [...this.state.multiFiles];
+  chooseImage = async () => {
+    try {
+      const results = await ImagePickerCrop.openPicker({
+        multiple: true,
+      });
 
+      let copy = [...this.state.multiFiles];
+
+      for (const res of results) {
+        let ext = res.filename.match(/\.([^\.]+)$/)[1].toLowerCase();
+
+        if (res.mime == 'image/jpeg') {
+          try {
+            ImageResizer.createResizedImage(
+              res.path,
+              this.state.resizeTargetWidthSize,
+              this.state.resizeTargetHightSize,
+              'JPEG',
+              100,
+              1,
+              undefined,
+              false,
+              {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
+            )
+              .then(async (resizedImage) => {
+                let obj = {
+                  name: res.filename,
+                  type: res.mime,
+                  extension: ext,
+                  uri: resizedImage.uri,
+                };
+
+                copy.push(obj);
+                this.setState({multiFiles: copy});
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          } catch (err) {
+            console.log(err);
+          }
+        } else {
+          let obj = {
+            name: res.filename,
+            type: res.mime,
+            extension: ext,
+            uri: res.path,
+          };
+
+          copy.push(obj);
+          this.setState({multiFiles: copy});
+        }
+        //Printing the log realted to the file
+      }
+      //Setting the state to show multiple file attributes
+
+      this.setState({multiFiles: copy});
+    } catch (err) {
+      console.log(JSON.stringify(err));
+    }
+  };
+
+  launchCamera = async () => {
+    try {
+      const res = await ImagePickerCrop.openCamera({
+        width: 500,
+        height: 600,
+      });
+
+      let copy = [...this.state.multiFiles];
+      let filename = res.path.split(/.*[\/|\\]/)[1];
+      let ext = filename.match(/\.([^\.]+)$/)[1].toLowerCase();
+
+      if (res.mime == 'image/jpeg') {
         ImageResizer.createResizedImage(
-          response.uri,
+          res.path,
           this.state.resizeTargetWidthSize,
           this.state.resizeTargetHightSize,
           'JPEG',
           100,
-          0,
+          1,
           undefined,
           false,
           {mode: this.state.mode, onlyScaleDown: this.state.onlyScaleDown},
         )
-          .then((resizedImage) => {
+          .then(async (resizedImage) => {
             let obj = {
-              name: response.fileName,
-              type: response.type,
+              name: filename,
+              type: res.mime,
+              extension: ext,
               uri: resizedImage.uri,
             };
+
             copy.push(obj);
             this.setState({multiFiles: copy});
           })
           .catch((err) => {
             console.log(err);
           });
+      } else {
+        let obj = {
+          name: filename,
+          type: res.mime,
+          extension: ext,
+          uri: res.path,
+        };
+
+        copy.push(obj);
+        this.setState({multiFiles: copy});
       }
-    });
+    } catch (err) {
+      alert(JSON.stringify(err));
+    }
   };
+
   removeFile = async (index) => {
     this.setState({loading: true});
     const multiFiles = this.state.multiFiles.filter(
       (item, key) => key != index,
     );
-    await this.setState({multiFiles});
+    this.setState({multiFiles});
     this.setState({loading: false});
   };
 
   renderFileUri() {
-    console.log('this.state.multiFiles', this.state.multiFiles);
     return (
       <ScrollView>
         <View style={styles.photosContainer}>
           {this.state.multiFiles.map((item, key) => {
-            var ext = item.name.match(/\.([^\.]+)$/)[1];
-            switch (ext) {
+            switch (item.extension) {
               case 'jpg':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -189,7 +267,7 @@ class LoginactureScreen extends React.Component {
                 );
               case 'png':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -212,7 +290,7 @@ class LoginactureScreen extends React.Component {
                 );
               case 'docx':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -237,7 +315,7 @@ class LoginactureScreen extends React.Component {
                 );
               case 'doc':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -263,7 +341,7 @@ class LoginactureScreen extends React.Component {
 
               case 'pdf':
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -288,7 +366,7 @@ class LoginactureScreen extends React.Component {
                 );
               default:
                 return (
-                  <View>
+                  <View key={key}>
                     <TouchableHighlight
                       onPress={() => this.removeFile(key)}
                       style={styles.removeFile}>
@@ -380,16 +458,30 @@ class LoginactureScreen extends React.Component {
 
           <View style={styles.buttomIcon}>
             <TouchableHighlight
-              onPress={() => this.chooseImage()}
+              onPress={() => this.chooseFile()}
               underlayColor="rgba(73,182,77,1,0.9)">
               <IconView
                 iconStyle={{color: 'rgba(92,117,254,0.8)'}}
                 reverse
-                name="ios-images-outline"
+                name="ios-attach-outline"
                 type="ionicon"
                 color="white"
               />
             </TouchableHighlight>
+
+            {Platform.OS == 'ios' && (
+              <TouchableHighlight
+                onPress={() => this.chooseImage()}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <IconView
+                  iconStyle={{color: 'rgba(92,117,254,0.8)'}}
+                  reverse
+                  name="ios-images-outline"
+                  type="ionicon"
+                  color="white"
+                />
+              </TouchableHighlight>
+            )}
 
             <TouchableHighlight
               onPress={() => this.launchCamera()}

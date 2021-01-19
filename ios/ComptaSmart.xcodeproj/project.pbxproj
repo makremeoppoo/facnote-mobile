@@ -56,6 +56,7 @@
 		BBC3107925761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107A25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107B25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
+		BBD0DB1C25B42DC4007C8283 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD0DB1B25B42DC4007C8283 /* Launch Screen.storyboard */; };
 		C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */; };
 		C5C8156B7EDC4E4CAC06226D /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A267E8B02D445F4911574CD /* Fontisto.ttf */; };
 		D3C1B4407B49491CA77B82D3 /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */; };
@@ -139,6 +140,9 @@
 		BBC31057256D2CA900F45F79 /* ComptaSmart-tvOSTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-tvOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC31058256D2CAA00F45F79 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SegoeUI-Light.ttf"; path = "../assets/fonts/SegoeUI-Light.ttf"; sourceTree = "<group>"; };
+		BBD0DB1B25B42DC4007C8283 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		BBDDD45B25B0533400C87578 /* ComptaSmart.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ComptaSmart.entitlements; path = ComptaSmart/ComptaSmart.entitlements; sourceTree = "<group>"; };
+		BBDDD45C25B0841B00C87578 /* ComptaSmartDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ComptaSmartDebug.entitlements; path = ComptaSmart/ComptaSmartDebug.entitlements; sourceTree = "<group>"; };
 		C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BlackItalic.ttf"; path = "../assets/fonts/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
 		C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +213,8 @@
 		13B07FAE1A68108700A75B9A /* ComptaSmart */ = {
 			isa = PBXGroup;
 			children = (
+				BBDDD45C25B0841B00C87578 /* ComptaSmartDebug.entitlements */,
+				BBDDD45B25B0533400C87578 /* ComptaSmart.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -217,6 +223,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				17D3C46B24CA699900A2B510 /* ComptaSmart-Bridging-Header.h */,
+				BBD0DB1B25B42DC4007C8283 /* Launch Screen.storyboard */,
 			);
 			name = ComptaSmart;
 			sourceTree = "<group>";
@@ -425,7 +432,9 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 5FU4864MKR;
 						LastSwiftMigration = 1150;
+						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -506,6 +515,7 @@
 				FA1FA29C2C884102826028C9 /* Nunito-ExtraLight.ttf in Resources */,
 				59231C06B4FF414BA945F31A /* Nunito-ExtraLightItalic.ttf in Resources */,
 				A5BF49D86479411F94216CB0 /* Nunito-Italic.ttf in Resources */,
+				BBD0DB1C25B42DC4007C8283 /* Launch Screen.storyboard in Resources */,
 				6872CF6940064F67874DD088 /* Nunito-Light.ttf in Resources */,
 				D3C1B4407B49491CA77B82D3 /* Nunito-LightItalic.ttf in Resources */,
 				2B2803E936474EED9A9AF6D4 /* Nunito-Regular.ttf in Resources */,
@@ -627,6 +637,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -644,9 +655,11 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -664,6 +677,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -725,6 +739,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -742,9 +757,11 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
 				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
@@ -762,6 +779,7 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -896,8 +914,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 18;
 				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = 5FU4864MKR;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=*]" = "";
 				INFOPLIST_FILE = ComptaSmart/Info.plist;
@@ -946,14 +968,16 @@
 					"\"${PODS_ROOT}/CocoaLibEvent/lib\"",
 					"\"${PODS_ROOT}/OpenSSL-Universal/ios/lib\"",
 				);
+				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "--PRODUCT-BUNDLE-IDENTIFIER-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.facnote.comptasmart;
 				PRODUCT_NAME = ComptaSmart;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -968,7 +992,9 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 1;
+				CODE_SIGN_ENTITLEMENTS = "";
+				CURRENT_PROJECT_VERSION = 18;
+				DEVELOPMENT_TEAM = 5FU4864MKR;
 				INFOPLIST_FILE = ComptaSmart/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME) $(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
@@ -1008,13 +1034,14 @@
 					"\"${PODS_ROOT}/CocoaLibEvent/lib\"",
 					"\"${PODS_ROOT}/OpenSSL-Universal/ios/lib\"",
 				);
+				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "--PRODUCT-BUNDLE-IDENTIFIER-";
+				PRODUCT_BUNDLE_IDENTIFIER = com.facnote.comptasmart;
 				PRODUCT_NAME = ComptaSmart;
 				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

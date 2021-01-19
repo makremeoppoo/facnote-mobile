@@ -136,8 +136,10 @@ android {
         applicationId "com.comptasmart"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 4
+        versionName "1.1"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true // ADD THIS LINE
     }
     splits {
         abi {
@@ -201,6 +203,8 @@ dependencies {
         exclude group:'com.facebook.flipper'
     }
 
+    implementation 'com.android.support:multidex:1.0.3' 
+    
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
         debugImplementation files(hermesPath + "hermes-debug.aar")

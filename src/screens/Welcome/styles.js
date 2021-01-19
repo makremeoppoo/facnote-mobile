@@ -1,5 +1,5 @@
 /* eslint-disable comma-dangle */
-import {StyleSheet, Dimensions} from 'react-native';
+import {StyleSheet, Dimensions, Platform} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
 import {textColor, buttonColor} from '../../AppStyles';
 
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   buttomView: {
-    bottom: 0,
+    bottom: Platform.OS !== 'ios' ? 0 : 15,
 
     alignSelf: 'center',
     position: 'absolute',

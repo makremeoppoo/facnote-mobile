@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Platform, TouchableOpacity, Text, StyleSheet} from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+
 import moment from 'moment';
 import ScaleHelpers from '../scaleHelpers';
 import {textColor, buttonColor, label} from '../../AppStyles';
@@ -43,42 +44,42 @@ const styles = StyleSheet.create({
 
 export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
   const [date, setDate] = useState(new Date());
-  const [mode, setMode] = useState('date');
   const [show, setShow] = useState(false);
 
-  const onChange = async (event, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setShow(Platform.OS === 'ios');
-    setDate(currentDate);
-    setCurrentDate(moment(selectedDate).format('YYYY-MM-DD'));
+  const handleConfirm = (date) => {
+    setShow(false);
+    setDate(date);
+    setCurrentDate(moment(date).format('YYYY-MM-DD'));
   };
 
   const showTimepicker = () => {
-    setShow(true);
+    setShow(!show);
   };
 
   return (
     <View style={styles.inputBlock}>
       <TouchableOpacity onPress={showTimepicker}>
-      <Text style={{...styles.label, ...{color: errorLabel ? 'red' : textColor}}}>
-        {label}
-      </Text>
+        <Text
+          style={{...styles.label, ...{color: errorLabel ? 'red' : textColor}}}>
+          {label}
+        </Text>
         <View style={styles.inputContainer}>
-       
           <Text>{moment(date).format('DD/MM/YYYY')}</Text>
           <Text style={styles.error}>{errorLabel}</Text>
         </View>
       </TouchableOpacity>
-     
 
       {show && (
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={date}
-          mode={'date'}
-          is24Hour={true}
-          display="default"
-          onChange={onChange}
+        <DateTimePickerModal
+          isVisible={show}
+          mode="date"
+          onConfirm={handleConfirm}
+          onCancel={showTimepicker}
+          display={Platform.OS == 'ios' ? 'spinner' : 'default'}
+          locale="fr_FR"
+          headerTextIOS={""}
+          cancelTextIOS={'Fermer'}
+          confirmTextIOS={'Confirmer'}
         />
       )}
     </View>
