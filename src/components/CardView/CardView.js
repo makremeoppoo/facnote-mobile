@@ -19,7 +19,7 @@ class CardView extends React.Component {
     ) : (
       <TouchableHighlight
         style={styles.itemContainer}
-        onPress={() => this.props.onPress()}
+        //onPress={() => this.props.onPress()}
         underlayColor="rgba(128, 128, 128, 0.1)">
         <View style={styles.mainContainer}>
           <View style={styles.rowContainer}>
@@ -32,7 +32,7 @@ class CardView extends React.Component {
             </View>
           </View>
           <View style={styles.amountContainer}>
-            <Text style={styles.amountItem}>{item.procent + '€'}</Text>
+            <Text style={styles.amountItem}>{item.procent + ' €'}</Text>
           </View>
         </View>
       </TouchableHighlight>

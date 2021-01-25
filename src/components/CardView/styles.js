@@ -6,12 +6,12 @@ import {textColor, buttonColor} from '../../AppStyles';
 const styles = StyleSheet.create({
   itemContainer: {
     alignSelf: 'center',
-    width: ScaleHelpers.CalcWidth(90),
+    width: ScaleHelpers.CalcWidth(80),
     borderBottomColor: 'rgba(214, 214, 214, 0.6)',
     borderBottomWidth: 1,
     padding: ScaleHelpers.CalcWidth(3),
-
   },
+
   itemTitleContainer: {
     flexDirection: 'row',
     padding: ScaleHelpers.CalcHeight(1),
@@ -40,14 +40,13 @@ const styles = StyleSheet.create({
 
   },
   rowContainer: {
-    width: '65%',
     flexDirection: 'row',
     alignSelf: 'center',
   },
   itemIcon: {
     alignSelf: 'center',
-    width: 30,
-    height: 30,
+    width: ScaleHelpers.CalcWidth(6),
+    height: ScaleHelpers.CalcWidth(6),
     borderRadius: 20,
     marginRight: 20,
     marginLeft: 10,

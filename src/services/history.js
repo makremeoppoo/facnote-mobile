@@ -2,9 +2,9 @@ import * as c from '../constants';
 import api from './axios';
 import AsyncStorage from '@react-native-community/async-storage';
 
-export default async function getHistory() {
+export default async function getHistory(limit,page) {
   try {
-    let res = await api.get(c.GETHISTORY, {
+    let res = await api.get( `${c.GETHISTORY}?limit=${limit}&page=${page}`, {
       withCredentials: true,
     });
     return res.data;

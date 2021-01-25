@@ -1,7 +1,15 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {View, Text, TouchableHighlight, FlatList, Modal,Image} from 'react-native';
+import moment from 'moment';
+import {
+  View,
+  Text,
+  TouchableHighlight,
+  FlatList,
+  Modal,
+  Image,
+} from 'react-native';
 import {connect} from 'react-redux';
 import getHistory from '../../services/history';
 
@@ -17,76 +25,57 @@ class HomeScreen extends React.Component {
 
     this.state = {
       showModal: false,
-
-      list: [
-        {id: 0, text: 'octobre le 10/12/2021', isTitle: true},
-
-        {
-          id: 1,
-          icon: Camera,
-          date: 'mm/mm/mm',
-          title: 'recu le',
-          procent: 10,
-          isTitle: false,
-        },
-        {
-          id: 2,
-          icon: Camera,
-          date: 'mm/mm/mm',
-          title: 'recu le',
-          procent: 30.22,
-          isTitle: false,
-        },
-        {id: 0, text: 'octobre le 10/12/2021', isTitle: true},
-
-        {
-          id: 1,
-          icon: Camera,
-          date: 'mm/mm/mm',
-          title: 'recu le',
-          procent: 10,
-          isTitle: false,
-        },
-        {
-          id: 2,
-          icon: Camera,
-          date: 'mm/mm/mm',
-          title: 'recu le',
-          procent: 30.22,
-          isTitle: false,
-        },
-      ],
-      seed: 1,
+      list: [],
+      limit: 10,
       page: 1,
-      isLoading: false,
-      isRefreshing: false,
+      isRefreshing: true,
+      hasScrolled: false,
     };
   }
+  onScroll = () => {
+    this.setState({hasScrolled: true});
+  };
 
   loadData = async () => {
-    const {users, seed, page} = this.state;
-    this.setState({isLoading: true});
-    let history = await getHistory();
-    console.log("history",history)
+    const {limit, page} = this.state;
+    try {
+      var history = await getHistory(limit, page);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      const sortedHistory = history.sort(
+        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf(),
+      );
+      let list = [];
+      let date = '';
+      let counter = 0;
+      sortedHistory.map((item, index) => {
+        let newDate = moment(item.send_date).format('DD/MM/YYYY');
+        if (date != newDate) {
+          date = newDate;
+          list.push({id: counter++, text: date, isTitle: true});
+        }
 
-    /**   fetch(`https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`)
-      .then((res) => res.json())
-      .then((res) => {
-        this.setState({
-          users: page === 1 ? res.results : [...list, ...res.results],
-          isRefreshing: false,
-        });
-      })
-      .catch((err) => {
-        console.error(err);
-      });*/
+        let obj = {
+          id: counter++,
+          date: newDate,
+          procent: item.amount,
+          title: 'recu le',
+          icon: Camera,
+          isTitle: false,
+        };
+        list.push(obj);
+      });
+      this.setState({list, isRefreshing: false});
+    }
   };
 
   handleRefresh = () => {
     this.setState(
       {
-        seed: this.state.seed + 1,
         isRefreshing: true,
+        limit: 10,
+        page: 1,
       },
       () => {
         this.loadData();
@@ -95,9 +84,11 @@ class HomeScreen extends React.Component {
   };
 
   handleLoadMore = () => {
+  
+
     this.setState(
       {
-        page: this.state.page + 1,
+        limit: this.state.limit + 10,
       },
       () => {
         this.loadData();
@@ -114,7 +105,7 @@ class HomeScreen extends React.Component {
   renderItem = ({item}) => <CardView item={item} />;
 
   render() {
-    const {list, isRefreshing} = this.state;
+    const {list, isRefreshing, isLoading} = this.state;
     return (
       <View style={styles.container}>
         <TouchableHighlight
@@ -130,10 +121,10 @@ class HomeScreen extends React.Component {
           data={list}
           renderItem={this.renderItem}
           keyExtractor={(item) => `${item.id}`}
-          initialNumToRender={5}
+          initialNumToRender={3}
           refreshing={isRefreshing}
-          onRefresh={this.handleRefresh}
-          onEndReached={this.handleLoadMore}
+          onRefresh={() => this.handleRefresh()}
+          onScrollEndDrag={this.handleLoadMore}
           onEndThreshold={0}
         />
         <Modal
@@ -142,7 +133,6 @@ class HomeScreen extends React.Component {
           visible={this.state.showModal}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              
               <TouchableHighlight
                 style={styles.modalCloseView}
                 onPress={() =>
@@ -151,9 +141,7 @@ class HomeScreen extends React.Component {
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
-              <View>
-               
-              </View>
+              <View></View>
             </View>
           </View>
         </Modal>

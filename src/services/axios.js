@@ -16,12 +16,11 @@ api.interceptors.request.use(
   async (config) => {
     const accessToken = await AsyncStorage.getItem('accessToken');
     const data = await AsyncStorage.getItem('coockie');
-console.log(JSON.parse(data))
     if (accessToken) {
 
       config.headers.authorization = `Bearer ${accessToken}`;
-      config.headers['set-cookie'] = JSON.parse(data).headers['set-cookie'];
- 
+      config.headers['cookie'] = JSON.parse(data).headers['set-cookie'];
+
     } else {
       config.headers.authorization = 'Basic';
     }
