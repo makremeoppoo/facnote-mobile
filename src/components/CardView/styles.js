@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
   },
   itemTxtContainer: {
     alignSelf: 'center',
-
+    margin: ScaleHelpers.CalcWidth(1),
     lineHeight: 34,
   },
   blueTitle: {

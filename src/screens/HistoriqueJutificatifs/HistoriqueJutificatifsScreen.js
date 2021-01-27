@@ -11,6 +11,7 @@ import {
   Image,
 } from 'react-native';
 import {connect} from 'react-redux';
+
 import getHistory from '../../services/history';
 
 import CardView from '../../components/CardView/CardView';
@@ -63,6 +64,12 @@ class HomeScreen extends React.Component {
           title: 'recu le',
           icon: Camera,
           isTitle: false,
+          status: item.status,
+          status_label: item.status_label,
+          bill_number: item.bill_number,
+          source: item.source,
+          label: item.label,
+          type:item.type
         };
         list.push(obj);
       });
@@ -84,8 +91,6 @@ class HomeScreen extends React.Component {
   };
 
   handleLoadMore = () => {
-  
-
     this.setState(
       {
         limit: this.state.limit + 10,

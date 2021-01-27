@@ -41,4 +41,8 @@ export const text = {
   FactureSucces: 'Vos factures ont bien été transmises',
   Envoyer: 'Envoyer',
   EnregistrerIdentifiant: 'Enregistrer mes identifiants',
+  Type: 'Type',
+  Source: 'Source',
+  BillNumber:"Numéro facture",
+  Libelle:"Libelle"
 };
