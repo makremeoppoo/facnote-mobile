@@ -50,42 +50,28 @@ class CardView extends React.Component {
                 </View>
               </View>
               <View style={styles.amountContainer}>
-                <Text style={styles.amountItem}>{item.procent + ' €'}</Text>
+                <Text style={styles.amountItem}>
+                  {item.procent ? item.procent : 0 + ' €'}
+                </Text>
               </View>
             </View>
           )}
         </CollapseHeader>
         {!item.isTitle ? (
           <CollapseBody>
-            <View style={{alignItems:"center"}}>
+            <View style={{alignItems: 'center'}}>
               <View style={styles.row}>
-                <Text style={{...styles.column, ...styles.blueItemText}}>
-                  {text.Type}:
-                </Text>
-                <Text style={{...styles.column, ...styles.itemText}}>
-                  {item.type}
-                </Text>
-                <Text style={{...styles.column, ...styles.blueItemText}}>
-                  {text.Source}:
-                </Text>
-                <Text style={{...styles.column, ...styles.itemText}}>
-                  {item.source}
-                </Text>
+                <Text style={{...styles.blueItemText}}>{text.Type}:</Text>
+                <Text style={{...styles.itemText}}>{item.type}</Text>
+                <Text style={{...styles.blueItemText}}>{text.Source}:</Text>
+                <Text style={{...styles.itemText}}>{item.source}</Text>
               </View>
 
               <View style={styles.row}>
-                <Text style={{...styles.column, ...styles.blueItemText}}>
-                  {text.BillNumber}:
-                </Text>
-                <Text style={{...styles.column, ...styles.itemText}}>
-                  {item.bill_number}
-                </Text>
-                <Text style={{...styles.column, ...styles.blueItemText}}>
-                  {text.Libelle}:
-                </Text>
-                <Text style={{...styles.column, ...styles.itemText}}>
-                  {item.label}
-                </Text>
+                <Text style={{...styles.blueItemText}}>{text.BillNumber}:</Text>
+                <Text style={{...styles.itemText}}>{item.bill_number}</Text>
+                <Text style={{...styles.blueItemText}}>{text.Libelle}:</Text>
+                <Text style={{...styles.itemText}}>{item.label}</Text>
               </View>
             </View>
           </CollapseBody>

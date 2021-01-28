@@ -56,10 +56,10 @@ class HomeScreen extends React.Component {
           date = newDate;
           list.push({id: counter++, text: date, isTitle: true});
         }
-
+        console.log(newDate);
         let obj = {
           id: counter++,
-          date: newDate,
+          date: newDate == 'Invalid date' ? '' : newDate,
           procent: item.amount,
           title: 'recu le',
           icon: Camera,
@@ -69,7 +69,7 @@ class HomeScreen extends React.Component {
           bill_number: item.bill_number,
           source: item.source,
           label: item.label,
-          type:item.type
+          type: item.type,
         };
         list.push(obj);
       });

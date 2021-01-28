@@ -68,22 +68,20 @@ const styles = StyleSheet.create({
     fontFamily: 'Nunito-Bold',
   },
   row: {flex: 1, flexDirection: 'row'},
-  column: {
-    fontSize: ScaleHelpers.CalcWidth(3),
-    color: 'rgb(112,112,112)',
-    fontFamily: 'Nunito-Bold',
-    minWidth: ScaleHelpers.CalcWidth(20),
-    maxWidth: ScaleHelpers.CalcWidth(20),
-  },
+
   itemText: {
     fontSize: ScaleHelpers.CalcWidth(3),
     fontFamily: 'Nunito-Bold',
     color: '#7f7d80',
+    minWidth: ScaleHelpers.CalcWidth(20),
+    maxWidth: ScaleHelpers.CalcWidth(20),
   },
   blueItemText: {
     fontSize: ScaleHelpers.CalcWidth(3),
     color: 'rgb( 92,117,254)',
     fontFamily: 'Nunito-Bold',
+    minWidth: ScaleHelpers.CalcWidth(13),
+    maxWidth: ScaleHelpers.CalcWidth(13),
   },
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),
