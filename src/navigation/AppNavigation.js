@@ -125,7 +125,7 @@ const TabNavigator = () => {
           ),
         }}
       />
-      <BottomTabNavigator.Screen
+      {/*<BottomTabNavigator.Screen
         name="Indicateur"
         component={HomeScreen}
         options={{
@@ -137,7 +137,7 @@ const TabNavigator = () => {
             />
           ),
         }}
-      />
+      />*/}
       <BottomTabNavigator.Screen
         name="Factures"
         component={ExpensesScreen}
@@ -326,7 +326,7 @@ const RootNavigator = () => {
       {isLoggedIn ? (
         <Root.Screen
           name="DrawerStack"
-          component={Platform.OS === 'ios' ? Navigator : DrawerStack}
+          component={Platform.OS === 'ios' ? Navigator : Navigator}
         />
       ) : (
         <Root.Screen name="LoginStack" component={LandingNavigator} />

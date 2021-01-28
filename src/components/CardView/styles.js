@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     // its for android
     elevation: 5,
     position: 'relative',
-  
+
     width: ScaleHelpers.CalcWidth(90),
     height: ScaleHelpers.CalcHeight(5),
 
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-
   },
   rowContainer: {
     flexDirection: 'row',
@@ -68,9 +67,23 @@ const styles = StyleSheet.create({
     color: 'rgb(112,112,112)',
     fontFamily: 'Nunito-Bold',
   },
+  row: {flex: 1, flexDirection: 'row'},
+  column: {
+    fontSize: ScaleHelpers.CalcWidth(3),
+    color: 'rgb(112,112,112)',
+    fontFamily: 'Nunito-Bold',
+    minWidth: ScaleHelpers.CalcWidth(20),
+    maxWidth: ScaleHelpers.CalcWidth(20),
+  },
   itemText: {
-    fontSize: 12,
+    fontSize: ScaleHelpers.CalcWidth(3),
+    fontFamily: 'Nunito-Bold',
     color: '#7f7d80',
+  },
+  blueItemText: {
+    fontSize: ScaleHelpers.CalcWidth(3),
+    color: 'rgb( 92,117,254)',
+    fontFamily: 'Nunito-Bold',
   },
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),

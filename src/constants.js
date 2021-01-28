@@ -43,6 +43,6 @@ export const text = {
   EnregistrerIdentifiant: 'Enregistrer mes identifiants',
   Type: 'Type',
   Source: 'Source',
-  BillNumber:"Numéro facture",
+  BillNumber:"Facture",
   Libelle:"Libelle"
 };

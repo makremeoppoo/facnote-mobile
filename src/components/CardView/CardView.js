@@ -57,25 +57,35 @@ class CardView extends React.Component {
         </CollapseHeader>
         {!item.isTitle ? (
           <CollapseBody>
-            <View style={styles.mainContainer}>
-              <View style={styles.rowContainer}>
-                <View style={styles.itemTxtContainer}>
-                  <Text style={styles.itemTitle}>
-                    {text.Type}: {item.type}
-                  </Text>
-                  <Text style={styles.itemTitle}>
-                    {text.Source}: {item.source}
-                  </Text>
-                </View>
+            <View style={{alignItems:"center"}}>
+              <View style={styles.row}>
+                <Text style={{...styles.column, ...styles.blueItemText}}>
+                  {text.Type}:
+                </Text>
+                <Text style={{...styles.column, ...styles.itemText}}>
+                  {item.type}
+                </Text>
+                <Text style={{...styles.column, ...styles.blueItemText}}>
+                  {text.Source}:
+                </Text>
+                <Text style={{...styles.column, ...styles.itemText}}>
+                  {item.source}
+                </Text>
+              </View>
 
-                <View style={styles.itemTxtContainer}>
-                  <Text style={styles.itemTitle}>
-                    {text.BillNumber}: {item.bill_number}
-                  </Text>
-                  <Text style={styles.itemTitle}>
-                    {text.Libelle}: {item.label}
-                  </Text>
-                </View>
+              <View style={styles.row}>
+                <Text style={{...styles.column, ...styles.blueItemText}}>
+                  {text.BillNumber}:
+                </Text>
+                <Text style={{...styles.column, ...styles.itemText}}>
+                  {item.bill_number}
+                </Text>
+                <Text style={{...styles.column, ...styles.blueItemText}}>
+                  {text.Libelle}:
+                </Text>
+                <Text style={{...styles.column, ...styles.itemText}}>
+                  {item.label}
+                </Text>
               </View>
             </View>
           </CollapseBody>
