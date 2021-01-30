@@ -44,11 +44,10 @@ const styles = StyleSheet.create({
   },
   itemIcon: {
     alignSelf: 'center',
-    width: ScaleHelpers.CalcWidth(6),
-    height: ScaleHelpers.CalcWidth(6),
-    borderRadius: 20,
-    marginRight: 20,
-    marginLeft: 10,
+    width: ScaleHelpers.CalcWidth(7),
+    height: ScaleHelpers.CalcWidth(7),
+    marginRight:  ScaleHelpers.CalcWidth(1),
+    marginLeft:  ScaleHelpers.CalcWidth(1),
     //lineHeight: 30
   },
   itemTxtContainer: {

@@ -2,7 +2,7 @@
 //portfolio card
 //card with image left,double text middle, and procent right
 import React from 'react';
-import {View, Image} from 'react-native';
+import {View, Image, TouchableHighlight} from 'react-native';
 import {
   Collapse,
   CollapseHeader,
@@ -33,7 +33,12 @@ class CardView extends React.Component {
           ) : (
             <View style={styles.mainContainer}>
               <View style={styles.rowContainer}>
-                <Image style={styles.itemIcon} source={item.icon} />
+                <TouchableHighlight
+                  style={styles.itemIcon}
+                  onPress={() => this.props.onShowModal(item.path)}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.itemIcon} source={item.icon} />
+                </TouchableHighlight>
                 <View style={styles.itemTxtContainer}>
                   <Text style={styles.blueTitle}>{item.title}</Text>
                 </View>
@@ -51,7 +56,7 @@ class CardView extends React.Component {
               </View>
               <View style={styles.amountContainer}>
                 <Text style={styles.amountItem}>
-                  {item.procent ? item.procent : 0 + ' €'}
+                  {(item.procent ? item.procent : 0) + ' €'}
                 </Text>
               </View>
             </View>

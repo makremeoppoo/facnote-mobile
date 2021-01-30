@@ -11,6 +11,7 @@ import {
   Image,
 } from 'react-native';
 import {connect} from 'react-redux';
+import PDFView from 'react-native-view-pdf';
 
 import getHistory from '../../services/history';
 
@@ -31,8 +32,14 @@ class HomeScreen extends React.Component {
       page: 1,
       isRefreshing: true,
       hasScrolled: false,
+      source: '',
     };
   }
+
+  onShowModal = (source) => {
+    this.setState({source, showModal: !this.state.showModal});
+  };
+
   onScroll = () => {
     this.setState({hasScrolled: true});
   };
@@ -56,7 +63,6 @@ class HomeScreen extends React.Component {
           date = newDate;
           list.push({id: counter++, text: date, isTitle: true});
         }
-        console.log(newDate);
         let obj = {
           id: counter++,
           date: newDate == 'Invalid date' ? '' : newDate,
@@ -70,6 +76,7 @@ class HomeScreen extends React.Component {
           source: item.source,
           label: item.label,
           type: item.type,
+          path: item.received_file_url,
         };
         list.push(obj);
       });
@@ -107,10 +114,21 @@ class HomeScreen extends React.Component {
 
   initData = async () => {};
 
-  renderItem = ({item}) => <CardView item={item} />;
+  renderItem = ({item}) => (
+    <CardView onShowModal={this.onShowModal} item={item} />
+  );
 
   render() {
-    const {list, isRefreshing, isLoading} = this.state;
+    const {list, isRefreshing, source} = this.state;
+    const resourceType = 'url';
+    const resources = {
+      file:
+        Platform.OS === 'ios'
+          ? 'downloadedDocument.pdf'
+          : '/sdcard/Download/downloadedDocument.pdf',
+      url: source,
+      base64: 'JVBERi0xLjMKJcfs...',
+    };
     return (
       <View style={styles.container}>
         <TouchableHighlight
@@ -146,7 +164,18 @@ class HomeScreen extends React.Component {
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
-              <View></View>
+              <View>
+                <PDFView
+                  fadeInDuration={250.0}
+                  style={{flex: 1}}
+                  resource={resources[resourceType]}
+                  resourceType={resourceType}
+                  onLoad={() =>
+                    console.log(`PDF rendered from ${resourceType}`)
+                  }
+                  onError={(error) => console.log('Cannot render PDF', error)}
+                />
+              </View>
             </View>
           </View>
         </Modal>

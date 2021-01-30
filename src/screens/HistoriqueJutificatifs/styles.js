@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     width: ScaleHelpers.CalcWidth(80),
-    height: ScaleHelpers.CalcHeight(50),
+    height: ScaleHelpers.CalcHeight(80),
     backgroundColor: 'white',
     alignItems: 'center',
     shadowColor: '#000',
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
   },
+
 });
 
 export default styles;
