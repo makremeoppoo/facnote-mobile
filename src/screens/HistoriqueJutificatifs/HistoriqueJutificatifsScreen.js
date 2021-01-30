@@ -51,17 +51,19 @@ class HomeScreen extends React.Component {
     } catch (e) {
       console.log(e);
     } finally {
-      const sortedHistory = history.sort(
-        (a, b) => moment(b.date).valueOf() - moment(a.date).valueOf(),
-      );
       let list = [];
       let date = '';
       let counter = 0;
-      sortedHistory.map((item, index) => {
-        let newDate = moment(item.send_date).format('DD/MM/YYYY');
+      history.map((item, index) => {
+        let newDate = item.send_date.split(' ')[0];
         if (date != newDate) {
           date = newDate;
-          list.push({id: counter++, text: date, isTitle: true});
+          list.push({
+            id: counter++,
+            text: newDate == 'Invalid date' ? '' : newDate,
+
+            isTitle: true,
+          });
         }
         let obj = {
           id: counter++,
@@ -167,7 +169,7 @@ class HomeScreen extends React.Component {
               <View>
                 <PDFView
                   fadeInDuration={250.0}
-                  style={{flex: 1}}
+                  style={styles.pdf}
                   resource={resources[resourceType]}
                   resourceType={resourceType}
                   onLoad={() =>

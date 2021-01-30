@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalView: {
-    width: ScaleHelpers.CalcWidth(80),
+    width: ScaleHelpers.CalcWidth(100),
     height: ScaleHelpers.CalcHeight(80),
     backgroundColor: 'white',
     alignItems: 'center',
@@ -67,14 +67,22 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   modalCloseView: {
-    top: ScaleHelpers.CalcHeight(3),
-    right: ScaleHelpers.CalcWidth(33),
+    position: 'absolute',
+    top:
+      Platform.OS === 'ios'
+        ? ScaleHelpers.CalcWidth(10)
+        : ScaleHelpers.CalcWidth(10),
+    left: ScaleHelpers.CalcWidth(5),
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
   },
-
+  pdf: {
+    flex: 1,
+    width: ScaleHelpers.CalcWidth(90),
+    margin: ScaleHelpers.CalcWidth(15),
+  },
 });
 
 export default styles;
