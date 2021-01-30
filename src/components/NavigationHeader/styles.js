@@ -18,14 +18,15 @@ const styles = StyleSheet.create({
   headerContain: {
     justifyContent: 'center',
     marginBottom: ScaleHelpers.CalcHeight(2),
-    marginTop:ScaleHelpers.CalcWidth(2),
+    marginTop: ScaleHelpers.CalcWidth(2),
+    paddingTop: ScaleHelpers.CalcHeight(2),
 
     alignItems: 'center',
     flexDirection: 'row',
   },
   btnContainer: {
     width: ScaleHelpers.CalcWidth(10),
-    height: ScaleHelpers.CalcHeight(6),
+    height: ScaleHelpers.CalcHeight(4),
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   titleContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(6),
+    height: ScaleHelpers.CalcHeight(4),
     width: ScaleHelpers.CalcWidth(90),
   },
   title: {
