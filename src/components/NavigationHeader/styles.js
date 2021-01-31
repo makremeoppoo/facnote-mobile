@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   headerButtonImage: {
     resizeMode: 'stretch',
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(10),
+    height: ScaleHelpers.CalcHeight(12),
     position: 'absolute',
     margin: 0,
   },
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: ScaleHelpers.CalcHeight(2),
     marginTop: ScaleHelpers.CalcWidth(2),
-    paddingTop: ScaleHelpers.CalcHeight(2),
+    paddingTop: ScaleHelpers.CalcHeight(4),
 
     alignItems: 'center',
     flexDirection: 'row',
