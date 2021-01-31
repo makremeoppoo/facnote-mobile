@@ -6,6 +6,7 @@ export default async function getHistory(limit,page) {
   try {
     let res = await api.get( `${c.GETHISTORY}?limit=${limit}&page=${page}`, {
       withCredentials: true,
+      credentials: 'include'
     });
     return res.data;
   } catch (e) {

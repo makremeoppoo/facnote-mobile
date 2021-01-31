@@ -14,8 +14,10 @@ export async function register(data) {
 
 export async function login(data) {
   try {
-    let res = await api.post(c.LOGIN, data, {withCredentials: true});
-    await AsyncStorage.setItem('coockie', JSON.stringify(res));
+    let res = await api.post(c.LOGIN, data, {
+      withCredentials: true,
+      credentials: 'include'
+    });
     return res.data;
   } catch (e) {
     throw handler(e);

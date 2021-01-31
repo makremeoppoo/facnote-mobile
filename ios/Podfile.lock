@@ -325,6 +325,8 @@ PODS:
     - React-Core
     - React-RCTImage
     - TOCropViewController
+  - RNPDF (0.11.0):
+    - React
   - RNReanimated (1.13.1):
     - React
   - RNScreens (2.11.0):
@@ -396,6 +398,7 @@ DEPENDENCIES:
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
+  - RNPDF (from `../node_modules/react-native-view-pdf`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -491,6 +494,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNImageCropPicker:
     :path: "../node_modules/react-native-image-crop-picker"
+  RNPDF:
+    :path: "../node_modules/react-native-view-pdf"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -550,6 +555,7 @@ SPEC CHECKSUMS:
   RNDateTimePicker: 120f8d08b19dd50c0308d30a07c1982e4618e9ad
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
   RNImageCropPicker: 9e0bf18cf4184a846fed55747c8e622208b39947
+  RNPDF: b575ff11a65121f346b2851e3da736e7c51c18ab
   RNReanimated: dd8c286ab5dd4ba36d3a7fef8bff7e08711b5476
   RNScreens: 0e91da98ab26d5d04c7b59a9b6bd694124caf88c
   RNSVG: 8ba35cbeb385a52fd960fd28db9d7d18b4c2974f

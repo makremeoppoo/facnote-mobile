@@ -19,7 +19,6 @@ api.interceptors.request.use(
     if (accessToken) {
 
       config.headers.authorization = `Bearer ${accessToken}`;
-      config.headers['cookie'] = JSON.parse(data).headers['set-cookie'];
 
     } else {
       config.headers.authorization = 'Basic';
