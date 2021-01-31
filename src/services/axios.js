@@ -21,7 +21,9 @@ api.interceptors.request.use(
       config.headers.authorization = `Bearer ${accessToken}`;
 
     } else {
+    
       config.headers.authorization = 'Basic';
+    
     }
     return config;
   },
