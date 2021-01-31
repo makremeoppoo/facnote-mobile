@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(80),
+    height: ScaleHelpers.CalcHeight(100),
     backgroundColor: 'white',
     alignItems: 'center',
     shadowColor: '#000',
@@ -62,26 +62,33 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    borderRadius: 10,
-
     elevation: 5,
   },
   modalCloseView: {
     position: 'absolute',
     top:
       Platform.OS === 'ios'
-        ? ScaleHelpers.CalcWidth(10)
-        : ScaleHelpers.CalcWidth(10),
+        ? ScaleHelpers.CalcWidth(14)
+        : ScaleHelpers.CalcWidth(12),
     left: ScaleHelpers.CalcWidth(5),
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
   },
-  pdf: {
+  pdfContainer: {
     flex: 1,
+    marginTop: ScaleHelpers.CalcHeight(15),
+    marginBottom: ScaleHelpers.CalcHeight(10),
+  },
+  pdf: {
     width: ScaleHelpers.CalcWidth(90),
-    margin: ScaleHelpers.CalcWidth(15),
+    height: ScaleHelpers.CalcHeight(70),
+  },
+  backgroundModalStyle: {
+    width: ScaleHelpers.CalcWidth(105),
+    height: '100%',
+    position: 'absolute',
   },
 });
 

@@ -8,10 +8,13 @@ import {
   TouchableHighlight,
   FlatList,
   Modal,
+  ImageBackground,
+  ActivityIndicator,
   Image,
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
+import Rectangle from '../../../assets/images/Rectangle.png';
 
 import getHistory from '../../services/history';
 
@@ -30,6 +33,7 @@ class HomeScreen extends React.Component {
       list: [],
       limit: 10,
       page: 1,
+      loading: false,
       isRefreshing: true,
       hasScrolled: false,
       source: '',
@@ -37,7 +41,18 @@ class HomeScreen extends React.Component {
   }
 
   onShowModal = (source) => {
-    this.setState({source, showModal: !this.state.showModal});
+    this.setState({
+      source,
+      showModal: !this.state.showModal,
+      loading: true,
+    });
+  };
+  onCloseModal = () => {
+    this.setState({
+      source: '',
+      showModal: false,
+      loading: false,
+    });
   };
 
   onScroll = () => {
@@ -158,23 +173,31 @@ class HomeScreen extends React.Component {
           visible={this.state.showModal}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
+              <ImageBackground
+                source={Rectangle}
+                style={styles.backgroundModalStyle}></ImageBackground>
+
               <TouchableHighlight
                 style={styles.modalCloseView}
-                onPress={() =>
-                  this.setState({showModal: !this.state.showModal})
-                }
+                onPress={() => this.onCloseModal()}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
-              <View>
+              <View style={styles.pdfContainer}>
+                {this.state.loading && (
+                  <View>
+                    <ActivityIndicator size="large" color="white" />
+                  </View>
+                )}
                 <PDFView
-                  fadeInDuration={250.0}
                   style={styles.pdf}
+                  fadeInDuration={250.0}
                   resource={resources[resourceType]}
                   resourceType={resourceType}
-                  onLoad={() =>
-                    console.log(`PDF rendered from ${resourceType}`)
-                  }
+                  onLoad={() => {
+                    this.setState({loading: false});
+                    console.log(`PDF rendered from ${resourceType}`);
+                  }}
                   onError={(error) => console.log('Cannot render PDF', error)}
                 />
               </View>
