@@ -15,7 +15,6 @@ const api = axios.create({
 api.interceptors.request.use(
   async (config) => {
     const accessToken = await AsyncStorage.getItem('accessToken');
-    const data = await AsyncStorage.getItem('coockie');
     if (accessToken) {
 
       config.headers.authorization = `Bearer ${accessToken}`;

@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontFamily: 'SegoeUI',
+    fontSize: ScaleHelpers.CalcWidth(5),
 
     color: 'white',
   },

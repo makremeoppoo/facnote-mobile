@@ -48,7 +48,7 @@ class MoreScreen extends React.Component {
             </View>
           </View>
         </TouchableHighlight>
-        <ScrollView >
+        <ScrollView>
           <View style={styles.content}>
             <TouchableHighlight
               onPress={() =>
@@ -76,6 +76,7 @@ class MoreScreen extends React.Component {
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
+            {/* 
             <TouchableHighlight
               onPress={() => this.props.navigation.navigate('Profile')}
               underlayColor="rgba(73,182,77,1,0.9)">
@@ -118,6 +119,7 @@ class MoreScreen extends React.Component {
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
+        */}
           </View>
         </ScrollView>
       </View>

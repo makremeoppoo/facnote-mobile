@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
   },
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(150),
-    height: ScaleHelpers.CalcHeight(40),
+    height: ScaleHelpers.CalcHeight(30),
     marginLeft: ScaleHelpers.CalcWidth(-4),
     paddingRight: ScaleHelpers.CalcWidth(-4),
     position: 'absolute',
   },
   header: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(33),
+    height: ScaleHelpers.CalcHeight(25),
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     // its for android
     elevation: 5,
     width: ScaleHelpers.CalcWidth(80),
-    height: ScaleHelpers.CalcHeight(15),
+    height: ScaleHelpers.CalcHeight(10),
     marginBottom: ScaleHelpers.CalcHeight(1),
 
     borderRadius: 10,
@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignSelf: 'center',
     width: ScaleHelpers.CalcWidth(50),
+    
   },
 
   itemContainer: {
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
     marginBottom: ScaleHelpers.CalcHeight(1),
 
     width: ScaleHelpers.CalcWidth(90),
-    height: ScaleHelpers.CalcHeight(15),
+    height: ScaleHelpers.CalcHeight(10),
 
     borderRadius: 10,
     backgroundColor: buttonColor,
