@@ -72,6 +72,7 @@ class HomeScreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
+
       history.map((item, index) => {
         let newDate = item.send_date.split(' ')[0];
         if (date != newDate) {
@@ -201,7 +202,10 @@ class HomeScreen extends React.Component {
                     this.setState({loading: false});
                     console.log(`PDF rendered from ${resourceType}`);
                   }}
-                  onError={(error) => console.log('Cannot render PDF', error)}
+                  onError={(error) => {
+                    this.setState({loading: false});
+                    console.log('Cannot render PDF', error);
+                  }}
                 />
               </View>
             </View>
