@@ -61,6 +61,9 @@ class HomeScreen extends React.Component {
 
   loadData = async () => {
     const {limit, page} = this.state;
+    this.setState({
+      isRefreshing: true,
+    });
     try {
       var history = await getHistory(limit, page);
     } catch (e) {
