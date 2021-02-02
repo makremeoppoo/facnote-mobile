@@ -11,6 +11,7 @@ import {
   ImageBackground,
   ActivityIndicator,
   Image,
+  RefreshControl
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
@@ -167,9 +168,10 @@ class HomeScreen extends React.Component {
           keyExtractor={(item) => `${item.id}`}
           initialNumToRender={3}
           refreshing={isRefreshing}
-          onRefresh={() => this.handleRefresh()}
+         // onRefresh={() => this.handleRefresh()}
           onScrollEndDrag={this.handleLoadMore}
           onEndThreshold={0}
+          refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={() => this.handleRefresh()} />}
         />
         <Modal
           animationType="slide"
