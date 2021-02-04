@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: ScaleHelpers.CalcHeight(100),
+    paddingTop: ScaleHelpers.CalcWidth(5),
     alignItems: 'center',
     backgroundColor: 'white',
   },
@@ -90,6 +91,7 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'absolute',
   },
+ 
 });
 
 export default styles;

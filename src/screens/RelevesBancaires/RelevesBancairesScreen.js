@@ -11,21 +11,22 @@ import {
   ImageBackground,
   ActivityIndicator,
   Image,
-  RefreshControl
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
 import Rectangle from '../../../assets/images/Rectangle.png';
 
-import getHistory from '../../services/history';
+import getEnterprise from '../../services/entreprise';
 
 import CardView from '../../components/CardView/CardView';
+import PageLoader from '../../components/PageLoader/PageLoader';
+
 import Camera from '../../../assets/icons/Camera.png';
 import Close from '../../../assets/icons/closeGrey.png';
 
 import styles from './styles';
 
-class HomeScreen extends React.Component {
+class ReleveBanqueScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -66,43 +67,18 @@ class HomeScreen extends React.Component {
       isRefreshing: true,
     });
     try {
-      var history = await getHistory(limit, page);
+      var releves = await getEnterprise(limit, page);
     } catch (e) {
       console.log(e);
     } finally {
       let list = [];
       let date = '';
       let counter = 0;
-
-      history.map((item, index) => {
-        let newDate = item.send_date.split(' ')[0];
-        if (date != newDate) {
-          date = newDate;
-          list.push({
-            id: counter++,
-            text: newDate == 'Invalid date' ? '' : newDate,
-
-            isTitle: true,
-          });
-        }
-        let obj = {
-          id: counter++,
-          date: newDate == 'Invalid date' ? '' : newDate,
-          procent: item.amount,
-          title: 'recu le',
-          icon: Camera,
-          isTitle: false,
-          status: item.status,
-          status_label: item.status_label,
-          bill_number: item.bill_number,
-          source: item.source,
-          label: item.label,
-          type: item.type,
-          path: item.received_file_url,
-        };
-        list.push(obj);
+console.log("========",releves.accounts[0])
+      await releves.accounts.map((item, index) => {
+        
       });
-      this.setState({list, isRefreshing: false});
+      this.setState({list:[], isRefreshing: false});
     }
   };
 
@@ -153,30 +129,22 @@ class HomeScreen extends React.Component {
     };
     return (
       <View style={styles.container}>
-        <TouchableHighlight
-          onPress={() => this.setState({showModal: !this.state.showModal})}
-          underlayColor="rgba(73,182,77,1,0.9)">
-          <View style={styles.itemContainer}>
-            <View style={styles.rowContainer}>
-              <Text style={styles.itemTitle}>Filter</Text>
-            </View>
-          </View>
-        </TouchableHighlight>
+        {isRefreshing && <PageLoader showBackground={true} size="large" color="#0000ff" />}
         <FlatList
           data={list}
           renderItem={this.renderItem}
           keyExtractor={(item) => `${item.id}`}
           initialNumToRender={3}
-          refreshing={isRefreshing}
-         // onRefresh={() => this.handleRefresh()}
+          refreshing={false}
+          // onRefresh={() => this.handleRefresh()}
           onScrollEndDrag={this.handleLoadMore}
           onEndThreshold={0}
-          refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={() => this.handleRefresh()} />}
         />
         <Modal
           animationType="slide"
           transparent={true}
           visible={this.state.showModal}>
+          {this.state.loading && <PageLoader showBackground={false} size="large" color="#0000ff" />}
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <ImageBackground
@@ -190,11 +158,6 @@ class HomeScreen extends React.Component {
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
               <View style={styles.pdfContainer}>
-                {this.state.loading && (
-                  <View>
-                    <ActivityIndicator size="large" color="white" />
-                  </View>
-                )}
                 <PDFView
                   style={styles.pdf}
                   fadeInDuration={250.0}
@@ -221,4 +184,4 @@ class HomeScreen extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps)(ReleveBanqueScreen);

@@ -26,7 +26,7 @@ import Close from '../../../assets/icons/closeGrey.png';
 
 import styles from './styles';
 
-class HomeScreen extends React.Component {
+class HistoryScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -209,4 +209,4 @@ class HomeScreen extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps)(HistoryScreen);
