@@ -11,7 +11,6 @@ import {
   ImageBackground,
   ActivityIndicator,
   Image,
-  RefreshControl
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
@@ -20,6 +19,8 @@ import Rectangle from '../../../assets/images/Rectangle.png';
 import getHistory from '../../services/history';
 
 import CardView from '../../components/CardView/CardView';
+import PageLoader from '../../components/PageLoader/PageLoader';
+
 import Camera from '../../../assets/icons/Camera.png';
 import Close from '../../../assets/icons/closeGrey.png';
 
@@ -74,7 +75,7 @@ class HomeScreen extends React.Component {
       let date = '';
       let counter = 0;
 
-      history.map((item, index) => {
+      await history.map((item, index) => {
         let newDate = item.send_date.split(' ')[0];
         if (date != newDate) {
           date = newDate;
@@ -153,30 +154,22 @@ class HomeScreen extends React.Component {
     };
     return (
       <View style={styles.container}>
-        <TouchableHighlight
-          onPress={() => this.setState({showModal: !this.state.showModal})}
-          underlayColor="rgba(73,182,77,1,0.9)">
-          <View style={styles.itemContainer}>
-            <View style={styles.rowContainer}>
-              <Text style={styles.itemTitle}>Filter</Text>
-            </View>
-          </View>
-        </TouchableHighlight>
+        {isRefreshing && <PageLoader showBackground={true} size="large" color="#0000ff" />}
         <FlatList
           data={list}
           renderItem={this.renderItem}
           keyExtractor={(item) => `${item.id}`}
           initialNumToRender={3}
-          refreshing={isRefreshing}
-         // onRefresh={() => this.handleRefresh()}
+          refreshing={false}
+          // onRefresh={() => this.handleRefresh()}
           onScrollEndDrag={this.handleLoadMore}
           onEndThreshold={0}
-          refreshControl={<RefreshControl refreshing={isRefreshing} onRefresh={() => this.handleRefresh()} />}
         />
         <Modal
           animationType="slide"
           transparent={true}
           visible={this.state.showModal}>
+          {this.state.loading && <PageLoader showBackground={false} size="large" color="#0000ff" />}
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <ImageBackground
@@ -190,11 +183,6 @@ class HomeScreen extends React.Component {
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
               <View style={styles.pdfContainer}>
-                {this.state.loading && (
-                  <View>
-                    <ActivityIndicator size="large" color="white" />
-                  </View>
-                )}
                 <PDFView
                   style={styles.pdf}
                   fadeInDuration={250.0}
