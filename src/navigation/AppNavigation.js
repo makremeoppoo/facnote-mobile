@@ -17,6 +17,9 @@ import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
+import RelevesBancairesScreen from '../screens/RelevesBancaires/RelevesBancairesScreen';
+
+
 import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
@@ -276,6 +279,22 @@ const MainNavigator = () => {
         }}
         name="HistoriqueJutificatifs"
         component={HistoriqueJutificatifsScreen}
+      />
+       <Stack.Screen
+        options={({navigation}) => {
+          return {
+            header: () => (
+              <NavigationHeader
+                onPress={() => {
+                  navigation.goBack();
+                }}
+                title={'Relevés bancaires'}
+              />
+            ),
+          };
+        }}
+        name="RelevesBancaires"
+        component={RelevesBancairesScreen}
       />
     </Stack.Navigator>
   );
