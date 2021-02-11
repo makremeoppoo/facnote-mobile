@@ -4,24 +4,20 @@ import React from 'react';
 import moment from 'moment';
 import {
   View,
-  Text,
   TouchableHighlight,
   FlatList,
   Modal,
   ImageBackground,
-  ActivityIndicator,
   Image,
 } from 'react-native';
 import {connect} from 'react-redux';
-import PDFView from 'react-native-view-pdf';
 import Rectangle from '../../../assets/images/Rectangle.png';
 
 import getEnterprise from '../../services/entreprise';
 
-import CardView from '../../components/CardView/CardView';
+import CardView from '../../components/CardView/CardViewReleveBanquaire';
 import PageLoader from '../../components/PageLoader/PageLoader';
 
-import Camera from '../../../assets/icons/Camera.png';
 import Close from '../../../assets/icons/closeGrey.png';
 
 import styles from './styles';
@@ -74,11 +70,30 @@ class ReleveBanqueScreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-console.log("========",releves.accounts[0])
-      await releves.accounts.map((item, index) => {
-        
+      console.log('========', releves.raw_ecritures[0]);
+      
+      await releves.raw_ecritures.map((item, index) => {
+        let newDate = moment(item.date_operation).format('DD/MM/YYYY');
+        if (date != newDate) {
+          date = newDate;
+          list.push({
+            id: counter++,
+            text: newDate == 'Invalid date' ? '' : newDate,
+            isTitle: true,
+          });
+        }
+        let obj = {
+          id: counter++,
+          isTitle: false,     
+          libelle: item.libelle,
+          debit: item.debit,
+          credit: item.credit,
+
+
+        };
+        list.push(obj);
       });
-      this.setState({list:[], isRefreshing: false});
+      this.setState({list, isRefreshing: false});
     }
   };
 
@@ -118,18 +133,11 @@ console.log("========",releves.accounts[0])
 
   render() {
     const {list, isRefreshing, source} = this.state;
-    const resourceType = 'url';
-    const resources = {
-      file:
-        Platform.OS === 'ios'
-          ? 'downloadedDocument.pdf'
-          : '/sdcard/Download/downloadedDocument.pdf',
-      url: source,
-      base64: 'JVBERi0xLjMKJcfs...',
-    };
     return (
       <View style={styles.container}>
-        {isRefreshing && <PageLoader showBackground={true} size="large" color="#0000ff" />}
+        {isRefreshing && (
+          <PageLoader showBackground={true} size="large" color="#0000ff" />
+        )}
         <FlatList
           data={list}
           renderItem={this.renderItem}
@@ -144,7 +152,9 @@ console.log("========",releves.accounts[0])
           animationType="slide"
           transparent={true}
           visible={this.state.showModal}>
-          {this.state.loading && <PageLoader showBackground={false} size="large" color="#0000ff" />}
+          {this.state.loading && (
+            <PageLoader showBackground={false} size="large" color="#0000ff" />
+          )}
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <ImageBackground
@@ -158,20 +168,7 @@ console.log("========",releves.accounts[0])
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
               <View style={styles.pdfContainer}>
-                <PDFView
-                  style={styles.pdf}
-                  fadeInDuration={250.0}
-                  resource={resources[resourceType]}
-                  resourceType={resourceType}
-                  onLoad={() => {
-                    this.setState({loading: false});
-                    console.log(`PDF rendered from ${resourceType}`);
-                  }}
-                  onError={(error) => {
-                    this.setState({loading: false});
-                    console.log('Cannot render PDF', error);
-                  }}
-                />
+              
               </View>
             </View>
           </View>

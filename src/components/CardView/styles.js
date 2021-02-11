@@ -95,6 +95,29 @@ const styles = StyleSheet.create({
     fontSize: ScaleHelpers.CalcWidth(3),
     fontFamily: 'Nunito-Bold',
   },
+  labelReleveBancaire: {
+    fontSize: ScaleHelpers.CalcWidth(2.5),
+    width: ScaleHelpers.CalcWidth(60),
+    color: 'rgb( 92,117,254)',
+    fontFamily: 'Nunito-Bold',
+  },
+  soldeContainer: {
+    alignItems: 'flex-end',
+    color: 'rgb(112,112,112)',
+    fontSize: ScaleHelpers.CalcWidth(3),
+    fontFamily: 'Nunito-Bold',
+  },
+  libelleRelBanquaireContainer: {
+    alignItems: 'flex-start',
+    margin: ScaleHelpers.CalcWidth(1),
+    lineHeight: 34,
+  },
+  mainReleveBancaireContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    borderColor: 'rgba(214, 214, 214, 1)',
+    borderBottomWidth:0.5
+  },
 });
 
 export default styles;
