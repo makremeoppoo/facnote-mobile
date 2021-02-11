@@ -30,38 +30,38 @@ class CardView extends React.Component {
         </View>
       </View>
     ) : (
-      <View style={styles.mainReleveBancaireContainer}>
-        <View style={styles.rowContainer}>
-          <TouchableHighlight
-            style={styles.itemIcon}
-            onPress={() => this.props.onShowModal(item.path)}
-            underlayColor="rgba(73,182,77,1,0.9)">
+      <TouchableHighlight
+        style={styles.mainReleveBancaireContainer}
+        onPress={() => this.props.onShowModal(item.path)}
+        underlayColor="rgba(73,182,77,1,0.9)">
+        <View style={styles.mainReleveBancaireContainer}>
+          <View style={styles.rowContainer}>
             <Icon
               iconStyle={styles.iconRemoveFile}
               reverse
               type="ionicon"
               color="blue"
-              name={'ios-add-circle'}
+              name={'ios-cart'}
               size={25}
             />
-          </TouchableHighlight>
-          <View style={styles.itemTxtContainer}></View>
-          <View style={styles.libelleRelBanquaireContainer}>
-            <Text numberOfLines={1} style={styles.labelReleveBancaire}>
-              {item.libelle}
+            <View style={styles.itemTxtContainer}></View>
+            <View style={styles.libelleRelBanquaireContainer}>
+              <Text numberOfLines={1} style={styles.labelReleveBancaire}>
+                {item.libelle}
+              </Text>
+              <Text style={styles.amountItem}>{item.nom_banque}</Text>
+            </View>
+          </View>
+          <View style={styles.soldeContainer}>
+            <Text style={styles.amountItem}>
+              {(item.credit ? item.credit : 0) + ' €'}
             </Text>
-            <Text style={styles.amountItem}>banque</Text>
+            <Text style={styles.amountItem}>
+              Solde : {(item.solde ? item.solde : 0) + ' €'}
+            </Text>
           </View>
         </View>
-        <View style={styles.soldeContainer}>
-          <Text style={styles.amountItem}>
-            {(item.procent ? item.procent : 0) + ' €'}
-          </Text>
-          <Text style={styles.amountItem}>
-            Solde : {(item.procent ? item.procent : 0) + ' €'}
-          </Text>
-        </View>
-      </View>
+      </TouchableHighlight>
     );
   }
 }

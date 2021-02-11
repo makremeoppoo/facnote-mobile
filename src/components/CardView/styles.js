@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   labelReleveBancaire: {
     fontSize: ScaleHelpers.CalcWidth(2.5),
-    width: ScaleHelpers.CalcWidth(60),
+    width: ScaleHelpers.CalcWidth(50),
     color: 'rgb( 92,117,254)',
     fontFamily: 'Nunito-Bold',
   },

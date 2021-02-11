@@ -88,6 +88,8 @@ class ReleveBanqueScreen extends React.Component {
           libelle: item.libelle,
           debit: item.debit,
           credit: item.credit,
+          solde: item.solde,
+          nom_banque:item.nom_banque
 
 
         };
@@ -157,9 +159,7 @@ class ReleveBanqueScreen extends React.Component {
           )}
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <ImageBackground
-                source={Rectangle}
-                style={styles.backgroundModalStyle}></ImageBackground>
+              
 
               <TouchableHighlight
                 style={styles.modalCloseView}
