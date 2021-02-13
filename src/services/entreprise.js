@@ -23,7 +23,7 @@ export default async function getEnterprise(
     if (max != '') path = `${path}&max=${max}`;
     if (max != '') path = `${path}&max=${max}`;
     if (search_multiple != '')
-      path = `${path}&search_multiple =${numero_compte_search}`;
+      path = `${path}&search_multiple =${search_multiple}`;
     if (debit_search != '') path = `${path}&debit_search=${debit_search}`;
     if (numero_compte_search != '')
       path = `${path}&numero_compte_search=${numero_compte_search}`;
