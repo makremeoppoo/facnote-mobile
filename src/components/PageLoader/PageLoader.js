@@ -15,7 +15,7 @@ export default class PageLoader extends Component {
       <View
         style={{
           ...styles.loader,
-          ...{backgroundColor: showBackground ? 'rgba(255,255,255,0.7)' : null},
+          ...{backgroundColor: showBackground ? 'rgba(255,255,255,0.8)' : null ,borderRadius:15},
         }}>
         <ActivityIndicator size="large" color={this.props.color} />
       </View>
@@ -24,10 +24,10 @@ export default class PageLoader extends Component {
 }
 const styles = StyleSheet.create({
   loader: {
-    justifyContent: 'center',
-    elevation: 11,
+    alignSelf: 'center',
     position: 'absolute',
-    height: ScaleHelpers.CalcHeight(100),
-    width: ScaleHelpers.CalcWidth(100),
+    elevation: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 });

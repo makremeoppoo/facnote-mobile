@@ -58,4 +58,5 @@ export const text = {
   Libelle: 'Libelle',
   Compte: 'Compte',
   TousComptes: 'Tous les comptes',
+  periode:"Période "
 };

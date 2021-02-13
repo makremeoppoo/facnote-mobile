@@ -121,14 +121,15 @@ class HistoryScreen extends React.Component {
   };
 
   handleLoadMore = () => {
-    this.setState(
-      {
-        limit: this.state.limit + 10,
-      },
-      () => {
-        this.loadData();
-      },
-    );
+    if (!this.state.isRefreshing)
+      this.setState(
+        {
+          limit: this.state.limit + 10,
+        },
+        () => {
+          this.loadData();
+        },
+      );
   };
 
   componentDidMount() {
@@ -154,7 +155,9 @@ class HistoryScreen extends React.Component {
     };
     return (
       <View style={styles.container}>
-        {isRefreshing && <PageLoader showBackground={true} size="large" color="#0000ff" />}
+        {isRefreshing && (
+          <PageLoader showBackground={true} size="large" color="#0000ff" />
+        )}
         <FlatList
           data={list}
           style={styles.flatListStyle}
@@ -170,7 +173,6 @@ class HistoryScreen extends React.Component {
           animationType="slide"
           transparent={true}
           visible={this.state.showModal}>
-          {this.state.loading && <PageLoader showBackground={false} size="large" color="#0000ff" />}
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <ImageBackground
@@ -184,6 +186,14 @@ class HistoryScreen extends React.Component {
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
               <View style={styles.pdfContainer}>
+                {this.state.loading && (
+                  <PageLoader
+                    showBackground={false}
+                    size="large"
+                    color="#0000ff"
+                  />
+                )}
+
                 <PDFView
                   style={styles.pdf}
                   fadeInDuration={250.0}

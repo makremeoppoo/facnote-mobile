@@ -9,6 +9,8 @@ export default async function getEnterprise(
   dateFin,
   min,
   max,
+  search_multiple,
+  debit_search,
   numero_compte_search,
 ) {
   try {
@@ -20,6 +22,9 @@ export default async function getEnterprise(
     if (min != '') path = `${path}&min=${min}`;
     if (max != '') path = `${path}&max=${max}`;
     if (max != '') path = `${path}&max=${max}`;
+    if (search_multiple != '')
+      path = `${path}&search_multiple =${numero_compte_search}`;
+    if (debit_search != '') path = `${path}&debit_search=${debit_search}`;
     if (numero_compte_search != '')
       path = `${path}&numero_compte_search=${numero_compte_search}`;
 

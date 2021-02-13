@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginTop: ScaleHelpers.CalcHeight(12),
   },
   modalContant: {
-    height: ScaleHelpers.CalcHeight(80),
+    height: ScaleHelpers.CalcHeight(90),
     margin: ScaleHelpers.CalcWidth(3),
     //Its for IOS
     shadowColor: '#000',

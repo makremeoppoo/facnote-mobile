@@ -12,7 +12,6 @@ import {
   ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
 
 import getEnterprise from '../../services/entreprise';
 import DatePicker from '../../components/DatePicker/DatePicker';
@@ -24,7 +23,6 @@ import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
 import Close from '../../../assets/icons/closeGrey.png';
 import {text} from '../../constants';
-import {blueColor} from '../../AppStyles';
 
 import styles from './styles';
 
@@ -45,8 +43,12 @@ class ReleveBanqueScreen extends React.Component {
       dateFin: null,
       min: '',
       max: '',
-      type: '',
-      numero_compte_search: '',
+      type: {key: 0, label: 'Débit/Crédit', value: 'tous'},
+      search_multiple: '',
+      comptesBancaire: [],
+      exercices: [],
+      compte: {key: -1, label: '', value: ''},
+      exercice: '',
     };
   }
 
@@ -84,7 +86,9 @@ class ReleveBanqueScreen extends React.Component {
       dateFin,
       min,
       max,
-      numero_compte_search,
+      search_multiple,
+      type,
+      compte,
     } = this.state;
     this.setState({
       isRefreshing: true,
@@ -97,15 +101,15 @@ class ReleveBanqueScreen extends React.Component {
         dateFin,
         min,
         max,
-        numero_compte_search,
+        search_multiple,
+        type.value,
+        compte.value,
       );
     } catch (e) {
-      console.log(e);
     } finally {
       let list = [];
       let date = '';
       let counter = 0;
-      console.log('========', releves.raw_ecritures[0]);
 
       await releves.raw_ecritures.map((item, index) => {
         let newDate = moment(item.date_operation).format('DD/MM/YYYY');
@@ -129,7 +133,26 @@ class ReleveBanqueScreen extends React.Component {
 
         list.push(obj);
       });
-      this.setState({list, isRefreshing: false});
+      let comptesBancaire = [{key: -1, label: 'Tous les comptes', value: ''}];
+      Object.keys(releves.comptes_bancaire).map((item, index) => {
+        comptesBancaire.push({
+          key: index++,
+          label: releves.comptes_bancaire[item],
+          value: item,
+        });
+      });
+      let exercices = [];
+      releves.exercices.map((item, index) => {
+        exercices.push({
+          key: index++,
+          label: `${moment(item.date_debut).format('DD/MM/YYYY')} au ${moment(
+            item.date_fin,
+          ).format('DD/MM/YYYY')}`,
+          date_debut: item.date_debut,
+          date_fin: item.date_fin,
+        });
+      });
+      this.setState({list, comptesBancaire, exercices, isRefreshing: false});
     }
   };
 
@@ -147,14 +170,15 @@ class ReleveBanqueScreen extends React.Component {
   };
 
   handleLoadMore = () => {
-    this.setState(
-      {
-        limit: this.state.limit + 10,
-      },
-      () => {
-        this.loadData();
-      },
-    );
+    if (!this.state.isRefreshing)
+      this.setState(
+        {
+          limit: this.state.limit + 10,
+        },
+        () => {
+          this.loadData();
+        },
+      );
   };
 
   componentDidMount() {
@@ -168,17 +192,17 @@ class ReleveBanqueScreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, source} = this.state;
+    const {list, isRefreshing, comptesBancaire, exercices} = this.state;
     let index = 0;
     return (
       <View style={styles.container}>
-        {isRefreshing && (
-          <PageLoader showBackground={true} size="large" color="#0000ff" />
-        )}
         <SecondButton
           label={text.filter}
           onPress={() => this.setState({showModal: !this.state.showModal})}
         />
+        {isRefreshing && (
+          <PageLoader showBackground={true} size="large" color="#0000ff" />
+        )}
         <FlatList
           style={styles.flatListStyle}
           data={list}
@@ -211,11 +235,11 @@ class ReleveBanqueScreen extends React.Component {
                     <TextInput
                       style={styles.input}
                       label={text.searchReleveBanquaire}
-                      value={this.state.numero_compte_search}
+                      value={this.state.search_multiple}
                       onChangeText={(text, name) =>
-                        this.setField(text, 'numero_compte_search')
+                        this.setField(text, 'search_multiple')
                       }
-                      name="numero_compte_search"
+                      name="search_multiple"
                       type="text"
                     />
                     <View style={{flexDirection: 'row'}}>
@@ -260,49 +284,36 @@ class ReleveBanqueScreen extends React.Component {
                     </View>
 
                     <SelectInput
-                      label={text.Type}
-                      selectedValue={this.state.type}
+                      label={text.periode}
+                      selectedValue={this.state.exercice.label}
                       onChange={(option) => {
-                        console.log(option);
-                        this.setState({type: option});
+                        this.setState({
+                          dateFin: option.date_fin,
+                          dateDebut: option.date_debut,
+                          exercice: option,
+                        });
                       }}
-                      listItems={[
-                        {key: index++, label: 'Moto P < 50 CC', value: '1'},
-                        {key: index++, label: 'Moto P < 3CV', value: '2'},
-                        {key: index++, label: 'Moto P < 6CV', value: '3'},
-                        {key: index++, label: 'Moto P > 5CV', value: '4'},
-                        {
-                          key: index++,
-                          label: 'Automobile P <  3CV',
-                          value: '5',
-                        },
-                        {key: index++, label: 'Automobile P = 4CV', value: '6'},
-                        {key: index++, label: 'Automobile P = 5CV', value: '7'},
-                        {key: index++, label: 'Automobile P = 6CV', value: '8'},
-                        {key: index++, label: 'Automobile P > 6CV', value: '9'},
-                      ]}
+                      listItems={exercices}
                     />
                     <SelectInput
                       label={text.compte}
-                      selectedValue={this.state.compte}
+                      selectedValue={this.state.compte.label}
                       onChange={(option) => {
-                        console.log(option);
                         this.setState({compte: option});
                       }}
+                      listItems={comptesBancaire}
+                    />
+
+                    <SelectInput
+                      label={text.Type}
+                      selectedValue={this.state.type.label}
+                      onChange={(option) => {
+                        this.setState({type: option});
+                      }}
                       listItems={[
-                        {key: index++, label: 'Moto P < 50 CC', value: '1'},
-                        {key: index++, label: 'Moto P < 3CV', value: '2'},
-                        {key: index++, label: 'Moto P < 6CV', value: '3'},
-                        {key: index++, label: 'Moto P > 5CV', value: '4'},
-                        {
-                          key: index++,
-                          label: 'Automobile P <  3CV',
-                          value: '5',
-                        },
-                        {key: index++, label: 'Automobile P = 4CV', value: '6'},
-                        {key: index++, label: 'Automobile P = 5CV', value: '7'},
-                        {key: index++, label: 'Automobile P = 6CV', value: '8'},
-                        {key: index++, label: 'Automobile P > 6CV', value: '9'},
+                        {key: 0, label: 'Débit/Crédit', value: 'tous'},
+                        {key: 1, label: 'Débit', value: 'debit'},
+                        {key: 2, label: 'Crédit', value: 'credit'},
                       ]}
                     />
                     <View style={styles.ButtonsContain}>
@@ -315,7 +326,9 @@ class ReleveBanqueScreen extends React.Component {
                             max: '',
                             dateDebut: null,
                             dateFin: null,
-                            numero_compte_search: '',
+                            search_multiple: '',
+                            exercice: '',
+                            compte: {key: -1, label: '', value: ''},
                           });
                           await this.handleRefresh();
                           await this.onCloseModal();

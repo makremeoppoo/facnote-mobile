@@ -53,7 +53,8 @@ export default DatePicker = ({
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-  }, []); // Only re-run the effect if count changes
+    if (initialDate != null) setDate(initialDate);
+  }, [initialDate]); // Only re-run the effect if count changes
 
   const handleConfirm = (date) => {
     setShow(false);
