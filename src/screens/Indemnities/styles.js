@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
   },
 
   infoContainer: {
-    height: ScaleHelpers.CalcHeight(85),
+    height: ScaleHelpers.CalcHeight(100),
     margin: ScaleHelpers.CalcWidth(3),
     //Its for IOS
     shadowColor: '#000',
@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(15),
   },
  
 

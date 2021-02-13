@@ -7,10 +7,11 @@ export default class SecondButton extends React.Component {
   render() {
     return (
       <TouchableHighlight
-      style={styles.btnContainer}
-      onPress={this.props.onPress}>
-      <Text style={styles.btnTxt}>{this.props.label}</Text>
-    </TouchableHighlight>
+        underlayColor="rgba(214, 214, 214, 0.4)"
+        style={styles.btnContainer}
+        onPress={this.props.onPress}>
+        <Text style={styles.btnTxt}>{this.props.label}</Text>
+      </TouchableHighlight>
     );
   }
 }

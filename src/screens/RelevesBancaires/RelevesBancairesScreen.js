@@ -65,7 +65,7 @@ class ReleveBanqueScreen extends React.Component {
   };
   onCloseModal = () => {
     this.setState({
-      showModal: false
+      showModal: false,
     });
   };
 
@@ -156,25 +156,10 @@ class ReleveBanqueScreen extends React.Component {
         {isRefreshing && (
           <PageLoader showBackground={true} size="large" color="#0000ff" />
         )}
-        <TouchableHighlight
+        <SecondButton
+          label={text.filter}
           onPress={() => this.setState({showModal: !this.state.showModal})}
-          underlayColor="rgba(73,182,77,1,0.9)">
-          <View style={styles.itemContainer}>
-            <View style={styles.rowContainer}>
-              <Text style={styles.itemTitle}>
-                <Icon
-                  iconStyle={styles.iconRemoveFile}
-                  reverse
-                  type="ionicon"
-                  color={blueColor}
-                  name={'ios-filter-outline'}
-                  size={15}>
-                  {text.filter}
-                </Icon>
-              </Text>
-            </View>
-          </View>
-        </TouchableHighlight>
+        />
         <FlatList
           style={styles.flatListStyle}
           data={list}
@@ -186,7 +171,10 @@ class ReleveBanqueScreen extends React.Component {
           onScrollEndDrag={this.handleLoadMore}
           onEndThreshold={0}
         />
-        <Modal animationType="slide" transparent={true} visible={this.state.showModal}>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.showModal}>
           {this.state.loading && (
             <PageLoader showBackground={false} size="large" color="#0000ff" />
           )}

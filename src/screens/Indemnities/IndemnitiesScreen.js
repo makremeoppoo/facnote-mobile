@@ -181,18 +181,18 @@ class IndemnitiesScreen extends React.Component {
               name="motif"
               errorLabel={motifError && text.Champobligatoire}
             />
-          </View>
-          <View style={styles.ButtonsContain}>
-            <SecondButton
-              label={text.Annuler}
-              loading={this.state.loading}
-              onPress={() => this.props.closeModal(null)}
-            />
-            <SubmitButton
-              loading={this.state.loading}
-              label={text.Valider}
-              onPress={() => this.sendIndemnite()}
-            />
+            <View style={styles.ButtonsContain}>
+              <SecondButton
+                label={text.Annuler}
+                loading={this.state.loading}
+                onPress={() => this.props.closeModal(null)}
+              />
+              <SubmitButton
+                loading={this.state.loading}
+                label={text.Valider}
+                onPress={() => this.sendIndemnite()}
+              />
+            </View>
           </View>
         </ScrollView>
       </View>
