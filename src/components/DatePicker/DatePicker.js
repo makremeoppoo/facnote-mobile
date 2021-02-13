@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Platform, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
@@ -47,9 +47,13 @@ export default DatePicker = ({
   label,
   errorLabel,
   display = 'row',
+  initialDate = null,
 }) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+  }, []); // Only re-run the effect if count changes
 
   const handleConfirm = (date) => {
     setShow(false);
@@ -72,10 +76,18 @@ export default DatePicker = ({
           style={[
             styles.inputContainer,
             display == 'column'
-              ? {width: ScaleHelpers.CalcWidth(40),margin:ScaleHelpers.CalcWidth(1)}
-              : {width: ScaleHelpers.CalcWidth(80),margin:ScaleHelpers.CalcWidth(1)},
+              ? {
+                  width: ScaleHelpers.CalcWidth(40),
+                  margin: ScaleHelpers.CalcWidth(1),
+                }
+              : {
+                  width: ScaleHelpers.CalcWidth(80),
+                  margin: ScaleHelpers.CalcWidth(1),
+                },
           ]}>
-          <Text>{moment(date).format('DD/MM/YYYY')}</Text>
+          <Text>
+            {initialDate == null ? '' : moment(date).format('DD/MM/YYYY')}
+          </Text>
           <Text style={styles.error}>{errorLabel}</Text>
         </View>
       </TouchableOpacity>

@@ -41,17 +41,20 @@ class ReleveBanqueScreen extends React.Component {
       isRefreshing: true,
       hasScrolled: false,
       source: '',
-      dateDebut: moment(new Date()).format('YYYY-MM-DD'),
-      dateFin: moment(new Date()).format('YYYY-MM-DD'),
+      dateDebut: null,
+      dateFin: null,
       min: '',
       max: '',
       type: '',
-      compte: '',
+      numero_compte_search: '',
     };
   }
 
-  setDate = (date) => {
-    this.setState({date});
+  setDateDebut = (dateDebut) => {
+    this.setState({dateDebut});
+  };
+  setDateFin = (dateFin) => {
+    this.setState({dateFin});
   };
   setField = (text, name) => {
     this.setState({[name]: text});
@@ -74,12 +77,28 @@ class ReleveBanqueScreen extends React.Component {
   };
 
   loadData = async () => {
-    const {limit, page} = this.state;
+    const {
+      limit,
+      page,
+      dateDebut,
+      dateFin,
+      min,
+      max,
+      numero_compte_search,
+    } = this.state;
     this.setState({
       isRefreshing: true,
     });
     try {
-      var releves = await getEnterprise(limit, page);
+      var releves = await getEnterprise(
+        limit,
+        page,
+        dateDebut,
+        dateFin,
+        min,
+        max,
+        numero_compte_search,
+      );
     } catch (e) {
       console.log(e);
     } finally {
@@ -189,16 +208,26 @@ class ReleveBanqueScreen extends React.Component {
               <View style={styles.modalContainer}>
                 <ScrollView>
                   <View style={styles.modalContant}>
+                    <TextInput
+                      style={styles.input}
+                      label={text.searchReleveBanquaire}
+                      value={this.state.numero_compte_search}
+                      onChangeText={(text, name) =>
+                        this.setField(text, 'numero_compte_search')
+                      }
+                      name="numero_compte_search"
+                      type="text"
+                    />
                     <View style={{flexDirection: 'row'}}>
                       <DatePicker
-                        date={this.state.dateDebut}
-                        setCurrentDate={this.setDate}
+                        initialDate={this.state.dateDebut}
+                        setCurrentDate={this.setDateDebut}
                         label={text.dateDebut}
                         display={'column'}
                       />
                       <DatePicker
-                        date={this.state.dateFin}
-                        setCurrentDate={this.setDate}
+                        initialDate={this.state.dateFin}
+                        setCurrentDate={this.setDateFin}
                         label={text.dateFin}
                         display={'column'}
                       />
@@ -207,6 +236,7 @@ class ReleveBanqueScreen extends React.Component {
                       <TextInput
                         style={styles.input}
                         label={text.min}
+                        value={this.state.min}
                         onChangeText={(text, name) =>
                           this.setField(text, 'min')
                         }
@@ -221,6 +251,7 @@ class ReleveBanqueScreen extends React.Component {
                         onChangeText={(text, name) =>
                           this.setField(text, 'max')
                         }
+                        value={this.state.max}
                         name="max"
                         type="number"
                         grid={'column'}
@@ -276,14 +307,27 @@ class ReleveBanqueScreen extends React.Component {
                     />
                     <View style={styles.ButtonsContain}>
                       <SecondButton
-                        label={text.Annuler}
+                        label={text.Reinitialiser}
                         loading={this.state.loading}
-                        onPress={this.onCloseModal}
+                        onPress={async () => {
+                          await this.setState({
+                            min: '',
+                            max: '',
+                            dateDebut: null,
+                            dateFin: null,
+                            numero_compte_search: '',
+                          });
+                          await this.handleRefresh();
+                          await this.onCloseModal();
+                        }}
                       />
                       <SubmitButton
                         loading={this.state.loading}
                         label={text.Valider}
-                        onPress={this.onCloseModal}
+                        onPress={async () => {
+                          await this.handleRefresh();
+                          await this.onCloseModal();
+                        }}
                       />
                     </View>
                   </View>

@@ -97,10 +97,10 @@ const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     backgroundColor: 'white',
-    marginTop: ScaleHelpers.CalcHeight(10),
+    marginTop: ScaleHelpers.CalcHeight(12),
   },
   modalContant: {
-    height: ScaleHelpers.CalcHeight(70),
+    height: ScaleHelpers.CalcHeight(80),
     margin: ScaleHelpers.CalcWidth(3),
     //Its for IOS
     shadowColor: '#000',

@@ -9,7 +9,8 @@ export default class SubmitButton extends React.Component {
     return (
       <TouchableHighlight
         style={styles.btnSubmitContainer}
-        onPress={this.props.onPress}>
+        onPress={this.props.onPress}
+        underlayColor="rgba(214, 214, 214, 0.4)">
         <>
           <Image style={styles.rectangle} source={Rectangle} />
           <Text style={styles.submitTxt}>

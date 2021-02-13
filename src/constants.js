@@ -16,9 +16,11 @@ export const SAVE_INDEMNITE = `/api/v1/note`;
 
 export const text = {
   filter: 'Filter',
+  Reinitialiser: 'Reinitialiser',
   dateDebut: 'Date début',
   dateFin: 'Date fin',
   compte: 'Compte',
+  searchReleveBanquaire: 'Description, numero de facture, compte ',
   debit: 'Debit',
   credit: 'Credit',
   min: 'Min',
@@ -54,6 +56,6 @@ export const text = {
   Source: 'Source',
   BillNumber: 'Facture',
   Libelle: 'Libelle',
-  Compte:'Compte',
-  TousComptes:"Tous les comptes"
+  Compte: 'Compte',
+  TousComptes: 'Tous les comptes',
 };
