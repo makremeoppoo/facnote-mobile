@@ -21,7 +21,7 @@ import SelectInput from '../../components/SelectInput/SelectInput';
 import CardView from '../../components/CardView/CardViewReleveBanquaire';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
-
+import SecondButton from '../../components/SecondButton/SecondButton';
 import Close from '../../../assets/icons/closeGrey.png';
 import {text} from '../../constants';
 import {blueColor} from '../../AppStyles';
@@ -41,12 +41,12 @@ class ReleveBanqueScreen extends React.Component {
       isRefreshing: true,
       hasScrolled: false,
       source: '',
-      puissance: '',
-      date: moment(new Date()).format('YYYY-MM-DD'),
-      distance: '',
-      lieuDapart: '',
-      lieuArriver: '',
-      motif: '',
+      dateDebut: moment(new Date()).format('YYYY-MM-DD'),
+      dateFin: moment(new Date()).format('YYYY-MM-DD'),
+      min: '',
+      max: '',
+      type: '',
+      compte: '',
     };
   }
 
@@ -59,16 +59,13 @@ class ReleveBanqueScreen extends React.Component {
 
   onShowModal = (source) => {
     this.setState({
-      source,
       showModal: !this.state.showModal,
       loading: true,
     });
   };
   onCloseModal = () => {
     this.setState({
-      source: '',
-      showModal: false,
-      loading: false,
+      showModal: false
     });
   };
 
@@ -189,7 +186,7 @@ class ReleveBanqueScreen extends React.Component {
           onScrollEndDrag={this.handleLoadMore}
           onEndThreshold={0}
         />
-        <Modal animationType="slide" transparent={true} visible={true}>
+        <Modal animationType="slide" transparent={true} visible={this.state.showModal}>
           {this.state.loading && (
             <PageLoader showBackground={false} size="large" color="#0000ff" />
           )}
@@ -206,13 +203,13 @@ class ReleveBanqueScreen extends React.Component {
                   <View style={styles.modalContant}>
                     <View style={{flexDirection: 'row'}}>
                       <DatePicker
-                        date={this.state.date}
+                        date={this.state.dateDebut}
                         setCurrentDate={this.setDate}
                         label={text.dateDebut}
                         display={'column'}
                       />
                       <DatePicker
-                        date={this.state.date}
+                        date={this.state.dateFin}
                         setCurrentDate={this.setDate}
                         label={text.dateFin}
                         display={'column'}
@@ -244,11 +241,11 @@ class ReleveBanqueScreen extends React.Component {
                     </View>
 
                     <SelectInput
-                      label={text.PuissanceAdministrative}
-                      selectedValue={this.state.puissance.label}
+                      label={text.Type}
+                      selectedValue={this.state.type}
                       onChange={(option) => {
                         console.log(option);
-                        this.setState({puissance: option});
+                        this.setState({type: option});
                       }}
                       listItems={[
                         {key: index++, label: 'Moto P < 50 CC', value: '1'},
@@ -267,34 +264,11 @@ class ReleveBanqueScreen extends React.Component {
                       ]}
                     />
                     <SelectInput
-                      label={text.PuissanceAdministrative}
-                      selectedValue={this.state.puissance.label}
+                      label={text.compte}
+                      selectedValue={this.state.compte}
                       onChange={(option) => {
                         console.log(option);
-                        this.setState({puissance: option});
-                      }}
-                      listItems={[
-                        {key: index++, label: 'Moto P < 50 CC', value: '1'},
-                        {key: index++, label: 'Moto P < 3CV', value: '2'},
-                        {key: index++, label: 'Moto P < 6CV', value: '3'},
-                        {key: index++, label: 'Moto P > 5CV', value: '4'},
-                        {
-                          key: index++,
-                          label: 'Automobile P <  3CV',
-                          value: '5',
-                        },
-                        {key: index++, label: 'Automobile P = 4CV', value: '6'},
-                        {key: index++, label: 'Automobile P = 5CV', value: '7'},
-                        {key: index++, label: 'Automobile P = 6CV', value: '8'},
-                        {key: index++, label: 'Automobile P > 6CV', value: '9'},
-                      ]}
-                    />
-                    <SelectInput
-                      label={text.PuissanceAdministrative}
-                      selectedValue={this.state.puissance.label}
-                      onChange={(option) => {
-                        console.log(option);
-                        this.setState({puissance: option});
+                        this.setState({compte: option});
                       }}
                       listItems={[
                         {key: index++, label: 'Moto P < 50 CC', value: '1'},
@@ -313,12 +287,16 @@ class ReleveBanqueScreen extends React.Component {
                       ]}
                     />
                     <View style={styles.ButtonsContain}>
-                      <TouchableHighlight
-                        style={styles.btnContainer}
-                        onPress={() => this.props.closeModal(null)}>
-                        <Text style={styles.btnTxt}>{text.Annuler}</Text>
-                      </TouchableHighlight>
-                      <SubmitButton onPress={() => null} />
+                      <SecondButton
+                        label={text.Annuler}
+                        loading={this.state.loading}
+                        onPress={this.onCloseModal}
+                      />
+                      <SubmitButton
+                        loading={this.state.loading}
+                        label={text.Valider}
+                        onPress={this.onCloseModal}
+                      />
                     </View>
                   </View>
                 </ScrollView>

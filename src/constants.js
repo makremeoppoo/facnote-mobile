@@ -54,4 +54,6 @@ export const text = {
   Source: 'Source',
   BillNumber: 'Facture',
   Libelle: 'Libelle',
+  Compte:'Compte',
+  TousComptes:"Tous les comptes"
 };
