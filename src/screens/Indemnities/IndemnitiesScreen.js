@@ -122,7 +122,7 @@ class IndemnitiesScreen extends React.Component {
           </View>
           <View style={styles.infoContainer}>
             <DatePicker
-              date={this.state.date}
+              initialDate={new Date()}
               setCurrentDate={this.setDate}
               label={text.Date}
               style={styles.input}

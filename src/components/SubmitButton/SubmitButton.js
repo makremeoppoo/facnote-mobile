@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableHighlight, Image, Text, View} from 'react-native';
+import {TouchableHighlight, Image, Text, ActivityIndicator} from 'react-native';
 import styles from './styles';
 import Rectangle from '../../../assets/images/Rectangle.png';
 import {text} from '../../constants';
