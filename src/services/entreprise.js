@@ -5,7 +5,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 export default async function getEnterprise(limit,page) {
   try {
     console.log(`${c.GETENTERPRISE}?limit=${limit}&page=${page}`)
-    let res = await api.get( `${c.GETENTERPRISE}?limit=${limit}&page=${page}`, {
+    let res = await api.get( `${c.GETENTERPRISE}?limit=${limit}&page=${page}&date_debut=01/01/2020&date_fin=31/12/2021`, {
       withCredentials: true,
       credentials: 'include'
     });

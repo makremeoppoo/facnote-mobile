@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     justifyContent: 'flex-start',
     padding: 10,
+    marginBottom: ScaleHelpers.CalcWidth(1),
   },
   mainContainer: {
     flexDirection: 'row',

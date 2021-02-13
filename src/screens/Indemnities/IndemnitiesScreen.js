@@ -9,10 +9,10 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {connect} from 'react-redux';
-
-import Rectangle from '../../../assets/images/Rectangle.png';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
+import SubmitButton from '../../components/SubmitButton/SubmitButton';
+import SecondButton from '../../components/SecondButton/SecondButton';
 import SelectInput from '../../components/SelectInput/SelectInput';
 
 import styles from './styles';
@@ -183,26 +183,16 @@ class IndemnitiesScreen extends React.Component {
             />
           </View>
           <View style={styles.ButtonsContain}>
-            <TouchableHighlight
-              style={styles.btnContainer}
-              onPress={() => this.props.closeModal(null)}>
-              <Text style={styles.btnTxt}>{text.Annuler}</Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={styles.btnSubmitContainer}
-              onPress={() => this.sendIndemnite()}>
-              <>
-                <Image style={styles.rectangle} source={Rectangle} />
-                <Text style={styles.submitTxt}>
-                  {' '}
-                  {this.state.loading ? (
-                    <ActivityIndicator size="small" color="white" />
-                  ) : (
-                    text.Valider
-                  )}
-                </Text>
-              </>
-            </TouchableHighlight>
+            <SecondButton
+              label={text.Annuler}
+              loading={this.state.loading}
+              onPress={() => this.props.closeModal(null)}
+            />
+            <SubmitButton
+              loading={this.state.loading}
+              label={text.Valider}
+              onPress={() => this.sendIndemnite()}
+            />
           </View>
         </ScrollView>
       </View>

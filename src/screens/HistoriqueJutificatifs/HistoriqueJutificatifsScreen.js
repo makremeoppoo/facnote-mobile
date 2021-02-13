@@ -157,6 +157,7 @@ class HistoryScreen extends React.Component {
         {isRefreshing && <PageLoader showBackground={true} size="large" color="#0000ff" />}
         <FlatList
           data={list}
+          style={styles.flatListStyle}
           renderItem={this.renderItem}
           keyExtractor={(item) => `${item.id}`}
           initialNumToRender={3}

@@ -2,24 +2,13 @@
 //portfolio card
 //card with image left,double text middle, and procent right
 import React from 'react';
-import {View, Image, TouchableHighlight} from 'react-native';
-import {
-  Collapse,
-  CollapseHeader,
-  CollapseBody,
-} from 'accordion-collapse-react-native';
+import {View, TouchableHighlight} from 'react-native';
+
 import {Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import styles from './styles';
-import {text} from '../../constants';
 
-const StatusHistory = {
-  1: 'primary',
-  2: 'warning',
-  3: 'success',
-  5: 'error',
-};
 class CardView extends React.Component {
   render() {
     const item = this.props.item;
@@ -40,7 +29,7 @@ class CardView extends React.Component {
               iconStyle={styles.iconRemoveFile}
               reverse
               type="ionicon"
-              color="blue"
+              color="rgb(92,117,254)"
               name={'ios-cart'}
               size={25}
             />

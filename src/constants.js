@@ -15,6 +15,14 @@ export const UPLOAD_FILES = `/api/v1/bill`;
 export const SAVE_INDEMNITE = `/api/v1/note`;
 
 export const text = {
+  filter: 'Filter',
+  dateDebut: 'Date début',
+  dateFin: 'Date fin',
+  compte: 'Compte',
+  debit: 'Debit',
+  credit: 'Credit',
+  min: 'Min',
+  max: 'Max',
   identifier: 'vous identifier',
   mentionsLegales: 'mentions légales',
   CGU: 'CGU',
@@ -44,6 +52,6 @@ export const text = {
   EnregistrerIdentifiant: 'Enregistrer mes identifiants',
   Type: 'Type',
   Source: 'Source',
-  BillNumber:"Facture",
-  Libelle:"Libelle"
+  BillNumber: 'Facture',
+  Libelle: 'Libelle',
 };

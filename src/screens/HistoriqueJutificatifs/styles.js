@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
+  flatListStyle: {
+    maxHeight: "90%",
+  },
   itemContainer: {
     flexDirection: 'row',
     padding: ScaleHelpers.CalcHeight(1),

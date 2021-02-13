@@ -4,7 +4,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import moment from 'moment';
 import ScaleHelpers from '../scaleHelpers';
-import {textColor, buttonColor, label} from '../../AppStyles';
+import {textColor} from '../../AppStyles';
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -42,7 +42,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
+export default DatePicker = ({
+  setCurrentDate,
+  label,
+  errorLabel,
+  display = 'row',
+}) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
 
@@ -63,7 +68,13 @@ export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
           style={{...styles.label, ...{color: errorLabel ? 'red' : textColor}}}>
           {label}
         </Text>
-        <View style={styles.inputContainer}>
+        <View
+          style={[
+            styles.inputContainer,
+            display == 'column'
+              ? {width: ScaleHelpers.CalcWidth(40),margin:ScaleHelpers.CalcWidth(1)}
+              : {width: ScaleHelpers.CalcWidth(80),margin:ScaleHelpers.CalcWidth(1)},
+          ]}>
           <Text>{moment(date).format('DD/MM/YYYY')}</Text>
           <Text style={styles.error}>{errorLabel}</Text>
         </View>
@@ -77,7 +88,7 @@ export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
           onCancel={showTimepicker}
           display={Platform.OS == 'ios' ? 'spinner' : 'default'}
           locale="fr_FR"
-          headerTextIOS={""}
+          headerTextIOS={''}
           cancelTextIOS={'Fermer'}
           confirmTextIOS={'Confirmer'}
         />

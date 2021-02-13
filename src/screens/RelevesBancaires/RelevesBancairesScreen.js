@@ -7,18 +7,24 @@ import {
   TouchableHighlight,
   FlatList,
   Modal,
-  ImageBackground,
+  Text,
   Image,
+  ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
-import Rectangle from '../../../assets/images/Rectangle.png';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import getEnterprise from '../../services/entreprise';
-
+import DatePicker from '../../components/DatePicker/DatePicker';
+import TextInput from '../../components/TextInput/TextInput';
+import SelectInput from '../../components/SelectInput/SelectInput';
 import CardView from '../../components/CardView/CardViewReleveBanquaire';
 import PageLoader from '../../components/PageLoader/PageLoader';
+import SubmitButton from '../../components/SubmitButton/SubmitButton';
 
 import Close from '../../../assets/icons/closeGrey.png';
+import {text} from '../../constants';
+import {blueColor} from '../../AppStyles';
 
 import styles from './styles';
 
@@ -35,8 +41,21 @@ class ReleveBanqueScreen extends React.Component {
       isRefreshing: true,
       hasScrolled: false,
       source: '',
+      puissance: '',
+      date: moment(new Date()).format('YYYY-MM-DD'),
+      distance: '',
+      lieuDapart: '',
+      lieuArriver: '',
+      motif: '',
     };
   }
+
+  setDate = (date) => {
+    this.setState({date});
+  };
+  setField = (text, name) => {
+    this.setState({[name]: text});
+  };
 
   onShowModal = (source) => {
     this.setState({
@@ -71,7 +90,7 @@ class ReleveBanqueScreen extends React.Component {
       let date = '';
       let counter = 0;
       console.log('========', releves.raw_ecritures[0]);
-      
+
       await releves.raw_ecritures.map((item, index) => {
         let newDate = moment(item.date_operation).format('DD/MM/YYYY');
         if (date != newDate) {
@@ -84,15 +103,14 @@ class ReleveBanqueScreen extends React.Component {
         }
         let obj = {
           id: counter++,
-          isTitle: false,     
+          isTitle: false,
           libelle: item.libelle,
           debit: item.debit,
           credit: item.credit,
           solde: item.solde,
-          nom_banque:item.nom_banque
-
-
+          nom_banque: item.nom_banque,
         };
+
         list.push(obj);
       });
       this.setState({list, isRefreshing: false});
@@ -135,12 +153,33 @@ class ReleveBanqueScreen extends React.Component {
 
   render() {
     const {list, isRefreshing, source} = this.state;
+    let index = 0;
     return (
       <View style={styles.container}>
         {isRefreshing && (
           <PageLoader showBackground={true} size="large" color="#0000ff" />
         )}
+        <TouchableHighlight
+          onPress={() => this.setState({showModal: !this.state.showModal})}
+          underlayColor="rgba(73,182,77,1,0.9)">
+          <View style={styles.itemContainer}>
+            <View style={styles.rowContainer}>
+              <Text style={styles.itemTitle}>
+                <Icon
+                  iconStyle={styles.iconRemoveFile}
+                  reverse
+                  type="ionicon"
+                  color={blueColor}
+                  name={'ios-filter-outline'}
+                  size={15}>
+                  {text.filter}
+                </Icon>
+              </Text>
+            </View>
+          </View>
+        </TouchableHighlight>
         <FlatList
+          style={styles.flatListStyle}
           data={list}
           renderItem={this.renderItem}
           keyExtractor={(item) => `${item.id}`}
@@ -150,25 +189,139 @@ class ReleveBanqueScreen extends React.Component {
           onScrollEndDrag={this.handleLoadMore}
           onEndThreshold={0}
         />
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={this.state.showModal}>
+        <Modal animationType="slide" transparent={true} visible={true}>
           {this.state.loading && (
             <PageLoader showBackground={false} size="large" color="#0000ff" />
           )}
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              
-
               <TouchableHighlight
                 style={styles.modalCloseView}
                 onPress={() => this.onCloseModal()}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
-              <View style={styles.pdfContainer}>
-              
+              <View style={styles.modalContainer}>
+                <ScrollView>
+                  <View style={styles.modalContant}>
+                    <View style={{flexDirection: 'row'}}>
+                      <DatePicker
+                        date={this.state.date}
+                        setCurrentDate={this.setDate}
+                        label={text.dateDebut}
+                        display={'column'}
+                      />
+                      <DatePicker
+                        date={this.state.date}
+                        setCurrentDate={this.setDate}
+                        label={text.dateFin}
+                        display={'column'}
+                      />
+                    </View>
+                    <View style={{flexDirection: 'row'}}>
+                      <TextInput
+                        style={styles.input}
+                        label={text.min}
+                        onChangeText={(text, name) =>
+                          this.setField(text, 'min')
+                        }
+                        name="min"
+                        type="number"
+                        grid={'column'}
+                        keyboardType="numeric"
+                      />
+                      <TextInput
+                        style={styles.input}
+                        label={text.max}
+                        onChangeText={(text, name) =>
+                          this.setField(text, 'max')
+                        }
+                        name="max"
+                        type="number"
+                        grid={'column'}
+                        keyboardType="numeric"
+                      />
+                    </View>
+
+                    <SelectInput
+                      label={text.PuissanceAdministrative}
+                      selectedValue={this.state.puissance.label}
+                      onChange={(option) => {
+                        console.log(option);
+                        this.setState({puissance: option});
+                      }}
+                      listItems={[
+                        {key: index++, label: 'Moto P < 50 CC', value: '1'},
+                        {key: index++, label: 'Moto P < 3CV', value: '2'},
+                        {key: index++, label: 'Moto P < 6CV', value: '3'},
+                        {key: index++, label: 'Moto P > 5CV', value: '4'},
+                        {
+                          key: index++,
+                          label: 'Automobile P <  3CV',
+                          value: '5',
+                        },
+                        {key: index++, label: 'Automobile P = 4CV', value: '6'},
+                        {key: index++, label: 'Automobile P = 5CV', value: '7'},
+                        {key: index++, label: 'Automobile P = 6CV', value: '8'},
+                        {key: index++, label: 'Automobile P > 6CV', value: '9'},
+                      ]}
+                    />
+                    <SelectInput
+                      label={text.PuissanceAdministrative}
+                      selectedValue={this.state.puissance.label}
+                      onChange={(option) => {
+                        console.log(option);
+                        this.setState({puissance: option});
+                      }}
+                      listItems={[
+                        {key: index++, label: 'Moto P < 50 CC', value: '1'},
+                        {key: index++, label: 'Moto P < 3CV', value: '2'},
+                        {key: index++, label: 'Moto P < 6CV', value: '3'},
+                        {key: index++, label: 'Moto P > 5CV', value: '4'},
+                        {
+                          key: index++,
+                          label: 'Automobile P <  3CV',
+                          value: '5',
+                        },
+                        {key: index++, label: 'Automobile P = 4CV', value: '6'},
+                        {key: index++, label: 'Automobile P = 5CV', value: '7'},
+                        {key: index++, label: 'Automobile P = 6CV', value: '8'},
+                        {key: index++, label: 'Automobile P > 6CV', value: '9'},
+                      ]}
+                    />
+                    <SelectInput
+                      label={text.PuissanceAdministrative}
+                      selectedValue={this.state.puissance.label}
+                      onChange={(option) => {
+                        console.log(option);
+                        this.setState({puissance: option});
+                      }}
+                      listItems={[
+                        {key: index++, label: 'Moto P < 50 CC', value: '1'},
+                        {key: index++, label: 'Moto P < 3CV', value: '2'},
+                        {key: index++, label: 'Moto P < 6CV', value: '3'},
+                        {key: index++, label: 'Moto P > 5CV', value: '4'},
+                        {
+                          key: index++,
+                          label: 'Automobile P <  3CV',
+                          value: '5',
+                        },
+                        {key: index++, label: 'Automobile P = 4CV', value: '6'},
+                        {key: index++, label: 'Automobile P = 5CV', value: '7'},
+                        {key: index++, label: 'Automobile P = 6CV', value: '8'},
+                        {key: index++, label: 'Automobile P > 6CV', value: '9'},
+                      ]}
+                    />
+                    <View style={styles.ButtonsContain}>
+                      <TouchableHighlight
+                        style={styles.btnContainer}
+                        onPress={() => this.props.closeModal(null)}>
+                        <Text style={styles.btnTxt}>{text.Annuler}</Text>
+                      </TouchableHighlight>
+                      <SubmitButton onPress={() => null} />
+                    </View>
+                  </View>
+                </ScrollView>
               </View>
             </View>
           </View>

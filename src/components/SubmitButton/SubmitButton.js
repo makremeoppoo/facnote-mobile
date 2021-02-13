@@ -1,0 +1,27 @@
+import React from 'react';
+import {TouchableHighlight, Image, Text, View} from 'react-native';
+import styles from './styles';
+import Rectangle from '../../../assets/images/Rectangle.png';
+import {text} from '../../constants';
+
+export default class SubmitButton extends React.Component {
+  render() {
+    return (
+      <TouchableHighlight
+        style={styles.btnSubmitContainer}
+        onPress={this.props.onPress}>
+        <>
+          <Image style={styles.rectangle} source={Rectangle} />
+          <Text style={styles.submitTxt}>
+            {' '}
+            {this.props.loading ? (
+              <ActivityIndicator size="small" color="white" />
+            ) : (
+              this.props.label
+            )}
+          </Text>
+        </>
+      </TouchableHighlight>
+    );
+  }
+}

@@ -19,7 +19,7 @@ export default class FormInput extends Component {
     return null;
   }
   render() {
-    const {label,errorLabel} = this.props;
+    const {label, errorLabel, grid} = this.props;
     return (
       <View style={styles.inputBlock}>
         <Text
@@ -27,7 +27,19 @@ export default class FormInput extends Component {
           {label}
         </Text>
 
-        <View style={styles.inputContainer}>
+        <View
+          style={[
+            styles.inputContainer,
+            grid == 'column'
+              ? {
+                  width: ScaleHelpers.CalcWidth(40),
+                  margin: ScaleHelpers.CalcWidth(1),
+                }
+              : {
+                  width: ScaleHelpers.CalcWidth(80),
+                  margin: ScaleHelpers.CalcWidth(1),
+                },
+          ]}>
           <TextInput {...this.props} />
           {this.renderError()}
         </View>
@@ -35,6 +47,7 @@ export default class FormInput extends Component {
     );
   }
 }
+
 const styles = StyleSheet.create({
   error: {
     position: 'relative',
