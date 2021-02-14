@@ -15,6 +15,12 @@ export const UPLOAD_FILES = `/api/v1/bill`;
 export const SAVE_INDEMNITE = `/api/v1/note`;
 
 export const text = {
+  voirProfile: 'Voir mon profile',
+  voirSociete: 'Voir SOCIETE',
+  nomComplet: 'Prénom Nom',
+  HistoriqueJustificatifs:'Historique des justificatifs',
+  RelevesBancaires:'Relevés bancaires',
+  MesAchats:'Mes achats',
   filter: 'Filter',
   Reinitialiser: 'Reinitialiser',
   dateDebut: 'Date début',
@@ -58,5 +64,5 @@ export const text = {
   Libelle: 'Libelle',
   Compte: 'Compte',
   TousComptes: 'Tous les comptes',
-  periode:"Période "
+  periode: 'Période ',
 };

@@ -14,6 +14,7 @@ import CabinetBackground from '../../../assets/images/Rectangle.png';
 import rightArrow from '../../../assets/icons/rightArrow.png';
 import Polygone from '../../../assets/icons/Polygone.png';
 import {connect} from 'react-redux';
+import {text} from '../../constants';
 
 class MoreScreen extends React.Component {
   constructor(props) {
@@ -28,9 +29,9 @@ class MoreScreen extends React.Component {
         <Image source={CabinetBackground} style={styles.topImageStyle}></Image>
         <View style={styles.header}>
           <Image style={styles.polygonImg} source={Polygone} />
-          <Text style={styles.headerBigText}>Prénom Nom</Text>
+          <Text style={styles.headerBigText}>{text.nomComplet}</Text>
 
-          <Text style={styles.headerText}>Voir mon profile</Text>
+          <Text style={styles.headerText}>{text.voirProfile}</Text>
         </View>
         <TouchableHighlight
           onPress={() => this.props.navigation.navigate('Cabinet')}
@@ -44,7 +45,7 @@ class MoreScreen extends React.Component {
               <Text style={styles.itemTitle}>
                 {society.cabinet.raison_sociale}
               </Text>
-              <Text style={styles.itemTitle2}>Voire SOCIETE</Text>
+              <Text style={styles.itemTitle2}>{text.voirSociete}</Text>
             </View>
           </View>
         </TouchableHighlight>
@@ -58,35 +59,34 @@ class MoreScreen extends React.Component {
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
                   <Text style={styles.itemTitle}>
-                    Historique des justificatifs
+                    {text.HistoriqueJustificatifs}
                   </Text>
                 </View>
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
             <TouchableHighlight
-              onPress={() =>
-                this.props.navigation.navigate('RelevesBancaires')
-              }
+              onPress={() => this.props.navigation.navigate('RelevesBancaires')}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>Relevés bancaires</Text>
+                  <Text style={styles.itemTitle}>{text.RelevesBancaires}</Text>
                 </View>
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
-            {/* 
             <TouchableHighlight
               onPress={() => this.props.navigation.navigate('Profile')}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>Mes achats</Text>
+                  <Text style={styles.itemTitle}>{text.MesAchats}</Text>
                 </View>
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
+            {/* 
+          
 
             <TouchableHighlight
               onPress={() => this.props.navigation.navigate('Profile')}
