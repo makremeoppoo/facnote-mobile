@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   flatListStyle: {
-    maxHeight: "90%",
+    maxHeight: '80%',
   },
   itemContainer: {
     flexDirection: 'row',
@@ -94,7 +94,41 @@ const styles = StyleSheet.create({
     height: '100%',
     position: 'absolute',
   },
- 
+  modalContainer: {
+    flex: 1,
+    backgroundColor: 'white',
+    marginTop: ScaleHelpers.CalcHeight(12),
+  },
+  modalContant: {
+    height: ScaleHelpers.CalcHeight(40),
+    margin: ScaleHelpers.CalcWidth(3),
+    //Its for IOS
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    // its for android
+    elevation: 5,
+    margin: ScaleHelpers.CalcHeight(2),
+    padding: ScaleHelpers.CalcHeight(2),
+    width: ScaleHelpers.CalcWidth(90),
+    borderRadius: 10,
+    backgroundColor: buttonColor,
+    borderColor: 'rgba(214, 214, 214, 0.4)',
+    borderWidth: 1,
+    flex: 1,
+  },
+  input: {
+    height: '100%',
+    width: '40%',
+  },
+  ButtonsContain: {
+    flex: 1,
+    flexDirection: 'row',
+    alignContent: 'center',
+    justifyContent: 'center',
+    height: ScaleHelpers.CalcHeight(15),
+  },
+
 });
 
 export default styles;

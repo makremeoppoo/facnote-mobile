@@ -4,29 +4,29 @@ import React from 'react';
 import moment from 'moment';
 import {
   View,
-  Text,
   TouchableHighlight,
   FlatList,
   Modal,
-  ImageBackground,
-  ActivityIndicator,
+  Text,
   Image,
+  ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
-import PDFView from 'react-native-view-pdf';
-import Rectangle from '../../../assets/images/Rectangle.png';
 
-import getHistory from '../../services/history';
-
-import CardView from '../../components/CardView/CardView';
+import getAchat from '../../services/achat';
+import DatePicker from '../../components/DatePicker/DatePicker';
+import TextInput from '../../components/TextInput/TextInput';
+import SelectInput from '../../components/SelectInput/SelectInput';
+import CardView from '../../components/CardView/CardViewReleveBanquaire';
 import PageLoader from '../../components/PageLoader/PageLoader';
-
-import Camera from '../../../assets/icons/Camera.png';
+import SubmitButton from '../../components/SubmitButton/SubmitButton';
+import SecondButton from '../../components/SecondButton/SecondButton';
 import Close from '../../../assets/icons/closeGrey.png';
+import {text} from '../../constants';
 
 import styles from './styles';
 
-class MesAchatsScreen extends React.Component {
+class MesAchatsSreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,21 +39,38 @@ class MesAchatsScreen extends React.Component {
       isRefreshing: true,
       hasScrolled: false,
       source: '',
+      dateDebut: null,
+      dateFin: null,
+      min: '',
+      max: '',
+      type: {key: 0, label: 'Débit/Crédit', value: 'tous'},
+      search_multiple: '',
+      comptesBancaire: [],
+      exercices: [],
+      compte: {key: -1, label: '', value: ''},
+      exercice: '',
     };
   }
 
+  setDateDebut = (dateDebut) => {
+    this.setState({dateDebut});
+  };
+  setDateFin = (dateFin) => {
+    this.setState({dateFin});
+  };
+  setField = (text, name) => {
+    this.setState({[name]: text});
+  };
+
   onShowModal = (source) => {
     this.setState({
-      source,
       showModal: !this.state.showModal,
       loading: true,
     });
   };
   onCloseModal = () => {
     this.setState({
-      source: '',
       showModal: false,
-      loading: false,
     });
   };
 
@@ -62,48 +79,63 @@ class MesAchatsScreen extends React.Component {
   };
 
   loadData = async () => {
-    const {limit, page} = this.state;
+    const {
+      limit,
+      page,
+      dateDebut,
+      dateFin,
+      min,
+      max,
+      search_multiple,
+      type,
+      compte,
+    } = this.state;
     this.setState({
       isRefreshing: true,
     });
     try {
-      var history = await getHistory(limit, page);
+      var achats = await getAchat(limit, page, dateDebut, dateFin);
     } catch (e) {
-      console.log(e);
     } finally {
       let list = [];
       let date = '';
       let counter = 0;
 
-      await history.map((item, index) => {
-        let newDate = item.send_date.split(' ')[0];
+      await achats.purchases.map((item, index) => {
+        let newDate = moment(item.date_creation).format('DD/MM/YYYY');
         if (date != newDate) {
           date = newDate;
           list.push({
             id: counter++,
             text: newDate == 'Invalid date' ? '' : newDate,
-
             isTitle: true,
           });
         }
         let obj = {
           id: counter++,
-          date: newDate == 'Invalid date' ? '' : newDate,
-          procent: item.amount,
-          title: 'recu le',
-          icon: Camera,
           isTitle: false,
-          status: item.status,
-          status_label: item.status_label,
-          bill_number: item.bill_number,
-          source: item.source,
-          label: item.label,
-          type: item.type,
-          path: item.received_file_url,
+          libelle: item.libelle,
+          debit: item.debit,
+          credit: item.credit,
+          solde: item.solde,
+          nom_banque: item.nom_banque,
         };
+
         list.push(obj);
       });
-      this.setState({list, isRefreshing: false});
+
+      let exercices = [];
+      /*achats.exercices.map((item, index) => {
+        exercices.push({
+          key: index++,
+          label: `${moment(item.date_debut).format('DD/MM/YYYY')} au ${moment(
+            item.date_fin,
+          ).format('DD/MM/YYYY')}`,
+          date_debut: item.date_debut,
+          date_fin: item.date_fin,
+        });
+      })*;/*/
+      this.setState({list, exercices, isRefreshing: false});
     }
   };
 
@@ -143,24 +175,20 @@ class MesAchatsScreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, source} = this.state;
-    const resourceType = 'url';
-    const resources = {
-      file:
-        Platform.OS === 'ios'
-          ? 'downloadedDocument.pdf'
-          : '/sdcard/Download/downloadedDocument.pdf',
-      url: source,
-      base64: 'JVBERi0xLjMKJcfs...',
-    };
+    const {list, isRefreshing, exercices} = this.state;
+    let index = 0;
     return (
       <View style={styles.container}>
+        <SecondButton
+          label={text.filter}
+          onPress={() => this.setState({showModal: !this.state.showModal})}
+        />
         {isRefreshing && (
           <PageLoader showBackground={true} size="large" color="#0000ff" />
         )}
         <FlatList
-          data={list}
           style={styles.flatListStyle}
+          data={list}
           renderItem={this.renderItem}
           keyExtractor={(item) => `${item.id}`}
           initialNumToRender={3}
@@ -173,41 +201,77 @@ class MesAchatsScreen extends React.Component {
           animationType="slide"
           transparent={true}
           visible={this.state.showModal}>
+          {this.state.loading && (
+            <PageLoader showBackground={false} size="large" color="#0000ff" />
+          )}
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <ImageBackground
-                source={Rectangle}
-                style={styles.backgroundModalStyle}></ImageBackground>
-
               <TouchableHighlight
                 style={styles.modalCloseView}
                 onPress={() => this.onCloseModal()}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
-              <View style={styles.pdfContainer}>
-                {this.state.loading && (
-                  <PageLoader
-                    showBackground={false}
-                    size="large"
-                    color="#0000ff"
-                  />
-                )}
+              <View style={styles.modalContainer}>
+                <ScrollView>
+                  <View style={styles.modalContant}>
+               
+                    <View style={{flexDirection: 'row'}}>
+                      <DatePicker
+                        initialDate={this.state.dateDebut}
+                        setCurrentDate={this.setDateDebut}
+                        label={text.dateDebut}
+                        display={'column'}
+                      />
+                      <DatePicker
+                        initialDate={this.state.dateFin}
+                        setCurrentDate={this.setDateFin}
+                        label={text.dateFin}
+                        display={'column'}
+                      />
+                    </View>
 
-                <PDFView
-                  style={styles.pdf}
-                  fadeInDuration={250.0}
-                  resource={resources[resourceType]}
-                  resourceType={resourceType}
-                  onLoad={() => {
-                    this.setState({loading: false});
-                    console.log(`PDF rendered from ${resourceType}`);
-                  }}
-                  onError={(error) => {
-                    this.setState({loading: false});
-                    console.log('Cannot render PDF', error);
-                  }}
-                />
+                    <SelectInput
+                      label={text.periode}
+                      selectedValue={this.state.exercice.label}
+                      onChange={(option) => {
+                        this.setState({
+                          dateFin: option.date_fin,
+                          dateDebut: option.date_debut,
+                          exercice: option,
+                        });
+                      }}
+                      listItems={exercices}
+                    />
+                    <View style={styles.ButtonsContain}>
+                      <SecondButton
+                        label={text.Reinitialiser}
+                        loading={this.state.loading}
+                        onPress={async () => {
+                          await this.setState({
+                            min: '',
+                            max: '',
+                            dateDebut: null,
+                            dateFin: null,
+                            search_multiple: '',
+                            exercice: '',
+                            compte: {key: -1, label: '', value: ''},
+                          });
+                          await this.handleRefresh();
+                          await this.onCloseModal();
+                        }}
+                      />
+                      <SubmitButton
+                        loading={this.state.loading}
+                        label={text.Valider}
+                        onPress={async () => {
+                          await this.handleRefresh();
+                          await this.onCloseModal();
+                        }}
+                      />
+                    </View>
+                  </View>
+                </ScrollView>
               </View>
             </View>
           </View>
@@ -220,4 +284,4 @@ class MesAchatsScreen extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps)(MesAchatsScreen);
+export default connect(mapStateToProps)(MesAchatsSreen);
