@@ -10,7 +10,7 @@ export const GETCABINET = `/api/v1/cabinet`;
 export const GETSOCIETY = `/api/v1/society`;
 export const GETHISTORY = `/api/v1/bills`;
 export const GETENTERPRISE = `/api/v1/reconciliations/enterprise`;
-
+export const GETACHAT = `/api/v1/purchases`;
 export const UPLOAD_FILES = `/api/v1/bill`;
 export const SAVE_INDEMNITE = `/api/v1/note`;
 
