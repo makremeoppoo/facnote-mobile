@@ -18,7 +18,7 @@ import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
 import RelevesBancairesScreen from '../screens/RelevesBancaires/RelevesBancairesScreen';
-
+import MesAchatsScreen from '../screens/MesAchats/MesAchatsSreen';
 
 import MoreScreen from '../screens/More/MoreScreen';
 
@@ -45,16 +45,10 @@ import FactureImg from '../../assets/icons/photo-white.png';
 
 import CabinetImg from '../../assets/icons/Cabinet.png';
 import CabinetImgActive from '../../assets/icons/cabinetActive.png';
-
-import IndicateurImg from '../../assets/icons/Indicateur.png';
-import IndicateurImgActive from '../../assets/icons/IndicateurBleu.png';
-
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
-import BackgroundNavigation from '../../assets/images/CabinetBackground1.png';
-import getCabinet from '../services/cabinet';
 import ScaleHelpers from '../components/scaleHelpers';
-
+import {text, routes} from '../constants';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -108,21 +102,24 @@ const TabNavigator = () => {
   return (
     <BottomTabNavigator.Navigator
       tabBarOptions={{
-        labelStyle: {textTransform: 'none', fontSize: ScaleHelpers.CalcWidth(15)},
+        labelStyle: {
+          textTransform: 'none',
+          fontSize: ScaleHelpers.CalcWidth(15),
+        },
         style: {
           height: ScaleHelpers.CalcHeight(12),
         },
         showLabel: false,
       }}
-      initialRouteName="Factures">
+      initialRouteName={routes.Factures}>
       <BottomTabNavigator.Screen
-        name="Home"
+        name={routes.Home}
         component={HomeScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
               focused={focused}
-              label={'Accueil'}
+              label={text.Accueil}
               src={focused ? HomeBleu : HomeImg}
             />
           ),
@@ -142,44 +139,44 @@ const TabNavigator = () => {
         }}
       />*/}
       <BottomTabNavigator.Screen
-        name="Factures"
+        name={routes.Factures}
         component={ExpensesScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
               focused={focused}
-              label={'Déposer facture'}
+              label={text.DeposerFacture}
               src={focused ? FactureImgActive : FactureImg}
             />
           ),
         }}
       />
       <BottomTabNavigator.Screen
-        name="Cabinet"
+        name={routes.Cabinet}
         component={ProfileScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
               focused={focused}
-              label={'Cabinet'}
+              label={text.Cabinet}
               src={focused ? CabinetImgActive : CabinetImg}
             />
           ),
         }}
       />
       <BottomTabNavigator.Screen
-        name="Plus"
+        name={routes.Plus}
         component={MoreScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
               focused={focused}
-              label={'Plus'}
+              label={text.Plus}
               src={focused ? PlusImgActive : PlusImg}
             />
           ),
         }}
-      /> 
+      />
     </BottomTabNavigator.Navigator>
   );
 };
@@ -261,7 +258,7 @@ const MainNavigator = () => {
         options={{
           headerShown: false,
         }}
-        name="Indemnites"
+        name={routes.Indemnites}
         component={IndemnitiesScreen}
       />
       <Stack.Screen
@@ -272,15 +269,15 @@ const MainNavigator = () => {
                 onPress={() => {
                   navigation.goBack();
                 }}
-                title={'Historique des justifcatifs'}
+                title={text.HistoriqueJustificatifs}
               />
             ),
           };
         }}
-        name="HistoriqueJutificatifs"
+        name={routes.HistoriqueJutificatifs}
         component={HistoriqueJutificatifsScreen}
       />
-       <Stack.Screen
+      <Stack.Screen
         options={({navigation}) => {
           return {
             header: () => (
@@ -288,13 +285,29 @@ const MainNavigator = () => {
                 onPress={() => {
                   navigation.goBack();
                 }}
-                title={'Relevés bancaires'}
+                title={text.RelevesBancaires}
               />
             ),
           };
         }}
-        name="RelevesBancaires"
+        name={routes.RelevesBancaires}
         component={RelevesBancairesScreen}
+      />
+      <Stack.Screen
+        options={({navigation}) => {
+          return {
+            header: () => (
+              <NavigationHeader
+                onPress={() => {
+                  navigation.goBack();
+                }}
+                title={text.MesAchats}
+              />
+            ),
+          };
+        }}
+        name={routes.MesAchats}
+        component={MesAchatsScreen}
       />
     </Stack.Navigator>
   );

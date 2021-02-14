@@ -14,7 +14,7 @@ import CabinetBackground from '../../../assets/images/Rectangle.png';
 import rightArrow from '../../../assets/icons/rightArrow.png';
 import Polygone from '../../../assets/icons/Polygone.png';
 import {connect} from 'react-redux';
-import {text} from '../../constants';
+import {text,routes} from '../../constants';
 
 class MoreScreen extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class MoreScreen extends React.Component {
           <Text style={styles.headerText}>{text.voirProfile}</Text>
         </View>
         <TouchableHighlight
-          onPress={() => this.props.navigation.navigate('Cabinet')}
+          onPress={() => this.props.navigation.navigate(routes.Cabinet)}
           underlayColor="rgba(73,182,77,1,0.9)">
           <View style={styles.cabinetCard}>
             <Image
@@ -53,7 +53,7 @@ class MoreScreen extends React.Component {
           <View style={styles.content}>
             <TouchableHighlight
               onPress={() =>
-                this.props.navigation.navigate('HistoriqueJutificatifs')
+                this.props.navigation.navigate(routes.HistoriqueJutificatifs)
               }
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
@@ -66,7 +66,7 @@ class MoreScreen extends React.Component {
               </View>
             </TouchableHighlight>
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('RelevesBancaires')}
+              onPress={() => this.props.navigation.navigate(routes.RelevesBancaires)}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
@@ -76,7 +76,7 @@ class MoreScreen extends React.Component {
               </View>
             </TouchableHighlight>
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('Profile')}
+              onPress={() => this.props.navigation.navigate(routes.MesAchats)}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>

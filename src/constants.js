@@ -18,9 +18,9 @@ export const text = {
   voirProfile: 'Voir mon profile',
   voirSociete: 'Voir SOCIETE',
   nomComplet: 'Prénom Nom',
-  HistoriqueJustificatifs:'Historique des justificatifs',
-  RelevesBancaires:'Relevés bancaires',
-  MesAchats:'Mes achats',
+  HistoriqueJustificatifs: 'Historique des justificatifs',
+  RelevesBancaires: 'Relevés bancaires',
+  MesAchats: 'Mes achats',
   filter: 'Filter',
   Reinitialiser: 'Reinitialiser',
   dateDebut: 'Date début',
@@ -64,5 +64,23 @@ export const text = {
   Libelle: 'Libelle',
   Compte: 'Compte',
   TousComptes: 'Tous les comptes',
-  periode: 'Période ',
+  periode: 'Période',
+  Accueil: 'Accueil',
+  DeposerFacture: 'Déposer facture',
+  Cabinet:'Cabinet',
+  Plus:'Plus'
+};
+
+export const routes = {
+  Indemnites: 'Indemnites',
+
+  HistoriqueJutificatifs: 'HistoriqueJutificatifs',
+  RelevesBancaires: 'RelevesBancaires',
+  MesAchats: 'MesAchats',
+  Factures: 'Factures',
+  Home: 'Home',
+  Factures: 'Factures',
+  Cabinet: 'Cabinet',
+  Plus: 'Plus',
+  Login:'Login'
 };

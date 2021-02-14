@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import LogoImage from '../../../assets/images/logo.png';
-import {text} from '../../constants';
+import {text, routes} from '../../constants';
 
 import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png';
 
@@ -21,7 +21,7 @@ export default class WelcomeScreen extends React.Component {
   }
 
   onPressLogButton = () => {
-    this.props.navigation.navigate('Login');
+    this.props.navigation.navigate(routes.Login);
   };
 
   render() {
