@@ -13,7 +13,6 @@ export const GETENTERPRISE = `/api/v1/reconciliations/enterprise`;
 export const GETACHAT = `/api/v1/purchases`;
 export const UPLOAD_FILES = `/api/v1/bill`;
 export const SAVE_INDEMNITY = `/api/v1/note`;
-
 export const text = {
   voirProfile: 'Voir mon profile',
   voirSociete: 'Voir SOCIETE',

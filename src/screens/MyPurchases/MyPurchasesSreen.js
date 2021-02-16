@@ -15,7 +15,6 @@ import {connect} from 'react-redux';
 
 import getAchat from '../../services/achat';
 import DatePicker from '../../components/DatePicker/DatePicker';
-import TextInput from '../../components/TextInput/TextInput';
 import SelectInput from '../../components/SelectInput/SelectInput';
 import CardView from '../../components/CardView/CardViewReleveBanquaire';
 import PageLoader from '../../components/PageLoader/PageLoader';
@@ -26,7 +25,7 @@ import {text} from '../../constants';
 
 import styles from './styles';
 
-class MesAchatsSreen extends React.Component {
+class MyPurchasesSreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -284,4 +283,4 @@ class MesAchatsSreen extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps)(MesAchatsSreen);
+export default connect(mapStateToProps)(MyPurchasesSreen);

@@ -106,11 +106,13 @@ class BankStatementScreen extends React.Component {
         compte.value,
       );
     } catch (e) {
+      console.log(e);
     } finally {
       let list = [];
       let date = '';
       let counter = 0;
-      
+      console.log(statements.comptes);
+
       await statements.ecritures.map((item, index) => {
         let newDate = moment(item.date_operation).format('DD/MM/YYYY');
         if (date != newDate) {
@@ -134,13 +136,13 @@ class BankStatementScreen extends React.Component {
         list.push(obj);
       });
       let comptesBancaire = [{key: -1, label: 'Tous les comptes', value: ''}];
-      Object.keys(statements.comptes_bancaire).map((item, index) => {
+/*      statements.comptes.map((item, index) => {
         comptesBancaire.push({
           key: index++,
-          label: statements.comptes_bancaire[item],
-          value: item,
+          value: item.id,
+          label: item.name,
         });
-      });
+      });*/
       let exercices = [];
       statements.exercices.map((item, index) => {
         exercices.push({
