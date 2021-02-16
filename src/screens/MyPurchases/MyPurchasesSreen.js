@@ -7,12 +7,13 @@ import {
   TouchableHighlight,
   FlatList,
   Modal,
-  Text,
+  ImageBackground,
   Image,
   ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
-
+import PDFView from 'react-native-view-pdf';
+import Rectangle from '../../../assets/images/Rectangle.png';
 import getAchat from '../../services/achat';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import SelectInput from '../../components/SelectInput/SelectInput';
@@ -47,6 +48,7 @@ class MyPurchasesSreen extends React.Component {
       comptesBancaire: [],
       exercices: [],
       compte: {key: -1, label: '', value: ''},
+      showPdfModal: false,
       exercice: '',
     };
   }
@@ -61,7 +63,7 @@ class MyPurchasesSreen extends React.Component {
     this.setState({[name]: text});
   };
 
-  onShowModal = (source) => {
+  onShowModal = () => {
     this.setState({
       showModal: !this.state.showModal,
       loading: true,
@@ -70,6 +72,19 @@ class MyPurchasesSreen extends React.Component {
   onCloseModal = () => {
     this.setState({
       showModal: false,
+    });
+  };
+
+  onShowPdfModal = (source) => {
+    this.setState({
+      source,
+      showPdfModal: !this.state.showPdfModal,
+      loading: true,
+    });
+  };
+  onClosePdfModal = () => {
+    this.setState({
+      showPdfModal: false,
     });
   };
 
@@ -99,7 +114,7 @@ class MyPurchasesSreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-console.log(achats.purchases[0])
+      console.log(achats.purchases[0]);
       await achats.purchases.map((item, index) => {
         let newDate = moment(item.date).format('DD/MM/YYYY');
         if (date != newDate) {
@@ -113,17 +128,17 @@ console.log(achats.purchases[0])
         let obj = {
           id: counter++,
           isTitle: false,
-          journal:item.journal,
+          journal: item.journal,
           libelle: item.libelle,
           debit: item.debit,
           credit: item.credit,
           solde: item.solde,
           numFacture: item.numFacture,
-          dateEcheance:moment(item.date_echeance).format('DD/MM/YYYY'),
-          ttc:item.TTC,
-          ht:item.HT,
-          tva:item.TVA
-
+          dateEcheance: moment(item.date_echeance).format('DD/MM/YYYY'),
+          ttc: item.TTC,
+          ht: item.HT,
+          tva: item.TVA,
+          url: item.url,
         };
 
         list.push(obj);
@@ -175,13 +190,21 @@ console.log(achats.purchases[0])
 
   initData = async () => {};
 
-  renderItem = ({item}) => (
-    <CardView  item={item} />
-  );
+  renderItem = ({item}) => <CardView onShowPdfModal={this.onShowPdfModal} item={item} />;
 
   render() {
-    const {list, isRefreshing, exercices} = this.state;
+    const {list, isRefreshing, exercices,source} = this.state;
     let index = 0;
+    const resourceType = 'url';
+
+    const resources = {
+      file:
+        Platform.OS === 'ios'
+          ? 'downloadedDocument.pdf'
+          : '/sdcard/Download/downloadedDocument.pdf',
+      url: source,
+      base64: 'JVBERi0xLjMKJcfs...',
+    };
     return (
       <View style={styles.container}>
         <SecondButton
@@ -206,7 +229,6 @@ console.log(achats.purchases[0])
           animationType="slide"
           transparent={true}
           visible={this.state.showModal}>
-      
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <TouchableHighlight
@@ -218,7 +240,6 @@ console.log(achats.purchases[0])
               <View style={styles.modalContainer}>
                 <ScrollView>
                   <View style={styles.modalContant}>
-               
                     <View style={{flexDirection: 'row'}}>
                       <DatePicker
                         initialDate={this.state.dateDebut}
@@ -275,6 +296,49 @@ console.log(achats.purchases[0])
                     </View>
                   </View>
                 </ScrollView>
+              </View>
+            </View>
+          </View>
+        </Modal>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.showPdfModal}>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <ImageBackground
+                source={Rectangle}
+                style={styles.backgroundModalStyle}></ImageBackground>
+
+              <TouchableHighlight
+                style={styles.modalCloseView}
+                onPress={() => this.onClosePdfModal()}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <Image style={styles.closeImg} source={Close} />
+              </TouchableHighlight>
+              <View style={styles.pdfContainer}>
+                {this.state.loading && (
+                  <PageLoader
+                    showBackground={false}
+                    size="large"
+                    color="#0000ff"
+                  />
+                )}
+
+                <PDFView
+                  style={styles.pdf}
+                  fadeInDuration={250.0}
+                  resource={resources[resourceType]}
+                  resourceType={resourceType}
+                  onLoad={() => {
+                    this.setState({loading: false});
+                    console.log(`PDF rendered from ${resourceType}`);
+                  }}
+                  onError={(error) => {
+                    this.setState({loading: false});
+                    console.log('Cannot render PDF', error);
+                  }}
+                />
               </View>
             </View>
           </View>

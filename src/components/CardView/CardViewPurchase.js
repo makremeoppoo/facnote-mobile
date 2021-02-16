@@ -31,14 +31,14 @@ class CardView extends React.Component {
               <View style={styles.rowContainer}>
                 <TouchableHighlight
                   style={styles.itemIcon}
-                  onPress={() => this.props.onShowModal(item.path)}
+                  onPress={() => this.props.onShowPdfModal(item.url)}
                   underlayColor="rgba(73,182,77,1,0.9)">
                   <Icon
                     iconStyle={styles.iconRemoveFile}
                     reverse
                     type="ionicon"
                     color="rgb(92,117,254)"
-                    name={'ios-cart'}
+                    name={'ios-attach'}
                     size={25}
                   />
                 </TouchableHighlight>
@@ -46,7 +46,7 @@ class CardView extends React.Component {
                   <Text style={styles.blueTitle} numberOfLines={1}>{item.libelle}</Text>
                 </View>
                 <View style={styles.itemTxtContainer}>
-                  <Text style={{color:'red',fontWeight:'bold'}}>{item.dateEcheance}</Text>
+                  <Text style={[styles.amountItem,{fontWeight:'bold'}]}>{item.dateEcheance}</Text>
                 </View>
               </View>
               <View style={styles.amountContainer}>
