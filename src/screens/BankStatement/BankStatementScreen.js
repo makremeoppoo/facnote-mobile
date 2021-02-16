@@ -44,7 +44,7 @@ class BankStatementScreen extends React.Component {
       min: '',
       max: '',
       type: {key: 0, label: 'Débit/Crédit', value: 'tous'},
-      search_multiple: '',
+      searchMultiple: '',
       comptesBancaire: [],
       exercices: [],
       compte: {key: -1, label: '', value: ''},
@@ -86,7 +86,7 @@ class BankStatementScreen extends React.Component {
       dateFin,
       min,
       max,
-      search_multiple,
+      searchMultiple,
       type,
       compte,
     } = this.state;
@@ -101,7 +101,7 @@ class BankStatementScreen extends React.Component {
         dateFin,
         min,
         max,
-        search_multiple,
+        searchMultiple,
         type.value,
         compte.value,
       );
@@ -235,7 +235,7 @@ class BankStatementScreen extends React.Component {
                     <TextInput
                       style={styles.input}
                       label={text.searchReleveBanquaire}
-                      value={this.state.search_multiple}
+                      value={this.state.searchMultiple}
                       onChangeText={(text, name) =>
                         this.setField(text, 'search_multiple')
                       }
@@ -326,7 +326,7 @@ class BankStatementScreen extends React.Component {
                             max: '',
                             dateDebut: null,
                             dateFin: null,
-                            search_multiple: '',
+                            searchMultiple: '',
                             exercice: '',
                             compte: {key: -1, label: '', value: ''},
                           });

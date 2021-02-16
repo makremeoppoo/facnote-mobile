@@ -9,9 +9,9 @@ export default async function getEnterprise(
   dateFin,
   min,
   max,
-  search_multiple,
-  debit_search,
-  numero_compte_search,
+  searchMultiple,
+  debitSearch,
+  accountNumberSearch,
 ) {
   try {
     let path = `${c.GETENTERPRISE}?limit=${limit}&page=${page}`;
@@ -26,16 +26,16 @@ export default async function getEnterprise(
     if (max != '') path = `${path}&max=${max}`;
     
     if (search_multiple != '')
-      path = `${path}&search =${search_multiple}`;
+      path = `${path}&search =${searchMultiple}`;
     
     if (debit_search != '') 
-      path = `${path}&debit=${debit_search}`;
+      path = `${path}&debit=${debitSearch}`;
     
     if (numero_compte_search != '')
-      path = `${path}&account_number=${numero_compte_search}`;
+      path = `${path}&account_number=${accountNumberSearch}`;
 
 
-    console.log(path);
+
     
     let res = await api.get(path, {
       withCredentials: true,
