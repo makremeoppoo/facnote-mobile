@@ -136,13 +136,10 @@ class BankStatementScreen extends React.Component {
         list.push(obj);
       });
 
-      
       let bankAccounts = [{key: -1, label: 'Tous les comptes', value: ''}];
-     
-      console.log(statements);
-      /*statements.comptes.map((item, index) => {
-        comptesBancaire.push({
-
+      console.log(statements.comptes);
+      /* statements.comptes.map((item, index) => {
+        bankAccounts.push({
           key: index++,
           value: item.id,
           label: item.name,
@@ -202,9 +199,157 @@ class BankStatementScreen extends React.Component {
       item={item}
     />
   );
+  renderFilter = () => (
+    <View style={styles.modalContant}>
+      <TextInput
+        style={styles.input}
+        label={text.searchReleveBanquaire}
+        value={this.state.multipleSearch}
+        onChangeText={(text, name) => this.setField(text, 'search_multiple')}
+        name="search_multiple"
+        type="text"
+      />
+      <View style={{flexDirection: 'row'}}>
+        <DatePicker
+          initialDate={this.state.startDate}
+          setCurrentDate={this.setStartDate}
+          label={text.startDate}
+          display={'column'}
+        />
+        <DatePicker
+          initialDate={this.state.endDate}
+          setCurrentDate={this.setDateFin}
+          label={text.endDate}
+          display={'column'}
+        />
+      </View>
+      <View style={{flexDirection: 'row'}}>
+        <TextInput
+          style={styles.input}
+          label={text.min}
+          value={this.state.min}
+          onChangeText={(text, name) => this.setField(text, 'min')}
+          name="min"
+          type="number"
+          grid={'column'}
+          keyboardType="numeric"
+        />
+        <TextInput
+          style={styles.input}
+          label={text.max}
+          onChangeText={(text, name) => this.setField(text, 'max')}
+          value={this.state.max}
+          name="max"
+          type="number"
+          grid={'column'}
+          keyboardType="numeric"
+        />
+      </View>
+
+      <SelectInput
+        label={text.periode}
+        selectedValue={this.state.exercice.label}
+        onChange={(option) => {
+          this.setState({
+            endDate: option.date_fin,
+            startDate: option.date_debut,
+            exercice: option,
+          });
+        }}
+        listItems={this.state.exercices}
+      />
+      <SelectInput
+        label={text.compte}
+        selectedValue={this.state.account.label}
+        onChange={(option) => {
+          this.setState({account: option});
+        }}
+        listItems={this.state.bankAccounts}
+      />
+
+      <SelectInput
+        label={text.Type}
+        selectedValue={this.state.type.label}
+        onChange={(option) => {
+          this.setState({type: option});
+        }}
+        listItems={[
+          {key: 0, label: 'Débit/Crédit', value: 'tous'},
+          {key: 1, label: 'Débit', value: 'debit'},
+          {key: 2, label: 'Crédit', value: 'credit'},
+        ]}
+      />
+      <View style={styles.ButtonsContain}>
+        <SecondButton
+          label={text.Reinitialiser}
+          loading={this.state.loading}
+          onPress={async () => {
+            await this.setState({
+              min: '',
+              max: '',
+              startDate: null,
+              endDate: null,
+              multipleSearch: '',
+              exercice: '',
+              account: {key: -1, label: '', value: ''},
+            });
+            await this.handleRefresh();
+            await this.onCloseModal();
+          }}
+        />
+        <SubmitButton
+          loading={this.state.loading}
+          label={text.Valider}
+          onPress={async () => {
+            await this.handleRefresh();
+            await this.onCloseModal();
+          }}
+        />
+      </View>
+    </View>
+  );
+  renderActionForm = () => (
+    <View style={styles.modalContant}>
+      <TextInput
+        style={styles.input}
+        label={text.searchReleveBanquaire}
+        value={this.state.multipleSearch}
+        onChangeText={(text, name) => this.setField(text, 'search_multiple')}
+        name="search_multiple"
+        type="text"
+      />
+      <View style={styles.ButtonsContain}>
+        <SecondButton
+          label={text.Reinitialiser}
+          loading={this.state.loading}
+          onPress={async () => {
+            await this.setState({
+              min: '',
+              max: '',
+              startDate: null,
+              endDate: null,
+              multipleSearch: '',
+              exercice: '',
+              account: {key: -1, label: '', value: ''},
+            });
+            await this.handleRefresh();
+            await this.onCloseModal();
+          }}
+        />
+        <SubmitButton
+          loading={this.state.loading}
+          label={text.Valider}
+          onPress={async () => {
+            await this.handleRefresh();
+            await this.onCloseModal();
+          }}
+        />
+      </View>
+    </View>
+  );
 
   render() {
-    const {list, isRefreshing, bankAccounts, exercices} = this.state;
+    const {list, isRefreshing} = this.state;
     let index = 0;
     return (
       <View style={styles.container}>
@@ -242,121 +387,7 @@ class BankStatementScreen extends React.Component {
                 <Image style={styles.closeImg} source={Close} />
               </TouchableHighlight>
               <View style={styles.modalContainer}>
-                <ScrollView>
-                  <View style={styles.modalContant}>
-                    <TextInput
-                      style={styles.input}
-                      label={text.searchReleveBanquaire}
-                      value={this.state.multipleSearch}
-                      onChangeText={(text, name) =>
-                        this.setField(text, 'search_multiple')
-                      }
-                      name="search_multiple"
-                      type="text"
-                    />
-                    <View style={{flexDirection: 'row'}}>
-                      <DatePicker
-                        initialDate={this.state.startDate}
-                        setCurrentDate={this.setStartDate}
-                        label={text.startDate}
-                        display={'column'}
-                      />
-                      <DatePicker
-                        initialDate={this.state.endDate}
-                        setCurrentDate={this.setDateFin}
-                        label={text.endDate}
-                        display={'column'}
-                      />
-                    </View>
-                    <View style={{flexDirection: 'row'}}>
-                      <TextInput
-                        style={styles.input}
-                        label={text.min}
-                        value={this.state.min}
-                        onChangeText={(text, name) =>
-                          this.setField(text, 'min')
-                        }
-                        name="min"
-                        type="number"
-                        grid={'column'}
-                        keyboardType="numeric"
-                      />
-                      <TextInput
-                        style={styles.input}
-                        label={text.max}
-                        onChangeText={(text, name) =>
-                          this.setField(text, 'max')
-                        }
-                        value={this.state.max}
-                        name="max"
-                        type="number"
-                        grid={'column'}
-                        keyboardType="numeric"
-                      />
-                    </View>
-
-                    <SelectInput
-                      label={text.periode}
-                      selectedValue={this.state.exercice.label}
-                      onChange={(option) => {
-                        this.setState({
-                          endDate: option.date_fin,
-                          startDate: option.date_debut,
-                          exercice: option,
-                        });
-                      }}
-                      listItems={exercices}
-                    />
-                    <SelectInput
-                      label={text.account}
-                      selectedValue={this.state.account.label}
-                      onChange={(option) => {
-                        this.setState({account: option});
-                      }}
-                      listItems={bankAccounts}
-                    />
-
-                    <SelectInput
-                      label={text.Type}
-                      selectedValue={this.state.type.label}
-                      onChange={(option) => {
-                        this.setState({type: option});
-                      }}
-                      listItems={[
-                        {key: 0, label: 'Débit/Crédit', value: 'tous'},
-                        {key: 1, label: 'Débit', value: 'debit'},
-                        {key: 2, label: 'Crédit', value: 'credit'},
-                      ]}
-                    />
-                    <View style={styles.ButtonsContain}>
-                      <SecondButton
-                        label={text.Reinitialiser}
-                        loading={this.state.loading}
-                        onPress={async () => {
-                          await this.setState({
-                            min: '',
-                            max: '',
-                            startDate: null,
-                            endDate: null,
-                            multipleSearch: '',
-                            exercice: '',
-                            account: {key: -1, label: '', value: ''},
-                          });
-                          await this.handleRefresh();
-                          await this.onCloseModal();
-                        }}
-                      />
-                      <SubmitButton
-                        loading={this.state.loading}
-                        label={text.Valider}
-                        onPress={async () => {
-                          await this.handleRefresh();
-                          await this.onCloseModal();
-                        }}
-                      />
-                    </View>
-                  </View>
-                </ScrollView>
+                <ScrollView>{this.renderFilter()}</ScrollView>
               </View>
             </View>
           </View>
