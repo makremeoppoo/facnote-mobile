@@ -22,17 +22,23 @@ export default async function getEnterprise(
     if (min != '') path = `${path}&min=${min}`;
     if (max != '') path = `${path}&max=${max}`;
     if (max != '') path = `${path}&max=${max}`;
+    
     if (search_multiple != '')
       path = `${path}&search_multiple =${search_multiple}`;
-    if (debit_search != '') path = `${path}&debit_search=${debit_search}`;
+    
+    if (debit_search != '') 
+      path = `${path}&debit_search=${debit_search}`;
+    
     if (numero_compte_search != '')
       path = `${path}&numero_compte_search=${numero_compte_search}`;
 
-    console.log(path);
+    console.log('zzzzzzzzzzzzzzzzzzzzzz');
+    
     let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',
     });
+    
     return res.data;
   } catch (e) {
     throw handler(e);

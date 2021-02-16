@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 
-import getEnterprise from '../../services/entreprise';
+import getEnterprise from '../../services/bankStatement';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
 import SelectInput from '../../components/SelectInput/SelectInput';
@@ -26,7 +26,7 @@ import {text} from '../../constants';
 
 import styles from './styles';
 
-class ReleveBanqueScreen extends React.Component {
+class BankStatementScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -94,7 +94,7 @@ class ReleveBanqueScreen extends React.Component {
       isRefreshing: true,
     });
     try {
-      var releves = await getEnterprise(
+      var statements = await getEnterprise(
         limit,
         page,
         dateDebut,
@@ -110,8 +110,8 @@ class ReleveBanqueScreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-
-      await releves.raw_ecritures.map((item, index) => {
+      
+      await statements.ecritures.map((item, index) => {
         let newDate = moment(item.date_operation).format('DD/MM/YYYY');
         if (date != newDate) {
           date = newDate;
@@ -134,15 +134,15 @@ class ReleveBanqueScreen extends React.Component {
         list.push(obj);
       });
       let comptesBancaire = [{key: -1, label: 'Tous les comptes', value: ''}];
-      Object.keys(releves.comptes_bancaire).map((item, index) => {
+      Object.keys(statements.comptes_bancaire).map((item, index) => {
         comptesBancaire.push({
           key: index++,
-          label: releves.comptes_bancaire[item],
+          label: statements.comptes_bancaire[item],
           value: item,
         });
       });
       let exercices = [];
-      releves.exercices.map((item, index) => {
+      statements.exercices.map((item, index) => {
         exercices.push({
           key: index++,
           label: `${moment(item.date_debut).format('DD/MM/YYYY')} au ${moment(
@@ -357,4 +357,4 @@ class ReleveBanqueScreen extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps)(ReleveBanqueScreen);
+export default connect(mapStateToProps)(BankStatementScreen);

@@ -1,9 +1,9 @@
 import * as c from '../constants';
 import api from './axios';
 
-export default async function saveIndemnite(data) {
+export default async function saveIndemnity(data) {
   try {
-    let res = await api.put(c.SAVE_INDEMNITE, data);
+    let res = await api.put(c.SAVE_INDEMNITY, data);
 
     return res.data;
   } catch (e) {
