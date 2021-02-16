@@ -40,7 +40,7 @@ class BankStatementScreen extends React.Component {
       hasScrolled: false,
       source: '',
       startDate: null,
-      dateFin: null,
+      endDate: null,
       min: '',
       max: '',
       type: {key: 0, label: 'Débit/Crédit', value: 'tous'},
@@ -55,8 +55,8 @@ class BankStatementScreen extends React.Component {
   setStartDate = (startDate) => {
     this.setState({startDate});
   };
-  setDateFin = (dateFin) => {
-    this.setState({dateFin});
+  setDateFin = (endDate) => {
+    this.setState({endDate});
   };
   setField = (text, name) => {
     this.setState({[name]: text});
@@ -83,7 +83,7 @@ class BankStatementScreen extends React.Component {
       limit,
       page,
       startDate,
-      dateFin,
+      endDate,
       min,
       max,
       multipleSearch,
@@ -98,7 +98,7 @@ class BankStatementScreen extends React.Component {
         limit,
         page,
         startDate,
-        dateFin,
+        endDate,
         min,
         max,
         multipleSearch,
@@ -250,9 +250,9 @@ class BankStatementScreen extends React.Component {
                         display={'column'}
                       />
                       <DatePicker
-                        initialDate={this.state.dateFin}
+                        initialDate={this.state.endDate}
                         setCurrentDate={this.setDateFin}
-                        label={text.dateFin}
+                        label={text.endDate}
                         display={'column'}
                       />
                     </View>
@@ -288,7 +288,7 @@ class BankStatementScreen extends React.Component {
                       selectedValue={this.state.exercice.label}
                       onChange={(option) => {
                         this.setState({
-                          dateFin: option.date_fin,
+                          endDate: option.date_fin,
                           startDate: option.date_debut,
                           exercice: option,
                         });
@@ -325,7 +325,7 @@ class BankStatementScreen extends React.Component {
                             min: '',
                             max: '',
                             startDate: null,
-                            dateFin: null,
+                            endDate: null,
                             multipleSearch: '',
                             exercice: '',
                             compte: {key: -1, label: '', value: ''},
