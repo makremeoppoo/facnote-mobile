@@ -39,12 +39,12 @@ class BankStatementScreen extends React.Component {
       isRefreshing: true,
       hasScrolled: false,
       source: '',
-      dateDebut: null,
+      startDate: null,
       dateFin: null,
       min: '',
       max: '',
       type: {key: 0, label: 'Débit/Crédit', value: 'tous'},
-      searchMultiple: '',
+      multipleSearch: '',
       comptesBancaire: [],
       exercices: [],
       compte: {key: -1, label: '', value: ''},
@@ -52,8 +52,8 @@ class BankStatementScreen extends React.Component {
     };
   }
 
-  setDateDebut = (dateDebut) => {
-    this.setState({dateDebut});
+  setStartDate = (startDate) => {
+    this.setState({startDate});
   };
   setDateFin = (dateFin) => {
     this.setState({dateFin});
@@ -82,11 +82,11 @@ class BankStatementScreen extends React.Component {
     const {
       limit,
       page,
-      dateDebut,
+      startDate,
       dateFin,
       min,
       max,
-      searchMultiple,
+      multipleSearch,
       type,
       compte,
     } = this.state;
@@ -97,11 +97,11 @@ class BankStatementScreen extends React.Component {
       var statements = await getEnterprise(
         limit,
         page,
-        dateDebut,
+        startDate,
         dateFin,
         min,
         max,
-        searchMultiple,
+        multipleSearch,
         type.value,
         compte.value,
       );
@@ -235,7 +235,7 @@ class BankStatementScreen extends React.Component {
                     <TextInput
                       style={styles.input}
                       label={text.searchReleveBanquaire}
-                      value={this.state.searchMultiple}
+                      value={this.state.multipleSearch}
                       onChangeText={(text, name) =>
                         this.setField(text, 'search_multiple')
                       }
@@ -244,9 +244,9 @@ class BankStatementScreen extends React.Component {
                     />
                     <View style={{flexDirection: 'row'}}>
                       <DatePicker
-                        initialDate={this.state.dateDebut}
-                        setCurrentDate={this.setDateDebut}
-                        label={text.dateDebut}
+                        initialDate={this.state.startDate}
+                        setCurrentDate={this.setStartDate}
+                        label={text.startDate}
                         display={'column'}
                       />
                       <DatePicker
@@ -289,7 +289,7 @@ class BankStatementScreen extends React.Component {
                       onChange={(option) => {
                         this.setState({
                           dateFin: option.date_fin,
-                          dateDebut: option.date_debut,
+                          startDate: option.date_debut,
                           exercice: option,
                         });
                       }}
@@ -324,9 +324,9 @@ class BankStatementScreen extends React.Component {
                           await this.setState({
                             min: '',
                             max: '',
-                            dateDebut: null,
+                            startDate: null,
                             dateFin: null,
-                            searchMultiple: '',
+                            multipleSearch: '',
                             exercice: '',
                             compte: {key: -1, label: '', value: ''},
                           });
