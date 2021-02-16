@@ -98,11 +98,7 @@ class MyPurchasesSreen extends React.Component {
       page,
       dateDebut,
       dateFin,
-      min,
-      max,
-      search_multiple,
-      type,
-      compte,
+    
     } = this.state;
     this.setState({
       isRefreshing: true,

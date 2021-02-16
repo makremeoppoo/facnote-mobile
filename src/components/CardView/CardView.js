@@ -9,6 +9,8 @@ import {
   CollapseBody,
 } from 'accordion-collapse-react-native';
 import {Badge, Text} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import styles from './styles';
 import {text} from '../../constants';
 
@@ -37,7 +39,14 @@ class CardView extends React.Component {
                   style={styles.itemIcon}
                   onPress={() => this.props.onShowModal(item.path)}
                   underlayColor="rgba(73,182,77,1,0.9)">
-                  <Image style={styles.itemIcon} source={item.icon} />
+                  <Icon
+                    iconStyle={styles.iconRemoveFile}
+                    reverse
+                    type="ionicon"
+                    color="rgb(92,117,254)"
+                    name={'ios-attach'}
+                    size={25}
+                  />
                 </TouchableHighlight>
                 <View style={styles.itemTxtContainer}>
                   <Text style={styles.blueTitle}>{item.title}</Text>

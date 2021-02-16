@@ -4,14 +4,6 @@ import ScaleHelpers from '../../components/scaleHelpers';
 import {textColor, buttonColor} from '../../AppStyles';
 
 const styles = StyleSheet.create({
-  itemContainer: {
-    alignSelf: 'center',
-    width: ScaleHelpers.CalcWidth(80),
-    borderBottomColor: 'rgba(214, 214, 214, 0.6)',
-    borderBottomWidth: 1,
-    padding: ScaleHelpers.CalcWidth(3),
-  },
-
   itemTitleContainer: {
     flexDirection: 'row',
     padding: ScaleHelpers.CalcHeight(1),
@@ -39,19 +31,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderColor: 'rgba(214, 214, 214, 1)',
-    borderBottomWidth:0.5,
+    borderTopWidth: 0.5,
+    
   },
   rowContainer: {
     flexDirection: 'row',
-    alignSelf: 'center',
-  
+    alignSelf: 'flex-start',
   },
   itemIcon: {
     alignSelf: 'center',
     width: ScaleHelpers.CalcWidth(7),
     height: ScaleHelpers.CalcWidth(7),
-    marginRight:  ScaleHelpers.CalcWidth(1),
-    marginLeft:  ScaleHelpers.CalcWidth(1),
+    marginRight: ScaleHelpers.CalcWidth(1),
+    marginLeft: ScaleHelpers.CalcWidth(1),
     //lineHeight: 30
   },
   itemTxtContainer: {
@@ -60,31 +52,35 @@ const styles = StyleSheet.create({
     lineHeight: 34,
   },
   blueTitle: {
-    fontSize: ScaleHelpers.CalcWidth(3),
+    fontSize: ScaleHelpers.CalcWidth(3.6),
     color: 'rgb( 92,117,254)',
     fontFamily: 'Nunito-Bold',
-    margin: ScaleHelpers.CalcWidth(2),
+    margin: ScaleHelpers.CalcWidth(0),
   },
   itemTitle: {
-    fontSize: ScaleHelpers.CalcWidth(3),
+    fontSize: ScaleHelpers.CalcWidth(3.6),
     color: 'rgb(112,112,112)',
     fontFamily: 'Nunito-Bold',
   },
-  row: {flex: 1, flexDirection: 'row'},
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+ 
+  },
 
   itemText: {
-    fontSize: ScaleHelpers.CalcWidth(3),
+    fontSize: ScaleHelpers.CalcWidth(3.7),
     fontFamily: 'Nunito-Bold',
     color: '#7f7d80',
-    minWidth: ScaleHelpers.CalcWidth(20),
-    maxWidth: ScaleHelpers.CalcWidth(20),
+    minWidth: ScaleHelpers.CalcWidth(24),
+    maxWidth: ScaleHelpers.CalcWidth(24),
   },
   blueItemText: {
-    fontSize: ScaleHelpers.CalcWidth(3),
+    fontSize: ScaleHelpers.CalcWidth(3.6),
     color: 'rgb( 92,117,254)',
     fontFamily: 'Nunito-Bold',
-    minWidth: ScaleHelpers.CalcWidth(13),
-    maxWidth: ScaleHelpers.CalcWidth(13),
+    minWidth: ScaleHelpers.CalcWidth(14),
+    maxWidth: ScaleHelpers.CalcWidth(14),
   },
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),
@@ -96,11 +92,11 @@ const styles = StyleSheet.create({
   amountItem: {
     textAlign: 'center',
     color: 'rgb(112,112,112)',
-    fontSize: ScaleHelpers.CalcWidth(3),
+    fontSize: ScaleHelpers.CalcWidth(3.6),
     fontFamily: 'Nunito-Bold',
   },
   labelReleveBancaire: {
-    fontSize: ScaleHelpers.CalcWidth(2.5),
+    fontSize: ScaleHelpers.CalcWidth(3.6),
     width: ScaleHelpers.CalcWidth(50),
     color: 'rgb( 92,117,254)',
     fontFamily: 'Nunito-Bold',
@@ -108,7 +104,6 @@ const styles = StyleSheet.create({
   soldeContainer: {
     alignItems: 'flex-end',
     color: 'rgb(112,112,112)',
-    fontSize: ScaleHelpers.CalcWidth(3),
     fontFamily: 'Nunito-Bold',
   },
   libelleRelBanquaireContainer: {
@@ -120,7 +115,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     borderColor: 'rgba(214, 214, 214, 1)',
-    borderBottomWidth:0.5,
+    borderBottomWidth: 0.5,
   },
 });
 
