@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 
-import getEnterprise from '../../services/entreprise';
+import getEnterprise from '../../services/bankStatement';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
 import SelectInput from '../../components/SelectInput/SelectInput';
@@ -26,7 +26,7 @@ import {text} from '../../constants';
 
 import styles from './styles';
 
-class ReleveBanqueScreen extends React.Component {
+class BankStatementScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -39,12 +39,12 @@ class ReleveBanqueScreen extends React.Component {
       isRefreshing: true,
       hasScrolled: false,
       source: '',
-      dateDebut: null,
-      dateFin: null,
+      startDate: null,
+      endDate: null,
       min: '',
       max: '',
       type: {key: 0, label: 'Débit/Crédit', value: 'tous'},
-      search_multiple: '',
+      multipleSearch: '',
       comptesBancaire: [],
       exercices: [],
       compte: {key: -1, label: '', value: ''},
@@ -52,11 +52,11 @@ class ReleveBanqueScreen extends React.Component {
     };
   }
 
-  setDateDebut = (dateDebut) => {
-    this.setState({dateDebut});
+  setStartDate = (startDate) => {
+    this.setState({startDate});
   };
-  setDateFin = (dateFin) => {
-    this.setState({dateFin});
+  setDateFin = (endDate) => {
+    this.setState({endDate});
   };
   setField = (text, name) => {
     this.setState({[name]: text});
@@ -82,11 +82,11 @@ class ReleveBanqueScreen extends React.Component {
     const {
       limit,
       page,
-      dateDebut,
-      dateFin,
+      startDate,
+      endDate,
       min,
       max,
-      search_multiple,
+      multipleSearch,
       type,
       compte,
     } = this.state;
@@ -94,14 +94,14 @@ class ReleveBanqueScreen extends React.Component {
       isRefreshing: true,
     });
     try {
-      var releves = await getEnterprise(
+      var statements = await getEnterprise(
         limit,
         page,
-        dateDebut,
-        dateFin,
+        startDate,
+        endDate,
         min,
         max,
-        search_multiple,
+        multipleSearch,
         type.value,
         compte.value,
       );
@@ -110,8 +110,8 @@ class ReleveBanqueScreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-
-      await releves.raw_ecritures.map((item, index) => {
+      
+      await statements.ecritures.map((item, index) => {
         let newDate = moment(item.date_operation).format('DD/MM/YYYY');
         if (date != newDate) {
           date = newDate;
@@ -134,15 +134,15 @@ class ReleveBanqueScreen extends React.Component {
         list.push(obj);
       });
       let comptesBancaire = [{key: -1, label: 'Tous les comptes', value: ''}];
-      Object.keys(releves.comptes_bancaire).map((item, index) => {
+      Object.keys(statements.comptes_bancaire).map((item, index) => {
         comptesBancaire.push({
           key: index++,
-          label: releves.comptes_bancaire[item],
+          label: statements.comptes_bancaire[item],
           value: item,
         });
       });
       let exercices = [];
-      releves.exercices.map((item, index) => {
+      statements.exercices.map((item, index) => {
         exercices.push({
           key: index++,
           label: `${moment(item.date_debut).format('DD/MM/YYYY')} au ${moment(
@@ -235,7 +235,7 @@ class ReleveBanqueScreen extends React.Component {
                     <TextInput
                       style={styles.input}
                       label={text.searchReleveBanquaire}
-                      value={this.state.search_multiple}
+                      value={this.state.multipleSearch}
                       onChangeText={(text, name) =>
                         this.setField(text, 'search_multiple')
                       }
@@ -244,15 +244,15 @@ class ReleveBanqueScreen extends React.Component {
                     />
                     <View style={{flexDirection: 'row'}}>
                       <DatePicker
-                        initialDate={this.state.dateDebut}
-                        setCurrentDate={this.setDateDebut}
-                        label={text.dateDebut}
+                        initialDate={this.state.startDate}
+                        setCurrentDate={this.setStartDate}
+                        label={text.startDate}
                         display={'column'}
                       />
                       <DatePicker
-                        initialDate={this.state.dateFin}
+                        initialDate={this.state.endDate}
                         setCurrentDate={this.setDateFin}
-                        label={text.dateFin}
+                        label={text.endDate}
                         display={'column'}
                       />
                     </View>
@@ -288,8 +288,8 @@ class ReleveBanqueScreen extends React.Component {
                       selectedValue={this.state.exercice.label}
                       onChange={(option) => {
                         this.setState({
-                          dateFin: option.date_fin,
-                          dateDebut: option.date_debut,
+                          endDate: option.date_fin,
+                          startDate: option.date_debut,
                           exercice: option,
                         });
                       }}
@@ -324,9 +324,9 @@ class ReleveBanqueScreen extends React.Component {
                           await this.setState({
                             min: '',
                             max: '',
-                            dateDebut: null,
-                            dateFin: null,
-                            search_multiple: '',
+                            startDate: null,
+                            endDate: null,
+                            multipleSearch: '',
                             exercice: '',
                             compte: {key: -1, label: '', value: ''},
                           });
@@ -357,4 +357,4 @@ class ReleveBanqueScreen extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps)(ReleveBanqueScreen);
+export default connect(mapStateToProps)(BankStatementScreen);

@@ -17,7 +17,7 @@ import {connect} from 'react-redux';
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
-import Indemnite from '../../../assets/images/Indemnite.png';
+import Indemnity from '../../../assets/images/Indemnity.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import AddFactureScreen from './AddFacture';
 import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
@@ -85,7 +85,7 @@ class UploadScreen extends React.Component {
                 style={styles.btnContainer}
                 onPress={() => this.setTypeFacture(0)}
                 underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.Img} source={Indemnite} />
+                <Image style={styles.Img} source={Indemnity} />
               </TouchableHighlight>
             </View>
           </View>

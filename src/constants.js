@@ -12,7 +12,7 @@ export const GETHISTORY = `/api/v1/bills`;
 export const GETENTERPRISE = `/api/v1/reconciliations/enterprise`;
 export const GETACHAT = `/api/v1/purchases`;
 export const UPLOAD_FILES = `/api/v1/bill`;
-export const SAVE_INDEMNITE = `/api/v1/note`;
+export const SAVE_INDEMNITY = `/api/v1/note`;
 
 export const text = {
   voirProfile: 'Voir mon profile',
@@ -39,10 +39,10 @@ export const text = {
   Connexion: 'Connexion',
   ErrorLogin: 'identifiant ou mot de passe incorrect !',
   Felicitation: 'Felicitation',
-  indemniteSuccess: 'Les données ont été enregistrées avec succès',
+  indemnitySuccess: 'Les données ont été enregistrées avec succès',
   telechargementError: 'telechargement fichier interrompu',
   Echec: 'Échec',
-  IndemnitesTitle: 'Indemnités Kilométriques',
+  IndemnitiesTitle: 'Indemnités Kilométriques',
   Date: 'Date',
   PuissanceAdministrative: 'Puissance Administrative',
   Champobligatoire: 'Champ obligatoire',
@@ -72,15 +72,13 @@ export const text = {
 };
 
 export const routes = {
-  Indemnites: 'Indemnites',
-
-  HistoriqueJutificatifs: 'HistoriqueJutificatifs',
-  RelevesBancaires: 'RelevesBancaires',
-  MesAchats: 'MesAchats',
-  Factures: 'Factures',
+  Indemnities: 'Indemnities',
+  HistoryOfPayementReceipts: 'HistoryOfPayementReceipts',
+  BankStatement: 'BankStatement',
+  MyPurchases: 'MyPurchases',
+  Invoices: 'Invoices',
   Home: 'Home',
-  Factures: 'Factures',
   Cabinet: 'Cabinet',
-  Plus: 'Plus',
+  More: 'More',
   Login:'Login'
 };

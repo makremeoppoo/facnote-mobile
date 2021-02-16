@@ -53,7 +53,7 @@ class MoreScreen extends React.Component {
           <View style={styles.content}>
             <TouchableHighlight
               onPress={() =>
-                this.props.navigation.navigate(routes.HistoriqueJutificatifs)
+                this.props.navigation.navigate(routes.HistoryOfPayementReceipts)
               }
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
@@ -66,7 +66,9 @@ class MoreScreen extends React.Component {
               </View>
             </TouchableHighlight>
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate(routes.RelevesBancaires)}
+              onPress={() =>
+                this.props.navigation.navigate(routes.BankStatement)
+              }
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
@@ -76,7 +78,7 @@ class MoreScreen extends React.Component {
               </View>
             </TouchableHighlight>
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate(routes.MesAchats)}
+              onPress={() => this.props.navigation.navigate(routes.MyPurchases)}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>

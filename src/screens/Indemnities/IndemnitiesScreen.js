@@ -16,7 +16,7 @@ import SecondButton from '../../components/SecondButton/SecondButton';
 import SelectInput from '../../components/SelectInput/SelectInput';
 
 import styles from './styles';
-import saveIndemnite from '../../services/indemnite';
+import saveIndemnity from '../../services/indemnity';
 import moment from 'moment';
 import {text} from '../../constants';
 
@@ -46,7 +46,7 @@ class IndemnitiesScreen extends React.Component {
     this.setState({[name]: text});
   };
 
-  sendIndemnite = async () => {
+  sendIndemnity = async () => {
     const {
       puissance,
       date,
@@ -86,11 +86,11 @@ class IndemnitiesScreen extends React.Component {
         user: {id: user.id},
       };
 
-      var res = await saveIndemnite(data);
+      var res = await saveIndemnity(data);
 
       this.props.closeModal({
         text1: text.Felicitation,
-        text2: text.indemniteSuccess,
+        text2: text.indemnitySuccess,
         type: 'success',
       });
     } catch (error) {
@@ -118,7 +118,7 @@ class IndemnitiesScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>{text.IndemnitesTitle}</Text>
+            <Text style={styles.title}>{text.IndemnitiesTitle}</Text>
           </View>
           <View style={styles.infoContainer}>
             <DatePicker
@@ -190,7 +190,7 @@ class IndemnitiesScreen extends React.Component {
               <SubmitButton
                 loading={this.state.loading}
                 label={text.Valider}
-                onPress={() => this.sendIndemnite()}
+                onPress={() => this.sendIndemnity()}
               />
             </View>
           </View>

@@ -16,9 +16,10 @@ import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
-import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
-import RelevesBancairesScreen from '../screens/RelevesBancaires/RelevesBancairesScreen';
-import MesAchatsScreen from '../screens/MesAchats/MesAchatsSreen';
+import HistoryScreen from '../screens/HistoryOfPayementReceipts/HistoryScreen';
+import BankStatementScreen from '../screens/BankStatement/BankStatementScreen';
+import MesAchatsSreen from '../screens/MesAchats/MesAchatsSreen';
+
 
 import MoreScreen from '../screens/More/MoreScreen';
 
@@ -111,7 +112,7 @@ const TabNavigator = () => {
         },
         showLabel: false,
       }}
-      initialRouteName={routes.Factures}>
+      initialRouteName={routes.Invoices}>
       <BottomTabNavigator.Screen
         name={routes.Home}
         component={HomeScreen}
@@ -139,7 +140,7 @@ const TabNavigator = () => {
         }}
       />*/}
       <BottomTabNavigator.Screen
-        name={routes.Factures}
+        name={routes.Invoices}
         component={ExpensesScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
@@ -165,7 +166,7 @@ const TabNavigator = () => {
         }}
       />
       <BottomTabNavigator.Screen
-        name={routes.Plus}
+        name={routes.More}
         component={MoreScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
@@ -186,7 +187,7 @@ const mainScreensNavigator = () => {
   //const state = useNavigationState(state => state);
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName={routes.Home}
       screenOptions={({navigation}) => {
         /*var {routeName} = navigation.state.routes[navigation.state.index];
         if (routeName == 'BankAccounts') {
@@ -258,7 +259,7 @@ const MainNavigator = () => {
         options={{
           headerShown: false,
         }}
-        name={routes.Indemnites}
+        name={routes.Indemnities}
         component={IndemnitiesScreen}
       />
       <Stack.Screen
@@ -274,8 +275,8 @@ const MainNavigator = () => {
             ),
           };
         }}
-        name={routes.HistoriqueJutificatifs}
-        component={HistoriqueJutificatifsScreen}
+        name={routes.HistoryOfPayementReceipts}
+        component={HistoryScreen}
       />
       <Stack.Screen
         options={({navigation}) => {
@@ -290,8 +291,8 @@ const MainNavigator = () => {
             ),
           };
         }}
-        name={routes.RelevesBancaires}
-        component={RelevesBancairesScreen}
+        name={routes.BankStatement}
+        component={BankStatementScreen}
       />
       <Stack.Screen
         options={({navigation}) => {
@@ -306,8 +307,8 @@ const MainNavigator = () => {
             ),
           };
         }}
-        name={routes.MesAchats}
-        component={MesAchatsScreen}
+        name={routes.MyPurchases}
+        component={MesAchatsSreen}
       />
     </Stack.Navigator>
   );
