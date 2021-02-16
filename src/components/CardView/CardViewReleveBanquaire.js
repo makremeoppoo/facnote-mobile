@@ -30,7 +30,7 @@ class CardView extends React.Component {
               reverse
               type="ionicon"
               color="rgb(92,117,254)"
-              name={'ios-cart'}
+              name={'ios-create-sharp'}
               size={25}
             />
             <View style={styles.itemTxtContainer}></View>
