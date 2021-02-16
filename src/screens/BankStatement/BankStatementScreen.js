@@ -45,9 +45,9 @@ class BankStatementScreen extends React.Component {
       max: '',
       type: {key: 0, label: 'Débit/Crédit', value: 'tous'},
       multipleSearch: '',
-      comptesBancaire: [],
+      bankAccounts: [],
       exercices: [],
-      compte: {key: -1, label: '', value: ''},
+      account: {key: -1, label: '', value: ''},
       exercice: '',
     };
   }
@@ -88,7 +88,7 @@ class BankStatementScreen extends React.Component {
       max,
       multipleSearch,
       type,
-      compte,
+      account,
     } = this.state;
     this.setState({
       isRefreshing: true,
@@ -103,7 +103,7 @@ class BankStatementScreen extends React.Component {
         max,
         multipleSearch,
         type.value,
-        compte.value,
+        account.value,
       );
     } catch (e) {
       console.log(e);
@@ -135,9 +135,14 @@ class BankStatementScreen extends React.Component {
 
         list.push(obj);
       });
-      let comptesBancaire = [{key: -1, label: 'Tous les comptes', value: ''}];
-      /*      statements.comptes.map((item, index) => {
+
+      
+      let bankAccounts = [{key: -1, label: 'Tous les comptes', value: ''}];
+     
+      console.log(statements);
+      /*statements.comptes.map((item, index) => {
         comptesBancaire.push({
+
           key: index++,
           value: item.id,
           label: item.name,
@@ -154,7 +159,7 @@ class BankStatementScreen extends React.Component {
           date_fin: item.date_fin,
         });
       });
-      this.setState({list, comptesBancaire, exercices, isRefreshing: false});
+      this.setState({list, bankAccounts, exercices, isRefreshing: false});
     }
   };
 
@@ -199,7 +204,7 @@ class BankStatementScreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, comptesBancaire, exercices} = this.state;
+    const {list, isRefreshing, bankAccounts, exercices} = this.state;
     let index = 0;
     return (
       <View style={styles.container}>
@@ -303,12 +308,12 @@ class BankStatementScreen extends React.Component {
                       listItems={exercices}
                     />
                     <SelectInput
-                      label={text.compte}
-                      selectedValue={this.state.compte.label}
+                      label={text.account}
+                      selectedValue={this.state.account.label}
                       onChange={(option) => {
-                        this.setState({compte: option});
+                        this.setState({account: option});
                       }}
-                      listItems={comptesBancaire}
+                      listItems={bankAccounts}
                     />
 
                     <SelectInput
@@ -335,7 +340,7 @@ class BankStatementScreen extends React.Component {
                             endDate: null,
                             multipleSearch: '',
                             exercice: '',
-                            compte: {key: -1, label: '', value: ''},
+                            account: {key: -1, label: '', value: ''},
                           });
                           await this.handleRefresh();
                           await this.onCloseModal();
