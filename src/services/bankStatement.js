@@ -3,8 +3,8 @@ import api from './axios';
 import moment from 'moment';
 
 export default async function getEnterprise(
-  limit,
-  page,
+  limit = 10,
+  page = 1,
   startDate,
   endDate,
   min,
@@ -14,14 +14,16 @@ export default async function getEnterprise(
   accountNumberSearch,
 ) {
   try {
+    
+    
     let path = `${c.GETENTERPRISE}?limit=${limit}&page=${page}`;
     if (startDate != null)
       path = `${path}&start_date=${moment(startDate).format('DD/MM/YYYY')}`;
-    else path = `${path}&start_date=01/01/2020`;
+
 
     if (endDate != null)
       path = `${path}&end_date=${moment(endDate).format('DD/MM/YYYY')}`;
-    else path = `${path}&end_date=31/12/2020`;
+
 
     if (min != '') path = `${path}&min=${min}`;
     if (max != '') path = `${path}&max=${max}`;
