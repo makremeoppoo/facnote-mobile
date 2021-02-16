@@ -38,10 +38,13 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    borderColor: 'rgba(214, 214, 214, 1)',
+    borderBottomWidth:0.5,
   },
   rowContainer: {
     flexDirection: 'row',
     alignSelf: 'center',
+  
   },
   itemIcon: {
     alignSelf: 'center',

@@ -16,7 +16,7 @@ import {connect} from 'react-redux';
 import getAchat from '../../services/achat';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import SelectInput from '../../components/SelectInput/SelectInput';
-import CardView from '../../components/CardView/CardViewReleveBanquaire';
+import CardView from '../../components/CardView/CardViewPurchase';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
@@ -99,9 +99,9 @@ class MyPurchasesSreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-
+console.log(achats.purchases[0])
       await achats.purchases.map((item, index) => {
-        let newDate = moment(item.date_creation).format('DD/MM/YYYY');
+        let newDate = moment(item.date).format('DD/MM/YYYY');
         if (date != newDate) {
           date = newDate;
           list.push({
@@ -113,11 +113,17 @@ class MyPurchasesSreen extends React.Component {
         let obj = {
           id: counter++,
           isTitle: false,
+          journal:item.journal,
           libelle: item.libelle,
           debit: item.debit,
           credit: item.credit,
           solde: item.solde,
-          nom_banque: item.nom_banque,
+          numFacture: item.numFacture,
+          dateEcheance:moment(item.date_echeance).format('DD/MM/YYYY'),
+          ttc:item.TTC,
+          ht:item.HT,
+          tva:item.TVA
+
         };
 
         list.push(obj);
@@ -170,7 +176,7 @@ class MyPurchasesSreen extends React.Component {
   initData = async () => {};
 
   renderItem = ({item}) => (
-    <CardView onShowModal={this.onShowModal} item={item} />
+    <CardView  item={item} />
   );
 
   render() {
@@ -200,9 +206,7 @@ class MyPurchasesSreen extends React.Component {
           animationType="slide"
           transparent={true}
           visible={this.state.showModal}>
-          {this.state.loading && (
-            <PageLoader showBackground={false} size="large" color="#0000ff" />
-          )}
+      
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
               <TouchableHighlight

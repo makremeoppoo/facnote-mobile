@@ -18,7 +18,7 @@ import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
 import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoryScreen from '../screens/HistoryOfPayementReceipts/HistoryScreen';
 import BankStatementScreen from '../screens/BankStatement/BankStatementScreen';
-import MesAchatsSreen from '../screens/MesAchats/MesAchatsSreen';
+import MyPurchasesSreen from '../screens/MyPurchases/MyPurchasesSreen';
 
 
 import MoreScreen from '../screens/More/MoreScreen';
@@ -308,7 +308,7 @@ const MainNavigator = () => {
           };
         }}
         name={routes.MyPurchases}
-        component={MesAchatsSreen}
+        component={MyPurchasesSreen}
       />
     </Stack.Navigator>
   );

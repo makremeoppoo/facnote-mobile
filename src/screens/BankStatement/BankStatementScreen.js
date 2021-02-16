@@ -136,7 +136,7 @@ class BankStatementScreen extends React.Component {
         list.push(obj);
       });
       let comptesBancaire = [{key: -1, label: 'Tous les comptes', value: ''}];
-/*      statements.comptes.map((item, index) => {
+      /*      statements.comptes.map((item, index) => {
         comptesBancaire.push({
           key: index++,
           value: item.id,
@@ -190,7 +190,12 @@ class BankStatementScreen extends React.Component {
   initData = async () => {};
 
   renderItem = ({item}) => (
-    <CardView onShowModal={this.onShowModal} item={item} />
+    <CardView
+      onShowModal={() => {
+        return;
+      }}
+      item={item}
+    />
   );
 
   render() {

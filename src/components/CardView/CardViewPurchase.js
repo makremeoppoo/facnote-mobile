@@ -10,14 +10,10 @@ import {
 } from 'accordion-collapse-react-native';
 import {Badge, Text} from 'react-native-elements';
 import styles from './styles';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import {text} from '../../constants';
 
-const StatusHistory = {
-  1: 'primary',
-  2: 'warning',
-  3: 'success',
-  5: 'error',
-};
 class CardView extends React.Component {
   render() {
     const item = this.props.item;
@@ -37,27 +33,24 @@ class CardView extends React.Component {
                   style={styles.itemIcon}
                   onPress={() => this.props.onShowModal(item.path)}
                   underlayColor="rgba(73,182,77,1,0.9)">
-                  <Image style={styles.itemIcon} source={item.icon} />
+                  <Icon
+                    iconStyle={styles.iconRemoveFile}
+                    reverse
+                    type="ionicon"
+                    color="rgb(92,117,254)"
+                    name={'ios-cart'}
+                    size={25}
+                  />
                 </TouchableHighlight>
-                <View style={styles.itemTxtContainer}>
-                  <Text style={styles.blueTitle}>{item.title}</Text>
+                <View style={[styles.itemTxtContainer,{width:"40%"}]}>
+                  <Text style={styles.blueTitle} numberOfLines={1}>{item.libelle}</Text>
                 </View>
                 <View style={styles.itemTxtContainer}>
-                  <Text style={styles.itemTitle}>{item.date}</Text>
-                </View>
-                <View style={styles.itemTxtContainer}>
-                  <Text style={styles.itemTitle}>
-                    <Badge
-                      value={item.status_label}
-                      status={StatusHistory[item.status.toString()]}
-                    />{' '}
-                  </Text>
+                  <Text style={{color:'red',fontWeight:'bold'}}>{item.dateEcheance}</Text>
                 </View>
               </View>
               <View style={styles.amountContainer}>
-                <Text style={styles.amountItem}>
-                  {(item.procent ? item.procent : 0) + ' €'}
-                </Text>
+                <Text style={styles.amountItem}>{item.journal}</Text>
               </View>
             </View>
           )}
@@ -66,17 +59,23 @@ class CardView extends React.Component {
           <CollapseBody>
             <View style={{alignItems: 'center'}}>
               <View style={styles.row}>
-                <Text style={{...styles.blueItemText}}>{text.Type}:</Text>
-                <Text style={{...styles.itemText}}>{item.type}</Text>
-                <Text style={{...styles.blueItemText}}>{text.Source}:</Text>
-                <Text style={{...styles.itemText}}>{item.source}</Text>
+                <Text style={{...styles.blueItemText}}>{text.BillNumber}:</Text>
+                <Text style={{...styles.itemText}}>{item.numFacture}</Text>
+                <Text style={{...styles.blueItemText}}>{text.MontantTTC}:</Text>
+                <Text style={{...styles.itemText}}>
+                  {(item.ttc ? item.ttc : 0) + ' €'}
+                </Text>
               </View>
 
               <View style={styles.row}>
-                <Text style={{...styles.blueItemText}}>{text.BillNumber}:</Text>
-                <Text style={{...styles.itemText}}>{item.bill_number}</Text>
-                <Text style={{...styles.blueItemText}}>{text.Libelle}:</Text>
-                <Text style={{...styles.itemText}}>{item.label}</Text>
+                <Text style={{...styles.blueItemText}}>HT:</Text>
+                <Text style={{...styles.itemText}}>
+                  {(item.ht ? item.ht : 0) + ' €'}
+                </Text>
+                <Text style={{...styles.blueItemText}}>TVA:</Text>
+                <Text style={{...styles.itemText}}>
+                  {(item.tva ? item.tva : 0) + ' €'}
+                </Text>
               </View>
             </View>
           </CollapseBody>

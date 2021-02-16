@@ -67,7 +67,8 @@ export const text = {
   Accueil: 'Accueil',
   DeposerFacture: 'Déposer facture',
   Cabinet:'Cabinet',
-  Plus:'Plus'
+  Plus:'Plus',
+  MontantTTC:'TTC'
 };
 
 export const routes = {
