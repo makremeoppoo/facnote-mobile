@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
+import {textColor, buttonColor,blueColor} from '../../AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -109,6 +109,12 @@ const styles = StyleSheet.create({
   input: {
     height: '100%',
     width: '40%',
+  },
+  ActionSheetTitle:{
+    color:blueColor,
+    fontWeight:'bold',
+    fontSize: ScaleHelpers.CalcWidth(5),
+
   },
   ButtonsContain: {
     flex: 1,

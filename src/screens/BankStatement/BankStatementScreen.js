@@ -12,6 +12,7 @@ import {
   ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
+import ActionSheet from 'react-native-actionsheet';
 
 import getEnterprise from '../../services/bankStatement';
 import DatePicker from '../../components/DatePicker/DatePicker';
@@ -75,6 +76,11 @@ class BankStatementScreen extends React.Component {
     this.setState({
       showModal: false,
     });
+  };
+
+  showActionSheet = () => {
+    console.log('1');
+    this.ActionSheet.show();
   };
 
   onScroll = () => {
@@ -198,9 +204,7 @@ class BankStatementScreen extends React.Component {
   renderItem = ({item}) => (
     <CardView
       onShowModal={() => {
-        this.setState({
-          showActionModal: !this.state.showActionModal,
-        });
+        this.showActionSheet();
       }}
       item={item}
     />
@@ -319,7 +323,7 @@ class BankStatementScreen extends React.Component {
     return (
       <View style={[styles.modalContant]}>
         <TextAreaInput
-          label={"Message"}
+          label={'Message'}
           value={this.state.multipleSearch}
           onChangeText={(text, name) => this.setField(text, 'search_multiple')}
           name="search_multiple"
@@ -328,17 +332,11 @@ class BankStatementScreen extends React.Component {
 
         <View style={styles.ButtonsContain}>
           <SecondButton
-            label={text.Reinitialiser}
+            label={text.Annuler}
             loading={this.state.loading}
             onPress={async () => {
               await this.setState({
-                min: '',
-                max: '',
-                startDate: null,
-                endDate: null,
-                multipleSearch: '',
-                exercice: '',
-                account: {key: -1, label: '', value: ''},
+                showActionModal: false,
               });
               await this.handleRefresh();
               await this.onCloseModal();
@@ -359,7 +357,7 @@ class BankStatementScreen extends React.Component {
 
   render() {
     const {list, isRefreshing} = this.state;
-    let index = 0;
+   
     return (
       <View style={styles.container}>
         <SecondButton
@@ -426,6 +424,25 @@ class BankStatementScreen extends React.Component {
             </View>
           </View>
         </Modal>
+        <ActionSheet
+          ref={(o) => (this.ActionSheet = o)}
+          options={['FACTURE PERDU', 'FACTURE PERSONNELLE', 'AUTRES']}
+          cancelButtonIndex={2}
+          destructiveButtonIndex={-1}
+          title={
+            <Text
+              style={[
+                styles.ActionSheetTitle
+              ]}>
+              ACTIONS
+            </Text>
+          }
+          onPress={(index) => {
+            this.setState({
+              showActionModal: !this.state.showActionModal,
+            });
+          }}
+        />
       </View>
     );
   }
