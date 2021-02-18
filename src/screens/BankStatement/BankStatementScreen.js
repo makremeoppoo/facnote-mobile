@@ -13,8 +13,11 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import ActionSheet from 'react-native-actionsheet';
+import Toast from 'react-native-toast-message';
 
 import getEnterprise from '../../services/bankStatement';
+import sendComment from '../../services/sendComment';
+
 import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
 import TextAreaInput from '../../components/TextAreaInput/TextInput';
@@ -27,7 +30,7 @@ import Close from '../../../assets/icons/closeGrey.png';
 import {text} from '../../constants';
 
 import styles from './styles';
-
+const billTypeArray = ['perdue', 'personnelle', 'autres'];
 class BankStatementScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -53,6 +56,9 @@ class BankStatementScreen extends React.Component {
       exercices: [],
       account: {key: -1, label: '', value: ''},
       exercice: '',
+      billType: '',
+      bankId: '',
+      comment: '',
     };
   }
 
@@ -78,8 +84,8 @@ class BankStatementScreen extends React.Component {
     });
   };
 
-  showActionSheet = () => {
-    console.log('1');
+  showActionSheet = (bankId) => {
+    this.setState({bankId});
     this.ActionSheet.show();
   };
 
@@ -127,20 +133,16 @@ class BankStatementScreen extends React.Component {
         if (date != newDate) {
           date = newDate;
           list.push({
-            id: counter++,
+            counter: counter++,
             text: newDate == 'Invalid date' ? '' : newDate,
             isTitle: true,
           });
         }
         let obj = {
-          id: counter++,
+          counter: counter++,
           isTitle: false,
-          libelle: item.libelle,
-          debit: item.debit,
-          credit: item.credit,
+          ...item,
           value: item.montant,
-          solde: item.solde,
-          nom_banque: item.nom_banque,
         };
 
         list.push(obj);
@@ -167,6 +169,23 @@ class BankStatementScreen extends React.Component {
         });
       });
       this.setState({list, bankAccounts, exercices, isRefreshing: false});
+    }
+  };
+
+  sendComment = async () => {
+    const {comment, bankId, billType} = this.state;
+
+    try {
+      await sendComment(comment, bankId, billType);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      Toast.show({
+        text1: 'Felicitation',
+        text2: 'Votre message a été envoyé',
+        type: 'success',
+      });
+      this.setState({showActionModal: false});
     }
   };
 
@@ -199,12 +218,14 @@ class BankStatementScreen extends React.Component {
     this.loadData();
   }
 
-  initData = async () => {};
+  handleActionSheetPress = (index) => {
+    this.setState({billType: billTypeArray[index], showActionModal: true});
+  };
 
   renderItem = ({item}) => (
     <CardView
       onShowModal={() => {
-        this.showActionSheet();
+        this.showActionSheet(item.id);
       }}
       item={item}
     />
@@ -319,14 +340,12 @@ class BankStatementScreen extends React.Component {
     </View>
   );
   renderActionForm = () => {
-    const {selectedIndex} = this.state;
     return (
       <View style={[styles.modalContant]}>
         <TextAreaInput
           label={'Message'}
-          value={this.state.multipleSearch}
-          onChangeText={(text, name) => this.setField(text, 'search_multiple')}
-          name="search_multiple"
+          value={this.state.comment}
+          onChangeText={(text, name) => this.setField(text, 'comment')}
           type="text"
         />
 
@@ -338,16 +357,13 @@ class BankStatementScreen extends React.Component {
               await this.setState({
                 showActionModal: false,
               });
-              await this.handleRefresh();
-              await this.onCloseModal();
             }}
           />
           <SubmitButton
             loading={this.state.loading}
             label={text.Valider}
             onPress={async () => {
-              await this.handleRefresh();
-              await this.onCloseModal();
+              await this.sendComment();
             }}
           />
         </View>
@@ -357,9 +373,11 @@ class BankStatementScreen extends React.Component {
 
   render() {
     const {list, isRefreshing} = this.state;
-   
+
     return (
       <View style={styles.container}>
+        <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
+
         <SecondButton
           label={text.filter}
           onPress={() => this.setState({showModal: !this.state.showModal})}
@@ -427,28 +445,15 @@ class BankStatementScreen extends React.Component {
         <ActionSheet
           ref={(o) => (this.ActionSheet = o)}
           options={['FACTURE PERDU', 'FACTURE PERSONNELLE', 'AUTRES']}
-          cancelButtonIndex={2}
-          destructiveButtonIndex={-1}
-          title={
-            <Text
-              style={[
-                styles.ActionSheetTitle
-              ]}>
-              ACTIONS
-            </Text>
-          }
-          onPress={(index) => {
-            this.setState({
-              showActionModal: !this.state.showActionModal,
-            });
-          }}
+          cancelButtonIndex={0}
+          destructiveButtonIndex={3}
+          title={<Text style={[styles.ActionSheetTitle]}>ACTIONS</Text>}
+          onPress={this.handleActionSheetPress}
         />
       </View>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  user: state.auth,
-});
-export default connect(mapStateToProps)(BankStatementScreen);
+
+export default BankStatementScreen;
