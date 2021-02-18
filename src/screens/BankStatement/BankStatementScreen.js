@@ -16,6 +16,7 @@ import {connect} from 'react-redux';
 import getEnterprise from '../../services/bankStatement';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
+import TextAreaInput from '../../components/TextAreaInput/TextInput';
 import SelectInput from '../../components/SelectInput/SelectInput';
 import CardView from '../../components/CardView/CardViewReleveBanquaire';
 import PageLoader from '../../components/PageLoader/PageLoader';
@@ -32,6 +33,8 @@ class BankStatementScreen extends React.Component {
 
     this.state = {
       showModal: false,
+      showActionModal: false,
+
       list: [],
       limit: 10,
       page: 1,
@@ -194,7 +197,9 @@ class BankStatementScreen extends React.Component {
   renderItem = ({item}) => (
     <CardView
       onShowModal={() => {
-        return;
+        this.setState({
+          showActionModal: !this.state.showActionModal,
+        });
       }}
       item={item}
     />
@@ -308,45 +313,48 @@ class BankStatementScreen extends React.Component {
       </View>
     </View>
   );
-  renderActionForm = () => (
-    <View style={styles.modalContant}>
-      <TextInput
-        style={styles.input}
-        label={text.searchReleveBanquaire}
-        value={this.state.multipleSearch}
-        onChangeText={(text, name) => this.setField(text, 'search_multiple')}
-        name="search_multiple"
-        type="text"
-      />
-      <View style={styles.ButtonsContain}>
-        <SecondButton
-          label={text.Reinitialiser}
-          loading={this.state.loading}
-          onPress={async () => {
-            await this.setState({
-              min: '',
-              max: '',
-              startDate: null,
-              endDate: null,
-              multipleSearch: '',
-              exercice: '',
-              account: {key: -1, label: '', value: ''},
-            });
-            await this.handleRefresh();
-            await this.onCloseModal();
-          }}
+  renderActionForm = () => {
+    const {selectedIndex} = this.state;
+    return (
+      <View style={[styles.modalContant]}>
+        <TextAreaInput
+          label={"Message"}
+          value={this.state.multipleSearch}
+          onChangeText={(text, name) => this.setField(text, 'search_multiple')}
+          name="search_multiple"
+          type="text"
         />
-        <SubmitButton
-          loading={this.state.loading}
-          label={text.Valider}
-          onPress={async () => {
-            await this.handleRefresh();
-            await this.onCloseModal();
-          }}
-        />
+
+        <View style={styles.ButtonsContain}>
+          <SecondButton
+            label={text.Reinitialiser}
+            loading={this.state.loading}
+            onPress={async () => {
+              await this.setState({
+                min: '',
+                max: '',
+                startDate: null,
+                endDate: null,
+                multipleSearch: '',
+                exercice: '',
+                account: {key: -1, label: '', value: ''},
+              });
+              await this.handleRefresh();
+              await this.onCloseModal();
+            }}
+          />
+          <SubmitButton
+            loading={this.state.loading}
+            label={text.Valider}
+            onPress={async () => {
+              await this.handleRefresh();
+              await this.onCloseModal();
+            }}
+          />
+        </View>
       </View>
-    </View>
-  );
+    );
+  };
 
   render() {
     const {list, isRefreshing} = this.state;
@@ -388,6 +396,31 @@ class BankStatementScreen extends React.Component {
               </TouchableHighlight>
               <View style={styles.modalContainer}>
                 <ScrollView>{this.renderFilter()}</ScrollView>
+              </View>
+            </View>
+          </View>
+        </Modal>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={this.state.showActionModal}>
+          {this.state.loading && (
+            <PageLoader showBackground={false} size="large" color="#0000ff" />
+          )}
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
+              <TouchableHighlight
+                style={styles.modalCloseView}
+                onPress={() =>
+                  this.setState({
+                    showActionModal: !this.state.showActionModal,
+                  })
+                }
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <Image style={styles.closeImg} source={Close} />
+              </TouchableHighlight>
+              <View style={styles.modalContainer}>
+                <ScrollView>{this.renderActionForm()}</ScrollView>
               </View>
             </View>
           </View>

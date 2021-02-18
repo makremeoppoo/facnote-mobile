@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+
   modalCloseView: {
     position: 'absolute',
     top:
@@ -80,27 +81,14 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
   },
-  pdfContainer: {
-    flex: 1,
-    marginTop: ScaleHelpers.CalcHeight(15),
-    marginBottom: ScaleHelpers.CalcHeight(10),
-  },
-  pdf: {
-    width: ScaleHelpers.CalcWidth(90),
-    height: ScaleHelpers.CalcHeight(70),
-  },
-  backgroundModalStyle: {
-    width: ScaleHelpers.CalcWidth(105),
-    height: '100%',
-    position: 'absolute',
-  },
+
   modalContainer: {
     flex: 1,
     backgroundColor: 'white',
     marginTop: ScaleHelpers.CalcHeight(12),
   },
   modalContant: {
-    height: ScaleHelpers.CalcHeight(90),
+    height: 'auto',
     margin: ScaleHelpers.CalcWidth(3),
     //Its for IOS
     shadowColor: '#000',
@@ -117,6 +105,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flex: 1,
   },
+
   input: {
     height: '100%',
     width: '40%',

@@ -30,8 +30,8 @@ class CardView extends React.Component {
               reverse
               type="ionicon"
               color="rgb(92,117,254)"
-              name={'ios-create-sharp'}
-              size={25}
+              name={'ios-help-circle'}
+              size={50}
             />
             <View style={styles.itemTxtContainer}></View>
             <View style={styles.libelleRelBanquaireContainer}>
