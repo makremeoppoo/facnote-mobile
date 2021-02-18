@@ -43,7 +43,7 @@ class CardView extends React.Component {
           </View>
           <View style={styles.soldeContainer}>
             <Text style={styles.amountItem}>
-              {(item.credit ? item.credit : 0) + ' €'}
+              {item.value + ' €'}
             </Text>
             <Text style={styles.amountItem}>
               Solde : {(item.solde ? item.solde : 0) + ' €'}

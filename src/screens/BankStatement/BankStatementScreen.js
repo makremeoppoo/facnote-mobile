@@ -129,6 +129,7 @@ class BankStatementScreen extends React.Component {
           libelle: item.libelle,
           debit: item.debit,
           credit: item.credit,
+          value: item.montant,
           solde: item.solde,
           nom_banque: item.nom_banque,
         };
