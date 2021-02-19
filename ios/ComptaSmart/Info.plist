@@ -43,7 +43,7 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Cette application nécessite un accès à la caméra.</string>
+	<string>${PRODUCT_NAME} nécessite un accès à la caméra pour pouvoir télécharger vos achats, notes frais et documents</string>
 	<key>NSHumanReadableCopyright</key>
 	<string></string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -53,9 +53,9 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app requires access to your location.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Cette application nécessite un accès au microphone.</string>
+	<string>${PRODUCT_NAME} nécessite un accès au microphone.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Cette application nécessite un accès à la galerie.</string>
+	<string>${PRODUCT_NAME} nécessite un accès à la galerie pour pouvoir télécharger vos achats, notes frais et documents.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>AntDesign.ttf</string>
