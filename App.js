@@ -18,10 +18,10 @@ const persistConfig = {
 // Middleware: Redux Persist Persisted Reducer
 const persistedReducer = persistReducer(persistConfig, AppReducer);
 
-//const store = createStore(persistedReducer, applyMiddleware(thunk));
-//let persistor = persistStore(store);
+const store = createStore(persistedReducer, applyMiddleware(thunk));
+let persistor = persistStore(store);
 console.disableYellowBox = true;
-const store = createStore(AppReducer, applyMiddleware(thunk));
+//const store = createStore(AppReducer, applyMiddleware(thunk));
 
 export default class App extends React.Component {
   
@@ -29,9 +29,9 @@ export default class App extends React.Component {
     enableScreens();
     return (
       <Provider store={store}>
-      {/*<PersistGate loading={null} persistor={persistor}>*/}  
+      <PersistGate loading={null} persistor={persistor}>
           <AppContainer />
-      {/**</PersistGate> */}  
+    </PersistGate>
       </Provider>
     );
   }

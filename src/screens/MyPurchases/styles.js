@@ -84,11 +84,13 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: ScaleHelpers.CalcHeight(15),
     marginBottom: ScaleHelpers.CalcHeight(10),
+    height: ScaleHelpers.CalcHeight(100),
   },
   pdf: {
     width: ScaleHelpers.CalcWidth(90),
-    height: ScaleHelpers.CalcHeight(70),
+    height: ScaleHelpers.CalcHeight(50),
   },
+
   backgroundModalStyle: {
     width: ScaleHelpers.CalcWidth(105),
     height: '100%',
@@ -99,6 +101,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     marginTop: ScaleHelpers.CalcHeight(12),
   },
+  titleModalContainer: {
+    alignItems: 'center',
+  },
+  titleModalText: {
+    fontSize: ScaleHelpers.CalcWidth(5),
+    color: 'rgb(112,112,112)',
+    fontFamily: 'Nunito-Bold',
+  },
+
   modalContant: {
     height: ScaleHelpers.CalcHeight(40),
     margin: ScaleHelpers.CalcWidth(3),
@@ -128,6 +139,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(15),
   },
+  textInfo: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: textColor,
+    fontFamily: 'Nunito-Bold',
+    margin: ScaleHelpers.CalcWidth(2),
+  },
+  widthTextInfo:{
+    width: ScaleHelpers.CalcWidth(25),
+
+  }
 
 });
 

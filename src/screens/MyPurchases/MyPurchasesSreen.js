@@ -7,9 +7,9 @@ import {
   TouchableHighlight,
   FlatList,
   Modal,
-  ImageBackground,
   Image,
   ScrollView,
+  Text,
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
@@ -50,6 +50,7 @@ class MyPurchasesSreen extends React.Component {
       compte: {key: -1, label: '', value: ''},
       showPdfModal: false,
       exercice: '',
+      purchase: {},
     };
   }
 
@@ -75,9 +76,10 @@ class MyPurchasesSreen extends React.Component {
     });
   };
 
-  onShowPdfModal = (source) => {
+  onShowPdfModal = (item) => {
+    console.log(item);
     this.setState({
-      source,
+      purchase: item,
       showPdfModal: !this.state.showPdfModal,
       loading: true,
     });
@@ -93,13 +95,7 @@ class MyPurchasesSreen extends React.Component {
   };
 
   loadData = async () => {
-    const {
-      limit,
-      page,
-      dateDebut,
-      dateFin,
-    
-    } = this.state;
+    const {limit, page, dateDebut, dateFin} = this.state;
     this.setState({
       isRefreshing: true,
     });
@@ -122,19 +118,7 @@ class MyPurchasesSreen extends React.Component {
           });
         }
         let obj = {
-          id: counter++,
-          isTitle: false,
-          journal: item.journal,
-          libelle: item.libelle,
-          debit: item.debit,
-          credit: item.credit,
-          solde: item.solde,
-          numFacture: item.numFacture,
-          dateEcheance: moment(item.date_echeance).format('DD/MM/YYYY'),
-          ttc: item.TTC,
-          ht: item.HT,
-          tva: item.TVA,
-          url: item.url,
+          ...item,
         };
 
         list.push(obj);
@@ -186,10 +170,12 @@ class MyPurchasesSreen extends React.Component {
 
   initData = async () => {};
 
-  renderItem = ({item}) => <CardView onShowPdfModal={this.onShowPdfModal} item={item} />;
+  renderItem = ({item}) => (
+    <CardView onShowPdfModal={this.onShowPdfModal} item={item} />
+  );
 
   render() {
-    const {list, isRefreshing, exercices,source} = this.state;
+    const {list, isRefreshing, purchase} = this.state;
     let index = 0;
     const resourceType = 'url';
 
@@ -198,7 +184,7 @@ class MyPurchasesSreen extends React.Component {
         Platform.OS === 'ios'
           ? 'downloadedDocument.pdf'
           : '/sdcard/Download/downloadedDocument.pdf',
-      url: source,
+      url: this.state.purchase.url,
       base64: 'JVBERi0xLjMKJcfs...',
     };
     return (
@@ -251,18 +237,6 @@ class MyPurchasesSreen extends React.Component {
                       />
                     </View>
 
-                    <SelectInput
-                      label={text.periode}
-                      selectedValue={this.state.exercice.label}
-                      onChange={(option) => {
-                        this.setState({
-                          dateFin: option.date_fin,
-                          dateDebut: option.date_debut,
-                          exercice: option,
-                        });
-                      }}
-                      listItems={exercices}
-                    />
                     <View style={styles.ButtonsContain}>
                       <SecondButton
                         label={text.Reinitialiser}
@@ -302,10 +276,6 @@ class MyPurchasesSreen extends React.Component {
           visible={this.state.showPdfModal}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <ImageBackground
-                source={Rectangle}
-                style={styles.backgroundModalStyle}></ImageBackground>
-
               <TouchableHighlight
                 style={styles.modalCloseView}
                 onPress={() => this.onClosePdfModal()}
@@ -320,7 +290,11 @@ class MyPurchasesSreen extends React.Component {
                     color="#0000ff"
                   />
                 )}
-
+                <View style={styles.titleModalContainer}>
+                  <Text style={styles.titleModalText}>
+                    N°{purchase.numFacture}
+                  </Text>
+                </View>
                 <PDFView
                   style={styles.pdf}
                   fadeInDuration={250.0}
@@ -335,6 +309,28 @@ class MyPurchasesSreen extends React.Component {
                     console.log('Cannot render PDF', error);
                   }}
                 />
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flexDirection: 'column'}}>
+                    <Text style={[styles.textInfo,styles.widthTextInfo]}>Montant</Text>
+                    <Text style={[styles.textInfo,styles.widthTextInfo]}>Description</Text>
+                    <Text style={[styles.textInfo,styles.widthTextInfo]}>Date</Text>
+                    <Text style={[styles.textInfo,styles.widthTextInfo]}>Echéance</Text>
+                  </View>
+                  <View style={{flexDirection: 'column'}}>
+                    <Text style={styles.textInfo}>{purchase.TTC+ ' €'}</Text>
+                    <Text style={styles.textInfo}>{purchase.libelle}</Text>
+                    <Text style={styles.textInfo}>
+                      {purchase.date
+                        ? moment(purchase.date).format('DD/MM/YYYY')
+                        : ''}
+                    </Text>
+                    <Text style={styles.textInfo}>
+                      {purchase.dateEcheance
+                        ? moment(purchase.dateEcheance).format('DD/MM/YYYY')
+                        : ''}
+                    </Text>
+                  </View>
+                </View>
               </View>
             </View>
           </View>
