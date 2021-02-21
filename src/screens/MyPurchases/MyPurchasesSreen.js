@@ -14,7 +14,7 @@ import {
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
 import Rectangle from '../../../assets/images/Rectangle.png';
-import getAchat from '../../services/achat';
+import getPurchases from '../../services/purchase';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import SelectInput from '../../components/SelectInput/SelectInput';
 import CardView from '../../components/CardView/CardViewPurchase';
@@ -38,27 +38,19 @@ class MyPurchasesSreen extends React.Component {
       loading: false,
       isRefreshing: true,
       hasScrolled: false,
-      source: '',
-      dateDebut: null,
-      dateFin: null,
-      min: '',
-      max: '',
-      type: {key: 0, label: 'Débit/Crédit', value: 'tous'},
+      startDate: null,
+      endDate: null,
       search_multiple: '',
-      comptesBancaire: [],
-      exercices: [],
-      compte: {key: -1, label: '', value: ''},
       showPdfModal: false,
-      exercice: '',
       purchase: {},
     };
   }
 
-  setDateDebut = (dateDebut) => {
-    this.setState({dateDebut});
+  setStartDate = (startDate) => {
+    this.setState({startDate});
   };
-  setDateFin = (dateFin) => {
-    this.setState({dateFin});
+  setEndDate = (endDate) => {
+    this.setState({endDate});
   };
   setField = (text, name) => {
     this.setState({[name]: text});
@@ -95,19 +87,20 @@ class MyPurchasesSreen extends React.Component {
   };
 
   loadData = async () => {
-    const {limit, page, dateDebut, dateFin} = this.state;
+    const {limit, page, startDate, endDate} = this.state;
     this.setState({
       isRefreshing: true,
     });
     try {
-      var achats = await getAchat(limit, page, dateDebut, dateFin);
+      var data = await getPurchases(limit, page, startDate, endDate);
     } catch (e) {
+      this.setState({list:[], isRefreshing: false});
+
     } finally {
       let list = [];
       let date = '';
       let counter = 0;
-      console.log(achats.purchases[0]);
-      await achats.purchases.map((item, index) => {
+      await data.purchases.map((item, index) => {
         let newDate = moment(item.date).format('DD/MM/YYYY');
         if (date != newDate) {
           date = newDate;
@@ -124,18 +117,7 @@ class MyPurchasesSreen extends React.Component {
         list.push(obj);
       });
 
-      let exercices = [];
-      /*achats.exercices.map((item, index) => {
-        exercices.push({
-          key: index++,
-          label: `${moment(item.date_debut).format('DD/MM/YYYY')} au ${moment(
-            item.date_fin,
-          ).format('DD/MM/YYYY')}`,
-          date_debut: item.date_debut,
-          date_fin: item.date_fin,
-        });
-      })*;/*/
-      this.setState({list, exercices, isRefreshing: false});
+      this.setState({list, isRefreshing: false});
     }
   };
 
@@ -224,15 +206,15 @@ class MyPurchasesSreen extends React.Component {
                   <View style={styles.modalContant}>
                     <View style={{flexDirection: 'row'}}>
                       <DatePicker
-                        initialDate={this.state.dateDebut}
-                        setCurrentDate={this.setDateDebut}
-                        label={text.dateDebut}
+                        initialDate={this.state.startDate}
+                        setCurrentDate={this.setStartDate}
+                        label={text.startDate}
                         display={'column'}
                       />
                       <DatePicker
-                        initialDate={this.state.dateFin}
-                        setCurrentDate={this.setDateFin}
-                        label={text.dateFin}
+                        initialDate={this.state.endDate}
+                        setCurrentDate={this.setEndDate}
+                        label={text.endDate}
                         display={'column'}
                       />
                     </View>
@@ -245,10 +227,9 @@ class MyPurchasesSreen extends React.Component {
                           await this.setState({
                             min: '',
                             max: '',
-                            dateDebut: null,
-                            dateFin: null,
+                            startDate: null,
+                            endDate: null,
                             search_multiple: '',
-                            exercice: '',
                             compte: {key: -1, label: '', value: ''},
                           });
                           await this.handleRefresh();
@@ -311,13 +292,21 @@ class MyPurchasesSreen extends React.Component {
                 />
                 <View style={{flexDirection: 'row'}}>
                   <View style={{flexDirection: 'column'}}>
-                    <Text style={[styles.textInfo,styles.widthTextInfo]}>Montant</Text>
-                    <Text style={[styles.textInfo,styles.widthTextInfo]}>Description</Text>
-                    <Text style={[styles.textInfo,styles.widthTextInfo]}>Date</Text>
-                    <Text style={[styles.textInfo,styles.widthTextInfo]}>Echéance</Text>
+                    <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                      Montant
+                    </Text>
+                    <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                      Description
+                    </Text>
+                    <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                      Date
+                    </Text>
+                    <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                      Echéance
+                    </Text>
                   </View>
                   <View style={{flexDirection: 'column'}}>
-                    <Text style={styles.textInfo}>{purchase.TTC+ ' €'}</Text>
+                    <Text style={styles.textInfo}>{purchase.TTC + ' €'}</Text>
                     <Text style={styles.textInfo}>{purchase.libelle}</Text>
                     <Text style={styles.textInfo}>
                       {purchase.date

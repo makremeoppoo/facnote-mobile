@@ -1,9 +1,16 @@
 import * as c from '../constants';
 import api from './axios';
 
-export default async function getAchat(limit, page) {
+export default async function getPurchases(limit, page,startDate,endDate) {
   try {
-    let res = await api.get(`${c.GETACHAT}?limit=${limit}&page=${page}`, {
+    let path = `${c.GETPURCHASES}?limit=${limit}&page=${page}`;
+    if (startDate != null)
+      path = `${path}&start_date=${moment(startDate).format('DD/MM/YYYY')}`;
+
+    if (endDate != null)
+      path = `${path}&end_date=${moment(endDate).format('DD/MM/YYYY')}`;
+
+    let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',
     });
