@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
   },
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'SegoeUI-Light',
     color: textColor,
+    fontFamily: 'Nunito-Bold',
   },
   centeredView: {
     flex: 1,
@@ -147,7 +147,6 @@ const styles = StyleSheet.create({
   },
   widthTextInfo:{
     width: ScaleHelpers.CalcWidth(25),
-
   }
 
 });

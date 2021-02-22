@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
-import Rectangle from '../../../assets/images/Rectangle.png';
+import Icon from 'react-native-vector-icons/Ionicons';
 import getPurchases from '../../services/purchase';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import SelectInput from '../../components/SelectInput/SelectInput';
@@ -43,6 +43,8 @@ class MyPurchasesSreen extends React.Component {
       search_multiple: '',
       showPdfModal: false,
       purchase: {},
+      debit:0,
+      credit:0
     };
   }
 
@@ -94,30 +96,36 @@ class MyPurchasesSreen extends React.Component {
     try {
       var data = await getPurchases(limit, page, startDate, endDate);
     } catch (e) {
-      this.setState({list:[], isRefreshing: false});
-
+      this.setState({list: [], isRefreshing: false});
     } finally {
       let list = [];
       let date = '';
       let counter = 0;
+      let debit = 0;
+      let credit = 0;
       await data.purchases.map((item, index) => {
+        debit = debit + item.debit;
+        credit = credit + item.credit;
+
         let newDate = moment(item.date).format('DD/MM/YYYY');
         if (date != newDate) {
+          counter = 0;
           date = newDate;
           list.push({
-            id: counter++,
+            counter: counter++,
             text: newDate == 'Invalid date' ? '' : newDate,
             isTitle: true,
           });
         }
         let obj = {
+          counter: counter++,
           ...item,
         };
 
         list.push(obj);
       });
 
-      this.setState({list, isRefreshing: false});
+      this.setState({list,debit,credit, isRefreshing: false});
     }
   };
 
@@ -157,7 +165,7 @@ class MyPurchasesSreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, purchase} = this.state;
+    const {list, isRefreshing, purchase,debit,credit} = this.state;
     let index = 0;
     const resourceType = 'url';
 
@@ -171,10 +179,18 @@ class MyPurchasesSreen extends React.Component {
     };
     return (
       <View style={styles.container}>
+
         <SecondButton
+        
           label={text.filter}
           onPress={() => this.setState({showModal: !this.state.showModal})}
         />
+        <View style={{alignContent:'center'}}>
+        <Text style={styles.itemTitle}>Total Débits: {debit} €</Text>
+        <Text style={styles.itemTitle}>Total Crédits: {credit} €</Text>
+        </View>
+       
+
         {isRefreshing && (
           <PageLoader showBackground={true} size="large" color="#0000ff" />
         )}

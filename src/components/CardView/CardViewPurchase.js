@@ -41,13 +41,16 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderColor: 'rgba(214, 214, 214, 1)',
-    borderTopWidth: 0.5,
   },
+  border: {
+    borderColor: 'rgba(214, 214, 214, 1)',
+    borderTopWidth: 1,
+  },
+
   rowContainer: {
     flexDirection: 'row',
     alignSelf: 'flex-start',
-    height: ScaleHelpers.CalcHeight(8),
+    height: ScaleHelpers.CalcHeight(10),
   },
   itemIcon: {
     alignSelf: 'center',
@@ -62,20 +65,17 @@ const styles = StyleSheet.create({
     margin: ScaleHelpers.CalcWidth(1),
     lineHeight: 34,
     width: ScaleHelpers.CalcWidth(60),
-
   },
-  blueTitle: {
-    fontSize: ScaleHelpers.CalcWidth(4),
-    color: 'rgb( 92,117,254)',
+  libelle: {
+    fontSize: ScaleHelpers.CalcWidth(4.5),
+    color: '#707070',
     fontFamily: 'Nunito-Bold',
-    margin: ScaleHelpers.CalcWidth(0),
   },
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: 'rgb(112,112,112)',
+    color: '#707070',
     fontFamily: 'Nunito-Bold',
   },
-
 
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
   },
   amountItem: {
     textAlign: 'center',
-    color: 'rgb(112,112,112)',
-    fontSize: ScaleHelpers.CalcWidth(3.6),
+    fontSize: ScaleHelpers.CalcWidth(4.5),
+    color: '#707070',
     fontFamily: 'Nunito-Bold',
   },
 });
@@ -101,10 +101,11 @@ class CardView extends React.Component {
         </View>
       </View>
     ) : (
-      <View style={styles.mainContainer}>
+      <View
+        style={[styles.mainContainer, item.counter > 1 ? styles.border : {}]}>
         <View style={styles.rowContainer}>
           <View style={[styles.itemTxtContainer]}>
-            <Text style={styles.blueTitle} numberOfLines={1}>
+            <Text style={styles.libelle} numberOfLines={1}>
               {item.libelle}
             </Text>
           </View>
