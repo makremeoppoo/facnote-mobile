@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(4),
-    width: ScaleHelpers.CalcWidth(90),
+    width: ScaleHelpers.CalcWidth(80),
   },
   title: {
     fontFamily: 'SegoeUI',

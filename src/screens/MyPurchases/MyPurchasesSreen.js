@@ -13,7 +13,6 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
-import Icon from 'react-native-vector-icons/Ionicons';
 import getPurchases from '../../services/purchase';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import SelectInput from '../../components/SelectInput/SelectInput';
@@ -21,6 +20,8 @@ import CardView from '../../components/CardView/CardViewPurchase';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
+import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
+
 import Close from '../../../assets/icons/closeGrey.png';
 import {text} from '../../constants';
 
@@ -43,8 +44,8 @@ class MyPurchasesSreen extends React.Component {
       search_multiple: '',
       showPdfModal: false,
       purchase: {},
-      debit:0,
-      credit:0
+      debit: 0,
+      credit: 0,
     };
   }
 
@@ -125,7 +126,7 @@ class MyPurchasesSreen extends React.Component {
         list.push(obj);
       });
 
-      this.setState({list,debit,credit, isRefreshing: false});
+      this.setState({list, debit:debit.toFixed(2), credit:credit.toFixed(2), isRefreshing: false});
     }
   };
 
@@ -165,7 +166,7 @@ class MyPurchasesSreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, purchase,debit,credit} = this.state;
+    const {list, isRefreshing, purchase, debit, credit} = this.state;
     let index = 0;
     const resourceType = 'url';
 
@@ -178,169 +179,172 @@ class MyPurchasesSreen extends React.Component {
       base64: 'JVBERi0xLjMKJcfs...',
     };
     return (
-      <View style={styles.container}>
-
-        <SecondButton
-        
-          label={text.filter}
-          onPress={() => this.setState({showModal: !this.state.showModal})}
+      <>
+        <NavigationHeader
+          onPress={() => {
+            this.props.navigation.goBack();
+          }}
+          title={text.MesAchats}
+          icon={'ios-filter'}
+          onPressTwo={() => this.setState({showModal: !this.state.showModal})}
         />
-        <View style={{alignContent:'center'}}>
-        <Text style={styles.itemTitle}>Total Débits: {debit} €</Text>
-        <Text style={styles.itemTitle}>Total Crédits: {credit} €</Text>
-        </View>
-       
+        <View style={styles.container}>
+          <View style={{alignContent: 'center'}}>
+            <Text style={styles.itemTitle}>Total Débits: {debit} €</Text>
+            <Text style={styles.itemTitle}>Total Crédits: {credit} €</Text>
+          </View>
 
-        {isRefreshing && (
-          <PageLoader showBackground={true} size="large" color="#0000ff" />
-        )}
-        <FlatList
-          style={styles.flatListStyle}
-          data={list}
-          renderItem={this.renderItem}
-          keyExtractor={(item) => `${item.id}`}
-          initialNumToRender={3}
-          refreshing={false}
-          // onRefresh={() => this.handleRefresh()}
-          onScrollEndDrag={this.handleLoadMore}
-          onEndThreshold={0}
-        />
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={this.state.showModal}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <TouchableHighlight
-                style={styles.modalCloseView}
-                onPress={() => this.onCloseModal()}
-                underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.closeImg} source={Close} />
-              </TouchableHighlight>
-              <View style={styles.modalContainer}>
-                <ScrollView>
-                  <View style={styles.modalContant}>
-                    <View style={{flexDirection: 'row'}}>
-                      <DatePicker
-                        initialDate={this.state.startDate}
-                        setCurrentDate={this.setStartDate}
-                        label={text.startDate}
-                        display={'column'}
-                      />
-                      <DatePicker
-                        initialDate={this.state.endDate}
-                        setCurrentDate={this.setEndDate}
-                        label={text.endDate}
-                        display={'column'}
-                      />
-                    </View>
+          {isRefreshing && (
+            <PageLoader showBackground={true} size="large" color="#0000ff" />
+          )}
+          <FlatList
+            style={styles.flatListStyle}
+            data={list}
+            renderItem={this.renderItem}
+            keyExtractor={(item) => `${item.id}`}
+            initialNumToRender={3}
+            refreshing={false}
+            // onRefresh={() => this.handleRefresh()}
+            onScrollEndDrag={this.handleLoadMore}
+            onEndThreshold={0}
+          />
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.showModal}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <TouchableHighlight
+                  style={styles.modalCloseView}
+                  onPress={() => this.onCloseModal()}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.closeImg} source={Close} />
+                </TouchableHighlight>
+                <View style={styles.modalContainer}>
+                  <ScrollView>
+                    <View style={styles.modalContant}>
+                      <View style={{flexDirection: 'row'}}>
+                        <DatePicker
+                          initialDate={this.state.startDate}
+                          setCurrentDate={this.setStartDate}
+                          label={text.startDate}
+                          display={'column'}
+                        />
+                        <DatePicker
+                          initialDate={this.state.endDate}
+                          setCurrentDate={this.setEndDate}
+                          label={text.endDate}
+                          display={'column'}
+                        />
+                      </View>
 
-                    <View style={styles.ButtonsContain}>
-                      <SecondButton
-                        label={text.Reinitialiser}
-                        loading={this.state.loading}
-                        onPress={async () => {
-                          await this.setState({
-                            min: '',
-                            max: '',
-                            startDate: null,
-                            endDate: null,
-                            search_multiple: '',
-                            compte: {key: -1, label: '', value: ''},
-                          });
-                          await this.handleRefresh();
-                          await this.onCloseModal();
-                        }}
-                      />
-                      <SubmitButton
-                        loading={this.state.loading}
-                        label={text.Valider}
-                        onPress={async () => {
-                          await this.handleRefresh();
-                          await this.onCloseModal();
-                        }}
-                      />
+                      <View style={styles.ButtonsContain}>
+                        <SecondButton
+                          label={text.Reinitialiser}
+                          loading={this.state.loading}
+                          onPress={async () => {
+                            await this.setState({
+                              min: '',
+                              max: '',
+                              startDate: null,
+                              endDate: null,
+                              search_multiple: '',
+                              compte: {key: -1, label: '', value: ''},
+                            });
+                            await this.handleRefresh();
+                            await this.onCloseModal();
+                          }}
+                        />
+                        <SubmitButton
+                          loading={this.state.loading}
+                          label={text.Valider}
+                          onPress={async () => {
+                            await this.handleRefresh();
+                            await this.onCloseModal();
+                          }}
+                        />
+                      </View>
                     </View>
-                  </View>
-                </ScrollView>
+                  </ScrollView>
+                </View>
               </View>
             </View>
-          </View>
-        </Modal>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={this.state.showPdfModal}>
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <TouchableHighlight
-                style={styles.modalCloseView}
-                onPress={() => this.onClosePdfModal()}
-                underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.closeImg} source={Close} />
-              </TouchableHighlight>
-              <View style={styles.pdfContainer}>
-                {this.state.loading && (
-                  <PageLoader
-                    showBackground={false}
-                    size="large"
-                    color="#0000ff"
+          </Modal>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.showPdfModal}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <TouchableHighlight
+                  style={styles.modalCloseView}
+                  onPress={() => this.onClosePdfModal()}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.closeImg} source={Close} />
+                </TouchableHighlight>
+                <View style={styles.pdfContainer}>
+                  {this.state.loading && (
+                    <PageLoader
+                      showBackground={false}
+                      size="large"
+                      color="#0000ff"
+                    />
+                  )}
+                  <View style={styles.titleModalContainer}>
+                    <Text style={styles.titleModalText}>
+                      N°{purchase.numFacture}
+                    </Text>
+                  </View>
+                  <PDFView
+                    style={styles.pdf}
+                    fadeInDuration={250.0}
+                    resource={resources[resourceType]}
+                    resourceType={resourceType}
+                    onLoad={() => {
+                      this.setState({loading: false});
+                      console.log(`PDF rendered from ${resourceType}`);
+                    }}
+                    onError={(error) => {
+                      this.setState({loading: false});
+                      console.log('Cannot render PDF', error);
+                    }}
                   />
-                )}
-                <View style={styles.titleModalContainer}>
-                  <Text style={styles.titleModalText}>
-                    N°{purchase.numFacture}
-                  </Text>
-                </View>
-                <PDFView
-                  style={styles.pdf}
-                  fadeInDuration={250.0}
-                  resource={resources[resourceType]}
-                  resourceType={resourceType}
-                  onLoad={() => {
-                    this.setState({loading: false});
-                    console.log(`PDF rendered from ${resourceType}`);
-                  }}
-                  onError={(error) => {
-                    this.setState({loading: false});
-                    console.log('Cannot render PDF', error);
-                  }}
-                />
-                <View style={{flexDirection: 'row'}}>
-                  <View style={{flexDirection: 'column'}}>
-                    <Text style={[styles.textInfo, styles.widthTextInfo]}>
-                      Montant
-                    </Text>
-                    <Text style={[styles.textInfo, styles.widthTextInfo]}>
-                      Description
-                    </Text>
-                    <Text style={[styles.textInfo, styles.widthTextInfo]}>
-                      Date
-                    </Text>
-                    <Text style={[styles.textInfo, styles.widthTextInfo]}>
-                      Echéance
-                    </Text>
-                  </View>
-                  <View style={{flexDirection: 'column'}}>
-                    <Text style={styles.textInfo}>{purchase.TTC + ' €'}</Text>
-                    <Text style={styles.textInfo}>{purchase.libelle}</Text>
-                    <Text style={styles.textInfo}>
-                      {purchase.date
-                        ? moment(purchase.date).format('DD/MM/YYYY')
-                        : ''}
-                    </Text>
-                    <Text style={styles.textInfo}>
-                      {purchase.dateEcheance
-                        ? moment(purchase.dateEcheance).format('DD/MM/YYYY')
-                        : ''}
-                    </Text>
+                  <View style={{flexDirection: 'row'}}>
+                    <View style={{flexDirection: 'column'}}>
+                      <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                        Montant
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                        Description
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                        Date
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                        Echéance
+                      </Text>
+                    </View>
+                    <View style={{flexDirection: 'column'}}>
+                      <Text style={styles.textInfo}>{purchase.TTC + ' €'}</Text>
+                      <Text style={styles.textInfo}>{purchase.libelle}</Text>
+                      <Text style={styles.textInfo}>
+                        {purchase.date
+                          ? moment(purchase.date).format('DD/MM/YYYY')
+                          : ''}
+                      </Text>
+                      <Text style={styles.textInfo}>
+                        {purchase.dateEcheance
+                          ? moment(purchase.dateEcheance).format('DD/MM/YYYY')
+                          : ''}
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
             </View>
-          </View>
-        </Modal>
-      </View>
+          </Modal>
+        </View>
+      </>
     );
   }
 }

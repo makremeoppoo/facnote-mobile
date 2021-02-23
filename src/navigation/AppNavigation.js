@@ -298,12 +298,7 @@ const MainNavigator = () => {
         options={({navigation}) => {
           return {
             header: () => (
-              <NavigationHeader
-                onPress={() => {
-                  navigation.goBack();
-                }}
-                title={text.MesAchats}
-              />
+              <></>
             ),
           };
         }}

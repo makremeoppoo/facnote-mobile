@@ -147,7 +147,8 @@ const styles = StyleSheet.create({
   },
   widthTextInfo:{
     width: ScaleHelpers.CalcWidth(25),
-  }
+  },
+
 
 });
 
