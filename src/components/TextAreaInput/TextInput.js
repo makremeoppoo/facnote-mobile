@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
   textAreaContainer: {
     borderColor: "rgba(112,112,112,0.5)",
     borderWidth: 1,
-  
+    height: ScaleHelpers.CalcHeight(20)
   },
   textArea: {
-    height: ScaleHelpers.CalcHeight(20),  },
+    height: ScaleHelpers.CalcHeight(20) },
 });

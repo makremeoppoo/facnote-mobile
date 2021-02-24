@@ -70,7 +70,10 @@ export const text = {
   DeposerFacture: 'Déposer facture',
   Cabinet:'Cabinet',
   Plus:'Plus',
-  MontantTTC:'TTC'
+  MontantTTC:'TTC',
+  SoldeAu:"Solde au",
+  transactionJustifier:"x transaction(s) à justifier"
+
 };
 
 export const routes = {

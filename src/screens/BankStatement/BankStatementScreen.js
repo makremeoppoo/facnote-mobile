@@ -22,12 +22,13 @@ import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
 import TextAreaInput from '../../components/TextAreaInput/TextInput';
 import SelectInput from '../../components/SelectInput/SelectInput';
-import CardView from '../../components/CardView/CardViewReleveBanquaire';
+import BankCard from '../../components/CardView/BankCard';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
 import Close from '../../../assets/icons/closeGrey.png';
 import {text} from '../../constants';
+import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
 
 import styles from './styles';
 const billTypeArray = ['perdue', 'personnelle', 'autres'];
@@ -59,6 +60,7 @@ class BankStatementScreen extends React.Component {
       billType: '',
       bankId: '',
       comment: '',
+      justificatif: true,
     };
   }
 
@@ -126,7 +128,7 @@ class BankStatementScreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-      console.log(statements.comptes);
+      console.log(statements.ecritures[0]);
 
       await statements.ecritures.map((item, index) => {
         let newDate = moment(item.date_operation).format('DD/MM/YYYY');
@@ -138,7 +140,40 @@ class BankStatementScreen extends React.Component {
             isTitle: true,
           });
         }
+
+        var icon = 'ios-cart';
+        var color = '#15CA20';
+
+        if (
+          item.associer == null &&
+          item.justificatif &&
+          item.facture_tag == null
+        ) {
+          icon = 'ios-add-outline';
+          color = 'rgb(92,117,254)';
+        }
+
+        if (
+          item.associer == null &&
+          item.etat_commentaire == 3 &&
+          item.facture_tag !== null
+        ) {
+          icon = 'ios-chatbubbles';
+          color = '#FD3550';
+        }
+
+        if (
+          item.associer == null &&
+          (item.etat_commentaire == 4 || item.etat_commentaire == 5) &&
+          item.facture_tag !== null
+        ) {
+          icon = 'ios-chatbubble-sharp';
+          color = '#15CA20';
+        }
+
         let obj = {
+          color: color,
+          icon: icon,
           counter: counter++,
           isTitle: false,
           ...item,
@@ -149,14 +184,13 @@ class BankStatementScreen extends React.Component {
       });
 
       let bankAccounts = [{key: -1, label: 'Tous les comptes', value: ''}];
-      console.log(statements.comptes);
-      /* statements.comptes.map((item, index) => {
+      statements.comptes.map((item, index) => {
         bankAccounts.push({
           key: index++,
           value: item.id,
           label: item.name,
         });
-      });*/
+      });
       let exercices = [];
       statements.exercices.map((item, index) => {
         exercices.push({
@@ -168,6 +202,7 @@ class BankStatementScreen extends React.Component {
           date_fin: item.date_fin,
         });
       });
+      console.log(list[1]);
       this.setState({list, bankAccounts, exercices, isRefreshing: false});
     }
   };
@@ -223,9 +258,17 @@ class BankStatementScreen extends React.Component {
   };
 
   renderItem = ({item}) => (
-    <CardView
+    <BankCard
       onShowModal={() => {
-        this.showActionSheet(item.id);
+        if (
+          item.associer == null &&
+          item.justificatif &&
+          item.facture_tag == null
+        ) {
+          this.showActionSheet(item.id);
+          return;
+        }
+        return;
       }}
       item={item}
     />
@@ -244,13 +287,13 @@ class BankStatementScreen extends React.Component {
         <DatePicker
           initialDate={this.state.startDate}
           setCurrentDate={this.setStartDate}
-          label={text.startDate}
+          label={text.dateDebut}
           display={'column'}
         />
         <DatePicker
           initialDate={this.state.endDate}
           setCurrentDate={this.setDateFin}
-          label={text.endDate}
+          label={text.dateFin}
           display={'column'}
         />
       </View>
@@ -372,88 +415,108 @@ class BankStatementScreen extends React.Component {
   };
 
   render() {
-    const {list, isRefreshing} = this.state;
+    const {list, isRefreshing, justificatif} = this.state;
 
     return (
-      <View style={styles.container}>
+      <>
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
-        <SecondButton
-          label={text.filter}
-          onPress={() => this.setState({showModal: !this.state.showModal})}
+        <NavigationHeader
+          onPress={() => {
+            this.props.navigation.goBack();
+          }}
+          title={text.RelevesBancaires}
+          onPressTwo={() => this.setState({showModal: !this.state.showModal})}
         />
-        {isRefreshing && (
-          <PageLoader showBackground={true} size="large" color="#0000ff" />
-        )}
-        <FlatList
-          style={styles.flatListStyle}
-          data={list}
-          renderItem={this.renderItem}
-          keyExtractor={(item) => `${item.id}`}
-          initialNumToRender={3}
-          refreshing={false}
-          // onRefresh={() => this.handleRefresh()}
-          onScrollEndDrag={this.handleLoadMore}
-          onEndThreshold={0}
-        />
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={this.state.showModal}>
-          {this.state.loading && (
-            <PageLoader showBackground={false} size="large" color="#0000ff" />
+        <View style={styles.container}>
+          <View style={{alignItems: 'center'}}>
+            <Text style={styles.soldeTitle}>{list[1]?.solde} €</Text>
+            <Text style={styles.dateTitle}>
+              {text.SoldeAu} {list[0]?.text}
+            </Text>
+            <TouchableHighlight
+              style={styles.filterTitle}
+              onPress={() =>
+                this.setState({justificatif: !this.state.justificatif})
+              }
+              underlayColor="rgba(73,182,77,1,0.9)">
+              <Text style={styles.filterTitle}>{text.transactionJustifier}</Text>
+            </TouchableHighlight>
+          </View>
+          {isRefreshing && (
+            <PageLoader showBackground={true} size="large" color="#0000ff" />
           )}
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <TouchableHighlight
-                style={styles.modalCloseView}
-                onPress={() => this.onCloseModal()}
-                underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.closeImg} source={Close} />
-              </TouchableHighlight>
-              <View style={styles.modalContainer}>
-                <ScrollView>{this.renderFilter()}</ScrollView>
+          <FlatList
+            style={styles.flatListStyle}
+            data={
+              justificatif ? list : list.filter((item) => !item.justificatif)
+            }
+            renderItem={this.renderItem}
+            keyExtractor={(item) => `${item.id}`}
+            initialNumToRender={3}
+            refreshing={false}
+            // onRefresh={() => this.handleRefresh()}
+            onScrollEndDrag={this.handleLoadMore}
+            onEndThreshold={0}
+          />
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.showModal}>
+            {this.state.loading && (
+              <PageLoader showBackground={false} size="large" color="#0000ff" />
+            )}
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <TouchableHighlight
+                  style={styles.modalCloseView}
+                  onPress={() => this.onCloseModal()}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.closeImg} source={Close} />
+                </TouchableHighlight>
+                <View style={styles.modalContainer}>
+                  <ScrollView>{this.renderFilter()}</ScrollView>
+                </View>
               </View>
             </View>
-          </View>
-        </Modal>
-        <Modal
-          animationType="slide"
-          transparent={true}
-          visible={this.state.showActionModal}>
-          {this.state.loading && (
-            <PageLoader showBackground={false} size="large" color="#0000ff" />
-          )}
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <TouchableHighlight
-                style={styles.modalCloseView}
-                onPress={() =>
-                  this.setState({
-                    showActionModal: !this.state.showActionModal,
-                  })
-                }
-                underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.closeImg} source={Close} />
-              </TouchableHighlight>
-              <View style={styles.modalContainer}>
-                <ScrollView>{this.renderActionForm()}</ScrollView>
+          </Modal>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.showActionModal}>
+            {this.state.loading && (
+              <PageLoader showBackground={false} size="large" color="#0000ff" />
+            )}
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <TouchableHighlight
+                  style={styles.modalCloseView}
+                  onPress={() =>
+                    this.setState({
+                      showActionModal: !this.state.showActionModal,
+                    })
+                  }
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.closeImg} source={Close} />
+                </TouchableHighlight>
+                <View style={styles.modalContainer}>
+                  <ScrollView>{this.renderActionForm()}</ScrollView>
+                </View>
               </View>
             </View>
-          </View>
-        </Modal>
-        <ActionSheet
-          ref={(o) => (this.ActionSheet = o)}
-          options={['FACTURE PERDU', 'FACTURE PERSONNELLE', 'AUTRES']}
-          cancelButtonIndex={0}
-          destructiveButtonIndex={3}
-          title={<Text style={[styles.ActionSheetTitle]}>ACTIONS</Text>}
-          onPress={this.handleActionSheetPress}
-        />
-      </View>
+          </Modal>
+          <ActionSheet
+            ref={(o) => (this.ActionSheet = o)}
+            options={['FACTURE PERDU', 'FACTURE PERSONNELLE', 'AUTRES']}
+            cancelButtonIndex={0}
+            destructiveButtonIndex={3}
+            title={<Text style={[styles.ActionSheetTitle]}>ACTIONS</Text>}
+            onPress={this.handleActionSheetPress}
+          />
+        </View>
+      </>
     );
   }
 }
-
 
 export default BankStatementScreen;

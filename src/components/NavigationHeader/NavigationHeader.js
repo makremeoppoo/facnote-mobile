@@ -29,11 +29,13 @@ export default class NavigationHeader extends React.Component {
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{this.props.title}</Text>
           </View>
-          <View style={styles.iconView}>
-            <TouchableOpacity onPress={this.props.onPressTwo}>
-              <FontAwesomeIcon icon={faSlidersH} size={25} color="white" />
-            </TouchableOpacity>
-          </View>
+          {this.props.onPressTwo && (
+            <View style={styles.iconView}>
+              <TouchableOpacity onPress={this.props.onPressTwo}>
+                <FontAwesomeIcon icon={faSlidersH} size={25} color="white" />
+              </TouchableOpacity>
+            </View>
+          )}
         </View>
       </TouchableOpacity>
     );

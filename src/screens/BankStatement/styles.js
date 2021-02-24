@@ -13,6 +13,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
+  soldeTitle:{
+    color:"#15CA20",
+    fontSize: ScaleHelpers.CalcWidth(7),
+    fontFamily:'Nunito-Bold',
+  },
+  dateTitle:{
+    color:"#707070",
+    fontSize: ScaleHelpers.CalcWidth(5),
+    fontFamily:'Nunito',
+  },
+  filterTitle:{
+    color:"#FD3550",
+    fontSize: ScaleHelpers.CalcWidth(7),
+    fontFamily:'Nunito-Bold',
+    marginTop: ScaleHelpers.CalcHeight(3),
+    marginBottom: ScaleHelpers.CalcHeight(3),
+
+  },
+
   flatListStyle: {
     maxHeight: '80%',
   },
@@ -112,7 +131,7 @@ const styles = StyleSheet.create({
   },
   ActionSheetTitle:{
     color:blueColor,
-    fontWeight:'bold',
+    fontFamily:'Nunito-Bold',
     fontSize: ScaleHelpers.CalcWidth(5),
 
   },
@@ -123,6 +142,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(15),
   },
+
 
 });
 

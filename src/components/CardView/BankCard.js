@@ -6,7 +6,7 @@ import {View, TouchableHighlight} from 'react-native';
 
 import {Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
-import ScaleHelpers from '../../components/scaleHelpers';
+import ScaleHelpers from '../scaleHelpers';
 import {textColor, buttonColor} from '../../AppStyles';
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
@@ -38,13 +38,16 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderColor: 'rgba(214, 214, 214, 1)',
-    borderTopWidth: 0.5,
-    
   },
+  border: {
+    borderColor: 'rgba(214, 214, 214, 1)',
+    borderTopWidth: 1,
+  },
+
   rowContainer: {
     flexDirection: 'row',
     alignSelf: 'flex-start',
+    height: ScaleHelpers.CalcHeight(10),
   },
   itemIcon: {
     alignSelf: 'center',
@@ -58,73 +61,34 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     margin: ScaleHelpers.CalcWidth(1),
     lineHeight: 34,
+    width: ScaleHelpers.CalcWidth(50),
   },
-  blueTitle: {
-    fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: 'rgb( 92,117,254)',
+  libelle: {
+    fontSize: ScaleHelpers.CalcWidth(4.5),
     fontFamily: 'Nunito-Bold',
-    margin: ScaleHelpers.CalcWidth(0),
   },
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: 'rgb(112,112,112)',
+    color: '#707070',
     fontFamily: 'Nunito-Bold',
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
- 
   },
 
-  itemText: {
-    fontSize: ScaleHelpers.CalcWidth(3.7),
-    fontFamily: 'Nunito-Bold',
-    color: '#7f7d80',
-    minWidth: ScaleHelpers.CalcWidth(24),
-    maxWidth: ScaleHelpers.CalcWidth(24),
-  },
-  blueItemText: {
-    fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: 'rgb( 92,117,254)',
-    fontFamily: 'Nunito-Bold',
-    minWidth: ScaleHelpers.CalcWidth(14),
-    maxWidth: ScaleHelpers.CalcWidth(14),
-  },
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),
-    width: ScaleHelpers.CalcWidth(20),
+    width: ScaleHelpers.CalcWidth(25),
     borderRadius: 20,
     alignSelf: 'center',
     justifyContent: 'center',
   },
   amountItem: {
     textAlign: 'center',
-    color: 'rgb(112,112,112)',
-    fontSize: ScaleHelpers.CalcWidth(3.6),
+    fontSize: ScaleHelpers.CalcWidth(4.5),
+    color: '#707070',
     fontFamily: 'Nunito-Bold',
   },
-  labelReleveBancaire: {
-    fontSize: ScaleHelpers.CalcWidth(3.6),
-    width: ScaleHelpers.CalcWidth(50),
-    color: 'rgb( 92,117,254)',
-    fontFamily: 'Nunito-Bold',
-  },
-  soldeContainer: {
-    alignItems: 'flex-end',
-    color: 'rgb(112,112,112)',
-    fontFamily: 'Nunito-Bold',
-  },
-  libelleRelBanquaireContainer: {
-    alignItems: 'flex-start',
-    margin: ScaleHelpers.CalcWidth(1),
-    lineHeight: 34,
-  },
- 
 });
 
-
-
-class CardView extends React.Component {
+class BankCard extends React.Component {
   render() {
     const item = this.props.item;
     return item.isTitle ? (
@@ -138,35 +102,51 @@ class CardView extends React.Component {
         style={styles.mainContainer}
         onPress={() => this.props.onShowModal(item.path)}
         underlayColor="rgba(73,182,77,1,0.9)">
-        <View style={styles.mainContainer}>
-          <View style={styles.rowContainer}>
-            <Icon
-              iconStyle={styles.iconRemoveFile}
-              reverse
-              type="ionicon"
-              color="rgb(92,117,254)"
-              name={'ios-help-circle'}
-              size={50}
-            />
-            <View style={styles.itemTxtContainer}></View>
-            <View style={styles.libelleRelBanquaireContainer}>
-              <Text numberOfLines={1} style={styles.labelReleveBancaire}>
+        <View
+          style={[styles.mainContainer, item.counter > 1 ? styles.border : {}]}>
+          <View
+            style={[
+              styles.rowContainer,
+              {
+                paddingTop: ScaleHelpers.CalcWidth(2),
+                paddingBottom: ScaleHelpers.CalcWidth(2),
+              },
+            ]}>
+            <View
+              style={{
+                alignItems: 'center',
+                paddingTop: ScaleHelpers.CalcWidth(2),
+                backgroundColor: item.color,
+                borderRadius: ScaleHelpers.CalcWidth(10),
+                width: ScaleHelpers.CalcWidth(15),
+                height: ScaleHelpers.CalcWidth(15),
+              }}>
+              <Icon
+                reverse
+                type="ionicon"
+                color={'white'}
+                name={item.icon}
+                size={35}
+              />
+            </View>
+            <View style={[styles.itemTxtContainer]}>
+              <Text
+                style={[
+                  styles.libelle,
+                  ,
+                  {color: item.icon == 'ios-cart' ? item.color : '#707070'},
+                ]}
+                numberOfLines={1}>
                 {item.libelle}
               </Text>
-              <Text style={styles.amountItem}>{item.nom_banque}</Text>
             </View>
           </View>
-          <View style={styles.soldeContainer}>
-            <Text style={styles.amountItem}>
-              {item.value + ' €'}
-            </Text>
-            <Text style={styles.amountItem}>
-              Solde : {(item.solde ? item.solde : 0) + ' €'}
-            </Text>
+          <View style={styles.amountContainer}>
+            <Text style={styles.amountItem}>{item.value + ' €'}</Text>
           </View>
         </View>
       </TouchableHighlight>
     );
   }
 }
-export default CardView;
+export default BankCard;
