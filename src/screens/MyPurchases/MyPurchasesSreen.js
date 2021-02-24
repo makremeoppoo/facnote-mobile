@@ -185,7 +185,6 @@ class MyPurchasesSreen extends React.Component {
             this.props.navigation.goBack();
           }}
           title={text.MesAchats}
-          icon={'ios-filter'}
           onPressTwo={() => this.setState({showModal: !this.state.showModal})}
         />
         <View style={styles.container}>

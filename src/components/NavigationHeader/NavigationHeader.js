@@ -4,6 +4,8 @@ import {TouchableOpacity, Image, View, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faSlidersH} from '@fortawesome/free-solid-svg-icons';
 
 export default class NavigationHeader extends React.Component {
   render() {
@@ -27,15 +29,9 @@ export default class NavigationHeader extends React.Component {
           <View style={styles.titleContainer}>
             <Text style={styles.title}>{this.props.title}</Text>
           </View>
-          <View  style={styles.iconView}>
+          <View style={styles.iconView}>
             <TouchableOpacity onPress={this.props.onPressTwo}>
-            <Icon
-             
-              type="ionicon"
-              color="white"
-              name={this.props.icon}
-              size={30}
-            />
+              <FontAwesomeIcon icon={faSlidersH} size={25} color="white" />
             </TouchableOpacity>
           </View>
         </View>

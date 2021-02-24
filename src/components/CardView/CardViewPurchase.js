@@ -3,17 +3,15 @@
 //card with image left,double text middle, and procent right
 import React from 'react';
 import {View, Image, TouchableHighlight} from 'react-native';
-import {
-  Collapse,
-  CollapseHeader,
-  CollapseBody,
-} from 'accordion-collapse-react-native';
+
 import {Badge, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
 import {textColor, buttonColor} from '../../AppStyles';
 import {text} from '../../constants';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { faLink } from '@fortawesome/free-solid-svg-icons'
 const styles = StyleSheet.create({
   itemTitleContainer: {
     flexDirection: 'row',
@@ -113,13 +111,10 @@ class CardView extends React.Component {
             style={styles.itemIcon}
             onPress={() => this.props.onShowPdfModal(item)}
             underlayColor="rgba(73,182,77,1,0.9)">
-            <Icon
-              iconStyle={styles.iconRemoveFile}
-              reverse
-              type="ionicon"
+            <FontAwesomeIcon
+              icon={faLink}
+              size={25}
               color="rgb(92,117,254)"
-              name={'ios-attach'}
-              size={30}
             />
           </TouchableHighlight>
         </View>
