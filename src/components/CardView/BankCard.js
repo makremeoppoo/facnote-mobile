@@ -6,6 +6,14 @@ import {View, TouchableHighlight} from 'react-native';
 
 import {Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {
+  faPlus,
+  faShoppingCart,
+  faComment,
+  faComments,
+} from '@fortawesome/free-solid-svg-icons';
+
 import ScaleHelpers from '../scaleHelpers';
 import {textColor, buttonColor} from '../../AppStyles';
 /* eslint-disable comma-dangle */
@@ -49,14 +57,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     height: ScaleHelpers.CalcHeight(10),
   },
-  itemIcon: {
-    alignSelf: 'center',
-    width: ScaleHelpers.CalcWidth(7),
-    height: ScaleHelpers.CalcWidth(7),
-    marginRight: ScaleHelpers.CalcWidth(1),
-    marginLeft: ScaleHelpers.CalcWidth(1),
-    //lineHeight: 30
-  },
+
   itemTxtContainer: {
     alignSelf: 'center',
     margin: ScaleHelpers.CalcWidth(1),
@@ -89,6 +90,93 @@ const styles = StyleSheet.create({
 });
 
 class BankCard extends React.Component {
+  renderIcon() {
+    if (
+      this.props.item.associer == null &&
+      this.props.item.justificatif &&
+      this.props.item.facture_tag == null
+    ) {
+      return (
+        <View
+          style={{
+            alignSelf: 'center',
+            margin: ScaleHelpers.CalcWidth(1),
+            lineHeight: 34,
+            alignItems: 'center',
+            paddingTop: ScaleHelpers.CalcWidth(4),
+            backgroundColor: "rgb(92, 117, 254)",
+            borderRadius: ScaleHelpers.CalcWidth(10),
+            width: ScaleHelpers.CalcWidth(15),
+            height: ScaleHelpers.CalcWidth(15),
+          }}>
+          <FontAwesomeIcon icon={faPlus} size={30} color="white" />
+        </View>
+      );
+    }
+
+    if (
+      this.props.item.associer == null &&
+      this.props.item.etat_commentaire == 3 &&
+      this.props.item.facture_tag !== null
+    ) {
+      return (
+        <View
+          style={{
+            alignSelf: 'center',
+            margin: ScaleHelpers.CalcWidth(1),
+            lineHeight: 34,
+            alignItems: 'center',
+            paddingTop: ScaleHelpers.CalcWidth(4),
+            backgroundColor: '#FD3550',
+            borderRadius: ScaleHelpers.CalcWidth(10),
+            width: ScaleHelpers.CalcWidth(15),
+            height: ScaleHelpers.CalcWidth(15),
+          }}>
+          <FontAwesomeIcon icon={faComments} size={30} color="white" />
+        </View>
+      );
+    }
+
+    if (
+      this.props.item.associer == null &&
+      (this.props.item.etat_commentaire == 4 ||
+        this.props.item.etat_commentaire == 5) &&
+      this.props.item.facture_tag !== null
+    ) {
+      return (
+        <View
+          style={{
+            alignSelf: 'center',
+            margin: ScaleHelpers.CalcWidth(1),
+            lineHeight: 34,
+            alignItems: 'center',
+            paddingTop: ScaleHelpers.CalcWidth(4),
+            backgroundColor: '#15CA20',
+            borderRadius: ScaleHelpers.CalcWidth(10),
+            width: ScaleHelpers.CalcWidth(15),
+            height: ScaleHelpers.CalcWidth(15),
+          }}>
+          <FontAwesomeIcon icon={faComment} size={30} color="white" />
+        </View>
+      );
+    }
+    return (
+      <View
+        style={{
+          alignSelf: 'center',
+          margin: ScaleHelpers.CalcWidth(1),
+          lineHeight: 34,
+          alignItems: 'center',
+          paddingTop: ScaleHelpers.CalcWidth(4),
+          backgroundColor: '#15CA20',
+          borderRadius: ScaleHelpers.CalcWidth(10),
+          width: ScaleHelpers.CalcWidth(15),
+          height: ScaleHelpers.CalcWidth(15),
+        }}>
+        <FontAwesomeIcon icon={faShoppingCart} size={30} color="white" />
+      </View>
+    );
+  }
   render() {
     const item = this.props.item;
     return item.isTitle ? (
@@ -107,28 +195,9 @@ class BankCard extends React.Component {
           <View
             style={[
               styles.rowContainer,
-              {
-                paddingTop: ScaleHelpers.CalcWidth(2),
-                paddingBottom: ScaleHelpers.CalcWidth(2),
-              },
+             
             ]}>
-            <View
-              style={{
-                alignItems: 'center',
-                paddingTop: ScaleHelpers.CalcWidth(2),
-                backgroundColor: item.color,
-                borderRadius: ScaleHelpers.CalcWidth(10),
-                width: ScaleHelpers.CalcWidth(15),
-                height: ScaleHelpers.CalcWidth(15),
-              }}>
-              <Icon
-                reverse
-                type="ionicon"
-                color={'white'}
-                name={item.icon}
-                size={35}
-              />
-            </View>
+            {this.renderIcon()}
             <View style={[styles.itemTxtContainer]}>
               <Text
                 style={[

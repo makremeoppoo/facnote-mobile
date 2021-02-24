@@ -141,39 +141,10 @@ class BankStatementScreen extends React.Component {
           });
         }
 
-        var icon = 'ios-cart';
-        var color = '#15CA20';
-
-        if (
-          item.associer == null &&
-          item.justificatif &&
-          item.facture_tag == null
-        ) {
-          icon = 'ios-add-outline';
-          color = 'rgb(92,117,254)';
-        }
-
-        if (
-          item.associer == null &&
-          item.etat_commentaire == 3 &&
-          item.facture_tag !== null
-        ) {
-          icon = 'ios-chatbubbles';
-          color = '#FD3550';
-        }
-
-        if (
-          item.associer == null &&
-          (item.etat_commentaire == 4 || item.etat_commentaire == 5) &&
-          item.facture_tag !== null
-        ) {
-          icon = 'ios-chatbubble-sharp';
-          color = '#15CA20';
-        }
+      
 
         let obj = {
-          color: color,
-          icon: icon,
+      
           counter: counter++,
           isTitle: false,
           ...item,
