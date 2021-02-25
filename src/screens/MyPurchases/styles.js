@@ -13,6 +13,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
+  topContainer: {alignContent: 'center', height: ScaleHelpers.CalcHeight(10)},
+
+  itemTitle: {
+    fontSize: ScaleHelpers.CalcWidth(3.6),
+    margin: ScaleHelpers.CalcWidth(1),
+    color: textColor,
+    fontFamily: 'Nunito-Bold',
+  },
+
   flatListStyle: {
     maxHeight: '80%',
   },
@@ -44,11 +53,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignSelf: 'center',
   },
-  itemTitle: {
-    fontSize: ScaleHelpers.CalcWidth(4),
-    color: textColor,
-    fontFamily: 'Nunito-Bold',
-  },
+
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -82,9 +87,10 @@ const styles = StyleSheet.create({
   },
   pdfContainer: {
     flex: 1,
-    marginTop: ScaleHelpers.CalcHeight(15),
+    marginTop: ScaleHelpers.CalcHeight(9),
     marginBottom: ScaleHelpers.CalcHeight(10),
     height: ScaleHelpers.CalcHeight(100),
+    width: ScaleHelpers.CalcWidth(90),
   },
   pdf: {
     width: ScaleHelpers.CalcWidth(90),
@@ -143,13 +149,14 @@ const styles = StyleSheet.create({
     fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
     fontFamily: 'Nunito-Bold',
-    margin: ScaleHelpers.CalcWidth(2),
+    marginTop: ScaleHelpers.CalcWidth(2),
   },
-  widthTextInfo:{
+  widthTLabelInfo: {
     width: ScaleHelpers.CalcWidth(25),
   },
-
-
+  widthTextInfo: {
+    width: ScaleHelpers.CalcWidth(60),
+  },
 });
 
 export default styles;

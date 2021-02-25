@@ -141,10 +141,7 @@ class BankStatementScreen extends React.Component {
           });
         }
 
-      
-
         let obj = {
-      
           counter: counter++,
           isTitle: false,
           ...item,

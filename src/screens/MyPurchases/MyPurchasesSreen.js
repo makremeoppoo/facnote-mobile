@@ -188,7 +188,7 @@ class MyPurchasesSreen extends React.Component {
           onPressTwo={() => this.setState({showModal: !this.state.showModal})}
         />
         <View style={styles.container}>
-          <View style={{alignContent: 'center'}}>
+          <View style={styles.topContainer}>
             <Text style={styles.itemTitle}>Total Débits: {debit} €</Text>
             <Text style={styles.itemTitle}>Total Crédits: {credit} €</Text>
           </View>
@@ -226,13 +226,13 @@ class MyPurchasesSreen extends React.Component {
                         <DatePicker
                           initialDate={this.state.startDate}
                           setCurrentDate={this.setStartDate}
-                          label={text.startDate}
+                          label={text.dateDebut}
                           display={'column'}
                         />
                         <DatePicker
                           initialDate={this.state.endDate}
                           setCurrentDate={this.setEndDate}
-                          label={text.endDate}
+                          label={text.dateFin}
                           display={'column'}
                         />
                       </View>
@@ -310,28 +310,28 @@ class MyPurchasesSreen extends React.Component {
                   />
                   <View style={{flexDirection: 'row'}}>
                     <View style={{flexDirection: 'column'}}>
-                      <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
                         Montant
                       </Text>
-                      <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
                         Description
                       </Text>
-                      <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
                         Date
                       </Text>
-                      <Text style={[styles.textInfo, styles.widthTextInfo]}>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
                         Echéance
                       </Text>
                     </View>
                     <View style={{flexDirection: 'column'}}>
-                      <Text style={styles.textInfo}>{purchase.TTC + ' €'}</Text>
-                      <Text style={styles.textInfo}>{purchase.libelle}</Text>
-                      <Text style={styles.textInfo}>
+                      <Text style={[styles.textInfo, styles.widthTextInfo, {textAlign:'right'}]}>{purchase.TTC + ' €'}</Text>
+                      <Text style={[styles.textInfo, styles.widthTextInfo, {textAlign:'right'}]}>{purchase.libelle}</Text>
+                      <Text style={[styles.textInfo, styles.widthTextInfo, {textAlign:'right'}]}>
                         {purchase.date
                           ? moment(purchase.date).format('DD/MM/YYYY')
                           : ''}
                       </Text>
-                      <Text style={styles.textInfo}>
+                      <Text style={[styles.textInfo, styles.widthTextInfo, {textAlign:'right'}]}>
                         {purchase.dateEcheance
                           ? moment(purchase.dateEcheance).format('DD/MM/YYYY')
                           : ''}

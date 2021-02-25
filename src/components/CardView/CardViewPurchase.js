@@ -62,17 +62,17 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     margin: ScaleHelpers.CalcWidth(1),
     lineHeight: 34,
-    width: ScaleHelpers.CalcWidth(60),
+    width: ScaleHelpers.CalcWidth(55),
   },
   libelle: {
-    fontSize: ScaleHelpers.CalcWidth(4.5),
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: '#707070',
     fontFamily: 'Nunito-Bold',
   },
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(3.6),
     color: '#707070',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: 'Nunito-Regular',
   },
 
   amountContainer: {
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   amountItem: {
     textAlign: 'center',
-    fontSize: ScaleHelpers.CalcWidth(4.5),
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: '#707070',
     fontFamily: 'Nunito-Bold',
   },
@@ -113,8 +113,8 @@ class CardView extends React.Component {
             underlayColor="rgba(73,182,77,1,0.9)">
             <FontAwesomeIcon
               icon={faLink}
-              size={25}
-              color="rgb(92,117,254)"
+              size={23}
+              color="#4EC6F5"
             />
           </TouchableHighlight>
         </View>
