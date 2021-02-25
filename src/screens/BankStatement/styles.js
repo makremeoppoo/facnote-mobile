@@ -15,20 +15,20 @@ const styles = StyleSheet.create({
   },
   soldeTitle:{
     color:"#15CA20",
-    fontSize: ScaleHelpers.CalcWidth(7),
+    fontSize: ScaleHelpers.CalcWidth(6),
     fontFamily:'Nunito-Bold',
   },
   dateTitle:{
     color:"#707070",
-    fontSize: ScaleHelpers.CalcWidth(5),
-    fontFamily:'Nunito',
+    fontSize: ScaleHelpers.CalcWidth(4),
+    fontFamily:'Nunito-Regular',
   },
   filterTitle:{
     color:"#FD3550",
-    fontSize: ScaleHelpers.CalcWidth(7),
+    fontSize: ScaleHelpers.CalcWidth(5),
     fontFamily:'Nunito-Bold',
-    marginTop: ScaleHelpers.CalcHeight(3),
-    marginBottom: ScaleHelpers.CalcHeight(3),
+    marginTop: ScaleHelpers.CalcHeight(2),
+    marginBottom: ScaleHelpers.CalcHeight(2),
 
   },
 

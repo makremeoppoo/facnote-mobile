@@ -56,16 +56,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-start',
     height: ScaleHelpers.CalcHeight(10),
+    width: ScaleHelpers.CalcWidth(60),
   },
 
   itemTxtContainer: {
     alignSelf: 'center',
-    margin: ScaleHelpers.CalcWidth(1),
     lineHeight: 34,
-    width: ScaleHelpers.CalcWidth(50),
+    marginLeft: ScaleHelpers.CalcWidth(5),
+    marginRight: ScaleHelpers.CalcWidth(10),
+
   },
   libelle: {
-    fontSize: ScaleHelpers.CalcWidth(4.5),
+    fontSize: ScaleHelpers.CalcWidth(4),
     fontFamily: 'Nunito-Bold',
   },
   itemTitle: {
@@ -76,21 +78,31 @@ const styles = StyleSheet.create({
 
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),
-    width: ScaleHelpers.CalcWidth(25),
+    width: ScaleHelpers.CalcWidth(30),
     borderRadius: 20,
     alignSelf: 'center',
     justifyContent: 'center',
   },
   amountItem: {
     textAlign: 'center',
-    fontSize: ScaleHelpers.CalcWidth(4.5),
+    fontSize: ScaleHelpers.CalcWidth(4),
     color: '#707070',
     fontFamily: 'Nunito-Bold',
+  },
+  iconContainer: {
+    alignSelf: 'center',
+    lineHeight: 34,
+    alignItems: 'center',
+    paddingTop: ScaleHelpers.CalcWidth(3),
+    borderRadius: ScaleHelpers.CalcWidth(10),
+    width: ScaleHelpers.CalcWidth(13),
+    height: ScaleHelpers.CalcWidth(13),
   },
 });
 
 class BankCard extends React.Component {
-  renderIcon() {
+  
+  renderIcon=()=> {
     if (
       this.props.item.associer == null &&
       this.props.item.justificatif &&
@@ -98,18 +110,13 @@ class BankCard extends React.Component {
     ) {
       return (
         <View
-          style={{
-            alignSelf: 'center',
-            margin: ScaleHelpers.CalcWidth(1),
-            lineHeight: 34,
-            alignItems: 'center',
-            paddingTop: ScaleHelpers.CalcWidth(4),
-            backgroundColor: "rgb(92, 117, 254)",
-            borderRadius: ScaleHelpers.CalcWidth(10),
-            width: ScaleHelpers.CalcWidth(15),
-            height: ScaleHelpers.CalcWidth(15),
-          }}>
-          <FontAwesomeIcon icon={faPlus} size={30} color="white" />
+          style={[
+            styles.iconContainer,
+            {
+              backgroundColor: 'rgb(92, 117, 254)',
+            },
+          ]}>
+          <FontAwesomeIcon icon={faPlus} size={25} color="white" />
         </View>
       );
     }
@@ -121,18 +128,13 @@ class BankCard extends React.Component {
     ) {
       return (
         <View
-          style={{
-            alignSelf: 'center',
-            margin: ScaleHelpers.CalcWidth(1),
-            lineHeight: 34,
-            alignItems: 'center',
-            paddingTop: ScaleHelpers.CalcWidth(4),
-            backgroundColor: '#FD3550',
-            borderRadius: ScaleHelpers.CalcWidth(10),
-            width: ScaleHelpers.CalcWidth(15),
-            height: ScaleHelpers.CalcWidth(15),
-          }}>
-          <FontAwesomeIcon icon={faComments} size={30} color="white" />
+          style={[
+            styles.iconContainer,
+            {
+              backgroundColor: '#FD3550',
+            },
+          ]}>
+          <FontAwesomeIcon icon={faComments} size={25} color="white" />
         </View>
       );
     }
@@ -145,35 +147,25 @@ class BankCard extends React.Component {
     ) {
       return (
         <View
-          style={{
-            alignSelf: 'center',
-            margin: ScaleHelpers.CalcWidth(1),
-            lineHeight: 34,
-            alignItems: 'center',
-            paddingTop: ScaleHelpers.CalcWidth(4),
-            backgroundColor: '#15CA20',
-            borderRadius: ScaleHelpers.CalcWidth(10),
-            width: ScaleHelpers.CalcWidth(15),
-            height: ScaleHelpers.CalcWidth(15),
-          }}>
-          <FontAwesomeIcon icon={faComment} size={30} color="white" />
+          style={[
+            styles.iconContainer,
+            {
+              backgroundColor: '#15CA20',
+            },
+          ]}>
+          <FontAwesomeIcon icon={faComment} size={25} color="white" />
         </View>
       );
     }
     return (
       <View
-        style={{
-          alignSelf: 'center',
-          margin: ScaleHelpers.CalcWidth(1),
-          lineHeight: 34,
-          alignItems: 'center',
-          paddingTop: ScaleHelpers.CalcWidth(4),
-          backgroundColor: '#15CA20',
-          borderRadius: ScaleHelpers.CalcWidth(10),
-          width: ScaleHelpers.CalcWidth(15),
-          height: ScaleHelpers.CalcWidth(15),
-        }}>
-        <FontAwesomeIcon icon={faShoppingCart} size={30} color="white" />
+        style={[
+          styles.iconContainer,
+          {
+            backgroundColor: '#15CA20',
+          },
+        ]}>
+        <FontAwesomeIcon icon={faShoppingCart} size={25} color="white" />
       </View>
     );
   }
@@ -192,18 +184,12 @@ class BankCard extends React.Component {
         underlayColor="rgba(73,182,77,1,0.9)">
         <View
           style={[styles.mainContainer, item.counter > 1 ? styles.border : {}]}>
-          <View
-            style={[
-              styles.rowContainer,
-             
-            ]}>
+          <View style={[styles.rowContainer]}>
             {this.renderIcon()}
             <View style={[styles.itemTxtContainer]}>
               <Text
                 style={[
                   styles.libelle,
-                  ,
-                  {color: item.icon == 'ios-cart' ? item.color : '#707070'},
                 ]}
                 numberOfLines={1}>
                 {item.libelle}
