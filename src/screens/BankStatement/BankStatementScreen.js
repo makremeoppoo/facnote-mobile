@@ -125,7 +125,6 @@ class BankStatementScreen extends React.Component {
         type.value,
         account.value,
       );
-      console.log("statements===",statements.ecritures)
 
     } catch (e) {
       console.log(e);
@@ -214,15 +213,14 @@ class BankStatementScreen extends React.Component {
 
   async componentDidMount() {
     var accounts = await getAccountsBank(100, 1);
-    let bankAccounts = [{key: -1, label: 'Tous les comptes', value: ''}];
-
-   /* accounts.map((item, index) => {
+    let bankAccounts = []
+    accounts.map((item, index) => {
       bankAccounts.push({
         key: index++,
-        value: item.id,
+        value: item.iban,
         label: item.banque,
       });
-    });*/
+    });
     this.setState({bankAccounts, account: bankAccounts[0]});
     this.loadData();
   }
