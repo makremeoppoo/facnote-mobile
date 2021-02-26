@@ -69,6 +69,7 @@ const styles = StyleSheet.create({
   libelle: {
     fontSize: ScaleHelpers.CalcWidth(4),
     fontFamily: 'Nunito-Bold',
+    color:"#707070"
   },
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(3.6),
@@ -95,8 +96,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: ScaleHelpers.CalcWidth(3),
     borderRadius: ScaleHelpers.CalcWidth(10),
-    width: ScaleHelpers.CalcWidth(13),
-    height: ScaleHelpers.CalcWidth(13),
+    width: ScaleHelpers.CalcWidth(12),
+    height: ScaleHelpers.CalcWidth(12),
   },
 });
 
@@ -116,7 +117,7 @@ class BankCard extends React.Component {
               backgroundColor: 'rgb(92, 117, 254)',
             },
           ]}>
-          <FontAwesomeIcon icon={faPlus} size={25} color="white" />
+          <FontAwesomeIcon icon={faPlus} size={23} color="white" />
         </View>
       );
     }
@@ -134,7 +135,7 @@ class BankCard extends React.Component {
               backgroundColor: '#FD3550',
             },
           ]}>
-          <FontAwesomeIcon icon={faComments} size={25} color="white" />
+          <FontAwesomeIcon icon={faComments} size={23} color="white" />
         </View>
       );
     }
@@ -153,7 +154,7 @@ class BankCard extends React.Component {
               backgroundColor: '#15CA20',
             },
           ]}>
-          <FontAwesomeIcon icon={faComment} size={25} color="white" />
+          <FontAwesomeIcon icon={faComment} size={23} color="white" />
         </View>
       );
     }
@@ -165,7 +166,7 @@ class BankCard extends React.Component {
             backgroundColor: '#15CA20',
           },
         ]}>
-        <FontAwesomeIcon icon={faShoppingCart} size={25} color="white" />
+        <FontAwesomeIcon icon={faShoppingCart} size={23} color="white" />
       </View>
     );
   }

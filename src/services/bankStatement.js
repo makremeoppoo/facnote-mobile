@@ -2,7 +2,7 @@ import * as c from '../constants';
 import api from './axios';
 import moment from 'moment';
 
-export default async function getEnterprise(
+export default async function getBankStatement(
   limit = 10,
   page = 1,
   startDate,

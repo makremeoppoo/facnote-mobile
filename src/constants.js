@@ -27,6 +27,7 @@ export const text = {
   dateDebut: 'Date début',
   dateFin: 'Date fin',
   compte: 'Compte',
+  banque: 'Banque',
   searchReleveBanquaire: 'Description, numero de facture, compte ',
   debit: 'Debit',
   credit: 'Credit',
@@ -72,7 +73,8 @@ export const text = {
   Plus:'Plus',
   MontantTTC:'TTC',
   SoldeAu:"Solde au",
-  transactionJustifier:"x transaction(s) à justifier"
+  transactionJustifier:"x transaction(s) à justifier",
+  transactionNonJustifier:"x transaction(s) non justifier"
 
 };
 

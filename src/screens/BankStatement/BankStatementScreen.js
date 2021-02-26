@@ -15,7 +15,7 @@ import {connect} from 'react-redux';
 import ActionSheet from 'react-native-actionsheet';
 import Toast from 'react-native-toast-message';
 
-import getEnterprise from '../../services/bankStatement';
+import getBankStatement from '../../services/bankStatement';
 import sendComment from '../../services/sendComment';
 
 import DatePicker from '../../components/DatePicker/DatePicker';
@@ -111,7 +111,7 @@ class BankStatementScreen extends React.Component {
       isRefreshing: true,
     });
     try {
-      var statements = await getEnterprise(
+      var statements = await getBankStatement(
         limit,
         page,
         startDate,
@@ -241,6 +241,19 @@ class BankStatementScreen extends React.Component {
       item={item}
     />
   );
+  getData = () => {
+    if (this.state.justificatif) return this.state.list;
+    else
+     return this.state.list.filter(
+        (item) =>
+          (item.associer == null &&
+          item.justificatif &&
+          item.facture_tag == null) ||
+          item.isTitle
+      );
+
+
+  };
   renderFilter = () => (
     <View style={styles.modalContant}>
       <TextInput
@@ -393,7 +406,7 @@ class BankStatementScreen extends React.Component {
           onPress={() => {
             this.props.navigation.goBack();
           }}
-          title={text.RelevesBancaires}
+          title={text.banque}
           onPressTwo={() => this.setState({showModal: !this.state.showModal})}
         />
         <View style={styles.container}>
@@ -408,7 +421,11 @@ class BankStatementScreen extends React.Component {
                 this.setState({justificatif: !this.state.justificatif})
               }
               underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={styles.filterTitle}>{text.transactionJustifier}</Text>
+              <Text style={styles.filterTitle}>
+                {this.state.justificatif
+                  ? text.transactionJustifier
+                  : text.transactionNonJustifier}
+              </Text>
             </TouchableHighlight>
           </View>
           {isRefreshing && (
@@ -416,11 +433,9 @@ class BankStatementScreen extends React.Component {
           )}
           <FlatList
             style={styles.flatListStyle}
-            data={
-              justificatif ? list : list.filter((item) => !item.justificatif)
-            }
+            data={this.getData()}
             renderItem={this.renderItem}
-            keyExtractor={(item) => `${item.id}`}
+            keyExtractor={(item) => console.log(item.id)}
             initialNumToRender={3}
             refreshing={false}
             // onRefresh={() => this.handleRefresh()}

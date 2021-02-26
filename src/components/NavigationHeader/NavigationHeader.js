@@ -10,34 +10,36 @@ import {faSlidersH} from '@fortawesome/free-solid-svg-icons';
 export default class NavigationHeader extends React.Component {
   render() {
     return (
-      <TouchableOpacity
-        style={styles.headerButtonContainer}
-        onPress={this.props.onPress}>
-        <View style={styles.headerContain}>
+      <View style={styles.headerContain}>
+        <TouchableOpacity
+          style={styles.headerButtonImage}
+          onPress={this.props.onPress}>
           <Image
             style={styles.headerButtonImage}
             source={require('../../../assets/images/NavigationBackground.png')}
           />
-          <View style={styles.btnContainer}>
-            <TouchableOpacity onPress={this.props.onPress}>
-              <Image
-                source={require('../../../assets/icons/backArrow.png')}
-                style={styles.btnIcon}
-              />
+        </TouchableOpacity>
+
+        <View style={styles.btnContainer}>
+          <TouchableOpacity onPress={this.props.onPress}>
+            <Image
+              source={require('../../../assets/icons/backArrow.png')}
+              style={styles.btnIcon}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{this.props.title}</Text>
+
+        </View>
+        {this.props.onPressTwo && (
+          <View style={styles.iconView}>
+            <TouchableOpacity onPress={this.props.onPressTwo}>
+              <FontAwesomeIcon icon={faSlidersH} size={25} color="white" />
             </TouchableOpacity>
           </View>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>{this.props.title}</Text>
-          </View>
-          {this.props.onPressTwo && (
-            <View style={styles.iconView}>
-              <TouchableOpacity onPress={this.props.onPressTwo}>
-                <FontAwesomeIcon icon={faSlidersH} size={25} color="white" />
-              </TouchableOpacity>
-            </View>
-          )}
-        </View>
-      </TouchableOpacity>
+        )}
+      </View>
     );
   }
 }
