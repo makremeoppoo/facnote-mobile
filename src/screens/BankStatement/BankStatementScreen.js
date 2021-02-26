@@ -16,6 +16,7 @@ import ActionSheet from 'react-native-actionsheet';
 import Toast from 'react-native-toast-message';
 
 import getBankStatement from '../../services/bankStatement';
+import getAccountsBank from '../../services/accountsBank';
 import sendComment from '../../services/sendComment';
 
 import DatePicker from '../../components/DatePicker/DatePicker';
@@ -31,6 +32,7 @@ import {text} from '../../constants';
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
 
 import styles from './styles';
+import {acc} from 'react-native-reanimated';
 const billTypeArray = ['perdue', 'personnelle', 'autres'];
 class BankStatementScreen extends React.Component {
   constructor(props) {
@@ -110,6 +112,7 @@ class BankStatementScreen extends React.Component {
     this.setState({
       isRefreshing: true,
     });
+
     try {
       var statements = await getBankStatement(
         limit,
@@ -122,13 +125,14 @@ class BankStatementScreen extends React.Component {
         type.value,
         account.value,
       );
+      console.log("statements===",statements.ecritures)
+
     } catch (e) {
       console.log(e);
     } finally {
       let list = [];
       let date = '';
       let counter = 0;
-      console.log(statements.ecritures[0]);
 
       await statements.ecritures.map((item, index) => {
         let newDate = moment(item.date_operation).format('DD/MM/YYYY');
@@ -151,14 +155,6 @@ class BankStatementScreen extends React.Component {
         list.push(obj);
       });
 
-      let bankAccounts = [{key: -1, label: 'Tous les comptes', value: ''}];
-      statements.comptes.map((item, index) => {
-        bankAccounts.push({
-          key: index++,
-          value: item.id,
-          label: item.name,
-        });
-      });
       let exercices = [];
       statements.exercices.map((item, index) => {
         exercices.push({
@@ -170,8 +166,7 @@ class BankStatementScreen extends React.Component {
           date_fin: item.date_fin,
         });
       });
-      console.log(list[1]);
-      this.setState({list, bankAccounts, exercices, isRefreshing: false});
+      this.setState({list, exercices, isRefreshing: false});
     }
   };
 
@@ -217,7 +212,18 @@ class BankStatementScreen extends React.Component {
       );
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    var accounts = await getAccountsBank(100, 1);
+    let bankAccounts = [{key: -1, label: 'Tous les comptes', value: ''}];
+
+    accounts.map((item, index) => {
+      bankAccounts.push({
+        key: index++,
+        value: item.id,
+        label: item.banque,
+      });
+    });
+    this.setState({bankAccounts, account: bankAccounts[0]});
     this.loadData();
   }
 
@@ -227,6 +233,7 @@ class BankStatementScreen extends React.Component {
 
   renderItem = ({item}) => (
     <BankCard
+      key={item.counter}
       onShowModal={() => {
         if (
           item.associer == null &&
@@ -244,15 +251,13 @@ class BankStatementScreen extends React.Component {
   getData = () => {
     if (this.state.justificatif) return this.state.list;
     else
-     return this.state.list.filter(
+      return this.state.list.filter(
         (item) =>
           (item.associer == null &&
-          item.justificatif &&
-          item.facture_tag == null) ||
-          item.isTitle
+            item.justificatif &&
+            item.facture_tag == null) ||
+          item.isTitle,
       );
-
-
   };
   renderFilter = () => (
     <View style={styles.modalContant}>
@@ -435,7 +440,7 @@ class BankStatementScreen extends React.Component {
             style={styles.flatListStyle}
             data={this.getData()}
             renderItem={this.renderItem}
-            keyExtractor={(item) => console.log(item.id)}
+            keyExtractor={(item) => item.counter}
             initialNumToRender={3}
             refreshing={false}
             // onRefresh={() => this.handleRefresh()}

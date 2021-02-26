@@ -35,13 +35,12 @@ export default async function getBankStatement(
     if (accountNumberSearch != '')
       path = `${path}&account_number=${accountNumberSearch}`;
 
-
+    
     console.log("path",path);
     let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',
     });
-    console.log('vvv', res);
 
     return res.data;
   } catch (e) {
