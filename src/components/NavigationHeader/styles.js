@@ -18,18 +18,12 @@ const styles = StyleSheet.create({
   headerContain: {
     justifyContent: 'center',
     marginBottom: ScaleHelpers.CalcHeight(2),
-    marginTop: ScaleHelpers.CalcWidth(2),
-    paddingTop: ScaleHelpers.CalcHeight(4),
+    marginTop: ScaleHelpers.CalcWidth(4),
 
     alignItems: 'center',
     flexDirection: 'row',
   },
-  btnContainer: {
-    width: ScaleHelpers.CalcWidth(10),
-    height: ScaleHelpers.CalcHeight(4),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
+
   btnIcon: {
     width: ScaleHelpers.CalcWidth(3),
     height: ScaleHelpers.CalcHeight(3),
@@ -38,12 +32,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(4),
+    marginTop: ScaleHelpers.CalcWidth(5),
     width: ScaleHelpers.CalcWidth(80),
   },
   title: {
-    fontFamily: 'SegoeUI',
+    fontFamily: 'Nunito-Regular',
     fontSize: ScaleHelpers.CalcWidth(5),
-
+    color: 'white',
+  },
+  subTitle: {
+    fontFamily: 'Nunito-Regular',
+    fontSize: ScaleHelpers.CalcWidth(3.8),
     color: 'white',
   },
 });

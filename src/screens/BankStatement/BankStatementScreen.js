@@ -216,13 +216,13 @@ class BankStatementScreen extends React.Component {
     var accounts = await getAccountsBank(100, 1);
     let bankAccounts = [{key: -1, label: 'Tous les comptes', value: ''}];
 
-    accounts.map((item, index) => {
+   /* accounts.map((item, index) => {
       bankAccounts.push({
         key: index++,
         value: item.id,
         label: item.banque,
       });
-    });
+    });*/
     this.setState({bankAccounts, account: bankAccounts[0]});
     this.loadData();
   }
@@ -401,7 +401,7 @@ class BankStatementScreen extends React.Component {
   };
 
   render() {
-    const {list, isRefreshing, justificatif} = this.state;
+    const {list, isRefreshing, account} = this.state;
 
     return (
       <>
@@ -412,6 +412,7 @@ class BankStatementScreen extends React.Component {
             this.props.navigation.goBack();
           }}
           title={text.banque}
+          subTitle={account.label}
           onPressTwo={() => this.setState({showModal: !this.state.showModal})}
         />
         <View style={styles.container}>

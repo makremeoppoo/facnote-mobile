@@ -11,27 +11,22 @@ export default class NavigationHeader extends React.Component {
   render() {
     return (
       <View style={styles.headerContain}>
-        <TouchableOpacity
+        <Image
           style={styles.headerButtonImage}
-          onPress={this.props.onPress}>
+          source={require('../../../assets/images/NavigationBackground.png')}
+        />
+
+        <TouchableOpacity onPress={this.props.onPress}>
           <Image
-            style={styles.headerButtonImage}
-            source={require('../../../assets/images/NavigationBackground.png')}
+            source={require('../../../assets/icons/backArrow.png')}
+            style={styles.btnIcon}
           />
         </TouchableOpacity>
-
-        <View style={styles.btnContainer}>
-          <TouchableOpacity onPress={this.props.onPress}>
-            <Image
-              source={require('../../../assets/icons/backArrow.png')}
-              style={styles.btnIcon}
-            />
-          </TouchableOpacity>
-        </View>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{this.props.title}</Text>
-
+          <Text style={styles.subTitle}>{this.props.subTitle}</Text>
         </View>
+
         {this.props.onPressTwo && (
           <View style={styles.iconView}>
             <TouchableOpacity onPress={this.props.onPressTwo}>

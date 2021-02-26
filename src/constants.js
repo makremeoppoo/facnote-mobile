@@ -22,7 +22,7 @@ export const text = {
   nomComplet: 'Prénom Nom',
   HistoriqueJustificatifs: 'Historique des justificatifs',
   RelevesBancaires: 'Relevés bancaires',
-  MesAchats: 'Mes achats',
+  MesAchats: 'Achat',
   filter: 'Filter',
   Reinitialiser: 'Reinitialiser',
   dateDebut: 'Date début',
