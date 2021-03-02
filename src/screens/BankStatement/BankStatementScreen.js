@@ -49,8 +49,7 @@ class BankStatementScreen extends React.Component {
 
     this.state = {
       showModal: false,
-      showActionModal: false,
-
+      modalIsFilter: true,
       list: [],
       limit: 10,
       page: 1,
@@ -88,12 +87,6 @@ class BankStatementScreen extends React.Component {
     this.setState({[name]: text});
   };
 
-  onShowModal = (source) => {
-    this.setState({
-      showModal: !this.state.showModal,
-      loading: true,
-    });
-  };
   onCloseModal = () => {
     this.setState({
       showModal: false,
@@ -104,6 +97,7 @@ class BankStatementScreen extends React.Component {
     this.setState({
       bankId: item.id,
       menus,
+      modalIsFilter: false,
     });
     this.Standard.open();
   };
@@ -196,7 +190,7 @@ class BankStatementScreen extends React.Component {
         text2: 'Votre message a été envoyé',
         type: 'success',
       });
-      this.setState({showActionModal: false});
+      this.setState({showModal: false});
     }
   };
 
@@ -239,10 +233,6 @@ class BankStatementScreen extends React.Component {
     this.loadData();
   }
 
-  handleActionSheetPress = (index) => {
-    this.setState({showActionModal: true});
-  };
-
   renderItem = ({item}) => (
     <View>
       <BankCard
@@ -265,21 +255,21 @@ class BankStatementScreen extends React.Component {
                 onPress: () =>
                   this.setState({
                     billType: 'personnelle',
-                    showActionModal: true,
+                    showModal: true,
                   }),
               },
               {
                 label: 'Facture perdue',
                 icon: faExclamationCircle,
                 onPress: () =>
-                  this.setState({billType: 'perdue', showActionModal: true}),
+                  this.setState({billType: 'perdue', showModal: true}),
               },
 
               {
                 label: 'Autres',
                 icon: faEllipsisH,
                 onPress: () =>
-                  this.setState({billType: 'autres', showActionModal: true}),
+                  this.setState({billType: 'autres', showModal: true}),
               },
             ];
             this.showActionSheet(item, menus);
@@ -302,7 +292,7 @@ class BankStatementScreen extends React.Component {
                 onPress: () =>
                   this.setState({
                     billType: 'expert',
-                    showActionModal: true,
+                    showModal: true,
                   }),
               },
             ];
@@ -420,8 +410,7 @@ class BankStatementScreen extends React.Component {
               startDate: null,
               endDate: null,
               multipleSearch: '',
-              exercice: '',
-              account: {key: -1, label: '', value: ''},
+              exercice: ''
             });
             await this.handleRefresh();
             await this.onCloseModal();
@@ -454,7 +443,7 @@ class BankStatementScreen extends React.Component {
             loading={this.state.loading}
             onPress={async () => {
               await this.setState({
-                showActionModal: false,
+                showModal: false,
               });
             }}
           />
@@ -484,7 +473,12 @@ class BankStatementScreen extends React.Component {
           }}
           title={text.banque}
           subTitle={account.label}
-          onPressTwo={() => this.setState({showModal: !this.state.showModal})}
+          onPressTwo={() =>
+            this.setState({
+              showModal: !this.state.showModal,
+              modalIsFilter: true,
+            })
+          }
         />
         <View style={styles.container}>
           <View style={{alignItems: 'center'}}>
@@ -534,43 +528,25 @@ class BankStatementScreen extends React.Component {
                   underlayColor="rgba(73,182,77,1,0.9)">
                   <Image style={styles.closeImg} source={Close} />
                 </TouchableHighlight>
-                <View style={styles.modalContainer}>
-                  <ScrollView>{this.renderFilter()}</ScrollView>
-                </View>
-              </View>
-            </View>
-          </Modal>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={this.state.showActionModal}>
-            {this.state.loading && (
-              <PageLoader showBackground={false} size="large" color="#0000ff" />
-            )}
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <TouchableHighlight
-                  style={styles.modalCloseView}
-                  onPress={() =>
-                    this.setState({
-                      showActionModal: !this.state.showActionModal,
-                    })
-                  }
-                  underlayColor="rgba(73,182,77,1,0.9)">
-                  <Image style={styles.closeImg} source={Close} />
-                </TouchableHighlight>
-                <View style={styles.modalContainer}>
-                  <View style={styles.titleModalContainer}>
-                    <Text style={styles.titleModalText}>
-                      {this.state.billType == 'personnelle' &&
-                        'Facture personnelle'}
-                      {this.state.billType == 'autres' && 'Autres'}
-                      {this.state.billType == 'perdue' && 'Facture perdue'}
-                      {this.state.billType == 'expert' && 'Répondre à l’expert'}
-                    </Text>
+                {this.state.modalIsFilter ? (
+                  <View style={styles.modalContainer}>
+                    <ScrollView>{this.renderFilter()}</ScrollView>
                   </View>
-                  <ScrollView>{this.renderActionForm()}</ScrollView>
-                </View>
+                ) : (
+                  <View style={styles.modalContainer}>
+                    <View style={styles.titleModalContainer}>
+                      <Text style={styles.titleModalText}>
+                        {this.state.billType == 'personnelle' &&
+                          'Facture personnelle'}
+                        {this.state.billType == 'autres' && 'Autres'}
+                        {this.state.billType == 'perdue' && 'Facture perdue'}
+                        {this.state.billType == 'expert' &&
+                          'Répondre à l’expert'}
+                      </Text>
+                    </View>
+                    <ScrollView>{this.renderActionForm()}</ScrollView>
+                  </View>
+                )}
               </View>
             </View>
           </Modal>
