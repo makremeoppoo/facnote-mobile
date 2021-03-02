@@ -12,9 +12,10 @@ import {
   ScrollView,
 } from 'react-native';
 import {connect} from 'react-redux';
-import ActionSheet from 'react-native-actionsheet';
+import RBSheet from 'react-native-raw-bottom-sheet';
 import Toast from 'react-native-toast-message';
-
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faUserAlt} from '@fortawesome/free-solid-svg-icons';
 import getBankStatement from '../../services/bankStatement';
 import getAccountsBank from '../../services/accountsBank';
 import sendComment from '../../services/sendComment';
@@ -88,9 +89,9 @@ class BankStatementScreen extends React.Component {
     });
   };
 
-  showActionSheet = (bankId) => {
-    this.setState({bankId});
-    this.ActionSheet.show();
+  showActionSheet = (item) => {
+    this.setState({bankId: item.id});
+    this.Standard.open();
   };
 
   onScroll = () => {
@@ -125,7 +126,6 @@ class BankStatementScreen extends React.Component {
         type.value,
         account.value,
       );
-
     } catch (e) {
       console.log(e);
     } finally {
@@ -213,7 +213,7 @@ class BankStatementScreen extends React.Component {
 
   async componentDidMount() {
     var accounts = await getAccountsBank(100, 1);
-    let bankAccounts = []
+    let bankAccounts = [];
     accounts.map((item, index) => {
       bankAccounts.push({
         key: index++,
@@ -230,21 +230,25 @@ class BankStatementScreen extends React.Component {
   };
 
   renderItem = ({item}) => (
-    <BankCard
-      key={item.counter}
-      onShowModal={() => {
-        if (
-          item.associer == null &&
-          item.justificatif &&
-          item.facture_tag == null
-        ) {
-          this.showActionSheet(item.id);
+    <View>
+      <BankCard
+        key={item.counter}
+        onShowModal={() => {
+          if (
+            item.associer == null &&
+            item.justificatif &&
+            item.facture_tag == null
+          ) {
+            this.showActionSheet(item);
+            return;
+          }
+          this.showActionSheet(item);
+
           return;
-        }
-        return;
-      }}
-      item={item}
-    />
+        }}
+        item={item}
+      />
+    </View>
   );
   getData = () => {
     if (this.state.justificatif) return this.state.list;
@@ -407,7 +411,8 @@ class BankStatementScreen extends React.Component {
 
         <NavigationHeader
           onPress={() => {
-            this.props.navigation.goBack();
+            // this.props.navigation.goBack();
+            this.Standard.open();
           }}
           title={text.banque}
           subTitle={account.label}
@@ -446,6 +451,40 @@ class BankStatementScreen extends React.Component {
             onScrollEndDrag={this.handleLoadMore}
             onEndThreshold={0}
           />
+          <RBSheet
+            ref={(ref) => {
+              this.Standard = ref;
+            }}
+            height={130}>
+            <View style={styles.bottomSheetContainer}>
+              <TouchableHighlight
+                key={list.icon}
+                onPress={() => this.Standard.close()}>
+                <View style={styles.bottomSheetAction}>
+                  <FontAwesomeIcon icon={faUserAlt} size={30} color="#707070" />
+
+                  <Text style={styles.bottomSheetText}>
+                    Facture personnelle
+                  </Text>
+                 
+                </View>
+              </TouchableHighlight>
+              <TouchableHighlight
+                key={list.icon}
+                onPress={() => this.Standard.close()}>
+                <View style={styles.bottomSheetAction}>
+                  <FontAwesomeIcon icon={faUserAlt} size={30} color="#707070" />
+
+                  <Text style={styles.bottomSheetText}>
+                    Facture personnelle
+                  </Text>
+                 
+                </View>
+              </TouchableHighlight>
+              
+            </View>
+        
+          </RBSheet>
           <Modal
             animationType="slide"
             transparent={true}
@@ -492,14 +531,6 @@ class BankStatementScreen extends React.Component {
               </View>
             </View>
           </Modal>
-          <ActionSheet
-            ref={(o) => (this.ActionSheet = o)}
-            options={['FACTURE PERDU', 'FACTURE PERSONNELLE', 'AUTRES']}
-            cancelButtonIndex={0}
-            destructiveButtonIndex={3}
-            title={<Text style={[styles.ActionSheetTitle]}>ACTIONS</Text>}
-            onPress={this.handleActionSheetPress}
-          />
         </View>
       </>
     );

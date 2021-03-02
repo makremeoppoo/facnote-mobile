@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor,blueColor} from '../../AppStyles';
+import {textColor, buttonColor, blueColor} from '../../AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -13,23 +13,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  soldeTitle:{
-    color:"#15CA20",
+  soldeTitle: {
+    color: '#15CA20',
     fontSize: ScaleHelpers.CalcWidth(6),
-    fontFamily:'Nunito-Bold',
+    fontFamily: 'Nunito-Bold',
   },
-  dateTitle:{
-    color:"#707070",
+  dateTitle: {
+    color: '#707070',
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily:'Nunito-Regular',
+    fontFamily: 'Nunito-Regular',
   },
-  filterTitle:{
-    color:"#FD3550",
+  filterTitle: {
+    color: '#FD3550',
     fontSize: ScaleHelpers.CalcWidth(5),
-    fontFamily:'Nunito-Bold',
+    fontFamily: 'Nunito-Bold',
     marginTop: ScaleHelpers.CalcHeight(2),
     marginBottom: ScaleHelpers.CalcHeight(2),
-
   },
 
   flatListStyle: {
@@ -129,12 +128,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '40%',
   },
-  ActionSheetTitle:{
-    color:blueColor,
-    fontFamily:'Nunito-Bold',
-    fontSize: ScaleHelpers.CalcWidth(5),
 
-  },
   ButtonsContain: {
     flex: 1,
     flexDirection: 'row',
@@ -143,7 +137,29 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(15),
   },
 
+  bottomSheetContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: '#00000029',
+    height: ScaleHelpers.CalcHeight(15),
+  
+  },
+  bottomSheetAction: {
+    width: ScaleHelpers.CalcWidth(30),
+    height: ScaleHelpers.CalcHeight(15),
+    paddingTop: ScaleHelpers.CalcHeight(2),
+    marginTop: ScaleHelpers.CalcHeight(1),
 
+    alignItems: 'center',
+    borderRightColor:"#707070",
+    borderRightWidth: 1,
+    borderColor: "#707070",
+  },
+  bottomSheetText: {
+    textAlign: 'center',
+    color:"#707070",
+    fontSize: ScaleHelpers.CalcWidth(5),
+  },
 });
 
 export default styles;

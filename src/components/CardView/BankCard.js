@@ -5,7 +5,6 @@ import React from 'react';
 import {View, TouchableHighlight} from 'react-native';
 
 import {Text} from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {
   faPlus,
