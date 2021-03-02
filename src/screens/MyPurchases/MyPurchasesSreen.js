@@ -72,7 +72,6 @@ class MyPurchasesSreen extends React.Component {
   };
 
   onShowPdfModal = (item) => {
-    console.log(item);
     this.setState({
       purchase: item,
       showPdfModal: !this.state.showPdfModal,
@@ -95,10 +94,9 @@ class MyPurchasesSreen extends React.Component {
       isRefreshing: true,
     });
     try {
-
       var data = await getPurchases(limit, page, startDate, endDate);
     } catch (e) {
-      console.log(e)
+      console.log(e);
       this.setState({list: [], isRefreshing: false});
     } finally {
       let list = [];
@@ -106,7 +104,6 @@ class MyPurchasesSreen extends React.Component {
       let counter = 0;
       let debit = 0;
       let credit = 0;
-      console.log(data)
       await data.purchases.map((item, index) => {
         debit = debit + item.debit;
         credit = credit + item.credit;
@@ -129,11 +126,18 @@ class MyPurchasesSreen extends React.Component {
         list.push(obj);
       });
 
-      this.setState({list, debit:debit.toFixed(2), credit:credit.toFixed(2), isRefreshing: false});
+      this.setState({
+        list,
+        debit: debit.toFixed(2),
+        credit: credit.toFixed(2),
+        isRefreshing: false,
+      });
     }
   };
 
   handleRefresh = () => {
+    console.log('handleRefresh');
+
     this.setState(
       {
         isRefreshing: true,
@@ -147,6 +151,7 @@ class MyPurchasesSreen extends React.Component {
   };
 
   handleLoadMore = () => {
+    console.log('handleLoadMore');
     if (!this.state.isRefreshing)
       this.setState(
         {
@@ -165,7 +170,11 @@ class MyPurchasesSreen extends React.Component {
   initData = async () => {};
 
   renderItem = ({item}) => (
-    <CardView onShowPdfModal={this.onShowPdfModal} item={item} />
+    <CardView
+      key={(item) => `${item.counter}`}
+      onShowPdfModal={this.onShowPdfModal}
+      item={item}
+    />
   );
 
   render() {
@@ -203,10 +212,9 @@ class MyPurchasesSreen extends React.Component {
             style={styles.flatListStyle}
             data={list}
             renderItem={this.renderItem}
-            keyExtractor={(item) => `${item.counter}`}
             initialNumToRender={3}
             refreshing={false}
-            // onRefresh={() => this.handleRefresh()}
+            onRefresh={() => this.handleRefresh()}
             onScrollEndDrag={this.handleLoadMore}
             onEndThreshold={0}
           />
@@ -248,6 +256,8 @@ class MyPurchasesSreen extends React.Component {
                             await this.setState({
                               min: '',
                               max: '',
+                              debit: 0,
+                              credit: 0,
                               startDate: null,
                               endDate: null,
                               search_multiple: '',
@@ -327,14 +337,38 @@ class MyPurchasesSreen extends React.Component {
                       </Text>
                     </View>
                     <View style={{flexDirection: 'column'}}>
-                      <Text style={[styles.textInfo, styles.widthTextInfo, {textAlign:'right'}]}>{purchase.TTC + ' €'}</Text>
-                      <Text style={[styles.textInfo, styles.widthTextInfo, {textAlign:'right'}]}>{purchase.libelle}</Text>
-                      <Text style={[styles.textInfo, styles.widthTextInfo, {textAlign:'right'}]}>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {purchase.TTC + ' €'}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {purchase.libelle}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
                         {purchase.date
                           ? moment(purchase.date).format('DD/MM/YYYY')
                           : ''}
                       </Text>
-                      <Text style={[styles.textInfo, styles.widthTextInfo, {textAlign:'right'}]}>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
                         {purchase.dateEcheance
                           ? moment(purchase.dateEcheance).format('DD/MM/YYYY')
                           : ''}
