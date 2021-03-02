@@ -102,24 +102,28 @@ class BankStatementScreen extends React.Component {
       bankId: item.id,
       menus: [
         {
+          label: 'Joindre une facture',
+          icon: faLink,
+          onPress: () => this.props.navigation.navigate(routes.Invoices),
+        },
+        {
           label: 'Facture personnelle',
           icon: faUserAlt,
-          onPress: () => this.props.navigation.navigate(routes.Invoices),
+          onPress: () =>
+            this.setState({billType: 'personnelle', showActionModal: true}),
         },
         {
           label: 'Facture perdue',
           icon: faExclamationCircle,
-          onPress: null,
+          onPress: () =>
+            this.setState({billType: 'perdue', showActionModal: true}),
         },
-        {
-          label: 'Joindre une facture',
-          icon: faLink,
-          onPress: null,
-        },
+
         {
           label: 'Autres',
           icon: faEllipsisH,
-          onPress: null,
+          onPress: () =>
+            this.setState({billType: 'autres', showActionModal: true}),
         },
       ],
     });
@@ -177,7 +181,6 @@ class BankStatementScreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-
       await statements.ecritures.map((item, index) => {
         let newDate = moment(item.date_operation).format('DD/MM/YYYY');
         if (date != newDate) {
@@ -448,7 +451,7 @@ class BankStatementScreen extends React.Component {
   };
 
   render() {
-    const {list, isRefreshing, account,statement} = this.state;
+    const {list, isRefreshing, account, statement} = this.state;
     const resourceType = 'url';
 
     const resources = {
@@ -546,6 +549,13 @@ class BankStatementScreen extends React.Component {
                   <Image style={styles.closeImg} source={Close} />
                 </TouchableHighlight>
                 <View style={styles.modalContainer}>
+                  <View style={styles.titleModalContainer}>
+                    <Text style={styles.titleModalText}>
+                      {this.state.billType=="personnelle" && "Facture personnelle"}
+                      {this.state.billType=="autres" && "Autres"}
+                      {this.state.billType=="perdue" && "Facture perdue"}
+                    </Text>
+                  </View>
                   <ScrollView>{this.renderActionForm()}</ScrollView>
                 </View>
               </View>
