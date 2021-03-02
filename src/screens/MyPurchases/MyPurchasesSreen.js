@@ -95,8 +95,10 @@ class MyPurchasesSreen extends React.Component {
       isRefreshing: true,
     });
     try {
+
       var data = await getPurchases(limit, page, startDate, endDate);
     } catch (e) {
+      console.log(e)
       this.setState({list: [], isRefreshing: false});
     } finally {
       let list = [];
@@ -104,6 +106,7 @@ class MyPurchasesSreen extends React.Component {
       let counter = 0;
       let debit = 0;
       let credit = 0;
+      console.log(data)
       await data.purchases.map((item, index) => {
         debit = debit + item.debit;
         credit = credit + item.credit;
@@ -200,7 +203,7 @@ class MyPurchasesSreen extends React.Component {
             style={styles.flatListStyle}
             data={list}
             renderItem={this.renderItem}
-            keyExtractor={(item) => `${item.id}`}
+            keyExtractor={(item) => `${item.counter}`}
             initialNumToRender={3}
             refreshing={false}
             // onRefresh={() => this.handleRefresh()}

@@ -1,15 +1,20 @@
+import moment from 'moment';
+
 import * as c from '../constants';
 import api from './axios';
 
-export default async function getPurchases(limit, page,startDate,endDate) {
+export default async function getPurchases(limit, page, startDate, endDate) {
   try {
     let path = `${c.GETPURCHASES}?limit=${limit}&page=${page}`;
-    if (startDate != null)
+    if (startDate != null) {
       path = `${path}&start_date=${moment(startDate).format('DD/MM/YYYY')}`;
+    }
 
-    if (endDate != null)
+    if (endDate != null) {
       path = `${path}&end_date=${moment(endDate).format('DD/MM/YYYY')}`;
+    }
 
+    console.log('path===========', path);
     let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',
