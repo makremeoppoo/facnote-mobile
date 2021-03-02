@@ -136,30 +136,39 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(15),
   },
-
-  bottomSheetContainer: {
+  textInfo: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: textColor,
+    fontFamily: 'Nunito-Bold',
+    marginTop: ScaleHelpers.CalcWidth(2),
+  },
+  widthTLabelInfo: {
+    width: ScaleHelpers.CalcWidth(25),
+  },
+  widthTextInfo: {
+    width: ScaleHelpers.CalcWidth(60),
+  },
+  pdfContainer: {
     flex: 1,
-    flexDirection: 'row',
-    backgroundColor: '#00000029',
-    height: ScaleHelpers.CalcHeight(15),
-  
+    marginTop: ScaleHelpers.CalcHeight(9),
+    marginBottom: ScaleHelpers.CalcHeight(10),
+    height: ScaleHelpers.CalcHeight(100),
+    width: ScaleHelpers.CalcWidth(90),
   },
-  bottomSheetAction: {
-    width: ScaleHelpers.CalcWidth(30),
-    height: ScaleHelpers.CalcHeight(15),
-    paddingTop: ScaleHelpers.CalcHeight(2),
-    marginTop: ScaleHelpers.CalcHeight(1),
-
+  pdf: {
+    width: ScaleHelpers.CalcWidth(90),
+    height: ScaleHelpers.CalcHeight(50),
+  },
+  titleModalContainer: {
     alignItems: 'center',
-    borderRightColor:"#707070",
-    borderRightWidth: 1,
-    borderColor: "#707070",
   },
-  bottomSheetText: {
-    textAlign: 'center',
-    color:"#707070",
+  titleModalText: {
     fontSize: ScaleHelpers.CalcWidth(5),
+    color: 'rgb(112,112,112)',
+    fontFamily: 'Nunito-Bold',
   },
+
+
 });
 
 export default styles;

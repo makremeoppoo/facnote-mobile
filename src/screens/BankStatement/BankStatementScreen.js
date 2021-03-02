@@ -11,14 +11,20 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import {connect} from 'react-redux';
-import RBSheet from 'react-native-raw-bottom-sheet';
 import Toast from 'react-native-toast-message';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faUserAlt} from '@fortawesome/free-solid-svg-icons';
+import PDFView from 'react-native-view-pdf';
+
+import {
+  faUserAlt,
+  faEllipsisH,
+  faExclamationCircle,
+  faLink,
+} from '@fortawesome/free-solid-svg-icons';
+
 import getBankStatement from '../../services/bankStatement';
 import getAccountsBank from '../../services/accountsBank';
 import sendComment from '../../services/sendComment';
+import RBSheet from '../../components/RBSheet/RBSheet';
 
 import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
@@ -33,8 +39,7 @@ import {text} from '../../constants';
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
 
 import styles from './styles';
-import {acc} from 'react-native-reanimated';
-const billTypeArray = ['perdue', 'personnelle', 'autres'];
+import {routes} from '../../constants';
 class BankStatementScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -64,6 +69,9 @@ class BankStatementScreen extends React.Component {
       bankId: '',
       comment: '',
       justificatif: true,
+      showPdfModal: false,
+      statement: {},
+      menus: [],
     };
   }
 
@@ -90,8 +98,45 @@ class BankStatementScreen extends React.Component {
   };
 
   showActionSheet = (item) => {
-    this.setState({bankId: item.id});
+    this.setState({
+      bankId: item.id,
+      menus: [
+        {
+          label: 'Facture personnelle',
+          icon: faUserAlt,
+          onPress: () => this.props.navigation.navigate(routes.Invoices),
+        },
+        {
+          label: 'Facture perdue',
+          icon: faExclamationCircle,
+          onPress: null,
+        },
+        {
+          label: 'Joindre une facture',
+          icon: faLink,
+          onPress: null,
+        },
+        {
+          label: 'Autres',
+          icon: faEllipsisH,
+          onPress: null,
+        },
+      ],
+    });
     this.Standard.open();
+  };
+
+  onShowPdfModal = (item) => {
+    this.setState({
+      statement: item,
+      showPdfModal: !this.state.showPdfModal,
+      loading: true,
+    });
+  };
+  onClosePdfModal = () => {
+    this.setState({
+      showPdfModal: false,
+    });
   };
 
   onScroll = () => {
@@ -226,7 +271,7 @@ class BankStatementScreen extends React.Component {
   }
 
   handleActionSheetPress = (index) => {
-    this.setState({billType: billTypeArray[index], showActionModal: true});
+    this.setState({showActionModal: true});
   };
 
   renderItem = ({item}) => (
@@ -242,8 +287,8 @@ class BankStatementScreen extends React.Component {
             this.showActionSheet(item);
             return;
           }
-          this.showActionSheet(item);
 
+          this.onShowPdfModal(item);
           return;
         }}
         item={item}
@@ -403,16 +448,25 @@ class BankStatementScreen extends React.Component {
   };
 
   render() {
-    const {list, isRefreshing, account} = this.state;
+    const {list, isRefreshing, account,statement} = this.state;
+    const resourceType = 'url';
 
+    const resources = {
+      file:
+        Platform.OS === 'ios'
+          ? 'downloadedDocument.pdf'
+          : '/sdcard/Download/downloadedDocument.pdf',
+      url: this.state.statement.url,
+      base64: 'JVBERi0xLjMKJcfs...',
+    };
     return (
       <>
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
         <NavigationHeader
           onPress={() => {
-            // this.props.navigation.goBack();
-            this.Standard.open();
+            //  this.Standard.open();
+            this.props.navigation.goBack();
           }}
           title={text.banque}
           subTitle={account.label}
@@ -444,47 +498,13 @@ class BankStatementScreen extends React.Component {
             style={styles.flatListStyle}
             data={this.getData()}
             renderItem={this.renderItem}
-            keyExtractor={(item) => item.counter}
+            keyExtractor={(item) => item.counter.toString()}
             initialNumToRender={3}
             refreshing={false}
-            // onRefresh={() => this.handleRefresh()}
+            onRefresh={() => this.handleRefresh()}
             onScrollEndDrag={this.handleLoadMore}
             onEndThreshold={0}
           />
-          <RBSheet
-            ref={(ref) => {
-              this.Standard = ref;
-            }}
-            height={130}>
-            <View style={styles.bottomSheetContainer}>
-              <TouchableHighlight
-                key={list.icon}
-                onPress={() => this.Standard.close()}>
-                <View style={styles.bottomSheetAction}>
-                  <FontAwesomeIcon icon={faUserAlt} size={30} color="#707070" />
-
-                  <Text style={styles.bottomSheetText}>
-                    Facture personnelle
-                  </Text>
-                 
-                </View>
-              </TouchableHighlight>
-              <TouchableHighlight
-                key={list.icon}
-                onPress={() => this.Standard.close()}>
-                <View style={styles.bottomSheetAction}>
-                  <FontAwesomeIcon icon={faUserAlt} size={30} color="#707070" />
-
-                  <Text style={styles.bottomSheetText}>
-                    Facture personnelle
-                  </Text>
-                 
-                </View>
-              </TouchableHighlight>
-              
-            </View>
-        
-          </RBSheet>
           <Modal
             animationType="slide"
             transparent={true}
@@ -531,6 +551,207 @@ class BankStatementScreen extends React.Component {
               </View>
             </View>
           </Modal>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.showPdfModal}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <TouchableHighlight
+                  style={styles.modalCloseView}
+                  onPress={() => this.onClosePdfModal()}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.closeImg} source={Close} />
+                </TouchableHighlight>
+                <View style={styles.pdfContainer}>
+                  {this.state.loading && (
+                    <PageLoader
+                      showBackground={false}
+                      size="large"
+                      color="#0000ff"
+                    />
+                  )}
+                  <View style={styles.titleModalContainer}>
+                    <Text style={styles.titleModalText}>
+                      N°{statement.numFacture}
+                    </Text>
+                  </View>
+                  <PDFView
+                    style={styles.pdf}
+                    fadeInDuration={250.0}
+                    resource={resources[resourceType]}
+                    resourceType={resourceType}
+                    onLoad={() => {
+                      this.setState({loading: false});
+                      console.log(`PDF rendered from ${resourceType}`);
+                    }}
+                    onError={(error) => {
+                      this.setState({loading: false});
+                      console.log('Cannot render PDF', error);
+                    }}
+                  />
+                  <View style={{flexDirection: 'row'}}>
+                    <View style={{flexDirection: 'column'}}>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                        Montant
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                        Description
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                        Date
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                        Echéance
+                      </Text>
+                    </View>
+                    <View style={{flexDirection: 'column'}}>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {statement.TTC + ' €'}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {statement.libelle}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {statement.date
+                          ? moment(statement.date).format('DD/MM/YYYY')
+                          : ''}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {statement.dateEcheance
+                          ? moment(statement.dateEcheance).format('DD/MM/YYYY')
+                          : ''}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </Modal>
+          <Modal
+            animationType="slide"
+            transparent={true}
+            visible={this.state.showPdfModal}>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
+                <TouchableHighlight
+                  style={styles.modalCloseView}
+                  onPress={() => this.onClosePdfModal()}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.closeImg} source={Close} />
+                </TouchableHighlight>
+                <View style={styles.pdfContainer}>
+                  {this.state.loading && (
+                    <PageLoader
+                      showBackground={false}
+                      size="large"
+                      color="#0000ff"
+                    />
+                  )}
+                  <View style={styles.titleModalContainer}>
+                    <Text style={styles.titleModalText}>
+                      N°{statement.numFacture}
+                    </Text>
+                  </View>
+                  <PDFView
+                    style={styles.pdf}
+                    fadeInDuration={250.0}
+                    resource={resources[resourceType]}
+                    resourceType={resourceType}
+                    onLoad={() => {
+                      this.setState({loading: false});
+                      console.log(`PDF rendered from ${resourceType}`);
+                    }}
+                    onError={(error) => {
+                      this.setState({loading: false});
+                      console.log('Cannot render PDF', error);
+                    }}
+                  />
+                  <View style={{flexDirection: 'row'}}>
+                    <View style={{flexDirection: 'column'}}>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                        Montant
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                        Description
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                        Date
+                      </Text>
+                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                        Echéance
+                      </Text>
+                    </View>
+                    <View style={{flexDirection: 'column'}}>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {statement.TTC + ' €'}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {statement.libelle}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {statement.date
+                          ? moment(statement.date).format('DD/MM/YYYY')
+                          : ''}
+                      </Text>
+                      <Text
+                        style={[
+                          styles.textInfo,
+                          styles.widthTextInfo,
+                          {textAlign: 'right'},
+                        ]}>
+                        {statement.dateEcheance
+                          ? moment(statement.dateEcheance).format('DD/MM/YYYY')
+                          : ''}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </Modal>
+
+          <RBSheet
+            ref={(ref) => {
+              this.Standard = ref;
+            }}
+            menus={this.state.menus}
+          />
         </View>
       </>
     );

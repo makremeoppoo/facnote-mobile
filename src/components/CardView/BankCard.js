@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(3.6),
     color: '#707070',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: 'Nunito-Regular',
   },
 
   amountContainer: {
