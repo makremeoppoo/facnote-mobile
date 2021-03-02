@@ -63,12 +63,11 @@ const styles = StyleSheet.create({
     lineHeight: 34,
     marginLeft: ScaleHelpers.CalcWidth(5),
     marginRight: ScaleHelpers.CalcWidth(10),
-
   },
   libelle: {
     fontSize: ScaleHelpers.CalcWidth(4),
     fontFamily: 'Nunito-Bold',
-    color:"#707070"
+    color: '#707070',
   },
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(3.6),
@@ -101,8 +100,7 @@ const styles = StyleSheet.create({
 });
 
 class BankCard extends React.Component {
-  
-  renderIcon=()=> {
+  renderIcon = () => {
     if (
       this.props.item.associer == null &&
       this.props.item.justificatif &&
@@ -168,7 +166,7 @@ class BankCard extends React.Component {
         <FontAwesomeIcon icon={faShoppingCart} size={23} color="white" />
       </View>
     );
-  }
+  };
   render() {
     const item = this.props.item;
     return item.isTitle ? (
@@ -190,6 +188,13 @@ class BankCard extends React.Component {
               <Text
                 style={[
                   styles.libelle,
+                  {
+                    color:
+                      item.associer  ||
+                      (!item.justificatif)
+                        ? '#15CA20'
+                        : '#707070',
+                  },
                 ]}
                 numberOfLines={1}>
                 {item.libelle}
