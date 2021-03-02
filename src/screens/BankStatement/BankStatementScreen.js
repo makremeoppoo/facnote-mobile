@@ -19,11 +19,14 @@ import {
   faEllipsisH,
   faExclamationCircle,
   faLink,
+  faComments,
 } from '@fortawesome/free-solid-svg-icons';
 
 import getBankStatement from '../../services/bankStatement';
 import getAccountsBank from '../../services/accountsBank';
 import sendComment from '../../services/sendComment';
+import replyComment from '../../services/replyComment';
+
 import RBSheet from '../../components/RBSheet/RBSheet';
 
 import DatePicker from '../../components/DatePicker/DatePicker';
@@ -97,50 +100,12 @@ class BankStatementScreen extends React.Component {
     });
   };
 
-  showActionSheet = (item) => {
+  showActionSheet = (item, menus) => {
     this.setState({
       bankId: item.id,
-      menus: [
-        {
-          label: 'Joindre une facture',
-          icon: faLink,
-          onPress: () => this.props.navigation.navigate(routes.Invoices),
-        },
-        {
-          label: 'Facture personnelle',
-          icon: faUserAlt,
-          onPress: () =>
-            this.setState({billType: 'personnelle', showActionModal: true}),
-        },
-        {
-          label: 'Facture perdue',
-          icon: faExclamationCircle,
-          onPress: () =>
-            this.setState({billType: 'perdue', showActionModal: true}),
-        },
-
-        {
-          label: 'Autres',
-          icon: faEllipsisH,
-          onPress: () =>
-            this.setState({billType: 'autres', showActionModal: true}),
-        },
-      ],
+      menus,
     });
     this.Standard.open();
-  };
-
-  onShowPdfModal = (item) => {
-    this.setState({
-      statement: item,
-      showPdfModal: !this.state.showPdfModal,
-      loading: true,
-    });
-  };
-  onClosePdfModal = () => {
-    this.setState({
-      showPdfModal: false,
-    });
   };
 
   onScroll = () => {
@@ -221,7 +186,8 @@ class BankStatementScreen extends React.Component {
     const {comment, bankId, billType} = this.state;
 
     try {
-      await sendComment(comment, bankId, billType);
+      if (billType == 'expert') replyComment(comment, bankId, billType);
+      else await sendComment(comment, bankId, billType);
     } catch (e) {
       console.log(e);
     } finally {
@@ -287,11 +253,64 @@ class BankStatementScreen extends React.Component {
             item.justificatif &&
             item.facture_tag == null
           ) {
-            this.showActionSheet(item);
+            const menus = [
+              {
+                label: 'Joindre une facture',
+                icon: faLink,
+                onPress: () => this.props.navigation.navigate(routes.Invoices),
+              },
+              {
+                label: 'Facture personnelle',
+                icon: faUserAlt,
+                onPress: () =>
+                  this.setState({
+                    billType: 'personnelle',
+                    showActionModal: true,
+                  }),
+              },
+              {
+                label: 'Facture perdue',
+                icon: faExclamationCircle,
+                onPress: () =>
+                  this.setState({billType: 'perdue', showActionModal: true}),
+              },
+
+              {
+                label: 'Autres',
+                icon: faEllipsisH,
+                onPress: () =>
+                  this.setState({billType: 'autres', showActionModal: true}),
+              },
+            ];
+            this.showActionSheet(item, menus);
+            return;
+          }
+          if (
+            item.associer == null &&
+            item.etat_commentaire == 3 &&
+            item.facture_tag !== null
+          ) {
+            const menus = [
+              {
+                label: 'Joindre une facture',
+                icon: faLink,
+                onPress: () => this.props.navigation.navigate(routes.Invoices),
+              },
+              {
+                label: 'Répondre à l’expert',
+                icon: faComments,
+                onPress: () =>
+                  this.setState({
+                    billType: 'expert',
+                    showActionModal: true,
+                  }),
+              },
+            ];
+            this.showActionSheet(item, menus);
             return;
           }
 
-          this.onShowPdfModal(item);
+          //   this.onShowPdfModal(item);
           return;
         }}
         item={item}
@@ -311,14 +330,14 @@ class BankStatementScreen extends React.Component {
   };
   renderFilter = () => (
     <View style={styles.modalContant}>
-      <TextInput
+      {/* <TextInput
         style={styles.input}
         label={text.searchReleveBanquaire}
         value={this.state.multipleSearch}
         onChangeText={(text, name) => this.setField(text, 'search_multiple')}
         name="search_multiple"
         type="text"
-      />
+     />*/}
       <View style={{flexDirection: 'row'}}>
         <DatePicker
           initialDate={this.state.startDate}
@@ -333,7 +352,7 @@ class BankStatementScreen extends React.Component {
           display={'column'}
         />
       </View>
-      <View style={{flexDirection: 'row'}}>
+      {/* <View style={{flexDirection: 'row'}}>
         <TextInput
           style={styles.input}
           label={text.min}
@@ -356,6 +375,8 @@ class BankStatementScreen extends React.Component {
         />
       </View>
 
+
+    */}
       <SelectInput
         label={text.periode}
         selectedValue={this.state.exercice.label}
@@ -376,8 +397,7 @@ class BankStatementScreen extends React.Component {
         }}
         listItems={this.state.bankAccounts}
       />
-
-      <SelectInput
+      {/*<SelectInput
         label={text.Type}
         selectedValue={this.state.type.label}
         onChange={(option) => {
@@ -388,7 +408,7 @@ class BankStatementScreen extends React.Component {
           {key: 1, label: 'Débit', value: 'debit'},
           {key: 2, label: 'Crédit', value: 'credit'},
         ]}
-      />
+      />*/}
       <View style={styles.ButtonsContain}>
         <SecondButton
           label={text.Reinitialiser}
@@ -452,16 +472,7 @@ class BankStatementScreen extends React.Component {
 
   render() {
     const {list, isRefreshing, account, statement} = this.state;
-    const resourceType = 'url';
 
-    const resources = {
-      file:
-        Platform.OS === 'ios'
-          ? 'downloadedDocument.pdf'
-          : '/sdcard/Download/downloadedDocument.pdf',
-      url: this.state.statement.url,
-      base64: 'JVBERi0xLjMKJcfs...',
-    };
     return (
       <>
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
@@ -551,206 +562,14 @@ class BankStatementScreen extends React.Component {
                 <View style={styles.modalContainer}>
                   <View style={styles.titleModalContainer}>
                     <Text style={styles.titleModalText}>
-                      {this.state.billType=="personnelle" && "Facture personnelle"}
-                      {this.state.billType=="autres" && "Autres"}
-                      {this.state.billType=="perdue" && "Facture perdue"}
+                      {this.state.billType == 'personnelle' &&
+                        'Facture personnelle'}
+                      {this.state.billType == 'autres' && 'Autres'}
+                      {this.state.billType == 'perdue' && 'Facture perdue'}
+                      {this.state.billType == 'expert' && 'Répondre à l’expert'}
                     </Text>
                   </View>
                   <ScrollView>{this.renderActionForm()}</ScrollView>
-                </View>
-              </View>
-            </View>
-          </Modal>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={this.state.showPdfModal}>
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <TouchableHighlight
-                  style={styles.modalCloseView}
-                  onPress={() => this.onClosePdfModal()}
-                  underlayColor="rgba(73,182,77,1,0.9)">
-                  <Image style={styles.closeImg} source={Close} />
-                </TouchableHighlight>
-                <View style={styles.pdfContainer}>
-                  {this.state.loading && (
-                    <PageLoader
-                      showBackground={false}
-                      size="large"
-                      color="#0000ff"
-                    />
-                  )}
-                  <View style={styles.titleModalContainer}>
-                    <Text style={styles.titleModalText}>
-                      N°{statement.numFacture}
-                    </Text>
-                  </View>
-                  <PDFView
-                    style={styles.pdf}
-                    fadeInDuration={250.0}
-                    resource={resources[resourceType]}
-                    resourceType={resourceType}
-                    onLoad={() => {
-                      this.setState({loading: false});
-                      console.log(`PDF rendered from ${resourceType}`);
-                    }}
-                    onError={(error) => {
-                      this.setState({loading: false});
-                      console.log('Cannot render PDF', error);
-                    }}
-                  />
-                  <View style={{flexDirection: 'row'}}>
-                    <View style={{flexDirection: 'column'}}>
-                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
-                        Montant
-                      </Text>
-                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
-                        Description
-                      </Text>
-                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
-                        Date
-                      </Text>
-                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
-                        Echéance
-                      </Text>
-                    </View>
-                    <View style={{flexDirection: 'column'}}>
-                      <Text
-                        style={[
-                          styles.textInfo,
-                          styles.widthTextInfo,
-                          {textAlign: 'right'},
-                        ]}>
-                        {statement.TTC + ' €'}
-                      </Text>
-                      <Text
-                        style={[
-                          styles.textInfo,
-                          styles.widthTextInfo,
-                          {textAlign: 'right'},
-                        ]}>
-                        {statement.libelle}
-                      </Text>
-                      <Text
-                        style={[
-                          styles.textInfo,
-                          styles.widthTextInfo,
-                          {textAlign: 'right'},
-                        ]}>
-                        {statement.date
-                          ? moment(statement.date).format('DD/MM/YYYY')
-                          : ''}
-                      </Text>
-                      <Text
-                        style={[
-                          styles.textInfo,
-                          styles.widthTextInfo,
-                          {textAlign: 'right'},
-                        ]}>
-                        {statement.dateEcheance
-                          ? moment(statement.dateEcheance).format('DD/MM/YYYY')
-                          : ''}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-          </Modal>
-          <Modal
-            animationType="slide"
-            transparent={true}
-            visible={this.state.showPdfModal}>
-            <View style={styles.centeredView}>
-              <View style={styles.modalView}>
-                <TouchableHighlight
-                  style={styles.modalCloseView}
-                  onPress={() => this.onClosePdfModal()}
-                  underlayColor="rgba(73,182,77,1,0.9)">
-                  <Image style={styles.closeImg} source={Close} />
-                </TouchableHighlight>
-                <View style={styles.pdfContainer}>
-                  {this.state.loading && (
-                    <PageLoader
-                      showBackground={false}
-                      size="large"
-                      color="#0000ff"
-                    />
-                  )}
-                  <View style={styles.titleModalContainer}>
-                    <Text style={styles.titleModalText}>
-                      N°{statement.numFacture}
-                    </Text>
-                  </View>
-                  <PDFView
-                    style={styles.pdf}
-                    fadeInDuration={250.0}
-                    resource={resources[resourceType]}
-                    resourceType={resourceType}
-                    onLoad={() => {
-                      this.setState({loading: false});
-                      console.log(`PDF rendered from ${resourceType}`);
-                    }}
-                    onError={(error) => {
-                      this.setState({loading: false});
-                      console.log('Cannot render PDF', error);
-                    }}
-                  />
-                  <View style={{flexDirection: 'row'}}>
-                    <View style={{flexDirection: 'column'}}>
-                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
-                        Montant
-                      </Text>
-                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
-                        Description
-                      </Text>
-                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
-                        Date
-                      </Text>
-                      <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
-                        Echéance
-                      </Text>
-                    </View>
-                    <View style={{flexDirection: 'column'}}>
-                      <Text
-                        style={[
-                          styles.textInfo,
-                          styles.widthTextInfo,
-                          {textAlign: 'right'},
-                        ]}>
-                        {statement.TTC + ' €'}
-                      </Text>
-                      <Text
-                        style={[
-                          styles.textInfo,
-                          styles.widthTextInfo,
-                          {textAlign: 'right'},
-                        ]}>
-                        {statement.libelle}
-                      </Text>
-                      <Text
-                        style={[
-                          styles.textInfo,
-                          styles.widthTextInfo,
-                          {textAlign: 'right'},
-                        ]}>
-                        {statement.date
-                          ? moment(statement.date).format('DD/MM/YYYY')
-                          : ''}
-                      </Text>
-                      <Text
-                        style={[
-                          styles.textInfo,
-                          styles.widthTextInfo,
-                          {textAlign: 'right'},
-                        ]}>
-                        {statement.dateEcheance
-                          ? moment(statement.dateEcheance).format('DD/MM/YYYY')
-                          : ''}
-                      </Text>
-                    </View>
-                  </View>
                 </View>
               </View>
             </View>

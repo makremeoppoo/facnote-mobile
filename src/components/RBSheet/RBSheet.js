@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     marginBottom: ScaleHelpers.CalcHeight(1),
     marginLeft: ScaleHelpers.CalcWidth(1),
     marginRight: ScaleHelpers.CalcWidth(1),
-    width: ScaleHelpers.CalcWidth(22),
+
     height: ScaleHelpers.CalcHeight(11),
     alignItems: 'center',
   },
@@ -60,7 +60,17 @@ export default class BackButton extends React.Component {
           {this.props.menus.map((item, index) => (
             <>
               <TouchableHighlight
-                style={styles.bottomSheetAction}
+                style={[
+                  styles.bottomSheetAction,
+                  {
+                    width:
+                      this.props.menus.length == 4
+                        ? ScaleHelpers.CalcWidth(22)
+                        : this.props.menus.length == 2
+                        ? ScaleHelpers.CalcWidth(42)
+                        : ScaleHelpers.CalcWidth(33),
+                  },
+                ]}
                 onPress={item.onPress}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <View style={styles.bottomSheetAction}>

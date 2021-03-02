@@ -13,6 +13,8 @@ export const GETENTERPRISE = `/api/v1/reconciliations/enterprise`;
 export const GETPURCHASES = `/api/v1/purchases`;
 export const UPLOAD_FILES = `/api/v1/bill`;
 export const SENDCOMMENT = `/api/v1/comments/association`;
+export const REPLYCOMMENT = `/api/v1/comments/reply`;
+
 export const GETACCOUNTSBANK = `/api/v1/accounts/bank`;
 
 export const SAVE_INDEMNITY = `/api/v1/note`;
