@@ -32,10 +32,10 @@ import replyComment from '../../services/replyComment';
 import RBSheet from '../../components/RBSheet/RBSheet';
 
 import DatePicker from '../../components/DatePicker/DatePicker';
-import TextInput from '../../components/TextInput/TextInput';
 import TextAreaInput from '../../components/TextAreaInput/TextInput';
 import SelectInput from '../../components/SelectInput/SelectInput';
 import BankCard from '../../components/CardView/BankCard';
+import CommentCard from '../../components/CardView/CommentCard';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
@@ -252,6 +252,7 @@ class BankStatementScreen extends React.Component {
     this.setState({bankAccounts, account: bankAccounts[0]});
     this.loadData();
   }
+  renderComment = ({item}) => <CommentCard item={item} />;
 
   renderItem = ({item}) => (
     <View>
@@ -574,11 +575,27 @@ class BankStatementScreen extends React.Component {
                   </View>
                 ) : this.state.modalIsListComments ? (
                   <View style={styles.modalContainer}>
-                    <View style={styles.titleModalContainer}>
-                      {this.state.comments.map((item, index) => (
-                        <Text key={index}>{item.comment}</Text>
-                      ))}
-                    </View>
+                    <ScrollView>
+                      <FlatList
+                        ItemSeparatorComponent={() => {
+                          return (
+                            <View
+                              style={{
+                                height: 0.5,
+                                backgroundColor: '#707070',
+                              }}
+                            />
+                          );
+                        }}
+                        style={styles.flatListStyle}
+                        data={this.state.comments}
+                        renderItem={this.renderComment}
+                        keyExtractor={(item) => item.id.toString()}
+                        initialNumToRender={3}
+                        refreshing={false}
+                        onEndThreshold={0}
+                      />
+                    </ScrollView>
                   </View>
                 ) : (
                   <View style={styles.modalContainer}>
