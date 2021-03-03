@@ -58,7 +58,7 @@ export default class BackButton extends React.Component {
         height={ScaleHelpers.CalcHeight(15)}>
         <View style={styles.bottomSheetContainer}>
           {this.props.menus.map((item, index) => (
-            <>
+            <View key={index}>
               <TouchableHighlight
                 style={[
                   styles.bottomSheetAction,
@@ -95,7 +95,7 @@ export default class BackButton extends React.Component {
                         : 'none',
                   },
                 ]}></View>
-            </>
+            </View>
           ))}
         </View>
       </RBSheet>

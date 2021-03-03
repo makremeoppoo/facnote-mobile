@@ -12,7 +12,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Toast from 'react-native-toast-message';
-import PDFView from 'react-native-view-pdf';
+import {ListItem} from 'react-native-elements';
 
 import {
   faUserAlt,
@@ -20,10 +20,12 @@ import {
   faExclamationCircle,
   faLink,
   faComments,
+  faComment,
 } from '@fortawesome/free-solid-svg-icons';
 
 import getBankStatement from '../../services/bankStatement';
 import getAccountsBank from '../../services/accountsBank';
+import getComments from '../../services/getComments';
 import sendComment from '../../services/sendComment';
 import replyComment from '../../services/replyComment';
 
@@ -50,6 +52,8 @@ class BankStatementScreen extends React.Component {
     this.state = {
       showModal: false,
       modalIsFilter: true,
+      modalIsListComments: false,
+      comments: [],
       list: [],
       limit: 10,
       page: 1,
@@ -98,12 +102,28 @@ class BankStatementScreen extends React.Component {
       bankId: item.id,
       menus,
       modalIsFilter: false,
+      modalIsListComments: false,
     });
     this.Standard.open();
   };
 
   onScroll = () => {
     this.setState({hasScrolled: true});
+  };
+
+  getComments = async (item) => {
+    try {
+      var data = await getComments(10, 1, item.id);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      console.log(data.comments);
+      this.setState({
+        comments: data.comments,
+        showModal: true,
+        modalIsListComments: true,
+      });
+    }
   };
 
   loadData = async () => {
@@ -300,8 +320,28 @@ class BankStatementScreen extends React.Component {
             return;
           }
 
-          //   this.onShowPdfModal(item);
-          return;
+          if (
+            item.associer == null &&
+            (item.etat_commentaire == 4 || item.etat_commentaire == 5) &&
+            item.facture_tag !== null
+          ) {
+            const menus = [
+              {
+                label: 'Joindre une facture',
+                icon: faLink,
+                onPress: () => this.props.navigation.navigate(routes.Invoices),
+              },
+              {
+                label: 'Voir commentaire',
+                icon: faComment,
+                onPress: () => {
+                  this.getComments(item);
+                },
+              },
+            ];
+            this.showActionSheet(item, menus);
+            return;
+          }
         }}
         item={item}
       />
@@ -410,7 +450,7 @@ class BankStatementScreen extends React.Component {
               startDate: null,
               endDate: null,
               multipleSearch: '',
-              exercice: ''
+              exercice: '',
             });
             await this.handleRefresh();
             await this.onCloseModal();
@@ -531,6 +571,14 @@ class BankStatementScreen extends React.Component {
                 {this.state.modalIsFilter ? (
                   <View style={styles.modalContainer}>
                     <ScrollView>{this.renderFilter()}</ScrollView>
+                  </View>
+                ) : this.state.modalIsListComments ? (
+                  <View style={styles.modalContainer}>
+                    <View style={styles.titleModalContainer}>
+                      {this.state.comments.map((item, index) => (
+                        <Text key={index}>{item.comment}</Text>
+                      ))}
+                    </View>
                   </View>
                 ) : (
                   <View style={styles.modalContainer}>
