@@ -87,19 +87,20 @@ class MoreScreen extends React.Component {
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
-            {/* 
-          
-
+            
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('Profile')}
+              onPress={() => this.props.navigation.navigate(routes.Sales)}
               underlayColor="rgba(73,182,77,1,0.9)">
               <View style={styles.itemContainer}>
                 <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>Mes ventes</Text>
+                  <Text style={styles.itemTitle}>{text.Ventes}</Text>
                 </View>
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
+            {/* 
+          
+
 
             <TouchableHighlight
               onPress={() => this.props.navigation.navigate('Profile')}

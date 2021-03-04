@@ -19,6 +19,7 @@ import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoryScreen from '../screens/HistoryOfPayementReceipts/HistoryScreen';
 import BankStatementScreen from '../screens/BankStatement/BankStatementScreen';
 import MyPurchasesSreen from '../screens/MyPurchases/MyPurchasesSreen';
+import SalesScreen from '../screens/SalesScreen/SalesScreen';
 
 
 import MoreScreen from '../screens/More/MoreScreen';
@@ -299,6 +300,17 @@ const MainNavigator = () => {
         }}
         name={routes.MyPurchases}
         component={MyPurchasesSreen}
+      />
+        <Stack.Screen
+        options={({navigation}) => {
+          return {
+            header: () => (
+              <></>
+            ),
+          };
+        }}
+        name={routes.Sales}
+        component={SalesScreen}
       />
     </Stack.Navigator>
   );
