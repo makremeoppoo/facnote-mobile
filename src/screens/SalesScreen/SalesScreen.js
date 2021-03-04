@@ -13,9 +13,8 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
-import getPurchases from '../../services/purchase';
+import getSales from '../../services/sales';
 import DatePicker from '../../components/DatePicker/DatePicker';
-import SelectInput from '../../components/SelectInput/SelectInput';
 import CardView from '../../components/CardView/CardViewPurchase';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
@@ -43,7 +42,7 @@ class SalesScreen extends React.Component {
       endDate: null,
       search_multiple: '',
       showPdfModal: false,
-      purchase: {},
+      sale: {},
       debit: 0,
       credit: 0,
     };
@@ -73,7 +72,7 @@ class SalesScreen extends React.Component {
 
   onShowPdfModal = (item) => {
     this.setState({
-      purchase: item,
+      sale: item,
       showPdfModal: !this.state.showPdfModal,
       loading: true,
     });
@@ -94,7 +93,7 @@ class SalesScreen extends React.Component {
       isRefreshing: true,
     });
     try {
-      var data = await getPurchases(limit, page, startDate, endDate);
+      var data = await getSales(limit, page, startDate, endDate);
     } catch (e) {
       console.log(e);
       this.setState({list: [], isRefreshing: false});
@@ -104,7 +103,7 @@ class SalesScreen extends React.Component {
       let counter = 0;
       let debit = 0;
       let credit = 0;
-      await data.purchases.map((item, index) => {
+      await data.sales.map((item, index) => {
         debit = debit + item.debit;
         credit = credit + item.credit;
 
@@ -178,7 +177,7 @@ class SalesScreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, purchase, debit, credit} = this.state;
+    const {list, isRefreshing, sale, debit, credit} = this.state;
     let index = 0;
     const resourceType = 'url';
 
@@ -187,7 +186,7 @@ class SalesScreen extends React.Component {
         Platform.OS === 'ios'
           ? 'downloadedDocument.pdf'
           : '/sdcard/Download/downloadedDocument.pdf',
-      url: this.state.purchase.url,
+      url: this.state.sale.url,
       base64: 'JVBERi0xLjMKJcfs...',
     };
     return (
@@ -304,7 +303,7 @@ class SalesScreen extends React.Component {
                   )}
                   <View style={styles.titleModalContainer}>
                     <Text style={styles.titleModalText}>
-                      N°{purchase.numFacture}
+                      N°{sale.numFacture}
                     </Text>
                   </View>
                   <PDFView
@@ -343,7 +342,7 @@ class SalesScreen extends React.Component {
                           styles.widthTextInfo,
                           {textAlign: 'right'},
                         ]}>
-                        {purchase.TTC + ' €'}
+                        {sale.TTC + ' €'}
                       </Text>
                       <Text
                         style={[
@@ -351,7 +350,7 @@ class SalesScreen extends React.Component {
                           styles.widthTextInfo,
                           {textAlign: 'right'},
                         ]}>
-                        {purchase.libelle}
+                        {sale.libelle}
                       </Text>
                       <Text
                         style={[
@@ -359,8 +358,8 @@ class SalesScreen extends React.Component {
                           styles.widthTextInfo,
                           {textAlign: 'right'},
                         ]}>
-                        {purchase.date
-                          ? moment(purchase.date).format('DD/MM/YYYY')
+                        {sale.date
+                          ? moment(sale.date).format('DD/MM/YYYY')
                           : ''}
                       </Text>
                       <Text
@@ -369,8 +368,8 @@ class SalesScreen extends React.Component {
                           styles.widthTextInfo,
                           {textAlign: 'right'},
                         ]}>
-                        {purchase.dateEcheance
-                          ? moment(purchase.dateEcheance).format('DD/MM/YYYY')
+                        {sale.dateEcheance
+                          ? moment(sale.dateEcheance).format('DD/MM/YYYY')
                           : ''}
                       </Text>
                     </View>
