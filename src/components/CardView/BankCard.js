@@ -178,7 +178,7 @@ class BankCard extends React.Component {
     ) : (
       <TouchableHighlight
         style={styles.mainContainer}
-        onPress={() => this.props.onShowModal(item.path)}
+        onPress={() => this.props.onCardPress()}
         underlayColor="rgba(73,182,77,1,0.9)">
         <View
           style={[styles.mainContainer, item.counter > 1 ? styles.border : {}]}>

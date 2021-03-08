@@ -91,6 +91,11 @@ class BankStatementScreen extends React.Component {
     this.setState({[name]: text});
   };
 
+  onOpenModal = () => {
+    this.setState({
+      showModal: true,
+    });
+  };
   onCloseModal = () => {
     this.setState({
       showModal: false,
@@ -196,10 +201,14 @@ class BankStatementScreen extends React.Component {
     }
   };
   openSendCommentModal = async (billType) => {
-    await this.setState({
-      billType,
-      showModal: true,
-    });
+    await this.setState(
+      {
+        billType,
+      },
+      () => {
+        this.onOpenModal();
+      },
+    );
   };
 
   sendComment = async () => {
@@ -216,8 +225,8 @@ class BankStatementScreen extends React.Component {
         text2: 'Votre message a été envoyé',
         type: 'success',
       });
-      this.setState({showModal: false});
-      this.handleRefresh()
+      this.onCloseModal();
+      this.handleRefresh();
     }
   };
 
@@ -265,7 +274,7 @@ class BankStatementScreen extends React.Component {
     <View>
       <BankCard
         key={item.counter}
-        onShowModal={() => {
+        onCardPress={() => {
           if (
             item.associer == null &&
             item.justificatif &&
@@ -480,9 +489,7 @@ class BankStatementScreen extends React.Component {
             label={text.Annuler}
             loading={this.state.loading}
             onPress={async () => {
-              await this.setState({
-                showModal: false,
-              });
+              this.onCloseModal();
             }}
           />
           <SubmitButton
