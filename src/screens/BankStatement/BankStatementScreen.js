@@ -195,6 +195,12 @@ class BankStatementScreen extends React.Component {
       this.setState({list, exercices, isRefreshing: false});
     }
   };
+  openSendCommentModal = async (billType) => {
+    await this.setState({
+      billType,
+      showModal: true,
+    });
+  };
 
   sendComment = async () => {
     const {comment, bankId, billType} = this.state;
@@ -211,6 +217,7 @@ class BankStatementScreen extends React.Component {
         type: 'success',
       });
       this.setState({showModal: false});
+      this.handleRefresh()
     }
   };
 
@@ -273,24 +280,18 @@ class BankStatementScreen extends React.Component {
               {
                 label: 'Facture personnelle',
                 icon: faUserAlt,
-                onPress: () =>
-                  this.setState({
-                    billType: 'personnelle',
-                    showModal: true,
-                  }),
+                onPress: () => this.openSendCommentModal('personnelle'),
               },
               {
                 label: 'Facture perdue',
                 icon: faExclamationCircle,
-                onPress: () =>
-                  this.setState({billType: 'perdue', showModal: true}),
+                onPress: () => this.openSendCommentModal('perdue'),
               },
 
               {
                 label: 'Autres',
                 icon: faEllipsisH,
-                onPress: () =>
-                  this.setState({billType: 'autres', showModal: true}),
+                onPress: () => this.openSendCommentModal('autres'),
               },
             ];
             this.showActionSheet(item, menus);
@@ -310,11 +311,7 @@ class BankStatementScreen extends React.Component {
               {
                 label: 'Répondre à l’expert',
                 icon: faComments,
-                onPress: () =>
-                  this.setState({
-                    billType: 'expert',
-                    showModal: true,
-                  }),
+                onPress: () => this.openSendCommentModal('expert'),
               },
             ];
             this.showActionSheet(item, menus);
