@@ -209,6 +209,8 @@ class BankStatementScreen extends React.Component {
         this.onOpenModal();
       },
     );
+    await this.Standard.close();
+    await this.Standard.open();
   };
 
   sendComment = async () => {

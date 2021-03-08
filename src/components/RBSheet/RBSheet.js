@@ -38,6 +38,11 @@ export default class BackButton extends React.Component {
   open = () => {
     this.Standard.open();
   };
+
+  close = () => {
+    this.Standard.close();
+  };
+
   render() {
     return (
       <RBSheet
