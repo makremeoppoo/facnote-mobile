@@ -15,6 +15,8 @@ import ImageResizer from 'react-native-image-resizer';
 import DocumentPicker from 'react-native-document-picker';
 import Icon from 'react-native-vector-icons/Ionicons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import Toast from 'react-native-toast-message';
+
 import ImagePickerCrop from 'react-native-image-crop-picker';
 import Rectangle from '../../../assets/images/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
@@ -223,7 +225,12 @@ class LoginactureScreen extends React.Component {
         this.setState({multiFiles: copy});
       }
     } catch (err) {
-      alert(JSON.stringify(err));
+      if (err.code == 'E_PERMISSION_MISSING')
+        Toast.show({
+          text1: err.code,
+          text2: "Vous n'avez pas accordé l'autorisation à la caméra",
+          type: 'error',
+        });
     }
   };
 
@@ -427,6 +434,7 @@ class LoginactureScreen extends React.Component {
   render() {
     return (
       <View style={styles.centeredView}>
+        <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
         <View style={styles.modalView}>
           <ImageBackground
             source={Rectangle}
