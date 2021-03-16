@@ -227,7 +227,7 @@ class LoginactureScreen extends React.Component {
     } catch (err) {
       if (err.code == 'E_PERMISSION_MISSING')
         Toast.show({
-          text1: err.code,
+          text1: "Erreur",
           text2: "Vous n'avez pas accordé l'autorisation à la caméra",
           type: 'error',
         });
