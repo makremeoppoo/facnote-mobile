@@ -2,18 +2,14 @@
 //portfolio card
 //card with image left,double text middle, and procent right
 import React from 'react';
-import {View, Image, TouchableHighlight} from 'react-native';
-import {
-  Collapse,
-  CollapseHeader,
-  CollapseBody,
-} from 'accordion-collapse-react-native';
+import {View, TouchableHighlight} from 'react-native';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faLink} from '@fortawesome/free-solid-svg-icons';
+
 import {Badge, Text} from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
-import {text} from '../../constants';
+import {buttonColor} from '../../AppStyles';
 const styles = StyleSheet.create({
   itemTitleContainer: {
     flexDirection: 'row',
@@ -41,13 +37,16 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    borderColor: 'rgba(214, 214, 214, 1)',
-    borderTopWidth: 0.5,
-    
   },
+  border: {
+    borderColor: 'rgba(214, 214, 214, 1)',
+    borderTopWidth: 1,
+  },
+
   rowContainer: {
     flexDirection: 'row',
     alignSelf: 'flex-start',
+    height: ScaleHelpers.CalcHeight(10),
   },
   itemIcon: {
     alignSelf: 'center',
@@ -61,38 +60,19 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     margin: ScaleHelpers.CalcWidth(1),
     lineHeight: 34,
+    width: ScaleHelpers.CalcWidth(35),
   },
-  blueTitle: {
-    fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: 'rgb( 92,117,254)',
+  libelle: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: '#707070',
     fontFamily: 'Nunito-Bold',
-    margin: ScaleHelpers.CalcWidth(0),
   },
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: 'rgb(112,112,112)',
-    fontFamily: 'Nunito-Bold',
-  },
-  row: {
-    flex: 1,
-    flexDirection: 'row',
- 
+    color: '#707070',
+    fontFamily: 'Nunito-Regular',
   },
 
-  itemText: {
-    fontSize: ScaleHelpers.CalcWidth(3.7),
-    fontFamily: 'Nunito-Bold',
-    color: '#7f7d80',
-    minWidth: ScaleHelpers.CalcWidth(24),
-    maxWidth: ScaleHelpers.CalcWidth(24),
-  },
-  blueItemText: {
-    fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: 'rgb( 92,117,254)',
-    fontFamily: 'Nunito-Bold',
-    minWidth: ScaleHelpers.CalcWidth(14),
-    maxWidth: ScaleHelpers.CalcWidth(14),
-  },
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),
     width: ScaleHelpers.CalcWidth(20),
@@ -102,27 +82,10 @@ const styles = StyleSheet.create({
   },
   amountItem: {
     textAlign: 'center',
-    color: 'rgb(112,112,112)',
-    fontSize: ScaleHelpers.CalcWidth(3.6),
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: '#707070',
     fontFamily: 'Nunito-Bold',
   },
-  labelReleveBancaire: {
-    fontSize: ScaleHelpers.CalcWidth(3.6),
-    width: ScaleHelpers.CalcWidth(50),
-    color: 'rgb( 92,117,254)',
-    fontFamily: 'Nunito-Bold',
-  },
-  soldeContainer: {
-    alignItems: 'flex-end',
-    color: 'rgb(112,112,112)',
-    fontFamily: 'Nunito-Bold',
-  },
-  libelleRelBanquaireContainer: {
-    alignItems: 'flex-start',
-    margin: ScaleHelpers.CalcWidth(1),
-    lineHeight: 34,
-  },
- 
 });
 const StatusHistory = {
   1: 'primary',
@@ -133,76 +96,42 @@ const StatusHistory = {
 class CardView extends React.Component {
   render() {
     const item = this.props.item;
-    return (
-      <Collapse>
-        <CollapseHeader>
-          {item.isTitle ? (
-            <View style={styles.itemTitleContainer}>
-              <View style={styles.rowContainer}>
-                <Text style={styles.itemTitle}>{item.text}</Text>
-              </View>
-            </View>
-          ) : (
-            <View style={styles.mainContainer}>
-              <View style={styles.rowContainer}>
-                <TouchableHighlight
-                  style={styles.itemIcon}
-                  onPress={() => this.props.onShowModal(item.path)}
-                  underlayColor="rgba(73,182,77,1,0.9)">
-                  <Icon
-                    iconStyle={styles.iconRemoveFile}
-                    reverse
-                    type="ionicon"
-                    color="rgb(92,117,254)"
-                    name={'ios-attach'}
-                    size={25}
-                  />
-                </TouchableHighlight>
-                <View style={styles.itemTxtContainer}>
-                  <Text style={styles.blueTitle}>{item.title}</Text>
-                </View>
-                <View style={styles.itemTxtContainer}>
-                  <Text style={styles.itemTitle}>{item.date}</Text>
-                </View>
-                <View style={styles.itemTxtContainer}>
-                  <Text style={styles.itemTitle}>
-                    <Badge
-                      value={item.status_label}
-                      status={StatusHistory[item.status.toString()]}
-                    />{' '}
-                  </Text>
-                </View>
-              </View>
-              <View style={styles.amountContainer}>
-                <Text style={styles.amountItem}>
-                  {(item.procent ? item.procent : 0) + ' €'}
-                </Text>
-              </View>
-            </View>
-          )}
-        </CollapseHeader>
-        {!item.isTitle ? (
-          <CollapseBody>
-            <View style={{alignItems: 'center'}}>
-              <View style={styles.row}>
-                <Text style={{...styles.blueItemText}}>{text.Type}:</Text>
-                <Text style={{...styles.itemText}}>{item.type}</Text>
-                <Text style={{...styles.blueItemText}}>{text.Source}:</Text>
-                <Text style={{...styles.itemText}}>{item.source}</Text>
-              </View>
-
-              <View style={styles.row}>
-                <Text style={{...styles.blueItemText}}>{text.BillNumber}:</Text>
-                <Text style={{...styles.itemText}}>{item.bill_number}</Text>
-                <Text style={{...styles.blueItemText}}>{text.Libelle}:</Text>
-                <Text style={{...styles.itemText}}>{item.label}</Text>
-              </View>
-            </View>
-          </CollapseBody>
-        ) : (
-          <></>
-        )}
-      </Collapse>
+    return item.isTitle ? (
+      <View style={styles.itemTitleContainer}>
+        <View style={styles.rowContainer}>
+          <Text style={styles.itemTitle}>{item.text}</Text>
+        </View>
+      </View>
+    ) : (
+      <View style={[styles.mainContainer, item.id > 1 ? styles.border : {}]}>
+        <View style={styles.rowContainer}>
+          <View style={styles.itemTxtContainer}>
+            <Text style={styles.itemTitle}>{item.label}</Text>
+          </View>
+          <View
+            style={
+              ([styles.itemTxtContainer, {width: ScaleHelpers.CalcWidth(12)}])
+            }>
+            <Text style={styles.itemTitle}>
+              <Badge
+                value={item.status_label}
+                status={StatusHistory[item.status.toString()]}
+              />
+            </Text>
+          </View>
+          <TouchableHighlight
+            style={styles.itemIcon}
+            onPress={() => this.props.onShowModal(item)}
+            underlayColor="rgba(73,182,77,1,0.9)">
+            <FontAwesomeIcon icon={faLink} size={23} color="#4EC6F5" />
+          </TouchableHighlight>
+        </View>
+        <View style={styles.amountContainer}>
+          <Text style={styles.amountItem}>
+            {(item.procent ? item.procent : 0) + ' €'}
+          </Text>
+        </View>
+      </View>
     );
   }
 }

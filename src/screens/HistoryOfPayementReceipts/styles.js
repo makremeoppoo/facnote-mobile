@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   flatListStyle: {
-    maxHeight: "90%",
+    maxHeight: '90%',
   },
   itemContainer: {
     flexDirection: 'row',
@@ -76,6 +76,14 @@ const styles = StyleSheet.create({
         : ScaleHelpers.CalcWidth(12),
     left: ScaleHelpers.CalcWidth(5),
   },
+  titleModalContainer: {
+    alignItems: 'center',
+  },
+  titleModalText: {
+    fontSize: ScaleHelpers.CalcWidth(5),
+    color: 'rgb(112,112,112)',
+    fontFamily: 'Nunito-Bold',
+  },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
@@ -87,14 +95,20 @@ const styles = StyleSheet.create({
   },
   pdf: {
     width: ScaleHelpers.CalcWidth(90),
-    height: ScaleHelpers.CalcHeight(70),
+    height: ScaleHelpers.CalcHeight(50),
   },
-  backgroundModalStyle: {
-    width: ScaleHelpers.CalcWidth(105),
-    height: '100%',
-    position: 'absolute',
+  textInfo: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: textColor,
+    fontFamily: 'Nunito-Bold',
+    marginTop: ScaleHelpers.CalcWidth(2),
   },
- 
+  widthTLabelInfo: {
+    width: ScaleHelpers.CalcWidth(25),
+  },
+  widthTextInfo: {
+    width: ScaleHelpers.CalcWidth(60),
+  },
 });
 
 export default styles;
