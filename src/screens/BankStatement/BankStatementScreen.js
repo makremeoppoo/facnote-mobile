@@ -99,6 +99,7 @@ class BankStatementScreen extends React.Component {
   onCloseModal = () => {
     this.setState({
       showModal: false,
+      comment:''
     });
   };
 

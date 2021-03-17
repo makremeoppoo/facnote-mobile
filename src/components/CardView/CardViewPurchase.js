@@ -8,10 +8,10 @@ import {Badge, Text} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
-import {text} from '../../constants';
+import {buttonColor} from '../../AppStyles';
+
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import { faLink } from '@fortawesome/free-solid-svg-icons'
+import {faLink} from '@fortawesome/free-solid-svg-icons';
 const styles = StyleSheet.create({
   itemTitleContainer: {
     flexDirection: 'row',
@@ -111,11 +111,7 @@ class CardView extends React.Component {
             style={styles.itemIcon}
             onPress={() => this.props.onShowPdfModal(item)}
             underlayColor="rgba(73,182,77,1,0.9)">
-            <FontAwesomeIcon
-              icon={faLink}
-              size={23}
-              color="#4EC6F5"
-            />
+            <FontAwesomeIcon icon={faLink} size={23} color="#4EC6F5" />
           </TouchableHighlight>
         </View>
         <View style={styles.amountContainer}>

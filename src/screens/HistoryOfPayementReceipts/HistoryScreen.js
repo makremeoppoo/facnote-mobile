@@ -8,13 +8,11 @@ import {
   TouchableHighlight,
   FlatList,
   Modal,
-  ImageBackground,
-  ActivityIndicator,
   Image,
 } from 'react-native';
 import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
-import Rectangle from '../../../assets/images/Rectangle.png';
+import {text} from '../../constants';
 
 import getHistory from '../../services/history';
 
@@ -39,12 +37,14 @@ class HistoryScreen extends React.Component {
       isRefreshing: true,
       hasScrolled: false,
       source: '',
+      item: {},
     };
   }
 
-  onShowModal = (source) => {
+  onShowModal = (item) => {
     this.setState({
-      source,
+      item: item,
+      source: item.path,
       showModal: !this.state.showModal,
       loading: true,
     });
@@ -90,7 +90,6 @@ class HistoryScreen extends React.Component {
           id: counter++,
           date: newDate == 'Invalid date' ? '' : newDate,
           procent: item.amount,
-          title: 'recu le',
           icon: Camera,
           isTitle: false,
           status: item.status,
@@ -143,7 +142,7 @@ class HistoryScreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, source} = this.state;
+    const {list, isRefreshing, source, item} = this.state;
     const resourceType = 'url';
     const resources = {
       file:
@@ -175,10 +174,6 @@ class HistoryScreen extends React.Component {
           visible={this.state.showModal}>
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <ImageBackground
-                source={Rectangle}
-                style={styles.backgroundModalStyle}></ImageBackground>
-
               <TouchableHighlight
                 style={styles.modalCloseView}
                 onPress={() => this.onCloseModal()}
@@ -193,6 +188,11 @@ class HistoryScreen extends React.Component {
                     color="#0000ff"
                   />
                 )}
+                <View style={styles.titleModalContainer}>
+                  <Text style={styles.titleModalText}>
+                    N°{item.bill_number}
+                  </Text>
+                </View>
 
                 <PDFView
                   style={styles.pdf}
@@ -208,6 +208,36 @@ class HistoryScreen extends React.Component {
                     console.log('Cannot render PDF', error);
                   }}
                 />
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flexDirection: 'column'}}>
+                    <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                      {text.Type}
+                    </Text>
+                    <Text style={[styles.textInfo, styles.widthTLabelInfo]}>
+                      {text.Source}
+                    </Text>
+                  
+                  </View>
+                  <View style={{flexDirection: 'column'}}>
+                    <Text
+                      style={[
+                        styles.textInfo,
+                        styles.widthTextInfo,
+                        {textAlign: 'right'},
+                      ]}>
+                      {item.type}
+                    </Text>
+                    <Text
+                      style={[
+                        styles.textInfo,
+                        styles.widthTextInfo,
+                        {textAlign: 'right'},
+                      ]}>
+                      {item.source}
+                    </Text>
+                  
+                  </View>
+                </View>
               </View>
             </View>
           </View>
