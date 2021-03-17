@@ -11,7 +11,6 @@ export const userReducer = (state = userState, action) => {
   const newState = JSON.parse(JSON.stringify(state));
   switch (action.type) {
     case 'CHANGE_NAME': {
-      alert('ceva');
       break;
     }
     default:

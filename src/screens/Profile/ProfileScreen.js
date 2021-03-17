@@ -31,7 +31,7 @@ class NotificationsScreen extends React.Component {
     Linking.canOpenURL(phoneNumber)
       .then((supported) => {
         if (!supported) {
-          alert('Phone number is not available');
+          console.log('Phone number is not available');
         } else {
           return Linking.openURL(phoneNumber);
         }
