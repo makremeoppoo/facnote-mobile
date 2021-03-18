@@ -110,7 +110,7 @@ class CardView extends React.Component {
           </View>
           <View
             style={
-              ([styles.itemTxtContainer, {width: ScaleHelpers.CalcWidth(12)}])
+              ([styles.itemTxtContainer, {width: ScaleHelpers.CalcWidth(20)}])
             }>
             <Text style={styles.itemTitle}>
               <Badge
