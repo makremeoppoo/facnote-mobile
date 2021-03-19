@@ -80,8 +80,8 @@ export const text = {
   Plus:'Plus',
   MontantTTC:'TTC',
   SoldeAu:"Solde au",
-  transactionJustifier:"x transaction(s) à justifier",
-  transactionNonJustifier:"x transaction(s) non justifier"
+  transactionJustifier:"transaction(s) à justifier",
+  transactionNonJustifier:"transaction(s) non justifier"
 
 };
 

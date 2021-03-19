@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   soldeTitle: {
-    color: '#15CA20',
+    
     fontSize: ScaleHelpers.CalcWidth(6),
     fontFamily: 'Nunito-Bold',
   },

@@ -78,6 +78,8 @@ class BankStatementScreen extends React.Component {
       showPdfModal: false,
       statement: {},
       menus: [],
+      nbr_transactions_a_justifier: 0,
+      nbr_transactions: 0,
     };
   }
 
@@ -99,7 +101,7 @@ class BankStatementScreen extends React.Component {
   onCloseModal = () => {
     this.setState({
       showModal: false,
-      comment:''
+      comment: '',
     });
   };
 
@@ -198,7 +200,14 @@ class BankStatementScreen extends React.Component {
           date_fin: item.date_fin,
         });
       });
-      this.setState({list, exercices, isRefreshing: false});
+      this.setState({
+        list,
+        nbr_transactions: statements.nbr_transactions,
+        nbr_transactions_a_justifier: statements.nbr_transactions_a_justifier,
+
+        exercices,
+        isRefreshing: false,
+      });
     }
   };
   openSendCommentModal = async (billType) => {
@@ -361,11 +370,7 @@ class BankStatementScreen extends React.Component {
     if (this.state.justificatif) return this.state.list;
     else
       return this.state.list.filter(
-        (item) =>
-          (item.associer == null &&
-            item.justificatif &&
-            item.facture_tag == null) ||
-          item.isTitle,
+        (item) => (!item.associer && item.justificatif) || item.isTitle,
       );
   };
   renderFilter = () => (
@@ -508,7 +513,12 @@ class BankStatementScreen extends React.Component {
   };
 
   render() {
-    const {list, isRefreshing, account, statement} = this.state;
+    const {
+      list,
+      isRefreshing,
+      account,
+      nbr_transactions_a_justifier,
+    } = this.state;
 
     return (
       <>
@@ -530,7 +540,13 @@ class BankStatementScreen extends React.Component {
         />
         <View style={styles.container}>
           <View style={{alignItems: 'center'}}>
-            <Text style={styles.soldeTitle}>{list[1]?.solde} €</Text>
+            <Text
+              style={[
+                styles.soldeTitle,
+                list[1]?.solde < 0 ? {color: 'red'} : {color: '#15CA20'},
+              ]}>
+              {list.length > 0 ? list[1]?.solde : 0} €
+            </Text>
             <Text style={styles.dateTitle}>
               {text.SoldeAu} {list[0]?.text}
             </Text>
@@ -541,9 +557,7 @@ class BankStatementScreen extends React.Component {
               }
               underlayColor="rgba(73,182,77,1,0.9)">
               <Text style={styles.filterTitle}>
-                {this.state.justificatif
-                  ? text.transactionJustifier
-                  : text.transactionNonJustifier}
+                {nbr_transactions_a_justifier + ' ' + text.transactionJustifier}
               </Text>
             </TouchableHighlight>
           </View>
