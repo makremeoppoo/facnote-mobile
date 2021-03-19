@@ -28,26 +28,25 @@ class MoreScreen extends React.Component {
       <View>
         <Image source={CabinetBackground} style={styles.topImageStyle}></Image>
         <View style={styles.header}>
-          <Image style={styles.polygonImg} source={Polygone} />
-          {/*
+          {/* <Image style={styles.polygonImg} source={Polygone} />
+          
           <Text style={styles.headerBigText}>{text.nomComplet}</Text>
-         */}
+         
 
-          <Text style={styles.headerText}>{text.voirProfile}</Text>
+          <Text style={styles.headerText}>{text.voirProfile}</Text>*/}
         </View>
         <TouchableHighlight
           onPress={() => this.props.navigation.navigate(routes.Cabinet)}
           underlayColor="rgba(73,182,77,1,0.9)">
           <View style={styles.cabinetCard}>
-            <Image
+            {/*<Image
               style={styles.leftArrow}
               source={require('../../../assets/icons/profiel.png')}
-            />
+            />*/}
             <View style={styles.cabinetrowContainer}>
               <Text style={styles.itemTitle}>
-                {society.cabinet.raison_sociale}
+                {text.voirSociete}
               </Text>
-              <Text style={styles.itemTitle2}>{text.voirSociete}</Text>
             </View>
           </View>
         </TouchableHighlight>

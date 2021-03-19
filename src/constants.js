@@ -24,7 +24,7 @@ export const GETACCOUNTSBANK = `/api/v1/accounts/bank`;
 export const SAVE_INDEMNITY = `/api/v1/note`;
 export const text = {
   voirProfile: 'Voir mon profile',
-  voirSociete: 'Voir SOCIETE',
+  voirSociete: 'Votre expert comptable',
   nomComplet: 'Prénom Nom',
   HistoriqueJustificatifs: 'Historique des justificatifs',
   RelevesBancaires: 'Relevés bancaires',

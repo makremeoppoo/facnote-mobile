@@ -10,14 +10,14 @@ const styles = StyleSheet.create({
   },
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(150),
-    height: ScaleHelpers.CalcHeight(30),
+    height: ScaleHelpers.CalcHeight(20),
     marginLeft: ScaleHelpers.CalcWidth(-4),
     paddingRight: ScaleHelpers.CalcWidth(-4),
     position: 'absolute',
   },
   header: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(25),
+    height: ScaleHelpers.CalcHeight(13),
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     // its for android
     elevation: 5,
     width: ScaleHelpers.CalcWidth(80),
-    height: ScaleHelpers.CalcHeight(10),
+    height: ScaleHelpers.CalcHeight(13),
     marginBottom: ScaleHelpers.CalcHeight(1),
 
     borderRadius: 10,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
 
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'Nunito-Regular',
+    fontFamily: 'Nunito-Bold',
     color: textColor,
     alignSelf: 'center',
     width: ScaleHelpers.CalcWidth(50),
