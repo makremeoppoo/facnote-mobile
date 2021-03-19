@@ -28,6 +28,7 @@ import getAccountsBank from '../../services/accountsBank';
 import getComments from '../../services/getComments';
 import sendComment from '../../services/sendComment';
 import replyComment from '../../services/replyComment';
+import getExercices from '../../services/getExercices';
 
 import RBSheet from '../../components/RBSheet/RBSheet';
 
@@ -79,7 +80,6 @@ class BankStatementScreen extends React.Component {
       statement: {},
       menus: [],
       nbr_transactions_a_justifier: 0,
-      nbr_transactions: 0,
     };
   }
 
@@ -202,7 +202,6 @@ class BankStatementScreen extends React.Component {
       });
       this.setState({
         list,
-        nbr_transactions: statements.nbr_transactions,
         nbr_transactions_a_justifier: statements.nbr_transactions_a_justifier,
 
         exercices,
@@ -268,6 +267,7 @@ class BankStatementScreen extends React.Component {
   };
 
   async componentDidMount() {
+    var exercices = await getExercices();
     var accounts = await getAccountsBank(100, 1);
     let bankAccounts = [];
     accounts.map((item, index) => {
@@ -277,7 +277,12 @@ class BankStatementScreen extends React.Component {
         label: item.banque,
       });
     });
-    this.setState({bankAccounts, account: bankAccounts[0]});
+    this.setState({
+      bankAccounts,
+      account: bankAccounts[0],
+      startDate: exercices.current_exercise.date_debut,
+      endDate: exercices.current_exercise.date_fin,
+    });
     this.loadData();
   }
   renderComment = ({item}) => <CommentCard item={item} />;

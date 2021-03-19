@@ -17,6 +17,7 @@ export const UPLOAD_FILES = `/api/v1/bill`;
 export const SENDCOMMENT = `/api/v1/comments/association`;
 export const REPLYCOMMENT = `/api/v1/comments/reply`;
 export const GETCOMMENTS = `/api/v1/comments`;
+export const GETEXERCICES = `/api/v1/exercises`;
 
 export const GETACCOUNTSBANK = `/api/v1/accounts/bank`;
 
