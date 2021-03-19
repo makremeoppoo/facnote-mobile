@@ -15,7 +15,7 @@ import {connect} from 'react-redux';
 import PDFView from 'react-native-view-pdf';
 import getSales from '../../services/sales';
 import DatePicker from '../../components/DatePicker/DatePicker';
-import CardView from '../../components/CardView/CardViewPurchase';
+import CardView from '../../components/CardView/CardViewTwo';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
@@ -43,8 +43,7 @@ class SalesScreen extends React.Component {
       search_multiple: '',
       showPdfModal: false,
       sale: {},
-      debit: 0,
-      credit: 0,
+      ttc: 0,
     };
   }
 
@@ -101,12 +100,7 @@ class SalesScreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-      let debit = 0;
-      let credit = 0;
       await data.sales.map((item, index) => {
-        debit = debit + item.debit;
-        credit = credit + item.credit;
-
         let newDate = moment(item.date).format('DD/MM/YYYY');
         if (date != newDate) {
           counter = 0;
@@ -127,8 +121,7 @@ class SalesScreen extends React.Component {
 
       this.setState({
         list,
-        debit: debit.toFixed(2),
-        credit: credit.toFixed(2),
+        ttc: data.total.prix_ttc.toFixed(2),
         isRefreshing: false,
       });
     }
@@ -177,7 +170,7 @@ class SalesScreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, sale, debit, credit} = this.state;
+    const {list, isRefreshing, sale, ttc} = this.state;
     let index = 0;
     const resourceType = 'url';
 
@@ -200,8 +193,7 @@ class SalesScreen extends React.Component {
         />
         <View style={styles.container}>
           <View style={styles.topContainer}>
-            <Text style={styles.itemTitle}>Total Débits: {debit} €</Text>
-            <Text style={styles.itemTitle}>Total Crédits: {credit} €</Text>
+            <Text style={styles.itemTitle}>Total: {ttc} €</Text>
           </View>
 
           {isRefreshing && (

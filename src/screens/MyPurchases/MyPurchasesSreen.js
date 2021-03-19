@@ -16,7 +16,7 @@ import PDFView from 'react-native-view-pdf';
 import getPurchases from '../../services/purchase';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import SelectInput from '../../components/SelectInput/SelectInput';
-import CardView from '../../components/CardView/CardViewPurchase';
+import CardView from '../../components/CardView/CardViewTwo';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
@@ -44,8 +44,7 @@ class MyPurchasesSreen extends React.Component {
       search_multiple: '',
       showPdfModal: false,
       purchase: {},
-      debit: 0,
-      credit: 0,
+      ttc: 0,
     };
   }
 
@@ -102,12 +101,8 @@ class MyPurchasesSreen extends React.Component {
       let list = [];
       let date = '';
       let counter = 0;
-      let debit = 0;
-      let credit = 0;
-      await data.purchases.map((item, index) => {
-        debit = debit + item.debit;
-        credit = credit + item.credit;
 
+      await data.purchases.map((item, index) => {
         let newDate = moment(item.date).format('DD/MM/YYYY');
         if (date != newDate) {
           counter = 0;
@@ -128,8 +123,8 @@ class MyPurchasesSreen extends React.Component {
 
       this.setState({
         list,
-        debit: debit.toFixed(2),
-        credit: credit.toFixed(2),
+
+        ttc: data.total.prix_ttc.toFixed(2),
         isRefreshing: false,
       });
     }
@@ -178,7 +173,7 @@ class MyPurchasesSreen extends React.Component {
   );
 
   render() {
-    const {list, isRefreshing, purchase, debit, credit} = this.state;
+    const {list, isRefreshing, purchase, ttc} = this.state;
     let index = 0;
     const resourceType = 'url';
 
@@ -201,8 +196,7 @@ class MyPurchasesSreen extends React.Component {
         />
         <View style={styles.container}>
           <View style={styles.topContainer}>
-            <Text style={styles.itemTitle}>Total Débits: {debit} €</Text>
-            <Text style={styles.itemTitle}>Total Crédits: {credit} €</Text>
+            <Text style={styles.itemTitle}>Total: {ttc} €</Text>
           </View>
 
           {isRefreshing && (

@@ -5,37 +5,12 @@ import React from 'react';
 import {View, Image, TouchableHighlight} from 'react-native';
 
 import {Badge, Text} from 'react-native-elements';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {StyleSheet} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
-import {buttonColor} from '../../AppStyles';
-
+import ScaleHelpers from '../scaleHelpers';
+import TitleCard from './TitleCard';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faLink} from '@fortawesome/free-solid-svg-icons';
 const styles = StyleSheet.create({
-  itemTitleContainer: {
-    flexDirection: 'row',
-    padding: ScaleHelpers.CalcHeight(1),
-    //Its for IOS
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.2,
-    // its for android
-    elevation: 5,
-    position: 'relative',
-
-    width: ScaleHelpers.CalcWidth(90),
-    height: ScaleHelpers.CalcHeight(5),
-
-    borderRadius: 10,
-    backgroundColor: buttonColor,
-    borderColor: 'rgba(214, 214, 214, 0.4)',
-    borderWidth: 1,
-    alignSelf: 'flex-start',
-    justifyContent: 'flex-start',
-    padding: 10,
-    marginBottom: ScaleHelpers.CalcWidth(1),
-  },
   mainContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -69,12 +44,6 @@ const styles = StyleSheet.create({
     color: '#707070',
     fontFamily: 'Nunito-Bold',
   },
-  itemTitle: {
-    fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: '#707070',
-    fontFamily: 'Nunito-Regular',
-  },
-
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),
     width: ScaleHelpers.CalcWidth(20),
@@ -93,11 +62,7 @@ class CardView extends React.Component {
   render() {
     const item = this.props.item;
     return item.isTitle ? (
-      <View style={styles.itemTitleContainer}>
-        <View style={styles.rowContainer}>
-          <Text style={styles.itemTitle}>{item.text}</Text>
-        </View>
-      </View>
+      <TitleCard text={item.text}></TitleCard>
     ) : (
       <View
         style={[styles.mainContainer, item.counter > 1 ? styles.border : {}]}>

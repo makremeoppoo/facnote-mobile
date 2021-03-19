@@ -17,31 +17,9 @@ import ScaleHelpers from '../scaleHelpers';
 import {textColor, buttonColor} from '../../AppStyles';
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
+import TitleCard from './TitleCard';
 
 const styles = StyleSheet.create({
-  itemTitleContainer: {
-    flexDirection: 'row',
-    padding: ScaleHelpers.CalcHeight(1),
-    //Its for IOS
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.2,
-    // its for android
-    elevation: 5,
-    position: 'relative',
-
-    width: ScaleHelpers.CalcWidth(90),
-    height: ScaleHelpers.CalcHeight(5),
-
-    borderRadius: 10,
-    backgroundColor: buttonColor,
-    borderColor: 'rgba(214, 214, 214, 0.4)',
-    borderWidth: 1,
-    alignSelf: 'flex-start',
-    justifyContent: 'flex-start',
-    padding: 10,
-    marginBottom: ScaleHelpers.CalcWidth(1),
-  },
   mainContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -68,11 +46,6 @@ const styles = StyleSheet.create({
     fontSize: ScaleHelpers.CalcWidth(4),
     fontFamily: 'Nunito-Bold',
     color: '#707070',
-  },
-  itemTitle: {
-    fontSize: ScaleHelpers.CalcWidth(3.6),
-    color: '#707070',
-    fontFamily: 'Nunito-Regular',
   },
 
   amountContainer: {
@@ -170,11 +143,7 @@ class BankCard extends React.Component {
   render() {
     const item = this.props.item;
     return item.isTitle ? (
-      <View style={styles.itemTitleContainer}>
-        <View style={styles.rowContainer}>
-          <Text style={styles.itemTitle}>{item.text}</Text>
-        </View>
-      </View>
+      <TitleCard text={item.text}></TitleCard>
     ) : (
       <TouchableHighlight
         style={styles.mainContainer}
@@ -190,8 +159,7 @@ class BankCard extends React.Component {
                   styles.libelle,
                   {
                     color:
-                      item.associer  ||
-                      (!item.justificatif)
+                      item.associer || !item.justificatif
                         ? '#15CA20'
                         : '#707070',
                   },
