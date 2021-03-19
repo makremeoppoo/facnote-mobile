@@ -14,7 +14,7 @@ import CabinetBackground from '../../../assets/images/Rectangle.png';
 import rightArrow from '../../../assets/icons/rightArrow.png';
 import Polygone from '../../../assets/icons/Polygone.png';
 import {connect} from 'react-redux';
-import {text,routes} from '../../constants';
+import {text, routes} from '../../constants';
 
 class MoreScreen extends React.Component {
   constructor(props) {
@@ -29,7 +29,9 @@ class MoreScreen extends React.Component {
         <Image source={CabinetBackground} style={styles.topImageStyle}></Image>
         <View style={styles.header}>
           <Image style={styles.polygonImg} source={Polygone} />
+          {/*
           <Text style={styles.headerBigText}>{text.nomComplet}</Text>
+         */}
 
           <Text style={styles.headerText}>{text.voirProfile}</Text>
         </View>
@@ -87,7 +89,7 @@ class MoreScreen extends React.Component {
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
-            
+
             <TouchableHighlight
               onPress={() => this.props.navigation.navigate(routes.Sales)}
               underlayColor="rgba(73,182,77,1,0.9)">
