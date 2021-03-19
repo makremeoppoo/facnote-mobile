@@ -27,7 +27,7 @@ export const text = {
   voirSociete: 'Votre expert comptable',
   nomComplet: 'Prénom Nom',
   HistoriqueJustificatifs: 'Historique des justificatifs',
-  RelevesBancaires: 'Relevés bancaires',
+  RelevesBancaires: 'Banque',
   MesAchats: 'Achat',
   Ventes: 'Ventes',
   filter: 'Filter',

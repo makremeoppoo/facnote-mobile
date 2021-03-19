@@ -44,9 +44,7 @@ class MoreScreen extends React.Component {
               source={require('../../../assets/icons/profiel.png')}
             />*/}
             <View style={styles.cabinetrowContainer}>
-              <Text style={styles.itemTitle}>
-                {text.voirSociete}
-              </Text>
+              <Text style={styles.itemTitle}>{text.voirSociete}</Text>
             </View>
           </View>
         </TouchableHighlight>
@@ -66,18 +64,7 @@ class MoreScreen extends React.Component {
                 <Image style={styles.rightArrow} source={rightArrow} />
               </View>
             </TouchableHighlight>
-            <TouchableHighlight
-              onPress={() =>
-                this.props.navigation.navigate(routes.BankStatement)
-              }
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <View style={styles.itemContainer}>
-                <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>{text.RelevesBancaires}</Text>
-                </View>
-                <Image style={styles.rightArrow} source={rightArrow} />
-              </View>
-            </TouchableHighlight>
+
             <TouchableHighlight
               onPress={() => this.props.navigation.navigate(routes.MyPurchases)}
               underlayColor="rgba(73,182,77,1,0.9)">

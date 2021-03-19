@@ -21,7 +21,6 @@ import BankStatementScreen from '../screens/BankStatement/BankStatementScreen';
 import MyPurchasesSreen from '../screens/MyPurchases/MyPurchasesSreen';
 import SalesScreen from '../screens/SalesScreen/SalesScreen';
 
-
 import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
@@ -141,6 +140,19 @@ const TabNavigator = () => {
         }}
       />*/}
       <BottomTabNavigator.Screen
+        name={routes.BankStatement}
+        component={BankStatementScreen}
+        options={{
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem
+              focused={focused}
+              label={text.RelevesBancaires}
+              src={focused ? CabinetImgActive : CabinetImg}
+            />
+          ),
+        }}
+      />
+      <BottomTabNavigator.Screen
         name={routes.Invoices}
         component={ExpensesScreen}
         options={{
@@ -153,19 +165,7 @@ const TabNavigator = () => {
           ),
         }}
       />
-      <BottomTabNavigator.Screen
-        name={routes.Cabinet}
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem
-              focused={focused}
-              label={text.Cabinet}
-              src={focused ? CabinetImgActive : CabinetImg}
-            />
-          ),
-        }}
-      />
+
       <BottomTabNavigator.Screen
         name={routes.More}
         component={MoreScreen}
@@ -282,31 +282,25 @@ const MainNavigator = () => {
       <Stack.Screen
         options={({navigation}) => {
           return {
-            header: () => (
-              <></>
-            ),
+            header: () => <></>,
           };
         }}
-        name={routes.BankStatement}
-        component={BankStatementScreen}
+        name={routes.Cabinet}
+        component={ProfileScreen}
       />
       <Stack.Screen
         options={({navigation}) => {
           return {
-            header: () => (
-              <></>
-            ),
+            header: () => <></>,
           };
         }}
         name={routes.MyPurchases}
         component={MyPurchasesSreen}
       />
-        <Stack.Screen
+      <Stack.Screen
         options={({navigation}) => {
           return {
-            header: () => (
-              <></>
-            ),
+            header: () => <></>,
           };
         }}
         name={routes.Sales}
