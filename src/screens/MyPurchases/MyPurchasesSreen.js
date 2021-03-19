@@ -21,6 +21,7 @@ import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
+import getExercices from '../../services/getExercices';
 
 import Close from '../../../assets/icons/closeGrey.png';
 import {text} from '../../constants';
@@ -123,7 +124,6 @@ class MyPurchasesSreen extends React.Component {
 
       this.setState({
         list,
-
         ttc: data.total.prix_ttc.toFixed(2),
         isRefreshing: false,
       });
@@ -158,7 +158,12 @@ class MyPurchasesSreen extends React.Component {
       );
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    var exercices = await getExercices();
+    this.setState({
+      startDate: exercices.current_exercise.date_debut,
+      endDate: exercices.current_exercise.date_fin,
+    });
     this.loadData();
   }
 

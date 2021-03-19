@@ -20,6 +20,7 @@ import PageLoader from '../../components/PageLoader/PageLoader';
 import SubmitButton from '../../components/SubmitButton/SubmitButton';
 import SecondButton from '../../components/SecondButton/SecondButton';
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
+import getExercices from '../../services/getExercices';
 
 import Close from '../../../assets/icons/closeGrey.png';
 import {text} from '../../constants';
@@ -155,7 +156,12 @@ class SalesScreen extends React.Component {
       );
   };
 
-  componentDidMount() {
+ async componentDidMount() {
+    var exercices = await getExercices();
+    this.setState({
+      startDate: exercices.current_exercise.date_debut,
+      endDate: exercices.current_exercise.date_fin,
+    })
     this.loadData();
   }
 
