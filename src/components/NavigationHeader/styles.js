@@ -11,28 +11,25 @@ const styles = StyleSheet.create({
   headerButtonImage: {
     resizeMode: 'stretch',
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(12),
+    height: ScaleHelpers.CalcHeight(15),
     position: 'absolute',
     margin: 0,
   },
   headerContain: {
     justifyContent: 'center',
-    marginBottom: ScaleHelpers.CalcHeight(2),
-    marginTop: ScaleHelpers.CalcWidth(4),
-
     alignItems: 'center',
     flexDirection: 'row',
   },
 
   btnIcon: {
     width: ScaleHelpers.CalcWidth(3),
-    height: ScaleHelpers.CalcHeight(3),
+    height: ScaleHelpers.CalcHeight(4),
+    backgroundColor:'red'
   },
   titleContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(4),
-    marginTop: ScaleHelpers.CalcWidth(5),
+    height: ScaleHelpers.CalcHeight(15),
     width: ScaleHelpers.CalcWidth(80),
   },
   title: {
