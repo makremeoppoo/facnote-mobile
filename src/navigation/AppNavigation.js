@@ -14,7 +14,7 @@ import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
-import UploadFacture from '../screens/Facture/UploadFacture';
+import ChooseInvoice from '../screens/Invoice/ChooseInvoice';
 import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoryScreen from '../screens/HistoryOfPayementReceipts/HistoryScreen';
 import BankStatementScreen from '../screens/BankStatement/BankStatementScreen';
@@ -155,7 +155,7 @@ const TabNavigator = () => {
       />
       <BottomTabNavigator.Screen
         name={routes.Invoices}
-        component={UploadFacture}
+        component={ChooseInvoice}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
@@ -222,7 +222,7 @@ const mainScreensNavigator = () => {
         };
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Expenses" component={UploadFacture} />
+      <Stack.Screen name="Expenses" component={ChooseInvoice} />
     </Stack.Navigator>
   );
 };

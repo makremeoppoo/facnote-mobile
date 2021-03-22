@@ -19,7 +19,7 @@ import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnity from '../../../assets/images/Indemnity.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
-import ChooseFacture from './ChooseFacture';
+import ChooseFacture from './UploadInvoice';
 import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
 
 import styles from './styles';
@@ -33,7 +33,7 @@ class UploadScreen extends React.Component {
     };
   }
 
-  setTypeFacture = (typeFacture) => {
+  setInvoiceType = (typeFacture) => {
     this.setState({typeFacture: typeFacture, showModal: !this.state.showModal});
   };
   closeModal = (obj) => {
@@ -43,7 +43,7 @@ class UploadScreen extends React.Component {
 
   render() {
     const {society} = this.props.user;
-
+console.log("back",this.props.navigation)
     return (
       <View style={styles.containerStyle}>
         <Image
@@ -59,7 +59,7 @@ class UploadScreen extends React.Component {
             <View style={styles.btnView}>
               <TouchableHighlight
                 style={styles.btnContainer}
-                onPress={() => this.setTypeFacture(1)}
+                onPress={() => this.setInvoiceType(1)}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.Img} source={Achat} />
               </TouchableHighlight>
@@ -67,7 +67,7 @@ class UploadScreen extends React.Component {
             <View style={styles.btnView}>
               <TouchableHighlight
                 style={styles.btnContainer}
-                onPress={() => this.setTypeFacture(3)}
+                onPress={() => this.setInvoiceType(3)}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.Img} source={AvanceDeFrais} />
               </TouchableHighlight>
@@ -75,7 +75,7 @@ class UploadScreen extends React.Component {
             <View style={styles.btnView}>
               <TouchableHighlight
                 style={styles.btnContainer}
-                onPress={() => this.setTypeFacture(4)}
+                onPress={() => this.setInvoiceType(4)}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.Img} source={Document} />
               </TouchableHighlight>
@@ -83,7 +83,7 @@ class UploadScreen extends React.Component {
             <View style={styles.btnView}>
               <TouchableHighlight
                 style={styles.btnContainer}
-                onPress={() => this.setTypeFacture(0)}
+                onPress={() => this.setInvoiceType(0)}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <Image style={styles.Img} source={Indemnity} />
               </TouchableHighlight>
