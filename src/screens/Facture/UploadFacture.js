@@ -19,7 +19,7 @@ import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnity from '../../../assets/images/Indemnity.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
-import AddFactureScreen from './AddFacture';
+import ChooseFacture from './ChooseFacture';
 import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
 
 import styles from './styles';
@@ -97,7 +97,7 @@ class UploadScreen extends React.Component {
             {this.state.typeFacture == 0 ? (
               <IndemnitiesScreen closeModal={this.closeModal} />
             ) : (
-              <AddFactureScreen typeFacture={this.state.typeFacture} closeModal={this.closeModal} />
+              <ChooseFacture typeFacture={this.state.typeFacture} closeModal={this.closeModal} />
             )}
           </Modal>
         </ScrollView>
