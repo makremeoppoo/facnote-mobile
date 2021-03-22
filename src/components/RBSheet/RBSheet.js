@@ -66,7 +66,6 @@ export default class BackButton extends React.Component {
             <View key={index}>
               <TouchableHighlight
                 style={[
-                  styles.bottomSheetAction,
                   {
                     width:
                       this.props.menus.length == 4
@@ -78,7 +77,13 @@ export default class BackButton extends React.Component {
                 ]}
                 onPress={item.onPress}
                 underlayColor="rgba(73,182,77,1,0.9)">
-                <View style={styles.bottomSheetAction}>
+                <View
+                  style={[
+                    styles.bottomSheetAction,
+                    index != 0
+                      ? {borderLeftWidth: 0.5, borderLeftColor: 'grey'}
+                      : {},
+                  ]}>
                   <FontAwesomeIcon
                     icon={item.icon}
                     size={30}
