@@ -43,7 +43,8 @@ import HomeBleu from '../../assets/icons/HomeBleu.png';
 
 import FactureImgActive from '../../assets/icons/Camera.png';
 import FactureImg from '../../assets/icons/photo-white.png';
-
+import BanqueImg from '../../assets/icons/banque.png';
+import BlueBanqueImg from '../../assets/icons/blueBanque.png';
 import CabinetImg from '../../assets/icons/Cabinet.png';
 import CabinetImgActive from '../../assets/icons/cabinetActive.png';
 import PlusImg from '../../assets/icons/Plus_white.png';
@@ -147,7 +148,7 @@ const TabNavigator = () => {
             <TabBarItem
               focused={focused}
               label={text.RelevesBancaires}
-              src={focused ? CabinetImgActive : CabinetImg}
+              src={focused ? BlueBanqueImg : BanqueImg}
             />
           ),
         }}
