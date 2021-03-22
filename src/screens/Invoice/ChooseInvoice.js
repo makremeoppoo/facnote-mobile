@@ -8,11 +8,11 @@ import {
   ImageBackground,
   Image,
   Modal,
-
 } from 'react-native';
 
 import Toast from 'react-native-toast-message';
 import {connect} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
@@ -21,6 +21,7 @@ import Indemnity from '../../../assets/images/Indemnity.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import ChooseFacture from './UploadInvoice';
 import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
+import {routes} from '../../constants';
 
 import styles from './styles';
 
@@ -36,19 +37,21 @@ class UploadScreen extends React.Component {
   setInvoiceType = (typeFacture) => {
     this.setState({typeFacture: typeFacture, showModal: !this.state.showModal});
   };
-  closeModal = (obj) => {
-    if (obj != null) Toast.show(obj);
-    this.setState({showModal: !this.state.showModal});
+  closeModal = async (obj) => {
+    if (obj != null) await Toast.show(obj);
+    await this.setState({showModal: !this.state.showModal});
+    const from = await AsyncStorage.getItem('from');
+    if (from == routes.BankStatement) {
+      await AsyncStorage.removeItem('from');
+      this.props.navigation.navigate(routes.BankStatement);
+    }
   };
 
   render() {
     const {society} = this.props.user;
-console.log("back",this.props.navigation)
     return (
       <View style={styles.containerStyle}>
-        <Image
-          source={Background}
-          style={styles.backgroundStyle}></Image>
+        <Image source={Background} style={styles.backgroundStyle}></Image>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>
         </View>
@@ -97,7 +100,10 @@ console.log("back",this.props.navigation)
             {this.state.typeFacture == 0 ? (
               <IndemnitiesScreen closeModal={this.closeModal} />
             ) : (
-              <ChooseFacture typeFacture={this.state.typeFacture} closeModal={this.closeModal} />
+              <ChooseFacture
+                typeFacture={this.state.typeFacture}
+                closeModal={this.closeModal}
+              />
             )}
           </Modal>
         </ScrollView>

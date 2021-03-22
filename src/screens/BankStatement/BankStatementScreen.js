@@ -12,7 +12,7 @@ import {
   ScrollView,
 } from 'react-native';
 import Toast from 'react-native-toast-message';
-import {ListItem} from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {
   faUserAlt,
@@ -301,7 +301,11 @@ class BankStatementScreen extends React.Component {
               {
                 label: 'Joindre une facture',
                 icon: faLink,
-                onPress: () => this.props.navigation.navigate(routes.Invoices),
+                onPress: () => {
+                  this.props.navigation.navigate(routes.Invoices)
+                  AsyncStorage.setItem('from', routes.BankStatement);
+                }
+                  ,
               },
               {
                 label: 'Facture personnelle',
