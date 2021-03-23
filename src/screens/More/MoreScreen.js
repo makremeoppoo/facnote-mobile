@@ -39,13 +39,8 @@ class MoreScreen extends React.Component {
           onPress={() => this.props.navigation.navigate(routes.Cabinet)}
           underlayColor="rgba(73,182,77,1,0.9)">
           <View style={styles.cabinetCard}>
-            {/*<Image
-              style={styles.leftArrow}
-              source={require('../../../assets/icons/profiel.png')}
-            />*/}
-            <View style={styles.cabinetrowContainer}>
-              <Text style={styles.itemTitle}>{text.voirSociete}</Text>
-            </View>
+            
+              <Text style={styles.cabinetText}>{text.voirSociete}</Text>
           </View>
         </TouchableHighlight>
         <ScrollView>

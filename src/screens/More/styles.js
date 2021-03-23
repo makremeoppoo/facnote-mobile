@@ -37,9 +37,6 @@ const styles = StyleSheet.create({
   },
 
   cabinetCard: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: ScaleHelpers.CalcHeight(1),
     //Its for IOS
     shadowColor: '#000',
     shadowOffset: {width: 0, height: 2},
@@ -56,14 +53,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignSelf: 'center',
     justifyContent: 'center',
-    padding: 10,
   },
-
-  cabinetrowContainer: {
-    flexDirection: 'column',
+  cabinetText: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    fontFamily: 'Nunito-Bold',
+    color: textColor,
     alignSelf: 'center',
-    width: ScaleHelpers.CalcWidth(50),
-    
   },
 
   itemContainer: {
