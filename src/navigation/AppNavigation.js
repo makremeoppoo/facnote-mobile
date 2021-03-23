@@ -101,12 +101,15 @@ const LandingNavigator = () => {
 const TabNavigator = () => {
   const [canShowBanque, setCanShowBanque] = useState(false);
 
-  useEffect(async () => {
-    setCanShowBanque(
-      (await userHasPermission(permissions.banque)) ||
-        (await userHasPermission(permissions.banque_entreprise)),
-    );
+  useEffect(() => {
+    (async () => {
+      setCanShowBanque(
+        (await userHasPermission(permissions.banque)) ||
+          (await userHasPermission(permissions.banque_entreprise)),
+      );
+    })();
   }, []);
+
   return (
     <BottomTabNavigator.Navigator
       tabBarOptions={{

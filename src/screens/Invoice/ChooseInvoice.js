@@ -46,13 +46,15 @@ class UploadScreen extends React.Component {
     this.setState({typeFacture: typeFacture, showModal: !this.state.showModal});
   };
   closeModal = async (obj) => {
-    if (obj != null) await Toast.show(obj);
     await this.setState({showModal: !this.state.showModal});
+
     const from = await AsyncStorage.getItem('from');
     if (from == routes.BankStatement) {
       await AsyncStorage.removeItem('from');
       this.props.navigation.navigate(routes.BankStatement);
     }
+    if (obj != null) await Toast.show(obj);
+
   };
 
   render() {

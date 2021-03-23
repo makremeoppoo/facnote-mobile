@@ -12,17 +12,29 @@ import {
 import styles from './styles';
 import CabinetBackground from '../../../assets/images/Rectangle.png';
 import rightArrow from '../../../assets/icons/rightArrow.png';
-import Polygone from '../../../assets/icons/Polygone.png';
 import {connect} from 'react-redux';
-import {text, routes} from '../../constants';
+import {text, routes, permissions} from '../../constants';
+import {userHasPermission} from '../../functions/userHasPermission';
 
 class MoreScreen extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      canSale: false,
+      canHistory: false,
+      canPurchase: false,
+    };
+  }
+
+  async componentDidMount() {
+    var canSale = await userHasPermission(permissions.sales);
+    var canPurchase = await userHasPermission(permissions.purchases);
+    var canHistory = await userHasPermission(permissions.history);
+    this.setState({canSale, canPurchase, canHistory});
   }
 
   render() {
-    const {cabinet, society} = this.props.user;
+    const {canSale, canPurchase, canHistory} = this.state;
 
     return (
       <View>
@@ -39,48 +51,56 @@ class MoreScreen extends React.Component {
           onPress={() => this.props.navigation.navigate(routes.Cabinet)}
           underlayColor="rgba(73,182,77,1,0.9)">
           <View style={styles.cabinetCard}>
-            
-              <Text style={styles.cabinetText}>{text.voirSociete}</Text>
+            <Text style={styles.cabinetText}>{text.voirSociete}</Text>
           </View>
         </TouchableHighlight>
         <ScrollView>
           <View style={styles.content}>
-            <TouchableHighlight
-              onPress={() =>
-                this.props.navigation.navigate(routes.HistoryOfPayementReceipts)
-              }
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <View style={styles.itemContainer}>
-                <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>
-                    {text.HistoriqueJustificatifs}
-                  </Text>
+            {canHistory && (
+              <TouchableHighlight
+                onPress={() =>
+                  this.props.navigation.navigate(
+                    routes.HistoryOfPayementReceipts,
+                  )
+                }
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <View style={styles.itemContainer}>
+                  <View style={styles.rowContainer}>
+                    <Text style={styles.itemTitle}>
+                      {text.HistoriqueJustificatifs}
+                    </Text>
+                  </View>
+                  <Image style={styles.rightArrow} source={rightArrow} />
                 </View>
-                <Image style={styles.rightArrow} source={rightArrow} />
-              </View>
-            </TouchableHighlight>
+              </TouchableHighlight>
+            )}
+            {canSale && (
+              <TouchableHighlight
+                onPress={() =>
+                  this.props.navigation.navigate(routes.MyPurchases)
+                }
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <View style={styles.itemContainer}>
+                  <View style={styles.rowContainer}>
+                    <Text style={styles.itemTitle}>{text.MesAchats}</Text>
+                  </View>
+                  <Image style={styles.rightArrow} source={rightArrow} />
+                </View>
+              </TouchableHighlight>
+            )}
+            {canPurchase && (
+              <TouchableHighlight
+                onPress={() => this.props.navigation.navigate(routes.Sales)}
+                underlayColor="rgba(73,182,77,1,0.9)">
+                <View style={styles.itemContainer}>
+                  <View style={styles.rowContainer}>
+                    <Text style={styles.itemTitle}>{text.Ventes}</Text>
+                  </View>
+                  <Image style={styles.rightArrow} source={rightArrow} />
+                </View>
+              </TouchableHighlight>
+            )}
 
-            <TouchableHighlight
-              onPress={() => this.props.navigation.navigate(routes.MyPurchases)}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <View style={styles.itemContainer}>
-                <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>{text.MesAchats}</Text>
-                </View>
-                <Image style={styles.rightArrow} source={rightArrow} />
-              </View>
-            </TouchableHighlight>
-
-            <TouchableHighlight
-              onPress={() => this.props.navigation.navigate(routes.Sales)}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <View style={styles.itemContainer}>
-                <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>{text.Ventes}</Text>
-                </View>
-                <Image style={styles.rightArrow} source={rightArrow} />
-              </View>
-            </TouchableHighlight>
             {/* 
           
 

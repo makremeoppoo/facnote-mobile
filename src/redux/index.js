@@ -27,7 +27,8 @@ export const logout = () => ({
       };
     case Logout:
        AsyncStorage.removeItem('accessToken');
-
+       AsyncStorage.removeItem('modules');
+       AsyncStorage.removeItem('from');
       return {
         ...state,
         isLoggedIn: false,
