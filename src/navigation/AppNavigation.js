@@ -366,14 +366,15 @@ const RootNavigator = () => {
 };
 
 class AppContainer extends React.Component {
-  async componentDidMount() {
+  /*  async componentDidMount() {
     const accessToken = await AsyncStorage.getItem('accessToken');
 
     const decodeToken = jwtDecode(accessToken);
-    console.log('dataUser', decodeToken.exp);
     var dayInMilliseconds = 1000;
 
     var intervalId = setInterval(() => {
+      console.log('dataUser', decodeToken);
+
       if (decodeToken.exp < moment().unix()) this.props.logout();
       return;
     }, dayInMilliseconds);
@@ -384,7 +385,7 @@ class AppContainer extends React.Component {
   componentWillUnmount() {
     // use intervalId from the state to clear the interval
     clearInterval(this.state.intervalId);
-  }
+  }*/
 
   render() {
     return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;

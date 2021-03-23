@@ -13,7 +13,8 @@ export const logout = () => ({
   type: Logout,
 });
 
-function auth(state = initialAuthState, action) {
+ function auth(state = initialAuthState, action) {
+
   switch (action.type) {
     case Login:
       return {
@@ -25,7 +26,7 @@ function auth(state = initialAuthState, action) {
 
       };
     case Logout:
-      AsyncStorage.removeItem('accessToken');
+       AsyncStorage.removeItem('accessToken');
 
       return {
         ...state,
