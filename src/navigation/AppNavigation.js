@@ -1,11 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
-import moment from 'moment';
-import jwtDecode from 'jwt-decode';
-
 import {logout} from '../redux';
 import {View, Platform, Image} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
@@ -50,7 +47,8 @@ import CabinetImgActive from '../../assets/icons/cabinetActive.png';
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
 import ScaleHelpers from '../components/scaleHelpers';
-import {text, routes} from '../constants';
+import {text, routes, permissions} from '../constants';
+import {userHasPermission} from '../functions/userHasPermission';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -101,6 +99,14 @@ const LandingNavigator = () => {
 
 //ios
 const TabNavigator = () => {
+  const [canShowBanque, setCanShowBanque] = useState(false);
+
+  useEffect(async () => {
+    setCanShowBanque(
+      (await userHasPermission(permissions.banque)) ||
+        (await userHasPermission(permissions.banque_entreprise)),
+    );
+  }, []);
   return (
     <BottomTabNavigator.Navigator
       tabBarOptions={{
@@ -140,19 +146,21 @@ const TabNavigator = () => {
           ),
         }}
       />*/}
-      <BottomTabNavigator.Screen
-        name={routes.BankStatement}
-        component={BankStatementScreen}
-        options={{
-          tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem
-              focused={focused}
-              label={text.RelevesBancaires}
-              src={focused ? BlueBanqueImg : BanqueImg}
-            />
-          ),
-        }}
-      />
+      {canShowBanque && (
+        <BottomTabNavigator.Screen
+          name={routes.BankStatement}
+          component={BankStatementScreen}
+          options={{
+            tabBarIcon: ({tintColor, focused}) => (
+              <TabBarItem
+                focused={focused}
+                label={text.RelevesBancaires}
+                src={focused ? BlueBanqueImg : BanqueImg}
+              />
+            ),
+          }}
+        />
+      )}
       <BottomTabNavigator.Screen
         name={routes.Invoices}
         component={ChooseInvoice}

@@ -12,6 +12,7 @@ import {
   Linking,
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import styles from './styles';
 import {connect} from 'react-redux';
@@ -23,7 +24,6 @@ import getCabinet from '../../services/cabinet';
 import getSociety from '../../services/societe';
 
 import {login} from '../../redux';
-import AsyncStorage from '@react-native-community/async-storage';
 import {text} from '../../constants';
 
 class LoginScreen extends React.Component {
@@ -83,7 +83,7 @@ class LoginScreen extends React.Component {
       this.setState({loading: true});
       let user = await api.login({username: name, password: password});
       await AsyncStorage.setItem('accessToken', user['token']);
-
+      await AsyncStorage.setItem('modules', JSON.stringify(user.user.modules));
       let cabinet = await getCabinet();
       let society = await getSociety();
       this.props.login({

@@ -98,3 +98,11 @@ export const routes = {
   More: 'More',
   Login:'Login'
 };
+
+export const permissions = {
+  banque: 'rapprochement_index',
+  banque_entreprise: 'rapprochement_entreprise',
+  sales: 'facturation_produit_homepage',
+  purchases: 'facturation_facture_homepage',
+  history: 'envoi_factures_HistoriqueOcr',
+};

@@ -21,7 +21,8 @@ import Indemnity from '../../../assets/images/Indemnity.png';
 import Background from '../../../assets/images/backgroung_depose_facture.png';
 import ChooseFacture from './UploadInvoice';
 import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
-import {routes} from '../../constants';
+import {routes, permissions} from '../../constants';
+import {userHasPermission} from '../../functions/userHasPermission';
 
 import styles from './styles';
 
@@ -31,9 +32,16 @@ class UploadScreen extends React.Component {
     this.state = {
       showModal: false,
       typeFacture: '0',
+      canSalesOrPurchase: false,
     };
   }
 
+  async componentDidMount() {
+    var canSalesOrPurchase =
+      (await userHasPermission(permissions.sales)) ||
+      (await userHasPermission(permissions.purchases));
+    this.setState({canSalesOrPurchase});
+  }
   setInvoiceType = (typeFacture) => {
     this.setState({typeFacture: typeFacture, showModal: !this.state.showModal});
   };
@@ -49,6 +57,8 @@ class UploadScreen extends React.Component {
 
   render() {
     const {society} = this.props.user;
+    const {canSalesOrPurchase} = this.state;
+    console.log(canSalesOrPurchase);
     return (
       <View style={styles.containerStyle}>
         <Image source={Background} style={styles.backgroundStyle}></Image>
@@ -59,22 +69,26 @@ class UploadScreen extends React.Component {
 
         <ScrollView style={styles.scrollView}>
           <View style={styles.buttonContainer}>
-            <View style={styles.btnView}>
-              <TouchableHighlight
-                style={styles.btnContainer}
-                onPress={() => this.setInvoiceType(1)}
-                underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.Img} source={Achat} />
-              </TouchableHighlight>
-            </View>
-            <View style={styles.btnView}>
-              <TouchableHighlight
-                style={styles.btnContainer}
-                onPress={() => this.setInvoiceType(3)}
-                underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.Img} source={AvanceDeFrais} />
-              </TouchableHighlight>
-            </View>
+            {canSalesOrPurchase && (
+              <>
+                <View style={styles.btnView}>
+                  <TouchableHighlight
+                    style={styles.btnContainer}
+                    onPress={() => this.setInvoiceType(1)}
+                    underlayColor="rgba(73,182,77,1,0.9)">
+                    <Image style={styles.Img} source={Achat} />
+                  </TouchableHighlight>
+                </View>
+                <View style={styles.btnView}>
+                  <TouchableHighlight
+                    style={styles.btnContainer}
+                    onPress={() => this.setInvoiceType(3)}
+                    underlayColor="rgba(73,182,77,1,0.9)">
+                    <Image style={styles.Img} source={AvanceDeFrais} />
+                  </TouchableHighlight>
+                </View>
+              </>
+            )}
             <View style={styles.btnView}>
               <TouchableHighlight
                 style={styles.btnContainer}
