@@ -6,7 +6,6 @@ export const userHasPermission = async (permit) => {
   authorities = authorities
     .filter((item) => item.is_authorized)
     .map((item) => item.module_route);
-return true
   var find = false;
   if (authorities.includes(permit)) find = true;
   console.log(permit, find);

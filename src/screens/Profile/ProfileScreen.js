@@ -48,11 +48,8 @@ class NotificationsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Image source={Background} style={styles.topImageStyle}></Image>
 
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>
-        </View>
+        
         <ScrollView>
           <View style={styles.buttonContainer}>
             <TouchableHighlight

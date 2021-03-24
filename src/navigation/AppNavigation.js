@@ -283,9 +283,16 @@ const MainNavigator = () => {
         component={HistoryScreen}
       />
       <Stack.Screen
-        options={({navigation}) => {
+         options={({navigation}) => {
           return {
-            header: () => <></>,
+            header: () => (
+              <NavigationHeader
+                onPress={() => {
+                  navigation.goBack();
+                }}
+                title={text.Cabinet}
+              />
+            ),
           };
         }}
         name={routes.Cabinet}
