@@ -102,7 +102,7 @@ export const routes = {
 export const permissions = {
   banque: 'rapprochement_index',
   banque_entreprise: 'rapprochement_entreprise',
-  sales: 'facturation_produit_homepage',
-  purchases: 'facturation_facture_homepage',
+  sales: 'facturation_achats_homepage',
+  purchases: 'facturation_ventes_homepage',
   history: 'envoi_factures_HistoriqueOcr',
 };

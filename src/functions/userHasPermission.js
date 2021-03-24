@@ -5,6 +5,7 @@ export const userHasPermission = async (permit) => {
   let authorities = JSON.parse(string);
   authorities = authorities
     .filter((item) => item.is_authorized)
+    .filter((item) => item.module_route)
     .map((item) => item.module_route);
   console.log('authorities', authorities);
 
