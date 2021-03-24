@@ -11,25 +11,21 @@ const styles = StyleSheet.create({
   headerButtonImage: {
     resizeMode: 'stretch',
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(15),
+    height: ScaleHelpers.CalcHeight(16),
     position: 'absolute',
     margin: 0,
   },
+
   headerContain: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
   },
-
-  btnIcon: {
-    width: ScaleHelpers.CalcWidth(3),
-    height: ScaleHelpers.CalcHeight(4),
-    backgroundColor:'red'
-  },
   titleContainer: {
+    paddingTop: ScaleHelpers.CalcHeight(2),
     alignItems: 'center',
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(15),
+    height: ScaleHelpers.CalcHeight(16),
     width: ScaleHelpers.CalcWidth(80),
   },
   title: {
