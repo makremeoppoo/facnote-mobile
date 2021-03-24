@@ -50,7 +50,6 @@ const styles = StyleSheet.create({
 class CommentCard extends React.Component {
   render() {
     const item = this.props.item;
-    console.log(item)
     return (
       <View style={styles.container}>
        

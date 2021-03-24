@@ -129,7 +129,6 @@ class SalesScreen extends React.Component {
   };
 
   handleRefresh = () => {
-    console.log('handleRefresh');
 
     this.setState(
       {
@@ -144,7 +143,6 @@ class SalesScreen extends React.Component {
   };
 
   handleLoadMore = () => {
-    console.log('handleLoadMore');
     if (!this.state.isRefreshing)
       this.setState(
         {

@@ -131,8 +131,6 @@ class MyPurchasesSreen extends React.Component {
   };
 
   handleRefresh = () => {
-    console.log('handleRefresh');
-
     this.setState(
       {
         isRefreshing: true,

@@ -1,6 +1,7 @@
 import {combineReducers} from 'redux';
 import AsyncStorage from '@react-native-community/async-storage';
 
+
 const initialAuthState = {isLoggedIn: false};
 const Login = 'Login';
 const Logout = 'Logout';
@@ -13,13 +14,13 @@ export const logout = () => ({
   type: Logout,
 });
 
- function auth(state = initialAuthState, action) {
-
+  function auth(state = initialAuthState, action) {
   switch (action.type) {
     case Login:
       return {
         ...state,
         isLoggedIn: true,
+        canShowBank: action.data.canShowBank,
         user: action.data.user,
         cabinet: action.data.cabinet,
         society: action.data.society,
@@ -32,6 +33,7 @@ export const logout = () => ({
       return {
         ...state,
         isLoggedIn: false,
+        canShowBank:false,
         user: {},
         cabinet: {cabinet: {}, address: {}},
       };

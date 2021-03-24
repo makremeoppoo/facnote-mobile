@@ -24,8 +24,8 @@ import getCabinet from '../../services/cabinet';
 import getSociety from '../../services/societe';
 
 import {login} from '../../redux';
-import {text} from '../../constants';
-
+import {text,permissions} from '../../constants';
+import {userHasPermission} from '../../functions/userHasPermission';
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -90,6 +90,8 @@ class LoginScreen extends React.Component {
         user: user['user'],
         cabinet: cabinet,
         society: society,
+        canShowBank :(await userHasPermission(permissions.banque)||
+        await userHasPermission(permissions.banque_entreprise))
       });
       this.setState({loading: false});
       if (rememberMe) {

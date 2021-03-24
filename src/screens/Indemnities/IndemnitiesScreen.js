@@ -55,7 +55,6 @@ class IndemnitiesScreen extends React.Component {
       lieuDapart,
       motif,
     } = this.state;
-    console.log(this.state);
     const {user} = this.props.user;
     await this.setState({
       distanceError: distance == '',
@@ -132,7 +131,6 @@ class IndemnitiesScreen extends React.Component {
               label={text.PuissanceAdministrative}
               selectedValue={this.state.puissance.label}
               onChange={(option) => {
-                console.log(option);
                 this.setState({puissance: option});
               }}
               errorLabel={puissanceError && text.Champobligatoire}

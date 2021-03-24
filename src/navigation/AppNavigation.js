@@ -99,16 +99,7 @@ const LandingNavigator = () => {
 
 //ios
 const TabNavigator = () => {
-  const [canShowBanque, setCanShowBanque] = useState(false);
-
-  useEffect(() => {
-    (async () => {
-      setCanShowBanque(
-        (await userHasPermission(permissions.banque)) ||
-          (await userHasPermission(permissions.banque_entreprise)),
-      );
-    })();
-  }, []);
+  const canShowBank = useSelector((state) => state.auth.canShowBank);
 
   return (
     <BottomTabNavigator.Navigator
@@ -122,7 +113,7 @@ const TabNavigator = () => {
         },
         showLabel: false,
       }}
-      initialRouteName={routes.Invoices}>
+      initialRouteName={canShowBank ? routes.BankStatement : routes.Invoices}>
       <BottomTabNavigator.Screen
         name={routes.Home}
         component={HomeScreen}
@@ -149,7 +140,7 @@ const TabNavigator = () => {
           ),
         }}
       />*/}
-      {canShowBanque && (
+      {canShowBank && (
         <BottomTabNavigator.Screen
           name={routes.BankStatement}
           component={BankStatementScreen}

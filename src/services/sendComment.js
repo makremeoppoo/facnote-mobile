@@ -12,7 +12,6 @@ export default async function sendComment(comment, bankId, billType) {
   form_data.append('comment', comment);
   try {
     let res = await api.post(`${c.SENDCOMMENT}/${billType}/${bankId}`,form_data, options);
-   console.log(res.data)
     return res.data;
   } catch (e) {
 

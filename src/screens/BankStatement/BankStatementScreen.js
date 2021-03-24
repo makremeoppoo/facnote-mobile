@@ -125,7 +125,6 @@ class BankStatementScreen extends React.Component {
     } catch (e) {
       console.log(e);
     } finally {
-      console.log(data.comments);
       this.setState({
         comments: data.comments,
         showModal: true,
