@@ -36,7 +36,7 @@ class MoreScreen extends React.Component {
 
   render() {
     const {canSale, canPurchase, canHistory} = this.state;
-
+    const {cabinet} = this.props.user;
     return (
       <View>
         <Image source={CabinetBackground} style={styles.topImageStyle}></Image>
@@ -52,7 +52,7 @@ class MoreScreen extends React.Component {
           onPress={() => this.props.navigation.navigate(routes.Cabinet)}
           underlayColor="rgba(73,182,77,1,0.9)">
           <View style={styles.cabinetCard}>
-            <Text style={styles.cabinetText}>{text.voirSociete}</Text>
+            <Text style={styles.cabinetText}>{cabinet.cabinet.raison_sociale}</Text>
           </View>
         </TouchableHighlight>
         <ScrollView>
