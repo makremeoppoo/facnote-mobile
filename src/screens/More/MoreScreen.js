@@ -15,6 +15,7 @@ import rightArrow from '../../../assets/icons/rightArrow.png';
 import {connect} from 'react-redux';
 import {text, routes, permissions} from '../../constants';
 import {userHasPermission} from '../../functions/userHasPermission';
+import {logout} from '../../redux';
 
 class MoreScreen extends React.Component {
   constructor(props) {
@@ -100,32 +101,33 @@ class MoreScreen extends React.Component {
                 </View>
               </TouchableHighlight>
             )}
-
-            {/* 
-          
-
-
             <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('Profile')}
+              onPress={() => this.props.logout()}
               underlayColor="rgba(73,182,77,1,0.9)">
-              <View style={styles.itemContainer}>
+              <View
+                style={{
+                  ...styles.itemContainer,
+                  ...{
+                    borderColor: 'rgba(171, 183, 183, 1)',
+                    backgroundColor: 'rgba(171, 183, 183, 1)',
+                  },
+                }}>
                 <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>Notes de frais</Text>
+                  <Text
+                    style={{
+                      ...styles.itemTitle,
+                      ...{
+                        color: 'white',
+                        borderColor: 'rgba(171, 183, 183, 1)',
+                        backgroundColor: 'rgba(171, 183, 183, 1)',
+                      },
+                    }}>
+                    {text.Deconnecter}
+                  </Text>
                 </View>
-                <Image style={styles.rightArrow} source={rightArrow} />
+                <View style={styles.rightArrow}></View>
               </View>
             </TouchableHighlight>
-            <TouchableHighlight
-              onPress={() => this.props.navigation.navigate('Profile')}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <View style={styles.itemContainer}>
-                <View style={styles.rowContainer}>
-                  <Text style={styles.itemTitle}>GED</Text>
-                </View>
-                <Image style={styles.rightArrow} source={rightArrow} />
-              </View>
-            </TouchableHighlight>
-        */}
           </View>
         </ScrollView>
       </View>
@@ -136,4 +138,4 @@ class MoreScreen extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps)(MoreScreen);
+export default connect(mapStateToProps, {logout})(MoreScreen);
