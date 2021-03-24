@@ -431,7 +431,7 @@ class BankStatementScreen extends React.Component {
 
 
     */}
-      <SelectInput
+      {/*<SelectInput
         label={text.periode}
         selectedValue={this.state.exercice.label}
         onChange={(option) => {
@@ -442,7 +442,7 @@ class BankStatementScreen extends React.Component {
           });
         }}
         listItems={this.state.exercices}
-      />
+      />*/}
       <SelectInput
         label={text.compte}
         selectedValue={this.state.account.label}
@@ -534,10 +534,6 @@ class BankStatementScreen extends React.Component {
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
         <NavigationHeader
-          onPress={() => {
-            //  this.Standard.open();
-            this.props.navigation.goBack();
-          }}
           title={text.banque}
           subTitle={account.label}
           onPressTwo={() =>
