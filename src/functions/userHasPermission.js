@@ -1,10 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 export const userHasPermission = async (permit) => {
-
   let string = await AsyncStorage.getItem('modules');
   let authorities = JSON.parse(string);
-  authorities = authorities.map((item) => item.module_route);
+  authorities = authorities
+    .filter((item) => item.is_authorized)
+    .map((item) => item.module_route);
   console.log('authorities', authorities);
 
   var find = false;
