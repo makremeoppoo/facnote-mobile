@@ -72,6 +72,7 @@ class BankStatementScreen extends React.Component {
       exercices: [],
       account: {key: -1, label: '', value: ''},
       exercice: '',
+      exercicesValues: [],
       billType: '',
       bankId: '',
       comment: '',
@@ -266,7 +267,7 @@ class BankStatementScreen extends React.Component {
   };
 
   async componentDidMount() {
-    var exercices = await getExercices();
+    var exercicesValues = await getExercices();
     var accounts = await getAccountsBank(100, 1);
     let bankAccounts = [];
     accounts.map((item, index) => {
@@ -279,8 +280,9 @@ class BankStatementScreen extends React.Component {
     this.setState({
       bankAccounts,
       account: bankAccounts[0],
-      startDate: exercices.current_exercise.date_debut,
-      endDate: exercices.current_exercise.date_fin,
+      startDate: exercicesValues.current_exercise.date_debut,
+      endDate: exercicesValues.current_exercise.date_fin,
+      exercicesValues,
     });
     this.loadData();
   }
@@ -301,10 +303,9 @@ class BankStatementScreen extends React.Component {
                 label: 'Joindre une facture',
                 icon: faLink,
                 onPress: () => {
-                  this.props.navigation.navigate(routes.Invoices)
+                  this.props.navigation.navigate(routes.Invoices);
                   AsyncStorage.setItem('from', routes.BankStatement);
-                }
-                  ,
+                },
               },
               {
                 label: 'Facture personnelle',
@@ -474,6 +475,8 @@ class BankStatementScreen extends React.Component {
               endDate: null,
               multipleSearch: '',
               exercice: '',
+              startDate: this.state.exercicesValues.current_exercise.date_debut,
+              endDate: this.state.exercicesValues.current_exercise.date_fin,
             });
             await this.handleRefresh();
             await this.onCloseModal();

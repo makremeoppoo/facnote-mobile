@@ -45,6 +45,7 @@ class MyPurchasesSreen extends React.Component {
       search_multiple: '',
       showPdfModal: false,
       purchase: {},
+      exercices:[],
       ttc: 0,
     };
   }
@@ -161,6 +162,7 @@ class MyPurchasesSreen extends React.Component {
     this.setState({
       startDate: exercices.current_exercise.date_debut,
       endDate: exercices.current_exercise.date_fin,
+      exercices
     });
     this.loadData();
   }
@@ -259,6 +261,9 @@ class MyPurchasesSreen extends React.Component {
                               endDate: null,
                               search_multiple: '',
                               compte: {key: -1, label: '', value: ''},
+                              startDate: this.state.exercices.current_exercise.date_debut,
+                              endDate: this.state.exercices.current_exercise.date_fin,
+                             
                             });
                             await this.handleRefresh();
                             await this.onCloseModal();

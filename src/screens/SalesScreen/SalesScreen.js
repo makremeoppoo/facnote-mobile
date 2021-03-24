@@ -43,6 +43,7 @@ class SalesScreen extends React.Component {
       endDate: null,
       search_multiple: '',
       showPdfModal: false,
+      exercices:[],
       sale: {},
       ttc: 0,
     };
@@ -159,6 +160,7 @@ class SalesScreen extends React.Component {
     this.setState({
       startDate: exercices.current_exercise.date_debut,
       endDate: exercices.current_exercise.date_fin,
+      exercices
     })
     this.loadData();
   }
@@ -253,8 +255,8 @@ class SalesScreen extends React.Component {
                               max: '',
                               debit: 0,
                               credit: 0,
-                              startDate: null,
-                              endDate: null,
+                              startDate: this.state.exercices.current_exercise.date_debut,
+                              endDate: this.state.exercices.current_exercise.date_fin,
                               search_multiple: '',
                               compte: {key: -1, label: '', value: ''},
                             });
