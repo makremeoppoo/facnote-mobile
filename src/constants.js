@@ -77,13 +77,12 @@ export const text = {
   periode: 'Période',
   Accueil: 'Accueil',
   DeposerFacture: 'Déposer facture',
-  Cabinet:'Cabinet',
-  Plus:'Plus',
-  MontantTTC:'TTC',
-  SoldeAu:"Solde au",
-  transactionJustifier:"transaction(s) à justifier",
-  transactionNonJustifier:"transaction(s) non justifier"
-
+  Cabinet: 'Cabinet',
+  Plus: 'Plus',
+  MontantTTC: 'TTC',
+  SoldeAu: 'Solde au',
+  transactionJustifier: 'transaction(s) à justifier',
+  transactionNonJustifier: 'transaction(s) non justifier',
 };
 
 export const routes = {
@@ -96,7 +95,7 @@ export const routes = {
   Home: 'Home',
   Cabinet: 'Cabinet',
   More: 'More',
-  Login:'Login'
+  Login: 'Login',
 };
 
 export const permissions = {
@@ -105,4 +104,5 @@ export const permissions = {
   sales: 'facturation_produit_homepage',
   purchases: 'facturation_facture_homepage',
   history: 'envoi_factures_HistoriqueOcr',
+  crm_note_frais_note_frais: 'crm_note_frais_note_frais',
 };

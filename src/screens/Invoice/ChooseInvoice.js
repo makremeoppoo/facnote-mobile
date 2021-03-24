@@ -33,6 +33,7 @@ class UploadScreen extends React.Component {
       showModal: false,
       typeFacture: '0',
       canSalesOrPurchase: false,
+      crm_note_frais_note_frais: false,
     };
   }
 
@@ -40,7 +41,10 @@ class UploadScreen extends React.Component {
     var canSalesOrPurchase =
       (await userHasPermission(permissions.sales)) ||
       (await userHasPermission(permissions.purchases));
-    this.setState({canSalesOrPurchase});
+    var crm_note_frais_note_frais = await userHasPermission(
+      permissions.crm_note_frais_note_frais,
+    );
+    this.setState({canSalesOrPurchase, crm_note_frais_note_frais});
   }
   setInvoiceType = (typeFacture) => {
     this.setState({typeFacture: typeFacture, showModal: !this.state.showModal});
@@ -54,13 +58,11 @@ class UploadScreen extends React.Component {
       this.props.navigation.navigate(routes.BankStatement);
     }
     if (obj != null) await Toast.show(obj);
-
   };
 
   render() {
     const {society} = this.props.user;
-    const {canSalesOrPurchase} = this.state;
-    console.log(canSalesOrPurchase);
+    const {canSalesOrPurchase, crm_note_frais_note_frais} = this.state;
     return (
       <View style={styles.containerStyle}>
         <Image source={Background} style={styles.backgroundStyle}></Image>
@@ -72,24 +74,24 @@ class UploadScreen extends React.Component {
         <ScrollView style={styles.scrollView}>
           <View style={styles.buttonContainer}>
             {canSalesOrPurchase && (
-              <>
-                <View style={styles.btnView}>
-                  <TouchableHighlight
-                    style={styles.btnContainer}
-                    onPress={() => this.setInvoiceType(1)}
-                    underlayColor="rgba(73,182,77,1,0.9)">
-                    <Image style={styles.Img} source={Achat} />
-                  </TouchableHighlight>
-                </View>
-                <View style={styles.btnView}>
-                  <TouchableHighlight
-                    style={styles.btnContainer}
-                    onPress={() => this.setInvoiceType(3)}
-                    underlayColor="rgba(73,182,77,1,0.9)">
-                    <Image style={styles.Img} source={AvanceDeFrais} />
-                  </TouchableHighlight>
-                </View>
-              </>
+              <View style={styles.btnView}>
+                <TouchableHighlight
+                  style={styles.btnContainer}
+                  onPress={() => this.setInvoiceType(1)}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.Img} source={Achat} />
+                </TouchableHighlight>
+              </View>
+            )}
+            {crm_note_frais_note_frais && (
+              <View style={styles.btnView}>
+                <TouchableHighlight
+                  style={styles.btnContainer}
+                  onPress={() => this.setInvoiceType(3)}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Image style={styles.Img} source={AvanceDeFrais} />
+                </TouchableHighlight>
+              </View>
             )}
             <View style={styles.btnView}>
               <TouchableHighlight
