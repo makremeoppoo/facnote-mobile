@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   titleContainer: {
-    paddingTop: ScaleHelpers.CalcHeight(2),
+    paddingTop: ScaleHelpers.CalcHeight(3),
     alignItems: 'center',
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(16),
