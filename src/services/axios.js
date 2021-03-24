@@ -8,22 +8,25 @@ const api = axios.create({
   headers: {
     Accept: 'application/json',
   },
+
+  withCredentials: true,
 });
 
 api.interceptors.request.use(
   async (config) => {
     const accessToken = await AsyncStorage.getItem('accessToken');
-
     if (accessToken) {
+
       config.headers.authorization = `Bearer ${accessToken}`;
+
     } else {
+    
       config.headers.authorization = 'Basic';
+    
     }
     return config;
   },
   (error) => Promise.reject(error),
 );
-
-
 
 export default api;

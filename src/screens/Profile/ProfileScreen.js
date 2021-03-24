@@ -48,11 +48,8 @@ class NotificationsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-        <Image source={Background} style={styles.topImageStyle}></Image>
 
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{society.cabinet.raison_sociale}</Text>
-        </View>
+        
         <ScrollView>
           <View style={styles.buttonContainer}>
             <TouchableHighlight
@@ -105,20 +102,7 @@ class NotificationsScreen extends React.Component {
                 {cabinet.address.ville} {cabinet.address.pays}
               </Text>
             </View>
-            <TouchableHighlight
-              style={{
-                ...styles.btn,
-                ...{
-                  borderColor: 'rgba(171, 183, 183, 1)',
-                  backgroundColor: 'rgba(171, 183, 183, 1)',
-                },
-              }}
-              onPress={() => this.props.logout()}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
-                {text.Deconnecter}
-              </Text>
-            </TouchableHighlight>
+       
           </View>
         </ScrollView>
       </View>

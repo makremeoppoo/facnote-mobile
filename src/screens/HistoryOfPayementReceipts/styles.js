@@ -9,8 +9,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: ScaleHelpers.CalcHeight(100),
+    paddingTop: ScaleHelpers.CalcWidth(5),
     alignItems: 'center',
     backgroundColor: 'white',
+  },
+  flatListStyle: {
+    maxHeight: '90%',
   },
   itemContainer: {
     flexDirection: 'row',
@@ -51,8 +55,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalView: {
-    width: ScaleHelpers.CalcWidth(80),
-    height: ScaleHelpers.CalcHeight(50),
+    width: ScaleHelpers.CalcWidth(100),
+    height: ScaleHelpers.CalcHeight(100),
     backgroundColor: 'white',
     alignItems: 'center',
     shadowColor: '#000',
@@ -62,17 +66,48 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    borderRadius: 10,
-
     elevation: 5,
   },
   modalCloseView: {
-    top: ScaleHelpers.CalcHeight(3),
-    right: ScaleHelpers.CalcWidth(33),
+    position: 'absolute',
+    top:
+      Platform.OS === 'ios'
+        ? ScaleHelpers.CalcWidth(14)
+        : ScaleHelpers.CalcWidth(12),
+    left: ScaleHelpers.CalcWidth(5),
+  },
+  titleModalContainer: {
+    alignItems: 'center',
+  },
+  titleModalText: {
+    fontSize: ScaleHelpers.CalcWidth(5),
+    color: 'rgb(112,112,112)',
+    fontFamily: 'Nunito-Bold',
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
     height: ScaleHelpers.CalcWidth(5),
+  },
+  pdfContainer: {
+    flex: 1,
+    marginTop: ScaleHelpers.CalcHeight(15),
+    marginBottom: ScaleHelpers.CalcHeight(10),
+  },
+  pdf: {
+    width: ScaleHelpers.CalcWidth(90),
+    height: ScaleHelpers.CalcHeight(50),
+  },
+  textInfo: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: textColor,
+    fontFamily: 'Nunito-Bold',
+    marginTop: ScaleHelpers.CalcWidth(2),
+  },
+  widthTLabelInfo: {
+    width: ScaleHelpers.CalcWidth(25),
+  },
+  widthTextInfo: {
+    width: ScaleHelpers.CalcWidth(60),
   },
 });
 

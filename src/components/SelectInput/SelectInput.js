@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(13),
   },
   label: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: 'Nunito-Bold',
     margin: ScaleHelpers.CalcWidth(2),
     color: textColor,
     fontSize: 12,

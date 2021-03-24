@@ -9,14 +9,14 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import {connect} from 'react-redux';
-
-import Rectangle from '../../../assets/images/Rectangle.png';
 import DatePicker from '../../components/DatePicker/DatePicker';
 import TextInput from '../../components/TextInput/TextInput';
+import SubmitButton from '../../components/SubmitButton/SubmitButton';
+import SecondButton from '../../components/SecondButton/SecondButton';
 import SelectInput from '../../components/SelectInput/SelectInput';
 
 import styles from './styles';
-import saveIndemnite from '../../services/indemnite';
+import saveIndemnity from '../../services/indemnity';
 import moment from 'moment';
 import {text} from '../../constants';
 
@@ -46,7 +46,7 @@ class IndemnitiesScreen extends React.Component {
     this.setState({[name]: text});
   };
 
-  sendIndemnite = async () => {
+  sendIndemnity = async () => {
     const {
       puissance,
       date,
@@ -55,7 +55,6 @@ class IndemnitiesScreen extends React.Component {
       lieuDapart,
       motif,
     } = this.state;
-    console.log(this.state);
     const {user} = this.props.user;
     await this.setState({
       distanceError: distance == '',
@@ -86,11 +85,11 @@ class IndemnitiesScreen extends React.Component {
         user: {id: user.id},
       };
 
-      var res = await saveIndemnite(data);
+      var res = await saveIndemnity(data);
 
       this.props.closeModal({
         text1: text.Felicitation,
-        text2: text.indemniteSuccess,
+        text2: text.indemnitySuccess,
         type: 'success',
       });
     } catch (error) {
@@ -118,11 +117,11 @@ class IndemnitiesScreen extends React.Component {
       <View style={styles.container}>
         <ScrollView>
           <View style={styles.titleContainer}>
-            <Text style={styles.title}>{text.IndemnitesTitle}</Text>
+            <Text style={styles.title}>{text.IndemnitiesTitle}</Text>
           </View>
           <View style={styles.infoContainer}>
             <DatePicker
-              date={this.state.date}
+              initialDate={new Date()}
               setCurrentDate={this.setDate}
               label={text.Date}
               style={styles.input}
@@ -132,7 +131,6 @@ class IndemnitiesScreen extends React.Component {
               label={text.PuissanceAdministrative}
               selectedValue={this.state.puissance.label}
               onChange={(option) => {
-                console.log(option);
                 this.setState({puissance: option});
               }}
               errorLabel={puissanceError && text.Champobligatoire}
@@ -181,28 +179,18 @@ class IndemnitiesScreen extends React.Component {
               name="motif"
               errorLabel={motifError && text.Champobligatoire}
             />
-          </View>
-          <View style={styles.ButtonsContain}>
-            <TouchableHighlight
-              style={styles.btnContainer}
-              onPress={() => this.props.closeModal(null)}>
-              <Text style={styles.btnTxt}>{text.Annuler}</Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={styles.btnSubmitContainer}
-              onPress={() => this.sendIndemnite()}>
-              <>
-                <Image style={styles.rectangle} source={Rectangle} />
-                <Text style={styles.submitTxt}>
-                  {' '}
-                  {this.state.loading ? (
-                    <ActivityIndicator size="small" color="white" />
-                  ) : (
-                    text.Valider
-                  )}
-                </Text>
-              </>
-            </TouchableHighlight>
+            <View style={styles.ButtonsContain}>
+              <SecondButton
+                label={text.Annuler}
+                loading={this.state.loading}
+                onPress={() => this.props.closeModal(null)}
+              />
+              <SubmitButton
+                loading={this.state.loading}
+                label={text.Valider}
+                onPress={() => this.sendIndemnity()}
+              />
+            </View>
           </View>
         </ScrollView>
       </View>

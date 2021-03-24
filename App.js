@@ -3,7 +3,7 @@ import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistStore, persistReducer} from 'redux-persist';
-
+import {Text} from 'react-native';
 import {enableScreens} from 'react-native-screens';
 import thunk from 'redux-thunk';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -24,14 +24,18 @@ console.disableYellowBox = true;
 const store = createStore(AppReducer, applyMiddleware(thunk));
 
 export default class App extends React.Component {
-  
+  constructor() {
+    super();
+    if (Text.defaultProps == null) Text.defaultProps = {};
+    Text.defaultProps.allowFontScaling = false;
+  }
   render() {
     enableScreens();
     return (
       <Provider store={store}>
-      {/*<PersistGate loading={null} persistor={persistor}>*/}  
-          <AppContainer />
-      {/**</PersistGate> */}  
+        {/*<PersistGate loading={null} persistor={persistor}>*/}
+        <AppContainer />
+        {/**</PersistGate> */}
       </Provider>
     );
   }

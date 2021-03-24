@@ -11,37 +11,31 @@ const styles = StyleSheet.create({
   headerButtonImage: {
     resizeMode: 'stretch',
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(10),
+    height: ScaleHelpers.CalcHeight(16),
     position: 'absolute',
     margin: 0,
   },
+
   headerContain: {
     justifyContent: 'center',
-    marginBottom: ScaleHelpers.CalcHeight(2),
-    marginTop:ScaleHelpers.CalcWidth(2),
-
     alignItems: 'center',
     flexDirection: 'row',
   },
-  btnContainer: {
-    width: ScaleHelpers.CalcWidth(10),
-    height: ScaleHelpers.CalcHeight(6),
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  btnIcon: {
-    width: ScaleHelpers.CalcWidth(3),
-    height: ScaleHelpers.CalcHeight(3),
-  },
   titleContainer: {
+    paddingTop: ScaleHelpers.CalcHeight(3),
     alignItems: 'center',
     justifyContent: 'center',
-    height: ScaleHelpers.CalcHeight(6),
-    width: ScaleHelpers.CalcWidth(90),
+    height: ScaleHelpers.CalcHeight(16),
+    width: ScaleHelpers.CalcWidth(80),
   },
   title: {
-    fontFamily: 'SegoeUI',
-
+    fontFamily: 'Nunito-Bold',
+    fontSize: ScaleHelpers.CalcWidth(5),
+    color: 'white',
+  },
+  subTitle: {
+    fontFamily: 'Nunito-Regular',
+    fontSize: ScaleHelpers.CalcWidth(3.8),
     color: 'white',
   },
 });

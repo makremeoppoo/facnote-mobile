@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   View,
-  TouchableHighlight,
+  TouchableHighlight, 
   Text,
   TextInput,
   ScrollView,
@@ -12,6 +12,7 @@ import {
   Linking,
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import styles from './styles';
 import {connect} from 'react-redux';
@@ -23,9 +24,8 @@ import getCabinet from '../../services/cabinet';
 import getSociety from '../../services/societe';
 
 import {login} from '../../redux';
-import AsyncStorage from '@react-native-community/async-storage';
-import {text} from '../../constants';
-
+import {text,permissions} from '../../constants';
+import {userHasPermission} from '../../functions/userHasPermission';
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -83,13 +83,15 @@ class LoginScreen extends React.Component {
       this.setState({loading: true});
       let user = await api.login({username: name, password: password});
       await AsyncStorage.setItem('accessToken', user['token']);
-
+      await AsyncStorage.setItem('modules', JSON.stringify(user.user.modules));
       let cabinet = await getCabinet();
       let society = await getSociety();
       this.props.login({
         user: user['user'],
         cabinet: cabinet,
         society: society,
+        canShowBank :(await userHasPermission(permissions.banque)||
+        await userHasPermission(permissions.banque_entreprise))
       });
       this.setState({loading: false});
       if (rememberMe) {

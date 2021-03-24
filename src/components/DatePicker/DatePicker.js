@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Platform, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import moment from 'moment';
 import ScaleHelpers from '../scaleHelpers';
-import {textColor, buttonColor, label} from '../../AppStyles';
+import {textColor} from '../../AppStyles';
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -36,15 +36,25 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(13),
   },
   label: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: 'Nunito-Bold',
     margin: ScaleHelpers.CalcWidth(2),
     fontSize: 12,
   },
 });
 
-export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
+export default DatePicker = ({
+  setCurrentDate,
+  label,
+  errorLabel,
+  display = 'row',
+  initialDate = null,
+}) => {
   const [date, setDate] = useState(new Date());
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (initialDate != null) setDate(initialDate);
+  }, [initialDate]); // Only re-run the effect if count changes
 
   const handleConfirm = (date) => {
     setShow(false);
@@ -63,8 +73,22 @@ export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
           style={{...styles.label, ...{color: errorLabel ? 'red' : textColor}}}>
           {label}
         </Text>
-        <View style={styles.inputContainer}>
-          <Text>{moment(date).format('DD/MM/YYYY')}</Text>
+        <View
+          style={[
+            styles.inputContainer,
+            display == 'column'
+              ? {
+                  width: ScaleHelpers.CalcWidth(40),
+                  margin: ScaleHelpers.CalcWidth(1),
+                }
+              : {
+                  width: ScaleHelpers.CalcWidth(80),
+                  margin: ScaleHelpers.CalcWidth(1),
+                },
+          ]}>
+          <Text>
+            {initialDate == null ? '' : moment(date).format('DD/MM/YYYY')}
+          </Text>
           <Text style={styles.error}>{errorLabel}</Text>
         </View>
       </TouchableOpacity>
@@ -77,7 +101,7 @@ export default DatePicker = ({setCurrentDate, label, errorLabel}) => {
           onCancel={showTimepicker}
           display={Platform.OS == 'ios' ? 'spinner' : 'default'}
           locale="fr_FR"
-          headerTextIOS={""}
+          headerTextIOS={''}
           cancelTextIOS={'Fermer'}
           confirmTextIOS={'Confirmer'}
         />

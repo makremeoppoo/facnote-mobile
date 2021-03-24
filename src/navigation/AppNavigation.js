@@ -1,11 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
-import moment from 'moment';
-import jwtDecode from 'jwt-decode';
-
 import {logout} from '../redux';
 import {View, Platform, Image} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
@@ -14,9 +11,14 @@ import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
-import ExpensesScreen from '../screens/UploadFacture/UploadScreen';
+import ChooseInvoice from '../screens/Invoice/ChooseInvoice';
 import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
-import HistoriqueJutificatifsScreen from '../screens/HistoriqueJutificatifs/HistoriqueJutificatifsScreen';
+import HistoryScreen from '../screens/HistoryOfPayementReceipts/HistoryScreen';
+import BankStatementScreen from '../screens/BankStatement/BankStatementScreen';
+import MyPurchasesSreen from '../screens/MyPurchases/MyPurchasesSreen';
+import SalesScreen from '../screens/SalesScreen/SalesScreen';
+
+import MoreScreen from '../screens/More/MoreScreen';
 
 import ProfileScreen from '../screens/Profile/ProfileScreen';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
@@ -38,19 +40,15 @@ import HomeBleu from '../../assets/icons/HomeBleu.png';
 
 import FactureImgActive from '../../assets/icons/Camera.png';
 import FactureImg from '../../assets/icons/photo-white.png';
-
+import BanqueImg from '../../assets/icons/banque.png';
+import BlueBanqueImg from '../../assets/icons/blueBanque.png';
 import CabinetImg from '../../assets/icons/Cabinet.png';
 import CabinetImgActive from '../../assets/icons/cabinetActive.png';
-
-import IndicateurImg from '../../assets/icons/Indicateur.png';
-import IndicateurImgActive from '../../assets/icons/IndicateurBleu.png';
-
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
-import BackgroundNavigation from '../../assets/images/CabinetBackground1.png';
-import getCabinet from '../services/cabinet';
 import ScaleHelpers from '../components/scaleHelpers';
-
+import {text, routes, permissions} from '../constants';
+import {userHasPermission} from '../functions/userHasPermission';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -101,30 +99,35 @@ const LandingNavigator = () => {
 
 //ios
 const TabNavigator = () => {
+  const canShowBank = useSelector((state) => state.auth.canShowBank);
+
   return (
     <BottomTabNavigator.Navigator
       tabBarOptions={{
-        labelStyle: {textTransform: 'none', fontSize: ScaleHelpers.CalcWidth(15)},
+        labelStyle: {
+          textTransform: 'none',
+          fontSize: ScaleHelpers.CalcWidth(15),
+        },
         style: {
           height: ScaleHelpers.CalcHeight(12),
         },
         showLabel: false,
       }}
-      initialRouteName="Factures">
+      initialRouteName={canShowBank ? routes.BankStatement : routes.Invoices}>
       <BottomTabNavigator.Screen
-        name="Home"
+        name={routes.Home}
         component={HomeScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
               focused={focused}
-              label={'Accueil'}
+              label={text.Accueil}
               src={focused ? HomeBleu : HomeImg}
             />
           ),
         }}
       />
-      {/* <BottomTabNavigator.Screen
+      {/*<BottomTabNavigator.Screen
         name="Indicateur"
         component={HomeScreen}
         options={{
@@ -137,45 +140,48 @@ const TabNavigator = () => {
           ),
         }}
       />*/}
+      {canShowBank && (
+        <BottomTabNavigator.Screen
+          name={routes.BankStatement}
+          component={BankStatementScreen}
+          options={{
+            tabBarIcon: ({tintColor, focused}) => (
+              <TabBarItem
+                focused={focused}
+                label={text.RelevesBancaires}
+                src={focused ? BlueBanqueImg : BanqueImg}
+              />
+            ),
+          }}
+        />
+      )}
       <BottomTabNavigator.Screen
-        name="Factures"
-        component={ExpensesScreen}
+        name={routes.Invoices}
+        component={ChooseInvoice}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
               focused={focused}
-              label={'Déposer facture'}
+              label={text.DeposerFacture}
               src={focused ? FactureImgActive : FactureImg}
             />
           ),
         }}
       />
+
       <BottomTabNavigator.Screen
-        name="Cabinet"
-        component={ProfileScreen}
-        options={{
-          tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem
-              focused={focused}
-              label={'Cabinet'}
-              src={focused ? CabinetImgActive : CabinetImg}
-            />
-          ),
-        }}
-      />
-      {/**  <BottomTabNavigator.Screen
-        name="Plus"
+        name={routes.More}
         component={MoreScreen}
         options={{
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
               focused={focused}
-              label={'Plus'}
+              label={text.Plus}
               src={focused ? PlusImgActive : PlusImg}
             />
           ),
         }}
-      /> */}
+      />
     </BottomTabNavigator.Navigator>
   );
 };
@@ -185,7 +191,7 @@ const mainScreensNavigator = () => {
   //const state = useNavigationState(state => state);
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName={routes.Home}
       screenOptions={({navigation}) => {
         /*var {routeName} = navigation.state.routes[navigation.state.index];
         if (routeName == 'BankAccounts') {
@@ -218,7 +224,7 @@ const mainScreensNavigator = () => {
         };
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Expenses" component={ExpensesScreen} />
+      <Stack.Screen name="Expenses" component={ChooseInvoice} />
     </Stack.Navigator>
   );
 };
@@ -257,7 +263,7 @@ const MainNavigator = () => {
         options={{
           headerShown: false,
         }}
-        name="Indemnites"
+        name={routes.Indemnities}
         component={IndemnitiesScreen}
       />
       <Stack.Screen
@@ -268,13 +274,47 @@ const MainNavigator = () => {
                 onPress={() => {
                   navigation.goBack();
                 }}
-                title={'Historique des justifcatifs'}
+                title={text.HistoriqueJustificatifs}
               />
             ),
           };
         }}
-        name="HistoriqueJutificatifs"
-        component={HistoriqueJutificatifsScreen}
+        name={routes.HistoryOfPayementReceipts}
+        component={HistoryScreen}
+      />
+      <Stack.Screen
+         options={({navigation}) => {
+          return {
+            header: () => (
+              <NavigationHeader
+                onPress={() => {
+                  navigation.goBack();
+                }}
+                title={text.Cabinet}
+              />
+            ),
+          };
+        }}
+        name={routes.Cabinet}
+        component={ProfileScreen}
+      />
+      <Stack.Screen
+        options={({navigation}) => {
+          return {
+            header: () => <></>,
+          };
+        }}
+        name={routes.MyPurchases}
+        component={MyPurchasesSreen}
+      />
+      <Stack.Screen
+        options={({navigation}) => {
+          return {
+            header: () => <></>,
+          };
+        }}
+        name={routes.Sales}
+        component={SalesScreen}
       />
     </Stack.Navigator>
   );
@@ -325,7 +365,7 @@ const RootNavigator = () => {
       {isLoggedIn ? (
         <Root.Screen
           name="DrawerStack"
-          component={Platform.OS === 'ios' ? Navigator : DrawerStack}
+          component={Platform.OS === 'ios' ? Navigator : Navigator}
         />
       ) : (
         <Root.Screen name="LoginStack" component={LandingNavigator} />
@@ -335,14 +375,15 @@ const RootNavigator = () => {
 };
 
 class AppContainer extends React.Component {
-  async componentDidMount() {
+  /*  async componentDidMount() {
     const accessToken = await AsyncStorage.getItem('accessToken');
 
     const decodeToken = jwtDecode(accessToken);
-    console.log('dataUser', decodeToken.exp);
     var dayInMilliseconds = 1000;
 
     var intervalId = setInterval(() => {
+      console.log('dataUser', decodeToken);
+
       if (decodeToken.exp < moment().unix()) this.props.logout();
       return;
     }, dayInMilliseconds);
@@ -353,7 +394,7 @@ class AppContainer extends React.Component {
   componentWillUnmount() {
     // use intervalId from the state to clear the interval
     clearInterval(this.state.intervalId);
-  }
+  }*/
 
   render() {
     return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
