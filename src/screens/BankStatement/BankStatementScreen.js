@@ -302,8 +302,9 @@ class BankStatementScreen extends React.Component {
               {
                 label: 'Joindre une facture',
                 icon: faLink,
-                onPress: () => {
-                  this.props.navigation.navigate(routes.Invoices);
+                onPress: async() => {
+                  await this.Standard.close();
+                  this.props.navigation.navigate(routes.Invoices)
                   AsyncStorage.setItem('from', routes.BankStatement);
                 },
               },
@@ -431,7 +432,7 @@ class BankStatementScreen extends React.Component {
 
 
     */}
-      <SelectInput
+      {/*<SelectInput
         label={text.periode}
         selectedValue={this.state.exercice.label}
         onChange={(option) => {
@@ -442,7 +443,7 @@ class BankStatementScreen extends React.Component {
           });
         }}
         listItems={this.state.exercices}
-      />
+      />*/}
       <SelectInput
         label={text.compte}
         selectedValue={this.state.account.label}

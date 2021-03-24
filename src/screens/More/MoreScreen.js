@@ -30,7 +30,9 @@ class MoreScreen extends React.Component {
   async componentDidMount() {
     var canSale = await userHasPermission(permissions.sales);
     var canPurchase = await userHasPermission(permissions.purchases);
-    var canHistory = await userHasPermission(permissions.history);
+    var canExpenseReport = await userHasPermission(permissions.expenseReport);
+
+    var canHistory = canSale || canPurchase || canExpenseReport ;
     this.setState({canSale, canPurchase, canHistory});
   }
 

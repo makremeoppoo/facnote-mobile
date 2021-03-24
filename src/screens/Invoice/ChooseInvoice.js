@@ -33,7 +33,7 @@ class UploadScreen extends React.Component {
       showModal: false,
       typeFacture: '0',
       canSalesOrPurchase: false,
-      crm_note_frais_note_frais: false,
+      canExpenseReport: false,
     };
   }
 
@@ -41,20 +41,19 @@ class UploadScreen extends React.Component {
     var canSalesOrPurchase =
       (await userHasPermission(permissions.sales)) ||
       (await userHasPermission(permissions.purchases));
-    var crm_note_frais_note_frais = await userHasPermission(
-      permissions.crm_note_frais_note_frais,
+    var canExpenseReport = await userHasPermission(
+      permissions.expenseReport,
     );
-    this.setState({canSalesOrPurchase, crm_note_frais_note_frais});
+    this.setState({canSalesOrPurchase, canExpenseReport});
   }
   setInvoiceType = (typeFacture) => {
     this.setState({typeFacture: typeFacture, showModal: !this.state.showModal});
   };
   closeModal = async (obj) => {
     await this.setState({showModal: !this.state.showModal});
-
     const from = await AsyncStorage.getItem('from');
+    await AsyncStorage.removeItem('from');
     if (from == routes.BankStatement) {
-      await AsyncStorage.removeItem('from');
       this.props.navigation.navigate(routes.BankStatement);
     }
     if (obj != null) await Toast.show(obj);
@@ -62,7 +61,7 @@ class UploadScreen extends React.Component {
 
   render() {
     const {society} = this.props.user;
-    const {canSalesOrPurchase, crm_note_frais_note_frais} = this.state;
+    const {canSalesOrPurchase, canExpenseReport} = this.state;
     return (
       <View style={styles.containerStyle}>
         <Image source={Background} style={styles.backgroundStyle}></Image>
@@ -83,7 +82,7 @@ class UploadScreen extends React.Component {
                 </TouchableHighlight>
               </View>
             )}
-            {crm_note_frais_note_frais && (
+            {canExpenseReport && (
               <View style={styles.btnView}>
                 <TouchableHighlight
                   style={styles.btnContainer}

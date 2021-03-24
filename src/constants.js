@@ -101,8 +101,7 @@ export const routes = {
 export const permissions = {
   banque: 'rapprochement_index',
   banque_entreprise: 'rapprochement_entreprise',
-  sales: 'facturation_produit_homepage',
-  purchases: 'facturation_facture_homepage',
-  history: 'envoi_factures_HistoriqueOcr',
-  crm_note_frais_note_frais: 'crm_note_frais_note_frais',
+  sales: 'facturation_achats_homepage',
+  purchases: 'facturation_ventes_homepage',
+  expenseReport: 'crm_note_frais_note_frais',
 };

@@ -16,6 +16,7 @@ export default class NavigationHeader extends React.Component {
           style={styles.headerButtonImage}
           source={require('../../../assets/images/NavigationBackground.png')}
         />
+        { this.props.onPress && (
         <TouchableOpacity
           style={{
             width: ScaleHelpers.CalcWidth(10),
@@ -26,6 +27,7 @@ export default class NavigationHeader extends React.Component {
           onPress={this.props.onPress}>
           <FontAwesomeIcon icon={faChevronLeft} size={25} color="white" />
         </TouchableOpacity>
+        )}
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{this.props.title}</Text>
           <Text style={styles.subTitle}>{this.props.subTitle}</Text>
