@@ -301,7 +301,8 @@ class BankStatementScreen extends React.Component {
               {
                 label: 'Joindre une facture',
                 icon: faLink,
-                onPress: () => {
+                onPress: async() => {
+                  await this.Standard.close();
                   this.props.navigation.navigate(routes.Invoices)
                   AsyncStorage.setItem('from', routes.BankStatement);
                 }
@@ -534,6 +535,10 @@ class BankStatementScreen extends React.Component {
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
         <NavigationHeader
+          onPress={() => {
+            //  this.Standard.open();
+            this.props.navigation.goBack();
+          }}
           title={text.banque}
           subTitle={account.label}
           onPressTwo={() =>
