@@ -1,7 +1,19 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
-import { View, Image, TouchableHighlight, Text, ScrollView } from 'react-native';
+import {
+  View,
+  Image,
+  TouchableHighlight,
+  Text,
+  ScrollView,
+  ImageBackground,
+  Linking,
+} from 'react-native';
 import styles from './styles';
+import LogoImage from '../../../assets/images/logo.png';
+import {text, routes} from '../../constants';
+
+import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png';
 
 export default class WelcomeScreen extends React.Component {
   constructor(props) {
@@ -9,38 +21,52 @@ export default class WelcomeScreen extends React.Component {
   }
 
   onPressLogButton = () => {
-    this.props.navigation.navigate('LogIn');
-  };
-
-  onPressSignButton = () => {
-    this.props.navigation.navigate('SignUp');
+    this.props.navigation.navigate(routes.Login);
   };
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.mainContainer}>
-          <Image style={styles.logo} source={require('../../../assets/icons/pngLogo.png')} />
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Welcome to Finance</Text>
-            <Text style={styles.description}>Manage all your finance accounts in one place.</Text>
+      <View>
+        <ScrollView>
+          <View style={styles.container}>
+            <Image
+              source={backgroundWelcomeImage}
+              style={styles.topImageStyle}></Image>
+            <View>
+              <View style={styles.titleContainer}>
+                <Image style={styles.logo} source={LogoImage} />
+              </View>
+              <View style={styles.buttonView}>
+                <TouchableHighlight
+                  style={styles.buttonContainer}
+                  onPress={() => this.onPressLogButton()}>
+                  <Text style={styles.buttonTxt}>{text.identifier}</Text>
+                </TouchableHighlight>
+              </View>
+            </View>
           </View>
-          <View style={styles.logContainer}>
-            <TouchableHighlight
-              style={styles.loginContainer}
-              onPress={() => this.onPressLogButton()}
-            >
-              <Text style={styles.logTxt}>Log in</Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-              style={styles.signupContainer}
-              onPress={() => this.onPressSignButton()}
-            >
-              <Text style={styles.signTxt}>Sign up</Text>
-            </TouchableHighlight>
-          </View>
+        </ScrollView>
+
+        <View style={styles.buttomView}>
+          <Text
+            style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
+            onPress={() =>
+              Linking.openURL('https://facnote.com/fr/mentions.html')
+            }>
+            {text.mentionsLegales}
+          </Text>
+          <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+            {' '}
+            -{' '}
+          </Text>
+          <Text
+            onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')}
+            style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+            {' '}
+            {text.CGU}
+          </Text>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

@@ -1,32 +1,44 @@
 /* eslint-disable comma-dangle */
-import { StyleSheet } from 'react-native';
-import { chart } from '../../AppStyles';
+import {StyleSheet, Dimensions} from 'react-native';
+import ScaleHelpers from '../../components/scaleHelpers';
+import {textColor, buttonColor} from '../../AppStyles';
 
+const {width, height} = Dimensions.get('window');
+const SCREEN_WIDTH = width < height ? width : height;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f4f6f9'
+    height: ScaleHelpers.CalcHeight(100),
+    alignItems:"center"
   },
-  chartContainer: {
-    ...chart.chartContainer,
-    // marginTop: 80,
-    marginTop: 15,
-    marginBottom: 10
+  topImageStyle: {
+    width: ScaleHelpers.CalcWidth(100),
+    height: ScaleHelpers.CalcHeight(100)-70,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    resizeMode: 'stretch',
+    position:"absolute"
   },
-  facilitieContainer: {
-    borderRadius: 10,
-    backgroundColor: 'white',
-    width: '96%',
-    marginTop: 10,
-    marginBottom: 10,
-    alignSelf: 'center'
+  textContainer: {
+    height: ScaleHelpers.CalcHeight(100),
+    paddingTop:ScaleHelpers.CalcHeight(10),
+    width: ScaleHelpers.CalcWidth(90),
+    justifyContent: 'center',
   },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#070f12',
-    margin: 20
-  }
+  textBold: {
+    textAlign: "left",
+    fontFamily: 'Nunito-Bold',
+    color: textColor,
+    fontSize: ScaleHelpers.CalcWidth(5),
+  },
+  text: {
+    textAlign: "left",
+    fontFamily: 'Nunito-SemiBold',
+    color: textColor,
+    fontSize: ScaleHelpers.CalcHeight(2),
+  },
 });
 
 export default styles;

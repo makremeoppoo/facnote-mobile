@@ -1,40 +1,54 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
-import React from 'react';
-import {Image, View, Platform, Text, TouchableHighlight} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
+import {logout} from '../redux';
+import {View, Platform, Image} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
-import LogInScreen from '../screens/LogIn/LogInScreen';
+import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
-import PortfolioScreen from '../screens/Portfolio/PortfolioScreen';
-import ExpensesScreen from '../screens/Expenses/ExpensesScreen';
-import BankAccountsScreen from '../screens/BankAccounts/BankAccountsScreen';
+import ChooseInvoice from '../screens/Invoice/ChooseInvoice';
+import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
+import HistoryScreen from '../screens/HistoryOfPayementReceipts/HistoryScreen';
+import BankStatementScreen from '../screens/BankStatement/BankStatementScreen';
+import MyPurchasesSreen from '../screens/MyPurchases/MyPurchasesSreen';
+import SalesScreen from '../screens/SalesScreen/SalesScreen';
+
 import MoreScreen from '../screens/More/MoreScreen';
-import AllSpendingCategoriesScreen from '../screens/AllSpendingCategories/AllSpendingCategoriesScreen';
-import NewsScreen from '../screens/News/NewsScreen';
-import NotificationsScreen from '../screens/Notifications/NotificationsScreen';
+
 import ProfileScreen from '../screens/Profile/ProfileScreen';
-import AccountDetailsScreen from '../screens/AccountDetails/AccountDetailsScreen';
-import SettingsScreen from '../screens/Settings/SettingsScreen';
-import LinkAccountsScreen from '../screens/LinkAccount/LinkAccountScreen';
-import BankAccountDetalisScreen from '../screens/BankAccountDetails/BankAccountDetailsScreen';
-import BuySellScreen from '../screens/BuySell/BuySellScreen';
-import SearchScreen from '../screens/Search/SearchScreen';
-import TransactionsScreen from '../screens/Transactions/TransactionsScreen';
-import NewsWebView from '../screens/NewsWebView/NewsWebView';
 import DrawerContainer from '../screens/DrawerContainer/DrawerContainer';
 import MenuImage from '../components/MenuImage/MenuImage';
-import AssetScreen from '../screens/AssetScreen/AssetScreen';
-import AllAssetsScreen from '../screens/AllAssetsScreen/AllAssetsScreen';
-import AssetsWatchListScreen from '../screens/AssetsWatchListScreen/AssetsWatchListScreen';
+import NavigationHeader from '../components/NavigationHeader/NavigationHeader';
+
+import BackButton from '../components/BackButton/BackButton';
+
+import TabBarItem from '../components/TabBarItem/TabBarItem';
+
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
-import BackButton from '../components/BackButton/BackButton';
-import {SearchBar} from 'react-native-elements';
+
+import {useSelector} from 'react-redux';
+import HomeImg from '../../assets/icons/home.png';
+import HomeBleu from '../../assets/icons/HomeBleu.png';
+
+import FactureImgActive from '../../assets/icons/Camera.png';
+import FactureImg from '../../assets/icons/photo-white.png';
+import BanqueImg from '../../assets/icons/banque.png';
+import BlueBanqueImg from '../../assets/icons/blueBanque.png';
+import CabinetImg from '../../assets/icons/Cabinet.png';
+import CabinetImgActive from '../../assets/icons/cabinetActive.png';
+import PlusImg from '../../assets/icons/Plus_white.png';
+import PlusImgActive from '../../assets/icons/plusBlue.png';
+import ScaleHelpers from '../components/scaleHelpers';
+import {text, routes, permissions} from '../constants';
+import {userHasPermission} from '../functions/userHasPermission';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -66,10 +80,10 @@ const LandingNavigator = () => {
       />
       <Stack.Screen
         options={{
-          headerTransparent: true,
+          headerShown: false,
         }}
-        name="LogIn"
-        component={LogInScreen}
+        name="Login"
+        component={LoginScreen}
       />
       <Stack.Screen
         options={{
@@ -85,65 +99,85 @@ const LandingNavigator = () => {
 
 //ios
 const TabNavigator = () => {
+  const canShowBank = useSelector((state) => state.auth.canShowBank);
+
   return (
-    <BottomTabNavigator.Navigator initialRouteName="Home">
+    <BottomTabNavigator.Navigator
+      tabBarOptions={{
+        labelStyle: {
+          textTransform: 'none',
+          fontSize: ScaleHelpers.CalcWidth(15),
+        },
+        style: {
+          height: ScaleHelpers.CalcHeight(12),
+        },
+        showLabel: false,
+      }}
+      initialRouteName={canShowBank ? routes.BankStatement : routes.Invoices}>
       <BottomTabNavigator.Screen
-        name="Home"
+        name={routes.Home}
         component={HomeScreen}
         options={{
-          tabBarIcon: ({tintColor}) => (
-            <Image
-              source={require('../../assets/icons/home.png')}
-              style={{width: 20, height: 20}}
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem
+              focused={focused}
+              label={text.Accueil}
+              src={focused ? HomeBleu : HomeImg}
             />
           ),
         }}
       />
-      <BottomTabNavigator.Screen
-        name="Expenses"
-        component={ExpensesScreen}
+      {/*<BottomTabNavigator.Screen
+        name="Indicateur"
+        component={HomeScreen}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('../../assets/icons/expenses.png')}
-              style={{width: 20, height: 20}}
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem
+              focused={focused}
+              label={'Indicateur'}
+              src={focused ? IndicateurImgActive : IndicateurImg}
             />
           ),
         }}
-      />
+      />*/}
+      {canShowBank && (
+        <BottomTabNavigator.Screen
+          name={routes.BankStatement}
+          component={BankStatementScreen}
+          options={{
+            tabBarIcon: ({tintColor, focused}) => (
+              <TabBarItem
+                focused={focused}
+                label={text.RelevesBancaires}
+                src={focused ? BlueBanqueImg : BanqueImg}
+              />
+            ),
+          }}
+        />
+      )}
       <BottomTabNavigator.Screen
-        name="Portfolio"
-        component={PortfolioScreen}
+        name={routes.Invoices}
+        component={ChooseInvoice}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('../../assets/icons/portfolio.png')}
-              style={{width: 20, height: 20}}
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem
+              focused={focused}
+              label={text.DeposerFacture}
+              src={focused ? FactureImgActive : FactureImg}
             />
           ),
         }}
       />
+
       <BottomTabNavigator.Screen
-        name="BankAccounts"
-        component={BankAccountsScreen}
-        options={{
-          title: 'Accounts',
-          tabBarIcon: () => (
-            <Image
-              source={require('../../assets/icons/bankAccounts.png')}
-              style={{width: 20, height: 20}}
-            />
-          ),
-        }}
-      />
-      <BottomTabNavigator.Screen
-        name="More"
+        name={routes.More}
         component={MoreScreen}
         options={{
-          tabBarIcon: () => (
-            <Image
-              source={require('../../assets/icons/more.png')}
-              style={{width: 20, height: 20}}
+          tabBarIcon: ({tintColor, focused}) => (
+            <TabBarItem
+              focused={focused}
+              label={text.Plus}
+              src={focused ? PlusImgActive : PlusImg}
             />
           ),
         }}
@@ -157,7 +191,7 @@ const mainScreensNavigator = () => {
   //const state = useNavigationState(state => state);
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName={routes.Home}
       screenOptions={({navigation}) => {
         /*var {routeName} = navigation.state.routes[navigation.state.index];
         if (routeName == 'BankAccounts') {
@@ -190,16 +224,7 @@ const mainScreensNavigator = () => {
         };
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Portfolio" component={PortfolioScreen} />
-      <Stack.Screen name="Expenses" component={ExpensesScreen} />
-      <Stack.Screen name="More" component={MoreScreen} />
-      <Stack.Screen
-        options={{
-          title: 'Accounts',
-        }}
-        name="BankAccounts"
-        component={BankAccountsScreen}
-      />
+      <Stack.Screen name="Expenses" component={ChooseInvoice} />
     </Stack.Navigator>
   );
 };
@@ -207,281 +232,89 @@ const mainScreensNavigator = () => {
 const MainNavigator = () => {
   return (
     <Stack.Navigator
-      screenOptions={{
-        headerTitleStyle: {
-          fontSize: 17,
-          fontWeight: 'bold',
-          textAlign: 'center',
-          alignSelf: 'center',
-          color: 'white',
-          flex: 1,
-        },
-        headerStyle: {
-          backgroundColor: '#4a7bd0',
-          elevation: 0,
-          shadowColor: 'transparent',
-          borderBottomWidth: 0,
-        },
-        headerRight: () => <View />,
+      screenOptions={({navigation}) => {
+        return {
+          headerStyle: {
+            backgroundColor:
+              'linear-gradient(0.25turn,rgb(78,199,245), rgb(92,117,254))',
+          },
+          headerTintColor: '#fff',
+          headerTitleStyle: {
+            fontFamily: 'SegoeUI',
+          },
+          headerLeft: () => (
+            <BackButton
+              onPress={() => {
+                navigation.goBack();
+              }}
+            />
+          ),
+        };
       }}>
       <Stack.Screen
         name="Nav"
         options={{
           headerShown: false,
         }}
-        component={Platform.OS === 'ios' ? TabNavigator : mainScreensNavigator}
+        component={TabNavigator}
+        //component={Platform.OS === 'ios' ? TabNavigator : mainScreensNavigator}
       />
       <Stack.Screen
-        options={({navigation}) => ({
-          headerLeft: () => (
-            <BackButton
-              onPress={() => navigation.goBack()}
-              title={'Expenses'}
-            />
-          ),
-          title: 'All Expenses',
-        })}
-        name="AllSpendingCategories"
-        component={AllSpendingCategoriesScreen}
+        options={{
+          headerShown: false,
+        }}
+        name={routes.Indemnities}
+        component={IndemnitiesScreen}
       />
       <Stack.Screen
-        options={({navigation}) => ({
-          headerLeft: () =>
-            Platform.OS == 'ios' ? (
-              <BackButton onPress={() => navigation.goBack()} title={'More'} />
-            ) : (
-              <MenuImage
+        options={({navigation}) => {
+          return {
+            header: () => (
+              <NavigationHeader
                 onPress={() => {
-                  navigation.openDrawer();
+                  navigation.goBack();
                 }}
+                title={text.HistoriqueJustificatifs}
               />
             ),
-          title: 'News',
-          headerRight: () => <View />,
-        })}
-        name="News"
-        component={NewsScreen}
+          };
+        }}
+        name={routes.HistoryOfPayementReceipts}
+        component={HistoryScreen}
       />
       <Stack.Screen
-        options={({navigation}) => ({
-          headerLeft: () =>
-            Platform.OS == 'ios' ? (
-              <BackButton onPress={() => navigation.goBack()} title={'More'} />
-            ) : (
-              <MenuImage
+         options={({navigation}) => {
+          return {
+            header: () => (
+              <NavigationHeader
                 onPress={() => {
-                  navigation.openDrawer();
+                  navigation.goBack();
                 }}
+                title={text.Cabinet}
               />
             ),
-          title: 'Notifications',
-          headerRight: () => <View />,
-        })}
-        name="Notifications"
-        component={NotificationsScreen}
-      />
-      <Stack.Screen
-        options={({navigation}) => ({
-          headerLeft: () =>
-            Platform.OS == 'ios' ? (
-              <BackButton onPress={() => navigation.goBack()} title={'More'} />
-            ) : (
-              <MenuImage
-                onPress={() => {
-                  navigation.openDrawer();
-                }}
-              />
-            ),
-          title: 'Profile',
-          headerRight: () => <View />,
-        })}
-        name="Profile"
+          };
+        }}
+        name={routes.Cabinet}
         component={ProfileScreen}
       />
       <Stack.Screen
-        options={({navigation}) => ({
-          headerLeft: () => (
-            <BackButton onPress={() => navigation.goBack()} title={'Profile'} />
-          ),
-          title: 'Account Details',
-          headerRight: () => <View />,
-        })}
-        name="AccountDetails"
-        component={AccountDetailsScreen}
+        options={({navigation}) => {
+          return {
+            header: () => <></>,
+          };
+        }}
+        name={routes.MyPurchases}
+        component={MyPurchasesSreen}
       />
       <Stack.Screen
-        options={({navigation}) => ({
-          headerLeft: () => (
-            <BackButton onPress={() => navigation.goBack()} title={'Profile'} />
-          ),
-          title: 'Account Details',
-          headerRight: () => <View />,
-        })}
-        name="Settings"
-        component={SettingsScreen}
-      />
-      <Stack.Screen
-        options={({navigation}) => ({
-          title: 'Link New Account',
-          headerLeft: () => (
-            <BackButton onPress={() => navigation.goBack()} title={''} />
-          ),
-          headerRight: () => (
-            <TouchableHighlight
-              onPress={() => this.addAccount()}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Text
-                style={{color: 'white', fontWeight: 'bold', marginRight: 10}}>
-                Done
-              </Text>
-            </TouchableHighlight>
-          ),
-        })}
-        name="LinkAccount"
-        component={LinkAccountsScreen}
-      />
-      <Stack.Screen
-        options={({navigation, route}) => ({
-          headerLeft: () => (
-            <BackButton onPress={() => navigation.goBack()} title={''} />
-          ),
-          title: route.params?.title,
-          headerRight: () => <View />,
-        })}
-        name="BankAccountDetalis"
-        component={BankAccountDetalisScreen}
-      />
-      <Stack.Screen
-        options={({navigation}) => ({
-          headerLeft: () => (
-            <TouchableHighlight
-              onPress={() => navigation.goBack()}
-              underlayColor="rgba(73,182,77,1,0.9)">
-              <Text style={{color: 'white', marginLeft: 10}}>Cancel</Text>
-            </TouchableHighlight>
-          ),
-          headerRight: ()=> <View />,
-          title: route.params?.type + ' ' + route.params?.title,
-        })}
-        name="BuySell"
-        component={BuySellScreen}
-      />
-      <Stack.Screen
-        options={({navigation}) => ({
-          headerLeft: () => (
-            <BackButton onPress={() => navigation.goBack()} title={''} />
-          ),
-          headerRight: () => <View />,
-          headerTitle: () => (
-            <SearchBar
-              containerStyle={{
-                backgroundColor: 'transparent',
-                borderBottomColor: 'transparent',
-                borderTopColor: 'transparent',
-                flex: 1,
-              }}
-              inputContainerStyle={{
-                backgroundColor: 'white',
-              }}
-              inputStyle={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                color: 'black',
-              }}
-              searchIcond
-              clearIcon
-              //lightTheme
-              round
-              onChangeText={text => this.handleSearch(text)}
-              //onClear={() => params.handleSearch('')}
-              placeholder="Search"
-              value={this.getValue}
-            />
-          ),
-        })}
-        name="Search"
-        component={SearchScreen}
-      />
-      <Stack.Screen
-        name="Transactions"
-        options={({navigation, route}) => ({
-          headerLeft: () => (
-            <BackButton
-              onPress={() => navigation.goBack()}
-              title={route.params.backScreen}
-            />
-          ),
-          title: 'Transactions',
-          headerRight: () => <View />,
-        })}
-        component={TransactionsScreen}
-      />
-      <Stack.Screen
-        options={({navigation}) => ({
-          headerStyle: {
-            backgroundColor: 'transparent',
-          },
-          title: '',
-        })}
-        name="NewsWebView"
-        component={NewsWebView}
-      />
-      <Stack.Screen name="AssetScreen" component={AssetScreen} />
-      <Stack.Screen
-        options={({navigation, route}) => ({
-          title: 'Your ' + route.params?.title,
-          headerLeft: () => (
-            <BackButton
-              onPress={() => navigation.goBack()}
-              title={'Portfolio'}
-            />
-          ),
-          headerRight: () => (
-            <View style={{flexDirection: 'row'}}>
-              <TouchableHighlight onPress={() => this.onPressBinocular()}>
-                <Image
-                  style={{
-                    width: 20,
-                    height: 20,
-                    marginRight: 10,
-                    alignSelf: 'center',
-                  }}
-                  source={require('../../assets/icons/binocular.png')}
-                />
-              </TouchableHighlight>
-              <TouchableHighlight
-                onPress={() =>
-                  navigation.navigate('Search', {type: route.params?.title})
-                }>
-                <Image
-                  source={require('../../assets/icons/search.png')}
-                  style={{
-                    marginRight: 10,
-                    width: 20,
-                    height: 20,
-                    alignSelf: 'center',
-                  }}
-                />
-              </TouchableHighlight>
-            </View>
-          ),
-        })}
-        name="AllAssetsScreen"
-        component={AllAssetsScreen}
-      />
-      <Stack.Screen
-        options={({navigation, route}) => ({
-          headerLeft: (
-            <BackButton
-              onPress={() => navigation.goBack()}
-              title={route.params?.type}
-            />
-          ),
-          title: 'Your WatchList',
-          headerRight:()=> <View />,
-        })}
-        name="AssetsWatchListScreen"
-        component={AssetsWatchListScreen}
+        options={({navigation}) => {
+          return {
+            header: () => <></>,
+          };
+        }}
+        name={routes.Sales}
+        component={SalesScreen}
       />
     </Stack.Navigator>
   );
@@ -517,12 +350,56 @@ const DrawerStack = () => {
   );
 };
 
-const AppContainer = () => {
+// Manifest of possible screens
+const Root = createStackNavigator();
+const RootNavigator = () => {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
   return (
-    <NavigationContainer>
-      {Platform.OS === 'ios' ? <Navigator /> : <DrawerStack />}
-    </NavigationContainer>
+    <Root.Navigator
+      screenOptions={{
+        headerShown: false,
+        headerTintColor: 'black',
+      }}
+      initialRouteName="DrawerStack">
+      {isLoggedIn ? (
+        <Root.Screen
+          name="DrawerStack"
+          component={Platform.OS === 'ios' ? Navigator : Navigator}
+        />
+      ) : (
+        <Root.Screen name="LoginStack" component={LandingNavigator} />
+      )}
+    </Root.Navigator>
   );
 };
 
-export default AppContainer;
+class AppContainer extends React.Component {
+  /*  async componentDidMount() {
+    const accessToken = await AsyncStorage.getItem('accessToken');
+
+    const decodeToken = jwtDecode(accessToken);
+    var dayInMilliseconds = 1000;
+
+    var intervalId = setInterval(() => {
+      console.log('dataUser', decodeToken);
+
+      if (decodeToken.exp < moment().unix()) this.props.logout();
+      return;
+    }, dayInMilliseconds);
+    // store intervalId in the state so it can be accessed later:
+    this.setState({intervalId: intervalId});
+  }
+
+  componentWillUnmount() {
+    // use intervalId from the state to clear the interval
+    clearInterval(this.state.intervalId);
+  }*/
+
+  render() {
+    return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
+  }
+}
+
+const mapStateToProps = (state) => ({});
+export default connect(mapStateToProps, {logout})(AppContainer);

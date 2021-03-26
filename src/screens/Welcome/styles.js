@@ -1,59 +1,76 @@
 /* eslint-disable comma-dangle */
-import { StyleSheet, Dimensions } from 'react-native';
-import { landing } from '../../AppStyles';
-const { width, height } = Dimensions.get('window');
+import {StyleSheet, Dimensions, Platform} from 'react-native';
+import ScaleHelpers from '../../components/scaleHelpers';
+import {textColor, buttonColor} from '../../AppStyles';
+
+const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
 
 const styles = StyleSheet.create({
-  container: landing.container,
-  loginContainer: landing.loginContainer,
-  logTxt: landing.whiteBoldTxt,
-  logo: {
-    width: 100,
-    height: 100,
-    alignSelf: 'center'
+  container: {
+    flex: 1,
+    height: ScaleHelpers.CalcHeight(100),
+    alignItems: 'center',
   },
+
   titleContainer: {
-    alignSelf: 'center',
-    marginTop: 25,
-    marginBottom: 25
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: ScaleHelpers.CalcHeight(20),
+    width: ScaleHelpers.CalcWidth(100),
+  },
+  logo: {
+    width: ScaleHelpers.CalcWidth(54),
+    height: ScaleHelpers.CalcWidth(23),
   },
   title: {
-    marginBottom: 20,
     textAlign: 'center',
-    color: '#2c65c9',
-    fontSize: 30
+    color: 'white',
+    fontFamily: 'Nunito-ExtraBold',
+    fontSize: ScaleHelpers.CalcHeight(4),
   },
-  description: {
-    textAlign: 'center',
-    color: '#070f12',
-    fontSize: 16,
-    fontWeight: 'bold'
-  },
-  logContainer: {
-    marginTop: 20,
-    marginBottom: 60,
+
+  buttonView: {
+    height: ScaleHelpers.CalcHeight(15),
     alignSelf: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
-  signupContainer: {
-    width: SCREEN_WIDTH - 100,
-    height: 50,
-    borderWidth: 1,
+  buttonContainer: {
+    width: ScaleHelpers.CalcWidth(30),
     alignItems: 'center',
-    padding: 12,
-    backgroundColor: 'white',
-    borderColor: '#070f12',
+    padding: 5,
+    backgroundColor: buttonColor,
     borderRadius: 60,
     alignSelf: 'center',
-    marginTop: 20,
-    marginBottom: 20
   },
-  signTxt: {
-    fontSize: 20,
-    color: '#070f12',
-    fontWeight: 'bold'
-  }
+  buttonTxt: {
+    fontFamily: 'Nunito-Regular',
+    fontSize: ScaleHelpers.CalcHeight(2),
+    color: textColor,
+  },
+
+  topImageStyle: {
+    width: ScaleHelpers.CalcWidth(100),
+    height: ScaleHelpers.CalcHeight(100),
+    alignSelf: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    resizeMode: 'stretch',
+    position: 'absolute',
+  },
+  buttomView: {
+    bottom: Platform.OS !== 'ios' ? 0 : 15,
+
+    alignSelf: 'center',
+    position: 'absolute',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  buttomText: {
+    fontFamily: 'Nunito-SemiBold',
+    fontSize: ScaleHelpers.CalcWidth(4),
+  },
 });
 
 export default styles;

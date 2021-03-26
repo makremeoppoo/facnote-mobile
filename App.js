@@ -1,26 +1,44 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React from 'react';
-import { Provider } from 'react-redux';
-import store from './src/redux/store';
+import {Provider} from 'react-redux';
+import {createStore, applyMiddleware} from 'redux';
+import {PersistGate} from 'redux-persist/integration/react';
+import {persistStore, persistReducer} from 'redux-persist';
+import {Text} from 'react-native';
+import {enableScreens} from 'react-native-screens';
+import thunk from 'redux-thunk';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import AppReducer from './src/redux';
 import AppContainer from './src/navigation/AppNavigation';
-import { enableScreens } from 'react-native-screens';
-
-console.disableYellowBox = true;
-
-const App = () => {
-  enableScreens()
-  return (
-    <Provider store={store}>
-      <AppContainer />
-    </Provider>
-  );
+// Middleware: Redux Persist Config
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
 };
+// Middleware: Redux Persist Persisted Reducer
+const persistedReducer = persistReducer(persistConfig, AppReducer);
 
-export default App;
+//const store = createStore(persistedReducer, applyMiddleware(thunk));
+//let persistor = persistStore(store);
+console.disableYellowBox = true;
+const store = createStore(AppReducer, applyMiddleware(thunk));
+
+export default class App extends React.Component {
+  constructor() {
+    super();
+    if (Text.defaultProps == null) Text.defaultProps = {};
+    Text.defaultProps.allowFontScaling = false;
+  }
+  render() {
+    enableScreens();
+    return (
+      <Provider store={store}>
+        {/*<PersistGate loading={null} persistor={persistor}>*/}
+        <AppContainer />
+        {/**</PersistGate> */}
+      </Provider>
+    );
+  }
+}
+
+//AppRegistry.registerComponent('App', () => App);

@@ -1,92 +1,40 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import { View, Text, ScrollView, FlatList, StatusBar } from 'react-native';
-import {
-  cashArray,
-  investmentsArray,
-  liabilitiesArray,
-  lineChartData,
-  lineChartConfig,
-  lineChartTables,
-  payments
-} from '../../data/dataArrays';
-import Card2View from '../../components/Card2View/Card2View';
-import styles from './styles';
-import LineChartView from '../../components/LineChartView/LineChartView';
+import {View, Text, ImageBackground} from 'react-native';
+import {connect} from 'react-redux';
 
-export default class HomeScreen extends React.Component {
+import styles from './styles';
+import Background from '../../../assets/images/background-accueil-provisoir-2.png';
+
+class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeChart: 0
-    };
+    this.state = {user: null};
   }
 
-  renderItem = ({ item }) => (
-    <Card2View
-      onPress={() =>
-        this.props.navigation.navigate('Transactions', {
-          item: item,
-          payments: payments,
-          backScreen: 'Home'
-        })
-      }
-      item={item}
-    />
-  );
 
-  renderData = ({ item }) => <Text style={{ marginBottom: 2 }}>{item}</Text>;
+  renderData = ({item}) => <Text style={{marginBottom: 2}}>{item}</Text>;
 
   render() {
+    const {society} = this.props.user;
     return (
-      <ScrollView style={styles.container}>
-        <StatusBar barStyle="light-content" />
-        <View style={styles.chartContainer}>
-          <LineChartView
-            lineChartData={lineChartData}
-            lineChartConfig={lineChartConfig}
-            lineChartTables={lineChartTables}
-          />
+      <View style={styles.container}>
+        <ImageBackground
+          source={Background}
+          style={styles.topImageStyle}></ImageBackground>
+        <View style={styles.textContainer}>
+          <Text style={styles.textBold}>{society.cabinet.raison_sociale}</Text>
+          <Text style={styles.text}>
+          </Text>
         </View>
-        <View style={styles.facilitieContainer}>
-          <Text style={styles.title}>Cash</Text>
-          <FlatList
-            vertical
-            showsVerticalScrollIndicator={false}
-            data={cashArray}
-            renderItem={this.renderItem}
-            extraData={this.state}
-            keyExtractor={item => `${item.id}`}
-            listKey="0"
-          />
-        </View>
-        <View style={styles.facilitieContainer}>
-          <Text style={styles.title}>Investments</Text>
-          <FlatList
-            vertical
-            showsVerticalScrollIndicator={false}
-            data={investmentsArray}
-            renderItem={this.renderItem}
-            extraData={this.state}
-            keyExtractor={item => `${item.id}`}
-            listKey="1"
-          />
-        </View>
-        <View style={styles.facilitieContainer}>
-          <Text style={styles.title}>Liabilities</Text>
-          <FlatList
-            vertical
-            showsVerticalScrollIndicator={false}
-            data={liabilitiesArray}
-            renderItem={this.renderItem}
-            extraData={this.state}
-            keyExtractor={item => `${item.id}`}
-            listKey="2"
-          />
-        </View>
-      </ScrollView>
+      </View>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  user: state.auth,
+});
+export default connect(mapStateToProps)(HomeScreen);

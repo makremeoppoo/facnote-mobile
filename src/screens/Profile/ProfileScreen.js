@@ -1,83 +1,115 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
-import { View, TouchableHighlight, Text, Image, ScrollView, Platform } from 'react-native';
-import BackButton from '../../components/BackButton/BackButton';
-import MenuImage from '../../components/MenuImage/MenuImage';
-import styles from './styles';
+import {
+  View,
+  TouchableHighlight,
+  Text,
+  ScrollView,
+  Linking,
+  ImageBackground,
+  Image,
+} from 'react-native';
+import {connect} from 'react-redux';
 
-export default class NotificationsScreen extends React.Component {
+import styles from './styles';
+import {logout} from '../../redux';
+import Background from '../../../assets/images/background_accueil_ok.png';
+import {text} from '../../constants';
+
+class NotificationsScreen extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  callNumber = (phone) => {
+    let phoneNumber = phone;
+    if (Platform.OS !== 'android') {
+      phoneNumber = `telprompt:${phone}`;
+    } else {
+      phoneNumber = `tel:${phone}`;
+    }
+    Linking.canOpenURL(phoneNumber)
+      .then((supported) => {
+        if (!supported) {
+          console.log('Phone number is not available');
+        } else {
+          return Linking.openURL(phoneNumber);
+        }
+      })
+      .catch((err) => console.log(err));
+  };
+
+  sendMail = (email) => {
+    Linking.openURL(`mailto:${email}?subject=Cabinet`);
+  };
+
   render() {
+    const {cabinet, society} = this.props.user;
+
     return (
-      <ScrollView style={styles.container}>
-        <View style={styles.infoContainer}>
-          <Image style={styles.userImg} source={require('../../../assets/images/userImg.jpg')} />
-          <Text style={styles.userName}>Adrian Smith</Text>
-        </View>
-        <View>
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('AccountDetails')}
-            underlayColor="rgba(73,182,77,1,0.9)"
-          >
-            <View style={styles.itemContainer}>
-              <View style={styles.rowContainer}>
-                <Image
-                  style={styles.itemIcon}
-                  source={require('../../../assets/icons/account.png')}
+      <View style={styles.container}>
+
+        
+        <ScrollView>
+          <View style={styles.buttonContainer}>
+            <TouchableHighlight
+              style={{
+                ...styles.btn,
+                ...{
+                  borderColor: 'rgba(46, 204, 113, 0.5)',
+                  backgroundColor: 'rgba(46, 204, 113, 0.9)',
+                },
+              }}
+              onPress={() => this.callNumber(cabinet.fax)}>
+              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
+                {text.Appeler}
+              </Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              style={{
+                ...styles.btn,
+                ...{
+                  borderColor: 'rgba(92,117,254,0.5)',
+                  backgroundColor: 'rgba(92,117,254,0.9)',
+                },
+              }}
+              onPress={() => this.sendMail(cabinet.email)}>
+              <Text style={{...styles.btnTxt, ...{color: 'white'}}}>
+                {text.EnvoyerEmail}
+              </Text>
+            </TouchableHighlight>
+            <View style={styles.infoContainer}>
+              <View style={styles.cabinetImgContainer}>
+                <ImageBackground
+                  resizeMode={'contain'}
+                  style={styles.cabinetImg}
+                  source={
+                    cabinet.logo1 != ''
+                      ? {uri: cabinet.logo1}
+                      : cabinet.logo2 != ''
+                      ? {uri: cabinet.logo2}
+                      : require('../../../assets/images/imgpsh_fullsize_anim.png')
+                  }
                 />
-                <Text style={styles.itemTitle}>Account Details</Text>
               </View>
-              <Image
-                style={styles.rightArrow}
-                source={require('../../../assets/icons/rightArrow.png')}
-              />
+              <Text style={styles.CabinerName}>
+                {cabinet.cabinet.raison_sociale}
+              </Text>
+              <Text style={styles.CabinerInfo}>
+                {cabinet.address.code_postale} {cabinet.address.adresse}{' '}
+              </Text>
+              <Text style={styles.CabinerInfo}>
+                {cabinet.address.ville} {cabinet.address.pays}
+              </Text>
             </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('Settings')}
-            underlayColor="rgba(73,182,77,1,0.9)"
-          >
-            <View style={styles.itemContainer}>
-              <View style={styles.rowContainer}>
-                <Image
-                  style={styles.itemIcon}
-                  source={require('../../../assets/icons/settings.png')}
-                />
-                <Text style={styles.itemTitle}>Settings</Text>
-              </View>
-              <Image
-                style={styles.rightArrow}
-                source={require('../../../assets/icons/rightArrow.png')}
-              />
-            </View>
-          </TouchableHighlight>
-          <TouchableHighlight
-            onPress={() => this.props.navigation.navigate('')}
-            underlayColor="rgba(73,182,77,1,0.9)"
-          >
-            <View style={styles.itemContainer}>
-              <View style={styles.rowContainer}>
-                <Image style={styles.itemIcon} source={require('../../../assets/icons/call.png')} />
-                <Text style={styles.itemTitle}>Contact Us</Text>
-              </View>
-              <Image
-                style={styles.rightArrow}
-                source={require('../../../assets/icons/rightArrow.png')}
-              />
-            </View>
-          </TouchableHighlight>
-        </View>
-        <TouchableHighlight
-          style={styles.btnContainer}
-          onPress={() => this.props.navigation.navigate('')}
-          underlayColor="rgba(73,182,77,1,0.9)"
-        >
-          <Text style={styles.btnTxt}>Logout</Text>
-        </TouchableHighlight>
-      </ScrollView>
+       
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 }
+const mapStateToProps = (state) => ({
+  user: state.auth,
+});
+export default connect(mapStateToProps, {logout})(NotificationsScreen);

@@ -1,80 +1,95 @@
 /* eslint-disable comma-dangle */
-import { StyleSheet, Dimensions } from 'react-native';
-
-const { width, height } = Dimensions.get('window');
-const SCREEN_WIDTH = width < height ? width : height;
+import {StyleSheet} from 'react-native';
+import ScaleHelpers from '../../components/scaleHelpers';
+import {textColor, buttonColor} from '../../AppStyles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
-  },
-  infoContainer: {
-    marginBottom: 40,
-    //marginTop: 80
-    marginTop: 30
-  },
-  userImg: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-    alignSelf: 'center',
-    marginBottom: 20
-  },
-  userName: {
-    textAlign: 'center',
-    fontSize: 20,
-    color: 'black'
-  },
-  itemContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    padding: 10,
-    paddingTop: 13,
-    paddingBottom: 13,
-    width: '100%',
-    //borderBottomColor: 'silver',
-    borderBottomColor: 'rgba(214, 214, 214, 0.4)',
-    borderBottomWidth: 1,
-  },
-  rowContainer: {
-    flexDirection: 'row',
-    alignSelf: 'center'
-  },
-  itemIcon: {
-    width: 25,
-    height: 25,
-    marginRight: 10,
-    alignSelf: 'center'
-  },
-  itemTitle: {
-    fontSize: 17,
-    color: '#070f12',
-    alignSelf: 'center'
-  },
-  rightArrow: {
-    width: 15,
-    height: 15,
-    alignSelf: 'center'
-  },
-  btnContainer: {
-    marginTop: 50,
-    marginBottom: 50,
-    width: SCREEN_WIDTH - 40,
-    borderRadius: 5,
     backgroundColor: 'white',
-    borderColor: 'rgba(214, 214, 214, 0.4)',
+  },
+
+  topImageStyle: {
+    width: ScaleHelpers.CalcWidth(100),
+    height: ScaleHelpers.CalcHeight(100),
+    resizeMode: 'stretch',
+    position: 'absolute',
+  },
+
+  titleContainer: {
+    justifyContent: 'center',
+    height: ScaleHelpers.CalcHeight(20),
+    marginBottom: ScaleHelpers.CalcHeight(5),
+
+    width: ScaleHelpers.CalcWidth(100),
+  },
+
+  title: {
+    fontFamily: 'SegoeUI',
+    textAlign: 'center',
+    color: textColor,
+    fontSize: ScaleHelpers.CalcWidth(6),
+  },
+  buttonContainer: {
+    alignContent: 'center',
+    justifyContent: 'center',
+    height: ScaleHelpers.CalcHeight(75),
+  },
+
+  cabinetImgContainer: {
+    marginBottom: ScaleHelpers.CalcWidth(7),
+    marginTop: ScaleHelpers.CalcWidth(7),
+
+    alignItems: 'center',
+  },
+
+  cabinetImg: {
+    height: ScaleHelpers.CalcWidth(25),
+    width: ScaleHelpers.CalcWidth(45),
+  },
+
+  CabinerName: {
+    fontFamily: 'Nunito-Bold',
+
+    textAlign: 'center',
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: textColor,
+  },
+
+  CabinerInfo: {
+    fontFamily: 'Nunito-Regular',
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: textColor,
+    textAlign: 'center',
+  },
+
+  btnContainer: {
+    height: ScaleHelpers.CalcHeight(30),
+  },
+  btn: {
+    //Its for IOS
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    // its for android
+    elevation: 5,
+    position: 'relative',
+    marginTop: ScaleHelpers.CalcHeight(2),
+    marginBottom: ScaleHelpers.CalcHeight(2),
+    width: ScaleHelpers.CalcWidth(70),
+    borderRadius: 10,
+    backgroundColor: buttonColor,
     borderWidth: 1,
     alignSelf: 'center',
     justifyContent: 'center',
-    padding: 10
+    padding: 10,
   },
   btnTxt: {
-    fontSize: 16,
-    color: '#070f12',
-    fontWeight: '400',
-    textAlign: 'center'
-  }
+    fontFamily: 'Nunito-Regular',
+    fontSize: ScaleHelpers.CalcWidth(4),
+    color: textColor,
+    textAlign: 'center',
+  },
 });
 
 export default styles;
