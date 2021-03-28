@@ -129,6 +129,9 @@ const styles = StyleSheet.create({
         ? ScaleHelpers.CalcWidth(14)
         : ScaleHelpers.CalcWidth(12),
     left: ScaleHelpers.CalcWidth(5),
+    width: ScaleHelpers.CalcWidth(10),
+    height: ScaleHelpers.CalcWidth(10),
+
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
