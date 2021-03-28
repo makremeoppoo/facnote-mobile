@@ -170,7 +170,8 @@ class LoginScreen extends React.Component {
             <View style={styles.buttonContainer}>
               <TouchableHighlight
                 style={styles.buttonStyle}
-                onPress={() => this.onPressLogButton()}>
+                onPress={() => this.onPressLogButton()}
+                underlayColor="rgba(73,182,77,1,0.9)">
                 <Text style={styles.signTxt}>{text.Connexion}</Text>
               </TouchableHighlight>
             </View>

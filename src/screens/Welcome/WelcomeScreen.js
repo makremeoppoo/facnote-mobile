@@ -39,6 +39,7 @@ export default class WelcomeScreen extends React.Component {
               <View style={styles.buttonView}>
                 <TouchableHighlight
                   style={styles.buttonContainer}
+                  underlayColor="rgba(73,182,77,1,0.9)"
                   onPress={() => this.onPressLogButton()}>
                   <Text style={styles.buttonTxt}>{text.identifier}</Text>
                 </TouchableHighlight>
