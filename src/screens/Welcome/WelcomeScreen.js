@@ -9,6 +9,8 @@ import {
   ImageBackground,
   Linking,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+
 import styles from './styles';
 import LogoImage from '../../../assets/images/logo.png';
 import {text, routes} from '../../constants';
@@ -18,6 +20,11 @@ import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png
 export default class WelcomeScreen extends React.Component {
   constructor(props) {
     super(props);
+  }
+  async componentDidMount() {
+    await AsyncStorage.removeItem('accessToken');
+    await AsyncStorage.removeItem('modules');
+    await AsyncStorage.removeItem('from');
   }
 
   onPressLogButton = () => {
