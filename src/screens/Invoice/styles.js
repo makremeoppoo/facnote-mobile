@@ -61,13 +61,18 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(100),
     flexWrap: 'wrap',
   },
+  choseFileButton: {
+    width: ScaleHelpers.CalcWidth(15),
+
+    height: ScaleHelpers.CalcWidth(15),
+  },
   removeFile: {
     position: 'absolute',
     elevation: 5,
     width: ScaleHelpers.CalcWidth(7),
     height: ScaleHelpers.CalcWidth(7),
   },
-  iconRemoveFile:{
+  iconRemoveFile: {
     width: ScaleHelpers.CalcWidth(7),
     height: ScaleHelpers.CalcWidth(7),
   },
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcWidth(20),
     backgroundColor: 'white',
     textAlign: 'center',
-    paddingTop:  ScaleHelpers.CalcHeight(3),
+    paddingTop: ScaleHelpers.CalcHeight(3),
     marginTop: ScaleHelpers.CalcWidth(3),
     borderRadius: ScaleHelpers.CalcWidth(3),
   },
@@ -131,7 +136,6 @@ const styles = StyleSheet.create({
     left: ScaleHelpers.CalcWidth(5),
     width: ScaleHelpers.CalcWidth(10),
     height: ScaleHelpers.CalcWidth(10),
-
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),

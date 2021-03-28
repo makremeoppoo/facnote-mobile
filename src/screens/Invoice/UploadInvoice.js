@@ -227,7 +227,7 @@ class LoginactureScreen extends React.Component {
     } catch (err) {
       if (err.code == 'E_PERMISSION_MISSING')
         Toast.show({
-          text1: "Erreur",
+          text1: 'Erreur',
           text2: "Vous n'avez pas accordé l'autorisation à la caméra",
           type: 'error',
         });
@@ -450,7 +450,6 @@ class LoginactureScreen extends React.Component {
           <TouchableHighlight
             style={styles.modalCloseView}
             onPress={() => this.props.closeModal(null)}
-           
             underlayColor="rgba(73,182,77,1,0.9)">
             <Image style={styles.closeImg} source={Close} />
           </TouchableHighlight>
@@ -467,6 +466,7 @@ class LoginactureScreen extends React.Component {
 
           <View style={styles.buttomIcon}>
             <TouchableHighlight
+              style={styles.choseFileButton}
               onPress={() => this.chooseFile()}
               underlayColor="rgba(73,182,77,1,0.9)">
               <IconView
@@ -480,6 +480,7 @@ class LoginactureScreen extends React.Component {
 
             {Platform.OS == 'ios' && (
               <TouchableHighlight
+                style={styles.choseFileButton}
                 onPress={() => this.chooseImage()}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <IconView
@@ -493,6 +494,7 @@ class LoginactureScreen extends React.Component {
             )}
 
             <TouchableHighlight
+              style={styles.choseFileButton}
               onPress={() => this.launchCamera()}
               underlayColor="rgba(73,182,77,1,0.9)">
               <IconView
