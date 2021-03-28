@@ -537,10 +537,7 @@ class BankStatementScreen extends React.Component {
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
         <NavigationHeader
-          onPress={() => {
-            //  this.Standard.open();
-            this.props.navigation.goBack();
-          }}
+     
           title={text.banque}
           subTitle={account.label}
           onPressTwo={() =>

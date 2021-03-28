@@ -89,6 +89,8 @@ const styles = StyleSheet.create({
 
   modalCloseView: {
     position: 'absolute',
+    width:ScaleHelpers.CalcWidth(10),
+    height:ScaleHelpers.CalcWidth(10),
     top:
       Platform.OS === 'ios'
         ? ScaleHelpers.CalcWidth(14)
