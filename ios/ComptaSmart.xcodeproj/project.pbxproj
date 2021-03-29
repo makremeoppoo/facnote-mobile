@@ -8,88 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ComptaSmartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ComptaSmartTests.m */; };
-		0A2038875F894AAFAA555464 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */; };
-		0B59F8C8B48D4BE19B962978 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C81A41658E7455AA905810D /* FontAwesome5_Regular.ttf */; };
-		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
-		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		1882B054FB8F4DFD9CB035BD /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D5D9087687493389AEFBDC /* MaterialIcons.ttf */; };
-		1D05820FD0F0459EB348B66D /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABD3DB8EE7154510B7CD2D3C /* Nunito-BoldItalic.ttf */; };
-		2B2803E936474EED9A9AF6D4 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D20E6433C494EE99CBF312D /* Nunito-Regular.ttf */; };
-		2C89B987B3A6E574413F2F98 /* libPods-ComptaSmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ComptaSmartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ComptaSmartTests.m */; };
 		4158EA8DF2FD0FDC7D94B56D /* libPods-ComptaSmart-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */; };
-		471BE29D0F5B4CE78A287217 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA637AB8C4A47DE8ECEAC96 /* Nunito-Bold.ttf */; };
-		4C7206D38E384C26A72E742C /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 701EFB948ED24506BD9A2A85 /* Nunito-ExtraBold.ttf */; };
-		515D2C4686D44B3D9AA6ACEB /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */; };
-		537E7C1959DD4B7D8D5FDFE7 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5C45D2FA7DAF41089493279E /* Nunito-SemiBold.ttf */; };
-		59231C06B4FF414BA945F31A /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AFA21DFD88EE445E928E8064 /* Nunito-ExtraLightItalic.ttf */; };
-		5DA08049BE204D3CA34BFBEA /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBA8516FE25945E79B4A0D5B /* Octicons.ttf */; };
-		6872CF6940064F67874DD088 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 488102EDE06D4FF2A02E25B1 /* Nunito-Light.ttf */; };
-		6B5C12C3A75848F09F5769E2 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5F781E78F3D44BC99655CD3 /* EvilIcons.ttf */; };
-		6EE1A2833BF34E0499840B60 /* Nunito-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17D727DCF4C643079583F7F8 /* Nunito-Black.ttf */; };
-		80F9DF751C5B47358906E122 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DA739BC9BB88491AB27F9E84 /* FontAwesome.ttf */; };
-		85A4C010DC464716BC0D32DC /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5911C70BC71249BBA736E53B /* Entypo.ttf */; };
-		8862165C6F2F4D449927E671 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 069FD82E81814CE2920DDBBD /* MaterialCommunityIcons.ttf */; };
-		9A2A59FE40894955949CF3B0 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91D4AAEE95C04A0EA136FE9D /* Zocial.ttf */; };
-		9E79AF1CBE954EFEB46D89AE /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01526EB8C01E43F7A39BCBB6 /* Feather.ttf */; };
-		A5BF49D86479411F94216CB0 /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D5FE119340589A3A3867 /* Nunito-Italic.ttf */; };
-		B4220A65C0054DD3801FDBF7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134007E11AF34C6AB246F4D4 /* SimpleLineIcons.ttf */; };
-		B63B29C1E856404CB707C6BD /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EF8D8520834175B1065E15 /* AntDesign.ttf */; };
-		BB6141CA25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
 		BB6141CB25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
 		BB6141CC25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
 		BB6141CD25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
-		BB6141D325761BFC004086FD /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141D225761BFC004086FD /* SegoeUI.ttf */; };
 		BB6141D425761BFC004086FD /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141D225761BFC004086FD /* SegoeUI.ttf */; };
 		BB6141D525761BFC004086FD /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141D225761BFC004086FD /* SegoeUI.ttf */; };
 		BB6141D625761BFC004086FD /* SegoeUI.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141D225761BFC004086FD /* SegoeUI.ttf */; };
-		BBC31059256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
 		BBC3105A256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
 		BBC3105B256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
 		BBC3105C256D2CAA00F45F79 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC31058256D2CAA00F45F79 /* File.swift */; };
-		BBC3107825761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107925761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107A25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107B25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
-		BBD0DB1C25B42DC4007C8283 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD0DB1B25B42DC4007C8283 /* Launch Screen.storyboard */; };
 		C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */; };
-		C5C8156B7EDC4E4CAC06226D /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A267E8B02D445F4911574CD /* Fontisto.ttf */; };
-		D3C1B4407B49491CA77B82D3 /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */; };
-		DE20BFE099A64F23924627C2 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9E8F1D3E4A8AAAA32324 /* FontAwesome5_Solid.ttf */; };
-		E1C96993776443819576ACF6 /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0424B895BBF4410F8CF2CF7D /* Nunito-ExtraBoldItalic.ttf */; };
 		E2C18FE658C6A93F060C8410 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */; };
-		E66835756CA846BBB5E15E61 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5DE2C49B5E54A689EC1AAAD /* Ionicons.ttf */; };
-		ED81DE9185B740FA90E1A879 /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */; };
-		F37ABB4F17084B6D812609E2 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89F183DB9C9345F8959B5A06 /* Foundation.ttf */; };
-		FA1FA29C2C884102826028C9 /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5368ACF1A9124A858061977F /* Nunito-ExtraLight.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		00E356F41AD99517003FC87E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = ComptaSmart;
-		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "ComptaSmart-tvOS";
-		};
-		BB50A4A1260E291800671D8D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = ComptaSmart;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -104,7 +50,6 @@
 		0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0DDB9E8F1D3E4A8AAAA32324 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		134007E11AF34C6AB246F4D4 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* ComptaSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComptaSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ComptaSmart/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ComptaSmart/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -170,14 +115,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2C18FE658C6A93F060C8410 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		13B07F8C1A680F5B00A75B9A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2C89B987B3A6E574413F2F98 /* libPods-ComptaSmart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,7 +215,6 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* ComptaSmart.app */,
 				00E356EE1AD99517003FC87E /* ComptaSmartTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* ComptaSmart-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* ComptaSmart-tvOSTests.xctest */,
@@ -357,33 +293,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
 			name = ComptaSmartTests;
 			productName = ComptaSmartTests;
 			productReference = 00E356EE1AD99517003FC87E /* ComptaSmartTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		13B07F861A680F5B00A75B9A /* ComptaSmart */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ComptaSmart" */;
-			buildPhases = (
-				5FAECE1F51E0989E333A05F7 /* [CP] Check Pods Manifest.lock */,
-				FD10A7F022414F080027D42C /* Start Packager */,
-				13B07F871A680F5B00A75B9A /* Sources */,
-				13B07F8C1A680F5B00A75B9A /* Frameworks */,
-				13B07F8E1A680F5B00A75B9A /* Resources */,
-				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				FD5C525252024437CD8EBEFC /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = ComptaSmart;
-			productName = ComptaSmart;
-			productReference = 13B07F961A680F5B00A75B9A /* ComptaSmart.app */;
-			productType = "com.apple.product-type.application";
 		};
 		2D02E47A1E0B4A5D006451C7 /* ComptaSmart-tvOS */ = {
 			isa = PBXNativeTarget;
@@ -418,7 +332,6 @@
 			);
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
-				BB50A4A2260E291800671D8D /* PBXTargetDependency */,
 			);
 			name = "ComptaSmart-tvOSTests";
 			productName = "ComptaSmart-tvOSTests";
@@ -438,11 +351,6 @@
 						CreatedOnToolsVersion = 6.2;
 						LastSwiftMigration = 1220;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
-					};
-					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 5FU4864MKR;
-						LastSwiftMigration = 1150;
-						ProvisioningStyle = Automatic;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -470,7 +378,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* ComptaSmart */,
 				00E356ED1AD99517003FC87E /* ComptaSmartTests */,
 				2D02E47A1E0B4A5D006451C7 /* ComptaSmart-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* ComptaSmart-tvOSTests */,
@@ -486,49 +393,6 @@
 				BB6141CB25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
 				BB6141D425761BFC004086FD /* SegoeUI.ttf in Resources */,
 				BBC3107925761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		13B07F8E1A680F5B00A75B9A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				B63B29C1E856404CB707C6BD /* AntDesign.ttf in Resources */,
-				85A4C010DC464716BC0D32DC /* Entypo.ttf in Resources */,
-				6B5C12C3A75848F09F5769E2 /* EvilIcons.ttf in Resources */,
-				9E79AF1CBE954EFEB46D89AE /* Feather.ttf in Resources */,
-				80F9DF751C5B47358906E122 /* FontAwesome.ttf in Resources */,
-				515D2C4686D44B3D9AA6ACEB /* FontAwesome5_Brands.ttf in Resources */,
-				0B59F8C8B48D4BE19B962978 /* FontAwesome5_Regular.ttf in Resources */,
-				DE20BFE099A64F23924627C2 /* FontAwesome5_Solid.ttf in Resources */,
-				C5C8156B7EDC4E4CAC06226D /* Fontisto.ttf in Resources */,
-				F37ABB4F17084B6D812609E2 /* Foundation.ttf in Resources */,
-				E66835756CA846BBB5E15E61 /* Ionicons.ttf in Resources */,
-				BB6141D325761BFC004086FD /* SegoeUI.ttf in Resources */,
-				8862165C6F2F4D449927E671 /* MaterialCommunityIcons.ttf in Resources */,
-				1882B054FB8F4DFD9CB035BD /* MaterialIcons.ttf in Resources */,
-				5DA08049BE204D3CA34BFBEA /* Octicons.ttf in Resources */,
-				BB6141CA25761B94004086FD /* SegoeUI-Black.ttf in Resources */,
-				B4220A65C0054DD3801FDBF7 /* SimpleLineIcons.ttf in Resources */,
-				9A2A59FE40894955949CF3B0 /* Zocial.ttf in Resources */,
-				6EE1A2833BF34E0499840B60 /* Nunito-Black.ttf in Resources */,
-				BBC3107825761AE900F45F79 /* SegoeUI-Light.ttf in Resources */,
-				0A2038875F894AAFAA555464 /* Nunito-BlackItalic.ttf in Resources */,
-				471BE29D0F5B4CE78A287217 /* Nunito-Bold.ttf in Resources */,
-				1D05820FD0F0459EB348B66D /* Nunito-BoldItalic.ttf in Resources */,
-				4C7206D38E384C26A72E742C /* Nunito-ExtraBold.ttf in Resources */,
-				E1C96993776443819576ACF6 /* Nunito-ExtraBoldItalic.ttf in Resources */,
-				FA1FA29C2C884102826028C9 /* Nunito-ExtraLight.ttf in Resources */,
-				59231C06B4FF414BA945F31A /* Nunito-ExtraLightItalic.ttf in Resources */,
-				A5BF49D86479411F94216CB0 /* Nunito-Italic.ttf in Resources */,
-				BBD0DB1C25B42DC4007C8283 /* Launch Screen.storyboard in Resources */,
-				6872CF6940064F67874DD088 /* Nunito-Light.ttf in Resources */,
-				D3C1B4407B49491CA77B82D3 /* Nunito-LightItalic.ttf in Resources */,
-				2B2803E936474EED9A9AF6D4 /* Nunito-Regular.ttf in Resources */,
-				537E7C1959DD4B7D8D5FDFE7 /* Nunito-SemiBold.ttf in Resources */,
-				ED81DE9185B740FA90E1A879 /* Nunito-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,20 +420,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native code and images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
 		1CC561520978F250F2560F37 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -619,24 +469,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		5FAECE1F51E0989E333A05F7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 		EBFCBF3EFA5F995ABBF85148 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -710,21 +542,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		FD10A7F022414F080027D42C /* Start Packager */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Start Packager";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
-			showEnvVarsInLog = 0;
-		};
 		FD10A7F122414F3F0027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -740,60 +557,6 @@
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		FD5C525252024437CD8EBEFC /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Feather.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Zocial.ttf",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/AccessibilityResources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/TOCropViewController/TOCropViewControllerBundle.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/QBImagePicker.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AntDesign.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Entypo.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EvilIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Feather.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Brands.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Regular.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SimpleLineIcons.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Zocial.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TOCropViewControllerBundle.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -803,16 +566,6 @@
 			files = (
 				00E356F31AD99517003FC87E /* ComptaSmartTests.m in Sources */,
 				BBC3105A256D2CAA00F45F79 /* File.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		13B07F871A680F5B00A75B9A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
-				BBC31059256D2CAA00F45F79 /* File.swift in Sources */,
-				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -838,20 +591,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ComptaSmart */;
-			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
-		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* ComptaSmart-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
-		};
-		BB50A4A2260E291800671D8D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ComptaSmart */;
-			targetProxy = BB50A4A1260E291800671D8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -917,148 +660,6 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmartTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComptaSmart.app/ComptaSmart";
-			};
-			name = Release;
-		};
-		13B07F941A680F5B00A75B9A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
-				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = 5FU4864MKR;
-				EXCLUDED_ARCHS = "";
-				"EXCLUDED_ARCHS[sdk=*]" = "";
-				INFOPLIST_FILE = ComptaSmart/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME) $(inherited) @executable_path/Frameworks";
-				LD_VERIFY_BITCODE = NO;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CocoaAsyncSocket\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBReactNativeSpec\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-DoubleConversion\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-Folly\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-Glog\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-PeerTalk\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Flipper-RSocket\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FlipperKit\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Folly\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RCTTypeSafety\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNCMaskedView\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNGestureHandler\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNReanimated\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNScreens\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNVectorIcons\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-Core\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-CoreModules\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTAnimation\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTBlob\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTImage\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTLinking\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTNetwork\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTSettings\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTText\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTVibration\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsi\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsiexecutor\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsinspector\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Yoga\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/YogaKit\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/glog\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-safe-area-context\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-webview\"",
-					"\"${PODS_ROOT}/CocoaLibEvent/lib\"",
-					"\"${PODS_ROOT}/OpenSSL-Universal/ios/lib\"",
-				);
-				MARKETING_VERSION = 1.4;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lc++",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.facnote.comptasmart;
-				PRODUCT_NAME = ComptaSmart;
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
-			};
-			name = Debug;
-		};
-		13B07F951A680F5B00A75B9A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = "";
-				CURRENT_PROJECT_VERSION = 31;
-				DEVELOPMENT_TEAM = 5FU4864MKR;
-				INFOPLIST_FILE = ComptaSmart/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME) $(inherited) @executable_path/Frameworks";
-				LD_VERIFY_BITCODE = NO;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/CocoaAsyncSocket\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/DoubleConversion\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/FBReactNativeSpec\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Folly\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RCTTypeSafety\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNCMaskedView\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNGestureHandler\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNReanimated\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNScreens\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/RNVectorIcons\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-Core\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-CoreModules\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTAnimation\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTBlob\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTImage\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTLinking\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTNetwork\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTSettings\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTText\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-RCTVibration\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsi\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsiexecutor\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/React-jsinspector\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/ReactCommon\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/Yoga\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/YogaKit\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/glog\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-safe-area-context\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/react-native-webview\"",
-					"\"${PODS_ROOT}/CocoaLibEvent/lib\"",
-					"\"${PODS_ROOT}/OpenSSL-Universal/ios/lib\"",
-				);
-				MARKETING_VERSION = 1.4;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					"-ObjC",
-					"-lc++",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.facnote.comptasmart;
-				PRODUCT_NAME = ComptaSmart;
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -1309,15 +910,6 @@
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
 				00E356F71AD99517003FC87E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ComptaSmart" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				13B07F941A680F5B00A75B9A /* Debug */,
-				13B07F951A680F5B00A75B9A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
