@@ -20,7 +20,7 @@ export default class NavigationHeader extends React.Component {
         <TouchableOpacity
           style={{
             width: ScaleHelpers.CalcWidth(10),
-            height: ScaleHelpers.CalcHeight(2),
+            height: ScaleHelpers.CalcWidth(5),
             paddingLeft: ScaleHelpers.CalcWidth(5),
             alignItems: 'center',
           }}
@@ -37,7 +37,7 @@ export default class NavigationHeader extends React.Component {
           <TouchableOpacity
             style={{
               width: ScaleHelpers.CalcWidth(10),
-              height: ScaleHelpers.CalcHeight(2),
+              height:  ScaleHelpers.CalcWidth(5),
               paddingRight: ScaleHelpers.CalcWidth(5),
               alignItems: 'center',
             }}

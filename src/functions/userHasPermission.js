@@ -9,6 +9,5 @@ export const userHasPermission = async (permit) => {
     .map((item) => item.module_route);
   var find = false;
   if (authorities.includes(permit)) find = true;
-  console.log(permit, find);
   return find;
 };

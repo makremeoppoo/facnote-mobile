@@ -537,10 +537,7 @@ class BankStatementScreen extends React.Component {
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
         <NavigationHeader
-          onPress={() => {
-            //  this.Standard.open();
-            this.props.navigation.goBack();
-          }}
+     
           title={text.banque}
           subTitle={account.label}
           onPressTwo={() =>
@@ -557,7 +554,7 @@ class BankStatementScreen extends React.Component {
                 styles.soldeTitle,
                 list[1]?.solde < 0 ? {color: 'red'} : {color: '#15CA20'},
               ]}>
-              {list.length > 0 ? list[1]?.solde : 0} €
+              {list.length > 0 && list[1]?.solde !== null ? list[1]?.solde : 0} €
             </Text>
             <Text style={styles.dateTitle}>
               {text.SoldeAu} {list[0]?.text}
