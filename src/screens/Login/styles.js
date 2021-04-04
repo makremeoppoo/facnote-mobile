@@ -3,7 +3,7 @@ import {StyleSheet, Dimensions, Platform} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
-import {textColor, buttonColor} from '../../AppStyles';
+import {textColor, buttonColor} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   mainContainer: {

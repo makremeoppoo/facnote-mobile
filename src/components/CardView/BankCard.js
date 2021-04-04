@@ -14,7 +14,6 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import ScaleHelpers from '../scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import TitleCard from './TitleCard';

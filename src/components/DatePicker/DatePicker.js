@@ -4,7 +4,7 @@ import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import moment from 'moment';
 import ScaleHelpers from '../scaleHelpers';
-import {textColor} from '../../AppStyles';
+import {textColor} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   inputContainer: {

@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import { StyleSheet, Dimensions } from 'react-native';
-import { landing } from '../../AppStyles';
+import { landing } from '../../Theme/AppStyles';
 const { width, height } = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
 

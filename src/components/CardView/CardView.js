@@ -9,7 +9,7 @@ import {faLink} from '@fortawesome/free-solid-svg-icons';
 import {Badge, Text} from 'react-native-elements';
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {buttonColor} from '../../AppStyles';
+import {buttonColor} from '../../Theme/AppStyles';
 import TitleCard from './TitleCard';
 
 const styles = StyleSheet.create({

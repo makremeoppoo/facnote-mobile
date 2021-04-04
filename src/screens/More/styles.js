@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
+import {textColor, buttonColor} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   container: {
