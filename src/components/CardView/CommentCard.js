@@ -6,20 +6,18 @@ import {View} from 'react-native';
 
 import {Text} from 'react-native-elements';
 import ScaleHelpers from '../../Theme/scaleHelpers';
+import {fontType} from '../../Theme/AppStyles';
+
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import moment from 'moment';
 
 const styles = StyleSheet.create({
- 
   container: {
-  
     flexDirection: 'row',
     alignItems: 'flex-start',
-    width:ScaleHelpers.CalcWidth(80),
-    height:ScaleHelpers.CalcHeight(8),
-
-   
+    width: ScaleHelpers.CalcWidth(80),
+    height: ScaleHelpers.CalcHeight(8),
   },
   content: {
     marginLeft: 16,
@@ -29,20 +27,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
- 
-  time:{
+
+  time: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     color: '#707070',
   },
-  name:{
+  name: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     color: '#707070',
   },
-  comment:{
+  comment: {
     fontSize: ScaleHelpers.CalcWidth(3.5),
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     color: '#707070',
   },
 });
@@ -52,13 +50,16 @@ class CommentCard extends React.Component {
     const item = this.props.item;
     return (
       <View style={styles.container}>
-       
         <View style={styles.content}>
           <View style={styles.contentHeader}>
             <Text style={styles.name}>{item.user_name}</Text>
-            <Text style={styles.time}>{moment(item.updated_at).format('DD/MM/YYYY')}</Text>
+            <Text style={styles.time}>
+              {moment(item.updated_at).format('DD/MM/YYYY')}
+            </Text>
           </View>
-          <Text style={styles.comment} rkType="primary3 mediumLine">{item.comment}</Text>
+          <Text style={styles.comment} rkType="primary3 mediumLine">
+            {item.comment}
+          </Text>
         </View>
       </View>
     );

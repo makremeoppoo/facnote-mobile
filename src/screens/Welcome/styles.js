@@ -2,6 +2,7 @@
 import {StyleSheet, Dimensions, Platform} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   buttonTxt: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     fontSize: ScaleHelpers.CalcHeight(2),
     color: textColor,
   },

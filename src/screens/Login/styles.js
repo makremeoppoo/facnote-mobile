@@ -4,6 +4,8 @@ import ScaleHelpers from '../../Theme/scaleHelpers';
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
 import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
+
 
 const styles = StyleSheet.create({
   mainContainer: {
@@ -54,7 +56,7 @@ const styles = StyleSheet.create({
   },
 
   label: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     marginBottom: ScaleHelpers.CalcHeight(1),
     marginTop: ScaleHelpers.CalcHeight(1),
 
@@ -96,10 +98,10 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     alignSelf: 'center',
     color: textColor,
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
   },
   signTxt: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     fontSize: ScaleHelpers.CalcWidth(4),
     color: 'grey',
   },
@@ -129,7 +131,7 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   checkboxLabel: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     marginBottom: ScaleHelpers.CalcHeight(1),
     marginTop: ScaleHelpers.CalcHeight(1),
     color: 'white',

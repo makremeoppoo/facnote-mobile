@@ -17,6 +17,7 @@ import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor, buttonColor} from '../../Theme/AppStyles';
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
+import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   itemTitleContainer: {
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(3.6),
     color: '#707070',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
 });
 

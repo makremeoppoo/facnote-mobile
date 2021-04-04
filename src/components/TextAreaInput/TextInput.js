@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor, buttonColor, label} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
 export default class FormInput extends Component {
   constructor(props) {
     super(props);
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(25),
   },
   label: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     margin: ScaleHelpers.CalcWidth(2),
     color: textColor,
     fontSize: 12,

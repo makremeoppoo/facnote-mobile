@@ -4,6 +4,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
+import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   bottomSheetContainer: {
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
   bottomSheetText: {
     textAlign: 'center',
     color: '#707070',
-    fontFamily: 'Nunito-Light',
+    fontFamily: fontType.med,
     fontSize: ScaleHelpers.CalcWidth(3.8),
   },
   verticleLine: {

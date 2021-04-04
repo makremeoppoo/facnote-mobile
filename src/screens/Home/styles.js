@@ -2,6 +2,7 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   },
   textBold: {
     textAlign: "left",
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     color: textColor,
     fontSize: ScaleHelpers.CalcWidth(5),
   },

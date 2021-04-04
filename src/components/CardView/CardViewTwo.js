@@ -7,6 +7,8 @@ import {View, Image, TouchableHighlight} from 'react-native';
 import {Badge, Text} from 'react-native-elements';
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
+import {fontType} from '../../Theme/AppStyles';
+
 import TitleCard from './TitleCard';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faLink} from '@fortawesome/free-solid-svg-icons';
@@ -42,7 +44,7 @@ const styles = StyleSheet.create({
   libelle: {
     fontSize: ScaleHelpers.CalcWidth(4),
     color: '#707070',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
   amountContainer: {
     height: ScaleHelpers.CalcHeight(5),
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: ScaleHelpers.CalcWidth(4),
     color: '#707070',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
 });
 class CardView extends React.Component {

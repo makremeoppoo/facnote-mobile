@@ -2,6 +2,8 @@
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -27,12 +29,12 @@ const styles = StyleSheet.create({
   },
   headerBigText: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     color: 'white',
   },
   headerText: {
     fontSize: ScaleHelpers.CalcWidth(2.5),
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     color: 'white',
   },
 
@@ -56,7 +58,7 @@ const styles = StyleSheet.create({
   },
   cabinetText: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     color: textColor,
     alignSelf: 'center',
   },
@@ -93,14 +95,14 @@ const styles = StyleSheet.create({
 
   itemTitle: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     color: textColor,
     alignSelf: 'center',
     width: ScaleHelpers.CalcWidth(50),
   },
   itemTitle2: {
     fontSize: ScaleHelpers.CalcWidth(2.5),
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     color: textColor,
     alignSelf: 'center',
     width: ScaleHelpers.CalcWidth(50),

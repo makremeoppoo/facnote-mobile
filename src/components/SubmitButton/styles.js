@@ -1,6 +1,8 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
+import {fontType} from '../../Theme/AppStyles';
+
 const styles = StyleSheet.create({
   btnSubmitContainer: {
     //Its for IOS
@@ -18,7 +20,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(5),
   },
   submitTxt: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     fontSize: 15,
     color: 'white',
     textAlign: 'center',
