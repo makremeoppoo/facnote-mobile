@@ -2,7 +2,7 @@
 import {StyleSheet, Dimensions, Platform} from 'react-native';
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
-import ScaleHelpers from '../components/scaleHelpers';
+import ScaleHelpers from './scaleHelpers';
 
 export const textColor = 'rgba(112,112,112,1)';
 export const buttonColor = 'white';

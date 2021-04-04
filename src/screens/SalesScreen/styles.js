@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor, buttonColor} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');

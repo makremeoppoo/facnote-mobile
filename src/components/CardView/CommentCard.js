@@ -5,7 +5,7 @@ import React from 'react';
 import {View} from 'react-native';
 
 import {Text} from 'react-native-elements';
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import moment from 'moment';

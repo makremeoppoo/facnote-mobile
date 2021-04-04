@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, ActivityIndicator, StyleSheet} from 'react-native';
 
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 
 export default class PageLoader extends Component {
   constructor(props) {

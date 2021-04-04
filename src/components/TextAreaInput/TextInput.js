@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor, buttonColor, label} from '../../Theme/AppStyles';
 export default class FormInput extends Component {
   constructor(props) {

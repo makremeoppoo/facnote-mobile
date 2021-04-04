@@ -13,7 +13,7 @@ import {
   faComments,
 } from '@fortawesome/free-solid-svg-icons';
 
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import TitleCard from './TitleCard';

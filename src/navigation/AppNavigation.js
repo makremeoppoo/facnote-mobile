@@ -47,7 +47,7 @@ import BlueBanqueImg from '../../assets/icons/blueBanque.png';
 
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
-import ScaleHelpers from '../components/scaleHelpers';
+import ScaleHelpers from '../Theme/scaleHelpers';
 import {text, routes, permissions} from '../constants';
 import jwtDecode from 'jwt-decode';
 

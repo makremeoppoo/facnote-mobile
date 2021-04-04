@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import ModalSelector from 'react-native-modal-selector';
 
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor, buttonColor, label} from '../../Theme/AppStyles';
 export default class FormInput extends Component {
   constructor(props) {

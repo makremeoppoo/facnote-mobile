@@ -3,7 +3,7 @@ import {View, Platform, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import moment from 'moment';
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 import {textColor} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({

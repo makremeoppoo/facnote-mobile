@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 
 const styles = StyleSheet.create({
   headerButtonContainer: {

@@ -3,7 +3,7 @@ import {TouchableHighlight, Image, Text, View} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import {StyleSheet} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 
 const styles = StyleSheet.create({
   bottomSheetContainer: {

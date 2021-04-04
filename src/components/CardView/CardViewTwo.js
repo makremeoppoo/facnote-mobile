@@ -6,7 +6,7 @@ import {View, Image, TouchableHighlight} from 'react-native';
 
 import {Badge, Text} from 'react-native-elements';
 import {StyleSheet} from 'react-native';
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 import TitleCard from './TitleCard';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faLink} from '@fortawesome/free-solid-svg-icons';
