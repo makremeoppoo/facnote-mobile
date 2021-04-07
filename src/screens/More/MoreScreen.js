@@ -14,7 +14,7 @@ import CabinetBackground from '../../../assets/images/Rectangle.png';
 import rightArrow from '../../../assets/icons/rightArrow.png';
 import {connect} from 'react-redux';
 import {text, routes, permissions} from '../../constants';
-import {userHasPermission} from '../../functions/userHasPermission';
+import {userHasPermission} from '../../shared/userHasPermission';
 import {logout} from '../../redux';
 
 class MoreScreen extends React.Component {

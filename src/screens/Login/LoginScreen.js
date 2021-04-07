@@ -25,7 +25,7 @@ import getSociety from '../../services/societe';
 
 import {login} from '../../redux';
 import {text,permissions} from '../../constants';
-import {userHasPermission} from '../../functions/userHasPermission';
+import {userHasPermission} from '../../shared/userHasPermission';
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);

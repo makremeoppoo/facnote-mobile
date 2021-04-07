@@ -22,7 +22,7 @@ import Background from '../../../assets/images/backgroung_depose_facture.png';
 import ChooseFacture from './UploadInvoice';
 import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
 import {routes, permissions} from '../../constants';
-import {userHasPermission} from '../../functions/userHasPermission';
+import {userHasPermission} from '../../shared/userHasPermission';
 
 import styles from './styles';
 

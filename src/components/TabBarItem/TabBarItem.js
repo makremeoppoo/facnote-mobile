@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
 import {View, Text, Image} from 'react-native';
-import ScaleHelper from '../../components/scaleHelpers';
+import ScaleHelper from '../../Theme/scaleHelpers';
 class TabBarItem extends React.Component {
   render() {
     const {focused, src, label} = this.props;

@@ -1,7 +1,8 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
   titleModalText: {
     fontSize: ScaleHelpers.CalcWidth(5),
     color: 'rgb(112,112,112)',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
   textInfo: {
     fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     marginTop: ScaleHelpers.CalcWidth(2),
   },
   widthTLabelInfo: {

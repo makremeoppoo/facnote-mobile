@@ -3,8 +3,9 @@ import {View, Platform, TouchableOpacity, Text, StyleSheet} from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 
 import moment from 'moment';
-import ScaleHelpers from '../scaleHelpers';
-import {textColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {textColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   inputContainer: {
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(13),
   },
   label: {
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     margin: ScaleHelpers.CalcWidth(2),
     fontSize: 12,
   },
