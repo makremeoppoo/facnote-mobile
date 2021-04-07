@@ -164,6 +164,7 @@ class BankStatementScreen extends React.Component {
       );
     } catch (e) {
       console.log(e);
+      this.setState({isRefreshing: false});
     } finally {
       let list = [];
       let date = '';
@@ -302,9 +303,9 @@ class BankStatementScreen extends React.Component {
               {
                 label: 'Joindre une facture',
                 icon: faLink,
-                onPress: async() => {
+                onPress: async () => {
                   await this.Standard.close();
-                  this.props.navigation.navigate(routes.Invoices)
+                  this.props.navigation.navigate(routes.Invoices);
                   AsyncStorage.setItem('from', routes.BankStatement);
                 },
               },
@@ -446,7 +447,7 @@ class BankStatementScreen extends React.Component {
       />*/}
       <SelectInput
         label={text.compte}
-        selectedValue={this.state.account.label}
+        selectedValue={this.state.account?.label}
         onChange={(option) => {
           this.setState({account: option});
         }}
@@ -537,9 +538,8 @@ class BankStatementScreen extends React.Component {
         <Toast ref={(ref) => Toast.setRef(ref)} style={{elevation: 11}} />
 
         <NavigationHeader
-     
           title={text.banque}
-          subTitle={account.label}
+          subTitle={account?.label}
           onPressTwo={() =>
             this.setState({
               showModal: !this.state.showModal,
@@ -554,7 +554,8 @@ class BankStatementScreen extends React.Component {
                 styles.soldeTitle,
                 list[1]?.solde < 0 ? {color: 'red'} : {color: '#15CA20'},
               ]}>
-              {list.length > 0 && list[1]?.solde !== null ? list[1]?.solde : 0} €
+              {list.length > 0 && list[1]?.solde !== null ? list[1]?.solde : 0}{' '}
+              €
             </Text>
             <Text style={styles.dateTitle}>
               {text.SoldeAu} {list[0]?.text}
