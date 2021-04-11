@@ -6,7 +6,7 @@ import styles from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faSlidersH, faChevronLeft} from '@fortawesome/free-solid-svg-icons';
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 
 export default class NavigationHeader extends React.Component {
   render() {
@@ -20,7 +20,7 @@ export default class NavigationHeader extends React.Component {
         <TouchableOpacity
           style={{
             width: ScaleHelpers.CalcWidth(10),
-            height: ScaleHelpers.CalcHeight(2),
+            height: ScaleHelpers.CalcWidth(5),
             paddingLeft: ScaleHelpers.CalcWidth(5),
             alignItems: 'center',
           }}
@@ -37,7 +37,7 @@ export default class NavigationHeader extends React.Component {
           <TouchableOpacity
             style={{
               width: ScaleHelpers.CalcWidth(10),
-              height: ScaleHelpers.CalcHeight(2),
+              height:  ScaleHelpers.CalcWidth(5),
               paddingRight: ScaleHelpers.CalcWidth(5),
               alignItems: 'center',
             }}

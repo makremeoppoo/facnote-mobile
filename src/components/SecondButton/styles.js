@@ -1,7 +1,8 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
-import ScaleHelpers from '../scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   btnContainer: {
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     margin: ScaleHelpers.CalcWidth(1),
   },
   btnTxt: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     fontSize: 15,
     color: textColor,
     textAlign: 'center',

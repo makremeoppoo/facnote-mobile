@@ -9,6 +9,8 @@ import {
   ImageBackground,
   Linking,
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+
 import styles from './styles';
 import LogoImage from '../../../assets/images/logo.png';
 import {text, routes} from '../../constants';
@@ -18,6 +20,11 @@ import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png
 export default class WelcomeScreen extends React.Component {
   constructor(props) {
     super(props);
+  }
+  async componentDidMount() {
+    await AsyncStorage.removeItem('accessToken');
+    await AsyncStorage.removeItem('modules');
+    await AsyncStorage.removeItem('from');
   }
 
   onPressLogButton = () => {
@@ -39,6 +46,7 @@ export default class WelcomeScreen extends React.Component {
               <View style={styles.buttonView}>
                 <TouchableHighlight
                   style={styles.buttonContainer}
+                  underlayColor="rgba(73,182,77,1,0.9)"
                   onPress={() => this.onPressLogButton()}>
                   <Text style={styles.buttonTxt}>{text.identifier}</Text>
                 </TouchableHighlight>

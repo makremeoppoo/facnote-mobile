@@ -3,8 +3,10 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
+import moment from 'moment';
+
 import {logout} from '../redux';
-import {View, Platform, Image} from 'react-native';
+import {View, Platform, AppState} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
@@ -42,13 +44,12 @@ import FactureImgActive from '../../assets/icons/Camera.png';
 import FactureImg from '../../assets/icons/photo-white.png';
 import BanqueImg from '../../assets/icons/banque.png';
 import BlueBanqueImg from '../../assets/icons/blueBanque.png';
-import CabinetImg from '../../assets/icons/Cabinet.png';
-import CabinetImgActive from '../../assets/icons/cabinetActive.png';
+
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
-import ScaleHelpers from '../components/scaleHelpers';
+import ScaleHelpers from '../Theme/scaleHelpers';
 import {text, routes, permissions} from '../constants';
-import {userHasPermission} from '../functions/userHasPermission';
+import jwtDecode from 'jwt-decode';
 
 const Stack = createStackNavigator();
 const BottomTabNavigator = createBottomTabNavigator();
@@ -283,7 +284,7 @@ const MainNavigator = () => {
         component={HistoryScreen}
       />
       <Stack.Screen
-         options={({navigation}) => {
+        options={({navigation}) => {
           return {
             header: () => (
               <NavigationHeader
@@ -375,16 +376,23 @@ const RootNavigator = () => {
 };
 
 class AppContainer extends React.Component {
-  /*  async componentDidMount() {
-    const accessToken = await AsyncStorage.getItem('accessToken');
+  state = {
+    appState: AppState.currentState,
+  };
 
-    const decodeToken = jwtDecode(accessToken);
+  componentDidMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+
     var dayInMilliseconds = 1000;
+    var intervalId = setInterval(async () => {
+      const accessToken = await AsyncStorage.getItem('accessToken');
+      if (accessToken == null) return;
 
-    var intervalId = setInterval(() => {
-      console.log('dataUser', decodeToken);
-
-      if (decodeToken.exp < moment().unix()) this.props.logout();
+      const decodeToken = jwtDecode(accessToken);
+      if (decodeToken.exp < moment().unix()) {
+        console.log('expire token and logout');
+        this.props.logout();
+      }
       return;
     }, dayInMilliseconds);
     // store intervalId in the state so it can be accessed later:
@@ -392,10 +400,21 @@ class AppContainer extends React.Component {
   }
 
   componentWillUnmount() {
+    AppState.removeEventListener('change', this._handleAppStateChange);
+
     // use intervalId from the state to clear the interval
     clearInterval(this.state.intervalId);
-  }*/
-
+  }
+  _handleAppStateChange = (nextAppState) => {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      console.log('App has come to the foreground!');
+      this.props.logout();
+    }
+    this.setState({appState: nextAppState});
+  };
   render() {
     return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
   }

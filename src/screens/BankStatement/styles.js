@@ -1,7 +1,8 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor, blueColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {textColor, buttonColor, blueColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
@@ -16,17 +17,17 @@ const styles = StyleSheet.create({
   soldeTitle: {
     
     fontSize: ScaleHelpers.CalcWidth(6),
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
   dateTitle: {
     color: '#707070',
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
   },
   filterTitle: {
     color: '#FD3550',
     fontSize: ScaleHelpers.CalcWidth(5),
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     marginTop: ScaleHelpers.CalcHeight(2),
     marginBottom: ScaleHelpers.CalcHeight(2),
   },
@@ -89,6 +90,8 @@ const styles = StyleSheet.create({
 
   modalCloseView: {
     position: 'absolute',
+    width:ScaleHelpers.CalcWidth(10),
+    height:ScaleHelpers.CalcWidth(10),
     top:
       Platform.OS === 'ios'
         ? ScaleHelpers.CalcWidth(14)
@@ -139,7 +142,7 @@ const styles = StyleSheet.create({
   textInfo: {
     fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     marginTop: ScaleHelpers.CalcWidth(2),
   },
   widthTLabelInfo: {
@@ -165,7 +168,7 @@ const styles = StyleSheet.create({
   titleModalText: {
     fontSize: ScaleHelpers.CalcWidth(5),
     color: 'rgb(112,112,112)',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
 
 

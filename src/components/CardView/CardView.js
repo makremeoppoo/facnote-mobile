@@ -8,8 +8,8 @@ import {faLink} from '@fortawesome/free-solid-svg-icons';
 
 import {Badge, Text} from 'react-native-elements';
 import {StyleSheet} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
-import {buttonColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {fontType} from '../../Theme/AppStyles';
 import TitleCard from './TitleCard';
 
 const styles = StyleSheet.create({
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   libelle: {
     fontSize: ScaleHelpers.CalcWidth(4),
     color: '#707070',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
 
   amountContainer: {
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: ScaleHelpers.CalcWidth(4),
     color: '#707070',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
 });
 const StatusHistory = {

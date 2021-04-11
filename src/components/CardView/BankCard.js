@@ -13,8 +13,8 @@ import {
   faComments,
 } from '@fortawesome/free-solid-svg-icons';
 
-import ScaleHelpers from '../scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {fontType} from '../../Theme/AppStyles';
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import TitleCard from './TitleCard';
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   libelle: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     color: '#707070',
   },
 
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: ScaleHelpers.CalcWidth(4),
     color: '#707070',
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
   },
   iconContainer: {
     alignSelf: 'center',

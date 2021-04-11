@@ -1,7 +1,8 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor, buttonColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   container: {
@@ -49,7 +50,7 @@ const styles = StyleSheet.create({
   },
 
   CabinerName: {
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
 
     textAlign: 'center',
     fontSize: ScaleHelpers.CalcWidth(4),
@@ -57,7 +58,7 @@ const styles = StyleSheet.create({
   },
 
   CabinerInfo: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
     textAlign: 'center',
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   btnTxt: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     fontSize: ScaleHelpers.CalcWidth(4),
     color: textColor,
     textAlign: 'center',

@@ -26,6 +26,7 @@
     "accordion-collapse-react-native": "^0.4.0",
     "axios": "^0.21.0",
     "jetifier": "^1.6.4",
+    "jsc-android": "^250230.2.1",
     "jwt-decode": "^3.1.2",
     "moment": "^2.29.1",
     "react": "16.13.1",

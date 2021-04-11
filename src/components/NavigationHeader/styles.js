@@ -1,6 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
-import ScaleHelpers from '../scaleHelpers';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   headerButtonContainer: {
@@ -29,12 +30,12 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(80),
   },
   title: {
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     fontSize: ScaleHelpers.CalcWidth(5),
     color: 'white',
   },
   subTitle: {
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fontType.base,
     fontSize: ScaleHelpers.CalcWidth(3.8),
     color: 'white',
   },

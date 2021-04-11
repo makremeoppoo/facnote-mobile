@@ -1,10 +1,11 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {textColor} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
+import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(74),
   },
   title: {
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     textAlign: 'center',
     color: textColor,
     fontSize: ScaleHelpers.CalcWidth(6),
@@ -61,13 +62,18 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(100),
     flexWrap: 'wrap',
   },
+  choseFileButton: {
+    width: ScaleHelpers.CalcWidth(15),
+
+    height: ScaleHelpers.CalcWidth(15),
+  },
   removeFile: {
     position: 'absolute',
     elevation: 5,
     width: ScaleHelpers.CalcWidth(7),
     height: ScaleHelpers.CalcWidth(7),
   },
-  iconRemoveFile:{
+  iconRemoveFile: {
     width: ScaleHelpers.CalcWidth(7),
     height: ScaleHelpers.CalcWidth(7),
   },
@@ -94,7 +100,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcWidth(20),
     backgroundColor: 'white',
     textAlign: 'center',
-    paddingTop:  ScaleHelpers.CalcHeight(3),
+    paddingTop: ScaleHelpers.CalcHeight(3),
     marginTop: ScaleHelpers.CalcWidth(3),
     borderRadius: ScaleHelpers.CalcWidth(3),
   },
@@ -129,6 +135,8 @@ const styles = StyleSheet.create({
         ? ScaleHelpers.CalcWidth(14)
         : ScaleHelpers.CalcWidth(12),
     left: ScaleHelpers.CalcWidth(5),
+    width: ScaleHelpers.CalcWidth(10),
+    height: ScaleHelpers.CalcWidth(10),
   },
   closeImg: {
     width: ScaleHelpers.CalcWidth(5),
