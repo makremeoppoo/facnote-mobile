@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import moment from 'moment';
 
 import {logout} from '../redux';
-import {View, Platform, Image} from 'react-native';
+import {View, Platform, AppState} from 'react-native';
 import SplashScreen from '../screens/Splash/SplashScreen';
 import OnboardingScreen from '../screens/OnBoarding/OnBoardingScreen';
 import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
@@ -47,7 +47,7 @@ import BlueBanqueImg from '../../assets/icons/blueBanque.png';
 
 import PlusImg from '../../assets/icons/Plus_white.png';
 import PlusImgActive from '../../assets/icons/plusBlue.png';
-import ScaleHelpers from '../components/scaleHelpers';
+import ScaleHelpers from '../Theme/scaleHelpers';
 import {text, routes, permissions} from '../constants';
 import jwtDecode from 'jwt-decode';
 
@@ -376,7 +376,13 @@ const RootNavigator = () => {
 };
 
 class AppContainer extends React.Component {
+  state = {
+    appState: AppState.currentState,
+  };
+
   componentDidMount() {
+    AppState.addEventListener('change', this._handleAppStateChange);
+
     var dayInMilliseconds = 1000;
     var intervalId = setInterval(async () => {
       const accessToken = await AsyncStorage.getItem('accessToken');
@@ -394,10 +400,21 @@ class AppContainer extends React.Component {
   }
 
   componentWillUnmount() {
+    AppState.removeEventListener('change', this._handleAppStateChange);
+
     // use intervalId from the state to clear the interval
     clearInterval(this.state.intervalId);
   }
-
+  _handleAppStateChange = (nextAppState) => {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      console.log('App has come to the foreground!');
+      this.props.logout();
+    }
+    this.setState({appState: nextAppState});
+  };
   render() {
     return <NavigationContainer>{<RootNavigator />}</NavigationContainer>;
   }

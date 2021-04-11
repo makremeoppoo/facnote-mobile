@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import { StyleSheet } from 'react-native';
-import { card2 } from '../../AppStyles';
+import { card2 } from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   itemContainer: card2.itemContainer,

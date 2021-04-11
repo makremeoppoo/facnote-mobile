@@ -1,10 +1,11 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
-import ScaleHelpers from '../../components/scaleHelpers';
-import {textColor} from '../../AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
+import {textColor} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
+import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(74),
   },
   title: {
-    fontFamily: 'Nunito-Bold',
+    fontFamily: fontType.bold,
     textAlign: 'center',
     color: textColor,
     fontSize: ScaleHelpers.CalcWidth(6),
