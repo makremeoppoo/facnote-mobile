@@ -2,8 +2,8 @@
 import React from 'react';
 import {View, Image, TouchableHighlight, ImageBackground} from 'react-native';
 import styles from './styles';
-import LogoImage from '../../../assets/images/logo.png';
-import Rectangle from '../../../assets/images/Rectangle.png';
+import LogoImage from '../../../assets/images/interacto/logo.png';
+import Rectangle from '../../../assets/images/interacto/Rectangle.png';
 
 export default class SplashScreen extends React.Component {
   timer = null;

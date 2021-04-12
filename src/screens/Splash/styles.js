@@ -5,18 +5,19 @@ import ScaleHelpers from '../../Theme/scaleHelpers';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-padding:0,
-margin:0,
+    padding: 0,
+    margin: 0,
     justifyContent: 'center',
     alignItems: 'center',
   },
   logo: {
-    width: ScaleHelpers.CalcWidth(70),
-    height: ScaleHelpers.CalcWidth(30),
+    resizeMode: 'stretch',
+    width: ScaleHelpers.CalcWidth(40),
+    height: ScaleHelpers.CalcWidth(40),
     margin: 50,
   },
   backgroundStyle: {
-    width: "120%",
+    width: '120%',
     height: '100%',
     position: 'absolute',
   },
