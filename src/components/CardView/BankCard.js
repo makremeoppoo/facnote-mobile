@@ -12,6 +12,7 @@ import {
   faComment,
   faComments,
 } from '@fortawesome/free-solid-svg-icons';
+import Tooltip from 'react-native-walkthrough-tooltip';
 
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import {fontType} from '../../Theme/AppStyles';
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   rowContainer: {
     flexDirection: 'row',
     alignSelf: 'flex-start',
-    height: ScaleHelpers.CalcHeight(10),
+    height: ScaleHelpers.CalcHeight(12),
     width: ScaleHelpers.CalcWidth(60),
   },
 
@@ -73,6 +74,9 @@ const styles = StyleSheet.create({
 });
 
 class BankCard extends React.Component {
+  state = {
+    toolTipVisible: false,
+  };
   renderIcon = () => {
     if (
       this.props.item.associer == null &&
@@ -154,19 +158,30 @@ class BankCard extends React.Component {
           <View style={[styles.rowContainer]}>
             {this.renderIcon()}
             <View style={[styles.itemTxtContainer]}>
-              <Text
-                style={[
-                  styles.libelle,
-                  {
-                    color:
-                      item.associer || !item.justificatif
-                        ? '#15CA20'
-                        : '#707070',
-                  },
-                ]}
-                numberOfLines={1}>
-                {item.libelle}
-              </Text>
+              <Tooltip
+                isVisible={this.state.toolTipVisible}
+                topAdjustment={0}
+                content={<Text> {item.libelle}</Text>}
+                placement="top"
+                onClose={() => this.setState({toolTipVisible: false})}>
+                <TouchableHighlight
+                  onPress={() => this.setState({toolTipVisible: true})}
+                  underlayColor="rgba(73,182,77,1,0.9)">
+                  <Text
+                    style={[
+                      styles.libelle,
+                      {
+                        color:
+                          item.associer || !item.justificatif
+                            ? '#15CA20'
+                            : '#707070',
+                      },
+                    ]}
+                    numberOfLines={2}>
+                    {item.libelle}
+                  </Text>
+                </TouchableHighlight>
+              </Tooltip>
             </View>
           </View>
           <View style={styles.amountContainer}>
