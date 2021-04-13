@@ -405,13 +405,25 @@ class AppContainer extends React.Component {
     // use intervalId from the state to clear the interval
     clearInterval(this.state.intervalId);
   }
-  _handleAppStateChange = (nextAppState) => {
-    if (
+  _handleAppStateChange = async (nextAppState) => {
+    if (nextAppState.match(/inactive|background/)) {
+      console.log('App is going background');
+      await AsyncStorage.setItem(
+        'goingBackgroundTime',
+        moment().unix().toString(),
+      );
+    } else if (
       this.state.appState.match(/inactive|background/) &&
       nextAppState === 'active'
     ) {
       console.log('App has come to the foreground!');
-      this.props.logout();
+
+      let goingBackgroundTime = await AsyncStorage.getItem(
+        'goingBackgroundTime',
+      );
+      console.log(moment().unix() - goingBackgroundTime);
+      // if more that  15 minute
+      if (moment().unix() - goingBackgroundTime > 900) this.props.logout();
     }
     this.setState({appState: nextAppState});
   };
