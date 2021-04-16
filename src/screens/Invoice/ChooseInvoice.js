@@ -1,11 +1,10 @@
 /*This is an example of File Picker in React Native*/
-import React, {createRef} from 'react';
+import React from 'react';
 import {
   ScrollView,
   Text,
   View,
   TouchableHighlight,
-  ImageBackground,
   Image,
   Modal,
 } from 'react-native';
@@ -13,8 +12,14 @@ import {
 import Toast from 'react-native-toast-message';
 import {connect} from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {
+  faShoppingCart,
+  faEuroSign,
+  faFileAlt,
+  faCar,
+} from '@fortawesome/free-solid-svg-icons';
 
-import Achat from '../../../assets/images/Achats.png';
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnity from '../../../assets/images/Indemnity.png';
@@ -23,6 +28,7 @@ import ChooseFacture from './UploadInvoice';
 import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
 import {routes, permissions} from '../../constants';
 import {userHasPermission} from '../../shared/userHasPermission';
+import {primaryColor} from '../../Theme/AppStyles';
 
 import styles from './styles';
 
@@ -41,9 +47,7 @@ class UploadScreen extends React.Component {
     var canSalesOrPurchase =
       (await userHasPermission(permissions.sales)) ||
       (await userHasPermission(permissions.purchases));
-    var canExpenseReport = await userHasPermission(
-      permissions.expenseReport,
-    );
+    var canExpenseReport = await userHasPermission(permissions.expenseReport);
     this.setState({canSalesOrPurchase, canExpenseReport});
   }
   setInvoiceType = (typeFacture) => {
@@ -78,7 +82,17 @@ class UploadScreen extends React.Component {
                   style={styles.btnContainer}
                   onPress={() => this.setInvoiceType(1)}
                   underlayColor="rgba(73,182,77,1,0.9)">
-                  <Image style={styles.Img} source={Achat} />
+                  <View style={styles.itemContainer}>
+                    <View style={styles.rowContainer}>
+                      <Text style={styles.itemTitle}>Achat</Text>
+                    </View>
+                    <FontAwesomeIcon
+                      style={styles.rightArrow}
+                      icon={faShoppingCart}
+                      size={35}
+                      color={primaryColor}
+                    />
+                  </View>
                 </TouchableHighlight>
               </View>
             )}
@@ -88,7 +102,17 @@ class UploadScreen extends React.Component {
                   style={styles.btnContainer}
                   onPress={() => this.setInvoiceType(3)}
                   underlayColor="rgba(73,182,77,1,0.9)">
-                  <Image style={styles.Img} source={AvanceDeFrais} />
+                  <View style={styles.itemContainer}>
+                    <View style={styles.rowContainer}>
+                      <Text style={styles.itemTitle}>Avance de frais</Text>
+                    </View>
+                    <FontAwesomeIcon
+                      style={styles.rightArrow}
+                      icon={faEuroSign}
+                      size={35}
+                      color={primaryColor}
+                    />
+                  </View>
                 </TouchableHighlight>
               </View>
             )}
@@ -97,7 +121,17 @@ class UploadScreen extends React.Component {
                 style={styles.btnContainer}
                 onPress={() => this.setInvoiceType(4)}
                 underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.Img} source={Document} />
+                <View style={styles.itemContainer}>
+                  <View style={styles.rowContainer}>
+                    <Text style={styles.itemTitle}>Document</Text>
+                  </View>
+                  <FontAwesomeIcon
+                    style={styles.rightArrow}
+                    icon={faFileAlt}
+                    size={35}
+                    color={primaryColor}
+                  />
+                </View>
               </TouchableHighlight>
             </View>
             <View style={styles.btnView}>
@@ -105,7 +139,17 @@ class UploadScreen extends React.Component {
                 style={styles.btnContainer}
                 onPress={() => this.setInvoiceType(0)}
                 underlayColor="rgba(73,182,77,1,0.9)">
-                <Image style={styles.Img} source={Indemnity} />
+                <View style={styles.itemContainer}>
+                  <View style={styles.rowContainer}>
+                    <Text style={styles.itemTitle}>Indemnite</Text>
+                  </View>
+                  <FontAwesomeIcon
+                    style={styles.rightArrow}
+                    icon={faCar}
+                    size={35}
+                    color={primaryColor}
+                  />
+                </View>
               </TouchableHighlight>
             </View>
           </View>

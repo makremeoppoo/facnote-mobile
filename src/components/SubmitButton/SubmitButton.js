@@ -2,7 +2,6 @@ import React from 'react';
 import {TouchableHighlight, Image, Text, ActivityIndicator} from 'react-native';
 import styles from './styles';
 import Rectangle from '../../../assets/images/interacto/Rectangle.png';
-import {text} from '../../constants';
 
 export default class SubmitButton extends React.Component {
   render() {

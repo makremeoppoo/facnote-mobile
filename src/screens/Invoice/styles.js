@@ -5,7 +5,7 @@ import {textColor} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
-import {fontType,primaryColor} from '../../Theme/AppStyles';
+import {fontType, primaryColor} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -189,6 +189,50 @@ const styles = StyleSheet.create({
     margin: ScaleHelpers.CalcWidth(4),
     width: ScaleHelpers.CalcWidth(15),
     height: ScaleHelpers.CalcWidth(15),
+  },
+  itemContainer: {
+    flexDirection: 'row',
+    padding: ScaleHelpers.CalcHeight(1),
+    //Its for IOS
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.2,
+    // its for android
+    elevation: 5,
+    position: 'relative',
+    marginTop: ScaleHelpers.CalcHeight(1),
+    marginBottom: ScaleHelpers.CalcHeight(1),
+
+    width: ScaleHelpers.CalcWidth(75),
+    height: ScaleHelpers.CalcHeight(15),
+
+    borderRadius: 1,
+    backgroundColor:'white',
+    borderColor: 'rgba(214, 214, 214, 0.4)',
+    borderWidth: 1,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  rowContainer: {
+    flexDirection: 'column',
+    alignSelf: 'center',
+    width: ScaleHelpers.CalcWidth(40),
+  },
+
+  itemTitle: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    fontFamily: fontType.bold,
+    color: textColor,
+    alignSelf: 'center',
+    textAlign: 'center',
+    width: ScaleHelpers.CalcWidth(40),
+  },
+  rightArrow: {
+    width: ScaleHelpers.CalcWidth(5),
+    height: ScaleHelpers.CalcWidth(5),
+
+    alignSelf: 'center',
   },
 });
 

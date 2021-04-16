@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
-import {textColor, buttonColor, blueColor} from '../../Theme/AppStyles';
+import {textColor} from '../../Theme/AppStyles';
 import {fontType} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(5),
 
     borderRadius: 10,
-    backgroundColor: buttonColor,
+    backgroundColor:'white',
     borderColor: 'rgba(214, 214, 214, 0.4)',
     borderWidth: 1,
     alignSelf: 'center',
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     padding: ScaleHelpers.CalcHeight(2),
     width: ScaleHelpers.CalcWidth(90),
     borderRadius: 10,
-    backgroundColor: buttonColor,
+    backgroundColor:'white',
     borderColor: 'rgba(214, 214, 214, 0.4)',
     borderWidth: 1,
     flex: 1,

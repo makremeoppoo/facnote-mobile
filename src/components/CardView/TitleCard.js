@@ -2,19 +2,10 @@
 //portfolio card
 //card with image left,double text middle, and procent right
 import React from 'react';
-import {View, TouchableHighlight} from 'react-native';
+import {View} from 'react-native';
 
 import {Text} from 'react-native-elements';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {
-  faPlus,
-  faShoppingCart,
-  faComment,
-  faComments,
-} from '@fortawesome/free-solid-svg-icons';
-
 import ScaleHelpers from '../../Theme/scaleHelpers';
-import {textColor, buttonColor} from '../../Theme/AppStyles';
 /* eslint-disable comma-dangle */
 import {StyleSheet} from 'react-native';
 import {fontType} from '../../Theme/AppStyles';
@@ -35,7 +26,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(6),
 
     borderRadius: 10,
-    backgroundColor: buttonColor,
+    backgroundColor: 'white',
     borderColor: 'rgba(214, 214, 214, 0.4)',
     borderWidth: 1,
     alignSelf: 'flex-start',

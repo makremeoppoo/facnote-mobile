@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Dimensions, Platform} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
-import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {textColor} from '../../Theme/AppStyles';
 import {fontType} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(30),
     alignItems: 'center',
     padding: 5,
-    backgroundColor: buttonColor,
+    backgroundColor:'white',
     borderRadius: 60,
     alignSelf: 'center',
   },

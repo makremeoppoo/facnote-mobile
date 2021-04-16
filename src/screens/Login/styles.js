@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 import {StyleSheet, Platform} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
-import {textColor, buttonColor} from '../../Theme/AppStyles';
+import {textColor} from '../../Theme/AppStyles';
 import {fontType} from '../../Theme/AppStyles';
 
 
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(40),
     alignItems: 'center',
     padding: ScaleHelpers.CalcWidth(1),
-    backgroundColor: buttonColor,
+    backgroundColor:'white',
     borderRadius: 60,
     alignSelf: 'center',
     color: textColor,
