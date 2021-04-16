@@ -2,6 +2,8 @@
 import React from 'react';
 import {View, Text, Image} from 'react-native';
 import ScaleHelper from '../../Theme/scaleHelpers';
+import {primaryColor, textColor} from '../../Theme/AppStyles';
+
 class TabBarItem extends React.Component {
   render() {
     const {focused, src, label} = this.props;
@@ -21,7 +23,7 @@ class TabBarItem extends React.Component {
         <Text
           style={{
             fontFamily: 'Nunito-SemiBold',
-            color: focused ? 'rgb(92,117,254)' : 'rgb(112, 112, 112)',
+            color: focused ? primaryColor : textColor,
             fontSize: ScaleHelper.CalcWidth(2.8),
           }}>
           {label}

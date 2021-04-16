@@ -2,6 +2,7 @@
 export const textColor = '#707070';
 export const buttonColor = 'white';
 export const blueColor = 'rgb(92,117,254)';
+export const primaryColor = '#4D7582'
 
 export const fontType = {
   base: 'Nunito-Regular',
