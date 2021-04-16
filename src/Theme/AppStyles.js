@@ -1,5 +1,5 @@
 /* eslint-disable comma-dangle */
-export const textColor = 'rgba(112,112,112,1)';
+export const textColor = '#707070';
 export const buttonColor = 'white';
 export const blueColor = 'rgb(92,117,254)';
 

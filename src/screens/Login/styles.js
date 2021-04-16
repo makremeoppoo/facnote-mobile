@@ -10,6 +10,8 @@ import {fontType} from '../../Theme/AppStyles';
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
+    height: ScaleHelpers.CalcHeight(95),
+
   },
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(100),

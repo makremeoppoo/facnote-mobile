@@ -41,7 +41,7 @@ export const text = {
   credit: 'Credit',
   min: 'Min',
   max: 'Max',
-  identifier: 'vous identifier',
+  identifier: 'Vous identifier',
   mentionsLegales: 'mentions légales',
   CGU: 'CGU',
   Identifiant: 'Identifiant',

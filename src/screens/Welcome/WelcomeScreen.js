@@ -6,16 +6,17 @@ import {
   TouchableHighlight,
   Text,
   ScrollView,
-  ImageBackground,
   Linking,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import styles from './styles';
-import LogoImage from '../../../assets/images/logo.png';
-import {text, routes} from '../../constants';
+import LogoImage from '../../../assets/images/interacto/logo.png';
 
-import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png';
+import {text, routes} from '../../constants';
+import {textColor} from '../../Theme/AppStyles';
+
+import backgroundWelcomeImage from '../../../assets/images/interacto/bg-connexion-interacto.png';
 
 export default class WelcomeScreen extends React.Component {
   constructor(props) {
@@ -41,7 +42,7 @@ export default class WelcomeScreen extends React.Component {
               style={styles.topImageStyle}></Image>
             <View>
               <View style={styles.titleContainer}>
-                <Image style={styles.logo} source={LogoImage} />
+              <Image style={styles.logo} source={LogoImage} />
               </View>
               <View style={styles.buttonView}>
                 <TouchableHighlight
@@ -57,19 +58,19 @@ export default class WelcomeScreen extends React.Component {
 
         <View style={styles.buttomView}>
           <Text
-            style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
+            style={[styles.buttomText, {color: textColor}]}
             onPress={() =>
               Linking.openURL('https://facnote.com/fr/mentions.html')
             }>
             {text.mentionsLegales}
           </Text>
-          <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+          <Text style={[styles.buttomText, {color: textColor}]}>
             {' '}
             -{' '}
           </Text>
           <Text
             onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')}
-            style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+            style={[styles.buttomText, {color: textColor}]}>
             {' '}
             {text.CGU}
           </Text>
