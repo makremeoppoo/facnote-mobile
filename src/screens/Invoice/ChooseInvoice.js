@@ -23,7 +23,7 @@ import {
 import AvanceDeFrais from '../../../assets/images/AvanceDeFrais.png';
 import Document from '../../../assets/images/Document.png';
 import Indemnity from '../../../assets/images/Indemnity.png';
-import Background from '../../../assets/images/interacto/backgroung_depose_facture.png';
+import Background from '../../../assets/images/facnote/backgroung_depose_facture.png';
 import ChooseFacture from './UploadInvoice';
 import IndemnitiesScreen from '../Indemnities/IndemnitiesScreen';
 import {routes, permissions} from '../../constants';
