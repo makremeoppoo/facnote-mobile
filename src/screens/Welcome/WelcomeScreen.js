@@ -6,7 +6,6 @@ import {
   TouchableHighlight,
   Text,
   ScrollView,
-  ImageBackground,
   Linking,
 } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -16,6 +15,7 @@ import LogoImage from '../../../assets/images/logo.png';
 import {text, routes} from '../../constants';
 
 import backgroundWelcomeImage from '../../../assets/images/backgroundWelcome.png';
+import {textColor} from '../../Theme/AppStyles';
 
 export default class WelcomeScreen extends React.Component {
   constructor(props) {
@@ -57,19 +57,19 @@ export default class WelcomeScreen extends React.Component {
 
         <View style={styles.buttomView}>
           <Text
-            style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
+            style={[styles.buttomText, {color: textColor}]}
             onPress={() =>
               Linking.openURL('https://facnote.com/fr/mentions.html')
             }>
             {text.mentionsLegales}
           </Text>
-          <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+          <Text style={[styles.buttomText, {color: textColor}]}>
             {' '}
             -{' '}
           </Text>
           <Text
             onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')}
-            style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+            style={[styles.buttomText, {color: textColor}]}>
             {' '}
             {text.CGU}
           </Text>

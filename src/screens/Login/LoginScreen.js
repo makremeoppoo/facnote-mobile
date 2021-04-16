@@ -2,7 +2,7 @@
 import React from 'react';
 import {
   View,
-  TouchableHighlight, 
+  TouchableHighlight,
   Text,
   TextInput,
   ScrollView,
@@ -18,13 +18,14 @@ import styles from './styles';
 import {connect} from 'react-redux';
 import LogoImage from '../../../assets/images/logo.png';
 import BackgroundLoginImage from '../../../assets/images/background_connexion.png';
+import {textColor} from '../../Theme/AppStyles';
 
 import * as api from '../../services/auth';
 import getCabinet from '../../services/cabinet';
 import getSociety from '../../services/societe';
 
 import {login} from '../../redux';
-import {text,permissions} from '../../constants';
+import {text, permissions} from '../../constants';
 import {userHasPermission} from '../../shared/userHasPermission';
 class LoginScreen extends React.Component {
   constructor(props) {
@@ -90,8 +91,9 @@ class LoginScreen extends React.Component {
         user: user['user'],
         cabinet: cabinet,
         society: society,
-        canShowBank :(await userHasPermission(permissions.banque)||
-        await userHasPermission(permissions.banque_entreprise))
+        canShowBank:
+          (await userHasPermission(permissions.banque)) ||
+          (await userHasPermission(permissions.banque_entreprise)),
       });
       this.setState({loading: false});
       if (rememberMe) {
@@ -114,8 +116,8 @@ class LoginScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.mainContainer}>
-        <ScrollView>
+      <ScrollView>
+        <View style={styles.mainContainer}>
           <Image
             source={BackgroundLoginImage}
             style={styles.topImageStyle}></Image>
@@ -176,29 +178,28 @@ class LoginScreen extends React.Component {
               </TouchableHighlight>
             </View>
           </View>
-        </ScrollView>
-        {this.state.showButtom && (
-          <View style={styles.buttomView}>
-            <Text
-              style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
-              onPress={() =>
-                Linking.openURL('https://facnote.com/fr/mentions.html')
-              }>
-              {text.mentionsLegales}
-            </Text>
-            <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
-              {' '}
-              -{' '}
-            </Text>
-            <Text
-              onPress={() => Linking.openURL('https://facnote.com/fr/cgu.html')}
-              style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
-              {' '}
-              {text.CGU}
-            </Text>
-          </View>
-        )}
-      </View>
+          {this.state.showButtom && (
+            <View style={styles.buttomView}>
+              <Text
+                style={[styles.buttomText, {color: textColor}]}
+                onPress={() =>
+                  Linking.openURL('https://facnote.com/fr/mentions.html')
+                }>
+                {text.mentionsLegales}
+              </Text>
+              <Text style={[styles.buttomText, {color: textColor}]}> - </Text>
+              <Text
+                onPress={() =>
+                  Linking.openURL('https://facnote.com/fr/cgu.html')
+                }
+                style={[styles.buttomText, {color: textColor}]}>
+                {' '}
+                {text.CGU}
+              </Text>
+            </View>
+          )}
+        </View>
+      </ScrollView>
     );
   }
 }
