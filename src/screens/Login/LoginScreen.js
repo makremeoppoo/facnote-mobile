@@ -18,6 +18,7 @@ import styles from './styles';
 import {connect} from 'react-redux';
 import LogoImage from '../../../assets/images/logo.png';
 import BackgroundLoginImage from '../../../assets/images/background_connexion.png';
+import {textColor} from '../../Theme/AppStyles';
 
 import * as api from '../../services/auth';
 import getCabinet from '../../services/cabinet';
@@ -180,21 +181,18 @@ class LoginScreen extends React.Component {
           {this.state.showButtom && (
             <View style={styles.buttomView}>
               <Text
-                style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}
+                style={[styles.buttomText, {color: textColor}]}
                 onPress={() =>
                   Linking.openURL('https://facnote.com/fr/mentions.html')
                 }>
                 {text.mentionsLegales}
               </Text>
-              <Text style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
-                {' '}
-                -{' '}
-              </Text>
+              <Text style={[styles.buttomText, {color: textColor}]}> - </Text>
               <Text
                 onPress={() =>
                   Linking.openURL('https://facnote.com/fr/cgu.html')
                 }
-                style={[styles.buttomText, {color: 'rgb(92,117,254)'}]}>
+                style={[styles.buttomText, {color: textColor}]}>
                 {' '}
                 {text.CGU}
               </Text>

@@ -5,7 +5,7 @@ import {View, Text, ImageBackground} from 'react-native';
 import {connect} from 'react-redux';
 
 import styles from './styles';
-import Background from '../../../assets/images/background-accueil-provisoir-2.png';
+import Background from '../../../assets/images/interacto/bg-accueil-Provisoire-interacto.png';
 
 class HomeScreen extends React.Component {
   constructor(props) {

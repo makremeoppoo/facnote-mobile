@@ -1,8 +1,6 @@
 /* eslint-disable comma-dangle */
-import {StyleSheet, Dimensions, Platform} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
-const {width, height} = Dimensions.get('window');
-const SCREEN_WIDTH = width < height ? width : height;
 import {textColor, buttonColor} from '../../Theme/AppStyles';
 import {fontType} from '../../Theme/AppStyles';
 
