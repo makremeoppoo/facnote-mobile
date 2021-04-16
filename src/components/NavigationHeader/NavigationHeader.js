@@ -3,10 +3,10 @@ import React from 'react';
 import {TouchableOpacity, Image, View, Text} from 'react-native';
 import PropTypes from 'prop-types';
 import styles from './styles';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faSlidersH, faChevronLeft} from '@fortawesome/free-solid-svg-icons';
 import ScaleHelpers from '../../Theme/scaleHelpers';
+import  background from '../../../assets/images/interacto/NavigationBackground.png'
 
 export default class NavigationHeader extends React.Component {
   render() {
@@ -14,7 +14,7 @@ export default class NavigationHeader extends React.Component {
       <View style={styles.headerContain}>
         <Image
           style={styles.headerButtonImage}
-          source={require('../../../assets/images/NavigationBackground.png')}
+          source={background}
         />
         { this.props.onPress && (
         <TouchableOpacity

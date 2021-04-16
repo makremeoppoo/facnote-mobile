@@ -18,11 +18,12 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import Toast from 'react-native-toast-message';
 
 import ImagePickerCrop from 'react-native-image-crop-picker';
-import Rectangle from '../../../assets/images/Rectangle.png';
+import Rectangle from '../../../assets/images/interacto/Rectangle.png';
 import Close from '../../../assets/icons/close.png';
 import uploadFiles from '../../services/upload';
 
 import styles from './styles';
+import {primaryColor} from '../../Theme/AppStyles';
 
 class LoginactureScreen extends React.Component {
   constructor(props) {
@@ -470,7 +471,7 @@ class LoginactureScreen extends React.Component {
               onPress={() => this.chooseFile()}
               underlayColor="rgba(73,182,77,1,0.9)">
               <IconView
-                iconStyle={{color: 'rgba(92,117,254,0.8)'}}
+                iconStyle={{color: primaryColor}}
                 reverse
                 name="ios-attach-outline"
                 type="ionicon"
@@ -484,7 +485,7 @@ class LoginactureScreen extends React.Component {
                 onPress={() => this.chooseImage()}
                 underlayColor="rgba(73,182,77,1,0.9)">
                 <IconView
-                  iconStyle={{color: 'rgba(92,117,254,0.8)'}}
+                  iconStyle={{color: primaryColor}}
                   reverse
                   name="ios-images-outline"
                   type="ionicon"
@@ -498,7 +499,7 @@ class LoginactureScreen extends React.Component {
               onPress={() => this.launchCamera()}
               underlayColor="rgba(73,182,77,1,0.9)">
               <IconView
-                iconStyle={{color: 'rgba(92,117,254,0.8)'}}
+                iconStyle={{color: primaryColor}}
                 reverse
                 name="ios-camera-sharp"
                 type="ionicon"

@@ -5,7 +5,7 @@ import {textColor} from '../../Theme/AppStyles';
 
 const {width, height} = Dimensions.get('window');
 const SCREEN_WIDTH = width < height ? width : height;
-import {fontType} from '../../Theme/AppStyles';
+import {fontType,primaryColor} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
   containerStyle: {
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
   btnTxt: {
     fontFamily: 'Nunito-ExtraBold',
     fontSize: 15,
-    color: 'rgb(92,117,254)',
+    color: primaryColor,
     textAlign: 'center',
   },
   buttomIcon: {
