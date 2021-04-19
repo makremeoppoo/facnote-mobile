@@ -37,16 +37,16 @@ import {createDrawerNavigator} from '@react-navigation/drawer';
 import {NavigationContainer} from '@react-navigation/native';
 
 import {useSelector} from 'react-redux';
-import Home from '../../assets/icons/facnote/home.png';
-import homeActive from '../../assets/icons/facnote/homeActive.png';
+import Home from '../../assets/icons/galery/home.png';
+import homeActive from '../../assets/icons/galery/homeActive.png';
 
-import cameraActive from '../../assets/icons/facnote/cameraActive.png';
-import camera from '../../assets/icons/facnote/camera.png';
-import banque from '../../assets/icons/facnote/banque.png';
-import banqueActive from '../../assets/icons/facnote/banqueActive.png';
+import cameraActive from '../../assets/icons/galery/cameraActive.png';
+import camera from '../../assets/icons/galery/camera.png';
+import banque from '../../assets/icons/galery/banque.png';
+import banqueActive from '../../assets/icons/galery/banqueActive.png';
 
-import more from '../../assets/icons/facnote/more.png';
-import moreActive from '../../assets/icons/facnote/moreActive.png';
+import more from '../../assets/icons/galery/more.png';
+import moreActive from '../../assets/icons/galery/moreActive.png';
 import ScaleHelpers from '../Theme/scaleHelpers';
 import {text, routes, permissions} from '../constants';
 import jwtDecode from 'jwt-decode';
