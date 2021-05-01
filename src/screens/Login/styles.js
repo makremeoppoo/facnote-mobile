@@ -8,7 +8,7 @@ import {fontType} from '../../Theme/AppStyles';
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    height: ScaleHelpers.CalcHeight(95),
+    height: ScaleHelpers.CalcHeight(100),
 
   },
   topImageStyle: {
