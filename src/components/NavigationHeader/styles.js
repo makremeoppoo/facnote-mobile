@@ -4,11 +4,7 @@ import ScaleHelpers from '../../Theme/scaleHelpers';
 import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
-  headerButtonContainer: {
-    padding: 0,
-    justifyContent: 'center',
-    margin: 0,
-  },
+
   headerButtonImage: {
     resizeMode: 'stretch',
     width: ScaleHelpers.CalcWidth(100),

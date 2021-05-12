@@ -1,32 +1,34 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
 import {TouchableOpacity, Image, View, Text} from 'react-native';
-import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import styles from './styles';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
-import {faSlidersH, faChevronLeft} from '@fortawesome/free-solid-svg-icons';
+import {
+  faSlidersH,
+  faChevronLeft,
+  faPowerOff,
+} from '@fortawesome/free-solid-svg-icons';
 import ScaleHelpers from '../../Theme/scaleHelpers';
-import  background from '../../../assets/images/galery/NavigationBackground.png'
+import background from '../../../assets/images/galery/NavigationBackground.png';
+import {logout} from '../../redux';
 
-export default class NavigationHeader extends React.Component {
+class NavigationHeader extends React.Component {
   render() {
     return (
       <View style={styles.headerContain}>
-        <Image
-          style={styles.headerButtonImage}
-          source={background}
-        />
-        { this.props.onPress && (
-        <TouchableOpacity
-          style={{
-            width: ScaleHelpers.CalcWidth(10),
-            height: ScaleHelpers.CalcWidth(5),
-            paddingLeft: ScaleHelpers.CalcWidth(5),
-            alignItems: 'center',
-          }}
-          onPress={this.props.onPress}>
-          <FontAwesomeIcon icon={faChevronLeft} size={25} color="white" />
-        </TouchableOpacity>
+        <Image style={styles.headerButtonImage} source={background} />
+        {this.props.onPress && (
+          <TouchableOpacity
+            style={{
+              width: ScaleHelpers.CalcWidth(10),
+              height: ScaleHelpers.CalcWidth(5),
+              paddingLeft: ScaleHelpers.CalcWidth(5),
+              alignItems: 'center',
+            }}
+            onPress={this.props.onPress}>
+            <FontAwesomeIcon icon={faChevronLeft} size={25} color="white" />
+          </TouchableOpacity>
         )}
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{this.props.title}</Text>
@@ -37,7 +39,7 @@ export default class NavigationHeader extends React.Component {
           <TouchableOpacity
             style={{
               width: ScaleHelpers.CalcWidth(10),
-              height:  ScaleHelpers.CalcWidth(5),
+              height: ScaleHelpers.CalcWidth(5),
               paddingRight: ScaleHelpers.CalcWidth(5),
               alignItems: 'center',
             }}
@@ -45,11 +47,24 @@ export default class NavigationHeader extends React.Component {
             <FontAwesomeIcon icon={faSlidersH} size={25} color="white" />
           </TouchableOpacity>
         )}
+        {this.props.powerOff && (
+          <TouchableOpacity
+            style={{
+              width: ScaleHelpers.CalcWidth(10),
+              height: ScaleHelpers.CalcWidth(5),
+              paddingLeft: ScaleHelpers.CalcWidth(5),
+              paddingBottom: ScaleHelpers.CalcHeight(10),
+            }}
+            onPress={() => this.props.logout()}>
+            <FontAwesomeIcon icon={faPowerOff} size={25} color="white" />
+          </TouchableOpacity>
+        )}
       </View>
     );
   }
 }
 
-NavigationHeader.propTypes = {
-  onPress: PropTypes.func,
-};
+const mapStateToProps = (state) => ({
+  user: state.auth,
+});
+export default connect(mapStateToProps, {logout})(NavigationHeader);
