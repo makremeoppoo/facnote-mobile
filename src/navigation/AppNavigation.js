@@ -44,7 +44,8 @@ import cameraActive from '../../assets/icons/galery/cameraActive.png';
 import camera from '../../assets/icons/galery/camera.png';
 import banque from '../../assets/icons/galery/banque.png';
 import banqueActive from '../../assets/icons/galery/banqueActive.png';
-
+import indicateurActive from '../../assets/icons/galery/IndicateurActive.png';
+import indicateur from '../../assets/icons/galery/Indicateur.png';
 import more from '../../assets/icons/galery/more.png';
 import moreActive from '../../assets/icons/galery/moreActive.png';
 import ScaleHelpers from '../Theme/scaleHelpers';
@@ -122,25 +123,13 @@ const TabNavigator = () => {
           tabBarIcon: ({tintColor, focused}) => (
             <TabBarItem
               focused={focused}
-              label={text.Accueil}
-              src={focused ? homeActive : Home}
+              label={text.Indicateur}
+              src={focused ? indicateurActive : indicateur}
             />
           ),
         }}
       />
-      {/*<BottomTabNavigator.Screen
-        name="Indicateur"
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({tintColor, focused}) => (
-            <TabBarItem
-              focused={focused}
-              label={'Indicateur'}
-              src={focused ? IndicateurImgActive : IndicateurImg}
-            />
-          ),
-        }}
-      />*/}
+
       {canShowBank && (
         <BottomTabNavigator.Screen
           name={routes.BankStatement}
