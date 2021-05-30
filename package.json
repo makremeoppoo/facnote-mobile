@@ -49,6 +49,7 @@
     "react-native-responsive-screen": "^1.4.1",
     "react-native-safe-area-context": "^3.1.1",
     "react-native-screens": "^2.9.0",
+    "react-native-segmented-control-tabs": "^1.4.0",
     "react-native-svg": "^9.7.1",
     "react-native-svg-charts": "^5.4.0",
     "react-native-toast-message": "^1.3.7",

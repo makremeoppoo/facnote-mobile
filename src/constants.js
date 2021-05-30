@@ -91,6 +91,14 @@ export const text = {
   SoldeAu: 'Solde au',
   transactionJustifier: 'transaction(s) à justifier',
   transactionNonJustifier: 'transaction(s) non justifier',
+  IndicateurCle: 'Indicateurs Clés',
+  Marge: 'Marge',
+  Excedent: 'Excédent brut d\'exploitation',
+  ChargePersonelle: 'Charge du personelle',
+  SoldeCompte: 'Solde Compte',
+  ChiffreAffaire: 'Chiffre Affaire',
+  Charge: 'Charge',
+
 };
 
 export const routes = {
