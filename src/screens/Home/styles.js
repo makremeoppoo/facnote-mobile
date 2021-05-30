@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: ScaleHelpers.CalcHeight(100),
     alignItems: 'center',
+    backgroundColor:'white'
   },
 
   chartContent: {

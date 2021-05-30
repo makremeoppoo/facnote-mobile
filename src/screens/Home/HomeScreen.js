@@ -27,6 +27,10 @@ class HomeScreen extends React.Component {
 
       exercises: [],
       exercise: {},
+      turnover: {},
+      fixedCharge: {},
+      notFixedCharge: {},
+      bankBalance: {},
     };
   }
   async componentDidMount() {
@@ -52,9 +56,26 @@ class HomeScreen extends React.Component {
     const indicators = await getIndicator(
       moment(exercise.date_debut).format('YYYY'),
     );
+    console.log(indicators.data_table_1);
+    const turnover = indicators.data_table_2.find(
+      (item) => item.label == "Chiffre d'affaire",
+    );
+    const fixedCharge = indicators.data_table_2.find(
+      (item) => item.label == 'Charge fixe',
+    );
+    const notFixedCharge = indicators.data_table_2.find(
+      (item) => item.label == 'Charge variable',
+    );
+    const bankBalance = indicators.data_table_1.find(
+      (item) => item.label == 'Solde de la banque',
+    );
     this.setState({
       exercises,
       exercise,
+      turnover,
+      fixedCharge,
+      notFixedCharge,
+      bankBalance,
     });
   }
   handleIndexChange = (index) => {
@@ -64,7 +85,14 @@ class HomeScreen extends React.Component {
     });
   };
   render() {
-    const {exercise, exercises} = this.state;
+    const {
+      exercise,
+      exercises,
+      turnover,
+      fixedCharge,
+      notFixedCharge,
+      bankBalance,
+    } = this.state;
     return (
       <>
         <NavigationHeader
@@ -145,13 +173,14 @@ class HomeScreen extends React.Component {
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
               <Text style={[styles.itemValue, {color: '#4aa96c'}]}>
-                {'+9 000000 €'}
+                {bankBalance.total?.toFixed(2)} {' €'}
               </Text>
               <Text style={[styles.itemValue, {color: 'red'}]}>
-                {'+9 000000 €'}
+                {(fixedCharge.total + notFixedCharge.total)?.toFixed(2)}
+                {' €'}
               </Text>
               <Text style={[styles.itemValue, {color: '#4EC7F5'}]}>
-                {'+9 000000 €'}
+                {turnover.total?.toFixed(2)} {' €'}
               </Text>
             </View>
             <View style={styles.valueCardrowContainer}>
@@ -177,7 +206,7 @@ class HomeScreen extends React.Component {
               svg={{fontSize: 10, fill: 'black'}}
             />
           </View>
-          <View style={styles.chartContent}>
+          {/*  <View style={styles.chartContent}>
             <BarChart
               style={{flex: 1}}
               data={[14, 80, 100, 55]}
@@ -191,7 +220,7 @@ class HomeScreen extends React.Component {
               formatLabel={(value, index) => index}
               labelStyle={{color: 'black'}}
             />
-          </View>
+          </View>*/}
         </View>
       </>
     );
