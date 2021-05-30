@@ -6,6 +6,7 @@ import {LineChart, BarChart, XAxis, Grid} from 'react-native-svg-charts';
 import * as scale from 'd3-scale';
 import SegmentedControlTabs from 'react-native-segmented-control-tabs';
 import moment from 'moment';
+import getIndicator from '../../services/getIndicator';
 
 import {text} from '../../constants';
 import {primaryColor} from '../../Theme/AppStyles';
@@ -43,8 +44,17 @@ class HomeScreen extends React.Component {
       });
     });
 
+    const exercise = exercises.find(
+      (item) =>
+        item.date_debut == exercisesData.current_exercise.date_debut &&
+        item.date_fin == exercisesData.current_exercise.date_fin,
+    );
+    const indicators = await getIndicator(
+      moment(exercise.date_debut).format('YYYY'),
+    );
     this.setState({
       exercises,
+      exercise,
     });
   }
   handleIndexChange = (index) => {

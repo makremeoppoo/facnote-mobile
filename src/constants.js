@@ -1,5 +1,5 @@
 //API URL
-export const API_URL = 'https://cabinet-expertcomptable.com/';
+export const API_URL = 'http://odyssee.facnote.com';
 export const API_URL_DEV = 'http://odyssee.facnote.com';
 export const API_URL_PROD = 'https://cabinet-expertcomptable.com/';
 
@@ -18,6 +18,7 @@ export const SENDCOMMENT = `/api/v1/comments/association`;
 export const REPLYCOMMENT = `/api/v1/comments/reply`;
 export const GETCOMMENTS = `/api/v1/comments`;
 export const GETEXERCICES = `/api/v1/exercises`;
+export const GETINDICATOR = `/api/v1/indicators`;
 
 export const GETACCOUNTSBANK = `/api/v1/accounts/bank`;
 
