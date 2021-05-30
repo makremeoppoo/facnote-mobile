@@ -5,6 +5,7 @@ import {View, Text} from 'react-native';
 import {LineChart, BarChart, XAxis, Grid} from 'react-native-svg-charts';
 import * as scale from 'd3-scale';
 import SegmentedControlTabs from 'react-native-segmented-control-tabs';
+import moment from 'moment';
 
 import {text} from '../../constants';
 import {primaryColor} from '../../Theme/AppStyles';
@@ -12,6 +13,7 @@ import ScaleHelpers from '../../Theme/scaleHelpers';
 import {fontType} from '../../Theme/AppStyles';
 
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
+import getExercices from '../../services/getExercices';
 
 import styles from './styles';
 const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80];
@@ -21,7 +23,29 @@ class HomeScreen extends React.Component {
     super();
     this.state = {
       selectedIndex: 0,
+
+      exercises: [],
+      exercise: {},
     };
+  }
+  async componentDidMount() {
+    var exercisesData = await getExercices();
+    let exercises = [];
+
+    exercisesData.exercises.map((item, index) => {
+      exercises.push({
+        key: index++,
+        label: `${moment(item.date_debut).format('DD/MM/YYYY')} au ${moment(
+          item.date_fin,
+        ).format('DD/MM/YYYY')}`,
+        date_debut: item.date_debut,
+        date_fin: item.date_fin,
+      });
+    });
+
+    this.setState({
+      exercises,
+    });
   }
   handleIndexChange = (index) => {
     this.setState({
@@ -30,12 +54,20 @@ class HomeScreen extends React.Component {
     });
   };
   render() {
+    const {exercise, exercises} = this.state;
     return (
       <>
         <NavigationHeader
           title={text.Indicateur}
           powerOff={true}
-          subTitle={'Exercice'}
+          showSelectExecices
+          exercises={exercises}
+          exercise={exercise}
+          setExercise={(option) =>
+            this.setState({
+              exercise: option,
+            })
+          }
         />
         <View style={styles.container}>
           <SegmentedControlTabs
@@ -102,7 +134,7 @@ class HomeScreen extends React.Component {
           />
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
-              <Text style={[styles.itemValue, {color: 'green'}]}>
+              <Text style={[styles.itemValue, {color: '#4aa96c'}]}>
                 {'+9 000000 €'}
               </Text>
               <Text style={[styles.itemValue, {color: 'red'}]}>

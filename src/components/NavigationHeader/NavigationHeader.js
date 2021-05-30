@@ -1,6 +1,6 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {TouchableOpacity, Image, View, Text} from 'react-native';
+import {TouchableOpacity, Image, View, Text, TextInput} from 'react-native';
 import {connect} from 'react-redux';
 import styles from './styles';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -9,6 +9,8 @@ import {
   faChevronLeft,
   faPowerOff,
 } from '@fortawesome/free-solid-svg-icons';
+import ModalSelector from 'react-native-modal-selector';
+
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import background from '../../../assets/images/galery/NavigationBackground.png';
 import {logout} from '../../redux';
@@ -32,7 +34,25 @@ class NavigationHeader extends React.Component {
         )}
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{this.props.title}</Text>
-          <Text style={styles.subTitle}>{this.props.subTitle}</Text>
+          {this.props.showSelectExecices && (
+            <View style={styles.inputContainer}>
+              <ModalSelector
+                cancelText={'Fermer'}
+                data={this.props.exercises}
+                onChange={(option) => {
+                  this.props.setExercise(option)
+                 
+                }}>
+                <TextInput
+                  placeholder="exercises"
+                  style={styles.label}
+                  editable={false}
+                  value={this.props.exercise.label}
+                  placeholderTextColor="white"
+                />
+              </ModalSelector>
+            </View>
+          )}
         </View>
 
         {this.props.onPressTwo && (

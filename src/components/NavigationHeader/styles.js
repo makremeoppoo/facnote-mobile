@@ -4,7 +4,6 @@ import ScaleHelpers from '../../Theme/scaleHelpers';
 import {fontType} from '../../Theme/AppStyles';
 
 const styles = StyleSheet.create({
-
   headerButtonImage: {
     resizeMode: 'stretch',
     width: ScaleHelpers.CalcWidth(100),
@@ -34,6 +33,22 @@ const styles = StyleSheet.create({
     fontFamily: fontType.base,
     fontSize: ScaleHelpers.CalcWidth(3.8),
     color: 'white',
+  },
+  inputContainer: {
+    paddingLeft: 10,
+    height: ScaleHelpers.CalcHeight(6),
+    width: ScaleHelpers.CalcWidth(80),
+    backgroundColor: 'transparent',
+    alignSelf: 'center',
+    borderBottomWidth: 1,
+    borderColor: 'white',
+  },
+
+  label: {
+    textAlign:'center',
+    fontFamily: fontType.med,
+    color: 'white',
+    fontSize: ScaleHelpers.CalcWidth(4),
   },
 });
 
