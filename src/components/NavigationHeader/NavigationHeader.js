@@ -36,13 +36,14 @@ class NavigationHeader extends React.Component {
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{this.props.title}</Text>
           {this.props.showSelectExecices && (
-            <View style={styles.inputContainer}>
-              <ModalSelector
-                cancelText={'Fermer'}
-                data={this.props.exercises}
-                onChange={(option) => {
-                  this.props.setExercise(option);
-                }}>
+            <ModalSelector
+              style={styles.inputContainer}
+              cancelText={'Fermer'}
+              data={this.props.exercises}
+              onChange={(option) => {
+                this.props.setExercise(option);
+              }}>
+              <View style={styles.inputContainer}>
                 <TextInput
                   placeholder="exercises"
                   style={styles.exercice}
@@ -50,9 +51,14 @@ class NavigationHeader extends React.Component {
                   value={this.props.exercise.label}
                   placeholderTextColor="white"
                 />
-              </ModalSelector>
-              <FontAwesomeIcon icon={faChevronDown} style={styles.chevronDown} size={20} color="white" />
-            </View>
+                <FontAwesomeIcon
+                  icon={faChevronDown}
+                  style={styles.chevronDown}
+                  size={20}
+                  color="white"
+                />
+              </View>
+            </ModalSelector>
           )}
         </View>
 

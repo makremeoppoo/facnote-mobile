@@ -1,19 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import {LineChart, XAxis, YAxis} from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
-import * as scale from 'd3-scale';
-
 import SegmentedControlTabs from 'react-native-segmented-control-tabs';
 import moment from 'moment';
 import getIndicator from '../../services/getIndicator';
-
+import PageLoader from '../../components/PageLoader/PageLoader';
 import {text} from '../../constants';
 import {primaryColor} from '../../Theme/AppStyles';
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import {fontType} from '../../Theme/AppStyles';
+import Rectangle from '../../../assets/images/galery/Rectangle.png';
 
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
 import getExercices from '../../services/getExercices';
@@ -48,7 +47,7 @@ class HomeScreen extends React.Component {
     super();
     this.state = {
       selectedIndex: 0,
-
+      loading: false,
       exercises: [],
       exercise: {},
       turnover: {},
@@ -60,7 +59,7 @@ class HomeScreen extends React.Component {
   async componentDidMount() {
     var exercisesData = await getExercices();
     let exercises = [];
-
+    this.setState({loading: true});
     exercisesData.exercises.map((item, index) => {
       exercises.push({
         key: index++,
@@ -100,6 +99,7 @@ class HomeScreen extends React.Component {
       fixedCharge,
       notFixedCharge,
       bankBalance,
+      loading: false,
     });
   }
   handleIndexChange = (index) => {
@@ -116,8 +116,8 @@ class HomeScreen extends React.Component {
       fixedCharge,
       notFixedCharge,
       bankBalance,
+      loading,
     } = this.state;
-
 
     return (
       <>
@@ -134,67 +134,80 @@ class HomeScreen extends React.Component {
           }
         />
         <View style={styles.container}>
+          {loading && (
+            <PageLoader showBackground={true} size="large" color="#0000ff" />
+          )}
           <SegmentedControlTabs
             values={[
-              <Text
-                style={{
-                  color: this.state.selectedIndex == 0 ? 'white' : 'grey',
-                  textAlignVertical: 'center',
-                  textAlign: 'center',
-                  fontFamily: fontType.bold,
-                  fontSize: ScaleHelpers.CalcWidth(3),
-                }}>
-                {text.IndicateurCle}
-              </Text>,
-              <Text
-                style={{
-                  color: this.state.selectedIndex == 1 ? 'white' : 'grey',
-                  textAlignVertical: 'center',
-                  textAlign: 'center',
-                  fontFamily: fontType.bold,
-                  fontSize: ScaleHelpers.CalcWidth(3),
-                }}>
-                {text.Marge}
-              </Text>,
-              <Text
-                style={{
-                  color: this.state.selectedIndex == 2 ? 'white' : 'grey',
-                  textAlignVertical: 'center',
-                  textAlign: 'center',
-                  fontFamily: fontType.bold,
-                  fontSize: ScaleHelpers.CalcWidth(3),
-                }}>
-                {text.Excedent}
-              </Text>,
-              <Text
-                style={{
-                  color: this.state.selectedIndex == 3 ? 'white' : 'grey',
-                  textAlignVertical: 'center',
-                  textAlign: 'center',
-                  fontFamily: fontType.bold,
-                  fontSize: ScaleHelpers.CalcWidth(3),
-                }}>
-                {text.ChargePersonelle}
-              </Text>,
+              <>
+                {this.state.selectedIndex == 0 && (
+                  <Image style={styles.shadeImage} source={Rectangle} />
+                )}
+                <Text
+                  style={{
+                    color: this.state.selectedIndex == 0 ? 'white' : 'grey',
+                    textAlignVertical: 'center',
+                    textAlign: 'center',
+                    fontFamily: fontType.bold,
+                    fontSize: ScaleHelpers.CalcWidth(2.8),
+                  }}>
+                  {text.IndicateurCle}
+                </Text>
+              </>,
+              <>
+                {this.state.selectedIndex == 1 && (
+                  <Image style={styles.shadeImage} source={Rectangle} />
+                )}
+                <Text
+                  style={{
+                    color: this.state.selectedIndex == 1 ? 'white' : 'grey',
+                    textAlignVertical: 'center',
+                    textAlign: 'center',
+                    fontFamily: fontType.bold,
+                    fontSize: ScaleHelpers.CalcWidth(2.8),
+                  }}>
+                  {text.Marge}
+                </Text>
+              </>,
+              <>
+                {this.state.selectedIndex == 2 && (
+                  <Image style={styles.shadeImage} source={Rectangle} />
+                )}
+                <Text
+                  style={{
+                    color: this.state.selectedIndex == 2 ? 'white' : 'grey',
+                    textAlignVertical: 'center',
+                    textAlign: 'center',
+                    fontFamily: fontType.bold,
+                    fontSize: ScaleHelpers.CalcWidth(2.8),
+                  }}>
+                  {text.Excedent}
+                </Text>
+              </>,
+              <>
+                {this.state.selectedIndex == 3 && (
+                  <Image style={styles.shadeImage} source={Rectangle} />
+                )}
+                <Text
+                  style={{
+                    color: this.state.selectedIndex == 3 ? 'white' : 'grey',
+                    textAlignVertical: 'center',
+                    textAlign: 'center',
+                    fontFamily: fontType.bold,
+                    fontSize: ScaleHelpers.CalcWidth(2.8),
+                  }}>
+                  {text.ChargePersonelle}
+                </Text>
+              </>,
             ]}
             handleOnChangeIndex={this.handleIndexChange}
             activeIndex={this.state.selectedIndex}
             tabsContainerStyle={{
-              width: ScaleHelpers.CalcWidth(100),
               height: ScaleHelpers.CalcHeight(7),
-              backgroundColor: 'transparent',
-              borderColor: 'transparent',
               marginTop: ScaleHelpers.CalcHeight(2),
+              marginHorizontal: ScaleHelpers.CalcWidth(0.5),
             }}
-            activeTabStyle={{
-              backgroundColor: primaryColor,
-              zIndex: 1,
-            }}
-            tabStyle={{
-              borderRadius: ScaleHelpers.CalcWidth(1),
-              borderColor: 'transparent',
-              marginHorizontal: ScaleHelpers.CalcWidth(1),
-            }}
+            tabStyle={styles.tabStyle}
           />
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>

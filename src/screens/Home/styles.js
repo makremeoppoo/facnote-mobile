@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   chartContent: {
     height: ScaleHelpers.CalcHeight(25),
     width: ScaleHelpers.CalcWidth(90),
-    alignSelf:'center',
+    alignSelf: 'center',
     flexDirection: 'row',
   },
   valueCardrowContainer: {
@@ -33,7 +33,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     // its for android
     elevation: 5,
-
     width: ScaleHelpers.CalcWidth(90),
     height: ScaleHelpers.CalcHeight(8),
     borderRadius: 10,
@@ -43,7 +42,21 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     justifyContent: 'center',
   },
-
+  tabStyle: {
+    backgroundColor: 'rgba(214, 214, 214, 0.4)',
+    marginHorizontal: ScaleHelpers.CalcWidth(2),
+    borderRadius: ScaleHelpers.CalcWidth(2),
+    borderWidth: ScaleHelpers.CalcWidth(1),
+    borderColor: 'rgba(214, 214, 214, 0.4)',
+    height: ScaleHelpers.CalcHeight(6),
+  },
+  shadeImage: {
+    borderRadius: ScaleHelpers.CalcWidth(2),
+    position: 'absolute',
+    borderWidth: ScaleHelpers.CalcWidth(2),
+    width: ScaleHelpers.CalcWidth(25),
+    height: ScaleHelpers.CalcHeight(6),
+  },
   itemLabel: {
     fontSize: ScaleHelpers.CalcWidth(4),
     width: ScaleHelpers.CalcWidth(30),
@@ -60,7 +73,6 @@ const styles = StyleSheet.create({
   },
   titleChartContainer: {
     marginTop: ScaleHelpers.CalcHeight(2),
-
   },
   titleChart: {
     fontSize: ScaleHelpers.CalcWidth(4),
