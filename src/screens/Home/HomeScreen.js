@@ -2,8 +2,10 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
 import {View, Text} from 'react-native';
-import {LineChart, BarChart, XAxis, Grid} from 'react-native-svg-charts';
+import {LineChart, XAxis, YAxis} from 'react-native-svg-charts';
+import * as shape from 'd3-shape';
 import * as scale from 'd3-scale';
+
 import SegmentedControlTabs from 'react-native-segmented-control-tabs';
 import moment from 'moment';
 import getIndicator from '../../services/getIndicator';
@@ -15,9 +17,31 @@ import {fontType} from '../../Theme/AppStyles';
 
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
 import getExercices from '../../services/getExercices';
+import CustomGrid from '../../components/CustomGrid/CostumGrid';
 
 import styles from './styles';
 const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80];
+const xAxisData = [
+  'label',
+  '10',
+  '40',
+  '95',
+  '4',
+  '24',
+  '85',
+  '91',
+  '35',
+  '53',
+  '53',
+  '24',
+  '50',
+  '20',
+  '80',
+];
+
+const axesSvg = {fontSize: 10, fill: 'grey'};
+const verticalContentInset = {top: 10, bottom: 10};
+const xAxisHeight = 30;
 
 class HomeScreen extends React.Component {
   constructor() {
@@ -56,7 +80,6 @@ class HomeScreen extends React.Component {
     const indicators = await getIndicator(
       moment(exercise.date_debut).format('YYYY'),
     );
-    console.log(indicators.data_table_1);
     const turnover = indicators.data_table_2.find(
       (item) => item.label == "Chiffre d'affaire",
     );
@@ -66,6 +89,7 @@ class HomeScreen extends React.Component {
     const notFixedCharge = indicators.data_table_2.find(
       (item) => item.label == 'Charge variable',
     );
+
     const bankBalance = indicators.data_table_1.find(
       (item) => item.label == 'Solde de la banque',
     );
@@ -93,6 +117,8 @@ class HomeScreen extends React.Component {
       notFixedCharge,
       bankBalance,
     } = this.state;
+
+
     return (
       <>
         <NavigationHeader
@@ -172,15 +198,15 @@ class HomeScreen extends React.Component {
           />
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
-              <Text style={[styles.itemValue, {color: '#4aa96c'}]}>
+              <Text style={[styles.itemValue, {color: '#4EC7F5'}]}>
                 {bankBalance.total?.toFixed(2)} {' €'}
               </Text>
-              <Text style={[styles.itemValue, {color: 'red'}]}>
-                {(fixedCharge.total + notFixedCharge.total)?.toFixed(2)}
+              <Text style={[styles.itemValue, {color: '#EA4C89'}]}>
+                {turnover.total?.toFixed(2)} {' €'}
                 {' €'}
               </Text>
-              <Text style={[styles.itemValue, {color: '#4EC7F5'}]}>
-                {turnover.total?.toFixed(2)} {' €'}
+              <Text style={[styles.itemValue, {color: '#4CC418'}]}>
+                {(fixedCharge.total + notFixedCharge.total)?.toFixed(2)}
               </Text>
             </View>
             <View style={styles.valueCardrowContainer}>
@@ -189,38 +215,45 @@ class HomeScreen extends React.Component {
               <Text style={styles.itemLabel}>{text.Charge}</Text>
             </View>
           </View>
-          <View style={styles.chartContent}>
-            <LineChart
-              style={{flex: 1}}
-              data={data}
-              gridMin={0}
-              contentInset={{top: 10, bottom: 10}}
-              svg={{stroke: 'rgb(134, 65, 244)'}}>
-              <Grid />
-            </LineChart>
-            <XAxis
-              style={{marginHorizontal: -10}}
-              data={data}
-              formatLabel={(value, index) => index}
-              contentInset={{left: 10, right: 10}}
-              svg={{fontSize: 10, fill: 'black'}}
-            />
+          <View style={styles.titleChartContainer}>
+            <Text style={styles.titleChart}>Charge</Text>
           </View>
-          {/*  <View style={styles.chartContent}>
-            <BarChart
-              style={{flex: 1}}
-              data={[14, 80, 100, 55]}
-              gridMin={0}
-              svg={{fill: 'rgb(134, 65, 244)'}}
+          <View style={styles.chartContent}>
+            <YAxis
+              data={data}
+              style={{marginBottom: 0}}
+              contentInset={verticalContentInset}
+              svg={axesSvg}
+              max={95}
             />
-            <XAxis
-              style={{marginTop: 10}}
-              data={[14, 80, 100, 55]}
-              scale={scale.scaleBand}
-              formatLabel={(value, index) => index}
-              labelStyle={{color: 'black'}}
-            />
-          </View>*/}
+            <View style={{flex: 1, marginLeft: 10}}>
+              <LineChart
+                style={{flex: 1}}
+                data={data}
+                svg={{
+                  stroke: '#4CC418',
+                  strokeWidth: 2,
+                }}
+                contentInset={{top: 20, bottom: 20}}
+                curve={shape.curveLinear}>
+                <CustomGrid />
+              </LineChart>
+              <XAxis
+                data={xAxisData}
+                svg={{
+                  fill: 'grey',
+                  fontSize: 8,
+                  fontWeight: 'bold',
+                  rotation: 20,
+                  originY: 30,
+                  y: 5,
+                }}
+                formatLabel={(index) => xAxisData[index]}
+                style={{marginHorizontal: -15, height: 20}}
+                contentInset={{left: 10, right: 25}}
+              />
+            </View>
+          </View>
         </View>
       </>
     );

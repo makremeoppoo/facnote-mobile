@@ -42,12 +42,18 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderBottomWidth: 1,
     borderColor: 'white',
+    flexDirection:'row'
   },
 
-  label: {
+  exercice: {
     textAlign:'center',
     fontFamily: fontType.med,
     color: 'white',
+    width: ScaleHelpers.CalcWidth(65),
+    fontSize: ScaleHelpers.CalcWidth(4),
+  },
+  chevronDown: {
+    alignSelf:"center",
     fontSize: ScaleHelpers.CalcWidth(4),
   },
 });

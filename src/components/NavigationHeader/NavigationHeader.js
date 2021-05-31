@@ -8,6 +8,7 @@ import {
   faSlidersH,
   faChevronLeft,
   faPowerOff,
+  faChevronDown,
 } from '@fortawesome/free-solid-svg-icons';
 import ModalSelector from 'react-native-modal-selector';
 
@@ -40,17 +41,17 @@ class NavigationHeader extends React.Component {
                 cancelText={'Fermer'}
                 data={this.props.exercises}
                 onChange={(option) => {
-                  this.props.setExercise(option)
-                 
+                  this.props.setExercise(option);
                 }}>
                 <TextInput
                   placeholder="exercises"
-                  style={styles.label}
+                  style={styles.exercice}
                   editable={false}
                   value={this.props.exercise.label}
                   placeholderTextColor="white"
                 />
               </ModalSelector>
+              <FontAwesomeIcon icon={faChevronDown} style={styles.chevronDown} size={20} color="white" />
             </View>
           )}
         </View>

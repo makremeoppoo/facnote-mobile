@@ -10,15 +10,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     height: ScaleHelpers.CalcHeight(100),
-    alignItems: 'center',
-    backgroundColor:'white'
+    backgroundColor: 'white',
   },
 
   chartContent: {
     height: ScaleHelpers.CalcHeight(25),
-    marginTop: ScaleHelpers.CalcHeight(5),
     width: ScaleHelpers.CalcWidth(90),
-    justifyContent: 'center',
+    alignSelf:'center',
+    flexDirection: 'row',
   },
   valueCardrowContainer: {
     flexDirection: 'row',
@@ -53,6 +52,17 @@ const styles = StyleSheet.create({
     fontFamily: fontType.base,
   },
   itemValue: {
+    fontSize: ScaleHelpers.CalcWidth(4),
+    width: ScaleHelpers.CalcWidth(30),
+    textAlign: 'center',
+    color: '#707070',
+    fontFamily: fontType.bold,
+  },
+  titleChartContainer: {
+    marginTop: ScaleHelpers.CalcHeight(2),
+
+  },
+  titleChart: {
     fontSize: ScaleHelpers.CalcWidth(4),
     width: ScaleHelpers.CalcWidth(30),
     textAlign: 'center',
