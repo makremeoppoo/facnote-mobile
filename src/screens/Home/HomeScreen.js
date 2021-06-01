@@ -19,28 +19,10 @@ import getExercices from '../../services/getExercices';
 import CustomGrid from '../../components/CustomGrid/CostumGrid';
 
 import styles from './styles';
-const data = [50, 10, 40, 95, -4, -24, 85, 91, 35, 53, -53, 24, 50, -20, -80];
-const xAxisData = [
-  'label',
-  '10',
-  '40',
-  '95',
-  '4',
-  '24',
-  '85',
-  '91',
-  '35',
-  '53',
-  '53',
-  '24',
-  '50',
-  '20',
-  '80',
-];
+import {getMaxArryaValue, getMinArryaValue} from '../../shared/utils';
 
 const axesSvg = {fontSize: 10, fill: 'grey'};
 const verticalContentInset = {top: 10, bottom: 10};
-const xAxisHeight = 30;
 
 class HomeScreen extends React.Component {
   constructor() {
@@ -108,6 +90,33 @@ class HomeScreen extends React.Component {
       selectedIndex: index,
     });
   };
+  getChargeValues = () => {
+    const {fixedCharge, notFixedCharge} = this.state;
+    let fixedChargeValues = Object.values(fixedCharge).slice(3);
+    let notFixedChargeValues = Object.values(notFixedCharge).slice(3);
+    let tab = [];
+
+    let keys = this.getChargeKeys();
+
+    tab = fixedChargeValues.map((item, index) => {
+      return {
+        value: Number((item + notFixedChargeValues[index]).toFixed(2)),
+        month: keys[index],
+      };
+    });
+
+    return tab;
+  };
+  getChargeKeys = (index = null) => {
+    const {notFixedCharge} = this.state;
+    let tab = Object.keys(notFixedCharge).slice(3);
+    if (index != null) {
+      return tab[index];
+    } else {
+      return tab;
+    }
+  };
+
   render() {
     const {
       exercise,
@@ -118,6 +127,10 @@ class HomeScreen extends React.Component {
       bankBalance,
       loading,
     } = this.state;
+
+    var lineChartChargeValue = this.getChargeValues();
+    const maxChargeValue = getMaxArryaValue(lineChartChargeValue);
+    const minChargeValue = getMinArryaValue(lineChartChargeValue);
 
     return (
       <>
@@ -212,11 +225,10 @@ class HomeScreen extends React.Component {
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
               <Text style={[styles.itemValue, {color: '#4EC7F5'}]}>
-                {bankBalance.total?.toFixed(2)} {' €'}
+                {bankBalance.total?.toFixed(2)}
               </Text>
               <Text style={[styles.itemValue, {color: '#EA4C89'}]}>
-                {turnover.total?.toFixed(2)} {' €'}
-                {' €'}
+                {turnover.total?.toFixed(2)}
               </Text>
               <Text style={[styles.itemValue, {color: '#4CC418'}]}>
                 {(fixedCharge.total + notFixedCharge.total)?.toFixed(2)}
@@ -231,39 +243,39 @@ class HomeScreen extends React.Component {
           <View style={styles.titleChartContainer}>
             <Text style={styles.titleChart}>Charge</Text>
           </View>
+
           <View style={styles.chartContent}>
             <YAxis
-              data={data}
+              data={lineChartChargeValue}
               style={{marginBottom: 0}}
               contentInset={verticalContentInset}
               svg={axesSvg}
-              max={95}
+              numberOfTicks={10}
+              min={minChargeValue - minChargeValue / 4}
+              yAccessor={({item}) => item.value}
+              formatLabel={(value) => value}
+              max={maxChargeValue}
             />
             <View style={{flex: 1, marginLeft: 10}}>
               <LineChart
                 style={{flex: 1}}
-                data={data}
+                data={lineChartChargeValue}
+                yAccessor={({item}) => item.value}
                 svg={{
                   stroke: '#4CC418',
                   strokeWidth: 2,
                 }}
-                contentInset={{top: 20, bottom: 20}}
                 curve={shape.curveLinear}>
                 <CustomGrid />
               </LineChart>
               <XAxis
-                data={xAxisData}
+                data={lineChartChargeValue}
+                formatLabel={(_, index) => lineChartChargeValue[index].month}
+                contentInset={{left: 10, right: 10}}
                 svg={{
                   fill: 'grey',
-                  fontSize: 8,
-                  fontWeight: 'bold',
-                  rotation: 20,
-                  originY: 30,
-                  y: 5,
+                  fontSize: 10,
                 }}
-                formatLabel={(index) => xAxisData[index]}
-                style={{marginHorizontal: -15, height: 20}}
-                contentInset={{left: 10, right: 25}}
               />
             </View>
           </View>
