@@ -17,6 +17,7 @@ import Rectangle from '../../../assets/images/galery/Rectangle.png';
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
 import getExercices from '../../services/getExercices';
 import CustomGrid from '../../components/CustomGrid/CostumGrid';
+import Tooltip from '../../components/TooltipChart/Tooltip';
 
 import styles from './styles';
 import {getMaxArryaValue, getMinArryaValue} from '../../shared/utils';
@@ -272,6 +273,16 @@ class HomeScreen extends React.Component {
                 }}
                 curve={shape.curveLinear}>
                 <CustomGrid />
+                <Tooltip
+                  xValue={0}
+                  yValue={0}
+                  text={`${lineChartChargeValue[0]?.month} ${lineChartChargeValue[0]?.value} `}
+                />
+                 <Tooltip
+                  xValue={8}
+                  yValue={0}
+                  text={`${lineChartChargeValue[11]?.month} ${lineChartChargeValue[11]?.value} `}
+                />
               </LineChart>
               <XAxis
                 data={lineChartChargeValue}
