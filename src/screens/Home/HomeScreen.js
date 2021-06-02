@@ -41,7 +41,6 @@ class HomeScreen extends React.Component {
   async componentDidMount() {
     var exercisesData = await getExercices();
     let exercises = [];
-    this.setState({loading: true});
     exercisesData.exercises.map((item, index) => {
       exercises.push({
         key: index++,
@@ -58,9 +57,16 @@ class HomeScreen extends React.Component {
         item.date_debut == exercisesData.current_exercise.date_debut &&
         item.date_fin == exercisesData.current_exercise.date_fin,
     );
-    const indicators = await getIndicator(
-      moment(exercise.date_debut).format('YYYY'),
-    );
+    this.loadIndicateur(exercise.date_debut);
+    this.setState({
+      exercises,
+      exercise,
+    });
+  }
+  async loadIndicateur(date) {
+    this.setState({loading: true});
+
+    const indicators = await getIndicator(moment(date).format('YYYY'));
     const turnover = indicators.data_table_2.find(
       (item) => item.label == "Chiffre d'affaire",
     );
@@ -75,8 +81,6 @@ class HomeScreen extends React.Component {
       (item) => item.label == 'Solde de la banque',
     );
     this.setState({
-      exercises,
-      exercise,
       turnover,
       fixedCharge,
       notFixedCharge,
@@ -140,11 +144,12 @@ class HomeScreen extends React.Component {
           showSelectExecices
           exercises={exercises}
           exercise={exercise}
-          setExercise={(option) =>
+          setExercise={(option) => {
             this.setState({
               exercise: option,
-            })
-          }
+            });
+            this.loadIndicateur(option.date_debut);
+          }}
         />
         <View style={styles.container}>
           {loading && (
