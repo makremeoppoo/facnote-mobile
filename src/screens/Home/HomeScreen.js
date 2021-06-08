@@ -203,7 +203,7 @@ class HomeScreen extends React.Component {
   };
   getChargePersonelValues = () => {
     const {chargePersonel} = this.state;
-    let chargePersonelValues = Object.values(chargePersonel).slice(3);
+    let chargePersonelValues = Object.values(chargePersonel).slice(2);
 
     let tab = [];
     let keys = this.getChargeKeys();
