@@ -15,6 +15,7 @@ import Rectangle from '../../../assets/images/galery/Rectangle.png';
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
 import getExercices from '../../services/getExercices';
 import LineChartCustom from '../../components/LineChart/LineChart';
+import BarChartCustom from '../../components/BarChart/BarChart';
 
 import styles from './styles';
 import {getMaxArryaValue, getMinArryaValue} from '../../shared/utils';
@@ -277,6 +278,16 @@ class HomeScreen extends React.Component {
 
             <View style={styles.chartContent}>
               <LineChartCustom
+                maxValue={maxChargeValue}
+                minValue={minChargeValue}
+                lineChartValue={lineChartChargeValue}
+              />
+            </View>
+            <View style={styles.titleChartContainer}>
+              <Text style={styles.titleChart}>{text.SoldeCompte}</Text>
+            </View>
+            <View style={styles.chartContent}>
+              <BarChartCustom
                 maxValue={maxChargeValue}
                 minValue={minChargeValue}
                 lineChartValue={lineChartChargeValue}
