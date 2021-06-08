@@ -73,10 +73,12 @@ const styles = StyleSheet.create({
   },
   titleChartContainer: {
     marginTop: ScaleHelpers.CalcHeight(2),
+    width:ScaleHelpers.CalcWidth(30),
   },
   titleChart: {
     fontSize: ScaleHelpers.CalcWidth(4),
     width: ScaleHelpers.CalcWidth(30),
+   
     textAlign: 'center',
     color: '#707070',
     fontFamily: fontType.bold,

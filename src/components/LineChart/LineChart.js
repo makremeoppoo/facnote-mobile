@@ -8,24 +8,24 @@ import Tooltip from '../TooltipChart/Tooltip';
 const axesSvg = {fontSize: 10, fill: 'grey'};
 const verticalContentInset = {top: 10, bottom: 10};
 
-export default LineChartCustom = ({lineChartChargeValue, maxChargeValue,minChargeValue}) => {
+export default LineChartCustom = ({lineChartValue, maxValue,minValue}) => {
   return (
     <>
       <YAxis
-        data={lineChartChargeValue}
+        data={lineChartValue}
         style={{marginBottom: 0}}
         contentInset={verticalContentInset}
         svg={axesSvg}
         numberOfTicks={10}
-        min={minChargeValue - minChargeValue / 4}
+        min={minValue - minValue / 4}
         yAccessor={({item}) => item.value}
         formatLabel={(value) => value}
-        max={maxChargeValue}
+        max={maxValue}
       />
       <View style={{flex: 1, marginLeft: 10}}>
         <LineChart
           style={{flex: 1}}
-          data={lineChartChargeValue}
+          data={lineChartValue}
           yAccessor={({item}) => item.value}
           svg={{
             stroke: '#4CC418',
@@ -36,17 +36,17 @@ export default LineChartCustom = ({lineChartChargeValue, maxChargeValue,minCharg
           <Tooltip
             xValue={0}
             yValue={0}
-            text={`${lineChartChargeValue[0]?.month} ${lineChartChargeValue[0]?.value} `}
+            text={`${lineChartValue[0]?.month} ${lineChartValue[0]?.value} `}
           />
           <Tooltip
             xValue={8}
             yValue={0}
-            text={`${lineChartChargeValue[11]?.month} ${lineChartChargeValue[11]?.value} `}
+            text={`${lineChartValue[11]?.month} ${lineChartValue[11]?.value} `}
           />
         </LineChart>
         <XAxis
-          data={lineChartChargeValue}
-          formatLabel={(_, index) => lineChartChargeValue[index].month}
+          data={lineChartValue}
+          formatLabel={(_, index) => lineChartValue[index].month}
           contentInset={{left: 10, right: 10}}
           svg={{
             fill: 'grey',

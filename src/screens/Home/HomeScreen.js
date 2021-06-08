@@ -1,7 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, ScrollView} from 'react-native';
 
 import SegmentedControlTabs from 'react-native-segmented-control-tabs';
 import moment from 'moment';
@@ -89,6 +89,21 @@ class HomeScreen extends React.Component {
       selectedIndex: index,
     });
   };
+  getTurnoverValues = () => {
+    const {turnover} = this.state;
+    let turnoverValues = Object.values(turnover).slice(3);
+
+    let tab = [];
+    let keys = this.getChargeKeys();
+    tab = turnoverValues.map((item, index) => {
+      return {
+        value: Number(item.toFixed(2)),
+        month: keys[index],
+      };
+    });
+    return tab;
+  };
+
   getChargeValues = () => {
     const {fixedCharge, notFixedCharge} = this.state;
     let fixedChargeValues = Object.values(fixedCharge).slice(3);
@@ -130,6 +145,10 @@ class HomeScreen extends React.Component {
     var lineChartChargeValue = this.getChargeValues();
     const maxChargeValue = getMaxArryaValue(lineChartChargeValue);
     const minChargeValue = getMinArryaValue(lineChartChargeValue);
+
+    var lineChartTurnoverValue = this.getTurnoverValues();
+    const maxTurnoverValue = getMaxArryaValue(lineChartTurnoverValue);
+    const minTurnoverValue = getMinArryaValue(lineChartTurnoverValue);
 
     return (
       <>
@@ -240,17 +259,30 @@ class HomeScreen extends React.Component {
               <Text style={styles.itemLabel}>{text.Charge}</Text>
             </View>
           </View>
-          <View style={styles.titleChartContainer}>
-            <Text style={styles.titleChart}>{text.Charge}</Text>
-          </View>
 
-          <View style={styles.chartContent}>
-            <LineChartCustom
-              maxChargeValue={maxChargeValue}
-              minChargeValue={minChargeValue}
-              lineChartChargeValue={lineChartChargeValue}
-            />
-          </View>
+          <ScrollView>
+            <View style={styles.titleChartContainer}>
+              <Text style={styles.titleChart}>{text.ChiffreAffaire}</Text>
+            </View>
+            <View style={styles.chartContent}>
+              <LineChartCustom
+                maxValue={maxTurnoverValue}
+                minValue={minTurnoverValue}
+                lineChartValue={lineChartTurnoverValue}
+              />
+            </View>
+            <View style={styles.titleChartContainer}>
+              <Text style={styles.titleChart}>{text.Charge}</Text>
+            </View>
+
+            <View style={styles.chartContent}>
+              <LineChartCustom
+                maxValue={maxChargeValue}
+                minValue={minChargeValue}
+                lineChartValue={lineChartChargeValue}
+              />
+            </View>
+          </ScrollView>
         </View>
       </>
     );
