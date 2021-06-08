@@ -6,37 +6,28 @@ import CustomGrid from '../CustomGrid/CostumGrid';
 import Tooltip from '../TooltipChart/Tooltip';
 import {Text} from 'react-native-svg';
 import {primaryColor} from '../../Theme/AppStyles';
-const CUT_OFF = 20;
-const Labels = ({x, y, bandwidth, data}) =>
-  data.map((value, index) => (
-    <Text
-      key={index}
-      x={x(index) + bandwidth / 2}
-      y={value < CUT_OFF ? y(value) - 10 : y(value) + 15}
-      fontSize={14}
-      fill={value >= CUT_OFF ? 'white' : 'black'}
-      alignmentBaseline={'middle'}
-      textAnchor={'middle'}>
-      {value}
-    </Text>
-  ));
-  const axesSvg = {fontSize: 10, fill: 'grey'};
-  const verticalContentInset = {top: 10, bottom: 10};
-  
-export default BarChartCustom = ({lineChartValue}) => {
+
+const axesSvg = {fontSize: 10, fill: 'grey'};
+const verticalContentInset = {top: 10, bottom: 10};
+
+export default BarChartCustom =  ({barValue, maxValue,minValue})  => {
   return (
     <>
       <YAxis
-        data={lineChartValue.map((item) => item.value)}
+        data={barValue}
         style={{marginBottom: 0}}
         contentInset={verticalContentInset}
         svg={axesSvg}
+        numberOfTicks={10}
+        min={minValue - minValue / 4}
         yAccessor={({item}) => item.value}
+        formatLabel={(value) => value}
+        max={maxValue}
       />
       <View style={{flex: 1, marginLeft: 10}}>
         <BarChart
           style={{flex: 1}}
-          data={lineChartValue.map((item) => item.value)}
+          data={barValue.map((item) => item.value)}
           svg={{
             fill: primaryColor,
             stroke: primaryColor,
@@ -47,18 +38,17 @@ export default BarChartCustom = ({lineChartValue}) => {
           <Tooltip
             xValue={0}
             yValue={0}
-            text={`${lineChartValue[0]?.month} ${lineChartValue[0]?.value} `}
+            text={`${barValue[0]?.month} ${barValue[0]?.value} `}
           />
           <Tooltip
             xValue={8}
             yValue={0}
-            text={`${lineChartValue[11]?.month} ${lineChartValue[11]?.value} `}
+            text={`${barValue[11]?.month} ${barValue[11]?.value} `}
           />
-          <Labels />
         </BarChart>
         <XAxis
-          data={lineChartValue}
-          formatLabel={(_, index) => lineChartValue[index].month}
+          data={barValue}
+          formatLabel={(_, index) => barValue[index].month}
           contentInset={{left: 10, right: 10}}
           svg={{
             fill: 'grey',

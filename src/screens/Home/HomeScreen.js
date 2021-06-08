@@ -105,6 +105,23 @@ class HomeScreen extends React.Component {
     return tab;
   };
 
+  getBalancesValues = () => {
+    const {bankBalance} = this.state;
+    let bankBalanceValues = Object.values(bankBalance).slice(3);
+
+    let tab = [];
+    let keys = this.getChargeKeys();
+    tab = bankBalanceValues.map((item, index) => {
+      let value = 0;
+      if (!isNaN(item)) value = Number(item.toFixed(2));
+      return {
+        value: value,
+        month: keys[index],
+      };
+    });
+    return tab;
+  };
+
   getChargeValues = () => {
     const {fixedCharge, notFixedCharge} = this.state;
     let fixedChargeValues = Object.values(fixedCharge).slice(3);
@@ -150,6 +167,10 @@ class HomeScreen extends React.Component {
     var lineChartTurnoverValue = this.getTurnoverValues();
     const maxTurnoverValue = getMaxArryaValue(lineChartTurnoverValue);
     const minTurnoverValue = getMinArryaValue(lineChartTurnoverValue);
+
+    var barChartBankBalance = this.getBalancesValues();
+    const maxBalanceValue = getMaxArryaValue(barChartBankBalance);
+    const minBalanceValue = getMinArryaValue(barChartBankBalance);
 
     return (
       <>
@@ -288,9 +309,9 @@ class HomeScreen extends React.Component {
             </View>
             <View style={styles.chartContent}>
               <BarChartCustom
-                maxValue={maxChargeValue}
-                minValue={minChargeValue}
-                lineChartValue={lineChartChargeValue}
+                maxValue={maxBalanceValue}
+                minValue={minBalanceValue}
+                barValue={barChartBankBalance}
               />
             </View>
           </ScrollView>
