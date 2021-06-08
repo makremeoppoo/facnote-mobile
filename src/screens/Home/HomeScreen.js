@@ -2,28 +2,22 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
 import {View, Text, Image} from 'react-native';
-import {LineChart, XAxis, YAxis} from 'react-native-svg-charts';
-import * as shape from 'd3-shape';
+
 import SegmentedControlTabs from 'react-native-segmented-control-tabs';
 import moment from 'moment';
 import getIndicator from '../../services/getIndicator';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import {text} from '../../constants';
-import {primaryColor} from '../../Theme/AppStyles';
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import {fontType} from '../../Theme/AppStyles';
 import Rectangle from '../../../assets/images/galery/Rectangle.png';
 
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
 import getExercices from '../../services/getExercices';
-import CustomGrid from '../../components/CustomGrid/CostumGrid';
-import Tooltip from '../../components/TooltipChart/Tooltip';
+import LineChartCustom from '../../components/LineChart/LineChart';
 
 import styles from './styles';
 import {getMaxArryaValue, getMinArryaValue} from '../../shared/utils';
-
-const axesSvg = {fontSize: 10, fill: 'grey'};
-const verticalContentInset = {top: 10, bottom: 10};
 
 class HomeScreen extends React.Component {
   constructor() {
@@ -247,53 +241,15 @@ class HomeScreen extends React.Component {
             </View>
           </View>
           <View style={styles.titleChartContainer}>
-            <Text style={styles.titleChart}>Charge</Text>
+            <Text style={styles.titleChart}>{text.Charge}</Text>
           </View>
 
           <View style={styles.chartContent}>
-            <YAxis
-              data={lineChartChargeValue}
-              style={{marginBottom: 0}}
-              contentInset={verticalContentInset}
-              svg={axesSvg}
-              numberOfTicks={10}
-              min={minChargeValue - minChargeValue / 4}
-              yAccessor={({item}) => item.value}
-              formatLabel={(value) => value}
-              max={maxChargeValue}
+            <LineChartCustom
+              maxChargeValue={maxChargeValue}
+              minChargeValue={minChargeValue}
+              lineChartChargeValue={lineChartChargeValue}
             />
-            <View style={{flex: 1, marginLeft: 10}}>
-              <LineChart
-                style={{flex: 1}}
-                data={lineChartChargeValue}
-                yAccessor={({item}) => item.value}
-                svg={{
-                  stroke: '#4CC418',
-                  strokeWidth: 2,
-                }}
-                curve={shape.curveLinear}>
-                <CustomGrid />
-                <Tooltip
-                  xValue={0}
-                  yValue={0}
-                  text={`${lineChartChargeValue[0]?.month} ${lineChartChargeValue[0]?.value} `}
-                />
-                 <Tooltip
-                  xValue={8}
-                  yValue={0}
-                  text={`${lineChartChargeValue[11]?.month} ${lineChartChargeValue[11]?.value} `}
-                />
-              </LineChart>
-              <XAxis
-                data={lineChartChargeValue}
-                formatLabel={(_, index) => lineChartChargeValue[index].month}
-                contentInset={{left: 10, right: 10}}
-                svg={{
-                  fill: 'grey',
-                  fontSize: 10,
-                }}
-              />
-            </View>
           </View>
         </View>
       </>
