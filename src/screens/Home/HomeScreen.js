@@ -6,6 +6,7 @@ import {View, Text, Image, ScrollView} from 'react-native';
 import SegmentedControlTabs from 'react-native-segmented-control-tabs';
 import moment from 'moment';
 import getIndicator from '../../services/getIndicator';
+import getSigIndicator from '../../services/getSigIndicator';
 import PageLoader from '../../components/PageLoader/PageLoader';
 import {text} from '../../constants';
 import ScaleHelpers from '../../Theme/scaleHelpers';
@@ -18,7 +19,7 @@ import LineChartCustom from '../../components/LineChart/LineChart';
 import BarChartCustom from '../../components/BarChart/BarChart';
 
 import styles from './styles';
-import {getMaxArryaValue, getMinArryaValue} from '../../shared/utils';
+import {getMaxArrayValue, getMinArrayValue} from '../../shared/utils';
 
 class HomeScreen extends React.Component {
   constructor() {
@@ -32,6 +33,9 @@ class HomeScreen extends React.Component {
       fixedCharge: {},
       notFixedCharge: {},
       bankBalance: {},
+      marge: {},
+      excedentBrut: {},
+      chargePersonel: {},
     };
   }
   async componentDidMount() {
@@ -63,6 +67,9 @@ class HomeScreen extends React.Component {
     this.setState({loading: true});
 
     const indicators = await getIndicator(moment(date).format('YYYY'));
+
+    const sigIndicators = await getSigIndicator(moment(date).format('YYYY'));
+
     const turnover = indicators.data_table_2.find(
       (item) => item.label == "Chiffre d'affaire",
     );
@@ -76,14 +83,30 @@ class HomeScreen extends React.Component {
     const bankBalance = indicators.data_table_1.find(
       (item) => item.label == 'Solde de la banque',
     );
+
+    const marge = sigIndicators.data.find(
+      (item) => item.label == 'Marge commerciale',
+    );
+    const excedentBrut = sigIndicators.data.find(
+      (item) => item.label == "Excédent brut d'exploitation",
+    );
+
+    const chargePersonel = sigIndicators.data.find(
+      (item) => item.label == 'Charges de personnel',
+    );
+
     this.setState({
       turnover,
       fixedCharge,
       notFixedCharge,
       bankBalance,
+      marge,
+      excedentBrut,
+      chargePersonel,
       loading: false,
     });
   }
+
   handleIndexChange = (index) => {
     this.setState({
       ...this.state,
@@ -149,6 +172,50 @@ class HomeScreen extends React.Component {
     }
   };
 
+  getMargeValues = () => {
+    const {marge} = this.state;
+    let margeValues = Object.values(marge).slice(3);
+
+    let tab = [];
+    let keys = this.getChargeKeys();
+    tab = margeValues.map((item, index) => {
+      return {
+        value: Number(item.toFixed(2)),
+        month: keys[index],
+      };
+    });
+    return tab;
+  };
+
+  getExcedentValues = () => {
+    const {excedentBrut} = this.state;
+    let excedentBrutValues = Object.values(excedentBrut).slice(3);
+
+    let tab = [];
+    let keys = this.getChargeKeys();
+    tab = excedentBrutValues.map((item, index) => {
+      return {
+        value: Number(item.toFixed(2)),
+        month: keys[index],
+      };
+    });
+    return tab;
+  };
+  getChargePersonelValues = () => {
+    const {chargePersonel} = this.state;
+    let chargePersonelValues = Object.values(chargePersonel).slice(3);
+
+    let tab = [];
+    let keys = this.getChargeKeys();
+    tab = chargePersonelValues.map((item, index) => {
+      return {
+        value: Number(item.toFixed(2)),
+        month: keys[index],
+      };
+    });
+    return tab;
+  };
+
   render() {
     const {
       exercise,
@@ -161,16 +228,28 @@ class HomeScreen extends React.Component {
     } = this.state;
 
     var lineChartChargeValue = this.getChargeValues();
-    const maxChargeValue = getMaxArryaValue(lineChartChargeValue);
-    const minChargeValue = getMinArryaValue(lineChartChargeValue);
+    const maxChargeValue = getMaxArrayValue(lineChartChargeValue);
+    const minChargeValue = getMinArrayValue(lineChartChargeValue);
 
     var lineChartTurnoverValue = this.getTurnoverValues();
-    const maxTurnoverValue = getMaxArryaValue(lineChartTurnoverValue);
-    const minTurnoverValue = getMinArryaValue(lineChartTurnoverValue);
+    const maxTurnoverValue = getMaxArrayValue(lineChartTurnoverValue);
+    const minTurnoverValue = getMinArrayValue(lineChartTurnoverValue);
 
     var barChartBankBalance = this.getBalancesValues();
-    const maxBalanceValue = getMaxArryaValue(barChartBankBalance);
-    const minBalanceValue = getMinArryaValue(barChartBankBalance);
+    const maxBalanceValue = getMaxArrayValue(barChartBankBalance);
+    const minBalanceValue = getMinArrayValue(barChartBankBalance);
+
+    var lineChartMargeValue = this.getMargeValues();
+    const maxMargeValue = getMaxArrayValue(lineChartMargeValue);
+    const minMargeValue = getMinArrayValue(lineChartMargeValue);
+
+    var lineChartExcedentValue = this.getExcedentValues();
+    const maxExcedentValue = getMaxArrayValue(lineChartExcedentValue);
+    const minExcedentValue = getMinArrayValue(lineChartExcedentValue);
+
+    var lineChartChargePersonelValue = this.getChargePersonelValues();
+    const maxChargePersonelValue = getMaxArrayValue(lineChartChargePersonelValue);
+    const minChargePersonelValue = getMinArrayValue(lineChartChargePersonelValue);
 
     return (
       <>
@@ -281,40 +360,83 @@ class HomeScreen extends React.Component {
               <Text style={styles.itemLabel}>{text.Charge}</Text>
             </View>
           </View>
+          {this.state.selectedIndex == 0 && (
+            <ScrollView>
+              <View style={styles.titleChartContainer}>
+                <Text style={styles.titleChart}>{text.ChiffreAffaire}</Text>
+              </View>
+              <View style={styles.chartContent}>
+                <LineChartCustom
+                  maxValue={maxTurnoverValue}
+                  minValue={minTurnoverValue}
+                  lineChartValue={lineChartTurnoverValue}
+                />
+              </View>
+              <View style={styles.titleChartContainer}>
+                <Text style={styles.titleChart}>{text.Charge}</Text>
+              </View>
 
-          <ScrollView>
-            <View style={styles.titleChartContainer}>
-              <Text style={styles.titleChart}>{text.ChiffreAffaire}</Text>
-            </View>
-            <View style={styles.chartContent}>
-              <LineChartCustom
-                maxValue={maxTurnoverValue}
-                minValue={minTurnoverValue}
-                lineChartValue={lineChartTurnoverValue}
-              />
-            </View>
-            <View style={styles.titleChartContainer}>
-              <Text style={styles.titleChart}>{text.Charge}</Text>
-            </View>
-
-            <View style={styles.chartContent}>
-              <LineChartCustom
-                maxValue={maxChargeValue}
-                minValue={minChargeValue}
-                lineChartValue={lineChartChargeValue}
-              />
-            </View>
-            <View style={styles.titleChartContainer}>
-              <Text style={styles.titleChart}>{text.SoldeCompte}</Text>
-            </View>
-            <View style={styles.chartContent}>
-              <BarChartCustom
-                maxValue={maxBalanceValue}
-                minValue={minBalanceValue}
-                barValue={barChartBankBalance}
-              />
-            </View>
-          </ScrollView>
+              <View style={styles.chartContent}>
+                <LineChartCustom
+                  maxValue={maxChargeValue}
+                  minValue={minChargeValue}
+                  lineChartValue={lineChartChargeValue}
+                />
+              </View>
+              <View style={styles.titleChartContainer}>
+                <Text style={styles.titleChart}>{text.SoldeCompte}</Text>
+              </View>
+              <View style={styles.chartContent}>
+                <BarChartCustom
+                  maxValue={maxBalanceValue}
+                  minValue={minBalanceValue}
+                  barValue={barChartBankBalance}
+                />
+              </View>
+            </ScrollView>
+          )}
+          {this.state.selectedIndex == 1 && (
+            <ScrollView>
+              <View style={styles.titleChartContainer}>
+                <Text style={styles.titleChart}>{text.Marge}</Text>
+              </View>
+              <View style={styles.chartContent}>
+                <LineChartCustom
+                  maxValue={maxMargeValue}
+                  minValue={minMargeValue}
+                  lineChartValue={lineChartMargeValue}
+                />
+              </View>
+            </ScrollView>
+          )}
+          {this.state.selectedIndex == 2 && (
+            <ScrollView>
+              <View style={styles.titleChartContainer}>
+                <Text style={styles.titleChart}>{text.Excedent}</Text>
+              </View>
+              <View style={styles.chartContent}>
+                <LineChartCustom
+                  maxValue={maxExcedentValue}
+                  minValue={minExcedentValue}
+                  lineChartValue={lineChartExcedentValue}
+                />
+              </View>
+            </ScrollView>
+          )}
+          {this.state.selectedIndex == 3 && (
+            <ScrollView>
+              <View style={styles.titleChartContainer}>
+                <Text style={styles.titleChart}>{text.ChargePersonelle}</Text>
+              </View>
+              <View style={styles.chartContent}>
+                <LineChartCustom
+                  maxValue={maxChargePersonelValue}
+                  minValue={minChargePersonelValue}
+                  lineChartValue={lineChartChargePersonelValue}
+                />
+              </View>
+            </ScrollView>
+          )}
         </View>
       </>
     );

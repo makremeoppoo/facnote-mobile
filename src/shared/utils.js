@@ -1,6 +1,6 @@
 import R from 'ramda';
 
-export const getMaxArryaValue = (array) => {
+export const getMaxArrayValue = (array) => {
     return maximum(array.map((x) => x.value || 0));
   };
   
@@ -8,7 +8,7 @@ export const getMaxArryaValue = (array) => {
     return R.reduce(R.max, -Infinity, items);
   }
   
- export const getMinArryaValue = (array) => {
+ export const getMinArrayValue = (array) => {
     return minimum(array.map((x) => x.value || 0));
   };
   
