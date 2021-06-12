@@ -1,16 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {View, Text, Image, ScrollView} from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 
 import SegmentedControlTabs from 'react-native-segmented-control-tabs';
 import moment from 'moment';
 import getIndicator from '../../services/getIndicator';
 import getSigIndicator from '../../services/getSigIndicator';
 import PageLoader from '../../components/PageLoader/PageLoader';
-import {text} from '../../constants';
+import { text } from '../../constants';
 import ScaleHelpers from '../../Theme/scaleHelpers';
-import {fontType} from '../../Theme/AppStyles';
+import { fontType } from '../../Theme/AppStyles';
 import Rectangle from '../../../assets/images/galery/Rectangle.png';
 
 import NavigationHeader from '../../components/NavigationHeader/NavigationHeader';
@@ -19,7 +19,7 @@ import LineChartCustom from '../../components/LineChart/LineChart';
 import BarChartCustom from '../../components/BarChart/BarChart';
 
 import styles from './styles';
-import {getMaxArrayValue, getMinArrayValue} from '../../shared/utils';
+import { getMaxArrayValue, getMinArrayValue } from '../../shared/utils';
 
 class HomeScreen extends React.Component {
   constructor() {
@@ -64,7 +64,7 @@ class HomeScreen extends React.Component {
     });
   }
   async loadIndicateur(date) {
-    this.setState({loading: true});
+    this.setState({ loading: true });
 
     const indicators = await getIndicator(moment(date).format('YYYY'));
 
@@ -114,14 +114,14 @@ class HomeScreen extends React.Component {
     });
   };
   getTurnoverValues = () => {
-    const {turnover} = this.state;
+    const { turnover } = this.state;
     let turnoverValues = Object.values(turnover).slice(3);
 
     let tab = [];
     let keys = this.getChargeKeys();
     tab = turnoverValues.map((item, index) => {
       return {
-        value: Number(item.toFixed(2)),
+        value: Number(item?.toFixed(2)),
         month: keys[index],
       };
     });
@@ -129,14 +129,18 @@ class HomeScreen extends React.Component {
   };
 
   getBalancesValues = () => {
-    const {bankBalance} = this.state;
+    const { bankBalance } = this.state;
     let bankBalanceValues = Object.values(bankBalance).slice(3);
 
     let tab = [];
     let keys = this.getChargeKeys();
+    console.log(bankBalanceValues)
     tab = bankBalanceValues.map((item, index) => {
       let value = 0;
-      if (!isNaN(item)) value = Number(item.toFixed(2));
+
+      if (!isNaN(item)) {
+        value = parseFloat(Number(item).toFixed(2));
+      }
       return {
         value: value,
         month: keys[index],
@@ -146,7 +150,7 @@ class HomeScreen extends React.Component {
   };
 
   getChargeValues = () => {
-    const {fixedCharge, notFixedCharge} = this.state;
+    const { fixedCharge, notFixedCharge } = this.state;
     let fixedChargeValues = Object.values(fixedCharge).slice(3);
     let notFixedChargeValues = Object.values(notFixedCharge).slice(3);
     let tab = [];
@@ -163,7 +167,7 @@ class HomeScreen extends React.Component {
     return tab;
   };
   getChargeKeys = (index = null) => {
-    const {notFixedCharge} = this.state;
+    const { notFixedCharge } = this.state;
     let tab = Object.keys(notFixedCharge).slice(3);
     if (index != null) {
       return tab[index];
@@ -173,14 +177,14 @@ class HomeScreen extends React.Component {
   };
 
   getMargeValues = () => {
-    const {marge} = this.state;
+    const { marge } = this.state;
     let margeValues = Object.values(marge).slice(3);
 
     let tab = [];
     let keys = this.getChargeKeys();
     tab = margeValues.map((item, index) => {
       return {
-        value: Number(item.toFixed(2)),
+        value: Number(item?.toFixed(2)),
         month: keys[index],
       };
     });
@@ -188,28 +192,28 @@ class HomeScreen extends React.Component {
   };
 
   getExcedentValues = () => {
-    const {excedentBrut} = this.state;
+    const { excedentBrut } = this.state;
     let excedentBrutValues = Object.values(excedentBrut).slice(3);
 
     let tab = [];
     let keys = this.getChargeKeys();
     tab = excedentBrutValues.map((item, index) => {
       return {
-        value: Number(item.toFixed(2)),
+        value: Number(item?.toFixed(2)),
         month: keys[index],
       };
     });
     return tab;
   };
   getChargePersonelValues = () => {
-    const {chargePersonel} = this.state;
+    const { chargePersonel } = this.state;
     let chargePersonelValues = Object.values(chargePersonel).slice(2);
 
     let tab = [];
     let keys = this.getChargeKeys();
     tab = chargePersonelValues.map((item, index) => {
       return {
-        value: Number(item.toFixed(2)),
+        value: Number(item?.toFixed(2)),
         month: keys[index],
       };
     });
@@ -238,6 +242,8 @@ class HomeScreen extends React.Component {
     var barChartBankBalance = this.getBalancesValues();
     const maxBalanceValue = getMaxArrayValue(barChartBankBalance);
     const minBalanceValue = getMinArrayValue(barChartBankBalance);
+    console.log("barChartBankBalance",barChartBankBalance)
+    console.log("maxBalanceValue",maxBalanceValue)
 
     var lineChartMargeValue = this.getMargeValues();
     const maxMargeValue = getMaxArrayValue(lineChartMargeValue);
@@ -344,13 +350,13 @@ class HomeScreen extends React.Component {
           />
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
-              <Text style={[styles.itemValue, {color: '#4EC7F5'}]}>
+              <Text style={[styles.itemValue, { color: '#4EC7F5' }]}>
                 {bankBalance.total?.toFixed(2)}
               </Text>
-              <Text style={[styles.itemValue, {color: '#EA4C89'}]}>
+              <Text style={[styles.itemValue, { color: '#EA4C89' }]}>
                 {turnover.total?.toFixed(2)}
               </Text>
-              <Text style={[styles.itemValue, {color: '#4CC418'}]}>
+              <Text style={[styles.itemValue, { color: '#4CC418' }]}>
                 {(fixedCharge.total + notFixedCharge.total)?.toFixed(2)}
               </Text>
             </View>

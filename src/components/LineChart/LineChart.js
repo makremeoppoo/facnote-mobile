@@ -1,34 +1,34 @@
 import React from 'react';
-import {View} from 'react-native';
-import {LineChart, XAxis, YAxis} from 'react-native-svg-charts';
+import { View } from 'react-native';
+import { LineChart, XAxis, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import CustomGrid from '../CustomGrid/CostumGrid';
 import Tooltip from '../TooltipChart/Tooltip';
+import { primaryColor } from "../../Theme/AppStyles"
+const axesSvg = { fontSize: 10, fill: 'grey' };
+const verticalContentInset = { top: 10, bottom: 10 };
 
-const axesSvg = {fontSize: 10, fill: 'grey'};
-const verticalContentInset = {top: 10, bottom: 10};
-
-export default LineChartCustom = ({lineChartValue, maxValue,minValue}) => {
+export default LineChartCustom = ({ lineChartValue, maxValue, minValue }) => {
   return (
     <>
       <YAxis
         data={lineChartValue}
-        style={{marginBottom: 0}}
+        style={{ marginBottom: 0 }}
         contentInset={verticalContentInset}
         svg={axesSvg}
         numberOfTicks={10}
         min={minValue - minValue / 4}
-        yAccessor={({item}) => item.value}
+        yAccessor={({ item }) => item.value}
         formatLabel={(value) => value}
         max={maxValue}
       />
-      <View style={{flex: 1, marginLeft: 10}}>
+      <View style={{ flex: 1, marginLeft: 10 }}>
         <LineChart
-          style={{flex: 1}}
+          style={{ flex: 1 }}
           data={lineChartValue}
-          yAccessor={({item}) => item.value}
+          yAccessor={({ item }) => item.value}
           svg={{
-            stroke: '#4CC418',
+            stroke: primaryColor,
             strokeWidth: 2,
           }}
           curve={shape.curveLinear}>
@@ -47,7 +47,7 @@ export default LineChartCustom = ({lineChartValue, maxValue,minValue}) => {
         <XAxis
           data={lineChartValue}
           formatLabel={(_, index) => lineChartValue[index].month}
-          contentInset={{left: 10, right: 10}}
+          contentInset={{ left: 10, right: 10 }}
           svg={{
             fill: 'grey',
             fontSize: 10,
