@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     paddingLeft: 10,
-    height: ScaleHelpers.CalcHeight(6),
+    height: ScaleHelpers.CalcHeight(7),
     width: ScaleHelpers.CalcWidth(80),
     backgroundColor: 'transparent',
     alignSelf: 'center',

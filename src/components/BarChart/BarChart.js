@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import { BarChart, XAxis, YAxis } from 'react-native-svg-charts';
-import * as shape from 'd3-shape';
-import CustomGrid from '../CustomGrid/CostumGrid';
+
 import Tooltip from '../TooltipChart/Tooltip';
 import { Line } from "react-native-svg";
 import { chartColor } from '../../Theme/AppStyles';
+import ScaleHelpers from '../../Theme/scaleHelpers';
 
 const axesSvg = { fontSize: 10, fill: 'grey' };
 const verticalContentInset = { top: 10, bottom: 10 };
@@ -13,8 +13,8 @@ const verticalContentInset = { top: 10, bottom: 10 };
 const VerticalLine = ({ x, y, xValue }) => (
   <Line
     key={"axis"}
-    x1={x(xValue)+20}
-    x2={x(xValue) + 20}
+    x1={x(xValue) + ScaleHelpers.CalcWidth(5.5)}
+    x2={x(xValue) + ScaleHelpers.CalcWidth(5.5)}
     y1={"0%"}
     y2={"97.5%"}
     stroke={"rgba(194, 194, 194, 1)"}
