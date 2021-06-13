@@ -18,11 +18,11 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
         style={{ marginBottom: 0 }}
         contentInset={verticalContentInset}
         svg={axesSvg}
-        numberOfTicks={10}
+        numberOfTicks={3}
         min={minValue - minValue / 4}
         yAccessor={({ item }) => item.value}
-        formatLabel={(value) => value}
-        max={maxValue}
+        formatLabel={(value) => String(value).replace(/000$/, "K")}
+        max={maxValue + 1000}
       />
       <View style={{ flex: 1, marginLeft: 10 }}>
         <BarChart
