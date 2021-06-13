@@ -21,6 +21,19 @@ import BarChartCustom from '../../components/BarChart/BarChart';
 import styles from './styles';
 import { getMaxArrayValue, getMinArrayValue } from '../../shared/utils';
 
+const Tooltip = ({ text, onlyText }) => (<View
+  style={{
+    backgroundColor: onlyText ? 'transparent' : 'rgba(253, 227, 167, 0.6)',
+    justifyContent: 'center',
+    borderRadius: ScaleHelpers.CalcWidth(2),
+    padding: ScaleHelpers.CalcWidth(2),
+    alignItems: 'center'
+  }}
+>
+  <Text style={{ color: onlyText ? 'rgba(194, 194, 194, 1)' : 'orange', fontFamily: fontType.bold }}>{text}</Text>
+</View>
+);
+
 class HomeScreen extends React.Component {
   constructor() {
     super();
@@ -384,11 +397,32 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.SoldeCompte}</Text>
               </View>
+              <View style={{ flex: 2, marginLeft: ScaleHelpers.CalcWidth(2), marginRight: ScaleHelpers.CalcWidth(2), flexDirection: "row", justifyContent: 'space-between' }}>
+
+                <View >
+                  <Tooltip
+                    onlyText
+                    text={`${String(barChartBankBalance[0]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${barChartBankBalance[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
+                  />
+                </View>
+                <View>
+                  <Tooltip
+                    onlyText
+                    text={`${String(barChartBankBalance[11]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${barChartBankBalance[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
+                  />
+                </View>
+
+              </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}>
                 <View style={styles.chartContent}>
                   <BarChartCustom
-                    year={moment(exercise.date_debut).format('YYYY')}
                     maxValue={maxBalanceValue}
                     minValue={minBalanceValue}
                     barValue={barChartBankBalance}
@@ -398,11 +432,31 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.ChiffreAffaire}</Text>
               </View>
+              <View style={{ flex: 2, marginLeft: ScaleHelpers.CalcWidth(2), marginRight: ScaleHelpers.CalcWidth(2), flexDirection: "row", justifyContent: 'space-between' }}>
+                <View >
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartTurnoverValue[0]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartTurnoverValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
+                  />
+                </View>
+                <View>
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartTurnoverValue[11]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartTurnoverValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
+                  />
+                </View>
+
+              </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}>
                 <View style={styles.chartContent}>
                   <LineChartCustom
-                    year={moment(exercise.date_debut).format('YYYY')}
 
                     maxValue={maxTurnoverValue}
                     minValue={minTurnoverValue}
@@ -413,12 +467,32 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.Charge}</Text>
               </View>
+              <View style={{ flex: 2, marginLeft: ScaleHelpers.CalcWidth(2), marginRight: ScaleHelpers.CalcWidth(2), flexDirection: "row", justifyContent: 'space-between' }}>
+                <View >
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartChargeValue[0]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartChargeValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
+                  />
+                </View>
+                <View>
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartChargeValue[11]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartChargeValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
+                  />
+                </View>
+
+              </View>
 
               <ScrollView horizontal showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}>
                 <View style={styles.chartContent}>
                   <LineChartCustom
-                    year={moment(exercise.date_debut).format('YYYY')}
 
                     maxValue={maxChargeValue}
                     minValue={minChargeValue}
@@ -433,11 +507,32 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.Marge}</Text>
               </View>
+              <View style={{ flex: 2, marginLeft: ScaleHelpers.CalcWidth(2), marginRight: ScaleHelpers.CalcWidth(2), flexDirection: "row", justifyContent: 'space-between' }}>
+                <View >
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartMargeValue[0]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartMargeValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
+                  />
+                </View>
+                <View>
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartMargeValue[11]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartMargeValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
+                  />
+                </View>
+
+              </View>
+
               <ScrollView horizontal showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}>
                 <View style={styles.chartContent}>
                   <LineChartCustom
-                    year={moment(exercise.date_debut).format('YYYY')}
 
                     maxValue={maxMargeValue}
                     minValue={minMargeValue}
@@ -452,11 +547,31 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.Excedent}</Text>
               </View>
+              <View style={{ flex: 2, marginLeft: ScaleHelpers.CalcWidth(2), marginRight: ScaleHelpers.CalcWidth(2), flexDirection: "row", justifyContent: 'space-between' }}>
+                <View >
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartExcedentValue[0]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartExcedentValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
+                  />
+                </View>
+                <View>
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartExcedentValue[11]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartExcedentValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
+                  />
+                </View>
+
+              </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}>
                 <View style={styles.chartContent}>
                   <LineChartCustom
-                    year={moment(exercise.date_debut).format('YYYY')}
 
                     maxValue={maxExcedentValue}
                     minValue={minExcedentValue}
@@ -471,11 +586,31 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.ChargePersonelle}</Text>
               </View>
+              <View style={{ flex: 2, marginLeft: ScaleHelpers.CalcWidth(2), marginRight: ScaleHelpers.CalcWidth(2), flexDirection: "row", justifyContent: 'space-between' }}>
+                <View >
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartChargePersonelValue[0]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartChargePersonelValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
+                  />
+                </View>
+                <View>
+                  <Tooltip
+                    onlyText
+                    text={`${String(lineChartChargePersonelValue[11]?.value)} `}
+                  />
+                  <Tooltip
+                    text={`${lineChartChargePersonelValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
+                  />
+                </View>
+
+              </View>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}
                 pagingEnabled={true}>
                 <View style={styles.chartContent}>
                   <LineChartCustom
-                    year={moment(exercise.date_debut).format('YYYY')}
 
                     maxValue={maxChargePersonelValue}
                     minValue={minChargePersonelValue}

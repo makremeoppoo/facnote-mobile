@@ -49,37 +49,9 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
             strokeWidth: 20,
             strokeOpacity: '1',
             fillOpacity: '0.5'
-
           }}
-
-
         >
           {barValue.map((item, index) => <VerticalLine xValue={index} />)}
-          <Tooltip
-            xValue={0}
-            yValue={0}
-            onlyText
-            textColor={chartColor}
-            text={`${barValue[0]?.value} `}
-          />
-          <Tooltip
-            xValue={0}
-            yValue={25}
-            text={`${barValue[0]?.month} ${year} `}
-          />
-          <Tooltip
-            xValue={9}
-            yValue={0}
-            onlyText
-            textColor={"rgba(194, 194, 194, 1)"}
-
-            text={`${barValue[11]?.value} `}
-          />
-          <Tooltip
-            xValue={9}
-            yValue={25}
-            text={`${barValue[11]?.month} ${year} `}
-          />
         </BarChart>
         <XAxis
           data={barValue}

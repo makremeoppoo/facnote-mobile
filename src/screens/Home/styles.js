@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(150),
     marginLeft: ScaleHelpers.CalcWidth(3),
     marginRight: ScaleHelpers.CalcWidth(3),
-
+    marginTop: ScaleHelpers.CalcWidth(2),
     alignSelf: 'center',
     flexDirection: 'row',
   },
@@ -72,7 +72,9 @@ const styles = StyleSheet.create({
   titleChartContainer: {
     marginTop: ScaleHelpers.CalcHeight(2),
     width: ScaleHelpers.CalcWidth(100),
-    padding: ScaleHelpers.CalcWidth(4),
+    paddingLeft: ScaleHelpers.CalcWidth(4),
+    paddingRight: ScaleHelpers.CalcWidth(4),
+
   },
   titleChart: {
     fontSize: ScaleHelpers.CalcWidth(4),
