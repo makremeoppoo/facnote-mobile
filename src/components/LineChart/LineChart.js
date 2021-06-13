@@ -4,11 +4,11 @@ import { LineChart, XAxis, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import CustomGrid from '../CustomGrid/CostumGrid';
 import Tooltip from '../TooltipChart/Tooltip';
-import { primaryColor } from "../../Theme/AppStyles"
+import { chartColor } from "../../Theme/AppStyles"
 const axesSvg = { fontSize: 10, fill: 'grey' };
 const verticalContentInset = { top: 10, bottom: 10 };
 
-export default LineChartCustom = ({ lineChartValue, maxValue, minValue }) => {
+export default LineChartCustom = ({ lineChartValue, maxValue, minValue, year }) => {
   return (
     <>
       <YAxis
@@ -28,20 +28,37 @@ export default LineChartCustom = ({ lineChartValue, maxValue, minValue }) => {
           data={lineChartValue}
           yAccessor={({ item }) => item.value}
           svg={{
-            stroke: primaryColor,
+            stroke: chartColor,
             strokeWidth: 2,
+            strokeOpacity: '0.5'
           }}
-          curve={shape.curveLinear}>
+          curve={shape.curveNatural}
+        >
           <CustomGrid />
           <Tooltip
             xValue={0}
             yValue={0}
-            text={`${lineChartValue[0]?.month} ${lineChartValue[0]?.value} `}
+            onlyText
+            textColor={chartColor}
+            text={`${lineChartValue[0]?.value} `}
+          />
+          <Tooltip
+            xValue={0}
+            yValue={25}
+            text={`${lineChartValue[0]?.month} ${year} `}
           />
           <Tooltip
             xValue={8}
             yValue={0}
-            text={`${lineChartValue[11]?.month} ${lineChartValue[11]?.value} `}
+            onlyText
+            textColor={"rgba(194, 194, 194, 1)"}
+
+            text={`${lineChartValue[11]?.value} `}
+          />
+          <Tooltip
+            xValue={8}
+            yValue={25}
+            text={`${lineChartValue[11]?.month} ${year}`}
           />
         </LineChart>
         <XAxis

@@ -1,14 +1,14 @@
 import React from 'react';
-import {G, Rect, Text} from 'react-native-svg';
-import {fontType} from '../../Theme/AppStyles';
+import { G, Rect, Text } from 'react-native-svg';
+import { fontType } from '../../Theme/AppStyles';
 
-export default Tooltip = ({x, y, xValue, yValue, text}) => (
+export default Tooltip = ({ x, y, xValue, yValue, text, onlyText = false, textColor }) => (
   <G x={x(xValue)} key={'tooltip'}>
     <G y={yValue}>
       <Rect
         height={28}
         width={70}
-        fill={'rgba(253, 227, 167, 0.6)'}
+        fill={onlyText ? 'transparent' : 'rgba(253, 227, 167, 0.6)'}
         ry={100}
         rx={10}
       />
@@ -19,7 +19,7 @@ export default Tooltip = ({x, y, xValue, yValue, text}) => (
         dy={16}
         alignmentBaseline={'middle'}
         textAnchor={'middle'}
-        stroke={'orange'}>
+        stroke={onlyText ? textColor : 'orange'}>
         {text}
       </Text>
     </G>

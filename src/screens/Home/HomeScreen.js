@@ -242,8 +242,8 @@ class HomeScreen extends React.Component {
     var barChartBankBalance = this.getBalancesValues();
     const maxBalanceValue = getMaxArrayValue(barChartBankBalance);
     const minBalanceValue = getMinArrayValue(barChartBankBalance);
-    console.log("barChartBankBalance",barChartBankBalance)
-    console.log("maxBalanceValue",maxBalanceValue)
+    console.log("barChartBankBalance", barChartBankBalance)
+    console.log("maxBalanceValue", maxBalanceValue)
 
     var lineChartMargeValue = this.getMargeValues();
     const maxMargeValue = getMaxArrayValue(lineChartMargeValue);
@@ -367,12 +367,26 @@ class HomeScreen extends React.Component {
             </View>
           </View>
           {this.state.selectedIndex == 0 && (
+
             <ScrollView>
+              <View style={styles.titleChartContainer}>
+                <Text style={styles.titleChart}>{text.SoldeCompte}</Text>
+              </View>
+              <View style={styles.chartContent}>
+                <BarChartCustom
+                  year={moment(exercise.date_debut).format('YYYY')}
+                  maxValue={maxBalanceValue}
+                  minValue={minBalanceValue}
+                  barValue={barChartBankBalance}
+                />
+              </View>
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.ChiffreAffaire}</Text>
               </View>
               <View style={styles.chartContent}>
                 <LineChartCustom
+                  year={moment(exercise.date_debut).format('YYYY')}
+
                   maxValue={maxTurnoverValue}
                   minValue={minTurnoverValue}
                   lineChartValue={lineChartTurnoverValue}
@@ -384,21 +398,14 @@ class HomeScreen extends React.Component {
 
               <View style={styles.chartContent}>
                 <LineChartCustom
+                  year={moment(exercise.date_debut).format('YYYY')}
+
                   maxValue={maxChargeValue}
                   minValue={minChargeValue}
                   lineChartValue={lineChartChargeValue}
                 />
               </View>
-              <View style={styles.titleChartContainer}>
-                <Text style={styles.titleChart}>{text.SoldeCompte}</Text>
-              </View>
-              <View style={styles.chartContent}>
-                <BarChartCustom
-                  maxValue={maxBalanceValue}
-                  minValue={minBalanceValue}
-                  barValue={barChartBankBalance}
-                />
-              </View>
+
             </ScrollView>
           )}
           {this.state.selectedIndex == 1 && (
@@ -408,6 +415,8 @@ class HomeScreen extends React.Component {
               </View>
               <View style={styles.chartContent}>
                 <LineChartCustom
+                  year={moment(exercise.date_debut).format('YYYY')}
+
                   maxValue={maxMargeValue}
                   minValue={minMargeValue}
                   lineChartValue={lineChartMargeValue}
@@ -422,6 +431,8 @@ class HomeScreen extends React.Component {
               </View>
               <View style={styles.chartContent}>
                 <LineChartCustom
+                  year={moment(exercise.date_debut).format('YYYY')}
+
                   maxValue={maxExcedentValue}
                   minValue={minExcedentValue}
                   lineChartValue={lineChartExcedentValue}
@@ -436,6 +447,8 @@ class HomeScreen extends React.Component {
               </View>
               <View style={styles.chartContent}>
                 <LineChartCustom
+                  year={moment(exercise.date_debut).format('YYYY')}
+
                   maxValue={maxChargePersonelValue}
                   minValue={minChargePersonelValue}
                   lineChartValue={lineChartChargePersonelValue}
