@@ -2,7 +2,6 @@ import React from 'react';
 import { View } from 'react-native';
 import { BarChart, XAxis, YAxis } from 'react-native-svg-charts';
 
-import Tooltip from '../TooltipChart/Tooltip';
 import { Line } from "react-native-svg";
 import { chartColor } from '../../Theme/AppStyles';
 import ScaleHelpers from '../../Theme/scaleHelpers';
