@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
-import {StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 import ScaleHelpers from '../../Theme/scaleHelpers';
-import {fontType} from '../../Theme/AppStyles';
+import { fontType } from '../../Theme/AppStyles';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
 
   chartContent: {
     height: ScaleHelpers.CalcHeight(25),
-    width: ScaleHelpers.CalcWidth(90),
+    width: ScaleHelpers.CalcWidth(150),
     alignSelf: 'center',
     flexDirection: 'row',
   },
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginTop: ScaleHelpers.CalcHeight(1),
     //Its for IOS
     shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     // its for android
     elevation: 5,
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     borderRadius: ScaleHelpers.CalcWidth(2),
     position: 'absolute',
     borderWidth: ScaleHelpers.CalcWidth(2),
-    width: ScaleHelpers.CalcWidth(25),
+    width: ScaleHelpers.CalcWidth(35),
     height: ScaleHelpers.CalcHeight(6),
   },
   itemLabel: {
@@ -68,13 +68,12 @@ const styles = StyleSheet.create({
   },
   titleChartContainer: {
     marginTop: ScaleHelpers.CalcHeight(2),
-    width:ScaleHelpers.CalcWidth(30),
+    width: ScaleHelpers.CalcWidth(100),
+    padding: ScaleHelpers.CalcWidth(4),
   },
   titleChart: {
     fontSize: ScaleHelpers.CalcWidth(4),
-    width: ScaleHelpers.CalcWidth(30),
-   
-    textAlign: 'center',
+    width: ScaleHelpers.CalcWidth(100),
     color: '#707070',
     fontFamily: fontType.bold,
   },

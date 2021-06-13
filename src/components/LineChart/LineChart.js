@@ -40,7 +40,8 @@ export default LineChartCustom = ({ lineChartValue, maxValue, minValue, year }) 
             yValue={0}
             onlyText
             textColor={chartColor}
-            text={`${String(lineChartValue[0]?.value).replace(/000$/, "K")} `}
+            text={`${
+              String(lineChartValue[0]?.value).replace(/000$/, "K") } `}
           />
           <Tooltip
             xValue={0}
@@ -48,14 +49,15 @@ export default LineChartCustom = ({ lineChartValue, maxValue, minValue, year }) 
             text={`${lineChartValue[0]?.month} ${year} `}
           />
           <Tooltip
-            xValue={8}
+            xValue={9}
             yValue={0}
             onlyText
             textColor={"rgba(194, 194, 194, 1)"}
-            text={`${String(lineChartValue[11]?.value).replace(/000$/, "K")} `}
+            text={`${
+              String(lineChartValue[11]?.value).replace(/000$/, "K") } `}
           />
           <Tooltip
-            xValue={8}
+            xValue={9}
             yValue={25}
             text={`${lineChartValue[11]?.month} ${year}`}
           />

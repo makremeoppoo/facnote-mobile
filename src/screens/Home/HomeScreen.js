@@ -134,7 +134,6 @@ class HomeScreen extends React.Component {
 
     let tab = [];
     let keys = this.getChargeKeys();
-    console.log(bankBalanceValues)
     tab = bankBalanceValues.map((item, index) => {
       let value = 0;
 
@@ -242,8 +241,6 @@ class HomeScreen extends React.Component {
     var barChartBankBalance = this.getBalancesValues();
     const maxBalanceValue = getMaxArrayValue(barChartBankBalance);
     const minBalanceValue = getMinArrayValue(barChartBankBalance);
-    console.log("barChartBankBalance", barChartBankBalance)
-    console.log("maxBalanceValue", maxBalanceValue)
 
     var lineChartMargeValue = this.getMargeValues();
     const maxMargeValue = getMaxArrayValue(lineChartMargeValue);
@@ -252,6 +249,7 @@ class HomeScreen extends React.Component {
     var lineChartExcedentValue = this.getExcedentValues();
     const maxExcedentValue = getMaxArrayValue(lineChartExcedentValue);
     const minExcedentValue = getMinArrayValue(lineChartExcedentValue);
+
 
     var lineChartChargePersonelValue = this.getChargePersonelValues();
     const maxChargePersonelValue = getMaxArrayValue(lineChartChargePersonelValue);
@@ -276,78 +274,92 @@ class HomeScreen extends React.Component {
           {loading && (
             <PageLoader showBackground={true} size="large" color="#0000ff" />
           )}
-          <SegmentedControlTabs
-            values={[
-              <>
-                {this.state.selectedIndex == 0 && (
-                  <Image style={styles.shadeImage} source={Rectangle} />
-                )}
-                <Text
-                  style={{
-                    color: this.state.selectedIndex == 0 ? 'white' : 'grey',
-                    textAlignVertical: 'center',
-                    textAlign: 'center',
-                    fontFamily: fontType.bold,
-                    fontSize: ScaleHelpers.CalcWidth(2.8),
-                  }}>
-                  {text.IndicateurCle}
-                </Text>
-              </>,
-              <>
-                {this.state.selectedIndex == 1 && (
-                  <Image style={styles.shadeImage} source={Rectangle} />
-                )}
-                <Text
-                  style={{
-                    color: this.state.selectedIndex == 1 ? 'white' : 'grey',
-                    textAlignVertical: 'center',
-                    textAlign: 'center',
-                    fontFamily: fontType.bold,
-                    fontSize: ScaleHelpers.CalcWidth(2.8),
-                  }}>
-                  {text.Marge}
-                </Text>
-              </>,
-              <>
-                {this.state.selectedIndex == 2 && (
-                  <Image style={styles.shadeImage} source={Rectangle} />
-                )}
-                <Text
-                  style={{
-                    color: this.state.selectedIndex == 2 ? 'white' : 'grey',
-                    textAlignVertical: 'center',
-                    textAlign: 'center',
-                    fontFamily: fontType.bold,
-                    fontSize: ScaleHelpers.CalcWidth(2.8),
-                  }}>
-                  {text.Excedent}
-                </Text>
-              </>,
-              <>
-                {this.state.selectedIndex == 3 && (
-                  <Image style={styles.shadeImage} source={Rectangle} />
-                )}
-                <Text
-                  style={{
-                    color: this.state.selectedIndex == 3 ? 'white' : 'grey',
-                    textAlignVertical: 'center',
-                    textAlign: 'center',
-                    fontFamily: fontType.bold,
-                    fontSize: ScaleHelpers.CalcWidth(2.8),
-                  }}>
-                  {text.ChargePersonelle}
-                </Text>
-              </>,
-            ]}
-            handleOnChangeIndex={this.handleIndexChange}
-            activeIndex={this.state.selectedIndex}
-            tabsContainerStyle={{
-              height: ScaleHelpers.CalcHeight(7),
-              marginTop: ScaleHelpers.CalcHeight(2),
-              marginHorizontal: ScaleHelpers.CalcWidth(0.5),
-            }}
-            tabStyle={styles.tabStyle}
-          />
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}
+            pagingEnabled={true} style={{ maxHeight: ScaleHelpers.CalcHeight(10), minHeight: ScaleHelpers.CalcHeight(10) }}>
+            <View>
+
+
+              <SegmentedControlTabs
+                values={[
+                  <>
+                    {this.state.selectedIndex == 0 && (
+                      <Image style={styles.shadeImage} source={Rectangle} />
+                    )}
+                    <Text
+                      style={{
+                        color: this.state.selectedIndex == 0 ? 'white' : 'grey',
+                        textAlignVertical: 'center',
+                        textAlign: 'center',
+                        fontFamily: fontType.bold,
+                        width: ScaleHelpers.CalcWidth(25),
+                        fontSize: ScaleHelpers.CalcWidth(2.8),
+                      }}>
+                      {text.IndicateurCle}
+                    </Text>
+                  </>,
+                  <>
+                    {this.state.selectedIndex == 1 && (
+                      <Image style={styles.shadeImage} source={Rectangle} />
+                    )}
+                    <Text
+                      style={{
+                        color: this.state.selectedIndex == 1 ? 'white' : 'grey',
+                        textAlignVertical: 'center',
+                        textAlign: 'center',
+                        fontFamily: fontType.bold,
+                        width: ScaleHelpers.CalcWidth(25),
+                        fontSize: ScaleHelpers.CalcWidth(2.8),
+                      }}>
+                      {text.Marge}
+                    </Text>
+                  </>,
+                  <>
+                    {this.state.selectedIndex == 2 && (
+                      <Image style={styles.shadeImage} source={Rectangle} />
+                    )}
+                    <Text
+                      style={{
+                        color: this.state.selectedIndex == 2 ? 'white' : 'grey',
+                        textAlignVertical: 'center',
+                        textAlign: 'center',
+                        fontFamily: fontType.bold,
+                        width: ScaleHelpers.CalcWidth(25),
+
+                        fontSize: ScaleHelpers.CalcWidth(2.8),
+                      }}>
+                      {text.Excedent}
+                    </Text>
+                  </>,
+                  <>
+                    {this.state.selectedIndex == 3 && (
+                      <Image style={styles.shadeImage} source={Rectangle} />
+                    )}
+                    <Text
+                      style={{
+                        color: this.state.selectedIndex == 3 ? 'white' : 'grey',
+                        textAlignVertical: 'center',
+                        textAlign: 'center',
+                        fontFamily: fontType.bold,
+                        width: ScaleHelpers.CalcWidth(25),
+                        fontSize: ScaleHelpers.CalcWidth(2.8),
+                      }}>
+                      {text.ChargePersonelle}
+                    </Text>
+                  </>
+                ]}
+                handleOnChangeIndex={this.handleIndexChange}
+                activeIndex={this.state.selectedIndex}
+                tabsContainerStyle={{
+                  width: ScaleHelpers.CalcWidth(150),
+                  height: ScaleHelpers.CalcHeight(8),
+                  marginTop: ScaleHelpers.CalcHeight(2),
+                  marginHorizontal: ScaleHelpers.CalcWidth(0.5),
+
+                }}
+                tabStyle={styles.tabStyle}
+              />
+            </View>
+          </ScrollView>
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
               <Text style={[styles.itemValue, { color: '#4EC7F5' }]}>
@@ -372,40 +384,48 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.SoldeCompte}</Text>
               </View>
-              <View style={styles.chartContent}>
-                <BarChartCustom
-                  year={moment(exercise.date_debut).format('YYYY')}
-                  maxValue={maxBalanceValue}
-                  minValue={minBalanceValue}
-                  barValue={barChartBankBalance}
-                />
-              </View>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                pagingEnabled={true}>
+                <View style={styles.chartContent}>
+                  <BarChartCustom
+                    year={moment(exercise.date_debut).format('YYYY')}
+                    maxValue={maxBalanceValue}
+                    minValue={minBalanceValue}
+                    barValue={barChartBankBalance}
+                  />
+                </View>
+              </ScrollView>
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.ChiffreAffaire}</Text>
               </View>
-              <View style={styles.chartContent}>
-                <LineChartCustom
-                  year={moment(exercise.date_debut).format('YYYY')}
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                pagingEnabled={true}>
+                <View style={styles.chartContent}>
+                  <LineChartCustom
+                    year={moment(exercise.date_debut).format('YYYY')}
 
-                  maxValue={maxTurnoverValue}
-                  minValue={minTurnoverValue}
-                  lineChartValue={lineChartTurnoverValue}
-                />
-              </View>
+                    maxValue={maxTurnoverValue}
+                    minValue={minTurnoverValue}
+                    lineChartValue={lineChartTurnoverValue}
+                  />
+                </View>
+              </ScrollView>
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.Charge}</Text>
               </View>
 
-              <View style={styles.chartContent}>
-                <LineChartCustom
-                  year={moment(exercise.date_debut).format('YYYY')}
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                pagingEnabled={true}>
+                <View style={styles.chartContent}>
+                  <LineChartCustom
+                    year={moment(exercise.date_debut).format('YYYY')}
 
-                  maxValue={maxChargeValue}
-                  minValue={minChargeValue}
-                  lineChartValue={lineChartChargeValue}
-                />
-              </View>
-
+                    maxValue={maxChargeValue}
+                    minValue={minChargeValue}
+                    lineChartValue={lineChartChargeValue}
+                  />
+                </View>
+              </ScrollView>
             </ScrollView>
           )}
           {this.state.selectedIndex == 1 && (
@@ -413,15 +433,18 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.Marge}</Text>
               </View>
-              <View style={styles.chartContent}>
-                <LineChartCustom
-                  year={moment(exercise.date_debut).format('YYYY')}
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                pagingEnabled={true}>
+                <View style={styles.chartContent}>
+                  <LineChartCustom
+                    year={moment(exercise.date_debut).format('YYYY')}
 
-                  maxValue={maxMargeValue}
-                  minValue={minMargeValue}
-                  lineChartValue={lineChartMargeValue}
-                />
-              </View>
+                    maxValue={maxMargeValue}
+                    minValue={minMargeValue}
+                    lineChartValue={lineChartMargeValue}
+                  />
+                </View>
+              </ScrollView>
             </ScrollView>
           )}
           {this.state.selectedIndex == 2 && (
@@ -429,15 +452,18 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.Excedent}</Text>
               </View>
-              <View style={styles.chartContent}>
-                <LineChartCustom
-                  year={moment(exercise.date_debut).format('YYYY')}
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                pagingEnabled={true}>
+                <View style={styles.chartContent}>
+                  <LineChartCustom
+                    year={moment(exercise.date_debut).format('YYYY')}
 
-                  maxValue={maxExcedentValue}
-                  minValue={minExcedentValue}
-                  lineChartValue={lineChartExcedentValue}
-                />
-              </View>
+                    maxValue={maxExcedentValue}
+                    minValue={minExcedentValue}
+                    lineChartValue={lineChartExcedentValue}
+                  />
+                </View>
+              </ScrollView>
             </ScrollView>
           )}
           {this.state.selectedIndex == 3 && (
@@ -445,15 +471,18 @@ class HomeScreen extends React.Component {
               <View style={styles.titleChartContainer}>
                 <Text style={styles.titleChart}>{text.ChargePersonelle}</Text>
               </View>
-              <View style={styles.chartContent}>
-                <LineChartCustom
-                  year={moment(exercise.date_debut).format('YYYY')}
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}
+                pagingEnabled={true}>
+                <View style={styles.chartContent}>
+                  <LineChartCustom
+                    year={moment(exercise.date_debut).format('YYYY')}
 
-                  maxValue={maxChargePersonelValue}
-                  minValue={minChargePersonelValue}
-                  lineChartValue={lineChartChargePersonelValue}
-                />
-              </View>
+                    maxValue={maxChargePersonelValue}
+                    minValue={minChargePersonelValue}
+                    lineChartValue={lineChartChargePersonelValue}
+                  />
+                </View>
+              </ScrollView>
             </ScrollView>
           )}
         </View>

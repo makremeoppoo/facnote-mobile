@@ -52,7 +52,7 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
             text={`${barValue[0]?.month} ${year} `}
           />
           <Tooltip
-            xValue={8}
+            xValue={9}
             yValue={0}
             onlyText
             textColor={"rgba(194, 194, 194, 1)"}
@@ -60,9 +60,9 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
             text={`${barValue[11]?.value} `}
           />
           <Tooltip
-            xValue={8}
+            xValue={9}
             yValue={25}
-            text={`${barValue[11]?.month} ${year}} `}
+            text={`${barValue[11]?.month} ${year} `}
           />
         </BarChart>
         <XAxis
