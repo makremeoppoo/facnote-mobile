@@ -10,8 +10,11 @@ const styles = StyleSheet.create({
   },
 
   chartContent: {
-    height: ScaleHelpers.CalcHeight(25),
+    height: ScaleHelpers.CalcHeight(20),
     width: ScaleHelpers.CalcWidth(150),
+    marginLeft: ScaleHelpers.CalcWidth(3),
+    marginRight: ScaleHelpers.CalcWidth(3),
+
     alignSelf: 'center',
     flexDirection: 'row',
   },
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
   shadeImage: {
     borderRadius: ScaleHelpers.CalcWidth(2),
     position: 'absolute',
-    borderWidth: ScaleHelpers.CalcWidth(2),
+    borderWidth: ScaleHelpers.CalcWidth(0),
     width: ScaleHelpers.CalcWidth(35),
     height: ScaleHelpers.CalcHeight(6),
   },

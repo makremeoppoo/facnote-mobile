@@ -39,7 +39,7 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
         formatLabel={(value) => String(value).replace(/000$/, "K")}
         max={maxValue + 1000}
       />
-      <View style={{ flex: 1, marginLeft: 10 }}>
+      <View style={{ flex: 1 }}>
         <BarChart
           style={{ flex: 1 }}
           data={barValue.map((item) => item.value)}

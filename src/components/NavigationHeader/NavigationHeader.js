@@ -1,9 +1,9 @@
 /* eslint-disable comma-dangle */
 import React from 'react';
-import {TouchableOpacity, Image, View, Text, TextInput} from 'react-native';
-import {connect} from 'react-redux';
+import { TouchableOpacity, Image, View, Text, TextInput, Platform } from 'react-native';
+import { connect } from 'react-redux';
 import styles from './styles';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import {
   faSlidersH,
   faChevronLeft,
@@ -14,7 +14,7 @@ import ModalSelector from 'react-native-modal-selector';
 
 import ScaleHelpers from '../../Theme/scaleHelpers';
 import background from '../../../assets/images/galery/NavigationBackground.png';
-import {logout} from '../../redux';
+import { logout } from '../../redux';
 
 class NavigationHeader extends React.Component {
   render() {
@@ -80,7 +80,7 @@ class NavigationHeader extends React.Component {
               width: ScaleHelpers.CalcWidth(10),
               height: ScaleHelpers.CalcWidth(5),
               paddingLeft: ScaleHelpers.CalcWidth(5),
-              paddingBottom: ScaleHelpers.CalcHeight(10),
+              paddingBottom: Platform.OS === 'ios' ? ScaleHelpers.CalcHeight(5) : ScaleHelpers.CalcHeight(10)
             }}
             onPress={() => this.props.logout()}>
             <FontAwesomeIcon icon={faPowerOff} size={25} color="white" />
@@ -94,4 +94,4 @@ class NavigationHeader extends React.Component {
 const mapStateToProps = (state) => ({
   user: state.auth,
 });
-export default connect(mapStateToProps, {logout})(NavigationHeader);
+export default connect(mapStateToProps, { logout })(NavigationHeader);
