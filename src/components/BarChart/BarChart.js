@@ -4,12 +4,27 @@ import { BarChart, XAxis, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import CustomGrid from '../CustomGrid/CostumGrid';
 import Tooltip from '../TooltipChart/Tooltip';
-import { Text } from 'react-native-svg';
+import { Line } from "react-native-svg";
 import { chartColor } from '../../Theme/AppStyles';
 
 const axesSvg = { fontSize: 10, fill: 'grey' };
 const verticalContentInset = { top: 10, bottom: 10 };
 
+const VerticalLine = ({ x, y, xValue }) => (
+  <Line
+    key={"axis"}
+    x1={x(xValue)+20}
+    x2={x(xValue) + 20}
+    y1={"0%"}
+    y2={"97.5%"}
+    stroke={"rgba(194, 194, 194, 1)"}
+    strokeWidth={1}
+    style={{
+      paddingBottom: -21,
+      left: 10
+    }}
+  />
+);
 export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
   return (
     <>
@@ -31,14 +46,15 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
           svg={{
             fill: chartColor,
             stroke: "white",
-            strokeWidth: 2,
-            strokeOpacity: '0.5',
+            strokeWidth: 20,
+            strokeOpacity: '1',
             fillOpacity: '0.5'
 
           }}
 
+
         >
-          <CustomGrid />
+          {barValue.map((item, index) => <VerticalLine xValue={index} />)}
           <Tooltip
             xValue={0}
             yValue={0}
@@ -68,7 +84,7 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
         <XAxis
           data={barValue}
           formatLabel={(_, index) => barValue[index].month}
-          contentInset={{ left: 10, right: 10 }}
+          contentInset={{ left: 20, right: 20 }}
           svg={{
             fill: 'grey',
             fontSize: 10,
