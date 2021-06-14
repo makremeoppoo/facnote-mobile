@@ -112,7 +112,8 @@ const TabNavigator = () => {
         },
         showLabel: false,
       }}
-      initialRouteName={canShowBank ? routes.BankStatement : routes.Invoices}>
+     // initialRouteName={canShowBank ? routes.BankStatement : routes.Invoices}
+      initialRouteName={routes.Home}>
       <BottomTabNavigator.Screen
         name={routes.Home}
         component={HomeScreen}

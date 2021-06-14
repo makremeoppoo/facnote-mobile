@@ -376,13 +376,13 @@ class HomeScreen extends React.Component {
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
               <Text style={[styles.itemValue, { color: '#4EC7F5' }]}>
-                {bankBalance.total?.toFixed(2)}
+                {bankBalance.total?.toFixed(2) || 0}
               </Text>
               <Text style={[styles.itemValue, { color: '#EA4C89' }]}>
-                {turnover.total?.toFixed(2)}
+                {turnover.total?.toFixed(2) || 0}
               </Text>
               <Text style={[styles.itemValue, { color: '#4CC418' }]}>
-                {(fixedCharge.total + notFixedCharge.total)?.toFixed(2)}
+                {(fixedCharge.total || 0 + notFixedCharge.total || 0)?.toFixed(2)}
               </Text>
             </View>
             <View style={styles.valueCardrowContainer}>
@@ -402,19 +402,19 @@ class HomeScreen extends React.Component {
                 <View >
                   <Tooltip
                     onlyText
-                    text={`${String(barChartBankBalance[0]?.value)} `}
+                    text={`${String(barChartBankBalance[0]?.value || "0")} `}
                   />
                   <Tooltip
-                    text={`${barChartBankBalance[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
+                    text={`${barChartBankBalance[0]?.month || " "} ${moment(exercise.date_debut).format('YYYY')} `}
                   />
                 </View>
                 <View>
                   <Tooltip
                     onlyText
-                    text={`${String(barChartBankBalance[11]?.value)} `}
+                    text={`${String(barChartBankBalance[11]?.value || "0")} `}
                   />
                   <Tooltip
-                    text={`${barChartBankBalance[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
+                    text={`${barChartBankBalance[11]?.month || "0"} ${moment(exercise.date_debut).format('YYYY')}`}
                   />
                 </View>
 
@@ -436,19 +436,19 @@ class HomeScreen extends React.Component {
                 <View >
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartTurnoverValue[0]?.value)} `}
+                    text={`${String(lineChartTurnoverValue[0]?.value || "0")} `}
                   />
                   <Tooltip
-                    text={`${lineChartTurnoverValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
+                    text={`${lineChartTurnoverValue[0]?.month || " "} ${moment(exercise.date_debut).format('YYYY')} `}
                   />
                 </View>
                 <View>
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartTurnoverValue[11]?.value)} `}
+                    text={`${String(lineChartTurnoverValue[11]?.value || "0")} `}
                   />
                   <Tooltip
-                    text={`${lineChartTurnoverValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
+                    text={`${lineChartTurnoverValue[11]?.month || " "} ${moment(exercise.date_debut).format('YYYY')}`}
                   />
                 </View>
 
@@ -471,7 +471,7 @@ class HomeScreen extends React.Component {
                 <View >
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartChargeValue[0]?.value)} `}
+                    text={`${String(lineChartChargeValue[0]?.value || "0")} `}
                   />
                   <Tooltip
                     text={`${lineChartChargeValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
@@ -480,7 +480,7 @@ class HomeScreen extends React.Component {
                 <View>
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartChargeValue[11]?.value)} `}
+                    text={`${String(lineChartChargeValue[11]?.value || "0")} `}
                   />
                   <Tooltip
                     text={`${lineChartChargeValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
@@ -511,7 +511,7 @@ class HomeScreen extends React.Component {
                 <View >
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartMargeValue[0]?.value)} `}
+                    text={`${String(lineChartMargeValue[0]?.value || "0")} `}
                   />
                   <Tooltip
                     text={`${lineChartMargeValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
@@ -520,7 +520,7 @@ class HomeScreen extends React.Component {
                 <View>
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartMargeValue[11]?.value)} `}
+                    text={`${String(lineChartMargeValue[11]?.value || "0")} `}
                   />
                   <Tooltip
                     text={`${lineChartMargeValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
@@ -551,7 +551,7 @@ class HomeScreen extends React.Component {
                 <View >
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartExcedentValue[0]?.value)} `}
+                    text={`${String(lineChartExcedentValue[0]?.value || "0")} `}
                   />
                   <Tooltip
                     text={`${lineChartExcedentValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
@@ -560,7 +560,7 @@ class HomeScreen extends React.Component {
                 <View>
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartExcedentValue[11]?.value)} `}
+                    text={`${String(lineChartExcedentValue[11]?.value || "0")} `}
                   />
                   <Tooltip
                     text={`${lineChartExcedentValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}
@@ -590,7 +590,7 @@ class HomeScreen extends React.Component {
                 <View >
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartChargePersonelValue[0]?.value)} `}
+                    text={`${String(lineChartChargePersonelValue[0]?.value || "0")} `}
                   />
                   <Tooltip
                     text={`${lineChartChargePersonelValue[0]?.month} ${moment(exercise.date_debut).format('YYYY')} `}
@@ -599,7 +599,7 @@ class HomeScreen extends React.Component {
                 <View>
                   <Tooltip
                     onlyText
-                    text={`${String(lineChartChargePersonelValue[11]?.value)} `}
+                    text={`${String(lineChartChargePersonelValue[11]?.value || "0")} `}
                   />
                   <Tooltip
                     text={`${lineChartChargePersonelValue[11]?.month} ${moment(exercise.date_debut).format('YYYY')}`}

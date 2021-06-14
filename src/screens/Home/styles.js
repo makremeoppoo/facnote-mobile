@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     fontFamily: fontType.bold,
   },
   titleChartContainer: {
-    marginTop: ScaleHelpers.CalcHeight(2),
+    marginTop: ScaleHelpers.CalcHeight(4),
     width: ScaleHelpers.CalcWidth(100),
     paddingLeft: ScaleHelpers.CalcWidth(4),
     paddingRight: ScaleHelpers.CalcWidth(4),
