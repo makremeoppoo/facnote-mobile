@@ -36,7 +36,7 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
         min={minValue - minValue / 4}
         yAccessor={({ item }) => item.value}
         formatLabel={(value) => String(value).replace(/000$/, "K")}
-        max={maxValue + 1000}
+        max={maxValue}
       />
       <View style={{ flex: 1 }}>
         <BarChart

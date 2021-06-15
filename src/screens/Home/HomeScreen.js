@@ -382,7 +382,7 @@ class HomeScreen extends React.Component {
                 {turnover.total?.toFixed(2) || 0}
               </Text>
               <Text style={[styles.itemValue, { color: '#4CC418' }]}>
-                {(fixedCharge.total || 0 + notFixedCharge.total || 0)?.toFixed(2)}
+                {((fixedCharge.total || 0) + (notFixedCharge.total) || 0)?.toFixed(2)}
               </Text>
             </View>
             <View style={styles.valueCardrowContainer}>
