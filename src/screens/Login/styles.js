@@ -9,7 +9,11 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     height: ScaleHelpers.CalcHeight(100),
-
+  },
+  subtitleView: {
+    flexDirection: 'row',
+    paddingLeft: 10,
+    paddingTop: 5
   },
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(100),
@@ -143,6 +147,22 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(80),
     width: ScaleHelpers.CalcWidth(100),
   },
+  listViewContainer: {
+    minHeight: ScaleHelpers.CalcHeight(30),
+    position: "relative", 
+    zIndex:1,
+    alignContent: "center",
+    alignItems: "center",
+    alignSelf: "center"
+  },
+  item: {
+    textAlign:'center',
+    zIndex:3,
+    minWidth:"50%",
+    height: ScaleHelpers.CalcHeight(8),
+
+  },
+
 });
 
 export default styles;

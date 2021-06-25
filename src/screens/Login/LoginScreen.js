@@ -10,23 +10,27 @@ import {
   Keyboard,
   ActivityIndicator,
   Linking,
+  FlatList
 } from 'react-native';
-import {CheckBox} from 'react-native-elements';
+import { CheckBox } from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
+import { ListItem, Avatar } from 'react-native-elements'
 
 import styles from './styles';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import LogoImage from '../../../assets/images/galery/logo.png';
 import BackgroundLoginImage from '../../../assets/images/galery/background_connexion.png';
-import {primaryColor} from '../../Theme/AppStyles';
+import { primaryColor } from '../../Theme/AppStyles';
 
 import * as api from '../../services/auth';
 import getCabinet from '../../services/cabinet';
 import getSociety from '../../services/societe';
 
-import {login} from '../../redux';
-import {text, permissions, cabinetHaveAccess} from '../../constants';
-import {userHasPermission} from '../../shared/userHasPermission';
+import { login } from '../../redux';
+import { text, permissions, cabinetHaveAccess } from '../../constants';
+import { userHasPermission } from '../../shared/userHasPermission';
+
+
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -38,16 +42,16 @@ class LoginScreen extends React.Component {
       showButtom: true,
       loading: false,
       rememberMe: false,
+      listLogin: [],
+      showList: false
     };
   }
   async componentDidMount() {
-    const name = await AsyncStorage.getItem('name');
-    const password = await AsyncStorage.getItem('password');
-    const rememberMe = await AsyncStorage.getItem('rememberMe');
 
+    const rememberMe = await AsyncStorage.getItem('rememberMe');
+    const listLogin = await AsyncStorage.getItem('listLogin');
     this.setState({
-      name: name || '',
-      password: password || '',
+      list: JSON.parse(listLogin),
       rememberMe: rememberMe ? true : false,
     });
   }
@@ -68,25 +72,25 @@ class LoginScreen extends React.Component {
   }
 
   _keshowButtomyboardDidShow = () => {
-    this.setState({showButtom: !this.state.showButtom});
+    this.setState({ showButtom: !this.state.showButtom });
   };
 
   _keyboardDidHide = () => {
-    this.setState({showButtom: !this.state.showButtom});
+    this.setState({ showButtom: !this.state.showButtom });
   };
 
   onPressLogButton = async () => {
-    const {name, password, rememberMe} = this.state;
+    const { name, password, rememberMe } = this.state;
 
     try {
       //check if username is null
       // let username = response.user.username !== null;
-      this.setState({loading: true});
-      let user = await api.login({username: name, password: password});
+      this.setState({ loading: true });
+      let user = await api.login({ username: name, password: password });
       await AsyncStorage.setItem('accessToken', user['token']);
       await AsyncStorage.setItem('modules', JSON.stringify(user.user.modules));
       let cabinet = await getCabinet();
-      console.log("cabinetHaveAccess",cabinetHaveAccess.includes(cabinet.base))
+      console.log("cabinetHaveAccess", cabinetHaveAccess.includes(cabinet.base))
       if (
         cabinetHaveAccess.length > 0 &&
         !cabinetHaveAccess.includes(cabinet.base)
@@ -102,14 +106,23 @@ class LoginScreen extends React.Component {
           (await userHasPermission(permissions.banque)) ||
           (await userHasPermission(permissions.banque_entreprise)),
       });
-      this.setState({loading: false});
+      this.setState({ loading: false });
       if (rememberMe) {
-        AsyncStorage.setItem('password', password);
-        AsyncStorage.setItem('name', name);
+
+        let list = JSON.parse(await AsyncStorage.getItem('listLogin'));
+
+        if (!!list && list.findIndex(item => item.login == name) == -1) {
+          list.push({ login: name, password: password })
+        }
+        else if (!list) {
+          list = [{ login: name, password: password }]
+        }
+
+        AsyncStorage.setItem('listLogin', JSON.stringify(list));
+
         AsyncStorage.setItem('rememberMe', 'true');
       } else {
-        AsyncStorage.removeItem('name');
-        AsyncStorage.removeItem('password');
+
         AsyncStorage.removeItem('rememberMe');
       }
     } catch (error) {
@@ -121,11 +134,34 @@ class LoginScreen extends React.Component {
     }
   };
 
+  renderListUsers() {
+    return (
+      <FlatList
+        style={{ flex: 1 }}
+        keyExtractor={this.keyExtractor}
+        data={this.state.list}
+        nestedScrollEnabled
+        renderItem={({ item }) => (
+          <TouchableHighlight
+            style={styles.item}
+            onPress={() => this.setState({ showList: false, name: item.login, password: item.password })}>
+            <ListItem
+              title={item.login}
+              subtitle={"●●●●●●●●"}
+              bottomDivider
+              chevron
+            />
+          </TouchableHighlight>
+        )} />
+    )
+  }
   render() {
     return (
-      <View>
+
+
+      <View style={styles.mainContainer}>
         <ScrollView>
-          <View style={styles.mainContainer}>
+          <View>
             <Image
               source={BackgroundLoginImage}
               style={styles.topImageStyle}></Image>
@@ -145,11 +181,17 @@ class LoginScreen extends React.Component {
                 <View style={styles.inputContainer}>
                   <TextInput
                     autoCompleteType={'name'}
+                    onFocus={() => this.setState({ showList: true })}
                     style={styles.input}
-                    onChangeText={(text) => this.setState({name: text})}
+                    onChangeText={(text) => this.setState({ showList: false, name: text })}
                     value={this.state.name}
                   />
+
                 </View>
+                {this.state.showList && <View style={styles.listViewContainer}>
+                  {this.renderListUsers()}
+                </View>}
+
               </View>
               <View style={styles.inputBlock}>
                 <Text style={styles.label}>{text.motDePasse}</Text>
@@ -159,9 +201,11 @@ class LoginScreen extends React.Component {
                     autoCompleteType={'password'}
                     style={styles.input}
                     secureTextEntry={true}
-                    onChangeText={(text) => this.setState({password: text})}
+                    onChangeText={(text) => this.setState({ password: text })}
                     value={this.state.password}
                   />
+
+
                 </View>
               </View>
               <CheckBox
@@ -173,7 +217,7 @@ class LoginScreen extends React.Component {
                 style={styles.checkbox}
                 checked={this.state.rememberMe}
                 onPress={(value) =>
-                  this.setState({rememberMe: !this.state.rememberMe})
+                  this.setState({ rememberMe: !this.state.rememberMe })
                 }
               />
 
@@ -186,19 +230,21 @@ class LoginScreen extends React.Component {
                 </TouchableHighlight>
               </View>
             </View>
+
           </View>
         </ScrollView>
+
         {this.state.showButtom && (
           <View style={styles.buttomView}>
             <Text
-              style={[styles.buttomText, {color: primaryColor}]}
+              style={[styles.buttomText, { color: primaryColor }]}
               onPress={() => Linking.openURL(text.mentionLegalesUrl)}>
               {text.mentionsLegales}
             </Text>
-            <Text style={[styles.buttomText, {color: primaryColor}]}> - </Text>
+            <Text style={[styles.buttomText, { color: primaryColor }]}> - </Text>
             <Text
               onPress={() => Linking.openURL(text.cguURL)}
-              style={[styles.buttomText, {color: primaryColor}]}>
+              style={[styles.buttomText, { color: primaryColor }]}>
               {' '}
               {text.CGU}
             </Text>
@@ -208,4 +254,4 @@ class LoginScreen extends React.Component {
     );
   }
 }
-export default connect(null, {login})(LoginScreen);
+export default connect(null, { login })(LoginScreen);
