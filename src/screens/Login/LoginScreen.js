@@ -15,6 +15,7 @@ import {
 import { CheckBox } from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ListItem, Avatar } from 'react-native-elements'
+import GetAppName from 'react-native-get-app-name';
 
 import styles from './styles';
 import { connect } from 'react-redux';
@@ -25,6 +26,7 @@ import { primaryColor } from '../../Theme/AppStyles';
 import * as api from '../../services/auth';
 import getCabinet from '../../services/cabinet';
 import getSociety from '../../services/societe';
+import getVersion from '../../services/getVersion';
 
 import { login } from '../../redux';
 import { text, permissions, cabinetHaveAccess } from '../../constants';
@@ -43,17 +45,25 @@ class LoginScreen extends React.Component {
       loading: false,
       rememberMe: false,
       listLogin: [],
-      showList: false
+      showList: false,
+      version: ""
     };
   }
   async componentDidMount() {
 
     const rememberMe = await AsyncStorage.getItem('rememberMe');
     const listLogin = await AsyncStorage.getItem('listLogin');
-    this.setState({
-      list: JSON.parse(listLogin),
-      rememberMe: rememberMe ? true : false,
-    });
+    GetAppName.getAppName(async (appName) => {
+      const version = await getVersion(appName)
+
+      this.setState({
+        version: version[0]?.application_version,
+        list: JSON.parse(listLogin),
+        rememberMe: rememberMe ? true : false,
+      });
+    })
+
+
   }
   componentWillMount() {
     this.keyboardDidShowListener = Keyboard.addListener(
@@ -228,6 +238,12 @@ class LoginScreen extends React.Component {
                   underlayColor="rgba(73,182,77,1,0.9)">
                   <Text style={styles.signTxt}>{text.Connexion}</Text>
                 </TouchableHighlight>
+
+              </View>
+
+              <View style={{ alignContent: 'center' }}>
+
+                {!!this.state.version && <Text style={{ textAlign: 'center', color: 'white' }}>Version: {this.state.version}</Text>}
               </View>
             </View>
 
