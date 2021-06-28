@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: ScaleHelpers.CalcHeight(40),
     paddingBottom: ScaleHelpers.CalcHeight(18),
+    flex:1
   },
 
   title: {
@@ -63,7 +64,6 @@ const styles = StyleSheet.create({
     fontFamily: fontType.base,
     marginBottom: ScaleHelpers.CalcHeight(1),
     marginTop: ScaleHelpers.CalcHeight(1),
-
     marginLeft: ScaleHelpers.CalcWidth(20),
     color: 'white',
     fontSize: ScaleHelpers.CalcWidth(4),
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     alignSelf: 'center',
     alignItems:"center",
-    alignContent:"center"
+    alignContent:"center",
   },
   inputBlock: {
     height: ScaleHelpers.CalcHeight(12),
@@ -149,16 +149,17 @@ const styles = StyleSheet.create({
   },
   listViewContainer: {
     minHeight: ScaleHelpers.CalcHeight(30),
-    position: "relative", 
-    zIndex:1,
+    position: "absolute", 
+    zIndex:999,
     alignContent: "center",
     alignItems: "center",
-    alignSelf: "center"
+    alignSelf: "center",
+    top:ScaleHelpers.CalcHeight(0),
   },
   item: {
     textAlign:'center',
-    zIndex:3,
-    minWidth:"50%",
+    zIndex:1,
+    minWidth:ScaleHelpers.CalcWidth(50),
     height: ScaleHelpers.CalcHeight(8),
 
   },

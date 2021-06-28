@@ -15,7 +15,6 @@ import {
 import { CheckBox } from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
 import { ListItem, Avatar } from 'react-native-elements'
-import GetAppName from 'react-native-get-app-name';
 
 import styles from './styles';
 import { connect } from 'react-redux';
@@ -29,7 +28,7 @@ import getSociety from '../../services/societe';
 import getVersion from '../../services/getVersion';
 
 import { login } from '../../redux';
-import { text, permissions, cabinetHaveAccess } from '../../constants';
+import { text, permissions, cabinetHaveAccess,appName } from '../../constants';
 import { userHasPermission } from '../../shared/userHasPermission';
 
 
@@ -53,15 +52,15 @@ class LoginScreen extends React.Component {
 
     const rememberMe = await AsyncStorage.getItem('rememberMe');
     const listLogin = await AsyncStorage.getItem('listLogin');
-    GetAppName.getAppName(async (appName) => {
-      const version = await getVersion(appName)
+  
+    const version = await getVersion(appName)
+    console.log(version)
 
-      this.setState({
-        version: version[0]?.application_version,
-        list: JSON.parse(listLogin),
-        rememberMe: rememberMe ? true : false,
-      });
-    })
+    this.setState({
+      version: version[0]?.application_version,
+      list: JSON.parse(listLogin),
+      rememberMe: rememberMe ? true : false,
+    });
 
 
   }
@@ -185,6 +184,9 @@ class LoginScreen extends React.Component {
               <Text style={styles.error}>{this.state.error}</Text>
             </View>
             <View style={styles.formContainer}>
+            {this.state.showList && <View style={styles.listViewContainer}>
+                  {this.renderListUsers()}
+                </View>}
               <View style={styles.inputBlock}>
                 <Text style={styles.label}>{text.Identifiant}</Text>
 
@@ -198,9 +200,8 @@ class LoginScreen extends React.Component {
                   />
 
                 </View>
-                {this.state.showList && <View style={styles.listViewContainer}>
-                  {this.renderListUsers()}
-                </View>}
+                
+               
 
               </View>
               <View style={styles.inputBlock}>
