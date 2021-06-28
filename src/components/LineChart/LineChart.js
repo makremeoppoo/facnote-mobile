@@ -4,6 +4,8 @@ import { LineChart, XAxis, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import CustomGrid from '../CustomGrid/CostumGrid';
 import { chartColor } from "../../Theme/AppStyles"
+import { thousandSeparator } from '../../shared/utils';
+
 const axesSvg = { fontSize: 10, fill: 'grey' };
 const verticalContentInset = { top: 10, bottom: 10 };
 
@@ -18,7 +20,7 @@ export default LineChartCustom = ({ lineChartValue, maxValue, minValue, year }) 
         numberOfTicks={3}
         min={minValue - minValue / 4}
         yAccessor={({ item }) => item.value}
-        formatLabel={(value) => String(value).replace(/000$/, "K")}
+        formatLabel={(value) => thousandSeparator(value).replace(/000$/, "K")}
         max={maxValue}
       />
       <View style={{ flex: 1, marginLeft: 10 }}>

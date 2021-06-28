@@ -15,3 +15,20 @@ export const getMaxArrayValue = (array) => {
   function minimum(items) {
     return R.reduce(R.min, Infinity, items);
   }
+  export function thousandSeparator(n, sep) {
+
+    function reverse(text) {
+      
+        return text.split('').reverse().join('');
+    }
+
+    var rx = /(\d{3}(?!.*\.|$))/g;
+
+    if (!sep) {
+        sep = ' ';
+    }
+    if(typeof n == "undefined")
+      return '0'
+    return reverse(reverse(n.toString()).replace(rx, '$1' + sep));
+
+}

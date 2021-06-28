@@ -5,6 +5,7 @@ import { BarChart, XAxis, YAxis } from 'react-native-svg-charts';
 import { Line } from "react-native-svg";
 import { chartColor } from '../../Theme/AppStyles';
 import ScaleHelpers from '../../Theme/scaleHelpers';
+import { thousandSeparator } from '../../shared/utils';
 
 const axesSvg = { fontSize: 10, fill: 'grey' };
 const verticalContentInset = { top: 10, bottom: 10 };
@@ -35,7 +36,7 @@ export default BarChartCustom = ({ barValue, maxValue, minValue, year }) => {
         numberOfTicks={3}
         min={minValue - minValue / 4}
         yAccessor={({ item }) => item.value}
-        formatLabel={(value) => String(value).replace(/000$/, "K")}
+        formatLabel={(value) => thousandSeparator(value).replace(/000$/, "K")}
         max={maxValue}
       />
       <View style={{ flex: 1 }}>

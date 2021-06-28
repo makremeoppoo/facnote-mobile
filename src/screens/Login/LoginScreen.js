@@ -43,6 +43,7 @@ class LoginScreen extends React.Component {
       showButtom: true,
       loading: false,
       rememberMe: false,
+      listAutocomplit:[],
       listLogin: [],
       showList: false,
       version: ""
@@ -58,7 +59,8 @@ class LoginScreen extends React.Component {
 
     this.setState({
       version: version[0]?.application_version,
-      list: JSON.parse(listLogin),
+      listLogin:JSON.parse(listLogin),
+      listAutocomplit:JSON.parse(listLogin),
       rememberMe: rememberMe ? true : false,
     });
 
@@ -148,7 +150,7 @@ class LoginScreen extends React.Component {
       <FlatList
         style={{ flex: 1 }}
         keyExtractor={this.keyExtractor}
-        data={this.state.list}
+        data={this.state.listAutocomplit}
         nestedScrollEnabled
         renderItem={({ item }) => (
           <TouchableHighlight
@@ -184,7 +186,7 @@ class LoginScreen extends React.Component {
               <Text style={styles.error}>{this.state.error}</Text>
             </View>
             <View style={styles.formContainer}>
-            {this.state.showList && <View style={styles.listViewContainer}>
+            {(this.state.showList && this.state.listAutocomplit.length>0) && <View style={styles.listViewContainer}>
                   {this.renderListUsers()}
                 </View>}
               <View style={styles.inputBlock}>
@@ -195,7 +197,14 @@ class LoginScreen extends React.Component {
                     autoCompleteType={'name'}
                     onFocus={() => this.setState({ showList: true })}
                     style={styles.input}
-                    onChangeText={(text) => this.setState({ showList: false, name: text })}
+                  
+
+                    onChangeText={(text) =>{
+                      let list =this.state.listLogin
+                      if(text.length>0)
+                        list = list.filter(e =>e.login.toLowerCase().includes(text.toLowerCase()))
+                       this.setState({  name: text,listAutocomplit:list })}
+                      }
                     value={this.state.name}
                   />
 
