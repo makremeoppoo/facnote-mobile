@@ -10,6 +10,7 @@ import {
   Keyboard,
   ActivityIndicator,
   Linking,
+  Platform,
   FlatList
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
@@ -30,6 +31,7 @@ import getVersion from '../../services/getVersion';
 import { login } from '../../redux';
 import { text, permissions, cabinetHaveAccess,appName } from '../../constants';
 import { userHasPermission } from '../../shared/userHasPermission';
+import VersionInfo from 'react-native-version-info';
 
 
 class LoginScreen extends React.Component {
@@ -58,7 +60,7 @@ class LoginScreen extends React.Component {
     console.log(version)
 
     this.setState({
-      version: version[0]?.application_version,
+      version: version[0],
       listLogin:JSON.parse(listLogin),
       listAutocomplit:JSON.parse(listLogin),
       rememberMe: rememberMe ? true : false,
@@ -197,9 +199,7 @@ class LoginScreen extends React.Component {
                     autoCompleteType={'name'}
                     onFocus={() => this.setState({ showList: true })}
                     style={styles.input}
-                  
-
-                    onChangeText={(text) =>{
+                    onChangeText={(text) => {
                       let list =this.state.listLogin
                       if(text.length>0)
                         list = list.filter(e =>e.login.toLowerCase().includes(text.toLowerCase()))
@@ -253,7 +253,9 @@ class LoginScreen extends React.Component {
 
               <View style={{ alignContent: 'center' }}>
 
-                {!!this.state.version && <Text style={{ textAlign: 'center', color: 'white' }}>Version: {this.state.version}</Text>}
+                {this.state.version?.application_version != VersionInfo.appVersion && <Text style={{ textAlign: 'center', color: 'white' }}
+                onPress={() => Linking.openURL(this.state.version?.application_type.application_store_url)}> Clique ici télécharger la version {this.state.version.application_version}
+                </Text>}
               </View>
             </View>
 
