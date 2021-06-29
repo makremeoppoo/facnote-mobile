@@ -2,12 +2,13 @@ import * as c from '../constants';
 import api from './axios';
 
 export default async function getVersion(
-  app
+  app,
+  type
 ) {
   try {
     
     
-    let path = `/api/v1/mobile-application/versions?application=${app}`;
+    let path = `/api/v1/mobile-application/versions?application=${app}&type=${type}`;
     
     
     console.log("path",path);

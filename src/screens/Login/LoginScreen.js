@@ -56,14 +56,14 @@ class LoginScreen extends React.Component {
     const rememberMe = await AsyncStorage.getItem('rememberMe');
     const listLogin = await AsyncStorage.getItem('listLogin');
 
-    const version = await getVersion(appName)
+    const version = await getVersion(appName,Platform.OS)
     console.log("version", version)
 
     this.setState({
       version: version[0],
       listLogin: JSON.parse(listLogin),
       listAutocomplit: JSON.parse(listLogin),
-      rememberMe: rememberMe ? true : false,
+      rememberMe: rememberMe ? true : false, 
     });
 
 
