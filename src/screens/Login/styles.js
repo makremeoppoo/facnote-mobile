@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     alignSelf: "center",
-    top:ScaleHelpers.CalcHeight(0),
+    top:ScaleHelpers.CalcHeight(-2),
   },
   item: {
     textAlign:'center',

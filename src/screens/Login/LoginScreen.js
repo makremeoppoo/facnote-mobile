@@ -29,7 +29,7 @@ import getSociety from '../../services/societe';
 import getVersion from '../../services/getVersion';
 
 import { login } from '../../redux';
-import { text, permissions, cabinetHaveAccess,appName } from '../../constants';
+import { text, permissions, cabinetHaveAccess, appName } from '../../constants';
 import { userHasPermission } from '../../shared/userHasPermission';
 import VersionInfo from 'react-native-version-info';
 
@@ -45,7 +45,7 @@ class LoginScreen extends React.Component {
       showButtom: true,
       loading: false,
       rememberMe: false,
-      listAutocomplit:[],
+      listAutocomplit: [],
       listLogin: [],
       showList: false,
       version: ""
@@ -55,14 +55,14 @@ class LoginScreen extends React.Component {
 
     const rememberMe = await AsyncStorage.getItem('rememberMe');
     const listLogin = await AsyncStorage.getItem('listLogin');
-  
+
     const version = await getVersion(appName)
-    console.log(version)
+    console.log("version", version)
 
     this.setState({
       version: version[0],
-      listLogin:JSON.parse(listLogin),
-      listAutocomplit:JSON.parse(listLogin),
+      listLogin: JSON.parse(listLogin),
+      listAutocomplit: JSON.parse(listLogin),
       rememberMe: rememberMe ? true : false,
     });
 
@@ -188,9 +188,9 @@ class LoginScreen extends React.Component {
               <Text style={styles.error}>{this.state.error}</Text>
             </View>
             <View style={styles.formContainer}>
-            {(this.state.showList && this.state.listAutocomplit.length>0) && <View style={styles.listViewContainer}>
-                  {this.renderListUsers()}
-                </View>}
+              {(this.state.showList && this.state.listAutocomplit?.length > 0) && <View style={styles.listViewContainer}>
+                {this.renderListUsers()}
+              </View>}
               <View style={styles.inputBlock}>
                 <Text style={styles.label}>{text.Identifiant}</Text>
 
@@ -200,17 +200,18 @@ class LoginScreen extends React.Component {
                     onFocus={() => this.setState({ showList: true })}
                     style={styles.input}
                     onChangeText={(text) => {
-                      let list =this.state.listLogin
-                      if(text.length>0)
-                        list = list.filter(e =>e.login.toLowerCase().includes(text.toLowerCase()))
-                       this.setState({  name: text,listAutocomplit:list })}
-                      }
+                      let list = this.state.listLogin
+                      if (text.length > 0)
+                        list = list?.filter(e => e.login.toLowerCase().includes(text.toLowerCase()))
+                      this.setState({ name: text, listAutocomplit: list })
+                    }
+                    }
                     value={this.state.name}
                   />
 
                 </View>
-                
-               
+
+
 
               </View>
               <View style={styles.inputBlock}>
@@ -254,8 +255,7 @@ class LoginScreen extends React.Component {
               <View style={{ alignContent: 'center' }}>
 
                 {this.state.version?.application_version != VersionInfo.appVersion && <Text style={{ textAlign: 'center', color: 'white' }}
-                onPress={() => Linking.openURL(this.state.version?.application_type.application_store_url)}> Clique ici télécharger la version {this.state.version.application_version}
-                </Text>}
+                  onPress={() => Linking.openURL(this.state.version?.application_url)}>Télécharger la version {this.state.version.application_version}</Text>}
               </View>
             </View>
 

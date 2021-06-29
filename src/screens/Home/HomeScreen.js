@@ -19,7 +19,7 @@ import LineChartCustom from '../../components/LineChart/LineChart';
 import BarChartCustom from '../../components/BarChart/BarChart';
 
 import styles from './styles';
-import { getMaxArrayValue, getMinArrayValue,thousandSeparator } from '../../shared/utils';
+import { getMaxArrayValue, getMinArrayValue, thousandSeparator } from '../../shared/utils';
 
 const Tooltip = ({ text, onlyText }) => (<View
   style={{
