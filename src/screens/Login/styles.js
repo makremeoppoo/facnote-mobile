@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
     height: ScaleHelpers.CalcHeight(8),
 
   },
+  versionNotif: {padding: ScaleHelpers.CalcWidth(2), position: 'absolute', top: ScaleHelpers.CalcHeight(8), height: ScaleHelpers.CalcHeight(5), alignContent: 'center', backgroundColor: 'rgba(0, 255, 66, 0.5)', width: 'auto', alignSelf: 'center' }
 
 });
 

@@ -254,7 +254,7 @@ class LoginScreen extends React.Component {
 
 
             </View>
-            <View style={{ padding: '5%', position: 'absolute', top: 10, height: '5%', alignContent: 'center', backgroundColor: 'rgba(0, 255, 66, 0.5)', width: 'auto', alignSelf: 'center' }}>
+            <View style={styles.versionNotif}>
               {this.state.version?.application_version != VersionInfo.appVersion && <Text style={{ color: 'white' }}
                 onPress={() => Linking.openURL(this.state.version?.application_url)}>
                 Cliquez ici pour télécharger la version {this.state.version.application_version}</Text>}
