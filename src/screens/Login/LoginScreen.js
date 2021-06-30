@@ -56,14 +56,14 @@ class LoginScreen extends React.Component {
     const rememberMe = await AsyncStorage.getItem('rememberMe');
     const listLogin = await AsyncStorage.getItem('listLogin');
 
-    const version = await getVersion(appName,Platform.OS)
+    const version = await getVersion(appName, Platform.OS)
     console.log("version", version)
 
     this.setState({
       version: version[0],
       listLogin: JSON.parse(listLogin),
       listAutocomplit: JSON.parse(listLogin),
-      rememberMe: rememberMe ? true : false, 
+      rememberMe: rememberMe ? true : false,
     });
 
 
@@ -252,13 +252,13 @@ class LoginScreen extends React.Component {
 
               </View>
 
-              <View style={{ alignContent: 'center' }}>
 
-                {this.state.version?.application_version != VersionInfo.appVersion && <Text style={{ textAlign: 'center', color: 'white' }}
-                  onPress={() => Linking.openURL(this.state.version?.application_url)}>Télécharger la version {this.state.version.application_version}</Text>}
-              </View>
             </View>
-
+            <View style={{ padding: '5%', position: 'absolute', top: 10, height: '5%', alignContent: 'center', backgroundColor: 'rgba(0, 255, 66, 0.5)', width: 'auto', alignSelf: 'center' }}>
+              {this.state.version?.application_version != VersionInfo.appVersion && <Text style={{ color: 'white' }}
+                onPress={() => Linking.openURL(this.state.version?.application_url)}>
+                Cliquez ici pour télécharger la version {this.state.version.application_version}</Text>}
+            </View>
           </View>
         </ScrollView>
 
