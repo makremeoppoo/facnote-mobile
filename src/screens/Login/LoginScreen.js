@@ -169,6 +169,8 @@ class LoginScreen extends React.Component {
     )
   }
   render() {
+
+    console.log(this.state.version?.application_version < VersionInfo.appVersion)
     return (
 
 
@@ -254,11 +256,11 @@ class LoginScreen extends React.Component {
 
 
             </View>
-            <View style={styles.versionNotif}>
-              {this.state.version?.application_version != VersionInfo.appVersion && <Text style={{ color: 'white' }}
+            {this.state.version?.application_version > VersionInfo.appVersion && <View style={styles.versionNotif}>
+              <Text style={{ color: 'white' }}
                 onPress={() => Linking.openURL(this.state.version?.application_url)}>
-                Cliquez ici pour télécharger la version {this.state.version.application_version}</Text>}
-            </View>
+                Cliquez ici pour télécharger la version {this.state.version.application_version}</Text>
+            </View>}
           </View>
         </ScrollView>
 
