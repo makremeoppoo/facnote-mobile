@@ -97,9 +97,12 @@ class HomeScreen extends React.Component {
         (item) => item.label == 'Charge variable',
       );
 
-      const bankBalance = indicators.data_table_1.find(
+      let bankBalance = indicators.data_table_1.find(
         (item) => item.label == 'Solde de la banque',
       );
+      if (!!indicators.total_solde_1)
+        bankBalance.total = indicators.total_solde_1
+
       this.setState({
         turnover,
         fixedCharge,
