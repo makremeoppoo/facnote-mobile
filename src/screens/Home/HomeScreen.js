@@ -49,6 +49,10 @@ class HomeScreen extends React.Component {
       marge: {},
       excedentBrut: {},
       chargePersonel: {},
+      SoldeCompte: 0,
+      ChiffreAffaire: 0,
+      Charge: 0
+
     };
   }
   async componentDidMount() {
@@ -70,8 +74,11 @@ class HomeScreen extends React.Component {
         item.date_debut == exercisesData.current_exercise.date_debut &&
         item.date_fin == exercisesData.current_exercise.date_fin,
     );
-    this.loadIndicateur(exercise.date_debut);
+    await this.loadIndicateur(exercise.date_debut);
     this.setState({
+      SoldeCompte: this.state.bankBalance.total,
+      ChiffreAffaire: this.state.turnover.total,
+      Charge: (this.state.fixedCharge.total || 0) + (this.state.notFixedCharge.total || 0),
       exercises,
       exercise,
     });
@@ -103,12 +110,13 @@ class HomeScreen extends React.Component {
       if (!!indicators.total_solde_1)
         bankBalance.total = indicators.total_solde_1
 
+
+
       this.setState({
         turnover,
         fixedCharge,
         notFixedCharge,
         bankBalance,
-
         loading: false,
       });
     } else if (this.state.selectedIndex != 0
@@ -404,13 +412,13 @@ class HomeScreen extends React.Component {
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
               <Text style={[styles.itemValue, { color: '#4EC7F5' }]}>
-                {thousandSeparator(bankBalance.total?.toFixed(2) || 0)}
+                {thousandSeparator(this.state.SoldeCompte?.toFixed(2)) || 0}
               </Text>
               <Text style={[styles.itemValue, { color: '#EA4C89' }]}>
-                {thousandSeparator(turnover.total?.toFixed(2) || 0)}
+                {thousandSeparator(this.state.ChiffreAffaire?.toFixed(2)) || 0}
               </Text>
               <Text style={[styles.itemValue, { color: '#4CC418' }]}>
-                {thousandSeparator(((fixedCharge.total || 0) + (notFixedCharge.total) || 0)?.toFixed(2))}
+                {thousandSeparator(this.state.Charge?.toFixed(2)) || 0}
               </Text>
             </View>
             <View style={styles.valueCardrowContainer}>
