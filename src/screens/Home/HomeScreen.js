@@ -140,30 +140,13 @@ class HomeScreen extends React.Component {
   };
   getTurnoverValues = () => {
     const { turnover } = this.state;
-    let turnoverValues = Object.values(turnover).slice(3);
 
     let tab = [];
     let keys = this.getChargeKeys();
-    tab = turnoverValues.map((item, index) => {
-      return {
-        value: Number(item?.toFixed(2)),
-        month: keys[index],
-      };
-    });
-    return tab;
-  };
-
-  getBalancesValues = () => {
-    const { bankBalance } = this.state;
-    let bankBalanceValues = Object.values(bankBalance).slice(3);
-
-    let tab = [];
-    let keys = this.getChargeKeys();
-    tab = bankBalanceValues.map((item, index) => {
+    tab = keys.map((item, index) => {
       let value = 0;
-
-      if (!isNaN(item)) {
-        value = parseFloat(Number(item).toFixed(2));
+      if (!isNaN(turnover[item])) {
+        value = parseFloat(Number(turnover[item]).toFixed(2));
       }
       return {
         value: value,
@@ -173,21 +156,45 @@ class HomeScreen extends React.Component {
     return tab;
   };
 
-  getChargeValues = () => {
-    const { fixedCharge, notFixedCharge } = this.state;
-    let fixedChargeValues = Object.values(fixedCharge).slice(3);
-    let notFixedChargeValues = Object.values(notFixedCharge).slice(3);
-    let tab = [];
+  getBalancesValues = () => {
+    const { bankBalance } = this.state;
 
+    let tab = [];
     let keys = this.getChargeKeys();
 
-    tab = fixedChargeValues.map((item, index) => {
+    tab = keys.map((item, index) => {
+      let value = 0;
+      if (!isNaN(bankBalance[item])) {
+        value = parseFloat(Number(bankBalance[item]).toFixed(2));
+      }
       return {
-        value: Number((item + notFixedChargeValues[index]).toFixed(2)),
+        value: value,
         month: keys[index],
       };
     });
 
+    return tab;
+  };
+
+  getChargeValues = () => {
+    const { fixedCharge, notFixedCharge } = this.state;
+
+    let tab = [];
+
+    let keys = this.getChargeKeys();
+
+    tab = keys.map((item, index) => {
+      let value = 0
+
+      if (!isNaN(fixedCharge[item]) || !isNaN(notFixedCharge[item])) {
+        value = Number((fixedCharge[item] + notFixedCharge[item]).toFixed(2))
+      }
+
+      return {
+        value: value,
+        month: keys[index],
+      };
+    });
     return tab;
   };
   getChargeKeys = (index = null) => {
@@ -202,28 +209,33 @@ class HomeScreen extends React.Component {
 
   getMargeValues = () => {
     const { marge } = this.state;
-    let margeValues = Object.values(marge).slice(3);
 
     let tab = [];
     let keys = this.getChargeKeys();
-    tab = margeValues.map((item, index) => {
+    tab = keys.map((item, index) => {
+      let value = 0
+      if (!isNaN(marge[item]))
+        value = Number(marge[item]?.toFixed(2))
       return {
-        value: Number(item?.toFixed(2)),
-        month: keys[index],
+        value: value,
+        month: item,
       };
     });
+    console.log("marge", tab)
     return tab;
   };
 
   getExcedentValues = () => {
     const { excedentBrut } = this.state;
-    let excedentBrutValues = Object.values(excedentBrut).slice(3);
 
     let tab = [];
     let keys = this.getChargeKeys();
-    tab = excedentBrutValues.map((item, index) => {
+    tab = keys.map((item, index) => {
+      let value = 0
+      if (!isNaN(excedentBrut[item]))
+        value = Number(excedentBrut[item]?.toFixed(2))
       return {
-        value: Number(item?.toFixed(2)),
+        value: value,
         month: keys[index],
       };
     });
@@ -231,13 +243,15 @@ class HomeScreen extends React.Component {
   };
   getChargePersonelValues = () => {
     const { chargePersonel } = this.state;
-    let chargePersonelValues = Object.values(chargePersonel).slice(2);
 
     let tab = [];
     let keys = this.getChargeKeys();
-    tab = chargePersonelValues.map((item, index) => {
+    tab = keys.map((item, index) => {
+      let value = 0
+      if (!isNaN(chargePersonel[item]))
+        value = Number(chargePersonel[item]?.toFixed(2))
       return {
-        value: Number(item?.toFixed(2)),
+        value: value,
         month: keys[index],
       };
     });
