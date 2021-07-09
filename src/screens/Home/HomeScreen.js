@@ -78,71 +78,55 @@ class HomeScreen extends React.Component {
   }
   async loadIndicateur(date) {
     this.setState({ loading: true });
-    if (this.state.selectedIndex == 0
-      /*&& Object.values(this.state.turnover).length == 0
-      && Object.values(this.state.fixedCharge).length == 0
-      && Object.values(this.state.notFixedCharge).length == 0
-      && Object.values(this.state.bankBalance).length == 0*/) {
-      console.log(this.state.selectedIndex)
 
-      let indicators = await getIndicator(moment(date).format('YYYY'));
+    let indicators = await getIndicator(moment(date).format('YYYY'));
 
-      const turnover = indicators.data_table_2.find(
-        (item) => item.label == "Chiffre d'affaire",
-      );
-      const fixedCharge = indicators.data_table_2.find(
-        (item) => item.label == 'Charge fixe',
-      );
-      const notFixedCharge = indicators.data_table_2.find(
-        (item) => item.label == 'Charge variable',
-      );
+    const turnover = indicators.data_table_2.find(
+      (item) => item.label == "Chiffre d'affaire",
+    );
+    const fixedCharge = indicators.data_table_2.find(
+      (item) => item.label == 'Charge fixe',
+    );
+    const notFixedCharge = indicators.data_table_2.find(
+      (item) => item.label == 'Charge variable',
+    );
 
-      let bankBalance = indicators.data_table_1.find(
-        (item) => item.label == 'Solde de la banque',
-      );
-      if (!!indicators.total_solde_1)
-        bankBalance.total = indicators.total_solde_1
+    let bankBalance = indicators.data_table_1.find(
+      (item) => item.label == 'Solde de la banque',
+    );
+    if (!!indicators.total_solde_1)
+      bankBalance.total = indicators.total_solde_1
 
-      this.setState({
-        turnover,
-        fixedCharge,
-        notFixedCharge,
-        bankBalance,
+    this.setState({
+      turnover,
+      fixedCharge,
+      notFixedCharge,
+      bankBalance,
 
-        loading: false,
-      });
-    } else if (this.state.selectedIndex != 0
-      /* && Object.values(this.state.marge).length == 0
-       && Object.values(this.state.excedentBrut).length == 0
-       && Object.values(this.state.chargePersonel).length == 0*/
-    ) {
-      console.log(this.state.selectedIndex)
+      loading: false,
+    });
 
-      let sigIndicators = await getSigIndicator(moment(date).format('YYYY'));
+    let sigIndicators = await getSigIndicator(moment(date).format('YYYY'));
 
 
-      const marge = sigIndicators.data.find(
-        (item) => item.label == 'Marge commerciale',
-      );
-      const excedentBrut = sigIndicators.data.find(
-        (item) => item.label == "Excédent brut d'exploitation",
-      );
+    const marge = sigIndicators.data.find(
+      (item) => item.label == 'Marge commerciale',
+    );
+    const excedentBrut = sigIndicators.data.find(
+      (item) => item.label == "Excédent brut d'exploitation",
+    );
 
-      const chargePersonel = sigIndicators.data.find(
-        (item) => item.label == 'Charges de personnel',
-      );
+    const chargePersonel = sigIndicators.data.find(
+      (item) => item.label == 'Charges de personnel',
+    );
 
-      this.setState({
-        marge,
-        excedentBrut,
-        chargePersonel,
-        loading: false,
-      });
-    } else {
-      this.setState({
-        loading: false,
-      });
-    }
+    this.setState({
+      marge,
+      excedentBrut,
+      chargePersonel,
+      loading: false,
+    });
+
 
 
   }
@@ -152,7 +136,7 @@ class HomeScreen extends React.Component {
       ...this.state,
       selectedIndex: index,
     });
-    this.loadIndicateur(this.state.exercise.date_debut)
+    // this.loadIndicateur(this.state.exercise.date_debut)
   };
   getTurnoverValues = () => {
     const { turnover } = this.state;
