@@ -45,7 +45,7 @@
 	<key>NSCameraUsageDescription</key>
 	<string>${PRODUCT_NAME} nécessite un accès à la caméra pour pouvoir télécharger vos achats, notes frais et documents</string>
 	<key>NSHumanReadableCopyright</key>
-	<string></string>
+	<string/>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This app requires access to your location.</string>
 	<key>NSLocationUsageDescription</key>
