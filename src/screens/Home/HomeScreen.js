@@ -186,9 +186,8 @@ class HomeScreen extends React.Component {
     tab = keys.map((item, index) => {
       let value = 0
 
-      if (!isNaN(fixedCharge[item]) || !isNaN(notFixedCharge[item])) {
-        value = Number((fixedCharge[item] + notFixedCharge[item]).toFixed(2))
-      }
+      value = Number((!isNaN(fixedCharge[item]) ? fixedCharge[item] : 0 + !isNaN(notFixedCharge[item]) ? notFixedCharge[item] : 0).toFixed(2))
+
 
       return {
         value: value,
@@ -221,7 +220,6 @@ class HomeScreen extends React.Component {
         month: item,
       };
     });
-    console.log("marge", tab)
     return tab;
   };
 
@@ -402,13 +400,14 @@ class HomeScreen extends React.Component {
           <View style={styles.valueCardContainer}>
             <View style={styles.valueCardrowContainer}>
               <Text style={[styles.itemValue, { color: '#4EC7F5' }]}>
-                {thousandSeparator(bankBalance.total?.toFixed(2) || 0)}
+                {thousandSeparator(!isNaN(bankBalance.total) ? bankBalance.total?.toFixed(2) : 0)}
               </Text>
               <Text style={[styles.itemValue, { color: '#EA4C89' }]}>
-                {thousandSeparator(turnover.total?.toFixed(2) || 0)}
+                {thousandSeparator(!isNaN(turnover.total) ? turnover.total?.toFixed(2) : 0)}
               </Text>
               <Text style={[styles.itemValue, { color: '#4CC418' }]}>
-                {thousandSeparator(((fixedCharge.total || 0) + (notFixedCharge.total) || 0)?.toFixed(2))}
+                {thousandSeparator((!isNaN(fixedCharge.total) ?
+                  parseFloat(fixedCharge.total?.toFixed(2)) : 0) + (!isNaN(notFixedCharge.total) ? parseFloat(notFixedCharge.total?.toFixed(2)) : 0))}
               </Text>
             </View>
             <View style={styles.valueCardrowContainer}>
