@@ -96,7 +96,7 @@ class HomeScreen extends React.Component {
     );
     if (!!indicators.total_solde_1)
       bankBalance.total = indicators.total_solde_1
-
+console.log(fixedCharge.total,notFixedCharge.total)
     this.setState({
       turnover,
       fixedCharge,
@@ -186,7 +186,7 @@ class HomeScreen extends React.Component {
     tab = keys.map((item, index) => {
       let value = 0
 
-      value = Number((!isNaN(fixedCharge[item]) ? fixedCharge[item] : 0 + !isNaN(notFixedCharge[item]) ? notFixedCharge[item] : 0).toFixed(2))
+      value = Number(((!isNaN(fixedCharge[item]) ? fixedCharge[item] : 0) + (!isNaN(notFixedCharge[item]) ? notFixedCharge[item] : 0)).toFixed(2))
 
 
       return {
