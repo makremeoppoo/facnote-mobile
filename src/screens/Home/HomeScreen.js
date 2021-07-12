@@ -406,8 +406,8 @@ class HomeScreen extends React.Component {
                 {thousandSeparator(!isNaN(turnover.total) ? turnover.total?.toFixed(2) : 0)}
               </Text>
               <Text style={[styles.itemValue, { color: '#4CC418' }]}>
-                {thousandSeparator((!isNaN(fixedCharge.total) ?
-                  parseFloat(fixedCharge.total?.toFixed(2)) : 0) + (!isNaN(notFixedCharge.total) ? parseFloat(notFixedCharge.total?.toFixed(2)) : 0))}
+                {thousandSeparator(((!isNaN(fixedCharge.total) ?
+                  parseFloat(fixedCharge.total?.toFixed(2)) : 0) + (!isNaN(notFixedCharge.total) ? parseFloat(notFixedCharge.total?.toFixed(2)) : 0)).toFixed(2))}
               </Text>
             </View>
             <View style={styles.valueCardrowContainer}>
