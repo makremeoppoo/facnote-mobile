@@ -1,8 +1,8 @@
 //API URL
-export const API_URL = 'https://cabinet-expertcomptable.com/';
+export const API_URL = 'https://ppd.cabinet-expertcomptable.com/';
 export const API_URL_DEV = 'http://odyssee.facnote.com';
 export const API_URL_PROD = 'https://cabinet-expertcomptable.com/';
-
+export const API_URL_PREPROD =  "https://ppd.cabinet-expertcomptable.com/"
 //API End Points
 export const REGISTER = `/auth/register`;
 export const LOGIN = `/api/login`;
