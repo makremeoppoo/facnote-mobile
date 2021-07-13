@@ -13,6 +13,8 @@ import WelcomeScreen from '../screens/Welcome/WelcomeScreen';
 import LoginScreen from '../screens/Login/LoginScreen';
 import SignUpScreen from '../screens/SignUp/SignUpScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
+
+import IndicatorScreen from '../screens/Indicator/IndicatorScreen';
 import ChooseInvoice from '../screens/Invoice/ChooseInvoice';
 import IndemnitiesScreen from '../screens/Indemnities/IndemnitiesScreen';
 import HistoryScreen from '../screens/HistoryOfPayementReceipts/HistoryScreen';
@@ -35,14 +37,14 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import cameraActive from '../../assets/icons/galery/cameraActive.png';
 import banqueActive from '../../assets/icons/galery/banqueActive.png';
 import ScaleHelpers from '../Theme/scaleHelpers';
 import indicateurActive from '../../assets/icons/galery/IndicateurActive.png';
-import indicateur from '../../assets/icons/galery/Indicateur.png';
+import homeActive from '../../assets/icons/galery/homeActive.png';
 import moreActive from '../../assets/icons/galery/moreActive.png';
-import {text, routes} from '../constants';
+import { text, routes } from '../constants';
 import jwtDecode from 'jwt-decode';
 
 const Stack = createStackNavigator();
@@ -95,7 +97,7 @@ const LandingNavigator = () => {
 //ios
 const TabNavigator = () => {
   const canShowBank = useSelector((state) => state.auth.canShowBank);
-
+  const canShowIndicator = useSelector((state) => state.auth.canShowIndicator);
   return (
     <BottomTabNavigator.Navigator
       tabBarOptions={{
@@ -108,21 +110,34 @@ const TabNavigator = () => {
         },
         showLabel: false,
       }}
-     // initialRouteName={canShowBank ? routes.BankStatement : routes.Invoices}
+      // initialRouteName={canShowBank ? routes.BankStatement : routes.Invoices}
       initialRouteName={routes.Home}>
-      <BottomTabNavigator.Screen
-        name={routes.Home}
-        component={HomeScreen}
-        options={{
-          tabBarIcon: ({ tintColor, focused }) => (
-            <TabBarItem
-              focused={focused}
-              label={text.Indicateur}
-              src={focused ? indicateurActive : indicateurActive}
-            />
-          ),
-        }}
-      />
+      {canShowIndicator ?
+        <BottomTabNavigator.Screen
+          name={routes.Indicator}
+          component={IndicatorScreen}
+          options={{
+            tabBarIcon: ({ tintColor, focused }) => (
+              <TabBarItem
+                focused={focused}
+                label={text.Indicateur}
+                src={indicateurActive}
+              />
+            ),
+          }}
+        /> : <BottomTabNavigator.Screen
+          name={routes.Home}
+          component={HomeScreen}
+          options={{
+            tabBarIcon: ({ tintColor, focused }) => (
+              <TabBarItem
+                focused={focused}
+                label={text.Accueil}
+                src={focused ? homeActive : homeActive}
+              />
+            ),
+          }}
+        />}
 
       {canShowBank && (
         <BottomTabNavigator.Screen
@@ -207,7 +222,7 @@ const mainScreensNavigator = () => {
           headerRight: () => <View />,
         };
       }}>
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Home" component={IndicatorScreen} />
       <Stack.Screen name="Expenses" component={ChooseInvoice} />
     </Stack.Navigator>
   );

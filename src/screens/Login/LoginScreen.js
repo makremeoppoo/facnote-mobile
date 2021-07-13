@@ -118,6 +118,8 @@ class LoginScreen extends React.Component {
         canShowBank:
           (await userHasPermission(permissions.banque)) ||
           (await userHasPermission(permissions.banque_entreprise)),
+        canShowIndicator:
+          (await userHasPermission(permissions.indicators))
       });
       this.setState({ loading: false });
       if (rememberMe) {
