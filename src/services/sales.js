@@ -14,7 +14,6 @@ export default async function getSales(limit, page, startDate, endDate) {
       path = `${path}&end_date=${moment(endDate).format('DD/MM/YYYY')}`;
     }
 
-    console.log('path===========', path);
     let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',

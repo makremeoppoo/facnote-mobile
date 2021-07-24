@@ -36,7 +36,6 @@ export default async function getBankStatement(
       path = `${path}&account_number=${accountNumberSearch}`;
 
     
-    console.log("path",path);
     let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',

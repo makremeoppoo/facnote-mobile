@@ -11,7 +11,6 @@ export default async function getVersion(
     let path = `/api/v1/mobile-application/versions?application=${app}&type=${type}`;
     
     
-    console.log("path",path);
     let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',

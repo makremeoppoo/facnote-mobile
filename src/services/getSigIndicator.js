@@ -6,7 +6,6 @@ export default async function getSigIndicator(year, param = 'all') {
   try {
     let path = `${c.GETINDICATOR}/sig?year=${year}&param=${param}`;
 
-    console.log('path', path);
     let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',

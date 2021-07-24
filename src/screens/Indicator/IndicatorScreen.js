@@ -96,7 +96,6 @@ class HomeScreen extends React.Component {
     );
     if (!!indicators.total_solde_1)
       bankBalance.total = indicators.total_solde_1
-console.log(fixedCharge.total,notFixedCharge.total)
     this.setState({
       turnover,
       fixedCharge,

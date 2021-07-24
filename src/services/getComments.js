@@ -14,7 +14,6 @@ export default async function getComments(
     let path = `${c.GETCOMMENTS}/entreprise/${bankId}?limit=${limit}&page=${page}`;
     
     
-    console.log("path",path);
     let res = await api.get(path, {
       withCredentials: true,
       credentials: 'include',

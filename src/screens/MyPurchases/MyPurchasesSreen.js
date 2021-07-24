@@ -145,7 +145,6 @@ class MyPurchasesSreen extends React.Component {
   };
 
   handleLoadMore = () => {
-    console.log('handleLoadMore');
     if (!this.state.isRefreshing)
       this.setState(
         {

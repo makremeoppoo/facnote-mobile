@@ -57,7 +57,6 @@ class LoginScreen extends React.Component {
     const listLogin = await AsyncStorage.getItem('listLogin');
 
     const version = await getVersion(appName, Platform.OS)
-    console.log("version", version)
 
     this.setState({
       version: version[0],
@@ -103,13 +102,11 @@ class LoginScreen extends React.Component {
       await AsyncStorage.setItem('accessToken', user['token']);
       await AsyncStorage.setItem('modules', JSON.stringify(user.user.modules));
       let cabinet = await getCabinet();
-      console.log("cabinetHaveAccess", cabinetHaveAccess.includes(cabinet.base))
       if (
         cabinetHaveAccess.length > 0 &&
         !cabinetHaveAccess.includes(cabinet.base)
       )
         throw new Error('cabinet not Have Access!');
-      console.log('cabinet', cabinet.base);
       let society = await getSociety();
       this.props.login({
         user: user['user'],
@@ -172,7 +169,6 @@ class LoginScreen extends React.Component {
   }
   render() {
 
-    console.log(this.state.version?.application_version < VersionInfo.appVersion)
     return (
 
 
