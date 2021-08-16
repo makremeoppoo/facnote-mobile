@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     width: ScaleHelpers.CalcWidth(100),
   },
   logo: {
+    resizeMode: 'stretch',
     width: ScaleHelpers.CalcWidth(54),
     height: ScaleHelpers.CalcWidth(23),
   },

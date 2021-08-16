@@ -173,7 +173,7 @@ class LoginScreen extends React.Component {
 
 
       <View style={styles.mainContainer}>
-        <ScrollView>
+        <ScrollView horizontal>
           <View>
             <Image
               source={BackgroundLoginImage}
