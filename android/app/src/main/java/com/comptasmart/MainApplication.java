@@ -1,4 +1,4 @@
-package com.comptasmart;
+package com.comptasmart.Philix;
 
 import android.app.Application;
 

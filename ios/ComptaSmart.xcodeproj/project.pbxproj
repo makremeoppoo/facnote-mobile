@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E356F31AD99517003FC87E /* ComptaSmartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ComptaSmartTests.m */; };
+		00E356F31AD99517003FC87E /* PhilixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PhilixTests.m */; };
 		0A2038875F894AAFAA555464 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */; };
 		0B59F8C8B48D4BE19B962978 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C81A41658E7455AA905810D /* FontAwesome5_Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -17,12 +17,12 @@
 		1882B054FB8F4DFD9CB035BD /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D5D9087687493389AEFBDC /* MaterialIcons.ttf */; };
 		1D05820FD0F0459EB348B66D /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABD3DB8EE7154510B7CD2D3C /* Nunito-BoldItalic.ttf */; };
 		2B2803E936474EED9A9AF6D4 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D20E6433C494EE99CBF312D /* Nunito-Regular.ttf */; };
-		2C89B987B3A6E574413F2F98 /* libPods-ComptaSmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */; };
+		2C89B987B3A6E574413F2F98 /* libPods-Philix.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 779AAA3C628DB5FB0FC4B901 /* libPods-Philix.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		2DCD954D1E0B4F2C00145EB5 /* ComptaSmartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ComptaSmartTests.m */; };
-		4158EA8DF2FD0FDC7D94B56D /* libPods-ComptaSmart-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */; };
+		2DCD954D1E0B4F2C00145EB5 /* PhilixTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PhilixTests.m */; };
+		4158EA8DF2FD0FDC7D94B56D /* libPods-Philix-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F004773F09FB7E32EBBDC23 /* libPods-Philix-tvOS.a */; };
 		471BE29D0F5B4CE78A287217 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA637AB8C4A47DE8ECEAC96 /* Nunito-Bold.ttf */; };
 		4C7206D38E384C26A72E742C /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 701EFB948ED24506BD9A2A85 /* Nunito-ExtraBold.ttf */; };
 		515D2C4686D44B3D9AA6ACEB /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */; };
@@ -57,12 +57,12 @@
 		BBC3107A25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107B25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBD0DB1C25B42DC4007C8283 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD0DB1B25B42DC4007C8283 /* Launch Screen.storyboard */; };
-		C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */; };
+		C05B41C7ACDF01C75F231BCE /* libPods-Philix-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5264A12E0315FB581479603 /* libPods-Philix-tvOSTests.a */; };
 		C5C8156B7EDC4E4CAC06226D /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A267E8B02D445F4911574CD /* Fontisto.ttf */; };
 		D3C1B4407B49491CA77B82D3 /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */; };
 		DE20BFE099A64F23924627C2 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9E8F1D3E4A8AAAA32324 /* FontAwesome5_Solid.ttf */; };
 		E1C96993776443819576ACF6 /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0424B895BBF4410F8CF2CF7D /* Nunito-ExtraBoldItalic.ttf */; };
-		E2C18FE658C6A93F060C8410 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */; };
+		E2C18FE658C6A93F060C8410 /* libPods-Philix-PhilixTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF56C6AACBCD0FDFB3283DA /* libPods-Philix-PhilixTests.a */; };
 		E66835756CA846BBB5E15E61 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5DE2C49B5E54A689EC1AAAD /* Ionicons.ttf */; };
 		ED81DE9185B740FA90E1A879 /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */; };
 		F37ABB4F17084B6D812609E2 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89F183DB9C9345F8959B5A06 /* Foundation.ttf */; };
@@ -75,52 +75,52 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = ComptaSmart;
+			remoteInfo = Philix;
 		};
 		2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "ComptaSmart-tvOS";
+			remoteInfo = "Philix-tvOS";
 		};
 		BB50A4A1260E291800671D8D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = ComptaSmart;
+			remoteInfo = Philix;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* ComptaSmartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComptaSmartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* PhilixTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PhilixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* ComptaSmartTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComptaSmartTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* PhilixTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PhilixTests.m; sourceTree = "<group>"; };
 		01526EB8C01E43F7A39BCBB6 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		0424B895BBF4410F8CF2CF7D /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraBoldItalic.ttf"; path = "../assets/fonts/Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		069FD82E81814CE2920DDBBD /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0ABDE2019DFAFB1CD8DE6F6F /* Pods-Philix-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Philix-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Philix-tvOSTests/Pods-Philix-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0DDB9E8F1D3E4A8AAAA32324 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		134007E11AF34C6AB246F4D4 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* ComptaSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComptaSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ComptaSmart/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ComptaSmart/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* Philix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Philix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Philix/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = Philix/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = ComptaSmart/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ComptaSmart/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ComptaSmart/main.m; sourceTree = "<group>"; };
-		17D3C46B24CA699900A2B510 /* ComptaSmart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-Bridging-Header.h"; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Philix/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Philix/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Philix/main.m; sourceTree = "<group>"; };
+		17D3C46B24CA699900A2B510 /* Philix-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Philix-Bridging-Header.h"; sourceTree = "<group>"; };
 		17D727DCF4C643079583F7F8 /* Nunito-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Black.ttf"; path = "../assets/fonts/Nunito-Black.ttf"; sourceTree = "<group>"; };
-		2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-ComptaSmartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E47B1E0B4A5D006451C7 /* ComptaSmart-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComptaSmart-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* ComptaSmart-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ComptaSmart-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2BF56C6AACBCD0FDFB3283DA /* libPods-Philix-PhilixTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Philix-PhilixTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E47B1E0B4A5D006451C7 /* Philix-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Philix-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* Philix-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Philix-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D20E6433C494EE99CBF312D /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
-		2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart.debug.xcconfig"; sourceTree = "<group>"; };
+		2F6E546C687B0154CFCF1323 /* Pods-Philix.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Philix.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Philix/Pods-Philix.debug.xcconfig"; sourceTree = "<group>"; };
 		30A2D5FE119340589A3A3867 /* Nunito-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Italic.ttf"; path = "../assets/fonts/Nunito-Italic.ttf"; sourceTree = "<group>"; };
-		3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		3F004773F09FB7E32EBBDC23 /* libPods-Philix-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Philix-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45BC6CB1E3C5E811704779F7 /* Pods-Philix-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Philix-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Philix-tvOSTests/Pods-Philix-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-LightItalic.ttf"; path = "../assets/fonts/Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
 		488102EDE06D4FF2A02E25B1 /* Nunito-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Light.ttf"; path = "../assets/fonts/Nunito-Light.ttf"; sourceTree = "<group>"; };
 		4C81A41658E7455AA905810D /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
@@ -129,38 +129,38 @@
 		5C45D2FA7DAF41089493279E /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBold.ttf"; path = "../assets/fonts/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		5DA637AB8C4A47DE8ECEAC96 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Bold.ttf"; path = "../assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBoldItalic.ttf"; path = "../assets/fonts/Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart.release.xcconfig"; sourceTree = "<group>"; };
+		6A5BCA750597EB6AEB0AB90F /* Pods-Philix.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Philix.release.xcconfig"; path = "Pods/Target Support Files/Pods-Philix/Pods-Philix.release.xcconfig"; sourceTree = "<group>"; };
 		701EFB948ED24506BD9A2A85 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraBold.ttf"; path = "../assets/fonts/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
-		779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-ComptaSmartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests.release.xcconfig"; sourceTree = "<group>"; };
+		779AAA3C628DB5FB0FC4B901 /* libPods-Philix.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Philix.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FD2A8CAF7F8F41731943320 /* Pods-Philix-PhilixTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Philix-PhilixTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Philix-PhilixTests/Pods-Philix-PhilixTests.release.xcconfig"; sourceTree = "<group>"; };
 		89F183DB9C9345F8959B5A06 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		91D4AAEE95C04A0EA136FE9D /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		9A267E8B02D445F4911574CD /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		ABD3DB8EE7154510B7CD2D3C /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BoldItalic.ttf"; path = "../assets/fonts/Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
 		AFA21DFD88EE445E928E8064 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraLightItalic.ttf"; path = "../assets/fonts/Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		B08A0B11ADF34FB66D91DD78 /* Pods-Philix-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Philix-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Philix-tvOS/Pods-Philix-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		BB6141C825761B93004086FD /* SegoeUI-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SegoeUI-Black.ttf"; path = "../assets/fonts/SegoeUI-Black.ttf"; sourceTree = "<group>"; };
 		BB6141D225761BFC004086FD /* SegoeUI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SegoeUI.ttf; path = ../assets/fonts/SegoeUI.ttf; sourceTree = "<group>"; };
 		BBA8516FE25945E79B4A0D5B /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
-		BBC31055256D2CA900F45F79 /* ComptaSmartTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmartTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		BBC31056256D2CA900F45F79 /* ComptaSmart-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
-		BBC31057256D2CA900F45F79 /* ComptaSmart-tvOSTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-tvOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		BBC31055256D2CA900F45F79 /* PhilixTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PhilixTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		BBC31056256D2CA900F45F79 /* Philix-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Philix-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		BBC31057256D2CA900F45F79 /* Philix-tvOSTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Philix-tvOSTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC31058256D2CAA00F45F79 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SegoeUI-Light.ttf"; path = "../assets/fonts/SegoeUI-Light.ttf"; sourceTree = "<group>"; };
 		BBD0DB1B25B42DC4007C8283 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
-		BBDDD45B25B0533400C87578 /* ComptaSmart.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ComptaSmart.entitlements; path = ComptaSmart/ComptaSmart.entitlements; sourceTree = "<group>"; };
-		BBDDD45C25B0841B00C87578 /* ComptaSmartDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ComptaSmartDebug.entitlements; path = ComptaSmart/ComptaSmartDebug.entitlements; sourceTree = "<group>"; };
+		BBDDD45B25B0533400C87578 /* Philix.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = Philix.entitlements; path = Philix/Philix.entitlements; sourceTree = "<group>"; };
+		BBDDD45C25B0841B00C87578 /* PhilixDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = PhilixDebug.entitlements; path = Philix/PhilixDebug.entitlements; sourceTree = "<group>"; };
 		C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BlackItalic.ttf"; path = "../assets/fonts/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		C9E91A27E0B3F0AD0CC4360F /* Pods-Philix-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Philix-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Philix-tvOS/Pods-Philix-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		D3EF8D8520834175B1065E15 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		D5DE2C49B5E54A689EC1AAAD /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D6D586D07CFF9322C6A1E0BE /* Pods-Philix-PhilixTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Philix-PhilixTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Philix-PhilixTests/Pods-Philix-PhilixTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA739BC9BB88491AB27F9E84 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		E2D5D9087687493389AEFBDC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5264A12E0315FB581479603 /* libPods-Philix-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Philix-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F781E78F3D44BC99655CD3 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,7 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2C18FE658C6A93F060C8410 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */,
+				E2C18FE658C6A93F060C8410 /* libPods-Philix-PhilixTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C89B987B3A6E574413F2F98 /* libPods-ComptaSmart.a in Frameworks */,
+				2C89B987B3A6E574413F2F98 /* libPods-Philix.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4158EA8DF2FD0FDC7D94B56D /* libPods-ComptaSmart-tvOS.a in Frameworks */,
+				4158EA8DF2FD0FDC7D94B56D /* libPods-Philix-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,20 +193,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */,
+				C05B41C7ACDF01C75F231BCE /* libPods-Philix-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00E356EF1AD99517003FC87E /* ComptaSmartTests */ = {
+		00E356EF1AD99517003FC87E /* PhilixTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* ComptaSmartTests.m */,
+				00E356F21AD99517003FC87E /* PhilixTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = ComptaSmartTests;
+			path = PhilixTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -217,11 +217,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* ComptaSmart */ = {
+		13B07FAE1A68108700A75B9A /* Philix */ = {
 			isa = PBXGroup;
 			children = (
-				BBDDD45C25B0841B00C87578 /* ComptaSmartDebug.entitlements */,
-				BBDDD45B25B0533400C87578 /* ComptaSmart.entitlements */,
+				BBDDD45C25B0841B00C87578 /* PhilixDebug.entitlements */,
+				BBDDD45B25B0533400C87578 /* Philix.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -229,10 +229,10 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
-				17D3C46B24CA699900A2B510 /* ComptaSmart-Bridging-Header.h */,
+				17D3C46B24CA699900A2B510 /* Philix-Bridging-Header.h */,
 				BBD0DB1B25B42DC4007C8283 /* Launch Screen.storyboard */,
 			);
-			name = ComptaSmart;
+			name = Philix;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
@@ -240,10 +240,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */,
-				2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */,
-				3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */,
-				F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */,
+				779AAA3C628DB5FB0FC4B901 /* libPods-Philix.a */,
+				2BF56C6AACBCD0FDFB3283DA /* libPods-Philix-PhilixTests.a */,
+				3F004773F09FB7E32EBBDC23 /* libPods-Philix-tvOS.a */,
+				F5264A12E0315FB581479603 /* libPods-Philix-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -259,16 +259,16 @@
 			isa = PBXGroup;
 			children = (
 				BBC31058256D2CAA00F45F79 /* File.swift */,
-				13B07FAE1A68108700A75B9A /* ComptaSmart */,
+				13B07FAE1A68108700A75B9A /* Philix */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* ComptaSmartTests */,
+				00E356EF1AD99517003FC87E /* PhilixTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				A5F2AB056E0F4B739A784735 /* Resources */,
 				8A484349719F985729B5570B /* Pods */,
-				BBC31055256D2CA900F45F79 /* ComptaSmartTests-Bridging-Header.h */,
-				BBC31056256D2CA900F45F79 /* ComptaSmart-tvOS-Bridging-Header.h */,
-				BBC31057256D2CA900F45F79 /* ComptaSmart-tvOSTests-Bridging-Header.h */,
+				BBC31055256D2CA900F45F79 /* PhilixTests-Bridging-Header.h */,
+				BBC31056256D2CA900F45F79 /* Philix-tvOS-Bridging-Header.h */,
+				BBC31057256D2CA900F45F79 /* Philix-tvOSTests-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -278,10 +278,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* ComptaSmart.app */,
-				00E356EE1AD99517003FC87E /* ComptaSmartTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* ComptaSmart-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* ComptaSmart-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* Philix.app */,
+				00E356EE1AD99517003FC87E /* PhilixTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* Philix-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* Philix-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -289,14 +289,14 @@
 		8A484349719F985729B5570B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */,
-				6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */,
-				D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */,
-				7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */,
-				B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */,
-				C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */,
-				0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */,
-				45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */,
+				2F6E546C687B0154CFCF1323 /* Pods-Philix.debug.xcconfig */,
+				6A5BCA750597EB6AEB0AB90F /* Pods-Philix.release.xcconfig */,
+				D6D586D07CFF9322C6A1E0BE /* Pods-Philix-PhilixTests.debug.xcconfig */,
+				7FD2A8CAF7F8F41731943320 /* Pods-Philix-PhilixTests.release.xcconfig */,
+				B08A0B11ADF34FB66D91DD78 /* Pods-Philix-tvOS.debug.xcconfig */,
+				C9E91A27E0B3F0AD0CC4360F /* Pods-Philix-tvOS.release.xcconfig */,
+				0ABDE2019DFAFB1CD8DE6F6F /* Pods-Philix-tvOSTests.debug.xcconfig */,
+				45BC6CB1E3C5E811704779F7 /* Pods-Philix-tvOSTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -344,9 +344,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* ComptaSmartTests */ = {
+		00E356ED1AD99517003FC87E /* PhilixTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ComptaSmartTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PhilixTests" */;
 			buildPhases = (
 				2B9F1A32B29CB61394AB3A92 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -359,14 +359,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = ComptaSmartTests;
-			productName = ComptaSmartTests;
-			productReference = 00E356EE1AD99517003FC87E /* ComptaSmartTests.xctest */;
+			name = PhilixTests;
+			productName = PhilixTests;
+			productReference = 00E356EE1AD99517003FC87E /* PhilixTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* ComptaSmart */ = {
+		13B07F861A680F5B00A75B9A /* Philix */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ComptaSmart" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Philix" */;
 			buildPhases = (
 				5FAECE1F51E0989E333A05F7 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -380,14 +380,14 @@
 			);
 			dependencies = (
 			);
-			name = ComptaSmart;
-			productName = ComptaSmart;
-			productReference = 13B07F961A680F5B00A75B9A /* ComptaSmart.app */;
+			name = Philix;
+			productName = Philix;
+			productReference = 13B07F961A680F5B00A75B9A /* Philix.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* ComptaSmart-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* Philix-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ComptaSmart-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Philix-tvOS" */;
 			buildPhases = (
 				F5749ECBFD79EF317895A501 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
@@ -400,14 +400,14 @@
 			);
 			dependencies = (
 			);
-			name = "ComptaSmart-tvOS";
-			productName = "ComptaSmart-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* ComptaSmart-tvOS.app */;
+			name = "Philix-tvOS";
+			productName = "Philix-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* Philix-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* ComptaSmart-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* Philix-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ComptaSmart-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Philix-tvOSTests" */;
 			buildPhases = (
 				1CC561520978F250F2560F37 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -420,9 +420,9 @@
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 				BB50A4A2260E291800671D8D /* PBXTargetDependency */,
 			);
-			name = "ComptaSmart-tvOSTests";
-			productName = "ComptaSmart-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* ComptaSmart-tvOSTests.xctest */;
+			name = "Philix-tvOSTests";
+			productName = "Philix-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* Philix-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -457,7 +457,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ComptaSmart" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Philix" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -470,10 +470,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* ComptaSmart */,
-				00E356ED1AD99517003FC87E /* ComptaSmartTests */,
-				2D02E47A1E0B4A5D006451C7 /* ComptaSmart-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* ComptaSmart-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* Philix */,
+				00E356ED1AD99517003FC87E /* PhilixTests */,
+				2D02E47A1E0B4A5D006451C7 /* Philix-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* Philix-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -581,7 +581,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Philix-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -599,7 +599,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-ComptaSmartTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Philix-PhilixTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -631,7 +631,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Philix-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -644,7 +644,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Philix-PhilixTests/Pods-Philix-PhilixTests-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
@@ -689,7 +689,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Philix-PhilixTests/Pods-Philix-PhilixTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F5749ECBFD79EF317895A501 /* [CP] Check Pods Manifest.lock */ = {
@@ -703,7 +703,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Philix-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -746,7 +746,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-Philix/Pods-Philix-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RNImageCropPicker/QBImagePicker.bundle",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
@@ -791,7 +791,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Philix/Pods-Philix-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -801,7 +801,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* ComptaSmartTests.m in Sources */,
+				00E356F31AD99517003FC87E /* PhilixTests.m in Sources */,
 				BBC3105A256D2CAA00F45F79 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,7 +830,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* ComptaSmartTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* PhilixTests.m in Sources */,
 				BBC3105C256D2CAA00F45F79 /* File.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -840,17 +840,17 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ComptaSmart */;
+			target = 13B07F861A680F5B00A75B9A /* Philix */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* ComptaSmart-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* Philix-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 		BB50A4A2260E291800671D8D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* ComptaSmart */;
+			target = 13B07F861A680F5B00A75B9A /* Philix */;
 			targetProxy = BB50A4A1260E291800671D8D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -862,7 +862,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = ComptaSmart;
+			path = Philix;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -870,7 +870,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */;
+			baseConfigurationReference = D6D586D07CFF9322C6A1E0BE /* Pods-Philix-PhilixTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -879,7 +879,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = ComptaSmartTests/Info.plist;
+				INFOPLIST_FILE = PhilixTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -889,22 +889,22 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmartTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhilixTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComptaSmart.app/ComptaSmart";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Philix.app/Philix";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */;
+			baseConfigurationReference = 7FD2A8CAF7F8F41731943320 /* Pods-Philix-PhilixTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = ComptaSmartTests/Info.plist;
+				INFOPLIST_FILE = PhilixTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -914,15 +914,15 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmartTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PhilixTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComptaSmart.app/ComptaSmart";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Philix.app/Philix";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */;
+			baseConfigurationReference = 2F6E546C687B0154CFCF1323 /* Pods-Philix.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -935,7 +935,7 @@
 				DEVELOPMENT_TEAM = 5FU4864MKR;
 				EXCLUDED_ARCHS = "";
 				"EXCLUDED_ARCHS[sdk=*]" = "";
-				INFOPLIST_FILE = ComptaSmart/Info.plist;
+				INFOPLIST_FILE = Philix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME) $(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
 				LIBRARY_SEARCH_PATHS = (
@@ -989,9 +989,9 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.facnote.comptasmart;
-				PRODUCT_NAME = ComptaSmart;
+				PRODUCT_NAME = Philix;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Philix-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -1000,7 +1000,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */;
+			baseConfigurationReference = 6A5BCA750597EB6AEB0AB90F /* Pods-Philix.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1008,7 +1008,7 @@
 				CODE_SIGN_ENTITLEMENTS = "";
 				CURRENT_PROJECT_VERSION = 39;
 				DEVELOPMENT_TEAM = 5FU4864MKR;
-				INFOPLIST_FILE = ComptaSmart/Info.plist;
+				INFOPLIST_FILE = Philix/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME) $(inherited) @executable_path/Frameworks";
 				LD_VERIFY_BITCODE = NO;
 				LIBRARY_SEARCH_PATHS = (
@@ -1055,8 +1055,8 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.facnote.comptasmart;
-				PRODUCT_NAME = ComptaSmart;
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-Bridging-Header.h";
+				PRODUCT_NAME = Philix;
+				SWIFT_OBJC_BRIDGING_HEADER = "Philix-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1064,7 +1064,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */;
+			baseConfigurationReference = B08A0B11ADF34FB66D91DD78 /* Pods-Philix-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1076,17 +1076,17 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ComptaSmart-tvOS/Info.plist";
+				INFOPLIST_FILE = "Philix-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.ComptaSmart-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Philix-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-tvOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Philix-tvOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1096,7 +1096,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */;
+			baseConfigurationReference = C9E91A27E0B3F0AD0CC4360F /* Pods-Philix-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1108,17 +1108,17 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ComptaSmart-tvOS/Info.plist";
+				INFOPLIST_FILE = "Philix-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.ComptaSmart-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Philix-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-tvOS-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Philix-tvOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 12.0;
@@ -1127,7 +1127,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 0ABDE2019DFAFB1CD8DE6F6F /* Pods-Philix-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1139,27 +1139,27 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ComptaSmart-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Philix-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.ComptaSmart-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Philix-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-tvOSTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Philix-tvOSTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComptaSmart-tvOS.app/ComptaSmart-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Philix-tvOS.app/Philix-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 45BC6CB1E3C5E811704779F7 /* Pods-Philix-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1171,19 +1171,19 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "ComptaSmart-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "Philix-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.ComptaSmart-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.Philix-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_OBJC_BRIDGING_HEADER = "ComptaSmart-tvOSTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Philix-tvOSTests-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ComptaSmart-tvOS.app/ComptaSmart-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Philix-tvOS.app/Philix-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 12.0;
 			};
 			name = Release;
@@ -1304,7 +1304,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ComptaSmartTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "PhilixTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1313,7 +1313,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ComptaSmart" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Philix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1322,7 +1322,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ComptaSmart-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Philix-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1331,7 +1331,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ComptaSmart-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "Philix-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1340,7 +1340,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "ComptaSmart" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Philix" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

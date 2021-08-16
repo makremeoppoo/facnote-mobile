@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
   },
   topImageStyle: {
     width: ScaleHelpers.CalcWidth(100),
-    height: ScaleHelpers.CalcHeight(100),
+    height: ScaleHelpers.CalcHeight(110),
     alignSelf: 'center',
     justifyContent: 'center',
     alignItems: 'center',

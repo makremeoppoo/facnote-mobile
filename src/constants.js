@@ -124,7 +124,7 @@ export const permissions = {
   expenseReport: 'crm_note_frais_note_frais',
   indicators :'indicators_company_index'
 };
-export const appName = `ComptaSmart`;
+export const appName = `Philix`;
 
 
 export const cabinetHaveAccess = [];
