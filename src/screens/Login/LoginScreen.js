@@ -10,8 +10,8 @@ import {
   Keyboard,
   ActivityIndicator,
   Linking,
-  Platform,
-  FlatList
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import { CheckBox } from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -84,11 +84,11 @@ class LoginScreen extends React.Component {
   }
 
   _keshowButtomyboardDidShow = () => {
-    this.setState({ showButtom: !this.state.showButtom });
+    this.setState({ showButtom: true });
   };
 
   _keyboardDidHide = () => {
-    this.setState({ showButtom: !this.state.showButtom });
+    this.setState({ showButtom: true });
   };
 
   onPressLogButton = async () => {
@@ -173,95 +173,97 @@ class LoginScreen extends React.Component {
 
 
       <View style={styles.mainContainer}>
-        <ScrollView>
-          <View>
-            <Image
-              source={BackgroundLoginImage}
-              style={styles.topImageStyle}></Image>
-            {this.state.loading && (
-              <View style={styles.loader}>
-                <ActivityIndicator size="large" color="white" />
+        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "position" : "height"} style={{ height: "100%" }} >
+
+          <ScrollView>
+            <View>
+              <Image
+                source={BackgroundLoginImage}
+                style={styles.topImageStyle}></Image>
+              {this.state.loading && (
+                <View style={styles.loader}>
+                  <ActivityIndicator size="large" color="white" />
+                </View>
+              )}
+              <View style={styles.titleContainer}>
+                <Image style={styles.logo} source={LogoImage} />
+                <Text style={styles.error}>{this.state.error}</Text>
               </View>
-            )}
-            <View style={styles.titleContainer}>
-              <Image style={styles.logo} source={LogoImage} />
-              <Text style={styles.error}>{this.state.error}</Text>
-            </View>
-            <View style={styles.formContainer}>
-              {(this.state.showList && this.state.listAutocomplit?.length > 0) && <View style={styles.listViewContainer}>
-                {this.renderListUsers()}
+              <View style={styles.formContainer}>
+                {(this.state.showList && this.state.listAutocomplit?.length > 0) && <View style={styles.listViewContainer}>
+                  {this.renderListUsers()}
+                </View>}
+                <View style={styles.inputBlock}>
+                  <Text style={styles.label}>{text.Identifiant}</Text>
+
+                  <View style={styles.inputContainer}>
+                    <TextInput
+                      autoCompleteType={'name'}
+                      onFocus={() => this.setState({ showList: true })}
+                      style={styles.input}
+                      onChangeText={(text) => {
+                        let list = this.state.listLogin
+                        if (text.length > 0)
+                          list = list?.filter(e => e.login.toLowerCase().includes(text.toLowerCase()))
+                        this.setState({ name: text, listAutocomplit: list })
+                      }
+                      }
+                      value={this.state.name}
+                    />
+
+                  </View>
+
+
+
+                </View>
+                <View style={styles.inputBlock}>
+                  <Text style={styles.label}>{text.motDePasse}</Text>
+
+                  <View style={styles.inputContainer}>
+                    <TextInput
+                      autoCompleteType={'password'}
+                      style={styles.input}
+                      secureTextEntry={true}
+                      onChangeText={(text) => this.setState({ password: text })}
+                      value={this.state.password}
+                    />
+
+
+                  </View>
+                </View>
+                <CheckBox
+                  containerStyle={styles.checkboxContainer}
+                  textStyle={styles.checkboxLabel}
+                  checkedColor={'white'}
+                  uncheckedColor={'white'}
+                  title={text.EnregistrerIdentifiant}
+                  style={styles.checkbox}
+                  checked={this.state.rememberMe}
+                  onPress={(value) =>
+                    this.setState({ rememberMe: !this.state.rememberMe })
+                  }
+                />
+
+                <View style={styles.buttonContainer}>
+                  <TouchableHighlight
+                    style={styles.buttonStyle}
+                    onPress={() => this.onPressLogButton()}
+                    underlayColor="rgba(73,182,77,1,0.9)">
+                    <Text style={styles.signTxt}>{text.Connexion}</Text>
+                  </TouchableHighlight>
+
+                </View>
+
+
+              </View>
+              {this.state.version?.application_version > VersionInfo.appVersion && <View style={styles.versionNotif}>
+                <Text style={{ color: 'white' }}
+                  onPress={() => Linking.openURL(this.state.version?.application_url)}>
+                  Cliquez ici pour télécharger la version {this.state.version.application_version}</Text>
               </View>}
-              <View style={styles.inputBlock}>
-                <Text style={styles.label}>{text.Identifiant}</Text>
-
-                <View style={styles.inputContainer}>
-                  <TextInput
-                    autoCompleteType={'name'}
-                    onFocus={() => this.setState({ showList: true })}
-                    style={styles.input}
-                    onChangeText={(text) => {
-                      let list = this.state.listLogin
-                      if (text.length > 0)
-                        list = list?.filter(e => e.login.toLowerCase().includes(text.toLowerCase()))
-                      this.setState({ name: text, listAutocomplit: list })
-                    }
-                    }
-                    value={this.state.name}
-                  />
-
-                </View>
-
-
-
-              </View>
-              <View style={styles.inputBlock}>
-                <Text style={styles.label}>{text.motDePasse}</Text>
-
-                <View style={styles.inputContainer}>
-                  <TextInput
-                    autoCompleteType={'password'}
-                    style={styles.input}
-                    secureTextEntry={true}
-                    onChangeText={(text) => this.setState({ password: text })}
-                    value={this.state.password}
-                  />
-
-
-                </View>
-              </View>
-              <CheckBox
-                containerStyle={styles.checkboxContainer}
-                textStyle={styles.checkboxLabel}
-                checkedColor={'white'}
-                uncheckedColor={'white'}
-                title={text.EnregistrerIdentifiant}
-                style={styles.checkbox}
-                checked={this.state.rememberMe}
-                onPress={(value) =>
-                  this.setState({ rememberMe: !this.state.rememberMe })
-                }
-              />
-
-              <View style={styles.buttonContainer}>
-                <TouchableHighlight
-                  style={styles.buttonStyle}
-                  onPress={() => this.onPressLogButton()}
-                  underlayColor="rgba(73,182,77,1,0.9)">
-                  <Text style={styles.signTxt}>{text.Connexion}</Text>
-                </TouchableHighlight>
-
-              </View>
-
-
             </View>
-            {this.state.version?.application_version > VersionInfo.appVersion && <View style={styles.versionNotif}>
-              <Text style={{ color: 'white' }}
-                onPress={() => Linking.openURL(this.state.version?.application_url)}>
-                Cliquez ici pour télécharger la version {this.state.version.application_version}</Text>
-            </View>}
-          </View>
-        </ScrollView>
-
+          </ScrollView>
+        </KeyboardAvoidingView>
         {this.state.showButtom && (
           <View style={styles.buttomView}>
             <Text

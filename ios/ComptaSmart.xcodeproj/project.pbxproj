@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* ComptaSmartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ComptaSmartTests.m */; };
+		01B533E463A01E97DAC9A1A1 /* libPods-ComptaSmart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 468EAF044D6A6B1E23E7E2F4 /* libPods-ComptaSmart-tvOSTests.a */; };
 		0A2038875F894AAFAA555464 /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */; };
 		0B59F8C8B48D4BE19B962978 /* FontAwesome5_Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C81A41658E7455AA905810D /* FontAwesome5_Regular.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -16,13 +17,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		1882B054FB8F4DFD9CB035BD /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E2D5D9087687493389AEFBDC /* MaterialIcons.ttf */; };
 		1D05820FD0F0459EB348B66D /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABD3DB8EE7154510B7CD2D3C /* Nunito-BoldItalic.ttf */; };
+		1ECE2809C6B721CE2C7AAF84 /* libPods-ComptaSmart-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4D46B4AAAB40935B3436A2B /* libPods-ComptaSmart-tvOS.a */; };
+		28AABE27F3BEF330C75737BC /* libPods-ComptaSmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 43D2C205C5BEA984FD8D958C /* libPods-ComptaSmart.a */; };
 		2B2803E936474EED9A9AF6D4 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2D20E6433C494EE99CBF312D /* Nunito-Regular.ttf */; };
-		2C89B987B3A6E574413F2F98 /* libPods-ComptaSmart.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* ComptaSmartTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* ComptaSmartTests.m */; };
-		4158EA8DF2FD0FDC7D94B56D /* libPods-ComptaSmart-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */; };
 		471BE29D0F5B4CE78A287217 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DA637AB8C4A47DE8ECEAC96 /* Nunito-Bold.ttf */; };
 		4C7206D38E384C26A72E742C /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 701EFB948ED24506BD9A2A85 /* Nunito-ExtraBold.ttf */; };
 		515D2C4686D44B3D9AA6ACEB /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */; };
@@ -38,6 +39,7 @@
 		9A2A59FE40894955949CF3B0 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 91D4AAEE95C04A0EA136FE9D /* Zocial.ttf */; };
 		9E79AF1CBE954EFEB46D89AE /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01526EB8C01E43F7A39BCBB6 /* Feather.ttf */; };
 		A5BF49D86479411F94216CB0 /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30A2D5FE119340589A3A3867 /* Nunito-Italic.ttf */; };
+		A69A6CC77A9436BF6DFB98B5 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAEDA031AB4262F635F6FC4B /* libPods-ComptaSmart-ComptaSmartTests.a */; };
 		B4220A65C0054DD3801FDBF7 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134007E11AF34C6AB246F4D4 /* SimpleLineIcons.ttf */; };
 		B63B29C1E856404CB707C6BD /* AntDesign.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3EF8D8520834175B1065E15 /* AntDesign.ttf */; };
 		BB6141CA25761B94004086FD /* SegoeUI-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BB6141C825761B93004086FD /* SegoeUI-Black.ttf */; };
@@ -57,12 +59,10 @@
 		BBC3107A25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBC3107B25761AE900F45F79 /* SegoeUI-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC3107725761AE900F45F79 /* SegoeUI-Light.ttf */; };
 		BBD0DB1C25B42DC4007C8283 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD0DB1B25B42DC4007C8283 /* Launch Screen.storyboard */; };
-		C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */; };
 		C5C8156B7EDC4E4CAC06226D /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9A267E8B02D445F4911574CD /* Fontisto.ttf */; };
 		D3C1B4407B49491CA77B82D3 /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */; };
 		DE20BFE099A64F23924627C2 /* FontAwesome5_Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DDB9E8F1D3E4A8AAAA32324 /* FontAwesome5_Solid.ttf */; };
 		E1C96993776443819576ACF6 /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0424B895BBF4410F8CF2CF7D /* Nunito-ExtraBoldItalic.ttf */; };
-		E2C18FE658C6A93F060C8410 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */; };
 		E66835756CA846BBB5E15E61 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D5DE2C49B5E54A689EC1AAAD /* Ionicons.ttf */; };
 		ED81DE9185B740FA90E1A879 /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */; };
 		F37ABB4F17084B6D812609E2 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 89F183DB9C9345F8959B5A06 /* Foundation.ttf */; };
@@ -101,7 +101,6 @@
 		01526EB8C01E43F7A39BCBB6 /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		0424B895BBF4410F8CF2CF7D /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraBoldItalic.ttf"; path = "../assets/fonts/Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		069FD82E81814CE2920DDBBD /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
-		0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0DDB9E8F1D3E4A8AAAA32324 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
 		134007E11AF34C6AB246F4D4 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* ComptaSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComptaSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,34 +112,37 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ComptaSmart/main.m; sourceTree = "<group>"; };
 		17D3C46B24CA699900A2B510 /* ComptaSmart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-Bridging-Header.h"; sourceTree = "<group>"; };
 		17D727DCF4C643079583F7F8 /* Nunito-Black.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Black.ttf"; path = "../assets/fonts/Nunito-Black.ttf"; sourceTree = "<group>"; };
-		2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-ComptaSmartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E47B1E0B4A5D006451C7 /* ComptaSmart-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ComptaSmart-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* ComptaSmart-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ComptaSmart-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D20E6433C494EE99CBF312D /* Nunito-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Regular.ttf"; path = "../assets/fonts/Nunito-Regular.ttf"; sourceTree = "<group>"; };
-		2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart.debug.xcconfig"; sourceTree = "<group>"; };
 		30A2D5FE119340589A3A3867 /* Nunito-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Italic.ttf"; path = "../assets/fonts/Nunito-Italic.ttf"; sourceTree = "<group>"; };
-		3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		3C98C0578F7AB949EA359636 /* Pods-ComptaSmart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart.debug.xcconfig"; path = "Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart.debug.xcconfig"; sourceTree = "<group>"; };
+		43D2C205C5BEA984FD8D958C /* libPods-ComptaSmart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		464AACFB7354471B9475AED5 /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-LightItalic.ttf"; path = "../assets/fonts/Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
+		468EAF044D6A6B1E23E7E2F4 /* libPods-ComptaSmart-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		488102EDE06D4FF2A02E25B1 /* Nunito-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Light.ttf"; path = "../assets/fonts/Nunito-Light.ttf"; sourceTree = "<group>"; };
 		4C81A41658E7455AA905810D /* FontAwesome5_Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Regular.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Regular.ttf"; sourceTree = "<group>"; };
+		51E5E34B66343A7DC7C4983D /* Pods-ComptaSmart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart.release.xcconfig"; path = "Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart.release.xcconfig"; sourceTree = "<group>"; };
 		5368ACF1A9124A858061977F /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraLight.ttf"; path = "../assets/fonts/Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
 		5911C70BC71249BBA736E53B /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		5C45D2FA7DAF41089493279E /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBold.ttf"; path = "../assets/fonts/Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
 		5DA637AB8C4A47DE8ECEAC96 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-Bold.ttf"; path = "../assets/fonts/Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		6502C029BA3B4556BE89D921 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-SemiBoldItalic.ttf"; path = "../assets/fonts/Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
-		6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart.release.xcconfig"; sourceTree = "<group>"; };
 		701EFB948ED24506BD9A2A85 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraBold.ttf"; path = "../assets/fonts/Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
-		779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-ComptaSmartTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests.release.xcconfig"; sourceTree = "<group>"; };
+		7DF87D683B7859C73F8AF576 /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		88263220EAFBFFE814368514 /* Pods-ComptaSmart-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8834D99A00B98693330E74F7 /* Pods-ComptaSmart-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.release.xcconfig"; path = "Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		89F183DB9C9345F8959B5A06 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		91D4AAEE95C04A0EA136FE9D /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
+		990A8A2BAF9AB4AA46FCE0C5 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-ComptaSmart-tvOSTests/Pods-ComptaSmart-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		9A267E8B02D445F4911574CD /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		9B9F8D88CA5CB1AADD1F5ABE /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-ComptaSmartTests.release.xcconfig"; path = "Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests.release.xcconfig"; sourceTree = "<group>"; };
 		ABD3DB8EE7154510B7CD2D3C /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BoldItalic.ttf"; path = "../assets/fonts/Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
 		AFA21DFD88EE445E928E8064 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-ExtraLightItalic.ttf"; path = "../assets/fonts/Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
-		B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BAEDA031AB4262F635F6FC4B /* libPods-ComptaSmart-ComptaSmartTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-ComptaSmartTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB6141C825761B93004086FD /* SegoeUI-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SegoeUI-Black.ttf"; path = "../assets/fonts/SegoeUI-Black.ttf"; sourceTree = "<group>"; };
 		BB6141D225761BFC004086FD /* SegoeUI.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = SegoeUI.ttf; path = ../assets/fonts/SegoeUI.ttf; sourceTree = "<group>"; };
+		BB70374CBAD4159806AD9627 /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig"; path = "Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		BBA8516FE25945E79B4A0D5B /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		BBC31055256D2CA900F45F79 /* ComptaSmartTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmartTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		BBC31056256D2CA900F45F79 /* ComptaSmart-tvOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ComptaSmart-tvOS-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -152,15 +154,13 @@
 		BBDDD45C25B0841B00C87578 /* ComptaSmartDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ComptaSmartDebug.entitlements; path = ComptaSmart/ComptaSmartDebug.entitlements; sourceTree = "<group>"; };
 		C1A49713C6DD42239AF7353D /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Nunito-BlackItalic.ttf"; path = "../assets/fonts/Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
 		C870CCE6A8E545268DAB70BA /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-tvOS/Pods-ComptaSmart-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		D3EF8D8520834175B1065E15 /* AntDesign.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = AntDesign.ttf; path = "../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf"; sourceTree = "<group>"; };
 		D5DE2C49B5E54A689EC1AAAD /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DA739BC9BB88491AB27F9E84 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		E2D5D9087687493389AEFBDC /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
+		E4D46B4AAAB40935B3436A2B /* libPods-ComptaSmart-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ComptaSmart-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F781E78F3D44BC99655CD3 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,7 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2C18FE658C6A93F060C8410 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */,
+				A69A6CC77A9436BF6DFB98B5 /* libPods-ComptaSmart-ComptaSmartTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2C89B987B3A6E574413F2F98 /* libPods-ComptaSmart.a in Frameworks */,
+				28AABE27F3BEF330C75737BC /* libPods-ComptaSmart.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4158EA8DF2FD0FDC7D94B56D /* libPods-ComptaSmart-tvOS.a in Frameworks */,
+				1ECE2809C6B721CE2C7AAF84 /* libPods-ComptaSmart-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,7 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C05B41C7ACDF01C75F231BCE /* libPods-ComptaSmart-tvOSTests.a in Frameworks */,
+				01B533E463A01E97DAC9A1A1 /* libPods-ComptaSmart-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,10 +240,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				779AAA3C628DB5FB0FC4B901 /* libPods-ComptaSmart.a */,
-				2BF56C6AACBCD0FDFB3283DA /* libPods-ComptaSmart-ComptaSmartTests.a */,
-				3F004773F09FB7E32EBBDC23 /* libPods-ComptaSmart-tvOS.a */,
-				F5264A12E0315FB581479603 /* libPods-ComptaSmart-tvOSTests.a */,
+				43D2C205C5BEA984FD8D958C /* libPods-ComptaSmart.a */,
+				BAEDA031AB4262F635F6FC4B /* libPods-ComptaSmart-ComptaSmartTests.a */,
+				E4D46B4AAAB40935B3436A2B /* libPods-ComptaSmart-tvOS.a */,
+				468EAF044D6A6B1E23E7E2F4 /* libPods-ComptaSmart-tvOSTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -265,10 +265,10 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				A5F2AB056E0F4B739A784735 /* Resources */,
-				8A484349719F985729B5570B /* Pods */,
 				BBC31055256D2CA900F45F79 /* ComptaSmartTests-Bridging-Header.h */,
 				BBC31056256D2CA900F45F79 /* ComptaSmart-tvOS-Bridging-Header.h */,
 				BBC31057256D2CA900F45F79 /* ComptaSmart-tvOSTests-Bridging-Header.h */,
+				C7DE41BB08F3C5D8B547F9C1 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -284,21 +284,6 @@
 				2D02E4901E0B4A5D006451C7 /* ComptaSmart-tvOSTests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		8A484349719F985729B5570B /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */,
-				6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */,
-				D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */,
-				7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */,
-				B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */,
-				C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */,
-				0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */,
-				45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		A5F2AB056E0F4B739A784735 /* Resources */ = {
@@ -341,6 +326,22 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
+		C7DE41BB08F3C5D8B547F9C1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C98C0578F7AB949EA359636 /* Pods-ComptaSmart.debug.xcconfig */,
+				51E5E34B66343A7DC7C4983D /* Pods-ComptaSmart.release.xcconfig */,
+				BB70374CBAD4159806AD9627 /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */,
+				9B9F8D88CA5CB1AADD1F5ABE /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */,
+				88263220EAFBFFE814368514 /* Pods-ComptaSmart-tvOS.debug.xcconfig */,
+				8834D99A00B98693330E74F7 /* Pods-ComptaSmart-tvOS.release.xcconfig */,
+				7DF87D683B7859C73F8AF576 /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */,
+				990A8A2BAF9AB4AA46FCE0C5 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -348,11 +349,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "ComptaSmartTests" */;
 			buildPhases = (
-				2B9F1A32B29CB61394AB3A92 /* [CP] Check Pods Manifest.lock */,
+				2D0BF57B1317663AE0D4980F /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
-				EBFCBF3EFA5F995ABBF85148 /* [CP] Copy Pods Resources */,
+				885582E76C6FB179167ED03B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -368,13 +369,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "ComptaSmart" */;
 			buildPhases = (
-				5FAECE1F51E0989E333A05F7 /* [CP] Check Pods Manifest.lock */,
+				3BC77F2253812D5D61F9975F /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				FD5C525252024437CD8EBEFC /* [CP] Copy Pods Resources */,
+				AB600B063F1AD66C5B4DCF3F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,7 +390,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ComptaSmart-tvOS" */;
 			buildPhases = (
-				F5749ECBFD79EF317895A501 /* [CP] Check Pods Manifest.lock */,
+				59889CDD6FAA89173F163996 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -409,7 +410,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "ComptaSmart-tvOSTests" */;
 			buildPhases = (
-				1CC561520978F250F2560F37 /* [CP] Check Pods Manifest.lock */,
+				AF0A1D5EE9099CA3B374B70B /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -570,42 +571,6 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		1CC561520978F250F2560F37 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-tvOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2B9F1A32B29CB61394AB3A92 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-ComptaSmartTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -620,16 +585,42 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		5FAECE1F51E0989E333A05F7 /* [CP] Check Pods Manifest.lock */ = {
+		2D0BF57B1317663AE0D4980F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-ComptaSmartTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3BC77F2253812D5D61F9975F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-checkManifestLockResult.txt",
 			);
@@ -638,7 +629,29 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EBFCBF3EFA5F995ABBF85148 /* [CP] Copy Pods Resources */ = {
+		59889CDD6FAA89173F163996 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		885582E76C6FB179167ED03B /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -692,55 +705,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart-ComptaSmartTests/Pods-ComptaSmart-ComptaSmartTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F5749ECBFD79EF317895A501 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-tvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FD10A7F022414F080027D42C /* Start Packager */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Start Packager";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FD10A7F122414F3F0027D42C /* Start Packager */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Start Packager";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		FD5C525252024437CD8EBEFC /* [CP] Copy Pods Resources */ = {
+		AB600B063F1AD66C5B4DCF3F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -792,6 +757,58 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ComptaSmart/Pods-ComptaSmart-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF0A1D5EE9099CA3B374B70B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ComptaSmart-tvOSTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F022414F080027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FD10A7F122414F3F0027D42C /* Start Packager */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Start Packager";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -870,7 +887,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6D586D07CFF9322C6A1E0BE /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */;
+			baseConfigurationReference = BB70374CBAD4159806AD9627 /* Pods-ComptaSmart-ComptaSmartTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -898,7 +915,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FD2A8CAF7F8F41731943320 /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */;
+			baseConfigurationReference = 9B9F8D88CA5CB1AADD1F5ABE /* Pods-ComptaSmart-ComptaSmartTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -922,7 +939,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2F6E546C687B0154CFCF1323 /* Pods-ComptaSmart.debug.xcconfig */;
+			baseConfigurationReference = 3C98C0578F7AB949EA359636 /* Pods-ComptaSmart.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1000,7 +1017,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6A5BCA750597EB6AEB0AB90F /* Pods-ComptaSmart.release.xcconfig */;
+			baseConfigurationReference = 51E5E34B66343A7DC7C4983D /* Pods-ComptaSmart.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1064,7 +1081,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B08A0B11ADF34FB66D91DD78 /* Pods-ComptaSmart-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 88263220EAFBFFE814368514 /* Pods-ComptaSmart-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1096,7 +1113,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9E91A27E0B3F0AD0CC4360F /* Pods-ComptaSmart-tvOS.release.xcconfig */;
+			baseConfigurationReference = 8834D99A00B98693330E74F7 /* Pods-ComptaSmart-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1127,7 +1144,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0ABDE2019DFAFB1CD8DE6F6F /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 7DF87D683B7859C73F8AF576 /* Pods-ComptaSmart-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1159,7 +1176,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45BC6CB1E3C5E811704779F7 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 990A8A2BAF9AB4AA46FCE0C5 /* Pods-ComptaSmart-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
