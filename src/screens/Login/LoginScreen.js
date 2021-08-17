@@ -10,6 +10,8 @@ import {
   Keyboard,
   ActivityIndicator,
   Linking,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import {CheckBox} from 'react-native-elements';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -68,11 +70,11 @@ class LoginScreen extends React.Component {
   }
 
   _keshowButtomyboardDidShow = () => {
-    this.setState({showButtom: !this.state.showButtom});
+    this.setState({showButtom: true});
   };
 
   _keyboardDidHide = () => {
-    this.setState({showButtom: !this.state.showButtom});
+    this.setState({showButtom: true});
   };
 
   onPressLogButton = async () => {
@@ -116,6 +118,8 @@ class LoginScreen extends React.Component {
 
   render() {
     return (
+      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "position" : "height"} style={{ height: "100%" }} >
+
       <ScrollView>
         <View style={styles.mainContainer}>
           <Image
@@ -200,6 +204,8 @@ class LoginScreen extends React.Component {
           )}
         </View>
       </ScrollView>
+      </KeyboardAvoidingView>
+
     );
   }
 }
